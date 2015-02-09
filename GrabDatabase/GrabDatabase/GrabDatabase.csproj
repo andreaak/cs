@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{590A3ABC-6611-4ECE-A0A7-7A2A594FA04C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GrabDatabase</RootNamespace>
+    <AssemblyName>Grab Database</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Database.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v12.2.Extensions, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="gudusoft.gsqlparser">
+      <HintPath>Dll\gudusoft.gsqlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBConstants.cs" />
+    <Compile Include="DB Tools\DBDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DB Tools\DBDataForm.designer.cs">
+      <DependentUpon>DBDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grab\CreateTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grab\CreateTable.designer.cs">
+      <DependentUpon>CreateTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grab\DbStructureReader.cs" />
+    <Compile Include="Grab\MetaData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grab\MetaData.designer.cs">
+      <DependentUpon>MetaData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grab\SelectUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grab\SelectUser.Designer.cs">
+      <DependentUpon>SelectUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grab\SqlCommand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grab\SqlCommand.Designer.cs">
+      <DependentUpon>SqlCommand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grab\TextData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grab\TextData.designer.cs">
+      <DependentUpon>TextData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Links\AddLinkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Links\AddLinkForm.designer.cs">
+      <DependentUpon>AddLinkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Links\FindFieldForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Links\FindFieldForm.Designer.cs">
+      <DependentUpon>FindFieldForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Links\FindLinkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Links\FindLinkForm.designer.cs">
+      <DependentUpon>FindLinkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Links\ImportTablesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Links\ImportTablesForm.designer.cs">
+      <DependentUpon>ImportTablesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Links\Field.cs" />
+    <Compile Include="Links\Link.cs" />
+    <Compile Include="Links\RemoveLinkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Links\RemoveLinkForm.designer.cs">
+      <DependentUpon>RemoveLinkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Links\Table.cs" />
+    <Compile Include="Links\WorkWithKeys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Links\WorkWithKeys.Designer.cs">
+      <DependentUpon>WorkWithKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options.cs" />
+    <Compile Include="ParseQuery\InputData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParseQuery\InputData.designer.cs">
+      <DependentUpon>InputData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParseQuery\ParseQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParseQuery\ParseQueryForm.designer.cs">
+      <DependentUpon>ParseQueryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParseQuery\Parameter.cs" />
+    <Compile Include="Program.cs" />
+    <EmbeddedResource Include="DB Tools\DBDataForm.resx">
+      <DependentUpon>DBDataForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grab\CreateTable.resx">
+      <DependentUpon>CreateTable.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grab\MetaData.resx">
+      <DependentUpon>MetaData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grab\SelectUser.resx">
+      <DependentUpon>SelectUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grab\SqlCommand.resx">
+      <DependentUpon>SqlCommand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grab\TextData.resx">
+      <DependentUpon>TextData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Links\AddLinkForm.resx">
+      <DependentUpon>AddLinkForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Links\FindFieldForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FindFieldForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Links\FindLinkForm.resx">
+      <DependentUpon>FindLinkForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Links\ImportTablesForm.resx">
+      <DependentUpon>ImportTablesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Links\RemoveLinkForm.resx">
+      <DependentUpon>RemoveLinkForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Links\WorkWithKeys.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WorkWithKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParseQuery\InputData.resx">
+      <DependentUpon>InputData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParseQuery\ParseQueryForm.resx">
+      <DependentUpon>ParseQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Utils\RtfForm.resx">
+      <DependentUpon>RtfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utils\HelpProvider.cs" />
+    <Compile Include="Utils\RtfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\RtfForm.Designer.cs">
+      <DependentUpon>RtfForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="DB Tools\DBService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_.png" />
+    <None Include="Resources\DBCreation.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search44.png" />
+    <None Include="Resources\add_1.png" />
+    <None Include="Resources\Delete1.png" />
+    <None Include="Resources\filter.png" />
+    <None Include="Resources\kghostview.png" />
+    <None Include="Resources\filter1.png" />
+    <Content Include="Database.ico" />
+    <Content Include="Resources\loopnone.png" />
+    <Content Include="Resources\loopnone2.png" />
+    <None Include="Resources\refresh1.png" />
+    <None Include="Resources\openHS.png" />
+    <None Include="Resources\saveHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Utils\Utils\utilsVS10.csproj">
+      <Project>{724da50c-c404-4a3a-8583-fbc2f4fb9963}</Project>
+      <Name>utilsVS10</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
