@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A467118-E885-44FC-B7AF-DFAD937F6012}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GitSharp.CLI</RootNamespace>
+    <AssemblyName>git</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>GitSharp.CLI.Program</StartupObject>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SourceAnalysisOverrideSettingsFile>C:\Users\rolenun\AppData\Roaming\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Commandlineparameters>init</Commandlineparameters>
+    <DocumentationFile>bin\Debug\git.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Add.cs" />
+    <Compile Include="Stubs\Am.cs" />
+    <Compile Include="Stubs\Annotate.cs" />
+    <Compile Include="Stubs\Apply.cs" />
+    <Compile Include="Stubs\Archive.cs" />
+    <Compile Include="Stubs\Blame.cs" />
+    <Compile Include="Stubs\Branch.cs" />
+    <Compile Include="Stubs\CatFile.cs" />
+    <Compile Include="Commands\Checkout.cs" />
+    <Compile Include="Stubs\CheckoutIndex.cs" />
+    <Compile Include="Stubs\Cherry.cs" />
+    <Compile Include="Stubs\CherryPick.cs" />
+    <Compile Include="Stubs\Clean.cs" />
+    <Compile Include="Commands\Clone.cs" />
+    <Compile Include="CmdParserOptionSet.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="CommandCatalog.cs" />
+    <Compile Include="CommandRef.cs" />
+    <Compile Include="Commands\Commit.cs" />
+    <Compile Include="Stubs\CommitTree.cs" />
+    <Compile Include="Commands\Config.cs" />
+    <Compile Include="Stubs\CountObjects.cs" />
+    <Compile Include="Stubs\Describe.cs" />
+    <Compile Include="Die.cs" />
+    <Compile Include="Stubs\Diff.cs" />
+    <Compile Include="Stubs\DiffFiles.cs" />
+    <Compile Include="Stubs\DiffIndex.cs" />
+    <Compile Include="Stubs\Difftool.cs" />
+    <Compile Include="Stubs\DiffTree.cs" />
+    <Compile Include="Stubs\FastExport.cs" />
+    <Compile Include="Stubs\FastImport.cs" />
+    <Compile Include="Commands\Fetch.cs" />
+    <Compile Include="Stubs\FetchPack.cs" />
+    <Compile Include="Stubs\FilterBranch.cs" />
+    <Compile Include="Stubs\FmtMergeMsg.cs" />
+    <Compile Include="Stubs\ForEachRef.cs" />
+    <Compile Include="Stubs\FormatPatch.cs" />
+    <Compile Include="Stubs\Fsck.cs" />
+    <Compile Include="Stubs\Gc.cs" />
+    <Compile Include="Stubs\Grep.cs" />
+    <Compile Include="Stubs\HashObject.cs" />
+    <Compile Include="Commands\Help.cs" />
+    <Compile Include="Stubs\IndexPack.cs" />
+    <Compile Include="Commands\Init.cs" />
+    <Compile Include="Commands\Log.cs" />
+    <Compile Include="Stubs\LsFiles.cs" />
+    <Compile Include="Stubs\LsRemote.cs" />
+    <Compile Include="Stubs\LsTree.cs" />
+    <Compile Include="Stubs\Mailinfo.cs" />
+    <Compile Include="Stubs\Mailsplit.cs" />
+    <Compile Include="Commands\Merge.cs" />
+    <Compile Include="Stubs\MergeBase.cs" />
+    <Compile Include="Stubs\MergeFile.cs" />
+    <Compile Include="Stubs\MergeIndex.cs" />
+    <Compile Include="Stubs\Mergetool.cs" />
+    <Compile Include="Stubs\Mktree.cs" />
+    <Compile Include="Stubs\Mv.cs" />
+    <Compile Include="Stubs\NameRev.cs" />
+    <Compile Include="Stubs\Notes.cs" />
+    <Compile Include="Options.cs" />
+    <Compile Include="Stubs\PackObjects.cs" />
+    <Compile Include="Stubs\PackRedundant.cs" />
+    <Compile Include="Stubs\PackRefs.cs" />
+    <Compile Include="Stubs\PatchId.cs" />
+    <Compile Include="Stubs\PeekRemote.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stubs\Prune.cs" />
+    <Compile Include="Stubs\PrunePacked.cs" />
+    <Compile Include="Commands\Pull.cs" />
+    <Compile Include="Commands\Push.cs" />
+    <Compile Include="Stubs\Quiltimport.cs" />
+    <Compile Include="Stubs\ReadTree.cs" />
+    <Compile Include="Stubs\ReceivePack.cs" />
+    <Compile Include="Stubs\Reflog.cs" />
+    <Compile Include="Stubs\Relink.cs" />
+    <Compile Include="Stubs\Remote.cs" />
+    <Compile Include="Stubs\Repack.cs" />
+    <Compile Include="Stubs\Replace.cs" />
+    <Compile Include="Stubs\RequestPull.cs" />
+    <Compile Include="Stubs\Reset.cs" />
+    <Compile Include="Stubs\Revert.cs" />
+    <Compile Include="Stubs\RevParse.cs" />
+    <Compile Include="Commands\Rm.cs" />
+    <Compile Include="Stubs\SendPack.cs" />
+    <Compile Include="Stubs\Shortlog.cs" />
+    <Compile Include="Stubs\Show.cs" />
+    <Compile Include="Stubs\ShowBranch.cs" />
+    <Compile Include="Stubs\ShowRef.cs" />
+    <Compile Include="Commands\Status.cs" />
+    <Compile Include="Stubs\Stripspace.cs" />
+    <Compile Include="Stubs\Submodule.cs" />
+    <Compile Include="Stubs\Svn.cs" />
+    <Compile Include="Stubs\SymbolicRef.cs" />
+    <Compile Include="Stubs\Tag.cs" />
+    <Compile Include="Stubs\TarTree.cs" />
+    <Compile Include="TextBuiltin.cs" />
+    <Compile Include="Stubs\Rebase.cs" />
+    <Compile Include="Stubs\UnpackFile.cs" />
+    <Compile Include="Stubs\UnpackObjects.cs" />
+    <Compile Include="Stubs\UpdateIndex.cs" />
+    <Compile Include="Stubs\UpdateServerInfo.cs" />
+    <Compile Include="Stubs\UploadArchive.cs" />
+    <Compile Include="Stubs\UploadPack.cs" />
+    <Compile Include="Stubs\Var.cs" />
+    <Compile Include="Stubs\VerifyPack.cs" />
+    <Compile Include="Stubs\VerifyTag.cs" />
+    <Compile Include="Commands\Version.cs" />
+    <Compile Include="Stubs\Whatchanged.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Commands.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GitSharp\GitSharp.csproj">
+      <Project>{7311850F-619A-4241-B09F-157792C75FBA}</Project>
+      <Name>GitSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GitSharp.Core\GitSharp.Core.csproj">
+      <Project>{C46EDD61-C202-465A-93F1-ADE20A83BB59}</Project>
+      <Name>GitSharp.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
