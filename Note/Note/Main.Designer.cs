@@ -287,6 +287,7 @@
             this.barButtonItemLevelDown = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemRemoveWhiteSpace = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCheckNewestEntity = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemSpelling = new DevExpress.XtraBars.BarCheckItem();
             this.headerFooterToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.HeaderFooterToolsRibbonPageCategory();
             this.tableToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.TableToolsRibbonPageCategory();
             this.tableDesignRibbonPage1 = new DevExpress.XtraRichEdit.UI.TableDesignRibbonPage();
@@ -608,7 +609,8 @@
             this.barButtonItemLevelUp,
             this.barButtonItemLevelDown,
             this.barButtonItemRemoveWhiteSpace,
-            this.barButtonItemCheckNewestEntity});
+            this.barButtonItemCheckNewestEntity,
+            this.barButtonItemSpelling});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 249;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -2516,10 +2518,18 @@
             // barButtonItemRemoveWhiteSpace
             // 
             this.barButtonItemRemoveWhiteSpace.Caption = "Remove\r\nWhite\r\nSpace";
-            this.barButtonItemRemoveWhiteSpace.Id = 248;
+            this.barButtonItemRemoveWhiteSpace.Id = 247;
             this.barButtonItemRemoveWhiteSpace.Name = "barButtonItemRemoveWhiteSpace";
             this.barButtonItemRemoveWhiteSpace.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemRemoveWhiteSpace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemRemoveWhiteSpace_ItemClick);
+            // 
+            // barButtonItemSpelling
+            // 
+            this.barButtonItemSpelling.Caption = "Spelling";
+            this.barButtonItemSpelling.Id = 248;
+            this.barButtonItemSpelling.Name = "barButtonItemSpelling";
+            this.barButtonItemSpelling.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItemSpelling.CheckedChanged += barButtonItemSpelling_CheckedChanged;
             // 
             // barButtonItemCheckNewestEntity
             // 
@@ -2671,6 +2681,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemConvertDb);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemVacuum);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemCheckNewestEntity);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemSpelling);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
             // homeRibbonPage1
@@ -3571,6 +3582,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemLevelDown;
         private DevExpress.XtraBars.BarButtonItem barButtonItemRemoveWhiteSpace;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCheckNewestEntity;
+        private DevExpress.XtraBars.BarCheckItem barButtonItemSpelling;
         private DevExpress.XtraSpellChecker.SpellChecker spellChecker1;
         private DevExpress.XtraSpellChecker.SpellCheckerCustomDictionary spellCheckerCustomDictionary1;
     }

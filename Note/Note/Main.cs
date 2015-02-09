@@ -247,6 +247,13 @@ namespace Note
             }
         }
 
+        void barButtonItemSpelling_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.spellChecker1.SpellCheckMode = barButtonItemSpelling.Checked ? 
+                DevExpress.XtraSpellChecker.SpellCheckMode.AsYouType 
+                : DevExpress.XtraSpellChecker.SpellCheckMode.OnDemand;
+        }
+
         #endregion
 
 
