@@ -168,6 +168,7 @@ namespace Note
             DocumentRange range = richEditControl.Document.Selection;
             //Regex reg = new Regex(@"\r\n");
             char ch = '\u00AD';
+            richEditControl.Document.ReplaceAll("\t", "", SearchOptions.None, range);
             richEditControl.Document.ReplaceAll(ch.ToString(), "-", SearchOptions.None, range);
             richEditControl.Document.ReplaceAll("- \r\n", "", SearchOptions.None, range);
             richEditControl.Document.ReplaceAll("-\r\n", "", SearchOptions.None, range);
