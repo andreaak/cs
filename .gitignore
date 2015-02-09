@@ -10,15 +10,15 @@ _ReSharper*
 *.exe
 *.licx
 Algoritms/
-Assist/
-DataStructuresAndAlgorithms/
+#Assist/
+#DataStructuresAndAlgorithms/
 DiffgramAnalyzer/
 #GitSharp/
 #GrabDatabase/
 #Note/
-#ParseQuery/
-Patterns/
-PerformanceLogAnalyzer/
+ParseQuery2/
+#Patterns/
+#PerformanceLogAnalyzer/
 SocialNetwork/
 #WorkWithSvn/
 WsdlGeneration/
@@ -30,3 +30,4 @@ lib/
 tools/
 Dllx64/
 Dllx86/
+TestResults/

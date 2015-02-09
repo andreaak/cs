@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B2E5C8B5-7C9F-4B22-8632-9E19E6B49A73}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataStructuresAndAlgorithms</RootNamespace>
+    <AssemblyName>DataStructuresAndAlgorithms</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="01Base\02Multiplication.cs" />
+    <Compile Include="01Base\01Sum.cs" />
+    <Compile Include="01Base\03Node.cs" />
+    <Compile Include="02LinkedList\LinkedListNode.cs" />
+    <Compile Include="02LinkedList\LinkedList.cs" />
+    <Compile Include="03DoublyLinkedList\DoublyLinkedListNode.cs" />
+    <Compile Include="03DoublyLinkedList\DoublyLinkedList.cs" />
+    <Compile Include="01Base\04SingleListTest.cs" />
+    <Compile Include="02LinkedList\LinkedListTest.cs" />
+    <Compile Include="03DoublyLinkedList\DoublyLinkedListTest.cs" />
+    <Compile Include="03DoublyLinkedList\NativeLinkedListTest.cs" />
+    <Compile Include="04ArrayList\ArrayList.cs" />
+    <Compile Include="04ArrayList\ArrayListTest.cs" />
+    <Compile Include="04ArrayList\NativeArrayListTest.cs" />
+    <Compile Include="05Stack\StackLinkedList2.cs" />
+    <Compile Include="05Stack\StackLinkedList.cs" />
+    <Compile Include="05Stack\NativeStackTest.cs" />
+    <Compile Include="05Stack\StackTest.cs" />
+    <Compile Include="05Stack\StackArray.cs" />
+    <Compile Include="06Queue\Complaint.cs" />
+    <Compile Include="06Queue\PriorityQueue.cs" />
+    <Compile Include="06Queue\QueueArray.cs" />
+    <Compile Include="06Queue\QueueLinkedList2.cs" />
+    <Compile Include="06Queue\NativeQueueTest.cs" />
+    <Compile Include="06Queue\QueueLinkedList.cs" />
+    <Compile Include="06Queue\QueueTest.cs" />
+    <Compile Include="07Dequeue\DequeArrayTest.cs" />
+    <Compile Include="07Dequeue\DequeArray.cs" />
+    <Compile Include="07Dequeue\DequeLinkedList.cs" />
+    <Compile Include="07Dequeue\DequeLinkedListTest.cs" />
+    <Compile Include="08BinaryTree\BinaryTree.cs" />
+    <Compile Include="08BinaryTree\BinaryTreeNode.cs" />
+    <Compile Include="08BinaryTree\BinaryTreeTest.cs" />
+    <Compile Include="09Set\NativeSetTest.cs" />
+    <Compile Include="09Set\SetTest.cs" />
+    <Compile Include="09Set\Set.cs" />
+    <Compile Include="10HashTable\02HashTableNode.cs" />
+    <Compile Include="10HashTable\01HashTablePair.cs" />
+    <Compile Include="10HashTable\02HashTableNodeTest.cs" />
+    <Compile Include="10HashTable\03HashTableArray.cs" />
+    <Compile Include="10HashTable\04HashTable.cs" />
+    <Compile Include="10HashTable\04HashTableTest.cs" />
+    <Compile Include="10HashTable\StringHashingSamples.cs" />
+    <Compile Include="11AVLTree\AVLTreeTest.cs" />
+    <Compile Include="11AVLTree\AVLTree.cs" />
+    <Compile Include="11AVLTree\TreeNode.cs" />
+    <Compile Include="Algorithms\01BubbleSort\Test.cs" />
+    <Compile Include="Algorithms\02InsertionSort\Test.cs" />
+    <Compile Include="Algorithms\03SelectionSort\Test.cs" />
+    <Compile Include="Algorithms\04MergeSort\Test.cs" />
+    <Compile Include="Algorithms\05QuickSort\Test.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

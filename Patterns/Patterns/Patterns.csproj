@@ -1,0 +1,877 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A3A1EAB3-457B-4DBC-8273-74E863DD61FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Patterns</RootNamespace>
+    <AssemblyName>Patterns</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PianoSoundLibrary">
+      <HintPath>..\Dll\PianoSoundLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="sharpPDF">
+      <HintPath>..\Dll\sharpPDF.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Behavioral\Command\Example1\Commands\ICommand.cs" />
+    <Compile Include="Behavioral\Command\Example1\Commands\LightsCommand.cs" />
+    <Compile Include="Behavioral\Command\Example1\Commands\MacroCommand.cs" />
+    <Compile Include="Behavioral\Command\Example1\Commands\MusicCommand.cs" />
+    <Compile Include="Behavioral\Command\Example1\Commands\TeapotCommand.cs" />
+    <Compile Include="Behavioral\Command\Example1\Commands\TvCommand.cs" />
+    <Compile Include="Behavioral\Command\Example1\ControlledSystems\Light.cs" />
+    <Compile Include="Behavioral\Command\Example1\ControlledSystems\Music.cs" />
+    <Compile Include="Behavioral\Command\Example1\ControlledSystems\Teapot.cs" />
+    <Compile Include="Behavioral\Command\Example1\ControlledSystems\Tv.cs" />
+    <Compile Include="Behavioral\Command\Example1\RemoteControl.cs" />
+    <Compile Include="Behavioral\Command\Example1\Test.cs" />
+    <Compile Include="Behavioral\Observer\Example1\News\ISubject.cs" />
+    <Compile Include="Behavioral\Observer\Example1\News\NewsAggregator.cs" />
+    <Compile Include="Behavioral\Observer\Example1\Test.cs" />
+    <Compile Include="Behavioral\Observer\Example1\Widgets\IObserver.cs" />
+    <Compile Include="Behavioral\Observer\Example1\Widgets\IWidget.cs" />
+    <Compile Include="Behavioral\Observer\Example1\Widgets\LentaWidget.cs" />
+    <Compile Include="Behavioral\Observer\Example1\Widgets\TvWidget.cs" />
+    <Compile Include="Behavioral\Observer\Example1\Widgets\TwitterWidget.cs" />
+    <Compile Include="Behavioral\State\Example1\Car.cs" />
+    <Compile Include="Behavioral\State\Example1\States\DrivingState.cs" />
+    <Compile Include="Behavioral\State\Example1\States\EmptyTankState.cs" />
+    <Compile Include="Behavioral\State\Example1\States\EngineStartedState.cs" />
+    <Compile Include="Behavioral\State\Example1\States\FullTankState.cs" />
+    <Compile Include="Behavioral\State\Example1\States\IState.cs" />
+    <Compile Include="Behavioral\State\Example1\Test.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Ducks\DuckBase.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Ducks\ExoticDuck.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Ducks\RubberDuck.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Ducks\SimpleDuck.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Ducks\UpgradableDuck.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Ducks\WoodenDuck.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Fly\FlyWithWings.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Fly\IFlyable.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Fly\NoFly.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Quack\ExoticQuack.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Quack\IQuackable.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Quack\NoQuack.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Quack\SimpleQuack.cs" />
+    <Compile Include="Behavioral\Strategy\Example1\Test.cs" />
+    <Compile Include="Behavioral\TemplateMethod\Example1\Food\FastFood.cs" />
+    <Compile Include="Behavioral\TemplateMethod\Example1\Food\Hamburger.cs" />
+    <Compile Include="Behavioral\TemplateMethod\Example1\Food\HotDog.cs" />
+    <Compile Include="Behavioral\TemplateMethod\Example1\Test.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Cars\Car.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Cars\CarBefore.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Cars\Golf.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Cars\Passat.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Cars\Tiguan.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Cars\Touareg.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Facilities\DeutschVolkswagenFacility.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Facilities\RussianVolkswagenFacility.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Facilities\VolkswagenFacility.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\PartsFactory\CarPartsFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\PartsFactory\DeutschCarPartsFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\PartsFactory\RussianCarPartsFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Parts\BigWheels.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Parts\BlackPaint.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Parts\DieselEngine.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Parts\Engine.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Parts\GasolineEngine.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Parts\MediumWheels.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Parts\Paint.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Parts\Wheels.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Parts\WhitePaint.cs" />
+    <Compile Include="Creational\AbstractFactory\Example1\Test.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\AbstractBottle\AbstractBottle.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\AbstractBottle\CocaColaBottle.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\AbstractBottle\PepsiBottle.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\AbstractFactory\AbstractFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\AbstractFactory\CocaColaFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\AbstractFactory\PepsiFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\AbstractWater\AbstractWater.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\AbstractWater\CocaColaWater.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\AbstractWater\PepsiWater.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\Client.cs" />
+    <Compile Include="Creational\AbstractFactory\Example2\Test.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\AbstractFactory\AbstractFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\AbstractFactory\ConcreteFactory1.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\AbstractFactory\ConcreteFactory2.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\AbstractProductA\AbstractProductA.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\AbstractProductA\ProductA1.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\AbstractProductA\ProductA2.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\AbstractProductB\AbstractProductB.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\AbstractProductB\ProductB1.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\AbstractProductB\ProductB2.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\Client.cs" />
+    <Compile Include="Creational\AbstractFactory\Example3\Test.cs" />
+    <Compile Include="Creational\AbstractFactory\Example4\Buttons\AbstractButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\AbstractFactory\Example4\Buttons\LeopardButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\AbstractFactory\Example4\Buttons\LinuxButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\AbstractFactory\Example4\Buttons\WindowsButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\AbstractFactory\Example4\Client.cs" />
+    <Compile Include="Creational\AbstractFactory\Example4\Factories\AbstractWidgetFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example4\Factories\LeopardFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example4\Factories\LinuxFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example4\Factories\WindowsFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example4\Test.cs" />
+    <Compile Include="Creational\AbstractFactory\Example4\Windows\AbstractWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\AbstractFactory\Example4\Windows\LeopardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\AbstractFactory\Example4\Windows\LinuxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\AbstractFactory\Example4\Windows\WindowsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\AbstractFactory\Example5\AbstractFactory\AbstractFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\AbstractFactory\ConcreteFactory1.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\AbstractFactory\ConcreteFactory2.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\AbstractProductA\AbstractProductA.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\AbstractProductA\ProductA1.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\AbstractProductA\ProductA2.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\AbstractProductB\AbstractProductB.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\AbstractProductB\ProductB1.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\AbstractProductB\ProductB2.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\Client.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\Factory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\Product.cs" />
+    <Compile Include="Creational\AbstractFactory\Example5\Test.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Door\Door.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Door\DoorNeedingSpell.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Enum\Direction.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Factory\BombedMazeFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Factory\MazeFactory.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\MapSite.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Maze.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\MazeGame.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Room\EnchandedRoom.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Room\Room.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Room\RoomWithBomb.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Spell.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Test.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Wall\BombedWall.cs" />
+    <Compile Include="Creational\AbstractFactory\Example6Labirint\Wall\Wall.cs" />
+    <Compile Include="Creational\Buider\Example2\Test.cs" />
+    <Compile Include="Creational\Buider\Example2\Builder\AudiBuilder.cs" />
+    <Compile Include="Creational\Buider\Example2\Builder\CarBuilderBase.cs" />
+    <Compile Include="Creational\Buider\Example2\Builder\VolkswagenBuilder.cs" />
+    <Compile Include="Creational\Buider\Example2\Cars\Car.cs" />
+    <Compile Include="Creational\Buider\Example2\Factory\CarFactoryBase.cs" />
+    <Compile Include="Creational\Buider\Example2\Factory\CheapCarFactory.cs" />
+    <Compile Include="Creational\Buider\Example2\Factory\LuxuryCarFactory.cs" />
+    <Compile Include="Creational\Buider\Example1\Builder\CountingMazeBuilder.cs" />
+    <Compile Include="Creational\Buider\Example1\Builder\MazeBuilder.cs" />
+    <Compile Include="Creational\Buider\Example1\Builder\StandardMazeBuilder.cs" />
+    <Compile Include="Creational\Buider\Example1\Door\Door.cs" />
+    <Compile Include="Creational\Buider\Example1\Door\DoorNeedingSpell.cs" />
+    <Compile Include="Creational\Buider\Example1\Enum\Direction.cs" />
+    <Compile Include="Creational\Buider\Example1\Factory\BombedMazeFactory.cs" />
+    <Compile Include="Creational\Buider\Example1\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="Creational\Buider\Example1\Factory\MazeFactory.cs" />
+    <Compile Include="Creational\Buider\Example1\MapSite.cs" />
+    <Compile Include="Creational\Buider\Example1\Maze.cs" />
+    <Compile Include="Creational\Buider\Example1\MazeGame.cs" />
+    <Compile Include="Creational\Buider\Example1\Room\EnchandedRoom.cs" />
+    <Compile Include="Creational\Buider\Example1\Room\Room.cs" />
+    <Compile Include="Creational\Buider\Example1\Room\RoomWithBomb.cs" />
+    <Compile Include="Creational\Buider\Example1\Spell.cs" />
+    <Compile Include="Creational\Buider\Example1\Test.cs" />
+    <Compile Include="Creational\Buider\Example1\Wall\BombedWall.cs" />
+    <Compile Include="Creational\Buider\Example1\Wall\Wall.cs" />
+    <Compile Include="Creational\Buider\Example3\Builder\Builder.cs" />
+    <Compile Include="Creational\Buider\Example3\Builder\ConcreteBuilder.cs" />
+    <Compile Include="Creational\Buider\Example3\Foreman.cs" />
+    <Compile Include="Creational\Buider\Example3\House\Basement.cs" />
+    <Compile Include="Creational\Buider\Example3\House\House.cs" />
+    <Compile Include="Creational\Buider\Example3\House\Roof.cs" />
+    <Compile Include="Creational\Buider\Example3\House\Storey.cs" />
+    <Compile Include="Creational\Buider\Example3\Test.cs" />
+    <Compile Include="Creational\Buider\Example4\Builder\Builder.cs" />
+    <Compile Include="Creational\Buider\Example4\Builder\ConcreteBuilder.cs" />
+    <Compile Include="Creational\Buider\Example4\Director.cs" />
+    <Compile Include="Creational\Buider\Example4\Product.cs" />
+    <Compile Include="Creational\Buider\Example4\Test.cs" />
+    <Compile Include="Creational\Buider\Example5\Builder\ConcreteBuilders\ASCIIConverter.cs" />
+    <Compile Include="Creational\Buider\Example5\Builder\ConcreteBuilders\PDFConverter.cs" />
+    <Compile Include="Creational\Buider\Example5\Builder\ConcreteBuilders\TextWidgetConverter.cs" />
+    <Compile Include="Creational\Buider\Example5\Builder\TextConverter.cs" />
+    <Compile Include="Creational\Buider\Example5\Director\RTFReader.cs" />
+    <Compile Include="Creational\Buider\Example5\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\Buider\Example5\Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\Buider\Example5\Products\ASCIIText.cs" />
+    <Compile Include="Creational\Buider\Example5\Products\PDFText.cs" />
+    <Compile Include="Creational\Buider\Example5\Products\TextWidget.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\Buider\Example5\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Builder\CountingMazeBuilder.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Builder\MazeBuilder.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Builder\StandardMazeBuilder.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Door\Door.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Door\DoorNeedingSpell.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\EnchantedMazeGame.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Enum\Direction.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Factory\BombedMazeFactory.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Factory\MazeFactory.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\MapSite.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Maze.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\MazeGame\BombedMazeGame.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\MazeGame\MazeGame.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Room\EnchandedRoom.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Room\Room.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Room\RoomWithBomb.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Spell.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Wall\BombedWall.cs" />
+    <Compile Include="Creational\FactoryMethod\Exampe01\Wall\Wall.cs" />
+    <Compile Include="Creational\FactoryMethod\Example02\Creator\ConcreteCreator.cs" />
+    <Compile Include="Creational\FactoryMethod\Example02\Creator\Creator.cs" />
+    <Compile Include="Creational\FactoryMethod\Example02\Product\ConcreteProduct.cs" />
+    <Compile Include="Creational\FactoryMethod\Example02\Product\Product.cs" />
+    <Compile Include="Creational\FactoryMethod\Example02\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example03\BaseForm.designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example03\Creator\Application.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\Creator\ConcreteCreator\PngApplication.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\Creator\ConcreteCreator\TextApplication.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\EnumAction.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\EnumDocType.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\PngDocForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example03\PngDocForm.designer.cs">
+      <DependentUpon>PngDocForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example03\Product\ConcreteProduct\PngDocument.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\Product\ConcreteProduct\TextDocument.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\Product\Document.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\Properties\Resources.Designer.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\Properties\Settings.Designer.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example03\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Example03\TextDocForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example03\TextDocForm.designer.cs">
+      <DependentUpon>TextDocForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example04_Subclassing Hooks\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example04_Subclassing Hooks\Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example04_Subclassing Hooks\SCTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example04_Subclassing Hooks\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Example05\Figures\Figure.cs" />
+    <Compile Include="Creational\FactoryMethod\Example05\Figures\LineFigure.cs" />
+    <Compile Include="Creational\FactoryMethod\Example05\Figures\TextFigure.cs" />
+    <Compile Include="Creational\FactoryMethod\Example05\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example05\Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example05\Manipulators\LineManipulator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example05\Manipulators\Manipulator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example05\Manipulators\TextManipulator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example05\Properties\Resources.Designer.cs" />
+    <Compile Include="Creational\FactoryMethod\Example05\Properties\Settings.Designer.cs" />
+    <Compile Include="Creational\FactoryMethod\Example05\RectangleFigure.cs" />
+    <Compile Include="Creational\FactoryMethod\Example05\RectangleManipulator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\FactoryMethod\Example05\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Example06FM_With_Argument\Creators\Creator.cs" />
+    <Compile Include="Creational\FactoryMethod\Example06FM_With_Argument\Creators\MyCreator.cs" />
+    <Compile Include="Creational\FactoryMethod\Example06FM_With_Argument\Products\MyProduct.cs" />
+    <Compile Include="Creational\FactoryMethod\Example06FM_With_Argument\Products\Product.cs" />
+    <Compile Include="Creational\FactoryMethod\Example06FM_With_Argument\Products\ProductTypeEnum.cs" />
+    <Compile Include="Creational\FactoryMethod\Example06FM_With_Argument\Products\TheirProduct.cs" />
+    <Compile Include="Creational\FactoryMethod\Example06FM_With_Argument\Products\YourProduct.cs" />
+    <Compile Include="Creational\FactoryMethod\Example06FM_With_Argument\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Example07FM_in_Constructor\Program2.cs" />
+    <Compile Include="Creational\FactoryMethod\Example07FM_in_Constructor\Program1.cs" />
+    <Compile Include="Creational\FactoryMethod\Example07FM_in_Constructor\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Example08LazyInitialization\BigObject3.cs" />
+    <Compile Include="Creational\FactoryMethod\Example08LazyInitialization\BigObject2.cs" />
+    <Compile Include="Creational\FactoryMethod\Example08LazyInitialization\BigObject1.cs" />
+    <Compile Include="Creational\FactoryMethod\Example08LazyInitialization\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Example09ServiceLocator\Locator\IServiceLocator.cs" />
+    <Compile Include="Creational\FactoryMethod\Example09ServiceLocator\Locator\ServiceLocator.cs" />
+    <Compile Include="Creational\FactoryMethod\Example09ServiceLocator\Services\IServices\IServiceA.cs" />
+    <Compile Include="Creational\FactoryMethod\Example09ServiceLocator\Services\IServices\IServiceB.cs" />
+    <Compile Include="Creational\FactoryMethod\Example09ServiceLocator\Services\IServices\IServiceC.cs" />
+    <Compile Include="Creational\FactoryMethod\Example09ServiceLocator\Services\ServiceA.cs" />
+    <Compile Include="Creational\FactoryMethod\Example09ServiceLocator\Services\ServiceB.cs" />
+    <Compile Include="Creational\FactoryMethod\Example09ServiceLocator\Services\ServiceC.cs" />
+    <Compile Include="Creational\FactoryMethod\Example09ServiceLocator\Test.cs" />
+    <Compile Include="Creational\FactoryMethod\Example10Generic\Creators\ICreator.cs" />
+    <Compile Include="Creational\FactoryMethod\Example10Generic\Creators\StandardCreator.cs" />
+    <Compile Include="Creational\FactoryMethod\Example10Generic\Products\IProduct\IProduct.cs" />
+    <Compile Include="Creational\FactoryMethod\Example10Generic\Products\ProductA.cs" />
+    <Compile Include="Creational\FactoryMethod\Example10Generic\Products\ProductB.cs" />
+    <Compile Include="Creational\FactoryMethod\Example10Generic\Products\ProductC.cs" />
+    <Compile Include="Creational\FactoryMethod\Example10Generic\Test.cs" />
+    <Compile Include="Creational\Prototype\Example1\Builder\CountingMazeBuilder.cs" />
+    <Compile Include="Creational\Prototype\Example1\Builder\MazeBuilder.cs" />
+    <Compile Include="Creational\Prototype\Example1\Builder\StandardMazeBuilder.cs" />
+    <Compile Include="Creational\Prototype\Example1\Door\Door.cs" />
+    <Compile Include="Creational\Prototype\Example1\Door\DoorNeedingSpell.cs" />
+    <Compile Include="Creational\Prototype\Example1\Enum\Direction.cs" />
+    <Compile Include="Creational\Prototype\Example1\Factory\BombedMazeFactory.cs" />
+    <Compile Include="Creational\Prototype\Example1\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="Creational\Prototype\Example1\Factory\MazeFactory.cs" />
+    <Compile Include="Creational\Prototype\Example1\Factory\MazePrototypeFactory.cs" />
+    <Compile Include="Creational\Prototype\Example1\MapSite.cs" />
+    <Compile Include="Creational\Prototype\Example1\Maze.cs" />
+    <Compile Include="Creational\Prototype\Example1\MazeGame\MazeGame.cs" />
+    <Compile Include="Creational\Prototype\Example1\Room\EnchantedRoom.cs" />
+    <Compile Include="Creational\Prototype\Example1\Room\Room.cs" />
+    <Compile Include="Creational\Prototype\Example1\Room\RoomWithBomb.cs" />
+    <Compile Include="Creational\Prototype\Example1\Spell.cs" />
+    <Compile Include="Creational\Prototype\Example1\Test.cs" />
+    <Compile Include="Creational\Prototype\Example1\Wall\BombedWall.cs" />
+    <Compile Include="Creational\Prototype\Example1\Wall\Wall.cs" />
+    <Compile Include="Creational\Prototype\Example2\ConcretePrototype1.cs" />
+    <Compile Include="Creational\Prototype\Example2\ConcretePrototype2.cs" />
+    <Compile Include="Creational\Prototype\Example2\Prototype.cs" />
+    <Compile Include="Creational\Prototype\Example2\Test.cs" />
+    <Compile Include="Creational\Prototype\Example3\Classes\NoteLength.cs" />
+    <Compile Include="Creational\Prototype\Example3\Classes\NotesCollections.cs" />
+    <Compile Include="Creational\Prototype\Example3\Classes\NotesSerializer.cs" />
+    <Compile Include="Creational\Prototype\Example3\Classes\Position.cs" />
+    <Compile Include="Creational\Prototype\Example3\Classes\RegisteredMusicalObjects.cs" />
+    <Compile Include="Creational\Prototype\Example3\Classes\RelocationTool.cs" />
+    <Compile Include="Creational\Prototype\Example3\Classes\Rotate.cs" />
+    <Compile Include="Creational\Prototype\Example3\Controls\NoteTranspControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\Prototype\Example3\Controls\NoteTranspControl.Designer.cs">
+      <DependentUpon>NoteTranspControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\Prototype\Example3\Controls\StaffTranspControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\Prototype\Example3\Controls\StaffTranspControl.Designer.cs">
+      <DependentUpon>StaffTranspControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\Prototype\Example3\Controls\TranspControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creational\Prototype\Example3\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Creational\Prototype\Example3\Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Creational\Prototype\Example3\Properties\Resources.Designer.cs" />
+    <Compile Include="Creational\Prototype\Example3\Properties\Settings.Designer.cs" />
+    <Compile Include="Creational\Prototype\Example3\Prototype\Graphic.cs" />
+    <Compile Include="Creational\Prototype\Example3\Prototype\GraphicTool.cs" />
+    <Compile Include="Creational\Prototype\Example3\Prototype\MusicalNote.cs" />
+    <Compile Include="Creational\Prototype\Example3\Prototype\RotateTool.cs" />
+    <Compile Include="Creational\Prototype\Example3\Prototype\Staff.cs" />
+    <Compile Include="Creational\Prototype\Example3\Prototype\Tool.cs" />
+    <Compile Include="Creational\Prototype\Example3\Test.cs" />
+    <Compile Include="Creational\Prototype\Example4Perf\MyClass2.cs" />
+    <Compile Include="Creational\Prototype\Example4Perf\MyClass1.cs" />
+    <Compile Include="Creational\Prototype\Example4Perf\Test.cs" />
+    <Compile Include="Creational\Prototype\Example5\Prototype.cs" />
+    <Compile Include="Creational\Prototype\Example5\Test.cs" />
+    <Compile Include="Creational\Prototype\Example6\Program5.cs" />
+    <Compile Include="Creational\Prototype\Example6\Program4.cs" />
+    <Compile Include="Creational\Prototype\Example6\Prototype3.cs" />
+    <Compile Include="Creational\Prototype\Example6\Prototype2.cs" />
+    <Compile Include="Creational\Prototype\Example6\Prototype1.cs" />
+    <Compile Include="Creational\Prototype\Example6\Test.cs" />
+    <Compile Include="Creational\SimpleFactory\Example1\Cars\CarBefore.cs" />
+    <Compile Include="Creational\SimpleFactory\Example1\Cars\Golf.cs" />
+    <Compile Include="Creational\SimpleFactory\Example1\Cars\Passat.cs" />
+    <Compile Include="Creational\SimpleFactory\Example1\Cars\Tiguan.cs" />
+    <Compile Include="Creational\SimpleFactory\Example1\Cars\Touareg.cs" />
+    <Compile Include="Creational\SimpleFactory\Example1\Facilities\VolkswagenFacility.cs" />
+    <Compile Include="Creational\SimpleFactory\Example1\Factory\SimpleFactory.cs" />
+    <Compile Include="Creational\SimpleFactory\Example1\Test.cs" />
+    <Compile Include="Creational\Singleton\Example1\Builder\CountingMazeBuilder.cs" />
+    <Compile Include="Creational\Singleton\Example1\Builder\MazeBuilder.cs" />
+    <Compile Include="Creational\Singleton\Example1\Builder\StandardMazeBuilder.cs" />
+    <Compile Include="Creational\Singleton\Example1\Door\Door.cs" />
+    <Compile Include="Creational\Singleton\Example1\Door\DoorNeedingSpell.cs" />
+    <Compile Include="Creational\Singleton\Example1\EnchantedMazeGame.cs" />
+    <Compile Include="Creational\Singleton\Example1\Enum\Direction.cs" />
+    <Compile Include="Creational\Singleton\Example1\Factory\BombedMazeFactory.cs" />
+    <Compile Include="Creational\Singleton\Example1\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="Creational\Singleton\Example1\Factory\MazeFactory.cs" />
+    <Compile Include="Creational\Singleton\Example1\Factory\MazePrototypeFactory.cs" />
+    <Compile Include="Creational\Singleton\Example1\MapSite.cs" />
+    <Compile Include="Creational\Singleton\Example1\Maze.cs" />
+    <Compile Include="Creational\Singleton\Example1\MazeGame\BombedMazeGame.cs" />
+    <Compile Include="Creational\Singleton\Example1\MazeGame\MazeGame.cs" />
+    <Compile Include="Creational\Singleton\Example1\Properties.cs" />
+    <Compile Include="Creational\Singleton\Example1\Room\EnchandedRoom.cs" />
+    <Compile Include="Creational\Singleton\Example1\Room\Room.cs" />
+    <Compile Include="Creational\Singleton\Example1\Room\RoomWithBomb.cs" />
+    <Compile Include="Creational\Singleton\Example1\Spell.cs" />
+    <Compile Include="Creational\Singleton\Example1\Test.cs" />
+    <Compile Include="Creational\Singleton\Example1\Wall\BombedWall.cs" />
+    <Compile Include="Creational\Singleton\Example1\Wall\Wall.cs" />
+    <Compile Include="Creational\Singleton\Example2\Singleton.cs" />
+    <Compile Include="Creational\Singleton\Example2\Test.cs" />
+    <Compile Include="Creational\Singleton\Example2\ThreadSafe\Singleton.cs" />
+    <Compile Include="Creational\Singleton\Example3\Singleton.cs" />
+    <Compile Include="Creational\Singleton\Example3\Test.cs" />
+    <Compile Include="Creational\Singleton\Example4MultiSingleton\Singleton2.cs" />
+    <Compile Include="Creational\Singleton\Example4MultiSingleton\Singleton.cs" />
+    <Compile Include="Creational\Singleton\Example4MultiSingleton\Test.cs" />
+    <Compile Include="Creational\Singleton\Example5Inheritance\Program.cs" />
+    <Compile Include="Creational\Singleton\Example5Inheritance\Test.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\RegistSingletonGen\Program.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\RegistSingletonGen\Singleton.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\RegistSingletonGen\SingletonBig.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\RegistSingletonGen\SingletonSmall.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\RegistSingleton\Program.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\RegistSingleton\Singleton.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\RegistSingleton\SingletonBig.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\RegistSingleton\SingletonNameEnum.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\RegistSingleton\SingletonSmall.cs" />
+    <Compile Include="Creational\Singleton\Example6Regist\Test.cs" />
+    <Compile Include="Creational\Singleton\Example7MultithreadedSingleton\Singleton1.cs" />
+    <Compile Include="Creational\Singleton\Example7MultithreadedSingleton\Singleton2.cs" />
+    <Compile Include="Creational\Singleton\Example7MultithreadedSingleton\Test.cs" />
+    <Compile Include="Creational\Singleton\Example8\Singleton.cs" />
+    <Compile Include="Creational\Singleton\Example8\Test.cs" />
+    <Compile Include="Creational\Singleton\Example9Lazy\Singleton.cs" />
+    <Compile Include="Creational\Singleton\Example9Lazy\Test.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structural\Adapter\Example1\Adapters\HomeCatAdapter.cs" />
+    <Compile Include="Structural\Adapter\Example1\CatInfoPrinter.cs" />
+    <Compile Include="Structural\Adapter\Example1\HomeCats\IHomeCat.cs" />
+    <Compile Include="Structural\Adapter\Example1\HomeCats\PedigreedCat.cs" />
+    <Compile Include="Structural\Adapter\Example1\HomeCats\YardCat.cs" />
+    <Compile Include="Structural\Adapter\Example1\Superheroes\IFly.cs" />
+    <Compile Include="Structural\Adapter\Example1\Superheroes\IShoot.cs" />
+    <Compile Include="Structural\Adapter\Example1\Superheroes\ISuperhero.cs" />
+    <Compile Include="Structural\Adapter\Example1\Superheroes\IWalls.cs" />
+    <Compile Include="Structural\Adapter\Example1\Superheroes\SuperheroAdapter.cs" />
+    <Compile Include="Structural\Adapter\Example1\Test.cs" />
+    <Compile Include="Structural\Adapter\Example1\WildCats\IWildCat.cs" />
+    <Compile Include="Structural\Adapter\Example1\WildCats\Tiger.cs" />
+    <Compile Include="Structural\Adapter\Example2\Adaptee.cs" />
+    <Compile Include="Structural\Adapter\Example2\Adapter.cs" />
+    <Compile Include="Structural\Adapter\Example2\ITarget.cs" />
+    <Compile Include="Structural\Adapter\Example2\Program.cs" />
+    <Compile Include="Structural\Adapter\Example2\Test.cs" />
+    <Compile Include="Structural\Adapter\Example3\Adaptee.cs" />
+    <Compile Include="Structural\Adapter\Example3\Adapter.cs" />
+    <Compile Include="Structural\Adapter\Example3\Target.cs" />
+    <Compile Include="Structural\Adapter\Example3\Test.cs" />
+    <Compile Include="Structural\Adapter\Example4\DrawingEditor.cs" />
+    <Compile Include="Structural\Adapter\Example4\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example4\Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example4\Line.cs" />
+    <Compile Include="Structural\Adapter\Example4\LineManipulator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example4\Manipulator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example4\Properties\Resources.Designer.cs" />
+    <Compile Include="Structural\Adapter\Example4\Properties\Settings.Designer.cs" />
+    <Compile Include="Structural\Adapter\Example4\RectangleFigure.cs" />
+    <Compile Include="Structural\Adapter\Example4\RectangleManipulator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example4\Shape.cs" />
+    <Compile Include="Structural\Adapter\Example4\Test.cs" />
+    <Compile Include="Structural\Adapter\Example4\TextManipulator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example4\TextShape.cs" />
+    <Compile Include="Structural\Adapter\Example4\TextView.cs" />
+    <Compile Include="Structural\Adapter\Example5\PluggableAdapter.cs" />
+    <Compile Include="Structural\Adapter\Example5\Test.cs" />
+    <Compile Include="Structural\Adapter\Example6\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example6\Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example6\Properties\Resources.Designer.cs" />
+    <Compile Include="Structural\Adapter\Example6\Properties\Settings.Designer.cs" />
+    <Compile Include="Structural\Adapter\Example6\Test.cs" />
+    <Compile Include="Structural\Adapter\Example6\TreeDisplayAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example7\New_Subsystem\AdapteeNew.cs" />
+    <Compile Include="Structural\Adapter\Example7\New_Subsystem\ITargetNew.cs" />
+    <Compile Include="Structural\Adapter\Example7\Old_Subsystem\AdapteeOld.cs" />
+    <Compile Include="Structural\Adapter\Example7\Old_Subsystem\ITargetOld.cs" />
+    <Compile Include="Structural\Adapter\Example7\Test.cs" />
+    <Compile Include="Structural\Adapter\Example7\TwoWayAdapter.cs" />
+    <Compile Include="Structural\Adapter\Example8\AssemblyTreeDisplay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example8\DirectoryTreeDisplay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example8\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example8\Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Structural\Adapter\Example8\Properties\Resources.Designer.cs" />
+    <Compile Include="Structural\Adapter\Example8\Properties\Settings.Designer.cs" />
+    <Compile Include="Structural\Adapter\Example8\Test.cs" />
+    <Compile Include="Structural\Adapter\Example8\TreeDisplayAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Structural\Bridge\Example1\Abstraction\Abstraction.cs" />
+    <Compile Include="Structural\Bridge\Example1\Abstraction\RefinedAbstraction.cs" />
+    <Compile Include="Structural\Bridge\Example1\Implementor\ConcreteImplementorA.cs" />
+    <Compile Include="Structural\Bridge\Example1\Implementor\ConcreteImplementorB.cs" />
+    <Compile Include="Structural\Bridge\Example1\Implementor\Implementor.cs" />
+    <Compile Include="Structural\Bridge\Example1\Test.cs" />
+    <Compile Include="Structural\Bridge\Example2\Abstraction\MacWindow.cs" />
+    <Compile Include="Structural\Bridge\Example2\Abstraction\MSWindow.cs" />
+    <Compile Include="Structural\Bridge\Example2\Abstraction\Window.cs" />
+    <Compile Include="Structural\Bridge\Example2\Implementors\LinuxFactory.cs" />
+    <Compile Include="Structural\Bridge\Example2\Implementors\MacWindowImp.cs" />
+    <Compile Include="Structural\Bridge\Example2\Implementors\MSWindowImp.cs" />
+    <Compile Include="Structural\Bridge\Example2\Implementors\WindowImp.cs" />
+    <Compile Include="Structural\Bridge\Example2\Test.cs" />
+    <Compile Include="Structural\Bridge\Example3\Abstraction\Abstraction.cs" />
+    <Compile Include="Structural\Bridge\Example3\Abstraction\RefinedAbstraction.cs" />
+    <Compile Include="Structural\Bridge\Example3\Test.cs" />
+    <Compile Include="Structural\Bridge\Example4\Abstraction\Pentagon.cs" />
+    <Compile Include="Structural\Bridge\Example4\Abstraction\Shape.cs" />
+    <Compile Include="Structural\Bridge\Example4\Abstraction\Square.cs" />
+    <Compile Include="Structural\Bridge\Example4\Abstraction\Triangle.cs" />
+    <Compile Include="Structural\Bridge\Example4\Figure.cs" />
+    <Compile Include="Structural\Bridge\Example4\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Structural\Bridge\Example4\Implementation\DashDotLine.cs" />
+    <Compile Include="Structural\Bridge\Example4\Implementation\DotLine.cs" />
+    <Compile Include="Structural\Bridge\Example4\Implementation\LineStyle.cs" />
+    <Compile Include="Structural\Bridge\Example4\Properties\Resources.Designer.cs" />
+    <Compile Include="Structural\Bridge\Example4\Properties\Settings.Designer.cs" />
+    <Compile Include="Structural\Bridge\Example4\Test.cs" />
+    <Compile Include="Structural\Composite\Example1\Component.cs" />
+    <Compile Include="Structural\Composite\Example1\Composite.cs" />
+    <Compile Include="Structural\Composite\Example1\Leaf.cs" />
+    <Compile Include="Structural\Composite\Example1\Test.cs" />
+    <Compile Include="Structural\Composite\Example2\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Structural\Composite\Example2\IGraphic.cs" />
+    <Compile Include="Structural\Composite\Example2\Lists\Line.cs" />
+    <Compile Include="Structural\Composite\Example2\Lists\Rectangle.cs" />
+    <Compile Include="Structural\Composite\Example2\Lists\Text.cs" />
+    <Compile Include="Structural\Composite\Example2\Picture.cs" />
+    <Compile Include="Structural\Composite\Example2\Program.cs" />
+    <Compile Include="Structural\Composite\Example2\Properties\Resources.Designer.cs" />
+    <Compile Include="Structural\Composite\Example2\Properties\Settings.Designer.cs" />
+    <Compile Include="Structural\Composite\Example2\Test.cs" />
+    <Compile Include="Structural\Composite\Example3\Component.cs" />
+    <Compile Include="Structural\Composite\Example3\Composite.cs" />
+    <Compile Include="Structural\Composite\Example3\Leaf.cs" />
+    <Compile Include="Structural\Composite\Example3\Test.cs" />
+    <Compile Include="Structural\Decorator\Example1\Beverage\BeverageBase.cs" />
+    <Compile Include="Structural\Decorator\Example1\Beverage\BlackTea.cs" />
+    <Compile Include="Structural\Decorator\Example1\Beverage\Espresso.cs" />
+    <Compile Include="Structural\Decorator\Example1\Beverage\GreenTea.cs" />
+    <Compile Include="Structural\Decorator\Example1\Decorators\ChocolateCondiment.cs" />
+    <Compile Include="Structural\Decorator\Example1\Decorators\CondimentsDecoratorBase.cs" />
+    <Compile Include="Structural\Decorator\Example1\Decorators\MilkCondiment.cs" />
+    <Compile Include="Structural\Decorator\Example1\Decorators\SugarCondiment.cs" />
+    <Compile Include="Structural\Decorator\Example1\Test.cs" />
+    <Compile Include="Structural\Facade\Example1\Test.cs" />
+    <Compile Include="Structural\Facade\Example1\WashingMachine\Dryer.cs" />
+    <Compile Include="Structural\Facade\Example1\WashingMachine\Engine.cs" />
+    <Compile Include="Structural\Facade\Example1\WashingMachine\Thermo.cs" />
+    <Compile Include="Structural\Facade\Example1\WashingMachine\WashingMachine.cs" />
+    <Compile Include="Structural\Facade\Example1\WashingMachine\WaterManagingSubsystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Creational\AbstractFactory\Example2\ClassDiagram.cd" />
+    <None Include="Creational\AbstractFactory\Example2\Program_Main.sequencediagram" />
+    <None Include="Creational\AbstractFactory\Example3\ClassDiagram.cd" />
+    <None Include="Creational\AbstractFactory\Example3\Program_Main.sequencediagram" />
+    <None Include="Creational\Buider\Example3\Program_Main.sequencediagram" />
+    <None Include="Creational\Buider\Example4\ClassDiagram.cd" />
+    <None Include="Creational\Buider\Example4\Program_Main.sequencediagram" />
+    <None Include="Creational\FactoryMethod\Example03\ClassDiagram1.cd" />
+    <None Include="Creational\FactoryMethod\Example03\Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Creational\FactoryMethod\Example05\Properties\Settings.settings" />
+    <None Include="Creational\Prototype\Example2\ClassDiagram1.cd" />
+    <None Include="Creational\Prototype\Example3\ClassDiagram.cd" />
+    <None Include="Creational\Prototype\Example3\Properties\Settings.settings" />
+    <None Include="Structural\Adapter\Example3\ClassDiagram1.cd" />
+    <None Include="Structural\Adapter\Example4\Properties\Settings.settings" />
+    <None Include="Structural\Adapter\Example6\Properties\app.manifest" />
+    <None Include="Structural\Adapter\Example6\Properties\Settings.settings" />
+    <None Include="Structural\Adapter\Example8\Properties\app.manifest" />
+    <None Include="Structural\Adapter\Example8\Properties\Settings.settings" />
+    <None Include="Structural\Bridge\Example1\ClassDiagram.cd" />
+    <None Include="Structural\Bridge\Example2\ClassDiagram1.cd" />
+    <None Include="Structural\Bridge\Example4\Properties\Settings.settings" />
+    <None Include="Structural\Composite\Example1\ClassDiagram.cd" />
+    <None Include="Structural\Composite\Example2\Properties\Settings.settings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Creational\AbstractFactory\Abstract Factory.png" />
+    <Content Include="Creational\AbstractFactory\AF_SD.png" />
+    <Content Include="Creational\AbstractFactory\Example1\abstractfactory.png" />
+    <Content Include="Creational\AbstractFactory\Example2\abstractFactory.png" />
+    <Content Include="Creational\AbstractFactory\Example2\abstractFactory1.png" />
+    <Content Include="Creational\AbstractFactory\Example3\abstractFactory.png" />
+    <Content Include="Creational\AbstractFactory\Example4\abstractFactory.png" />
+    <Content Include="Creational\AbstractFactory\Example5\abstractFactory.png" />
+    <Content Include="Creational\AbstractFactory\Example6Labirint\abstractFactory.png" />
+    <Content Include="Creational\Buider\builder.png" />
+    <Content Include="Creational\Buider\Example1\builder.png" />
+    <Content Include="Creational\Buider\Example3\builder.png" />
+    <Content Include="Creational\Buider\Example4\builder.png" />
+    <Content Include="Creational\Buider\Example5\builder.png" />
+    <Content Include="Creational\FactoryMethod\Exampe01\FactoryMethod.png" />
+    <Content Include="Creational\FactoryMethod\Example03\FactoryMethod.png" />
+    <Content Include="Creational\FactoryMethod\Example03\Resources\clear.png" />
+    <Content Include="Creational\FactoryMethod\Example03\Resources\close.png" />
+    <Content Include="Creational\FactoryMethod\Example03\Resources\images.jpg" />
+    <Content Include="Creational\FactoryMethod\Example03\Resources\open.png" />
+    <Content Include="Creational\FactoryMethod\Example03\Resources\revert.png" />
+    <Content Include="Creational\FactoryMethod\Example03\Resources\save.png" />
+    <Content Include="Creational\FactoryMethod\Example03\Resources\saveAs.png" />
+    <Content Include="Creational\FactoryMethod\Example05\FactoryMethod.png" />
+    <Content Include="Creational\FactoryMethod\Example05\line.png" />
+    <Content Include="Creational\FactoryMethod\Example05\text.png" />
+    <Content Include="Creational\FactoryMethod\FactoryMethod.png" />
+    <Content Include="Creational\Prototype\Example1\prototype.png" />
+    <Content Include="Creational\Prototype\Example2\prototype.png" />
+    <Content Include="Creational\Prototype\Example3\prototype.png" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\EighthNoteSelected2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\EighthNoteSmall2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\HalfNoteSelected2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\HalfNoteSmall2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\QuarterNoteSelected2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\QuarterNoteSmall2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\SixteenthNoteSelected2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\SixteenthNoteSmall2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\WholeNoteSelected2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\2323\WholeNoteSmall2323.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\Clear.png" />
+    <Content Include="Creational\Prototype\Example3\Resources\deselect-16.png" />
+    <Content Include="Creational\Prototype\Example3\Resources\EighthNote.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\EighthNoteSelected.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\EighthNoteSmall.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\erase.png" />
+    <Content Include="Creational\Prototype\Example3\Resources\HalfNote.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\HalfNoteSelected.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\HalfNoteSmall.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\key.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\key.png" />
+    <Content Include="Creational\Prototype\Example3\Resources\Play.png" />
+    <Content Include="Creational\Prototype\Example3\Resources\QuarterNote.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\QuarterNoteSelected.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\QuarterNoteSmall.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\Rotate.PNG" />
+    <Content Include="Creational\Prototype\Example3\Resources\SixteenthNote.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\SixteenthNoteSmall.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\Staff.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\staff.png" />
+    <Content Include="Creational\Prototype\Example3\Resources\Staff_new.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\Staff_new.png" />
+    <Content Include="Creational\Prototype\Example3\Resources\Up.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\WholeNote.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\WholeNoteSelected.gif" />
+    <Content Include="Creational\Prototype\Example3\Resources\WholeNoteSmall.gif" />
+    <Content Include="Creational\SimpleFactory\Example1\simplefactory.png" />
+    <Content Include="Creational\Singleton\Example1\singleton.png" />
+    <Content Include="Creational\Singleton\Example3\singleton.png" />
+    <Content Include="Structural\Adapter\Adapter.png" />
+    <Content Include="Structural\Adapter\Example2\adapter.png" />
+    <Content Include="Structural\Adapter\Example3\adapter.png" />
+    <Content Include="Structural\Adapter\Example4\adapter.png" />
+    <Content Include="Structural\Adapter\Example4\Resources\line.jpg" />
+    <Content Include="Structural\Adapter\Example5\adapter.png" />
+    <Content Include="Structural\Adapter\Example6\adapter.png" />
+    <Content Include="Structural\Adapter\Example7\adapter.png" />
+    <Content Include="Structural\Adapter\Example8\adapter.png" />
+    <Content Include="Structural\Bridge\Bridge.png" />
+    <Content Include="Structural\Bridge\Example1\bridge.png" />
+    <Content Include="Structural\Bridge\Example2\bridge.png" />
+    <Content Include="Structural\Bridge\Example3\bridge.png" />
+    <Content Include="Structural\Bridge\Example4\bridge.png" />
+    <Content Include="Structural\Composite\Composite.png" />
+    <Content Include="Structural\Composite\Example1\composite.png" />
+    <Content Include="Structural\Composite\Example2\composite.png" />
+    <Content Include="Structural\Composite\Example3\composite.png" />
+    <Content Include="Structural\Decorator\Decorator.png" />
+    <Content Include="Structural\Facade\Facade.png" />
+    <Content Include="Structural\Flyweight\Flyweight.png" />
+    <Content Include="Structural\Proxy\Proxy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Creational\AbstractFactory\Example2\Program_Main.sequencediagram.layout">
+      <DependentUpon>Program_Main.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\AbstractFactory\Example3\Program_Main.sequencediagram.layout">
+      <DependentUpon>Program_Main.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\Buider\Example3\Program_Main.sequencediagram.layout">
+      <DependentUpon>Program_Main.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\Buider\Example4\Program_Main.sequencediagram.layout">
+      <DependentUpon>Program_Main.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\Buider\Example5\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\FactoryMethod\Example03\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\FactoryMethod\Example03\PngDocForm.resx">
+      <DependentUpon>PngDocForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\FactoryMethod\Example03\Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\FactoryMethod\Example03\TextDocForm.resx">
+      <DependentUpon>TextDocForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\FactoryMethod\Example04_Subclassing Hooks\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\FactoryMethod\Example05\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\FactoryMethod\Example05\Properties\Resources.resx" />
+    <EmbeddedResource Include="Creational\Prototype\Example3\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creational\Prototype\Example3\Properties\Resources.resx" />
+    <EmbeddedResource Include="Structural\Adapter\Example4\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Structural\Adapter\Example4\Properties\Resources.resx" />
+    <EmbeddedResource Include="Structural\Adapter\Example6\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Structural\Adapter\Example6\Properties\Resources.resx" />
+    <EmbeddedResource Include="Structural\Adapter\Example8\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Structural\Adapter\Example8\Properties\Resources.resx" />
+    <EmbeddedResource Include="Structural\Bridge\Example4\Properties\Resources.resx" />
+    <EmbeddedResource Include="Structural\Composite\Example2\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Structural\Composite\Example2\Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Structural\Decorator\Example2\" />
+    <Folder Include="Structural\Decorator\Example3\" />
+    <Folder Include="Structural\Decorator\Example4\" />
+    <Folder Include="Structural\Flyweight\Example1\" />
+    <Folder Include="Structural\Flyweight\Example2\" />
+    <Folder Include="Structural\Flyweight\Example3\" />
+    <Folder Include="Structural\Proxy\Example1\" />
+    <Folder Include="Structural\Proxy\Example2\" />
+    <Folder Include="Structural\Proxy\Example3\" />
+    <Folder Include="Structural\Proxy\Example4\" />
+    <Folder Include="Structural\Proxy\Example5\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,18 @@
+﻿using System;
+
+namespace Patterns.Creational.AbstractFactory.Example4
+{
+    // ConcreteFactory2
+    class LeopardFactory : WidgetFactory
+    {
+        public override AbstractWindow CreateWindow()
+        {
+            return new LeopardForm();
+        }
+
+        public override AbstractButton CreateButton()
+        {
+            return new LeopardButton();
+        }
+    }
+}
