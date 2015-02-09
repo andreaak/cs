@@ -20,7 +20,7 @@ ParseQuery/
 Patterns/
 PerformanceLogAnalyzer/
 SocialNetwork/
-WorkWithSvn/
+#WorkWithSvn/
 WsdlGeneration/
 Dll/
 .svn/
@@ -28,3 +28,5 @@ Dll/
 DB/
 lib/
 tools/
+Dllx64/
+Dllx86/

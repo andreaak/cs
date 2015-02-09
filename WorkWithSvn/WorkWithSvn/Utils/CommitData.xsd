@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CommitData" targetNamespace="http://tempuri.org/CommitData.xsd" xmlns:mstns="http://tempuri.org/CommitData.xsd" xmlns="http://tempuri.org/CommitData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CommitData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="CommitData" msprop:Generator_UserDSName="CommitData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="COMMIT" msprop:Generator_TableClassName="COMMITDataTable" msprop:Generator_TableVarName="tableCOMMIT" msprop:Generator_RowChangedName="COMMITRowChanged" msprop:Generator_TablePropName="COMMIT" msprop:Generator_RowDeletingName="COMMITRowDeleting" msprop:Generator_RowChangingName="COMMITRowChanging" msprop:Generator_RowEvHandlerName="COMMITRowChangeEventHandler" msprop:Generator_RowDeletedName="COMMITRowDeleted" msprop:Generator_RowClassName="COMMITRow" msprop:Generator_UserTableName="COMMIT" msprop:Generator_RowEvArgName="COMMITRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Author" msprop:Generator_ColumnVarNameInTable="columnAuthor" msprop:Generator_ColumnPropNameInRow="Author" msprop:Generator_ColumnPropNameInTable="AuthorColumn" msprop:Generator_UserColumnName="Author" type="xs:string" minOccurs="0" />
+              <xs:element name="Revision" msprop:Generator_ColumnVarNameInTable="columnRevision" msprop:Generator_ColumnPropNameInRow="Revision" msprop:Generator_ColumnPropNameInTable="RevisionColumn" msprop:Generator_UserColumnName="Revision" type="xs:long" minOccurs="0" />
+              <xs:element name="Files" msprop:Generator_ColumnVarNameInTable="columnFiles" msprop:Generator_ColumnPropNameInRow="Files" msprop:Generator_ColumnPropNameInTable="FilesColumn" msprop:Generator_UserColumnName="Files" type="xs:string" minOccurs="0" />
+              <xs:element name="Message" msprop:Generator_ColumnVarNameInTable="columnMessage" msprop:Generator_ColumnPropNameInRow="Message" msprop:Generator_ColumnPropNameInTable="MessageColumn" msprop:Generator_UserColumnName="Message" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ERROR" msprop:Generator_TableClassName="ERRORDataTable" msprop:Generator_TableVarName="tableERROR" msprop:Generator_TablePropName="ERROR" msprop:Generator_RowDeletingName="ERRORRowDeleting" msprop:Generator_RowChangingName="ERRORRowChanging" msprop:Generator_RowEvHandlerName="ERRORRowChangeEventHandler" msprop:Generator_RowDeletedName="ERRORRowDeleted" msprop:Generator_UserTableName="ERROR" msprop:Generator_RowChangedName="ERRORRowChanged" msprop:Generator_RowEvArgName="ERRORRowChangeEvent" msprop:Generator_RowClassName="ERRORRow">
+	  <xs:complexType>
+		<xs:sequence>
+		  <xs:element name="ErrorMessage" msprop:Generator_ColumnVarNameInTable="columnErrorMessage" msprop:Generator_ColumnPropNameInRow="ErrorMessage" msprop:Generator_ColumnPropNameInTable="ErrorMessageColumn" msprop:Generator_UserColumnName="ErrorMessage" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	  </xs:complexType>
+  </xs:element>
+</xs:schema>
