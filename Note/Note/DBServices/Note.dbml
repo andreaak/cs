@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="main" Class="Main" BaseType="DbLinq.Data.Linq.DataContext" Provider="Sqlite" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="main.Entity" Member="Entity">
+    <Type Name="Entity">
+      <Column Name="Description" Storage="_description" Type="System.String" DbType="TEXT" CanBeNull="true" />
+      <Column Name="ID" Storage="_id" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderPosition" Storage="_orderPosition" Type="System.Int32" DbType="INTEGER" CanBeNull="true" />
+      <Column Name="ParentID" Storage="_parentID" Type="System.Int32" DbType="INTEGER" CanBeNull="true" />
+      <Column Name="Type" Storage="_type" Type="System.Int32" DbType="INTEGER" CanBeNull="true" />
+      <Column Name="ModDate" Type="System.String" DbType="TEXT" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="main.EntityData" Member="EntityData">
+    <Type Name="EntityData">
+      <Column Name="Data" Storage="_data" Type="System.String" DbType="TEXT" CanBeNull="true" />
+      <Column Name="ID" Storage="_id" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TextData" Storage="_textData" Type="System.String" DbType="TEXT" CanBeNull="true" />
+      <Column Name="ModDate" Type="System.String" DbType="TEXT" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
