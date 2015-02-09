@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{724DA50C-C404-4A3A-8583-FBC2F4FB9963}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Utils</RootNamespace>
+    <AssemblyName>utils</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;ISOFFICE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;ISOFFICE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionWindow\CancelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\CancelForm.designer.cs">
+      <DependentUpon>CancelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\DisplayMessage.cs" />
+    <Compile Include="ActionWindow\ThreadVisualization.cs" />
+    <Compile Include="ConstantsUtils.cs" />
+    <Compile Include="DiskHierarchy\EntityData.cs" />
+    <Compile Include="DiskHierarchy\DirectoryData.cs" />
+    <Compile Include="DiskHierarchy\ExplorerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DiskHierarchy\ExplorerControl.Designer.cs">
+      <DependentUpon>ExplorerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiskHierarchy\FileData.cs" />
+    <Compile Include="DiskHierarchy\FileSystem.Designer.cs">
+      <DependentUpon>FileSystem.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="OptionsUtils.cs" />
+    <Compile Include="WorkWithDB\ADBConnection.cs" />
+    <Compile Include="WorkWithDB\DBConnectionDL.cs">
+    </Compile>
+    <Compile Include="WorkWithDB\DBConnectionCL.cs" />
+    <Compile Include="WorkWithDB\DBConnectionFactory.cs" />
+    <Compile Include="WorkWithDB\DbStructureDataset.cs">
+      <DependentUpon>DbStructureDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WorkWithDB\DbStructureDataset.Designer.cs">
+      <DependentUpon>DbStructureDataset.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="WorkWithDB\DBUtils.cs" />
+    <Compile Include="WorkWithDB\Parameter.cs" />
+    <Compile Include="WorkWithDB\SelectConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkWithDB\SelectConnection.Designer.cs">
+      <DependentUpon>SelectConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkWithDB\Wrappers\ADBWrapper.cs" />
+    <Compile Include="WorkWithDB\Wrappers\OleDBWrapper.cs" />
+    <Compile Include="WorkWithDB\Wrappers\OracleWrapper.cs" />
+    <Compile Include="WorkWithDB\Wrappers\SQLiteDBWrapper.cs" />
+    <Compile Include="WorkWithDB\Wrappers\SqlServerWrapper.cs" />
+    <Compile Include="WorkWithDB\WrapperFactory.cs" />
+    <Compile Include="WorkWithFiles\IWriter.cs" />
+    <Compile Include="WorkWithFiles\Logger.cs" />
+    <Compile Include="WorkWithFiles\ReadInfo.cs" />
+    <Compile Include="WorkWithFiles\XML\XMLSerialization.cs" />
+    <Compile Include="WorkWithRegistry.cs" />
+    <Compile Include="WorkWithFiles\WorkWithExcel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectForms\SelectFile.cs" />
+    <Compile Include="SelectForms\SelectFolder.cs" />
+    <Compile Include="WorkWithFiles\SerializeBin.cs" />
+    <Compile Include="WorkWithArray.cs" />
+    <Compile Include="WorkWithFiles\XML\WorkWithXML.cs" />
+    <Compile Include="WorkWithFiles\XML\XMLElement.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ActionWindow\CancelForm.resx">
+      <DependentUpon>CancelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiskHierarchy\ExplorerControl.resx">
+      <DependentUpon>ExplorerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\res.en-US.resx" />
+    <EmbeddedResource Include="Localization\res.ru-RU.resx" />
+    <EmbeddedResource Include="WorkWithDB\SelectConnection.resx">
+      <DependentUpon>SelectConnection.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2008 Express</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DiskHierarchy\FileSystem.xsc">
+      <DependentUpon>FileSystem.xsd</DependentUpon>
+    </None>
+    <None Include="DiskHierarchy\FileSystem.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FileSystem.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DiskHierarchy\FileSystem.xss">
+      <DependentUpon>FileSystem.xsd</DependentUpon>
+    </None>
+    <None Include="WorkWithDB\DbStructureDataset.xsc">
+      <DependentUpon>DbStructureDataset.xsd</DependentUpon>
+    </None>
+    <None Include="WorkWithDB\DbStructureDataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DbStructureDataset.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WorkWithDB\DbStructureDataset.xss">
+      <DependentUpon>DbStructureDataset.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
