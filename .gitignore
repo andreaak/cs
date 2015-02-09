@@ -8,6 +8,7 @@ obj
 _ReSharper*
 *.dll
 *.exe
+*.licx
 Algoritms/
 Assist/
 DataStructuresAndAlgorithms/
