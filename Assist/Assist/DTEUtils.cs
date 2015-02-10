@@ -12,7 +12,7 @@ namespace Assist
 #region PROJECT_METHODS
         public static void GoToLine(DTE2 applicationObject, int lineNumber)
         {
-            TextDocument currDoc = applicationObject.ActiveDocument.Object("") as TextDocument;
+            TextDocument currDoc = (TextDocument)applicationObject.ActiveDocument.Object("");
             currDoc.Selection.GotoLine(lineNumber, true);
         }
 

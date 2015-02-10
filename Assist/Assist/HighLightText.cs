@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using EnvDTE80;
 using EnvDTE;
-using Microsoft.VisualStudio.Shell;
 
 namespace Assist
 {
@@ -16,6 +15,9 @@ namespace Assist
         }
         private char separator = ';';
         private int subRowCount = 2;
+        private string guidR;
+        private string guidL;
+
 
         public HighLightText(/*int subRowCount, string guidR, string guidL, */HighLightText highLightText)
         {
@@ -24,12 +26,14 @@ namespace Assist
             {
                 markerManager = highLightText.MarkerManager_;
             }
+            this.guidR = Options.GetInstance.GuidR;
+            this.guidL = Options.GetInstance.GuidL;
         }
         
         public void HandledSelectedText(DTE2 applicationObject, bool matchCase, bool wholeWord, RTFTextControl rtfTextControl)
         {
             Window activeWindow = applicationObject.ActiveWindow;
-            TextDocument currDoc = applicationObject.ActiveDocument.Object("") as TextDocument;
+            TextDocument currDoc = (TextDocument)applicationObject.ActiveDocument.Object("");
             //
             string currSelection = currDoc.Selection.Text;
             if (string.IsNullOrEmpty(currSelection))
@@ -62,10 +66,10 @@ namespace Assist
             {
                 return;
             }
-            IServiceProvider serviceProvider = new ServiceProvider(project.DTE as Microsoft.VisualStudio.OLE.Interop.IServiceProvider);
+            IServiceProvider serviceProvider = new Microsoft.VisualStudio.Shell.ServiceProvider(project.DTE as Microsoft.VisualStudio.OLE.Interop.IServiceProvider);
             markerManager = new MarkerManager(project.DTE, serviceProvider);
 
-            markerManager.DrawMarkers(activeWindow, values, separator, Options.GetInstance.GuidR, Options.GetInstance.GuidL);
+            markerManager.DrawMarkers(activeWindow, values, separator, guidR, guidL);
         }
     }
 }

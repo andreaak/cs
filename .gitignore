@@ -7,9 +7,10 @@ obj
 *.sln.cache
 _ReSharper*
 *.dll
+!Microsoft.VisualStudio.Shell.dll
 *.exe
 *.licx
-Algoritms/
+#Algoritms/
 #Assist/
 #DataStructuresAndAlgorithms/
 DiffgramAnalyzer/

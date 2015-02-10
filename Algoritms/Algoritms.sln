@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algoritms", "Algoritms\Algoritms.csproj", "{E3D03105-3162-4837-87B8-2005ECB7C9AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "utilsVS10", "..\Utils\Utils\utilsVS10.csproj", "{724DA50C-C404-4A3A-8583-FBC2F4FB9963}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3D03105-3162-4837-87B8-2005ECB7C9AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D03105-3162-4837-87B8-2005ECB7C9AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D03105-3162-4837-87B8-2005ECB7C9AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D03105-3162-4837-87B8-2005ECB7C9AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

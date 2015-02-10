@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.IO;
-using Utils;
-
+using Log = Utils.WorkWithFiles.Logger;
 
 namespace Assist
 {
@@ -10,25 +9,16 @@ namespace Assist
     {
         static bool isLoggerActive;
 
-        public static bool IsLoggerActive
-        {
-            get { return isLoggerActive; }
-        }
-
         public static void Open(string filePath)
         {
-            isLoggerActive = WriteInfo.Open(filePath);
+            Log.GetInstance().Init(filePath);
+            isLoggerActive = true;
         }
         
         public static void Close()
         {
-            WriteInfo.Close();
+            Log.GetInstance().Close();
             isLoggerActive = false;
-        }
-
-        public static void Clear()
-        {
-            isLoggerActive = WriteInfo.Clear();
         }
 
         public static void WriteLine(string StringData)
@@ -37,7 +27,7 @@ namespace Assist
             {
                 return;
             }
-            WriteInfo.WriteLine(StringData);
+            Log.GetInstance().WriteLine(StringData);
         }
 
         public static void WriteLine(int TabCount, string StringData)
@@ -46,7 +36,7 @@ namespace Assist
             {
                 return;
             }
-            WriteInfo.WriteLine(TabCount, StringData);
+            Log.GetInstance().WriteLine(TabCount + " " + StringData);
         }
         
     }
