@@ -8,6 +8,8 @@ obj
 _ReSharper*
 *.dll
 *.exe
+*.rar
+*.7z
 *.licx
 Algoritms/
 #Assist/
