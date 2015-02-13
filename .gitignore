@@ -10,6 +10,7 @@ _ReSharper*
 *.exe
 *.rar
 *.7z
+*.exe
 *.licx
 Algoritms/
 #Assist/
@@ -24,6 +25,7 @@ ParseQuery2/
 SocialNetwork/
 #WorkWithSvn/
 WsdlGeneration/
+Test/
 Dll/
 .svn/
 #.gitignore
