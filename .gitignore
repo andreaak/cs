@@ -12,6 +12,8 @@ _ReSharper*
 *.rar
 *.7z
 *.exe
+*.mdf
+*.ldf
 *.licx
 #Algoritms/
 #Assist/
