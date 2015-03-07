@@ -15,6 +15,7 @@ namespace Note.ControlWrapper
         {
             richEditControl = this;
         }
+        
         public string Data
         {
             get
@@ -61,6 +62,13 @@ namespace Note.ControlWrapper
                             break;
                     }
                 }
+                Document.Unit = DevExpress.Office.DocumentUnit.Inch;
+                Document.Sections[0].Page.PaperKind = System.Drawing.Printing.PaperKind.A4;
+                Document.Sections[0].Margins.Top = 
+                Document.Sections[0].Margins.Bottom = 
+                Document.Sections[0].Margins.Left = 
+                Document.Sections[0].Margins.Right = 0.5f;
+
             }
         }
 

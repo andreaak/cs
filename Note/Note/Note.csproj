@@ -45,13 +45,6 @@
     <Reference Include="DevExpress.XtraRichEdit.v12.2.Extensions, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraSpellChecker.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="itextsharp, Version=5.4.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dll\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfMetamorphosis">
-      <HintPath>Dll\PdfMetamorphosis.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -77,11 +70,11 @@
     </Compile>
     <Compile Include="ControlWrapper\Exporter.cs" />
     <Compile Include="ControlWrapper\ControlExporter.cs" />
-    <Compile Include="ControlWrapper\Export.cs">
+    <Compile Include="ControlWrapper\ExportOptions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ControlWrapper\Export.Designer.cs">
-      <DependentUpon>Export.cs</DependentUpon>
+    <Compile Include="ControlWrapper\ExportOptions.Designer.cs">
+      <DependentUpon>ExportOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlWrapper\ExportHelper.cs" />
     <Compile Include="ControlWrapper\IWrapper.cs" />
@@ -127,8 +120,8 @@
     <EmbeddedResource Include="AddDescription.resx">
       <DependentUpon>AddDescription.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlWrapper\Export.resx">
-      <DependentUpon>Export.cs</DependentUpon>
+    <EmbeddedResource Include="ControlWrapper\ExportOptions.resx">
+      <DependentUpon>ExportOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlWrapper\MyRichEditControl.resx">
       <DependentUpon>MyRichEditControl.cs</DependentUpon>

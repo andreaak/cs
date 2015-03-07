@@ -21,9 +21,11 @@ namespace Note
     public enum ExportDocTypes
     {
         Doc,
+        Docx,
         Rtf,
         Html,
         Pdf,
+        Txt,
     }
     
     public class Options
