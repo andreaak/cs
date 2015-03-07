@@ -28,9 +28,13 @@ namespace Note.ControlWrapper
                     return "html";
                 case ExportDocTypes.Doc:
                     return "doc";
+                case ExportDocTypes.Docx:
+                    return "docx";
                 case ExportDocTypes.Pdf:
                     return "pdf";
-                case ExportDocTypes.Rtf:
+                 case ExportDocTypes.Txt:
+                    return "txt";
+               case ExportDocTypes.Rtf:
                 default:
                     return "rtf";
             }

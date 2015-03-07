@@ -39,7 +39,7 @@ namespace Note.ControlWrapper
                 return;
             }
             
-            Export form = new Export();
+            ExportOptions form = new ExportOptions();
             if (form.ShowDialog() != DialogResult.OK)
             {
                 return;
@@ -66,7 +66,7 @@ namespace Note.ControlWrapper
             }
         }
 
-        private void SetPrefixAlgoritmth(Export form)
+        private void SetPrefixAlgoritmth(ExportOptions form)
         {
             if (!form.IndexNumeration)
             {
@@ -90,9 +90,16 @@ namespace Note.ControlWrapper
 
         private void SaveNodesData(string path, TreeListNodes nodes, Exporter exp)
         {
-            foreach (TreeListNode node in nodes)
+            try
             {
-                SaveNodeData(path, node, exp);
+                foreach (TreeListNode node in nodes)
+                {
+                    SaveNodeData(path, node, exp);
+                }
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
             }
         }
 
@@ -129,12 +136,12 @@ namespace Note.ControlWrapper
             switch (format)
             {
                 case ExportDocTypes.Pdf:
-                    return new PdfExporter(format, richEditControl);
+                    return new PdfExporter();
                 case ExportDocTypes.Html:
                 case ExportDocTypes.Doc:
                 case ExportDocTypes.Rtf:
                 default:
-                    return new ControlExporter(format, richEditControl);
+                    return new ControlExporter(format);
             }
         }
 

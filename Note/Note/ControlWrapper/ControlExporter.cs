@@ -9,7 +9,7 @@ namespace Note.ControlWrapper
         MyRichEditControl control;
         DevExpress.XtraRichEdit.DocumentFormat format;
  
-        public ControlExporter(ExportDocTypes format, MyRichEditControl control)
+        public ControlExporter(ExportDocTypes format)
             :base(format)
 	    {
             this.control = new MyRichEditControl();
@@ -18,16 +18,9 @@ namespace Note.ControlWrapper
 
         public override bool Export(string fileName, string data)
         {
-            //if (format == DevExpress.XtraRichEdit.DocumentFormat.Rtf)
-            //{
-            //    File.AppendAllText(fileName, data);
-            //}
-            //else
-            {
-                control.Data = data;
-                control.SaveDocument(fileName, format);
-                Thread.Sleep(1000);
-            }
+            control.Data = data;
+            control.SaveDocument(fileName, format);
+            Thread.Sleep(1000);
             return true;
         }
 
@@ -39,6 +32,10 @@ namespace Note.ControlWrapper
                     return DevExpress.XtraRichEdit.DocumentFormat.Html;
                 case ExportDocTypes.Doc:
                     return DevExpress.XtraRichEdit.DocumentFormat.Doc;
+                case ExportDocTypes.Docx:
+                    return DevExpress.XtraRichEdit.DocumentFormat.OpenXml;
+                case ExportDocTypes.Txt:
+                    return DevExpress.XtraRichEdit.DocumentFormat.PlainText;
                 case ExportDocTypes.Rtf:
                 default:
                     return DevExpress.XtraRichEdit.DocumentFormat.Rtf;
