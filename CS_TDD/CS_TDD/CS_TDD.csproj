@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{16ADA690-EF1E-4146-A357-1B4DB9C2E856}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CS_TDD</RootNamespace>
+    <AssemblyName>CS_TDD</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CS_TDD._000_Base.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="000_Base\Calculator.cs" />
+    <Compile Include="000_Base\Program.cs" />
+    <Compile Include="000_Base\UahConverter.cs" />
+    <Compile Include="001_MSUnit\001_Test.cs" />
+    <Compile Include="002_NUnit\001_EqualTest.cs" />
+    <Compile Include="002_NUnit\002_ReferenceTest.cs" />
+    <Compile Include="002_NUnit\003_ContainsTest.cs" />
+    <Compile Include="002_NUnit\004_ComparisonsTest.cs" />
+    <Compile Include="002_NUnit\005_TypeAssertsTest.cs" />
+    <Compile Include="002_NUnit\006_ConditionTest.cs" />
+    <Compile Include="002_NUnit\007_UtilityMethodsTest.cs" />
+    <Compile Include="002_NUnit\008_ExceptionTest.cs" />
+    <Compile Include="002_NUnit\009_StringTest.cs" />
+    <Compile Include="003_DI\000_Base\FileDataObject.cs" />
+    <Compile Include="003_DI\000_Base\IDataAccessObject.cs" />
+    <Compile Include="003_DI\000_Base\TestDataObject.cs" />
+    <Compile Include="003_DI\001_Problem\FileManager.cs" />
+    <Compile Include="003_DI\001_Problem\FileManagerTest.cs" />
+    <Compile Include="003_DI\001_Problem\Program.cs" />
+    <Compile Include="003_DI\002_ConstructorInjection\FileManager.cs" />
+    <Compile Include="003_DI\002_ConstructorInjection\FileManagerTest.cs" />
+    <Compile Include="003_DI\002_ConstructorInjection\Program.cs" />
+    <Compile Include="003_DI\003_PropertyInjection\FileManager.cs" />
+    <Compile Include="003_DI\003_PropertyInjection\FileManagerTest.cs" />
+    <Compile Include="003_DI\003_PropertyInjection\Program.cs" />
+    <Compile Include="003_DI\004_InterfaceInjection\FileManager.cs" />
+    <Compile Include="003_DI\004_InterfaceInjection\FileManagerTest.cs" />
+    <Compile Include="003_DI\004_InterfaceInjection\Program.cs" />
+    <Compile Include="003_DI\005_LocalFactoryMethod\FileManager.cs" />
+    <Compile Include="003_DI\005_LocalFactoryMethod\FileManagerTest.cs" />
+    <Compile Include="003_DI\005_LocalFactoryMethod\Program.cs" />
+    <Compile Include="003_DI\007_FactoryInjection\FactoryClass.cs" />
+    <Compile Include="003_DI\007_FactoryInjection\FileManager.cs" />
+    <Compile Include="003_DI\007_FactoryInjection\FileManagerTest.cs" />
+    <Compile Include="003_DI\007_FactoryInjection\Program.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\AbstractFactory.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\Client.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\ConcreteFactory.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\StubConcreteFactory.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\FileManager.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\FileManagerTest.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\IFileManager.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\Program.cs" />
+    <Compile Include="003_DI\009_DI_Container\FileManager.cs" />
+    <Compile Include="003_DI\009_DI_Container\FileManagerTest.cs" />
+    <Compile Include="003_DI\009_DI_Container\Program.cs" />
+    <Compile Include="003_DI\010_Ninject\ConfigFileObjectData.cs" />
+    <Compile Include="003_DI\010_Ninject\FileManager.cs" />
+    <Compile Include="003_DI\010_Ninject\FileManagerTest.cs" />
+    <Compile Include="003_DI\010_Ninject\Program.cs" />
+    <Compile Include="003_DI\011_Encapsulation\FileManager.cs" />
+    <Compile Include="003_DI\011_Encapsulation\Program.cs" />
+    <Compile Include="003_DI\012_Encapsulation\FileManager.cs" />
+    <Compile Include="003_DI\012_Encapsulation\FileManagerTest.cs" />
+    <Compile Include="003_DI\012_Encapsulation\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
