@@ -115,6 +115,11 @@
     <Compile Include="003_DI\012_Encapsulation\FileManager.cs" />
     <Compile Include="003_DI\012_Encapsulation\FileManagerTest.cs" />
     <Compile Include="003_DI\012_Encapsulation\Program.cs" />
+    <Compile Include="004_StubsAndMocks\001_Mocks\FileManager.cs" />
+    <Compile Include="004_StubsAndMocks\001_Mocks\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\001_Mocks\ILogService.cs" />
+    <Compile Include="004_StubsAndMocks\001_Mocks\MockLogService.cs" />
+    <Compile Include="004_StubsAndMocks\001_Mocks\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
