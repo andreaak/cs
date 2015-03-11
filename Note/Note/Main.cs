@@ -282,6 +282,10 @@ namespace Note
                 this.Visible = false;
                 notifyIcon1.Visible = true;
             }
+            else
+            {
+                Main_LocationChanged(null, EventArgs.Empty);
+            }
         }
 
         private void Main_LocationChanged(object sender, System.EventArgs e)
