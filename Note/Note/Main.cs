@@ -264,9 +264,12 @@ namespace Note
             
             this.Visible = true;
             notifyIcon1.Visible = false;
+            this.SizeChanged -= new System.EventHandler(this.Main_SizeChanged);
+            this.LocationChanged -= Main_LocationChanged;
             this.WindowState = FormWindowState.Normal;
             this.Bounds = Settings.Default.WindowPosition;
-
+            this.SizeChanged += new System.EventHandler(this.Main_SizeChanged);
+            this.LocationChanged += Main_LocationChanged;
         }
 
         private void Main_Shown(object sender, System.EventArgs e)
@@ -290,12 +293,15 @@ namespace Note
 
         private void Main_LocationChanged(object sender, System.EventArgs e)
         {
-            Settings.Default.WindowPosition = this.Bounds;
+            if (this.WindowState != FormWindowState.Minimized)
+            {
+                Settings.Default.WindowPosition = this.Bounds;
+            }
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Settings.Default.WindowPosition = this.Bounds;
+            //Settings.Default.WindowPosition = this.Bounds;
             Settings.Default.Save();
         }
 
