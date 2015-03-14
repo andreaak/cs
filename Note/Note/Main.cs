@@ -56,7 +56,7 @@ namespace Note
             , barButtonItemHeaderFormat, barButtonItemImport, barButtonItemInfoFormat, barButtonItemMethodFormat
             , barButtonItemRemoveLineBreak, barButtonItemRemoveWhiteSpace, barButtonItemRemoveDoubleWhiteSpace
             , barButtonItemSaveAll, barButtonItemVacuum , barButtonItemLevelUp, barButtonItemLevelDown, barButtonItemConvertDb
-            , barButtonItemCheckNewestEntity
+            , barButtonItemCheckNewestEntity, barButtonItemSpelling
             };
         }
 

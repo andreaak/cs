@@ -2529,6 +2529,7 @@
             this.barButtonItemSpelling.Id = 248;
             this.barButtonItemSpelling.Name = "barButtonItemSpelling";
             this.barButtonItemSpelling.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItemSpelling.Checked = true;
             this.barButtonItemSpelling.CheckedChanged += barButtonItemSpelling_CheckedChanged;
             // 
             // barButtonItemCheckNewestEntity

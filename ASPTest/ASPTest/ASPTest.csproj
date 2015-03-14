@@ -119,10 +119,11 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="packages.config" />
-    <Content Include="_00_Forms\_02_PageLifeCycle\TestLifeCycle.aspx" />
-    <Content Include="_00_Forms\_05_PageRedirection\DestinationPage3.aspx" />
-    <Content Include="_00_Forms\_05_PageRedirection\TestForm3.aspx" />
-    <Content Include="_00_Forms\_05_PageRedirection\WebForm1.aspx" />
+    <Content Include="_02_Page\_02_PageLifeCycle\TestLifeCycle.aspx" />
+    <Content Include="_02_Page\_05_PageRedirection\_01_DestinationPage.aspx" />
+    <Content Include="_02_Page\_05_PageRedirection\_01_StartPage.aspx" />
+    <Content Include="_02_Page\_06_DataTransferBetweenPages\_01_DestinationPage.aspx" />
+    <Content Include="_02_Page\_06_DataTransferBetweenPages\_01_DataTransferUseAction.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -153,40 +154,46 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="_00_Forms\_02_PageLifeCycle\TestLifeCycle.aspx.cs">
+    <Compile Include="_02_Page\_02_PageLifeCycle\TestLifeCycle.aspx.cs">
       <DependentUpon>TestLifeCycle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_00_Forms\_02_PageLifeCycle\TestLifeCycle.aspx.designer.cs">
+    <Compile Include="_02_Page\_02_PageLifeCycle\TestLifeCycle.aspx.designer.cs">
       <DependentUpon>TestLifeCycle.aspx</DependentUpon>
     </Compile>
-    <Compile Include="_00_Forms\_05_PageRedirection\DestinationPage3.aspx.cs">
-      <DependentUpon>DestinationPage3.aspx</DependentUpon>
+    <Compile Include="_02_Page\_05_PageRedirection\_01_DestinationPage.aspx.cs">
+      <DependentUpon>_01_DestinationPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_00_Forms\_05_PageRedirection\DestinationPage3.aspx.designer.cs">
-      <DependentUpon>DestinationPage3.aspx</DependentUpon>
+    <Compile Include="_02_Page\_05_PageRedirection\_01_DestinationPage.aspx.designer.cs">
+      <DependentUpon>_01_DestinationPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="_00_Forms\_05_PageRedirection\TestForm3.aspx.cs">
-      <DependentUpon>TestForm3.aspx</DependentUpon>
+    <Compile Include="_02_Page\_05_PageRedirection\_01_StartPage.aspx.cs">
+      <DependentUpon>_01_StartPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_00_Forms\_05_PageRedirection\TestForm3.aspx.designer.cs">
-      <DependentUpon>TestForm3.aspx</DependentUpon>
+    <Compile Include="_02_Page\_05_PageRedirection\_01_StartPage.aspx.designer.cs">
+      <DependentUpon>_01_StartPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="_00_Forms\_05_PageRedirection\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="_02_Page\_06_DataTransferBetweenPages\_01_DestinationPage.aspx.cs">
+      <DependentUpon>_01_DestinationPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_00_Forms\_05_PageRedirection\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="_02_Page\_06_DataTransferBetweenPages\_01_DestinationPage.aspx.designer.cs">
+      <DependentUpon>_01_DestinationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_02_Page\_06_DataTransferBetweenPages\_01_DataTransferUseAction.aspx.cs">
+      <DependentUpon>_01_DataTransferUseAction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_02_Page\_06_DataTransferBetweenPages\_01_DataTransferUseAction.aspx.designer.cs">
+      <DependentUpon>_01_DataTransferUseAction.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account\" />
     <Folder Include="App_Data\" />
     <Folder Include="App_Start\" />
-    <Folder Include="_00_Forms\_06_DataTransferBetweenPages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
