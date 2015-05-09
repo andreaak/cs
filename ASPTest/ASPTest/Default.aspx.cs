@@ -13,5 +13,17 @@ namespace ASPTest
         {
 
         }
+
+        protected override void Render(HtmlTextWriter writer)
+        {
+            base.Render(writer);
+            writer.Write("TEST");
+        }
+
+        public override void RenderControl(HtmlTextWriter writer)
+        {
+            writer.Write("TEST2");
+            base.RenderControl(writer);
+        }
     }
 }
