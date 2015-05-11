@@ -360,7 +360,10 @@ namespace Note
             {
                 DisplayMessage.ShowError(errorMessage);
             }
-
+            else
+            {
+                notifyIcon1.Text = Options.DbFile;
+            }
             return dbConnectionOk;
         }
 
