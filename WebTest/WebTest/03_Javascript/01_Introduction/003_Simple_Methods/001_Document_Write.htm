@@ -1,0 +1,40 @@
+﻿<!--
+
+    document.write(...) — метод, выводящий на страницу переданные ему аргументы (параметры). 
+    Аргументов может быть любое количество, и они могут быть любых типов, 
+    при выводе значения аргументов преобразуются в строки.
+
+    Функция document.writeln(), аналогична document.write(), 
+    но добавляет в конце своего вывода перевод строки. 
+    (Не во всех браузерах работает корректно.)
+
+-->
+
+<html>
+<head>
+    <title>Интеграция JavaScript</title>
+
+    <script type="text/javascript">
+
+        var a = 10;
+        var b = "Some String";
+        var c = true;
+
+        document.write("Hello");
+        document.write("<br />"); // В качестве аргументов можно передавать любую HTML разметку.
+        document.writeln(a);
+        document.writeln(b);
+        document.writeln(c);
+        document.write("<hr />");
+    </script>
+</head>
+<body>
+    <!--<pre>-->
+             <script>
+                 document.writeln(a);
+                 document.writeln(b);
+                 document.writeln(c);
+             </script> 
+    <!--</pre>-->
+</body>
+</html>

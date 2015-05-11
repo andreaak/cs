@@ -1,0 +1,44 @@
+﻿<!--
+
+    Циклическая конструкция - while.
+
+-->
+
+<html>
+<head>
+    <title>Условно-циклическая конструкция While</title>
+
+    <script type="text/javascript">
+
+        var str = "Угадайте задуманный цвет с пяти попыток.";
+
+        var maxAttempt = 5;   // Допустимое количество попыток.
+        var attempt = 0;      // Счетчик попыток.
+        var color = "red";    // Задуманный цвет.
+
+        while (attempt < maxAttempt) {
+            attempt++;
+
+            value = prompt(str + " Попытка " + attempt, "");
+
+            if (value == null) {
+                break;
+            }
+
+            if (value != color) {
+                str = "Вы не угадали.";
+                continue;
+            }
+
+            document.write("<p>Поздравляем, Вы угадали с " + attempt + " попытки!");
+            break;
+        }
+
+        document.write("<p>Конец игры!");
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

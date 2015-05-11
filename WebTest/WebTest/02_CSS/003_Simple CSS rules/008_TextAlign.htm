@@ -1,0 +1,50 @@
+<!--
+text-align - свойство, которое отвечает за выравнивание текста, может принимать следующие значения:
+
+1. center - выравнивает текст по центру
+2. left - выравнивает текст влево
+3. right - выравнивает текст вправо
+4. justify  - выравнивает текст по допустимой ширине
+-->
+
+<html>
+    <head>
+        <title>Свойство text-align</title>
+        <style type="text/css">
+        body {
+           color:#000000;
+           background-color:#ffffff;
+           font-family:arial, verdana, sans-serif; 
+           font-size:12px;}
+
+        div {width:500px;margin:10px;}
+
+        .leftAlign {text-align:left;}
+        .rightAlign {text-align:right;}
+        .center {text-align:center;}
+        .justify {text-align:justify;}
+        </style>
+    </head>
+    <body>
+            <h1>text-align</h1>
+
+            <div class="leftAlign">
+                Выравнивание по левую сторону.
+            </div>
+
+            <div class="rightAlign">
+                Текст, выровненный по правую сторону.
+            </div>
+
+            <div class="center">
+                Выравнивание по центру
+            </div>
+
+            <div class="justify">
+                Тут много текста. Бла бла бла. Тут много текста!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                Тут много текста. Тут много текста. Тут много текста. Бла бла бла. Бла бла бла.
+                Бла бла бла!!!!! Тут много текста. Бла бла бла. Тут много текста. Тут много текста!!!!!.
+                Тут много текста. Тут много текста!!!!!. Бла бла бла. Бла бла бла. Бла бла бла.
+            </div>
+    </body>
+</html>

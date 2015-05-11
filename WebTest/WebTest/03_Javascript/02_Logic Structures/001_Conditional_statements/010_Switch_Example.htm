@@ -1,0 +1,55 @@
+﻿<!--
+
+      // Оператор многозначного выбора - switch-case (переключатель). 
+
+-->
+
+<html>
+<head>
+    <title>Coffee Maker</title>
+
+    <script type="text/javascript">
+
+        var coffeeSize = prompt("Размеры стаканчиков кофе: 1 = Маленький, 2 = Средний, 3 = Большой. Пожалуйста, сделайте свой выбор:");
+
+        var cost = 0;
+
+        switch (coffeeSize) {
+            case "1":
+                {
+                    cost += 25;
+                    document.write("<img src='coffee.jpg' width='100' height='100'/>");
+                }
+                break;
+            case "2":
+                {
+                    cost += 50;
+                    document.write("<img src='coffee.jpg' width='150' height='150'/>");
+                }
+                break;
+            case "3":
+                {
+                    cost += 75;
+                    document.write("<img src='coffee.jpg' width='256' height='256'/>");
+                }
+                break;
+            default:
+                {
+                    document.write("Неверный выбор.");
+                }
+                break;
+        }
+
+        if (cost != 0) {
+            document.write("<p>Внесите " + cost + " копеек.<p>Спасибо!");
+        }
+        else {
+            coffeeSize = prompt("Размеры стаканчиков кофе: 1 = Маленький, 2 = Средний, 3 = Большой. Пожалуйста, сделайте свой выбор:");
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

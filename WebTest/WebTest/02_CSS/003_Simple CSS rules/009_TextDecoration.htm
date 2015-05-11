@@ -1,0 +1,52 @@
+<!--
+text-decoration - свойство, которое отвечает за декорирование текста, может принимать следующие значени€:
+
+1. underline - декорирует текст подчеркиванием
+2. overline - декорирует текст надчеркиванием
+3. line-through - декорирует текст перечеркиванием
+4. blink - декорирует текст миганием, в св€зи с устарением, работает не во всех браузерах
+-->
+
+<html>
+    <head>
+        <title>—войство text-decoration</title>
+        <style type="text/css">
+        body
+        {
+	        color: #000000;
+	        background-color: #ffffff;
+	        font-family: arial, verdana, sans-serif;
+	        font-size: 12px;
+        }
+
+        table
+        {
+	        width: 500px;
+        }
+
+        p.underline
+        {
+	        text-decoration: underline;
+        }
+        p.overline
+        {
+	        text-decoration: overline;
+        }
+        p.line-through
+        {
+	        text-decoration: line-through;
+        }
+        
+        </style>
+    </head>
+    <body>
+            <h1>text-decoration</h1>
+            
+            <p class="underline">
+                ѕодчеркнутый</p>
+            <p class="overline">
+                Ќадчеркнутый</p>
+            <p class="line-through">
+                ѕеречеркнутый</p>
+    </body>
+</html>

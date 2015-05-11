@@ -1,0 +1,38 @@
+﻿<!--
+
+            Область видимости - область, в которой переменная доступна для использования.
+            Локальная область видимости - тело функции, в которой объявлена переменная.
+            Глобальная область видимости - область видимости доступная для всех функций и сценариев.
+
+-->
+
+<html>
+<head>
+    <title>Локальные и глобальные переменные</title>
+
+    <script type="text/javascript">
+
+        var global = "Глобальная переменная";
+
+        function f() {
+            var local = "Локальная переменная";
+
+            document.write("<p style='color:navy;'>" + global);
+            document.write("<p style='color:navy;'>" + local);
+            document.write("<hr/>");
+        }
+
+
+        f();
+
+        document.write("<p style='color:green;'>" + global);
+
+        // ОШИБКА: Попытка обращения к локальной переменной из-за предела тела функции f().
+        document.write("<p style='color:green;'>" + local);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

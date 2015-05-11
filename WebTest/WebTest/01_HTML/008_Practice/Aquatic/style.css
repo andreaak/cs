@@ -1,0 +1,250 @@
+/* CSS Document */
+
+body {
+    padding: 0px;
+    margin: 0px;
+    background: url(images/main-bg.gif) 0 0 repeat-x #fff;
+    color: #5F7A77;
+    font: 13px/19px Arial, Helvetica, sans-serif;
+}
+
+div, p, ul, h2, h3, h4, h5, img {
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.justify {
+    text-align: justify;
+}
+
+/*----TOP PANEL----*/
+
+#topPan {
+    width: 778px;
+    height: 65px;
+    background: url(images/topbg.jpg) 0 0 no-repeat #fff;
+    color: #828282;
+    position: relative;
+    margin: 0 auto;
+}
+
+    #topPan img.logo {
+        width: 136px;
+        height: 31px;
+        position: absolute;
+        top: 12px;
+        left: 235px;
+    }
+
+    #topPan p.caption {
+        width: 200px;
+        background: #fff;
+        color: #828282;
+        position: absolute;
+        top: 43px;
+        left: 235px;
+    }
+
+/*----HEADER PANEL----*/
+
+#headerPan {
+    width: 686px;
+    height: 153px;
+    background: url(images/header.jpg) 0 0 no-repeat;
+    position: relative;
+    margin: 0 auto;
+    padding: 11px 0 0 92px;
+}
+
+    #headerPan ul.leftmenu {
+        width: 87px;
+    }
+
+        #headerPan ul.leftmenu li {
+            width: 87px;
+            height: 22px;
+            border-bottom: 1px dashed #AECCCA;
+        }
+
+            #headerPan ul.leftmenu li a {
+                width: 72px;
+                height: 22px;
+                display: block;
+                background: url(images/bullet-normal.gif) 0 7px no-repeat #fff;
+                color: #305E5C;
+                line-height: 22px;
+                text-decoration: none;
+                padding: 0 0 0 15px;
+            }
+
+                #headerPan ul.leftmenu li a:hover {
+                    background: url(images/bullet-hover.gif) 0 7px no-repeat #fff;
+                    color: #305E5C;
+                    line-height: 22px;
+                    text-decoration: none;
+                    padding: 0 0 0 15px;
+                }
+
+            #headerPan ul.leftmenu li.clients {
+                width: 87px;
+                height: 22px;
+                border-bottom: none;
+            }
+
+/*----BODY PANEL----*/
+
+#bodyPan {
+    width: 686px;
+    background: url(images/bodybg.gif) 0 0 no-repeat;
+    position: relative;
+    margin: 0 auto;
+    padding: 22px 0 0 92px;
+}
+
+/*----Body Left Panel----*/
+
+#leftPan {
+    width: 114px;
+    float: left;
+}
+
+    #leftPan h2 {
+        width: 114px;
+        height: 34px;
+        background: #fff;
+        color: #5F7A77;
+        font-size: 18px;
+        line-height: 34px;
+    }
+
+    #leftPan ul {
+        width: 114px;
+    }
+
+        #leftPan ul li {
+            width: 114px;
+            height: 24px;
+        }
+
+            #leftPan ul li a {
+                width: 102px;
+                height: 24px;
+                display: block;
+                background: url(images/bullet2-normal.gif) 0 10px no-repeat #fff;
+                color: #5F7A77;
+                text-decoration: none;
+                line-height: 24px;
+                padding: 0 0 0 12px;
+            }
+
+                #leftPan ul li a:hover {
+                    background: url(images/bullet2-hover.gif) 0 10px no-repeat #fff;
+                    color: #5F7A77;
+                    text-decoration: none;
+                }
+
+
+
+/*----Body Right Panel----*/
+
+#rightPan {
+    width: 511px;
+    float: left;
+    border-left: 1px solid #C8E8E2;
+    margin: 28px 0 0;
+    padding: 0 30px;
+}
+
+    #rightPan p {
+        padding: 0 0 10px 0;
+    }
+
+        #rightPan p.more {
+            width: 502px;
+            height: 25px;
+            float: left;
+            background: url(images/sky-color-bg.gif) 0 10px repeat-x;
+            padding: 0 0 20px 0;
+        }
+
+            #rightPan p.more a {
+                width: 92px;
+                height: 21px;
+                display: block;
+                background: url(images/special.gif) 0 0 no-repeat #fff;
+                color: #958201;
+                line-height: 21px;
+                text-transform: uppercase;
+                text-decoration: none;
+                margin: 0 0 0 328px;
+                padding: 4px 0 0 50px;
+            }
+
+                #rightPan p.more a:hover {
+                    background: url(images/buy.gif) 0 0 no-repeat #fff;
+                    color: #645804;
+                    text-decoration: none;
+                }
+
+
+/*----FOOTER PANEL----*/
+
+#footermainPan {
+    height: 103px;
+    background: url(images/footerbg.gif) 0 0 repeat-x #D3F0F0;
+    color: #2F5958;
+    font: 13px/20px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    position: relative;
+    margin: 0 auto;
+    clear: both;
+    padding: 36px 0 0;
+}
+
+#footerPan {
+    width: 778px;
+    position: relative;
+    margin: 0 auto;
+}
+
+    #footerPan ul {
+        width: 608px;
+        height: 20px;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    #footerPan li {
+        float: left;
+    }
+
+    #footerPan ul li a {
+        padding: 0 10px 0;
+        color: #2F5958;
+        background: #EBF8F7;
+        text-decoration: none;
+        font-size: 13px;
+    }
+
+        #footerPan ul li a:hover {
+            text-decoration: underline;
+        }
+
+    #footerPan p.copyright {
+        width: 250px;
+        margin: 10px 0 0 92px;
+    }
+
+    #footerPan ul.templateworld {
+        width: 250px;
+        background: #D3F0F0;
+        color: #007163;
+        display: block;
+        font-size: 10px;
+        position: absolute;
+        top: 49px;
+        left: 92px;
+    }

@@ -1,0 +1,229 @@
+<!--
+Для задания размеров различных элементов, в CSS используются абсолютные и относительные единицы измерения.
+     
+            Абсолютные единицы не зависят от устройства вывода, а 
+            относительные единицы определяют размер элемента относительно значения другого размера. 
+
+            - ОТНОСИТЕЛЬНЫЕ ЕДИНИЦЫ:
+
+                1. Em - Высота шрифта текущего элемента
+                2. Ex - Высота символа x
+                3. Px - Пиксел
+                4. %   - Процент от размера шрифта по умолчанию
+
+            Относительные единицы обычно используют для работы с текстом, 
+            либо когда надо вычислить процентное соотношение между элементами.
+
+            - АБСОЛЮТНЫЕ ЕДИНИЦЫ:
+
+                1. in - Дюйм (1 дюйм равен 2,54 см)
+                2. cm - Сантиметр
+                3. mm - Миллиметр
+                4. Pc - Пика (1 пика равна 12 пунктам)
+                5. Pt - Пункт (1 пункт равен 1/72 дюйма)
+
+            Абсолютные единицы применяются реже, чем относительные и, 
+            как правило, при работе с текстом.
+-->
+
+<html>
+    <head>
+        <title>Свойство font-size</title>
+        <style type="text/css">
+        body
+        {
+           color:#000000;
+           background-color:#ffffff;
+           font-family:arial, verdana, sans-serif; 
+           font-size: 20px;
+        }
+
+        .page {width:880px; background-color:aqua;}
+        .column {padding:10px; width:200px; float:left;}
+        hr {clear:both;}
+
+        p.absoluteone {font-size:xx-small;}
+        p.absolutetwo {font-size:x-small;}
+        p.absolutethree {font-size:small;}
+        p.absolutefour {font-size:medium;}
+        p.absolutefive {font-size:large;}
+        p.absolutesix {font-size:x-large;}
+        p.absoluteseven {font-size:xx-large;}
+
+        p.pixelsone {font-size:9px;}
+        p.pixelstwo {font-size:12px;}
+        p.pixelsthree {font-size:14px;}
+        p.pixelsfour {font-size:18px;}
+        p.pixelsfive {font-size:24px;}
+        p.pixelssix {font-size:36px;}
+        p.pixelsseven {font-size:48px;}
+
+        p.picaone {font-size:1pc;}
+        p.picatwo {font-size:2pc;}
+        p.picathree {font-size:3pc;}
+        p.picafour {font-size:4pc;}
+
+        p.pointone {font-size:9pt;}
+        p.pointtwo {font-size:12pt;}
+        p.pointthree {font-size:14pt;}
+        p.pointfour {font-size:18pt;}
+        p.pointfive {font-size:24pt;}
+        p.pointsix {font-size:36pt;}
+        p.pointseven {font-size:48pt;}
+
+        p.relativeone {font-size:smaller;}
+        p.relativetwo {}
+        p.relativethree {font-size:larger;}
+
+        p.emone {font-size:1em;}
+        p.emtwo {font-size:2em;}
+        p.emthree {font-size:3em;}
+        p.emfour {font-size:4em;}
+
+        p.exone {font-size:1ex;}
+        p.extwo {font-size:2ex;}
+        p.exthree {font-size:3ex;}
+        p.exfour {font-size:4ex;}
+        p.exfive {font-size:5ex;}
+        p.exsix {font-size:6ex;}
+        p.exseven {font-size:7ex;}
+
+        p.percentone {font-size:50%;}
+        p.percenttwo {font-size:75%;}
+        p.percentthree {font-size:100%;}
+        p.percentfour {font-size:150%;}
+        p.percentfive {font-size:200%;}
+        p.percentsix {font-size:400%;}
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <h1>
+                Font Sizes</h1>
+            <div class="column">
+                <h2>
+                    Absolute</h2>
+                <p class="absoluteone">
+                    xx-small</p>
+                <p class="absolutetwo">
+                    x-small</p>
+                <p class="absolutethree">
+                    small</p>
+                <p class="absolutefour">
+                    medium</p>
+                <p class="absolutefive">
+                    large</p>
+                <p class="absolutesix">
+                    x-large</p>
+                <p class="absoluteseven">
+                    xx-large</p>
+            </div>
+            <div class="column">
+                <h2>
+                    Pixels</h2>
+                <p class="pixelsone">
+                    9 px</p>
+                <p class="pixelstwo">
+                    12 px</p>
+                <p class="pixelsthree">
+                    14 px</p>
+                <p class="pixelsfour">
+                    18 px</p>
+                <p class="pixelsfive">
+                    24 px</p>
+                <p class="pixelssix">
+                    36 px</p>
+                <p class="pixelsseven">
+                    48 px</p>
+            </div>
+            <div class="column">
+                <h2>
+                    Points</h2>
+                <p class="pointone">
+                    9 pt</p>
+                <p class="pointtwo">
+                    12 pt</p>
+                <p class="pointthree">
+                    14 pt</p>
+                <p class="pointfour">
+                    18 pt</p>
+                <p class="pointfive">
+                    24 pt</p>
+                <p class="pointsix">
+                    36 pt</p>
+                <p class="pointseven">
+                    48 pt</p>
+            </div>
+            <div class="column">
+                <h2>
+                    Picas</h2>
+                <p class="picaone">
+                    1 pc</p>
+                <p class="picatwo">
+                    2 pc</p>
+                <p class="picathree">
+                    3 pc</p>
+                <p class="picafour">
+                    4 pc</p>
+            </div>
+            <hr />
+            <div class="column">
+                <h2>
+                    Relative Sizes</h2>
+                <p class="relativeone">
+                    smaller</p>
+                <p class="relativetwo">
+                    no style</p>
+                <p class="relativethree">
+                    larger</p>
+            </div>
+            <div class="column">
+                <h2>
+                    Ems</h2>
+                <p class="emone">
+                    1em</p>
+                <p class="emtwo">
+                    2em</p>
+                <p class="emthree">
+                    3em</p>
+                <p class="emfour">
+                    4em</p>
+            </div>
+            <div class="column">
+                <h2>
+                    Exs</h2>
+                <p class="exone">
+                    1ex</p>
+                <p class="extwo">
+                    2ex</p>
+                <p class="exthree">
+                    3ex</p>
+                <p class="exfour">
+                    4ex</p>
+                <p class="exfive">
+                    5ex</p>
+                <p class="exsix">
+                    6ex</p>
+                <p class="exseven">
+                    7ex</p>
+            </div>
+            <div class="column">
+                <h2>
+                    Percents</h2>
+                <p class="percentone">
+                    50%</p>
+                <p class="percenttwo">
+                    75%</p>
+                <p class="percentthree">
+                    100%</p>
+                <p class="percentfour">
+                    150%</p>
+                <p class="percentfive">
+                    200%</p>
+                <p class="percentsix">
+                    400%</p>
+            </div>
+        </div>
+    </body>
+ 
+</html>

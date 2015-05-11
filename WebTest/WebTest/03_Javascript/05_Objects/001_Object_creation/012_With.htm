@@ -1,0 +1,37 @@
+﻿<!--
+
+    Оператор with создает новую область видимости и 
+    представляет свойства объекта «object» как локальные переменные. 
+    
+    Оператор with является устаревшим и его использование не желательно. 
+    Его использование запрещено в Strict Mode. Подробнее: http://habrahabr.ru/post/118666/
+
+-->
+
+<html>
+<head>
+    <title>Обьекты, создание</title>
+
+    <script type="text/javascript">
+
+        var house = {
+            roof: "<img src='Images/Roof.gif'/><br/>",
+            secondFloor: "<img src='Images/SecondFloor.gif'/><br/>",
+            firstFloor: "<img src='Images/FirstFloor.gif'/><br/>",
+            basement: "<img src='Images/Basement.gif'/><br/>",
+            address: "<p style='color:green'>UK. London. Muswell Hill. N10<hr/>"
+        }
+
+        with (house) {
+            document.write(roof);
+            document.write(secondFloor);
+            document.write(firstFloor);
+            document.write(basement);
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        var vacation = {
+            turkey: 500,
+            egypt: 400,
+            spain: 100
+        }
+        vacation.calc = function (people, days, country)
+        {
+            var result = people * days * this[country];
+            return result;
+        }
+        document.write(vacation.calc(2, 10, "spain"));
+    </script>
+</head>
+<body>
+</body>
+</html>

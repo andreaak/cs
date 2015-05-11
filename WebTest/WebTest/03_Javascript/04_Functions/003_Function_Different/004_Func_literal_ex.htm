@@ -1,0 +1,38 @@
+﻿<!--
+
+            Функции-литералы.
+
+-->
+
+<html>
+<head>
+    <title>Функции-литералы пример</title>
+
+    <script type="text/javascript">
+
+        var flag = false;
+
+        var f = function () {
+            document.write("<p>Hello!");
+            flag = true;
+        }
+
+        f();  // Вызов функции.
+
+
+        // Создание новой функции в теле условной конструкции.
+        if (flag) {
+            f = function () {
+                document.write("<p>Byе!");
+                flag = false;
+            }
+        }
+
+        f();  // Вызов функции.
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

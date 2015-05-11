@@ -1,0 +1,47 @@
+﻿<!--
+
+                Конструкция if(имя_свойства in объект) - 
+                используется для проверки наличия свойства у объекта.
+
+-->
+
+<html>
+<head>
+    <title>Проверка существования свойства</title>
+
+    <script type="text/javascript">
+
+        var house = {
+            roof: "<img src='Images/Roof.gif'/><br/>",
+            // thirdFloor: отсутствует.
+            secondFloor: "<img src='Images/SecondFloor.gif'/><br/>",
+            firstFloor: "<img src='Images/FirstFloor.gif'/><br/>",
+            basement: "<img src='Images/Basement.gif'/><br/>",
+            address: "<p style='color:green'>UK. London. Muswell Hill. N10<hr/>"
+        }
+
+
+        // Строительство дома.
+
+        document.write(house.roof);
+
+        // ЕСЛИ: В объекте house имеется планировка третьего этажа - thirdFloor,
+        if ("thirdFloor" in house) { // ТО: Строим третий этаж с планировкой - thirdFloor.
+            document.write(house["thirdFloor"]);
+        }
+        else { // Иначе: Строим третий этаж с планировкой - secondFloor.
+            document.write(house["secondFloor"]);
+        }
+
+        document.write(house.secondFloor);
+        document.write(house.firstFloor);
+        document.write(house.basement);
+
+        document.write(house.address);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

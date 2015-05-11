@@ -1,0 +1,45 @@
+<!--
+Тег select - тег, контейнер, содержащий в себе описание выпадающего списка. Каждый элемент списка описан внутри с помощью отдельного тега option.
+Содержимое тега option будет отображено пользователям в качестве элементов выпадающего списка, но на сервер будут отправлены значения
+атрибутов value и name выбранного элемента.
+Атрибут multiple="multiple" говорит о том, что список может позволять многозначный выбор при зажатии клавиши Shift или Ctrl
+-->
+
+<html>
+<head>
+    <title>Многозначный список</title>
+</head>
+<body>
+    <form>
+        <br />
+        Enter your first name:
+        <input type="text" name="first_name" value="Mickey" />
+        <br />
+        Enter your second name:
+        <input type="text" name="sec_name" value="Mouse" />
+        <br />
+        Enter your password:
+        <input type="password" name="password" />
+        <br />
+
+        <!-----------------------------------------------====================Многозначный выпадающий список==================-------------------------------------------------------------->
+
+        Your favorite film:
+                <select multiple="multiple" name="select">
+                    <option value="film001">2 smokin guns</option>
+                    <option value="film002">Bad Boys</option>
+                    <option value="film003">Revenge</option>
+                    <option value="film004">Crow</option>
+                    <option value="film005">Dead Man Walkin</option>
+                    <option value="film006">Wrong thing</option>
+                </select>
+
+        <!-----------------------------------------------====================Многозначный выпадающий список==================-------------------------------------------------------------->
+
+        <br />
+        <input type="submit" name="submit" value="Enter" />
+        <br />
+        <input type="reset" name="reset" value="Reset" />
+    </form>
+</body>
+</html>

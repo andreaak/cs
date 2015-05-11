@@ -1,0 +1,27 @@
+<!--
+input type="hidden" - элемент формы, который не отображается пользователю, при этом передается на сервер при отправке.
+Используется для передачи параметров, которые не должны быть видны либо изменяться пользователем.
+-->
+
+<html>
+    <head>
+        <title>Невидимое поле</title>
+    </head>
+    <body>
+            <form>
+                <br />
+                Enter your first name: <input type="text" name="first_name" value="Ivan" />
+                <br />
+                Enter your second name: <input type="text" name="sec_name" value="Ivanov" />
+                <br />
+                Enter your password: <input type="password" name="password" />
+
+                <input type="hidden" name="user_id" value="1234" />
+                <input type="hidden" name="price" value="100" />
+                <input type="hidden" name="payment_type" value="MasterCard" />
+
+                <br />
+                <input type="submit" name="submit" value="Enter" />
+            </form>
+    </body>
+</html>

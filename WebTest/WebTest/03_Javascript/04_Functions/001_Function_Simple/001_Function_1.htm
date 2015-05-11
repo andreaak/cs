@@ -1,0 +1,44 @@
+﻿<!--
+
+            Функция - это блок кода, который можно многократно вызывать на исполнение. 
+            При этом функции можно передавать аргументы (параметры) с которыми она будет работать.
+            Также можно вызывать функцию без параметров.
+    
+            Для создания функции используется следующая семантика:
+                function имя_функции ( аргументы ) {   тело функции   }
+    
+            Вызов функции происходит следующим образом:
+                имя_функции( аргументы );
+
+-->
+
+<html>
+<head>
+    <title>Функции в JavaScript</title>
+
+    <script type="text/javascript">
+
+        function MyFirstFunction() {
+            document.write("<p>Hello from MyFirstFunction!");
+            document.write("<p>How are you?");
+            document.write("<p>Goodbye!");
+        }
+
+        function MySecondFunction() {
+            document.write("<p>Hello from MySecondFunction!");
+        }
+
+        // Вызов функций.
+
+        MyFirstFunction();
+
+        document.write("<hr/>");
+
+        MySecondFunction();
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

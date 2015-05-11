@@ -1,0 +1,30 @@
+﻿<html>
+<head>
+    <title>Условная конструкция if</title>
+
+    <script type="text/javascript">
+
+        var age = prompt("Введите Ваш возраст");
+        var pen = prompt("Введите пенсионный возраст");
+
+        var maxAge = 120;
+
+        var a = parseInt(age);
+        var b = parseInt(pen);
+
+        if (a < b) {
+            document.write("Вам еще рано на пенсию!");
+        }
+        else if (a < maxAge) {
+            document.write("Пора задуматся об пенсионном счете в банке...");
+        }
+        else {
+            document.write("Столько не живут!");
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

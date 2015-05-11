@@ -1,0 +1,29 @@
+﻿<!--
+
+    Тернарная условная операция.
+
+-->
+
+<html>
+<head>
+    <title>Интеграция JavaScript</title>
+
+    <script type="text/javascript">
+
+        var quantity = 10;    // Количество единиц товара.            
+        var price = 100;      // Цена за единицу товара.           
+        var discount = 0.75;  // Скидка на общую стоимость - 25%.
+        var cost;             // Общая стоимость.  
+
+        // ЕСЛИ: Купили 10 единиц товара и больше. ТО: предоставить скидку в 25%. ИНАЧЕ: Скидку не предоставлять.
+
+        cost = quantity >= 10 ? quantity * price * discount : quantity * price;
+
+        document.write("Общая стоимость товара составляет: " + cost + " у.е.");
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

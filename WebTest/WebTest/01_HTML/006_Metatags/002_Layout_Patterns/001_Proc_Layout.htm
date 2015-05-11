@@ -1,0 +1,50 @@
+﻿<!--
+    
+    Процентная верстка получается за счет того, что единицами измерения при верстке дизайна 
+    в большинстве случаев выступают проценты, что позволяет растянуть макет на всю ширину окна браузера. 
+    
+
+-->
+
+<html>
+<head>
+    <title>Процентная верстка</title>
+
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        p.white {
+            color: whitesmoke;
+            margin: 0px;
+        }
+
+        div {
+            height: 100px;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    <div style="height: auto;">
+
+        <div style="background-color: navy;">
+            <p class="white">TITLE</p>
+        </div>
+
+        <div>
+            <div style="width: 30%; background-color: Gray; float: left"></div>
+            <div style="width: 70%; background-color: whitesmoke; float: left"></div>
+        </div>
+
+        <div style="background-color: darkgreen">
+            <p class="white">FOOTER</p>
+        </div>
+
+    </div>
+</body>
+</html>
+

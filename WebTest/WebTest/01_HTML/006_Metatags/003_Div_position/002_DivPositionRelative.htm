@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Div Position Absolute</title>
+    <style type="text/css">
+    div
+    {
+        text-align:center;
+        width:150px;
+        height:150px;
+        position:relative;
+    }
+    
+    #MisterGreen
+    {
+        background-color:Green;
+        border:1px solid black;
+    }
+    
+    #MisterRed
+    {
+        top:30px;
+        left:30px;
+        background-color:Red;
+        border:1px solid black;
+    }
+    
+     #MisterYellow
+    {
+        position: relative;
+        left:20px;
+        background-color:Yellow;
+        border:1px solid black;
+        z-index: 5;
+    }
+    
+    .MisterWhite
+    {
+        margin:15px;
+        border:1px dashed black;
+    }
+    .MisterBlue
+    {
+        width: 150px;
+        height: 150px;
+        background: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="MisterWhite">
+                            <div id="MisterGreen">            <br /><br />In Its Place              </div>
+</div>
+
+<div class="MisterBlue">
+                            <div id="MisterYellow" style=" position: relative;">           <br /><br />left:20px;                </div>
+</div>
+
+<div class="MisterWhite">
+                            <div id="MisterRed">              <br /><br />top:30px;<br /> left:30px;      </div>
+</div>
+
+</body>
+</html>
+

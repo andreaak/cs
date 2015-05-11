@@ -1,0 +1,53 @@
+﻿<!--
+
+    Циклическая конструкция - do-while. 
+
+    Факториал числа n (обозначается n!, произносится - эн факториал) — это произведение всех натуральных чисел,
+    от 1 до n включительно:
+        n! = 1 * 2 * 3 * ... * n
+        0! = 1
+
+    В комбинаторике факториал натурального числа n интерпретируется как количество перестановок множества из n элементов.
+    Например, для множества {A,B,C,D} из 4-х элементов существует: 4! = 1 * 2 * 3 * 4 = 24 перестановки:
+
+        ABCD  BACD  CABD  DABC
+        ABDC  BADC  CADB  DACB
+        ACBD  BCAD  CBAD  DBAC
+        ACDB  BCDA  CBDA  DBCA
+        ADBC  BDAC  CDAB  DCAB
+        ADCB  BDCA  CDBA  DCBA
+
+-->
+
+<html>
+<head>
+    <title>Факториал</title>
+
+    <script type="text/javascript">
+
+        var counter = prompt("Введите число");
+        var factorial = 1;
+
+        document.write("Факториал числа: " + counter + "! = ");
+
+        do {
+
+            if (counter == 0) {
+                factorial = 1;
+                break;
+            }
+
+            factorial = factorial * counter;
+            counter = counter - 1;
+        }
+        while (counter > 0);
+
+        document.write(factorial);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>
+

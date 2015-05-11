@@ -1,0 +1,49 @@
+﻿<!--
+
+                Метод - это функция принадлежащая конкретному объекту, 
+                которую вызвать ее можно только на этом объекте. 
+                При этом такая функция описывается, как функция литерал присвоенная свойству.
+                method: function() {.....}
+-->
+
+
+<html>
+<head>
+    <title>Методы</title>
+
+    <script type="text/javascript">
+
+        var human = {
+            firstName: "Alex",
+            secondName: "Jazun",
+            age: 27,
+            occupation: "<img src='Images/Microsoft.jpg' width='152' height='38'/>",
+
+            // Метод show() в блоке инициализации обьекта.
+            show: function () {
+                document.write("<p>First name: " + this.firstName);
+                document.write("<p>Second name: " + this.secondName);
+                document.write("<p>Age: " + this.age + " years old<br/>");
+                document.write(this.occupation + "<hr/>");
+            },
+
+            // Создаем метод SayGoodbye() в блоке инициализации обьекта
+            changeWork: function (occupation) {
+                this.occupation = occupation;
+            }
+        }
+
+        // Вызов методов.
+
+        human.show();
+
+        human.changeWork("<img src='Images/CyberBionic Systematics.jpg'/>");
+
+        human.show();
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

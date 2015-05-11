@@ -1,0 +1,43 @@
+﻿<!--
+
+    Функция может принимать аргументы. При создании функции 
+    можно указать под какими именами в ее теле будут использоваться 
+    значения переданные ей в качестве аргументов.
+
+-->
+
+<html>
+<head>
+    <title>Аргументы функции</title>
+
+    <script type="text/javascript">
+
+        var a = 10;
+        var b = 15;
+        var c = 20;
+        var d = 21;
+
+        function Sum1() {
+            var result = a + b;
+            document.write("<p>Sum1 result: " + result);
+        }
+
+        function Sum2(x1, x2) {
+            var result = x1 + x2;
+            document.write("<p>Sum2 result: " + result);
+        }
+
+
+        // Вызов функций.
+
+        Sum1();
+
+        Sum2(); // Не передаем параметров при вызове.
+        Sum2(c, d);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

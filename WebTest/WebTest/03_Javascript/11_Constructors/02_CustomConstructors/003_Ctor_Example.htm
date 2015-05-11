@@ -1,0 +1,70 @@
+﻿<html>
+<head>
+    <title>Класс "Виртуальный друг"</title>
+
+    <script type="text/javascript">
+
+        var Friend = function (mood) {
+                            
+            this.mood = mood;
+
+            // если настроение "хорошее"
+            if (mood === "nice") {
+                this.talk = function () {
+                    alert("Hello what's up?");
+                };
+            }
+            // если настроение "плохое"
+            else if (mood === "bad") {                       
+                this.talk = function () {
+                    alert("Sorry, I don't want talk with you.");
+                };
+            }
+            // если настроение не определено
+            else {                                          
+                this.talk = function () {
+                    alert("Hi");
+                };
+            }
+        }
+
+        function Friend2(mood) {
+
+            this.mood = mood;
+
+            // если настроение "хорошее"
+            if (mood === "111") {
+                this.talk = function () {
+                    alert("Hello what's up?");
+                };
+            }
+                // если настроение "плохое"
+            else if (mood === "222") {
+                this.talk = function () {
+                    alert("Sorry, I don't want talk with you.");
+                };
+            }
+                // если настроение не определено
+            else {
+                this.talk = function () {
+                    alert("Hi");
+                };
+            }
+        }
+
+        var friendMood = prompt("Type friend mood (nice/bad):");
+        var David = new friend(friendMood);
+
+        David.talk();
+
+        var friendMood = prompt("Type friend mood (nice/bad):");
+        var Mike = new Friend2(friendMood);
+
+        Mike.talk();
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

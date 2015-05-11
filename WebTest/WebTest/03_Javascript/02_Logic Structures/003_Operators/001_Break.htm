@@ -1,0 +1,30 @@
+﻿<!--
+
+        Оператор - break.
+
+-->
+
+<html>
+<head>
+    <title>Оператор break</title>
+
+    <script type="text/javascript">
+
+        var count = prompt("Сколько Вы хотите провести иттераций?");
+        var exit = prompt("На какой итерации выйти из цикла?");
+
+        for (var i = 0; i < count; i++) {
+            if (i == exit) {
+                break;
+            }
+            else {
+                document.write(i + "<br />");
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

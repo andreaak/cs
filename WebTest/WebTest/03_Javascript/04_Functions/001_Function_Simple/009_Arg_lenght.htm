@@ -1,0 +1,39 @@
+﻿<!--
+
+            При вызове функции создается специальный масив содержащий 
+            в себе аргументы, которые были переданы при вызове.
+            У этого массива есть свойство length, в котором хранится 
+            количество аргументов переданых функции.
+
+-->
+
+<html>
+<head>
+    <title>Массив Аргументов arguments</title>
+
+    <script type="text/javascript">
+
+        function f(x, y, z) {
+
+            // Проверка, правильное ли количество аргументов передано.
+            if (arguments.length != 3) {
+                document.write("<p><b style='color:red;'>ERROR:</b> <em>Требуется три аргумента при вызове. Функция вызвана с " + arguments.length + " параметрами!</em>");
+            }
+            else {
+                document.write("<p><span style='color:green;'> Правильный вызов функции.</span> Аргументы: ");
+
+                for (var i = 0; i < arguments.length; i++)
+                    document.write(arguments[i] + ", ");
+            }
+        }
+
+        f(1, 2, 3, 4);   // Более трех аргументов - ошибка!
+        f(1, 2, 3);
+        f(1, 2)          // Менее трех аргументов - ошибка!
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

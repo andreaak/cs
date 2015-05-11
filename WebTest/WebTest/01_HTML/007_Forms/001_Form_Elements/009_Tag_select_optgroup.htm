@@ -1,0 +1,53 @@
+<!--
+Тег select - тег, контейнер, содержащий в себе описание выпадающего списка. Каждый элемент списка описан внутри 
+с помощью отдельного тега option.
+
+Содержимое тега option будет отображено пользователям в качестве элементов выпадающего списка, но на сервер будут 
+отправлены именно значения атрибутов value и name.
+
+Тег <optgroup> - предназначен для группировки элементов списка, при этом у него есть особенный атрибут label, в котором 
+указывается название группы.
+
+-->
+
+<html>
+    <head>
+        <title>Группировка эементов выпадающего списка</title>
+    </head>
+    <body>
+            <form>
+                <br />
+                Enter your first name: <input type="text" name="first_name" value="Mickey" />
+                <br />
+                Enter your second name: <input type="text" name="sec_name" value="Mouse" />
+                <br />
+                Enter your password: <input type="password" name="password" />
+                <br />
+  
+<!-----------------------------------------------====================Многозначный выпадающий список==================-------------------------------------------------------------->
+
+                Your favorite film:
+                <select name="select">
+                <optgroup label="Action">
+                    <option value="film001">2 smokin guns</option>
+                    <option value="film002">Bad Boys</option>
+                    <option value="film003">Revenge</option>
+                </optgroup>
+                <optgroup label="Fantastic">
+                    <option value="film004">Crow</option>
+                    <option value="film005">Dead Man Walkin</option>
+                </optgroup>
+                <optgroup label="Other">
+                    <option value="film006">Wrong thing</option>
+                 </optgroup>
+                </select>
+
+<!-----------------------------------------------====================Многозначный выпадающий список==================-------------------------------------------------------------->
+
+                <br />
+                <input type="submit" name="submit" value="Enter" />
+                <br />
+                <input type="reset" name="reset" value="Reset" />
+            </form>
+    </body>
+</html>

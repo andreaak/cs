@@ -1,0 +1,28 @@
+<!--
+input type="button" определяет кнопку, через атрибут onclick можно определить действие которое произойдет при клике по кнопке.
+-->
+
+<html>
+<head>
+    <title>Создание кнопок</title>
+</head>
+<body>
+    <form>
+        <br />
+        Enter your first name:
+        <input type="text" name="first_name" value="Ivan" />
+        <br />
+        Enter your second name:
+        <input type="text" name="sec_name" value="Ivanov" />
+        <br />
+        Enter your password:
+        <input type="password" name="password" />
+        <br />
+        <input type="submit" name="submit" value="Enter" />
+        <br />
+        <input type="reset" name="reset" value="Reset" />
+        <br />
+        <input type="button" name="button" value="Say hello" onclick="alert('hello world')" />
+    </form>
+</body>
+</html>

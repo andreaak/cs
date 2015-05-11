@@ -1,0 +1,60 @@
+﻿<!--
+
+            Цикл Дейкстры.
+
+-->
+
+<html>
+<head>
+    <title>Карта путешественника</title>
+
+    <script type="text/javascript">
+
+        var a;
+
+        for (; ;) {
+
+            a = prompt("Введите направление l/r/t/b");
+
+            switch (a) {
+                case 'l': // 'l' - охраняющее условие 1.
+                    {
+                        document.write("на лево <br />");    // охраняемая команда.
+                        continue;
+                    }
+                case 'r': // 'r' - охраняющее условие 2.
+                    {
+                        document.write("на право <br />");   // охраняемая команда.
+                        continue;
+                    }
+                case 't': // 'l' - охраняющее условие 1.
+                    {
+                        document.write("вверх <br />");    // охраняемая команда.
+                        continue;
+                    }
+                case 'b': // 'r' - охраняющее условие 2.
+                    {
+                        document.write("вниз <br />");   // охраняемая команда.
+                        continue;
+                    }
+                default:
+                    {
+                        exit = confirm("Выйти?");
+                        if (exit) {
+                            document.write("Вы завершили выполнение.");
+                            break;
+                        }
+                        else {
+                            continue;
+                        }
+                    }
+            }
+            break;  // Прерывание цикла.
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

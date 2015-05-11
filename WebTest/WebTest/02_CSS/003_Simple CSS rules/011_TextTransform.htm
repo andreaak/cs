@@ -1,0 +1,52 @@
+<!--
+text-transform - свойство, которое отвечает за преобразование текста. Может принимать следующие значения:
+
+1. none - текст не преобразуется
+2. capitalize - текст преобразуется таким образом, что все слова будут начинаться с большой буквы
+3. lowercase - текст будет преобразуется в нижний регистр
+4. uppercase - текст будет преобразуется в верхний регистр
+-->
+
+<html>
+    <head>
+        <title>Свойство text-transform</title>
+        <style type="text/css">
+            body
+            {
+	            color: #000000;
+	            background-color: #ffffff;
+	            font-family: arial, verdana, sans-serif;
+	            font-size: 12px;
+            }
+
+            p.none
+            {
+	            text-transform: none;
+            }
+            p.capitalize
+            {
+	            text-transform: capitalize;
+            }
+            p.uppercase
+            {
+	            text-transform: uppercase;
+            }
+            p.lowercase
+            {
+	            text-transform: lowercase;
+            }
+        </style>
+    </head>
+    <body>
+            <h1>
+                text-transform</h1>
+            <p class="none">
+                Нет трансформаций</p>
+            <p class="capitalize">
+                Все первые каждого слова буквы будут в верхнем регистре</p>
+            <p class="uppercase">
+                Все буквы будут в верхнем регистре</p>
+            <p class="lowercase">
+                ВСЕ БУКВЫ БУДУТ В НИЖНЕМ РЕГИСТРЕ</p>
+    </body>
+</html>

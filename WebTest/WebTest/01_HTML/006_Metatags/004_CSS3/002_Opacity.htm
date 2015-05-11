@@ -1,0 +1,46 @@
+﻿<html>
+    <head>
+        <title>Opacity Example</title>
+        <style type="text/css">
+        div
+        {
+            width:350px;
+            height:350px;
+        }
+   
+        #Globe-PNG
+        {
+            float:left;
+            background-image:url(img001/Globe-picture.jpg);
+        }
+        #Globe-PNG-Opacity
+        {
+            float:left;
+            background-image:url(img001/Globe-picture.png);
+        }
+    
+         #Globe
+        {
+            filter: alpha(opacity=60);
+            opacity: 0.6;
+            background-image:url(img001/Globe-picture.jpg);
+        }
+        #Globe:hover
+        { 
+            filter: alpha(opacity=100);
+            opacity: 1.0;
+        
+        }
+        </style>
+    </head>
+<body>
+
+<div id="Globe-PNG"></div>
+<div id="Globe-PNG-Opacity"></div>
+<div><hr width="800px" /></div>
+
+<div id="Globe"></div>
+    
+
+</body>
+</html>

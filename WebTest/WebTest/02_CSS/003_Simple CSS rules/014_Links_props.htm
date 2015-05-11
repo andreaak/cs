@@ -1,0 +1,39 @@
+<!--
+В CSS существуют специальные псевдо-свойства. Они описывают не сами элементы, а их состояние. Указываются после селектора 
+с префиксом ":".
+
+На примере ссылок рассматриваются следущие псевдо-свойства:
+
+1. hover - состояние, когда на элемент наведен курсор мыши
+2. visited - состояние ссылки, которая уже была посещена
+
+-->
+
+<html>
+<head>
+    <title>Тег Table</title>
+    <style type="text/css">
+      a { 
+            color: Silver;
+        }
+
+      a:visited 
+        {
+            color: Green;
+        }
+
+      a:hover 
+      {
+            color: red;
+      }
+    
+      </style>
+</head>
+<body>
+    <ul>
+        <li><a href="http://edu.cbsystematics.com/">Домашняя страница</a></li>
+        <li><a href="http://edu.cbsystematics.com/ru/courses/">Курсы</a></li>
+        <li><a href="http://edu.cbsystematics.com/ru/contacts/">Контакты</a></li>
+    </ul>
+</body>
+</html>

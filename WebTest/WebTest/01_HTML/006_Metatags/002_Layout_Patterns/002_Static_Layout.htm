@@ -1,0 +1,50 @@
+﻿<!--
+
+        Ширина при статической верстке определяется из расчета того, что по статистическим данным большинство пользователей 
+        используют мониторы с разрешением 1024х768 пикселей. Следовательно, для того, чтобы избежать появления горизонтальной полосы прокрутки 
+        и искажения дизайна, нужно в среднем брать ширину макета примерно 800-990 пикселей. 
+        Недостаток при таком методе верстки – это неэффективное использование свободной площади.
+
+-->
+
+<html>
+<head>
+    <title>Статическая верстка</title>
+
+    <style type="text/css">
+         body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        p.white {
+            color: whitesmoke;
+            margin: 0px;
+        }
+
+        div {
+            height: 100px;
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+
+</head>
+<body>
+    <div style="height: auto;">
+
+        <div style="background-color: navy">
+            <p class="white">TITLE</p>
+        </div>
+
+        <div>
+            <div style="width: 300px; background-color: Gray; float: left"></div>
+            <div style="width: 500px; background-color: whitesmoke; float: left"></div>
+        </div>
+
+        <div style="background-color: darkgreen">
+            <p class="white">FOOTER</p>
+        </div>
+    </div>
+</body>
+</html>

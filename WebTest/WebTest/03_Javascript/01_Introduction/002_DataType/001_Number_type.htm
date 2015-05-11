@@ -1,0 +1,40 @@
+﻿<!--
+
+    Все числа хранятся в формате float64 - 8 байт с плавающей точкой. 
+    В этом формате не всегда возможны точные вычисления.
+
+        Infinity
+        NaN - не число
+        Number.MAX_VALUE - максимально допустимое значение в JavaScript +9007199254740992
+        Number.MIN_VALUE - минимально допустимое значение в JavaScript -9007199254740992
+        Number.NaN - не число
+        Number.POSITIVE_INFINITY - + бессконечность 1.7976931348623157E+10308
+        Number.NEGATIVE_INFINITY - - бессконечность -1.7976931348623157E+10308
+
+-->
+
+<html>
+<head>
+    <title>Интеграция JavaScript</title>
+
+    <script type="text/javascript">
+
+        var a = 10;
+        var b = 0.8;
+        var c = a + b;
+
+        document.write("a + b = " + c + "<br/><hr/>");
+
+        document.write("Number.NaN = " + Number.NaN + "<br/>");
+        document.write("Number.MAX_VALUE = " + Number.MAX_VALUE + "<br/>");
+        document.write("Number.MIN_VALUE = " + Number.MIN_VALUE + "<br/>");
+        document.write("Number.POSITIVE_INFINITY = " + Number.POSITIVE_INFINITY + "<br/>");
+        document.write("Number.NEGATIVE_INFINITY = " + Number.NEGATIVE_INFINITY + "<br/>");
+
+    </script>
+
+</head>
+<body>
+    <!--Здесь располагается разметка-->
+</body>
+</html>

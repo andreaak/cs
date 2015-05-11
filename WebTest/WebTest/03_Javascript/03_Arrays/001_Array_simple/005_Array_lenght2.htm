@@ -1,0 +1,38 @@
+﻿<!--
+
+        Массив - обьект,  у которого имеется свойство length, 
+        это свойство хранит в себе длину массива.
+
+-->
+
+<html>
+<head>
+    <title>Длина массива, свойство length</title>
+
+    <script type="text/javascript">
+
+        // Длина массива = 5 элементов.
+        var array = ['h', 'e', 'l', 'l', 'o'];
+
+        // Массив увеличил свой размер на два элемента, новая длина - 7 элементов.
+        array.length = 7;
+
+        for (var i = 0; i < array.length; i++) {
+            document.write(array[i] + "<br />");
+        }
+
+        document.write("<hr />");
+
+        // Значения всех элементов, которые не попали в новую заданную длину массива, будут утеряны.
+        array.length = 2;
+
+        for (var i = 0; i < array.length; i++) {
+            document.write(array[i] + "<br />");
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

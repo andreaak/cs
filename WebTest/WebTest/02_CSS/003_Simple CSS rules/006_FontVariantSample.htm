@@ -1,0 +1,35 @@
+<!--
+    font-variant определяет, как нужно представлять строчные буквы,  принимая значение small-caps переводит символы 
+    в верхний регистр.
+-->
+
+<html>
+    <head>
+        <title>Свойство font-variant</title>
+        <style type="text/css">
+        body
+        {
+	        color: #000000;
+	        background-color: #ffffff;
+	        font-family: arial, verdana, sans-serif;
+	        font-size: 12px;
+        }
+
+        p
+        {
+	        font-variant:  normal;
+        }
+        span.smallcaps
+        {
+	        font-variant:   small-caps;
+        }
+        </style>
+    </head>
+    <body>
+            <h1>
+                font-variant</h1>
+            <p>
+                This is a normal font, but then <span class="smallcaps">there are some small caps</span>
+                in the middle.</p>
+    </body>
+</html>

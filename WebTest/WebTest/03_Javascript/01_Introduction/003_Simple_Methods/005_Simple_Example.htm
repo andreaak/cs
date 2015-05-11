@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+    <title>Пример применения методов</title>
+
+    <script type="text/javascript">
+
+        var x = prompt("Input x value ", "0"); // х - будет строкового типа
+        var y = prompt("Input y value ", "0"); // y - будет строкового типа
+        var result = x + y;
+        document.write(result + "<hr/>");
+
+        // Конвертация строкового значения в числовое:
+        // parseFloat() конвертация в вещественное значение.
+        // parseInt() конвертация в целочисленное значение.
+        // Данные функции возвращают значение NaN если конвертация не удалась.
+        var integerX = parseInt(x);
+        var integerY = parseInt(y);
+        result = integerX + integerY;
+        document.write(result);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

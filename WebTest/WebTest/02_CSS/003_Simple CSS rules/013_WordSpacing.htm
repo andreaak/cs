@@ -1,0 +1,42 @@
+<!--
+word-spacing - свойство, отвечающее за отступы между словами. Значение указывается в явной величине, при этом могут быть использованы 
+отрицательные значения.
+-->
+
+<html>
+    <head>
+        <title>Тег Table</title>
+        <style type="text/css">
+        body
+        {
+	        color: #000000;
+	        background-color: #ffffff;
+	        font-family: arial, verdana, sans-serif;
+	        font-size: 12px;
+        }
+
+        .one 
+        {
+          word-spacing: normal;               
+        }
+        
+        .two
+        {
+	        word-spacing: 20px;
+        }
+        .three
+        {
+	        word-spacing: -3px;
+        }
+        </style>
+    </head>
+    <body>
+            <h1>word-spacing</h1>
+            <p class="one">
+                Стандартный пробел между словами.</p>
+            <p class="two">
+                Пробел в 20px пикселей между каждым словом.</p>
+            <p class="three">
+                Между каждым словом пробел уменьшен на один пиксель.</p>
+    </body>
+</html>
