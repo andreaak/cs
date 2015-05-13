@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод each()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // function (index, element) - функция, которая будет вызвана для каждого элемента, где index - индекс текущего элемента, а element - текущий элемент. Можно использовать this.
+
+        $(function () {
+            $("div").each(function (index, element) {
+                $(element).css("background-color", "red");
+                if ($(element).is("#stop")) {
+                    // return false - прекратить перебор элементов
+                    return false;
+                }
+            });
+        });
+
+    </script>
+    <style>
+        div {
+            width: 30px;
+            height: 30px;
+            border: 1px solid red;
+            margin: 5px;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div id="stop">X</div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+</html>

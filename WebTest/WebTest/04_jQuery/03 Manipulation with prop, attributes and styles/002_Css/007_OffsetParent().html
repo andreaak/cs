@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод offsetParent()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод offsetParent() - возвращает ближайшего предка (т.е. из числа: родитель, прародитель, и так далее, до начало дерева DOM), у которого задан тип позиционирования (position равен relative или absolute или fixed). 
+        // Элементы с заданным позиционированием играют особую роль, поскольку именно относительно них происходит позиционирование всех элементов внутри.
+
+        $(function () {
+            $(".inner").offsetParent().css('background-color', 'yellow');
+        });
+
+    </script>
+    <style>
+        div {
+            border: 1px solid black;
+        }
+
+        .inner {
+            width: 30px;
+            height: 30px;
+            font-size: 20pt;
+            padding: 7px;
+            margin: 7px;
+            background-color: white;
+        }
+
+        .outer {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 15px;
+            background-color: white;
+        }
+
+        .wrap {
+            width: 60px;
+            height: 60px;
+            margin: 18px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="wrap">
+            <div class="inner">
+                B
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка по атрибутам.</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            /*
+                $("E[A^=V]") - соответствует элементам E с атрибутом A, который начинается с V.
+                $("E[A$=V]") - соответствует элементам E с атрибутом A, который заканчивается на V.
+                $("E[A*=V]") - соответствует элементам E с атрибутом A, который содержит V.
+            */
+
+            $("a[href^='http://']").css("color", "red");    // Выбор всех элементов "a", с атрибутом "href", который начинается c "http://"
+            $("a[href$='.com']").css("color", "blue");      // Выбор всех элементов "a", с атрибутом "href", который заканчивается на ".com"
+            $("a[href*='html']").css("color", "green");     // Выбор всех элементов "a", с атрибутом "href", который содержит "html"
+        });
+
+    </script>
+    <style>
+        span {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://edu.cbsystematics.com/video/ru">Видео обучение</a><br />
+    <a href="http://jquery.com">jQuery</a><br />
+    <a href="http://htmlbook.ru/">HTML-book</a>
+</body>
+</html>

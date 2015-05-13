@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка элементов с помощью jQuery</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // eq() - метод, который позволяет выбрать нужный элемент из массива по индексу.
+        jQuery(document).ready(function () {
+            $('p').eq(0).text("$('p') - выборка по имени тега");
+            $('[name = "input_background"]').css('background', 'yellow');
+            $('.bold_paragraph').css('fontWeight', 'bold');
+            $('#red_paragraph').css('color', 'red');
+        });
+
+    </script>
+</head>
+<body>
+    <p></p>
+    <input type="text" name="input_background" />
+    <p class="bold_paragraph"><u>$('.bold_paragraph')</u> - выборка по имени класса.</p>
+    <p id="red_paragraph"><u>$('#red_paragraph')</u> - выборка по идентификатору</p>
+</body>
+</html>

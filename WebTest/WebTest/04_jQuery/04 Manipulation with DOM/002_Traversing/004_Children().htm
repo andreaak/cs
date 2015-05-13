@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод children()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод children(selector) - получает набор элементов, содержащий всех прямых потомков для каждого совпавшего элемента.
+
+        $(function () {
+            $(".class1")
+                .children("p") // получить все дочерние элементы p для элемента с классом class1
+                .css("background-color", "Red");
+        });
+
+    </script>
+</head>
+<body>
+    <div class="class1">
+        <div>
+            <p>Lorem ipsum in div</p>
+        </div>
+        <p>
+            Lorem ipsum in paragraph
+        </p>
+    </div>
+</body>
+</html>

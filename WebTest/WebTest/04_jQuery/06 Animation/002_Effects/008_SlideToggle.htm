@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>SlidToggle sample</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод slideToggle() - переключает видимость всех совпавших элементов набора, используя эффект изменения высоты элементов.
+
+        $(function () {
+            $("#button1").click(function () {
+                $("p").slideToggle("slow");
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <p style="background-color: red">
+        Параграф №1.
+    </p>
+    <p style="background-color: yellow">
+        Параграф №2.
+    </p>
+    <p style="background-color: green">
+        Параграф №3.
+    </p>
+    <p style="background-color: aqua">
+        Параграф №4.
+    </p>
+    <p style="background-color: gray">
+        Параграф №5.
+    </p>
+    <input type="button" id="button1" value="Slide Down / Slide Up" />
+</body>
+</html>

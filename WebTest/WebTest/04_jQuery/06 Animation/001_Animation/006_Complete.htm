@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>call-back function</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // последний параметр функции animate() - функция, которая будет выполнена после завершения анимации.
+
+        $(function () {
+
+            $("div").animate(
+                {
+                    opacity: 0.25,
+                    marginLeft: '150px'
+                },
+                5000,
+                function () { // callback функция, которая будет вызвана по завершению анимации.
+                    alert("animation complete!!!");
+                });
+        });
+
+    </script>
+    <style>
+        div {
+            background-color: Green;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            color: White
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Test div
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Dialog - Modal confirmation</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/external/jquery.bgiframe-2.1.2.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.mouse.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.button.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.draggable.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.position.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.dialog.js"></script>
+    <script>
+
+        $(function () {
+            $("#dialog-confirm").dialog({
+
+                resizable: false,
+                height: 270,
+                width: 400,
+                modal: true,
+                buttons: {
+                    // определение первой кнопки
+                    "Удалить все элементы": function () {
+                        $(this).dialog("close");
+                    },
+                    // определение второй кнопки
+                    Cancel: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="dialog-confirm" title="Empty the recycle bin?">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Элементы будут безвозвратно удалены. Вы хотите продолжить?</p>
+    </div>
+</body>
+</html>

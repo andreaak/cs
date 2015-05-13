@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Методы .height() .innerHeight() .outerHeight([includeMargin])</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        /* Методы .height() .innerHeight() .outerHeight([includeMargin]) - все три функции возвращают высоту первого из выбранных элементов страницы.
+    
+        height() — высота элемента без учета внутренних отступов и толщины рамки.
+        innerHeight() — высота элемента с учетом размера внутренних отступов (padding).
+        outerHeight(includeMargin) — высота элемента с учетом внутренних отступов, рамки (border-width) и при необходимости внешних отступов (includeMargin == true) */
+
+        // .height(value) - устанавливает новое значение высоты равное value, для всех выбранных элементов.
+        // .height(function(index, value)) - устанавливает новое значение высоты элементов, равное значению, которое вернет пользовательская функция. Функция вызывается отдельно, для каждого из выбранных элементов. При вызове ей передаются следующие параметры: index — позиция элемента в наборе, value — текущее значение высоты элемента.
+
+        $(function () {
+            var a = "";
+            a += "heigh() - " + $("div").height() + "<br />";
+            a += "innerHeight() - " + $("div").innerHeight() + "<br />";
+            a += "outerHeight() - " + $("div").outerHeight() + "<br />";
+            a += "outerHeight(true) - " + $("div").outerHeight(true) + "<br />";
+            $("p").html(a);
+            //$("div").height(400);
+        });
+
+    </script>
+    <style>
+        div {
+            width: 300px;
+            background: green;
+            padding: 10px;
+            margin: 15px;
+            color: white;
+            border: 5px solid yellow;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquipa</div>
+    <p></p>
+</body>
+</html>

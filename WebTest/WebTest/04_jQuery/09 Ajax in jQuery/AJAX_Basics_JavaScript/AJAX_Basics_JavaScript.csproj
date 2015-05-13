@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C3794F90-BAC2-4B6F-B307-F9F8D329A938}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AJAX_Basics_JavaScript</RootNamespace>
+    <AssemblyName>AJAX_Basics_JavaScript</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Samples\001_XMLHttpRequest\01_SyncRequest.html" />
+    <Content Include="Samples\001_XMLHttpRequest\02_AsyncRequest.html" />
+    <Content Include="Samples\001_XMLHttpRequest\testfile.html" />
+    <Content Include="Samples\002_Ajax%28%29\001_ajax%28%29.html" />
+    <Content Include="Samples\002_Ajax%28%29\test2.html" />
+    <Content Include="Samples\002_Ajax%28%29\004_xml.html" />
+    <Content Include="Samples\002_Ajax%28%29\005_ajax%28xml%29.html" />
+    <Content Include="Samples\002_Ajax%28%29\006_load%28%29.htm" />
+    <Content Include="Samples\002_Ajax%28%29\000_ajaxSetup%28%29.html" />
+    <Content Include="Samples\002_Ajax%28%29\002_ajax%28%29.html" />
+    <Content Include="Samples\002_Ajax%28%29\JScript.js" />
+    <Content Include="Samples\002_Ajax%28%29\note.xml" />
+    <Content Include="Samples\002_Ajax%28%29\test.html" />
+    <Content Include="Samples\002_Ajax%28%29\jquery-1.8.1.js" />
+    <Content Include="Samples\002_Ajax%28%29\003_data.html" />
+    <Content Include="Samples\002_Ajax%28%29\test.js" />
+    <Content Include="Samples\003_Event\001_Events.html" />
+    <Content Include="Samples\003_Event\jquery-1.8.1.js" />
+    <Content Include="Samples\003_Event\test.html" />
+    <Content Include="Samples\005_JSON\001_JSON.html" />
+    <Content Include="Samples\005_JSON\002_ajax%28json%29.html" />
+    <Content Include="Samples\005_JSON\jquery-1.8.1.js" />
+    <Content Include="Samples\Task\jquery-1.8.1.js" />
+    <Content Include="Samples\005_JSON\HandlerObject.ashx" />
+    <Content Include="Samples\004_Aditional\001_param%28%29.html" />
+    <Content Include="Samples\004_Aditional\002_serialize%28%29.html" />
+    <Content Include="Samples\004_Aditional\003_serializeArray%28%29.html" />
+    <Content Include="Samples\004_Aditional\jquery-1.8.1.js" />
+    <Content Include="Samples\Task\HtmlPage3.html" />
+    <Content Include="Samples\Task\index.html" />
+    <Content Include="Samples\Task\HtmlPage2.html" />
+    <Content Include="Samples\Task\HtmlPage1.html" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Samples\005_JSON\HandlerObject.ashx.cs">
+      <DependentUpon>HandlerObject.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Samples\002_Ajax%28%29\HandlerData.ashx.cs">
+      <DependentUpon>HandlerData.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Samples\002_Ajax%28%29\HandlerData.ashx" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>14607</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>text()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        //Метод text() - получает содержимое текста каждого элемента в наборе соответствующих элементов, в том числе их потомков, или устанавливает текстовое содержимое элементов набора.
+
+        $(function () {
+
+            $("p").click(function () {
+                alert($(this).text());
+                //alert($(this).html());
+            });
+
+        });
+
+    </script>
+    <style>
+        p {
+            background-color: #bdb1c9;
+            color: White;
+            padding: 4px;
+            font-family: Verdana;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <b>Test</b> string 1
+    </p>
+    <p>
+        Test string 2
+    </p>
+</body>
+</html>

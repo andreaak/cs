@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Событие keyup</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // keyup() - создает обработчик на событие keyup для каждого элемента набора.
+
+        $(window).keyup(function (event) {
+            switch (event.keyCode) {
+                case 37: {
+                    alert("left poped");
+                }
+                    break;
+                case 38: {
+                    alert("up poped");
+                }
+                    break;
+                case 39: {
+                    alert("right poped");
+                }
+                    break;
+                case 40: {
+                    alert("down poped");
+                }
+                    break;
+            }
+        });
+
+    </script>
+</head>
+<body>
+</body>
+</html>

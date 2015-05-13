@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Получение значения атрибутов</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод attr() позволяет получить доступ к HTML атрибуту первого тэга на странице, который был выбран селектором.
+        // Если элемент не имеет такого атрибута, то возвращается значение undefined.
+        // Также есть возможность добавить новый атрибут с помощью даного метода.
+
+        $(function () {
+            // Получение значения атрибута style у первого элемента, который найден селектором "p"
+            var style = $("p").attr("style");
+
+            var p = $("#output");
+            p.text("<b>Значение атрибута \"style\"</b> - " + style);
+        });
+
+    </script>
+</head>
+<body>
+    <p style="color: blue; font-weight: bold;">
+        Test string
+    </p>
+    <div id="output">
+    </div>
+</body>
+</html>

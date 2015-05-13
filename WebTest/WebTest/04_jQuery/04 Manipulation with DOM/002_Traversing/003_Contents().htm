@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод contents()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод contents() - получает потомков каждого элемента в наборе соответствующих элементов, включая текстовые узлы и узлы комментариев.
+
+        $(function () {
+
+            //Превратим текстовые узлы внутри #content в параграфы (текстовые узлы: nodeType = 3)
+            $("#content").contents().filter(function () {
+                return this.nodeType === 3;
+            }).wrap("<p></p>");
+            //Покрасим выше созданные параграфы внутри #content в красный цвет.
+            $("#content p").css("color", "red");
+
+        });
+
+    </script>
+</head>
+<body>
+    <div id="content">
+        lorem ipsum
+        <span>lorem ipsum in span</span>
+    </div>
+</body>
+</html>

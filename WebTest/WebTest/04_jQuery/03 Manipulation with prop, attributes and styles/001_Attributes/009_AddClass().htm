@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод addClass()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод addClass() - добавляет класс(ы) к выбранным элементам страницы и не заменяет уже существующие. 
+        // .addClass("clName1 clName2 ...") - добавляет классы clName1, clName2, ... всем выбранным элементам.
+        // .addClass(function(index, class)) - добавляет классы, список которых возвращает заданная пользователем функция. Возвращаемое ей значение должно представлять из себя строку, с перечислением добавляемых классов через пробел. Функция вызывается отдельно для каждого из выбранных элементов. При вызове ей передаются следующие параметры: index — позиция элемента в наборе, class — текущий класс(ы) элемента.
+
+        $(function () {
+
+            // Добавление класса к элементам с идентификаторами First, Second и Third.
+            $("#First").addClass("testClassGreen");
+            $("#Second").addClass("testClassRed");
+            $("#Third").addClass("testClassBlue");
+
+        });
+
+    </script>
+
+    <style>
+        .testClassGreen {
+            color: Green;
+        }
+
+        .testClassRed {
+            color: Red;
+        }
+
+        .testClassBlue {
+            color: Blue;
+        }
+    </style>
+</head>
+<body>
+    <p id="First">
+        Test string 1
+    </p>
+    <p id="Second">
+        Test string 2
+    </p>
+    <p id="Third">
+        Test string 3
+    </p>
+</body>
+</html>

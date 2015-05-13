@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка по атрибутам.</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            // $("E[A=V]") - соответствует элементам E с атрибутом A, который равен V.
+
+            // Выбор всех элементов "a", с атрибутом "target", имеющим значение text.
+
+            // Метод val() - метод, который позволяет получить значение атрибута "value" первого элемента в наборе соответствующих селектору элементов или установить новое значение (переданное в качестве аргумента) для всех елементов, подходящих под выборку.
+
+            $("input[type=text]").val("admin");
+
+        });
+
+    </script>
+    <style>
+        span {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <span>Логин:</span><input type="text" /><br />
+    <span>Пароль:</span><input type="password" />
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Событие keypress</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // keypress - событие, которое возникает при нажатии символьной клавиши клавиатуры (не срабатывает для функциональных клавиш (Shift, Ctrl, Alt и т.д.)
+
+        $(window).keypress(function (event) {
+            alert(String.fromCharCode(event.charCode) + "(" + event.charCode + ")");
+        });
+
+    </script>
+</head>
+<body>
+</body>
+</html>

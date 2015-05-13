@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор четных и нечетных элементов</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // $("E:even"); - выбор всех четных по значению индекса элементов.
+        // $("E:odd"); - выбор всех нечетных по значению элементов.
+
+        $(function () {
+            $("p:even").css("background-color", "red");
+            //$("p:odd").css("background-color", "red");
+        });
+
+    </script>
+    <style>
+        body {
+            background-color: #44e3ff;
+            color: #fff;
+        }
+
+        p {
+            padding: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <p>Параграф 0</p>
+    <p>Параграф 1</p>
+    <p>Параграф 2</p>
+    <p>Параграф 3</p>
+    <p>Параграф 4</p>
+    <p>Параграф 5</p>
+    <p>Параграф 6</p>
+    <p>Параграф 7</p>
+    <p>Параграф 8</p>
+</body>
+</html>

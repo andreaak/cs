@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Effects - Effect demo</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-blind.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-bounce.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-clip.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-drop.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-explode.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-fade.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-fold.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-highlight.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-pulsate.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-scale.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-shake.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-slide.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.effect-transfer.js"></script>
+    <script>
+
+        $(function () {
+            function runEffect() {
+                // чтение имени эффекта
+                var selectedEffect = $("#effectTypes").val();
+
+                var options = {};
+
+                if (selectedEffect === "scale") {
+                    options = { percent: 0 };
+                } else if (selectedEffect === "transfer") {
+                    options = { to: "#button", className: "ui-effects-transfer" };
+                } else if (selectedEffect === "size") {
+                    options = { to: { width: 200, height: 60 } };
+                }
+                // применение эффекта
+                $("#effect").effect(selectedEffect, options, 500, callback);
+            };
+
+            // функция, которая вызывается по завершению эффекта
+            function callback() {
+                setTimeout(function () {
+                    $("#effect").removeAttr("style").hide().fadeIn();
+                }, 1000);
+            };
+
+            $("#button").click(function () {
+                runEffect();
+                return false;
+            });
+        });
+
+    </script>
+    <style>
+        .toggler {
+            width: 500px;
+            height: 200px;
+            position: relative;
+        }
+
+        #button {
+            padding: .5em 1em;
+            text-decoration: none;
+        }
+
+        #effect {
+            width: 240px;
+            height: 135px;
+            padding: 0.4em;
+            position: relative;
+        }
+
+            #effect h3 {
+                margin: 0;
+                padding: 0.4em;
+                text-align: center;
+            }
+
+        .ui-effects-transfer {
+            border: 2px dotted gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="toggler">
+        <div id="effect" class="ui-widget-content ui-corner-all">
+            <h3 class="ui-widget-header ui-corner-all">Effect</h3>
+            <p>
+                Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.
+            </p>
+        </div>
+    </div>
+    <select name="effects" id="effectTypes">
+        <option value="blind">Blind</option>
+        <option value="bounce">Bounce</option>
+        <option value="clip">Clip</option>
+        <option value="drop">Drop</option>
+        <option value="explode">Explode</option>
+        <option value="fade">Fade</option>
+        <option value="fold">Fold</option>
+        <option value="highlight">Highlight</option>
+        <option value="puff">Puff</option>
+        <option value="pulsate">Pulsate</option>
+        <option value="scale">Scale</option>
+        <option value="shake">Shake</option>
+        <option value="size">Size</option>
+        <option value="slide">Slide</option>
+        <option value="transfer">Transfer</option>
+    </select>
+    <a href="#" id="button" class="ui-state-default ui-corner-all">Run Effect</a>
+</body>
+</html>

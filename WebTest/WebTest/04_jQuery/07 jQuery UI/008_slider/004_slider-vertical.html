@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Slider - Vertical slider</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.mouse.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.slider.js"></script>
+    <script>
+
+        $(function () {
+            $("#slider-vertical").slider({
+                orientation: "vertical", // создание вертикального слайдера
+                range: "min",
+                min: 0,
+                max: 100,
+                value: 60,
+                slide: function (event, ui) {
+                    $("#amount").val(ui.value);
+                }
+            });
+
+            $("#amount").val($("#slider-vertical").slider("value"));
+        });
+
+    </script>
+</head>
+<body>
+    <p>
+        <label for="amount">Volume:</label>
+        <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+    </p>
+    <div id="slider-vertical" style="height: 200px;"></div>
+</body>
+</html>

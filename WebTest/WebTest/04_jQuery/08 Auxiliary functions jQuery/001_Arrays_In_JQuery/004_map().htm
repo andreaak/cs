@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод map()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод map(array, function) -  преобразование массива или объекта в новый массив.
+        // array - массив для преобразования
+        // function - функция для выполнения преобразования значений
+
+        // Оригинальный массив остается прежним.
+
+        $(function () {
+
+            var arr = ["Alex", "Max", "Corwin", "Daniel", "Den"];
+            $("div").text(arr.join(", "));
+
+            arr = $.map(arr, function (element, index) {
+                return (element.toUpperCase() + index);
+            });
+            $("p").text(arr.join(", "));
+
+            arr = $.map(arr, function (element) {
+                return element + element;
+            });
+            $("span").text(arr.join(", "));
+
+        });
+
+    </script>
+    <style>
+        p {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <p></p>
+    <span></span>
+</body>
+</html>

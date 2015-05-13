@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод add(selector)</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод add(selector) - добавляет в уже существующий набор дополнительные элементы, которые соответсвуют указанному выражению.
+
+        $(function () {
+            $("p") // получаем все параграфы
+                .add("span") // добавляем к выборке span
+                .css("background-color", "Red");
+        });
+
+    </script>
+    <style>
+        body {
+            background-color: Silver;
+            color: White;
+        }
+
+        p {
+            padding: 10px;
+            font-weight: bold;
+            background-color: Gray;
+        }
+    </style>
+</head>
+<body>
+
+    <p>Test paragraph 1</p>
+
+    <p>Test paragraph 2</p>
+
+    <p>Test paragraph 3</p>
+
+    <p>Test paragraph 4</p>
+
+    <span>First Span</span>
+
+    <span>Second Span</span>
+
+</body>
+</html>

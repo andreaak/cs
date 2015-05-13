@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор прямых потомков.</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            // $("E > F") - соответствует всем элементам с именем тега F, являющимися прямыми потомками элементов с именем тега E.
+
+            // Выбор всех элементов "span", являющимися прямыми потомками элементов "div".
+
+            $("div > span").css("color", "red");
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>Paragraph in body</p>
+    <div>
+        <p>Paragraph in div with <span>SPAN</span></p>
+        <span>First single SPAN</span>
+        <ul>
+            <li><span>Item 1 in SPAN</span></li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+        <span>Second single SPAN</span>
+    </div>
+    <div>
+        <span>Third single SPAN</span>
+    </div>
+</body>
+</html>

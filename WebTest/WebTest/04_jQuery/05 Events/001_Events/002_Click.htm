@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Событие click</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // click() - добавляет обработчик на JavaScript событие "click"
+
+        // click(function) - добавляет функцию к событию click для каждого элемента набора. 
+        // click() рассматривается как mousedown и mouseup, следующие друг за другом на одном и том же элементе.
+
+        $(function () {
+
+            $("p").click(function () { alert("clicked"); });
+
+            $("#button").click(function () { $("p").click() });
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>Параграф №1</p>
+    <p>Параграф №2</p>
+    <p>Параграф №3</p>
+    <input type="button" id="button" value="push me" />
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод data()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // data - добавляет или считывает дополнительные данные элемента.
+
+        $(function () {
+
+            // добавление к каждому параграфу доп. данных по ключу name
+            $("p").eq(0).data("name", "first paragraph");
+            $("p").eq(1).data("name", "second paragraph");
+            $("p").eq(2).data("name", "thrid paragraph");
+            $("p").eq(3).data("name", "fourth paragraph");
+            $("p").eq(4).data("name", "fifth paragraph");
+
+
+            $("p").click(function () {
+                // чтение данных по ключу name из кликнутого параграфа
+                var d = $(this).data("name");
+                $("span").text(d);
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+    <p>Параграф №1</p>
+    <p>Параграф №2</p>
+    <p>Параграф №3</p>
+    <p>Параграф №4</p>
+    <p>Параграф №5</p>
+    <span></span>
+</body>
+</html>

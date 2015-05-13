@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка по имени класса</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            // $("E.C) - соответствует всем элементам E с именем класса C. При отсутствии E эквивалентен селектору *.C
+
+            // Выбор всех элементов "p" с именем класса "red".
+
+            $("p.red").css("color", "red");
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>Paragraph in body.</p>
+    <p class="red">Paragraph in body with class.</p>
+</body>
+</html>

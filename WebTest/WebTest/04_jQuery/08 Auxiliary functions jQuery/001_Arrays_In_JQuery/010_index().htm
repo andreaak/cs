@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод index()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+
+            $("div").click(function () {
+
+                // Метод index() - производит поиск среди выбранных элементов и возвращает индекс найденого элемента. Отсчет начинается с нуля. 
+
+                var index = $("div").index(this);
+                $("span").text("That was div index #" + index);
+            });
+
+        });
+
+    </script>
+    <style>
+        div {
+            background: yellow;
+            margin: 5px;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <span>Click a div!</span>
+    <div>First div</div>
+    <div>Second div</div>
+    <div>Third div</div>
+</body>
+</html>

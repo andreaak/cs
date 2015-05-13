@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод off()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод off(событие, обработчик) - удаляет с выбранных элементов страницы обработчики событий, установленные с помощью метода .on().
+
+        $(function () {
+
+            function show() {
+                alert('Hello world');
+            }
+
+            function remove() {
+                $("#first").off('click', show);
+            }
+
+            $("#first").on('click',show);
+            $("#second").on('click', remove);
+
+        });
+
+    </script>
+</head>
+<body>
+
+    <input type="button" value="on" id="first" />
+    <input type="button" value="off" id="second" />
+
+</body>
+</html>

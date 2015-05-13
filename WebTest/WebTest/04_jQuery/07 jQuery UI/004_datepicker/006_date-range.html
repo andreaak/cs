@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Datepicker - Select a Date Range</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.datepicker.js"></script>
+    <script>
+
+        $(function () {
+            $("#from").datepicker({
+                defaultDate: "+1w",             // дата по умолчанию + 1 неделя
+                changeMonth: true,              // есть возможность менять месяц с помощью выпадающего списка
+                // при смене выбранной даты находим второй datepicker и устанавливаем минимальную дату, равную выбранной
+                onSelect: function (selectedDate) {
+                    $("#to").datepicker("option", "minDate", selectedDate);
+                }
+            });
+            $("#to").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                // при смене выбранной даты находим первый datepicker и устанавливаем максимальную дату, равную выбранной
+                onSelect: function (selectedDate) {
+                    $("#from").datepicker("option", "maxDate", selectedDate);
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <label for="from">From</label>
+    <input type="text" id="from" name="from" />
+    <label for="to">to</label>
+    <input type="text" id="to" name="to" />
+    <div>
+        <p>Введите диапазон дат</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Accordion - Fill space</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.mouse.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.resizable.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.accordion.js"></script>
+    <script>
+
+        // resizable - разширение библиотеки JQuery, которое позвол€ет измен€ть размер элемента при помощи мыши http://jqueryui.com/resizable/. ƒополнительно нужно подключить планин jquery.ui.mouse.js
+
+        $(function () {
+            $("#accordion").accordion({
+                // определение поведени€ секции по высоте
+                heightStyle: "fill"
+            });
+
+            // јккордеон состоит из блочных элементов. ѕо умолчанию его ширина заполн€ет все доступное пространство по горизонтали. 
+            // ƒл€ заполнени€ вертикального пространства, выделенного в его контейнере, установите свойство heightStyle в "fill" 
+            // и скрипт будет автоматически устанавливать размеры аккордеона по высоте своего родительского контейнера.
+            
+            $("#accordion-resizer").resizable({
+                minheight: 140,
+                minwidth: 200,
+                resize: function () {
+                    $("#accordion").accordion("refresh");
+                }
+            });
+        });
+
+    </script>
+    <style>
+        #accordion-resizer {
+            padding: 10px;
+            width: 350px;
+            height: 220px;
+        }
+    </style>
+</head>
+<body>
+    <h3 class="docs">Ќачните измен€ть размер контейнера:</h3>
+    <div id="accordion-resizer" class="ui-widget-content">
+        <div id="accordion">
+            <h3>Section 1</h3>
+            <div>
+                <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+            </div>
+            <h3>Section 2</h3>
+            <div>
+                <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna. </p>
+            </div>
+            <h3>Section 3</h3>
+            <div>
+                <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui. </p>
+                <ul>
+                    <li>List item one</li>
+                    <li>List item two</li>
+                    <li>List item three</li>
+                </ul>
+            </div>
+            <h3>Section 4</h3>
+            <div>
+                <p>Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est. </p>
+                <p>Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

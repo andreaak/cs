@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод on()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод on(событие, обработчик) используется для привязки обработчиков на события к объекту или объектам.
+        // Также есть возможность передавать дополнительные данные в виде объектов.
+
+        $(function () {
+
+            function user_info(event) {
+                $('#out').html("Login: " + event.data.login + "<br />" + "Password: " + event.data.password);
+            }
+
+            // Создание и передача дополнительных данных в виде объектов
+
+            var access = { login: 'admin', password: '12345' };
+
+            $('#button').on('click', access, user_info);
+        });
+
+    </script>
+</head>
+<body>
+    <p id="out"></p>
+    <input type="button" id="button" value="click me" />
+</body>
+</html>

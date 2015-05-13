@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html
+<html>
+<head>
+    <title>Метод grep()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод grep(array, callback, invert) - находит элементы массива, которые удовлетваряют условию.
+        // array - массив в котором необходимо производить поиск
+        // callback - функция, которая выполняет проверку
+        // invert(true/false) - invert: если параметр "invert" указан как false, либо вообще не указан, функция вернет массив состоящий из всех элементов для которых функция "callback" вернула true. Если "invert" указана как true, функция вернёт массив состоящий из всех элементов для которых функция "callback" вернула false. 
+
+        // Оригинальный массив остается прежним.
+
+
+        $(function () {
+
+            var arr = [1, 5, 9, 3, 8, 6, 1, 5, 9, 4, 7, 3, 8, 6, 9, 1];
+            $("div").text(arr.join(", "));
+
+            arr = $.grep(arr, function (element, index) {
+                // выбрать все элементы которые не равны 5 и индекс которых больше 4
+                return (element !== 5 && index > 4);
+            });
+
+            $("p").text(arr.join(", "));
+
+            arr = $.grep(arr, function (element) {
+                // все элементы не равные 9
+                return element !== 9;
+            });
+
+            $("span").text(arr.join(", "));
+        });
+
+    </script>
+    <style>
+        p {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <p></p>
+    <span></span>
+</body>
+</html>
