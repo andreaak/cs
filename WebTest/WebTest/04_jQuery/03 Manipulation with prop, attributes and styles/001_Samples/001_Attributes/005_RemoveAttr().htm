@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод removeAttr()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод removeAttr() - удаляет указаный атрибут элемента.
+
+        $(function () {
+            // Удаление атрибута style у всех нечетных элементов <p>
+            $("p:odd").removeAttr("style");
+        });
+
+    </script>
+</head>
+<body>
+    <p style="color: Blue;">
+        Test string 1
+    </p>
+    <p style="color: Blue;">
+        Test string 2
+    </p>
+    <p style="color: Blue;">
+        Test string 3
+    </p>
+    <p style="color: Blue;">
+        Test string 4
+    </p>
+</body>
+</html>

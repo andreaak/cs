@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Создание баннера</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+            $("button[data-url]").click(function () {
+                var img = $(this).data('url');
+                changeImage(img);
+            });
+
+            function changeImage(img) {
+                $("img").attr("src", img);
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <img src="html.jpg" width="500" height="300" />
+    <br />
+    <button data-url="html.jpg">1</button>
+    <button data-url="html5.jpg">2</button>
+    <button data-url="jq.jpg">3</button>
+</body>
+</html>

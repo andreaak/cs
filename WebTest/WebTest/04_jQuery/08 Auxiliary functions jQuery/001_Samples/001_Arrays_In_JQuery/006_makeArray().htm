@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод .makeArray()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+
+            //$.makeArray(obj) - преобразовывает массиво-подобный объект с выбранными элементами в обычный массив
+            
+            var arr = $.makeArray($("p"));
+            arr.reverse();
+            $(arr).appendTo(document.body);
+
+        });
+
+    </script>
+    <style>
+        p {
+            color: Blue;
+        }
+    </style>
+</head>
+<body>
+    <p>Параграф №1</p>
+    <p>Параграф №2</p>
+    <p>Параграф №3</p>
+    <p>Параграф №4</p>
+    <p>Параграф №5</p>
+    <p>Параграф №6</p>
+    <p>Параграф №7</p>
+    <p>Параграф №8</p>
+    <p>Параграф №9</p>
+    <p>Параграф №10</p>
+
+</body>
+</html>

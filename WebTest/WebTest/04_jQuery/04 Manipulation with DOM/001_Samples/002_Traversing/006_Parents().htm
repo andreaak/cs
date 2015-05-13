@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод parents()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        /* parents() - выбирает все родительские элементы (узлы) для ранее выбраных элементов. Принимает в качестве аргумента 
+        дополнительный фильтр-селектор.*/
+
+        $(function () {
+            $("span")
+                .parents("div")
+                .css("background-color", "Yellow");
+
+            //$("span")
+            //    .parents()
+            //    .css("background-color", "Yellow");
+        });
+
+    </script>
+    <style>
+        .row {
+            background-color: red;
+            border: 1px solid black;
+            width: 255px;
+            height: 125px;
+        }
+
+        .table {
+            background-color: green;
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="table"><span>span</span></div>
+        <div class="table"><span>span</span></div>
+    </div>
+    <div class="row">
+        <div class="table"><span>span</span></div>
+        <div class="table"><span>span</span></div>
+    </div>
+</body>
+</html>

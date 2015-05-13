@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод removeClass()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод removeClass() - удаляет заданные классы у элементов на странице.
+        // .removeClass() - удаляет все классы у выбранных элементов.
+        // .removeClass("class1 class2 ...") - удаляет классы class1, class2, ... у выбранных элементов.
+        // .removeClass(function(index, class)) - удаляет классы, список которых возвращает заданная пользователем функция. Возвращаемое ей значение должно представлять из себя строку с перечислением классов через пробел. Функция вызывается отдельно для каждого из выбранных элементов. При вызове ей передаются следующие параметры: index — позиция элемента в наборе, class — текущий класс(ы) элемента.
+
+        $(function () {
+
+            $(".class1").removeClass("class1");
+
+        });
+
+    </script>
+    <style>
+        .class1 {
+            color: Green;
+        }
+
+        .class2 {
+            color: Red;
+        }
+
+        .class3 {
+            color: Blue;
+        }
+    </style>
+</head>
+<body>
+    <p class="class1">
+        Test string 1
+    </p>
+    <p class="class2">
+        Test string 2
+    </p>
+    <p class="class3">
+        Test string 3
+    </p>
+</body>
+</html>

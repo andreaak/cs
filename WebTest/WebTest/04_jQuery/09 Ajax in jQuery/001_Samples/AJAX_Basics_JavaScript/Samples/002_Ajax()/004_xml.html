@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="jquery-1.8.1.js"></script>
+    <script>
+        window.onload = function () {
+
+            function send() {
+                var xhr;
+
+                if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                    xhr = new XMLHttpRequest();
+                }
+                else {// code for IE6, IE5
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xhr.open("GET", "note.xml", false);
+                xhr.send(); // отправка запроса и ожидание ответа
+
+                return xhr.responseXML;
+            }
+
+            function print(xmlDoc) {
+                var div1 = document.getElementById("to"),
+                div2 = document.getElementById("from"),
+                div3 = document.getElementById("message"),
+
+                toElement = xmlDoc.getElementsByTagName("to"),
+                fromElement = xmlDoc.getElementsByTagName("from"),
+                messageElement = xmlDoc.getElementsByTagName("body");
+
+
+                div1.innerHTML += toElement[0].childNodes[0].nodeValue;
+                div2.innerHTML += fromElement[0].childNodes[0].nodeValue;
+                div3.innerHTML += messageElement[0].childNodes[0].nodeValue;
+            }
+
+            document.getElementById("sendRequest").onclick = function () {
+                var response = send();
+                print(response);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="to"><b>To:</b> </div>
+    <div id="from"><b>From:</b> </div>
+    <div id="message"><b>Message:</b> </div>
+    <button id="sendRequest">Запрос</button>
+</body>
+</html>

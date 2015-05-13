@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Media Queries</title>
+    <style>
+        /* Для дисплея с разрешением меньше 600 пикселей */
+        @media screen and (max-width: 600px) {
+            body {
+                background: red;
+            }
+        }
+        /* или вариант с подключением отдельного файла CSS для разрешения меньше 600 пикселей 
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="small.css" /> */
+
+        /* Для дисплея с разрешением больше 900 пискелей */
+        @media screen and (min-width: 900px) {
+            body {
+                background: green;
+            }
+        }
+
+        /* Для дисплея с разрешением больше 600 пикселей и меньше 900 */
+        @media screen and (min-width: 600px) and (max-width: 900px) {
+            body {
+                background: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+

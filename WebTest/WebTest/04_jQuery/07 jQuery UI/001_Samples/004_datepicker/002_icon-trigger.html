@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Datepicker - Icon trigger</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.datepicker.js"></script>
+    <script>
+
+        $(function () {
+            $("#datepicker").datepicker({
+                // настройки для виджета datepicker
+                showOn: "button",                       // Отображать при нажатии на кнопку. Возможные значения (focus, button, both)
+                buttonImage: "images/calendar.gif",     // Путь к картинке, которая будет отображаться на кнопке
+                buttonImageOnly: true                   // true - не отображать кнопку, отображать только изображение. Работает только тогда, когда установлен параметр buttonImage
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <p>
+        Date:
+        <input type="text" id="datepicker">
+    </p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Dialog - Basic modal</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.mouse.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.draggable.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.position.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.resizable.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.dialog.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.button.js"></script>
+    <script>
+
+        $(function () {
+
+            $("#dialog-modal").dialog({
+                height: 140, // определение высоты окна
+                modal: true  // окно будет модальным - доступ к элементам, которые находяться под окном, будет открыт только полсе закрытия самого окна.
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="dialog-modal" title="Basic modal dialog">
+        <p>При отображении модального диалогового окна страница затемняется.</p>
+    </div>
+</body>
+</html>

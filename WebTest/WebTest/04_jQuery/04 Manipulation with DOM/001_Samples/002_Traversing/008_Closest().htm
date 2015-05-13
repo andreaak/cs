@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод closest()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод closest() - получает набор, содержащий ближайшие родительский элемент, которые соответствуют указанному селектору.
+
+        $(function () {
+
+            $("span").on("click", function () {
+                $(this).closest("div").toggleClass("hilight");
+            });
+
+        });
+
+    </script>
+    <style>
+        .outer {
+            padding: 20px;
+            background: red;
+        }
+        .inner {
+            padding: 20px;
+            background: yellow;
+        }
+        p {
+            padding: 5px;
+            background: green;
+        }
+        span {
+            background: pink;
+        }
+        .hilight {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">
+            <p>
+                <span>Show closest div</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

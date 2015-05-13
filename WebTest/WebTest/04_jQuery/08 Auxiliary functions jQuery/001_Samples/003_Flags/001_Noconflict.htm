@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод noConflict()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // jQuery.noConflict() - отказываемся от использования переменной $ как объекта-контейнера для функциональности jQuery.
+        // данный подход часто используется для того, чтобы решить конфликты при исползовании других JavaScript библиотек вместе с jQuery.
+
+        $(function () {
+            var newJ = jQuery.noConflict();
+            newJ("#div1").css("background-color", "green");
+            jQuery("#div2").css("background-color", "green"); // Глобальная переменная jQuery продолжает работать
+            $("#div3").css("background-color", "green"); // Глобальная переменная $ перестает использоваться полсе вызова noConflict
+        });
+
+    </script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+</body>
+</html>

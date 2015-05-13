@@ -1,0 +1,139 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
+    text-align: justify;
+    font-size: 12px;
+}
+
+
+h1, h2, h3 
+{
+    font-weight: normal;        
+}
+
+h1 {
+    font-size: 26px;
+ }
+
+h1, h3 
+{
+    text-align: center;      
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+ }
+
+h3 {
+    font-size: 15px;
+ }
+
+#main, section, footer {
+    width: 1000px;
+    margin: auto;
+}
+
+section 
+{
+    position: relative;
+}
+
+#main {
+    margin-top: 10px;
+}
+
+#main, footer {
+    height: 60px;
+    background: #f2dab3;
+    padding-top: 20px;
+}
+
+nav {
+    width: 270px;
+    background: lightblue;
+    height: 100%;
+    border-right: 1px solid;
+    padding: 0 10px 0 10px;
+    position: absolute;
+    left: 0;
+}
+
+nav h2 {
+    margin-top: 10px;
+}
+
+input {
+    padding: 3px;
+    margin-bottom: 5px;
+    font-size: 11px;
+    width: 270px;
+    text-align: center;
+}
+
+article {
+    width: 689px;
+    background: lightgrey;
+    padding: 10px;
+    margin-left: 291px;
+}
+
+ul {
+    margin: 30px 50px;
+    width: 150px;
+}
+
+article p{
+    margin-bottom: 10px;
+}
+
+.cat_1 
+{
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+.underline 
+{
+    text-decoration: underline;
+}
+
+.blocks 
+{
+        width: 260px;
+        padding: 10px;
+        height: 60px;
+        background: green;
+}
+
+    .blocks > div {
+        width: 100px;
+        padding: 10px;
+        height: 40px;
+        background: yellow;
+        float: left;
+        -moz-transition: background 0.7s;
+        -o-transition: background 0.7s;
+        -webkit-transition: background 0.7s;
+        transition: background 0.7s;
+    }
+
+.blocks > div:nth-child(2) 
+{
+    margin-left: 20px;
+}
+
+.blocks > div > div
+{
+        width: 80px;
+        padding: 10px;
+        height: 20px;
+        background: grey;
+        float: left;
+}
+
+footer 
+{
+    margin-bottom: 10px;
+}

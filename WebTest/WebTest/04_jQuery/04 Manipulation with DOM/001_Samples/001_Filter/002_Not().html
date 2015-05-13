@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод not()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод not(n) исключает из набора те элементы, которые соответствуют селектору 'n'.
+
+        $(function () {
+
+            $('li').not(':eq(2)').css("color","red");
+
+        });
+
+    </script>
+</head>
+<body>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+</body>
+</html>

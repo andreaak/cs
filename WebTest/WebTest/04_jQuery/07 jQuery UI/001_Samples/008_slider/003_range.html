@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Slider - Range slider</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.mouse.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.slider.js"></script>
+    <link rel="stylesheet" href="../demos.css">
+    <script>
+
+        $(function () {
+            $("#slider-range").slider({
+                range: true, // данный слайдер будет использоваться для указания диапазона
+                min: 0,
+                max: 500,
+                // стартовые значения: первая каретка на позиции 75, вторая - 300
+                values: [75, 300],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
+
+            // .slider("values", 0) - получение позиции соответствующей каретки
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+               " - $" + $("#slider-range").slider("values", 1));
+        });
+
+    </script>
+</head>
+<body>
+    <p>
+        Price range:
+        <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+    </p>
+    <div id="slider-range"></div>
+</body>
+</html>
+

@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод slice(start,end) </title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // slice(start,end) - выделяет подмножество из набора совпавших элементов.
+        // Ведет себя точно так же как и встроенный метод разделения массивов.
+        // Выделение подмножества начинается с индекса "start" (включительно) по индекс "end" (не включительно).
+
+        $(function () {
+            $("#btn1").click(function () {
+                $("p").css("background-color", "green");
+                $("p")
+                    .slice(0, 3)
+                    .css("background-color", "red");
+            });
+
+            $("#btn2").click(function () {
+                $("p").css("background-color", "green");
+                $("p")
+                    .slice(2, 4)
+                    .css("background-color", "red");
+            });
+
+            $("#btn3").click(function () {
+                $("p").css("background-color", "green");
+                $("p")
+                    .slice(3)
+                    .css("background-color", "red");
+            });
+
+            $("#btn4").click(function () {
+                $("p").css("background-color", "green");
+                $("p")
+                    .slice(3, -3)
+                    .css("background-color", "red");
+            });
+        });
+
+    </script>
+    <style>
+        body {
+            color: White;
+        }
+        p {
+            padding: 10px;
+            font-weight: bold;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn1">slice (0, 3)</button>
+    <button id="btn2">slice (2, 4)</button>
+    <button id="btn3">slice (3)</button>
+    <button id="btn4">slice (3, -3)</button>
+
+    <p>Test paragraph 1</p>
+
+    <p>Test paragraph 2</p>
+
+    <p>Test paragraph 3</p>
+
+    <p>Test paragraph 4</p>
+
+    <p>Test paragraph 5</p>
+
+    <p>Test paragraph 6</p>
+
+    <p>Test paragraph 7</p>
+
+    <p>Test paragraph 8</p>
+
+    <p>Test paragraph 9</p>
+
+</body>
+</html>

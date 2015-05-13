@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтр :empty. Пример.</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+            $(".one tr:nth-child(even)").css("background-color", "lightblue");
+            $(".one tr td:empty")
+                .css("background-color", "red")
+                .text("Данные не получены");
+        });
+
+    </script>
+    <style>
+        .one {
+            border: 1px solid;
+            border-collapse: collapse;
+            width: 300px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+            td, th {
+                border: 1px solid;
+            }
+    </style>
+</head>
+<body>
+    <table class="one">
+        <caption>Рейтинг основных языков разработки (январь 2013)</caption>
+        <tr>
+            <th>Место</th>
+            <th>Язык</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Java</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>C#</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>PHP</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>C++</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td></td>
+            <!-- Пустая ячейка -->
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>JavaScript</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Objective-C</td>
+        </tr>
+    </table>
+</body>
+</html>

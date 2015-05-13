@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтр атрибутов</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // $("E[AttrName~='value']"); - выбор всех элементов E с атрибутом AttrName содержащим value в списке значений, разделенных пробелом
+
+        $(function () {
+
+            $("img[alt~='new']").css("border", "4px solid #005cf2");
+
+        });
+
+    </script>
+</head>
+<body>
+    <img src="images/cat.jpg" alt="new_cat" />
+    <img src="images/cat.jpg" alt="new cat" />
+    <img src="images/cat.jpg" alt="new-cat" />
+</body>
+</html>

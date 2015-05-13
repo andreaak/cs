@@ -1,0 +1,85 @@
+﻿@main-color: green;
+@base-font-size: 13px;
+
+body {
+    font-family: 'Segoe UI' Tahoma;
+    font-size: @base-font-size;
+    /* 
+         Проблема при использовании одного и того же цвета для нескольких элементов на странице
+         В данном примере для body и для header.
+
+         РЕШЕНА С ПОМОЩЬЮ LESS
+     */
+    background-color: @main-color;
+}
+
+.setBorderBox() {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#main {
+    margin: 20px auto;
+    width: 600px;
+    border-radius: 4px;
+    background-color: white;
+    padding: 10px;
+    /* 
+        Свойства с префиксами не удобно редактировать 
+        
+        РЕШЕНА С ПОМОЩЬЮ LESS
+    */
+    .setBorderBox();
+}
+
+header {
+    color: @main-color;
+    /* 
+        Нет возможности произвести вычисления. 
+        Например, необходимо сделать высоту шрифта header на 12 px больше чем высота шрифта страницы 
+        
+        РЕШЕНА С ПОМОЩЬЮ LESS
+    */
+    font-size: @base-font-size + 12px;
+    font-weight: bold;
+}
+
+nav {
+    text-align: center;
+    margin: 40px 0px 0px 0px;
+
+    a {
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+}
+
+/* 
+    проблемы при редактировании вложенных правил, 
+    например, если поменять id формы то придется менять все правила #login-form ...
+    
+    РЕШЕНА С ПОМОЩЬЮ LESS
+*/
+#login-form {
+    width: 300px;
+    margin: 20px auto;
+
+    p {
+        margin: 10px 0px;
+    }
+
+        p > label {
+            width: 100px;
+            float: left;
+            margin: 3px 0px;
+        }
+
+    input[type=text], input[type=password] {
+        border-radius: 4px;
+        outline: none;
+    }
+}

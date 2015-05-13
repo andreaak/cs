@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтр :not()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // :not(n) - выберет все элементы из массива выборки кроме тех, которые соответствуют "n".
+
+        $(function () {
+            // выберет все элементы из массива выборки кроме элемента с индексом 3.
+            $("li:not(li:eq(3))").css("background-color", "yellow");
+        });
+
+    </script>
+</head>
+<body>
+    <ol>
+        <li>Some item</li>
+        <li>Some item</li>
+        <li>Some item</li>
+        <li>Some item</li>
+        <li>Some item</li>
+    </ol>
+</body>
+</html>

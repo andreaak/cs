@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод prev()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод prev() - получает набор элементов, содержащий уникальные предыдущие родственные элементы для всех элементов существующего набора.
+
+        $(function () {
+            $("p").prev().css("background", "yellow");
+            //$("p:last").prev().css("background", "yellow");
+        });
+
+    </script>
+</head>
+<body>
+    <span>Hello Again (span)</span>
+    <p>Hello (paragraph)</p>
+    <span>Hello Again (span)</span>
+    <p>And Again</p>
+    <span>Hello Again (span)</span>
+    <p>Hello (paragraph)</p>
+</body>
+</html>

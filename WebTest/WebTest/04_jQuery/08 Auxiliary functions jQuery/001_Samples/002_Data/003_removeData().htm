@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод removeData()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // .removeData() - позволяет удалить все данные элемента, которые были добавлены через метод data.
+        // .removeData(key) - позволяет удалить данные по заданному ключу.
+
+        $(function () {
+
+            $("p").data("name1", "abc");
+            $("p").data("name2", "123");
+
+            var dataP = $("p").data();
+
+            alert(dataP.name1 + " " + dataP.name2); // abc 123
+
+            $("p:first").removeData("name2");
+
+            alert(dataP.name1 + " " + dataP.name2); // abc undefined
+        });
+
+    </script>
+</head>
+<body>
+    <p>Параграф №1</p>
+</body>
+</html>

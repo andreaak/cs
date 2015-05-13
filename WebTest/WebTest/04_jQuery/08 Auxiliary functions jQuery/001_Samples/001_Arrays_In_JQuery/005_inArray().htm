@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод inArray()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // $.inArray(value, array) - возвращает индекс элемента, если он есть в массиве или -1, если ничего не найдено. value - то, что будем искать, array - имя массива, в котором будем искать.
+
+        $(function () {
+
+            var arr = ["a", "b", "c", "d", "e"];
+
+            var item = $.inArray("b", arr);
+            alert("Индекс найденного элемента - " + item);
+
+        });
+
+    </script>
+    <style>
+        p {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>

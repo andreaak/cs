@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтр атрибутов</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // $("E[AttrName!='value']"); - выбор всех элементов E с атрибутом AttrName не равного value
+
+        $(function () {
+
+            $("a[target=_blank]").css("background-color", "#9bff70");
+            //$("a[target!=_blank]").css("background-color", "#9bff70");
+
+        });
+
+    </script>
+</head>
+<body>
+    <a href="http://edu.cbsystematics.com/" target="_blank">Live education</a><br />
+    <a href="http://edu.cbsystematics.com/video/ru">Video education</a>
+</body>
+</html>

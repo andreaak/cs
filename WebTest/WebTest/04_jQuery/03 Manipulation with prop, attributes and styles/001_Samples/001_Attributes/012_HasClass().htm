@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод hasClass().</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // hasClass(className) - проверяет наличие класса "className" у выбранных элементов страницы. Если хотя бы один из элементов содержит этот класс, то функция вернет true, иначе вернет false.
+
+        $(function () {
+            var className = "class1";
+            if ($("p:first").hasClass(className)) {
+                alert("Тэг содержит указанный CSS-класс - " + className);
+            }
+            else {
+                alert("Тэг не содержит указанный CSS-класс");
+            }
+        });
+
+    </script>
+    <style>
+        .class1 {
+            color: Green;
+        }
+
+        .class2 {
+            color: Red;
+        }
+
+        .class3 {
+            color: Blue;
+        }
+    </style>
+</head>
+<body>
+    <p class="class1">
+        Test string 1
+    </p>
+    <p class="class2">
+        Test string 2
+    </p>
+    <p class="class3">
+        Test string 3
+    </p>
+</body>
+</html>

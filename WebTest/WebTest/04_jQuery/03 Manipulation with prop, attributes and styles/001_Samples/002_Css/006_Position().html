@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод position()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод position() - возвращают координаты выбранного элемента относительно ближайшего родителя, у которого задан тип позиционирования (css-свойство position равно relative или absolute или fixed).
+
+        $(function () {
+            var element = $("#child").position();
+            var output = $("#output");
+            output.html("Мои координаты относительно родителя:<br />" + "x: " + element.left + "<br />y: " + element.top);
+        });
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+            font-size: 12px;
+        }
+
+        /*#main_parent{
+                background-color: #f63737;
+                width: 700px;
+                height: 500px;
+                position: relative;
+                left: 300px;
+                top: 50px;
+                padding: 5px;
+            }*/
+
+        #parent {
+            background-color: #c7cad6;
+            width: 500px;
+            height: 400px;
+            left: 500px; /* Заменить на margin-left: 50px */
+            top: 100px; /* Заменить на margin-top: 10px  */
+            position: relative; /* Закомментировать (Ctrl + k + c) */
+            padding: 5px;
+        }
+
+        #child {
+            background-color: #7b91e5;
+            width: 270px;
+            height: 200px;
+            position: absolute;
+            top: 50px;
+            left: 200px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!--<div id="main_parent">-->
+    <div id="parent">
+        родитель
+        <div id="child">
+            <p id="output"></p>
+        </div>
+    </div>
+    <!--</div>-->
+</body>
+</html>

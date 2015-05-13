@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод trigger()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод trigger() -  позволяет запустить событие другого элемента управления на странице
+
+        var button1;
+        var button2;
+        var button1Ctr = 0;
+        var button2Ctr = 0;
+
+        $(function () {
+            button1 = $("#first");
+            button2 = $("#second");
+            button1.click(onButton1Click);
+            button2.click(onButton2Click);
+        });
+
+        function onButton1Click() {
+            button1Ctr++;
+            $("p:first").text("Button 1 clicked " + button1Ctr);
+        }
+
+        function onButton2Click() {
+            button2Ctr++;
+            $("p:last").text("Button 2 clicked " + button2Ctr);
+
+            // При нажатии на вторую кнопку, также происходит нажатие на первую кнопку.
+            button1.trigger("click");
+        }
+
+    </script>
+</head>
+<body>
+    <input type="button" id="first" value="Button 1" />
+    <input type="button" id="second" value="Button 2" />
+    <p>
+        Button 1 clicked
+    </p>
+    <p>
+        Button 2 clicked
+    </p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Исползование Moderizr</title>
+    <script src="modernizr.custom.52481.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+</head>
+<body>
+
+    <form id="search">
+        <p>
+            Найти
+                <input id="query1" type="text" value="" placeholder="Введите запрос" />
+            <input id="query2" type="text" value="" placeholder="Введите запрос" />
+        </p>
+        <input type="submit" value="Отправить" />
+    </form>
+
+    <script>
+        // Если браузер не поддерживает атрибут placeholder
+        if (!Modernizr.input.placeholder) {
+
+            $("input[placeholder]").focus(function () {
+                if ($(this).val() == $(this).attr('placeholder')) {
+                    $(this).val("");
+                }
+            });
+
+            $("input[placeholder]").blur(function () {
+                if ($(this).val() == "") {
+                    $(this).val($(this).attr('placeholder'));
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

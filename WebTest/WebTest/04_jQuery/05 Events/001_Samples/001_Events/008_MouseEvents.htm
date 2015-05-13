@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>События mouseover & mouseout</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+     
+        // mouseover(f) - функция, которая принимает и назначает функцию "f" как обработчик на событие mouseover для каждого элемента набора.
+        // событие происходит при входе курсора в область элемента.
+
+        // mouseout(f) - функция, которая принимает и назначает функцию "f" как обработчик на событие mouseout для каждого элемента набора.
+        // событие происходит при выходе курсора в область элемента.
+    
+        // Создаем счетчики для подсчета количества входов и выходов мыши за пределы элемента.
+
+        var overCount = 0;
+        var outCount = 0;
+
+        $(function () {
+
+            // Добавляем обработчики на события
+
+            $("div:first").mouseover(function () { overCount++; Update(); }) // курсор попадает в область элемента
+            $("div:last").mouseout(function () { outCount++; Update(); }) // курсор выходит за область элемента
+        });
+
+        function Update() {
+            $("#over").text("MouseOver " + overCount);
+            $("#out").text("MouseOut " + outCount);
+        }
+
+    </script>
+</head>
+<body>
+    <div style="padding: 20px; background-color: yellow; margin-bottom: 30px;">
+        <span id="over">MouseOver</span>
+    </div>
+    <div style="padding: 20px; background-color: lightsteelblue">
+        <span id="out">MouseOut</span>
+    </div>
+</body>
+</html>

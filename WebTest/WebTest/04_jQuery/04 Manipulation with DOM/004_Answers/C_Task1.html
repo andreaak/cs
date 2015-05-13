@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Классная работа</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+            $("button[disabled]").next().text(" - this button is disabled");
+        });
+
+    </script>
+    <style>
+        span {
+            color: blue;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <button disabled="disabled">First</button>
+        <span></span></div>
+    <div>
+        <button>Second</button>
+        <span></span></div>
+    <div>
+        <button disabled="disabled">Third</button>
+        <span></span></div>
+
+</body>
+</html>

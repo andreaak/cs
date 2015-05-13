@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Классная работа</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+            var p = $('p');
+            var start = $('#start');
+            var count = 0;
+
+            start.on('click', function () {
+                var timer = setInterval(function () {
+                    if (count == 10) {
+                        clearInterval(timer);
+                    }
+                    p.text(count);
+                    count++;
+                }, 1000);
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <p>-</p>
+    <input id='start' type="button" value="Пуск" />
+</body>
+</html>

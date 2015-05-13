@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LinearGradient</title>
+    <script src="Modernizr-2.0.6.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function draw() {
+            if (!Modernizr.canvas) return;
+
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+
+            // Создание объекта градиента и указание начальной и конечной точки оси градиента.
+            var gradient = context.createLinearGradient(0, 0, 0, 300);
+
+            // Добавление цвета и смещения позиции остановки цвета.
+            gradient.addColorStop(0, "Blue");
+            
+            // Добавление цвета и смещения позиции остановки цвета.
+            gradient.addColorStop(0.5, "LightBlue");
+
+            // Добавление цвета и смещения позиции остановки цвета.
+            gradient.addColorStop(1, "White");
+
+            // Установка объекта градиента в качестве цвета заливки контекста.
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, 300, 300);
+        }
+
+        if (window.addEventListener)
+            window.addEventListener("load", draw, true);
+    </script>
+</head>
+<body>
+    <canvas id="canvas" height="300" width="300" style="border: solid 1px black;">
+        Ваш браузер не поддерживает элемент <b>Canvas</b>
+    </canvas>
+</body>
+</html>

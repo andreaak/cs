@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод parents()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+
+            /* parents() - выбирает все родительские элементы (узлы) для ранее выбраных элементов. Принимает в качестве аргумента дополнительный фильтр-селектор.*/
+
+            function showParents() {
+
+                $("div").css("border-color", "white");
+
+                var len = $("span.selected")
+                                 .parents("div")
+                                 .css("border", "2px red solid")
+                                 .length;
+
+                $("b").text("Уникальных родителей (элементов div): " + len);
+            }
+
+            function customHover() {
+                $(this).toggleClass("selected");
+                showParents();
+            }
+
+            $("span").hover(customHover);
+        });
+
+    </script>
+    <style>
+        p, div, span {
+            margin: 2px;
+            padding: 1px;
+        }
+
+        div {
+            border: 2px white solid;
+        }
+
+        span {
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .selected {
+            color: blue;
+        }
+
+        b {
+            color: red;
+            display: block;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div><span>Hello</span></div>
+        <span>Hello Again</span>
+    </div>
+    <div>
+        <span>And Hello Again</span>
+    </div>
+    <b>Наведите курсор мыши на приветсвия.</b>
+</body>
+</html>

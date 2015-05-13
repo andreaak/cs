@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор соседних элементов.</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            // $("E + F") - соответствует всем элементам с именем тега F, которым непосредственно предшествует элемент E на том же уровне вложенности.
+
+            // Выбор всех элементов "div", которым непосредственно предшествует элемент "p" на том же уровне вложенности.
+
+            $("p + div").css("color", "red");
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>Paragraph in body.</p>
+    <div>
+        <p>Paragraph in div.</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Slider - Snap to increments</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.mouse.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.slider.js"></script>
+    <script>
+
+        $(function () {
+            $("#slider").slider({
+                // определение настроек
+                value: 100,
+                min: 0,
+                max: 500,
+                step: 50,
+                // обработка смены позиции
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.value);
+                }
+            });
+
+            $("#amount").val("$" + $("#slider").slider("value"));
+        });
+
+    </script>
+</head>
+<body>
+    <p>
+        <label for="amount">Donation amount ($50 increments):</label>
+        <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+    </p>
+    <div id="slider"></div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Работа в классе</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+        $(function () {
+
+            $('#apply').on("click", read);
+
+            function read() {
+                $("#main *").css("color", "black");
+                var a = $('#selector').val();
+                $(a).css("color", "red");
+            };
+
+        });
+    </script>
+    <style>
+        #main {
+            width: 400px;
+            text-align: justify;
+            font-family: Arial;
+            color: #4f4f4f;
+            margin: 50px auto 0;
+            padding: 20px;
+            border: 1px solid black;
+            background: url(1747.png);
+        }
+
+        a {
+            color: #4f4f4f;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <input type="text" id="selector" value="" />
+        <input type="button" id="apply" value="Apply selector" />
+        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum</p>
+        <div>
+            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+        </div>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li><a href="#">Link1</a></li>
+        </ul>
+        <a href="#">Link2</a>
+    </div>
+</body>
+</html>

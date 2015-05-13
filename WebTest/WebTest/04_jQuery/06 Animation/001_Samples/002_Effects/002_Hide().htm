@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод hide()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод hide() - делает невидимым любой отображаемый элемент
+        $(function () {
+
+            $("#hide1").click(function () {
+                $("p").hide();
+            })
+
+            $("#hide2").click(function () {
+                $("#div1").hide("slow"); // значения - slow, normal, fast
+                //$("#div1").hide(7000); // время анимации, заданное в миллисекундах
+            })
+
+            $("#hide3").click(function () {
+                $("#div2").hide("normal", Func); // 1 аргумент - скорость анимации 2 аргумент - функция, которая будет вызвана после анимации
+            })
+
+            function Func() {
+                alert("Not Visible");
+            }
+        });
+
+    </script>
+    <style>
+        #div1, #div2 {
+            background-color: Yellow;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <input id="hide1" type="button" value="Hide" />
+    <p>
+        Visible Text
+    </p>
+    <br />
+    <input id="hide2" type="button" value="Hide Slow" />
+    <div id="div1">
+    </div>
+    <br />
+    <input id="hide3" type="button" value="Hide And Run" />
+    <div id="div2">
+        <span>Visible Text</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод andSelf()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод .andSelf() добавляет предыдущий набор jQuery к текущему в пределах одной цепочки команд и возвращает объединенный набор.
+
+        $(function () {
+            $("div") // берем div'ы
+                .find("p") // находим дочерние параграфы
+                .andSelf() // добалвяем в выборку div'ы
+                .addClass("border"); // добавляем класс
+
+            //$("div").find("p").addClass("border");
+        });
+
+    </script>
+    <style>
+        p, div {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .border {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>First Paragraph</p>
+
+        <p>Second Paragraph</p>
+    </div>
+</body>
+</html>

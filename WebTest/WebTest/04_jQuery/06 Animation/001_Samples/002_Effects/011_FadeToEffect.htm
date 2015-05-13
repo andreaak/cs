@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод fadeTo()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+
+            $("p:first").click(function () {
+                // Первый параметр - скорость анимации, второй - прозрачность до которой анимация будет проигрываться
+                // 1 - элемент полностью непрозрачен 0 - элемент скрыт
+                $(this).fadeTo("slow", 0.33);
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <p>
+        Paragraph.
+    </p>
+    <p>
+        Paragraph.
+    </p>
+</body>
+</html>

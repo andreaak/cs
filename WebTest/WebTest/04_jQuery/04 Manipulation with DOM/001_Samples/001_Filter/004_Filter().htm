@@ -1,0 +1,54 @@
+﻿<html>
+<head>
+    <title>Метод filter(selector)</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод filter(selector) - в качестве параметра может быть передан селектор, используемый для получения соответствующих ему элементов.
+
+        $(function () {
+
+            var paragraphs = $("p");
+
+            paragraphs.filter(".test").css("background-color", "red");
+
+            paragraphs.filter(":odd").css("background-color", "green");
+
+        });
+
+    </script>
+    <style>
+        body {
+            background-color: Silver;
+            color: White;
+        }
+
+        p {
+            padding: 10px;
+            font-weight: bold;
+            background-color: Gray;
+        }
+    </style>
+</head>
+<body>
+
+    <p>Test paragraph 1</p>
+
+    <p>Test paragraph 2</p>
+
+    <p class="test">Test paragraph 3</p>
+
+    <p>Test paragraph 4</p>
+
+    <p>Test paragraph 5</p>
+
+    <p>Test paragraph 6</p>
+
+    <p class="test">Test paragraph 7</p>
+
+    <p>Test paragraph 8</p>
+
+    <p>Test paragraph 9</p>
+
+</body>
+</html>

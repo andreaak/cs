@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>"Has"</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            // $("E:has(F)) - соответствует всем элементам с именем тега E, имеющим хотя бы один вложенный элемент с именем тега F.
+
+            // Выбор всех элементов с именем тега div, имеющим хотя бы один вложенный элемент с именем тега ul.
+
+            $("div:has(ul)").css("background", "red");
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>Paragraph in body.</p>
+    <div>
+        <p>Paragraph in div 1.</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+    <div>
+        <table border="1">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </table>
+        <p>Paragraph in div 2.</p>
+    </div>
+</body>
+</html>

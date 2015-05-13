@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Домашнее задание</title>
+        <script src="jquery-1.10.2.js"></script>
+        <script>
+
+            $(function () {
+                $("div").not(".green, #blue").css("border-color", "red");
+            });
+
+        </script>
+        <style>
+            div { 
+                width:60px; 
+                height:60px; 
+                margin:10px; 
+                float:left;
+                background:yellow;
+                border:2px solid white; 
+            }
+            .green {
+                background:#8f8; 
+            }
+            .gray { 
+                background:#ccc; 
+            }
+            #blue { 
+                background:#99f; 
+            }
+  </style>
+</head>
+    <body>
+
+        <!-- Выделите красной рамкой все блочные элементы, кроме тех, которые содержат атрибут "class" со значением "green" и атрибут "id" со значением "blue"  -->
+
+        <div></div>
+        <div id="blue"></div>
+        <div></div>
+        <div class="green"></div>
+        <div class="green"></div>
+        <div class="gray"></div>
+        <div></div>
+
+    </body>
+</html>
