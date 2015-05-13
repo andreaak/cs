@@ -6,14 +6,19 @@
         var vacation = {
             turkey: 500,
             egypt: 400,
-            spain: 100
+            spain: 100,
+
+            print: function() {
+                document.write("<p> Test </p> <br />");
+            }
         }
         vacation.calc = function (people, days, country)
         {
-            var result = people * days * this[country];
+            var result = this.egypt + people * days * this[country];
             return result;
         }
-        document.write(vacation.calc(2, 10, "spain"));
+
+        vacation.print();
     </script>
 </head>
 <body>
