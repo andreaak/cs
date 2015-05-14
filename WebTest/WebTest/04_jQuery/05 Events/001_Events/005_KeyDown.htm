@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Событие keydown</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // keydown() - устанавливает обработчик события keydown для каждого элемента набора. 
+        // event - объект, определяющий информацию о событии.
+        $(window).keydown(function (event) {
+
+            switch (event.keyCode) {                // event.keyCode - код нажатой клавиши
+                case 37: {
+                    alert("left pushed");
+                }
+                    break;
+                case 38: {
+                    alert("up pushed");
+                }
+                    break;
+                case 39: {
+                    alert("right pushed");
+                }
+                    break;
+                case 40: {
+                    alert("down pushed");
+                }
+                    break;
+            }
+        });
+
+    </script>
+</head>
+<body>
+</body>
+</html>

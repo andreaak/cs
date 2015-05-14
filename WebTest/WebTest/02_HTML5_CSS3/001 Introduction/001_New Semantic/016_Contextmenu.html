@@ -1,0 +1,47 @@
+﻿<!--
+    contextmenu - устанавливает контекстное меню для элемента (по клику ПКМ). 
+    На момент написания этого примера работает только в Firefox
+    http://medialize.github.io/jQuery-contextMenu/demo.html
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>contextmenu</title>
+
+    <style>
+        .rotateleft {
+            -moz-transform: rotate(-90deg);
+        }
+
+        .rotateright {
+            -moz-transform: rotate(90deg);
+        }
+    </style>
+
+    <script>
+        function rotateLeft() {
+            document.querySelector("img")
+                .classList
+                .toggle("rotateleft");
+        }
+
+        function rotateRight() {
+            document.querySelector("img")
+                .classList
+                .toggle("rotateright");
+        }
+    </script>
+</head>
+<body>
+    <img src="img/figure.jpg" alt="" contextmenu="edit">
+
+    <menu type="context" id="edit">
+        <menuitem icon="img/object-rotate-right.png"
+            onclick="rotateRight()">Повернуть на 90º ПЧС</menuitem>
+        <menuitem icon="img/object-rotate-left.png"
+            onclick="rotateLeft()">Повернуть на 90º ПрЧС</menuitem>
+    </menu>
+</body>
+</html>

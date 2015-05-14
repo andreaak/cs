@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод extend()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // extend - содержимое двух или большего количества объектов добавляет в объект, переданный первым параметром.
+
+        var target = { a: 1 };
+        var source1 = { b: 4, c: 5 };
+        var source2 = { d: 6, e: 7 };
+        $.extend(target, source1, source2); // target = {a: 1, b: 2, c: 4, d: 7, e: 6}
+
+        // проверить вывод в консоле браузера (не работает старых версиях IE)
+        console.dir(target);
+        console.log("Hello world");
+
+    </script>
+    <style>
+        p {
+            color: Blue;
+        }
+
+        div a {
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>

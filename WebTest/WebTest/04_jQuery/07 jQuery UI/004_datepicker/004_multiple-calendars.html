@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Datepicker - Display multiple months</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.datepicker.js"></script>
+    <script>
+
+        $(function () {
+
+            $("#datepicker").datepicker({
+                numberOfMonths: 3,      // количество месяцев, которые будут отображаться за раз.
+                showButtonPanel: true   // true - отображать панель с кнопками
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <p>
+        Date:
+        <input type="text" id="datepicker">
+    </p>
+</body>
+</html>

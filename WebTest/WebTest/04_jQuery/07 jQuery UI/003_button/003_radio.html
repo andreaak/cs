@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Button</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.button.js"></script>
+    <script>
+
+        $(function () {
+            $("#radio").buttonset(); // buttonset - виджет для группировки радиокнопок
+        });
+
+    </script>
+</head>
+<body>
+    <form>
+        <div id="radio">
+            <input type="radio" id="radio1" name="radio" /><label for="radio1">Choice 1</label>
+            <input type="radio" id="radio2" name="radio" checked="checked" /><label for="radio2">Choice 2</label>
+            <input type="radio" id="radio3" name="radio" /><label for="radio3">Choice 3</label>
+        </div>
+    </form>
+    <div>
+        <p>Набор из трех элементов радио-кнопок превращается в button set.</p>
+    </div>
+</body>
+</html>

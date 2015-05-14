@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Методы .width() .innerWidth() .outerWidth([includeMargin])</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        /* Методы .width() .innerWidth() .outerWidth([includeMargin]) - все три функции возвращают ширину первого из выбранных элементов страницы. Отличия у функций следующие:
+    
+        width() — ширина элемента без учета отступов и толщины рамки.
+        innerWidth() — ширина элемента с учетом размера внутренних отступов (padding).
+        outerWidth(includeMargin) — ширина элемента с учетом внутренних отступов, рамки (border-width) и при необходимости внешних отступов (includeMargin == true) */
+
+        // .width(value) - устанавливает новое значение ширины равное value, для всех выбранных элементов.
+        // .width(function(index, value)) - устанавливает новое значение ширины элементов, равное значению, которое вернет пользовательская функция. Функция вызывается отдельно, для каждого из выбранных элементов. При вызове ей передаются следующие параметры: index — позиция элемента в наборе, value — текущее значение ширины элемента.
+
+        $(function () {
+            var a = "";
+            a += "width() - " + $("div").width() + "<br />";
+            a += "innerWidth() - " + $("div").innerWidth() + "<br />";
+            a += "outerWidth() - " + $("div").outerWidth() + "<br />";
+            a += "outerWidth(true) - " + $("div").outerWidth(true) + "<br />";
+            $("p").html(a);
+            //$("div").width(400);
+        });
+
+    </script>
+    <style>
+        div {
+            width: 300px;
+            background: green;
+            padding: 10px;
+            margin: 15px;
+            color: white;
+            border: 5px solid yellow;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquipa</div>
+    <p></p>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод css()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод css() - возвращает или изменяет значения css-величин у выбранных элементов страницы.
+
+        // .css(styleName) - возвращает значение css-свойства styleName у выбранного элемента. Если выбрано несколько элементов, то значение будет взято у первого.
+
+        // .css(styleName, value) - css-свойству styleName будет присвоено значение value, у всех выбранных элементов.
+
+        // .css({styleName1: value1, styleName2: value2, ...}) - группе css-свойств styleName1, styleName2, ... будут присвоены значения value1, value2, ..., у всех выбранных элементов.
+
+        // .css(styleName, function(index, value)) - css-свойству styleName будет присвоено значение, возвращенное пользовательской функцией. Функция вызывается отдельно, для каждого из выбранных элементов. При вызове, ей передаются следующие параметры: index — позиция элемента в наборе, value — текущее значение css-свойства styleName у элемента.
+
+        $(function () {
+
+            $("p").css(
+            {
+                color: "green",
+                backgroundColor: "lightgray"
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>
+        Test string 1
+    </p>
+    <p>
+        Test string 2
+    </p>
+    <p>
+        Test string 3
+    </p>
+</body>
+</html>

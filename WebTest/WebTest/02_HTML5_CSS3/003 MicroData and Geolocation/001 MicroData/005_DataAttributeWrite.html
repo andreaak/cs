@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Установка значения атрибута data-*</title>
+    <script>
+        window.onload = function () {
+            var cars = document.getElementsByTagName("li");
+
+            for (var i = 0; i < cars.length; i++) {
+
+                if (cars[i].dataset) {
+                    cars[i].dataset.color = "желтый";
+                    cars[i].dataset.rating = "удивительный";
+                } else {
+                    cars[i].setAttribute("data-color", "желтый");
+                    cars[i].setAttribute("data-rating", "удивительный");
+                }
+            }
+
+            var output = "Цвета автомобилей: <br />";
+
+            for (var i = 0; i < cars.length; i++) {
+                if (cars[i].dataset) {
+                    output += cars[i].dataset.color + "<br />";
+                }
+                else {
+                    output += cars[i].getAttribute("data-color") + "<br />";
+                }
+            }
+
+            document.getElementsByTagName("p")[0].innerHTML = output;
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li data-year="1996" data-color="белый" data-engine="VR6">Cabrio</li>
+        <li data-уеаг="1993" data-color="фиолетовый" data-engine="VR6">Corrado</li>
+        <li data-year="2008" data-color="красный" data-engine="2.0T">Eos</li>
+        <li data-year="2003" data-color="синий" data-engine="W8">Passat</li>
+    </ul>
+    <p></p>
+    <a href="https://addons.mozilla.org/ru/firefox/addon/dom-inspector-6622/">DOM Инспектор (расширение для Firefox)</a>
+</body>
+</html>

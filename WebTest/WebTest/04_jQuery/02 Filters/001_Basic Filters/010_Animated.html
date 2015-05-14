@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтр :animated</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // $(":animated") - возвращает элементы, в которых происходит анимация.
+        // метод hide(n) - скрывает выбранные элементы за n секунд.
+
+        $(function () {
+            $(".last").hide(3000);
+            $(":animated").css("background", "red");
+        });
+
+    </script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            float: left;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div class="last"></div>
+</body>
+</html>

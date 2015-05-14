@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка "братьев".</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            // $("E ~ F") - соответствует всем элементам с именем тега F, которым предшествует элемент E на том же уровне вложенности.
+
+            // Выбор всех элементов "p", которым предшествует элемент "span" на том же уровне вложенности.
+
+            $("span ~ p").css("color", "red");
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>Paragraph in body.</p>
+    <div>
+        <p>Paragraph in div 1.</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <span>Text in span</span>
+        <table border="1">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </table>
+        <p>Paragraph in div 2.</p>
+    </div>
+</body>
+</html>

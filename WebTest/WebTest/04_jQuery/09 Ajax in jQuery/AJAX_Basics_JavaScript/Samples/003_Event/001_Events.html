@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="jquery-1.8.1.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            $("#action").click(function send() {
+                $.ajax({
+                    type: "GET",
+                    url: "test.html",
+
+                    // beforeSend - событие происходит до отправки запроса на сервер.
+                    // можно изменить настройки объекта XMLHttpRequest (например, установить дополнительные заголовки)
+                    beforeSend: function (xhr) {
+                        $("#msg").append("<li>beforeSend (local)</li>");
+                    },
+
+                    // success - событие происходит только в результате успешного завершения обработки запроса (если с сервера не вернулись ошибки)
+                    success: function (data) {
+                        $("#msg").append("<li>sucess (local)</li>");
+                    },
+
+                    // error - срабатывает если сервер вернул ошибку
+                    error: function (data) {
+                        $("#msg").append("<li>error (local)</li>");
+                    },
+
+                    // complete - срабатывает при завершении запроса не важно усрешно он был обработан или нет
+                    complete: function () {
+                        $("#msg").append("<li>complete (local)</li>");
+                    }
+
+                });
+            });
+
+            // ajaxStart (глобальное событие) - это событие запускаеться если стартует AJAX запрос и в данный момент нет других AJAX запросов
+            $(document).ajaxStart(function (event) {
+                $("#msg").append("<li>ajaxStart (global).</li>");
+            });
+
+            // ajaxStart (глобальное событие) - происходит перед отправкой запроса
+            $(document).ajaxSend(function (event) {
+                $("#msg").append("<li>ajaxSend (global).</li>");
+            });
+
+            // ajaxSuccess (глобальное событие) - происходит только если запрос завершился успешно
+            $(document).ajaxSuccess(function (event) {
+                $("#msg").append("<li>ajaxSuccess (global).</li>");
+            });
+
+            // ajaxError (глобальное событие) - срабатывает если сервер вернул ошибку
+            $(document).ajaxError(function (event) {
+                $("#msg").append("<li>ajaxError (global).</li>");
+            });
+
+            // ajaxComplete (глобальное событие) - срабатывает при завершении запроса не важно усрешно он был обработан или нет
+            $(document).ajaxComplete(function (event) {
+                $("#msg").append("<li>ajaxComplete (global).</li>");
+            });
+
+            // ajaxStop (глобальное событие) - больше не осталось асинхронных запросов
+            $(document).ajaxStop(function (event, request, settings) {
+                $(this).append("<li>ajaxStop (global).</li>");
+            });
+
+        });
+
+
+
+    </script>
+</head>
+<body>
+    <button id="action">Send Request</button>
+    <ul id="msg"></ul>
+</body>
+</html>

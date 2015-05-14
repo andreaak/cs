@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтр :empty</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        //:empty - выбирает все элементы в которых отсутствует содержимое
+
+        $(function () {
+            $("div:empty").css("background-color", "Red");
+        });
+
+    </script>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            background-color: azure;
+            border: 1px solid gray;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>Some content</div>
+    <div></div>
+    <div>Some content</div>
+    <div>Some content</div>
+    <div>Some content</div>
+</body>
+</html>

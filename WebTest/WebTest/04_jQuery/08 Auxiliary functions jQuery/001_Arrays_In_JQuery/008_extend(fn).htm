@@ -1,0 +1,43 @@
+﻿<! html>
+<html>
+<head>
+    <title>Метод extend()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+            // $. - создание новых методов для глобального объекта jQuery
+            $.extend({
+                // Функция для поиска наименьшего
+                min: function (a, b)
+                {
+                    return a < b ? a : b;
+                },
+
+                // Функция для поиска наибольшего
+                max: function (a, b) {
+                    return a > b ? a : b;
+                },
+
+                // Функция для нахождения суммы
+                sum: function () {
+                    var sum = 0;
+                    for (var i = 0; i < arguments.length; i++) {        
+                        sum += arguments[i];
+                    }
+                    return sum;
+                }
+            });
+
+            var minV = $.min(2, 3);
+            var maxV = $.max(4, 5);
+            var sum = $.sum(4, 5, 8, 7, 5);
+
+            document.write("Минимальное значение: " + minV + "<br />");
+            document.write("Максимальное значение: " + maxV + "<br />");
+            document.write("Сумма: " + sum + "<br />");
+       
+    </script>
+</head>
+<body>
+</body>
+</html>

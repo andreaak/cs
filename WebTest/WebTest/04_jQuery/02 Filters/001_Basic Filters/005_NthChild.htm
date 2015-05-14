@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтр :nth-child()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        /*
+            Фильтр :nth-child используется для добавления стиля к элементам на основе нумерации в дереве элементов.
+
+            :nth-child(n) - Выбирает n-ый дочерний элемент
+            :nth-child(even) - Выбирает все четные дочерние элементы
+            :nth-child(odd) - Выбирает все нечетные дочерние элементы
+            :nth-child(an+b) - В круглых скобках выражение, где a и b целые числа, а n — счетчик, который автоматически принимает значение 0,1,2...
+        */
+
+        $(function () {
+            $(".one tr:nth-child(7)").css("background-color", "lightblue");
+            $(".two tr:nth-child(even)").css("background-color", "lightblue");
+            $(".three tr:nth-child(odd)").css("background-color", "lightblue");
+            $(".four tr:nth-child(3n+1)").css("background-color", "lightblue");
+        });
+
+    </script>
+    <style>
+        .one, .two, .three, .four {
+            border: 1px solid;
+            border-collapse: collapse;
+            width: 300px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+            td, th {
+                border: 1px solid;
+            }
+    </style>
+</head>
+<body>
+    <h3>:nth-child(7)</h3>
+    <table class="one">
+        <caption>Рейтинг основных языков разработки (январь 2013)</caption>
+        <tr>
+            <th>Место</th>
+            <th>Язык</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Java</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>C#</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>PHP</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>C++</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Python</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>JavaScript</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Objective-C</td>
+        </tr>
+    </table>
+
+    <hr />
+
+    <h2>:nth-child(even)</h2>
+    <table class="two">
+        <caption>Рейтинг дополнительных языков программирования</caption>
+        <tr>
+            <th>Место</th>
+            <th>Язык</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>JavaScript</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Java</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>PL/SQL</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>C++</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Python</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>PHP</td>
+        </tr>
+    </table>
+
+    <hr />
+
+    <h2>:nth-child(odd)</h2>
+    <table class="three">
+        <caption>Коэффициент ошибок в самых популярных браузерах</caption>
+        <tr>
+            <th>Браузер</th>
+            <th>Коэффициент</th>
+        </tr>
+        <tr>
+            <td>IE</td>
+            <td>0,25%</td>
+        </tr>
+        <tr>
+            <td>Safari</td>
+            <td>0,15%</td>
+        </tr>
+        <tr>
+            <td>Opera</td>
+            <td>0,125%</td>
+        </tr>
+        <tr>
+            <td>Chrome</td>
+            <td>0,12%</td>
+        </tr>
+        <tr>
+            <td>Firefox</td>
+            <td>0,12%</td>
+        </tr>
+    </table>
+
+    <hr />
+
+    <h2>:nth-child(3n+1)</h2>
+    <table class="four">
+        <caption>Рейтинг браузеров (сентябрь 2013)</caption>
+        <tr>
+            <th>Браузер</th>
+            <th>Процент использования</th>
+        </tr>
+        <tr>
+            <td>Chrome</td>
+            <td>53.2%</td>
+        </tr>
+        <tr>
+            <td>Firefox</td>
+            <td>27.8%</td>
+        </tr>
+        <tr>
+            <td>IE</td>
+            <td>12.1%</td>
+        </tr>
+        <tr>
+            <td>Safari</td>
+            <td>3.9%</td>
+        </tr>
+        <tr>
+            <td>Opera</td>
+            <td>1.7%</td>
+        </tr>
+    </table>
+</body>
+</html>

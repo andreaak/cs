@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод prop()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // http://javascript.ru/tutorial/dom/attributes - рекомендовано к прочтению
+
+        // Метод prop() - возвращает или изменяет значение свойств выбранных элементов страницы.
+        // .prop(propName, value) - во всех выбранных элементах, свойство propName примет значение value.
+        // .prop({propName1:value1, propName2:value2, ...}) - во всех выбранных элементах изменит значения группы свойств propName1, propName2, ... сделав их равными value1, value2, ... соответственно.
+        // .prop(propName, function(index, value)) - свойству propName будет присвоено значение, возвращенное пользовательской функцией (если она ничего не вернет, то свойство просто не изменит своего значения). Функция вызывается отдельно, для каждого из выбранных элементов. При вызове ей передаются следующие параметры: index — позиция элемента в наборе, value — текущее значение свойства propName у элемента.
+
+        // Метод html() - получает HTML-содержимое первого элемента в наборе соответствующих элементов или устанавливает HTML-разметку для каждого совпавшего элемента.
+
+        $(function () {
+            $("input").change(function () {
+                var $input = $(this);
+                $("p").html(
+                  ".attr( \"checked\" ): <b>" + $input.attr("checked") + "</b><br>" +
+                  ".prop( \"checked\" ): <b>" + $input.prop("checked") + "</b><br>") + "</b>";
+            }).change();
+        });
+
+    </script>
+    <style>
+        p {
+            margin: 20px 0 0;
+        }
+
+        b {
+            color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <label for="check1">Сохранить пароль? </label>
+    <input id="check1" type="checkbox" checked="checked" title="Сохранить/не сохранять пароль">
+    <p></p>
+</body>
+</html>

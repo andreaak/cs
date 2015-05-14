@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод toggle()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+            $("button").click(function () {
+                // toggle - функция, переключающая режим отображения каждого из элементов набора.
+                // Если элемент скрыт, то данная функция отображает его (используя метод show); 
+                // Если элемент видимый — скрывает его (используя метод hide).
+                $("p").toggle();
+            });
+        });
+
+    </script>
+    <style>
+        p {
+            background-color: green;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button>
+        Show/Hide.
+    </button>
+    <p>
+        Paragraph.
+    </p>
+</body>
+</html>

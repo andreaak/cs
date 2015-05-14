@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод prevUntil()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+
+        // Метод prevUntil(selector) - поиск всех родственных элементов перед текущим элементом до указанного селектора.
+
+        $(function () {
+            //$(".class1").prevUntil().css("background-color", "Red");
+            $(".class2").prevUntil(".class1").css("background-color", "Red");
+        });
+
+    </script>
+    <style>
+        body {
+            background-color: Silver;
+            color: White;
+        }
+
+        p {
+            padding: 10px;
+            font-weight: bold;
+            background-color: Gray;
+        }
+    </style>
+</head>
+<body>
+    <p>Параграф №1</p>
+    <p>Параграф №2</p>
+    <p class="class1">Параграф №3</p>
+    <p>Параграф №4</p>
+    <p>Параграф №5</p>
+    <p>Параграф №6</p>
+    <p class="class2">Параграф №7</p>
+    <p>Параграф №8</p>
+    <p>Параграф №9</p>
+    <p>Параграф №10</p>
+    <div>А это простой Div</div>
+</body>
+</html>

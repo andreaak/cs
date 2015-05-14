@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод is()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // is(n) - проверяет текущий набор элементов на соответствие указанному выражению 'n'. Возвращает true, если хотя бы один элемент соответствует выражению.
+
+        $(function () { 
+            $("div").on("click", function () {
+                if ($(this).is(":first-child")) {
+                    $("p").text("Это первый div.");
+                } else if ($(this).is(".blue,.red")) {
+                    $("p").text("Это красный или синий div.");
+                } else if ($(this).is(":contains('Test')")) {
+                    $("p").text("Содержит текст TEST!");
+                } else {
+                    $("p").html("тут нет ничего особенного.");
+                }
+            });
+        });
+
+    </script>
+    <style>
+        div {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            float: left;
+            border: 4px outset;
+            background: green;
+            text-align: center;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+        .blue {
+            background: blue;
+        }
+
+        .red {
+            background: red;
+        }
+
+        span {
+            color: white;
+            font-size: 16px;
+        }
+
+        p {
+            color: red;
+            font-weight: bolder;
+            background: yellow;
+            margin: 3px;
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div class="blue"></div>
+    <div></div>
+    <div class="red"></div>
+    <div>
+        <br />
+        <span>Test</span>
+    </div>
+    <div class="blue"></div>
+    <p>&nbsp;</p>
+</body>
+</html>

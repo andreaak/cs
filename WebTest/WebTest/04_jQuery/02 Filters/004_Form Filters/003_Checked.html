@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтр :checked</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Свойство length - количество элементов в массиве.
+        // :checked фильтр выбирает только отмеченные флажки или переключатели
+
+        $(function () {
+
+            var countChecked = function () {
+                var n = $("input:checked").length;
+                $(".output").text("Пунктов отмечено - " + n);
+            };
+            countChecked();
+
+            $("input[type=checkbox]").on("click", countChecked);
+
+        });
+
+    </script>
+</head>
+<body>
+    <form>
+        <p><strong>Выбор пунктов:</strong></p>
+        Пункт 1
+        <input type="checkbox" value="p1" /><br />
+        Пункт 2
+        <input type="checkbox" value="p2" /><br />
+        Пункт 3
+        <input type="checkbox" value="p3" /><br />
+        Пункт 4
+        <input type="checkbox" value="p4" /><br />
+        <p class="output"></p>
+    </form>
+</body>
+</html>

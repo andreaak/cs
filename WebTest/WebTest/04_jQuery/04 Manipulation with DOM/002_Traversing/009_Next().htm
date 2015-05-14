@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод next()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод next() - получает набор элементов, содержащий уникальные последующие родственные элементы для всех элементов существующего набора.
+
+        $(function () {
+            $("p:first").next().css("background", "yellow");
+            //$("p").next().css("background", "yellow");
+        });
+
+    </script>
+</head>
+<body>
+    <p>Paragraph 1</p>
+    <span>Span 1</span>
+    <p>Paragraph 2</p>
+    <span>Span 2</span>
+    <p>Paragraph 3</p>
+    <span>Span 3</span>
+</body>
+</html>

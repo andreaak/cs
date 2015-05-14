@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="jquery-1.8.1.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#sendRequest").click(function () {
+
+                $.ajax({
+
+                    url: "note.xml",
+                    type: "GET",
+                    dataType: "xml",
+
+                    success: function (xml) {
+                        $("#to").append($(xml).find("to").text());
+                        $("#from").append($(xml).find("from").text());
+                        $("#message").append($(xml).find("body").text());
+                    },
+
+                    // в случае ошибки
+                    error: function (xhr, status, error) {
+                        // staus - возможные значения "timeout", "error", "abort", and "parsererror"
+                        alert("ERROR: " + xhr.status + " " + error);
+                    }
+                });
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div id="to"><b>To:</b> </div>
+    <div id="from"><b>From:</b> </div>
+    <div id="message"><b>Message:</b> </div>
+    <button id="sendRequest">Запрос</button>
+</body>
+</html>

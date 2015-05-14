@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка элементов с помощью методов querySelector() и querySelectorAll()</title>
+    <script>
+
+        window.addEventListener("load", function () {
+
+            // querySelector() - получение первого элемента на странице, который соответствует селектору.
+            // В данном случае возвращаем элемент p.
+
+            var paragraph = document.querySelector("p");
+            paragraph.style.fontSize = "30px";
+
+            // querySelectorAll() - возвращает массив элементов, которые соответствуют селектору. 
+            // В данном случае возвращается массив элементов списка, находящихся в элементе ul с атрибутом class="list"
+
+            var list = document.querySelectorAll(".list > li");
+
+            for (var i = 0; i < list.length; i++) {
+                list[i].style.color = "blue";
+            }
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>Метод querySelector()</p>
+    <p>Параграф без стилей</p>
+    <ul class="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+</body>
+</html>

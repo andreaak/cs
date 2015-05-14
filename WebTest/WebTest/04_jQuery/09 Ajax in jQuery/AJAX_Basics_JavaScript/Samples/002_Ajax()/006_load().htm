@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="jquery-1.8.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // .load() - загружает HTML из удаленного файла и встраивает его в объектную модель документа (DOM).
+            $("#objectID").load("test.html #content", // адрес файла и селектор для получения данных
+                function () {
+                    alert("Loaded!");
+                });
+        });
+    </script>
+
+</head>
+<body>
+    <div id="objectID"></div>
+</body>
+</html>

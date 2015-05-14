@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Autocomplete - Default functionality</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.position.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.menu.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.autocomplete.js"></script>
+    <script>
+
+        $(function () {
+            var availableTags = [           // Создаем массив значений для автополя
+                "ActionScript",
+                "AppleScript",
+                "Asp",
+                "BASIC",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+            ];
+
+            $("#tags").autocomplete({         // инициализируем автополе и привязываем к полю источник
+                source: availableTags
+            });
+        });
+
+	</script>
+</head>
+<body>
+    <div class="ui-widget">
+        Tags:
+        <input id="tags" type="text" />
+    </div>
+</body>
+</html>

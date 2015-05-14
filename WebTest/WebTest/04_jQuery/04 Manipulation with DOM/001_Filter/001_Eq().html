@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод eq()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод eq(n) - возвращает элемент, идущий под индексом 'n' в наборе выбранных элементов.
+
+        $(function () {
+            $("div").eq(2).addClass("blue");
+        });
+
+    </script>
+    <style>
+        div {
+            width: 60px;
+            height: 60px;
+            margin: 10px;
+            float: left;
+            border: 2px solid blue;
+        }
+
+        .blue {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

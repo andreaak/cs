@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>jQuery.fn.extend()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // $.fn - рассширение методов объектов, созданных с помощью jQuery
+
+        $(function () {
+            $.fn.extend({
+                check: function () {
+                    return this.each(function () {
+                        this.checked = true;
+                    });
+                },
+                uncheck: function () {
+                    return this.each(function () {
+                        this.checked = false;
+                    });
+                }
+            });
+            $("input[type='checkbox']").check();
+        });
+        
+    </script>
+    <style>
+        label {
+            display: block;
+            margin: .5em;
+        }
+    </style>
+</head>
+<body>
+    <label><input type="checkbox" name="foo" /> Foo</label>
+    <label><input type="checkbox" name="bar" /> Bar</label>
+</body>
+</html>

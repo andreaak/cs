@@ -1,0 +1,64 @@
+﻿body {
+    font-family: 'Segoe UI' Tahoma;
+    font-size: 13px;
+     /* 
+         Проблема при использовании одного и того же цвета для нескольких элементов на странице
+         В данном примере для body и для header.
+     */
+    background-color: green;
+}
+
+#main {
+    margin: 20px auto;
+    width: 600px;
+    border-radius: 4px;
+    background-color: white;
+    padding: 10px;
+    /* Свойства с префиксами не удобно редактировать */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+header {
+    color: green;
+    /* Нет возможности произвести вычисления. 
+       Например, необходимо сделать высоту шрифта header на 12 px больше чем высота шрифта страницы */
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav {
+    text-align: center;
+    margin: 40px 0px 0px 0px;
+}
+
+    nav a {
+        text-decoration: none;
+    }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+/* проблемы при редактировании вложенных правил, 
+   например, если поменять id формы то придется менять все правила #login-form ...*/
+#login-form {
+    width: 300px;
+    margin: 20px auto;
+}
+
+    #login-form p {
+        margin: 10px 0px;
+    }
+
+        #login-form p > label {
+            width: 100px;
+            float: left;
+            margin: 3px 0px;
+        }
+
+    #login-form input[type=text], #login-form input[type=password] {
+        border-radius: 4px;
+        outline: none;
+    }

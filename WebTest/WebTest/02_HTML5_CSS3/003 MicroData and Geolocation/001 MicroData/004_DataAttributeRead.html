@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Чтение data-* атриубтов</title>
+
+    <script>
+        window.onload = function () {
+            var cars = document.getElementsByTagName("li");
+            var output = "Цвета автомобилей: <br />";
+
+            for (var i = 0; i < cars.length; i++) {
+
+                // dataset - получение доступа ко всем атрибутам data-*
+                // color - свойство определяет обращение к атрибуту data-color
+                output += cars[i].dataset.color + "<br />";
+
+                // Если атрибут содержит несколько дефисов после первого дефиса, например, data-year-production,
+                // то для получения доступа к такому атрибуту из JavaScript кода необходимо использовать имя yearProduction - 
+                // удалить дефис, а следующий после него символ перевести в верхний регистр.
+                // output += cars[i].dataset.yearProduction + "<br />";
+            }
+
+            document.getElementsByTagName("p")[0].innerHTML = output;
+        }
+    </script>
+
+</head>
+<body>
+    <ul>
+        <li data-year-production="1996" data-color="белый" data-engine="VR6">Cabrio</li>
+        <li data-year-production="1993" data-color="фиолетовый" data-engine="VR6">Corrado</li>
+        <li data-year-production="2008" data-color="красный" data-engine="2.0T">Eos</li>
+        <li data-year-production="2003" data-color="синий" data-engine="W8">Passat</li>
+    </ul>
+    <p></p>
+    <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#dom-dataset">Ссылка на документацию</a>
+</body>
+</html>

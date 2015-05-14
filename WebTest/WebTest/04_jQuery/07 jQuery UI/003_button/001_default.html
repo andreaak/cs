@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Button - Default functionality</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.button.js"></script>
+    <script>
+
+        $(function () {
+            $("input[type=submit], a, button") // Находим элементы
+                .button() // Инициализируем виджеты
+                .click(function (event) {
+                    alert("Hello");
+                    event.preventDefault(); // Отменяем действие по умолчанию
+                });
+        });
+
+    </script>
+</head>
+<body>
+    <button>A button element</button>
+    <input type="submit" value="A submit button">
+    <a href="#">An anchor</a>
+    <div>
+        <p>Examples of the markup that can be used for buttons: A button element, an input of type submit and an anchor.</p>
+    </div>
+</body>
+</html>

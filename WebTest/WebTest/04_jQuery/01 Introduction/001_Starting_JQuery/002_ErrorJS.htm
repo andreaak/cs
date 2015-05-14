@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Подключение сценария. Начало работы.</title>
+    <script>
+
+        //ОШИБКА! Код, приведенный ниже, не выполнится. Причина - неполная загрузка DOM-дерева. На 9 строке мы пытаемся выбрать еще не существующий параграф.
+
+        var paragraph = document.getElementsByTagName("p");
+        paragraph[0].innerHTML = "Hello World (JS)";
+
+    </script>
+</head>
+<body>
+    <p></p>
+</body>
+</html>

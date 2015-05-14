@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Autocomplete - Custom data and display</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.position.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.menu.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.autocomplete.js"></script>
+    <style>
+        #project-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+
+        #project-icon {
+            float: left;
+            height: 32px;
+            width: 32px;
+        }
+
+        #project-description {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        $(function () {
+            // Создаем массив объектов для автополя
+            var projects = [
+                {
+                    value: "jquery",
+                    label: "jQuery",
+                    desc: "the write less, do more, JavaScript library",
+                    icon: "jquery_32x32.png"
+                },
+                {
+                    value: "jquery-ui",
+                    label: "jQuery UI",
+                    desc: "the official user interface library for jQuery",
+                    icon: "jqueryui_32x32.png"
+                },
+                {
+                    value: "sizzlejs",
+                    label: "Sizzle JS",
+                    desc: "a pure-JavaScript CSS selector engine",
+                    icon: "sizzlejs_32x32.png"
+                }
+            ];
+
+            $("#project").autocomplete({
+                // Минимальное количесто символов для поиска
+                minLength: 1,
+                // Источник
+                source: projects,
+                // Настройка выделения варианта выбора при наведении мыши
+                focus: function (event, ui) {
+                    $("#project").val(ui.item.label);
+                    return false;
+                },
+                // Настройка отображения каждого элемента списка вариантов
+                select: function (event, ui) {
+                    $("#project").val(ui.item.label);
+                    $("#project-id").val(ui.item.value);
+                    $("#project-description").html(ui.item.desc);
+                    $("#project-icon").attr("src", "images/" + ui.item.icon);
+
+                    return false;
+                }
+            })
+            // _renderItem - контролирует отрисовку элементов в выпадающем списке. Метод должен создать <li> добавить его в <ul> и вернуть созданный элемент.
+            .data("autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("item.autocomplete", item) // указываем информацию, которая будет храниться в каждом элементе списка
+                    .append("<a>" + item.label + "<br>" + item.desc + "</a>")
+                    .appendTo(ul);
+            };
+        });
+    </script>
+</head>
+<body>
+    <div id="project-label">Select a project (type "j" for a start):</div>
+    <img id="project-icon" src="images/transparent_1x1.png" class="ui-state-default" alt="">
+    <input id="project" type="text">
+    <input type="hidden" id="project-id">
+    <p id="project-description"></p>
+</body>
+</html>

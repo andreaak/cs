@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Фильтр :file</title>
+        <script src="jquery-1.10.2.js"></script>
+        <script>
+
+            // :file - выбирает все элементы типа "file"
+
+            $(function () {
+
+                $(":file").css("border", "1px solid red");
+
+            });
+
+        </script>
+        <style>
+            input {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            Name <input type="text" />
+            Surname <input type="text" /><br />
+            <input type="file" />
+            <input type="submit" />
+        </form>
+    </body>
+</html>

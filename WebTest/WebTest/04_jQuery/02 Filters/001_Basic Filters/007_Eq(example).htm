@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор элементов по индексу. Фильтр :eq(n)</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // eq(n) - выбирает элемент с индексом n из набора. Индекс начинается с 0.
+
+        var i = 0;
+
+        $(function () {
+            // установим интервал в одну секунду
+            var timer = setInterval(choose, 1000);
+        });
+
+        function choose() {
+            i++;
+            // выделит все элементы списка до элемента с индексом i
+            $("li:eq(" + (i - 1) + ")")
+                .css("background-color", "white");
+
+            // выделит элементы списка по индексу i
+            $("li:eq(" + i + ")")
+                .css("background-color", "yellow");
+        }
+
+    </script>
+    <style>
+        ol li:first-child {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+        <li>Some item</li>
+        <li>Some item</li>
+        <li>Some item</li>
+        <li>Some item</li>
+        <li>Some item</li>
+    </ol>
+</body>
+</html>

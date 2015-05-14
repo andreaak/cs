@@ -1,0 +1,29 @@
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Button - Checkboxes</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.button.js"></script>
+    <script>
+
+        $(function () {
+            $("#check").button(); // если дл€ элемента checkbox вызвать метод button - создастс€ toggle button 
+        });
+
+    </script>
+    <style>
+        #format {
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="check" /><label for="check">Toggle</label>
+    <div>
+        <p>Checkbox стилизован как toggle button. Ёлемент label используетс€ как текст дл€ кнопки</p>
+    </div>
+</body>
+</html>

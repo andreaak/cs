@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод parent()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // parent() - возвращает ссылку на ближайшего родителя.
+        // hover(over,out) - метод, который имитирует эффект hovering (отслеживание попадания указателя мыши в пределы объекта). Параметры метода: over - функция при наведении, out - функция при отведении курсора мыши.
+
+        $(function () {
+            $("span").hover(
+                // функция срабатывает при наведении курсора на элемент
+                function () {
+                    $(this).css("background-color", "Yellow")
+                        .parent()
+                        .css("background-color", "Red");
+                },
+
+                // функция срабатывает при выходе курсора за пределы элемента
+                function () {
+                    $(this).css("background-color", "White")
+                        .parent()
+                        .css("background-color", "White");
+                });
+        });
+
+    </script>
+</head>
+<body>
+    <div>
+        <p>
+            Для изменения цвета этого параграфа нужно навести курсор мыши на этот <span>Span</span>
+        </p>
+        <p>
+            Для изменения цвета этого параграфа нужно навести курсор мыши на этот <span>Span</span>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Параметр duration</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+
+            // параметр duration - продолжительность выполнения анимации. Может быть задан в миллисекундах или строковым значением 'fast' или 'slow' (200 и 600 миллисекунд).
+
+            $("div").animate(
+                {
+                    opacity: 0.25,
+                    marginLeft: '550px'
+                },
+                "slow");
+        });
+
+    </script>
+    <style>
+        #id1 {
+            background-color: Green;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            color: White;
+        }
+    </style>
+</head>
+<body>
+    <div id="id1">
+        Test div
+    </div>
+</body>
+</html>
