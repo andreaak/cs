@@ -19,9 +19,15 @@
         var nextColor = 0;
 
         // Вызов следующей функции каждые 500 миллисекунд для анимации цвета.
-        setInterval(function () {
+        //setInterval(function () {
+        //    e.style.backgroundColor = colors[nextColor++ % colors.length];
+        //}, 500);
+
+        setInterval(changeColor, 500);
+
+        function changeColor () {
             e.style.backgroundColor = colors[nextColor++ % colors.length];
-        }, 500);
+        }
     </script>
 </body>
 </html>
