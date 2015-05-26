@@ -67,11 +67,13 @@ namespace TextConverter
             foreach (FileInfo file in dir.GetFiles().Where(file => extensions.Contains(file.Extension)))
             {
                 string encName = GetCharset(file.FullName);
-                if (string.IsNullOrEmpty(encName) || encName != SrcEncodingName)
+
+                if (string.IsNullOrEmpty(encName) 
+                    || encName.Equals(DstEncodingName, StringComparison.OrdinalIgnoreCase)
+                    || encName != SrcEncodingName)
                 {
                     continue;
                 }
-                
                 Decode(file, srcEnc, destEnc);
             }
 
