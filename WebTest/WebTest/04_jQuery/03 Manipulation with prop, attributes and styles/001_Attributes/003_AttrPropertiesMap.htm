@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Передача параметров через JSON-объект</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // В методы JQuery можно передавать JSON-объекты. С ними намного проще работать.
+
+        $(function () {
+
+            // Передача в метод attr() JSON-объекта
+            $("p").attr({
+                style: "color:red; font-size:22pt",
+                title: "JQuery Attr Test"
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>
+        Test string
+    </p>
+    <p>
+        Test string 2
+    </p>
+</body>
+</html>

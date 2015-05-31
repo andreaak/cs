@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод filter(function)</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод filter(function). Если передать методу filter() некоторую функцию, он вызовет ее для каждого элемента в наборе и исключит те элементы, для которых эта функция вернет значение false. 
+        // Эта функция получает доступ к текущему элементу набора через $(this).
+
+        $(function () {
+
+            // В качестве параметра "index" функция будет получать порядковый номер обрабатываемого элемента.
+            // если функция возвращает значение true - элемент проходит проверку и попадает в результирующий набор данных
+            // $(this) - обращение к текущему элементу а функции
+
+            $("p").filter(function (index) {
+                if ($(this).attr("align") && index == 0) {
+                    return true;
+                }
+            }).css("background-color", "red");
+
+        });
+
+    </script>
+    <style>
+        body {
+            background-color: Silver;
+            color: White;
+        }
+
+        p {
+            padding: 10px;
+            font-weight: bold;
+            background-color: Gray;
+        }
+    </style>
+</head>
+<body>
+
+    <p align="center">Test paragraph 1</p>
+
+    <p>Test paragraph 2</p>
+
+    <p align="center">Test paragraph 3</p>
+
+    <p>Test paragraph 4</p>
+
+    <p>Test paragraph 5</p>
+
+    <p>Test paragraph 6</p>
+
+    <p>Test paragraph 7</p>
+
+    <p>Test paragraph 8</p>
+
+    <p>Test paragraph 9</p>
+
+</body>
+</html>

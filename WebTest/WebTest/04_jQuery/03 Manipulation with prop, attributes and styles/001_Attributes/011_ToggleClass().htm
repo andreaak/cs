@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод toggleClass()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод toggleClass() - добавляет или удаляет заданный класс(ы) по принципу переключателя (добавляет, если элемент не содержит класса, и удаляет, если класс есть). 
+        // .toggleClass("class1 class2 ...") - соответствует поведению описанному выше.
+        // .toggleClass("class1 class2 ...", switch ) - только добавляет или только удаляет классы в зависимости от параметра switch. Параметр имеет тип boolean. true — в случае добавления класса(ов), false — иначе.
+        // .toggleClass( function(index, class) ,[switch] ) - "переключает" классы, список которых возвращает заданная пользователем функция. Возвращаемое ей значение должно представлять из себя строку, с перечислением классов через пробел. Функция вызывается для каждого из выбранных элементов. При вызове ей передаются следующие параметры: index — позиция элемента в наборе, class — текущий класс(ы) элемента. Параметр switch играет такую же роль, как и в предыдущем случае.
+
+        $(function () {
+
+            $("#toggle").on("click", toggle);
+
+
+            function toggle() {
+                $("p").toggleClass("class1");
+            }
+
+        });
+
+    </script>
+    <style>
+        .class1 {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p class="class1">
+        Test string 1
+    </p>
+    <p>
+        Test string 2
+    </p>
+    <p class="class1">
+        Test string 3
+    </p>
+    <input type="button" value="Toggle" id="toggle" />
+</body>
+</html>

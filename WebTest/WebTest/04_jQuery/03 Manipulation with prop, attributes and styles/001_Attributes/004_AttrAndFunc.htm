@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Параметр метода attr() - функция.</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Установка значения атрибута style через вызов функции у первого тэга! <p>
+
+        $(function () {
+            $("p:first").attr("style", CalculateValue());
+        });
+
+        function CalculateValue() {
+            return "color:red";
+        }
+
+    </script>
+</head>
+<body>
+    <p>
+        Test string 1
+    </p>
+    <p>
+        Test string 2
+    </p>
+    <p>
+        Test string 3
+    </p>
+</body>
+</html>

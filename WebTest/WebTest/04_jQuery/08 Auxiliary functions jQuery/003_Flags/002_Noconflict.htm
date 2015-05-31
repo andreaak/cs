@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод noConflict()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+            var newJ = jQuery.noConflict(true); // true - удалить все глобальные переменные, которые использует jQuery.
+            newJ("#div1").css("background-color", "Green");
+            jQuery("#div2").css("background-color", "Green");
+            $("#div3").css("background-color", "Green");
+        });
+
+    </script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+</body>
+</html>

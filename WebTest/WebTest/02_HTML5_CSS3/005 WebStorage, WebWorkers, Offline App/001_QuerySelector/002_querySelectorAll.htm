@@ -1,0 +1,55 @@
+<!DOCTYPE html />
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>querySelectorAll function</title>
+
+    <script type="text/javascript">
+        if (window.addEventListener) window.addEventListener("load", loadHandler, false);
+
+        function loadHandler() {
+            // Возвращает массив элементов, которые соответствуют селектору 
+            // В данном случае возвращается массив параграфов находящихся в элементе с атрибутом class="testClass"
+            var pArray = document.querySelectorAll(".testClass p");
+
+            for (var i = 0; i < pArray.length; i++) {
+                pArray[i].style.border = "solid 1px red";
+                pArray[i].style.margin = "5px";
+                pArray[i].style.padding = "5px";
+            }
+        }
+    </script>
+
+    <style type="text/css">
+        .testClass {
+            border: 3px solid green;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="testClass">
+        <p>
+            First
+        </p>
+        <p>
+            Second
+        </p>
+        <p>
+            Third
+        </p>
+    </div>
+    <div>
+        <p>
+            First
+        </p>
+        <p>
+            Second
+        </p>
+        <p>
+            Third
+        </p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод one()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод one() - устанавливает обработчик события выбранным элементам страницы. Особенностью метода является то, что обработчик будет вызван не более одного раза, на каждом из элементов.
+
+        $(function () {
+
+            var count = 0;
+
+            function add_text() {
+                count++;
+                $('#out').text('Lorem ipsum ' + count);
+            }
+
+            //$('#out').one('mouseover', add_text);
+            $('#out').on('mouseover', add_text);
+
+        });
+    </script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="out"></div>
+</body>
+</html>

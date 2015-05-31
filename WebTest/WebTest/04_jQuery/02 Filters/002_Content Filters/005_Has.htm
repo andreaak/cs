@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка с помощью фильтра :has</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // :has - фильтр выбирает все элементы, которые содержат указанный в параметрах элемент
+
+        $(function () {
+            $("div:has(p)").css("background-color", "red");
+            //$("div:has(img)").css("background-color", "red");
+            //$("div:has(ol)").css("background-color", "red");
+        });
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 450px;
+            height: 150px;
+            border: 1px solid;
+            padding: 10px;
+            text-align: justify;
+            margin: 10px 0 30px 10px;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="images/cat.jpg" alt="cat" title="cat" />
+    </div>
+    <div>
+        <ol>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ol>
+    </div>
+    <div>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero ero.</p>
+    </div>
+</body>
+</html>

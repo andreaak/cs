@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="jquery-1.8.1.js"></script>
+
+</head>
+<body>
+    <form>
+        <input type="text" name="login" value="abc" />
+        <input type="text" name="password" value="123" />
+    </form>
+
+    <script type="text/javascript">
+        //serializeArray() - возвращает массив объектов, содержащий данные элементов формы. 
+        var arr = $('form').serializeArray();
+        alert(arr[0].value + " " + arr[1].value);
+    </script>
+</body>
+</html>

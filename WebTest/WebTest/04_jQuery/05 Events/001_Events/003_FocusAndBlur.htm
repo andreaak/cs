@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>События focus & blur</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function() {
+
+            // focus - событие происходит, когда элемент получает фокус
+            $("input").focus(function() {
+                $(this).val("focus");
+            });
+
+            // blur - событие происходит, когда элемент теряет фокус
+            $("input").blur(function() {
+                $(this).val("blur");
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <input type="text" />
+    <br />
+    <br />
+    <input type="text" />
+    <br />
+    <br />
+    <input type="text" />
+    <br />
+    <br />
+    <input type="text" />
+</body>
+</html>

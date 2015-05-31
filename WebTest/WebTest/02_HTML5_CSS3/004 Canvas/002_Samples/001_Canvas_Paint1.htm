@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas paint</title>
+    <script type="text/javascript">
+        window.addEventListener("load", init, false);
+
+        var started = false,
+            canvas,
+            context;
+
+        function init() {
+            canvas = document.getElementById("canvas");
+            context = canvas.getContext("2d");
+            
+            canvas.addEventListener("mousemove", mousemoveHandler, false);
+        }
+
+        function mousemoveHandler(e) {
+            var x, y;
+            
+            // Получение координат мыши относительно элемента canvas
+            if (e.layerX || e.layerX == 0) { // Firefox
+                x = e.layerX;
+                y = e.layerY;
+            } else if (e.offsetX || e.offsetX == 0) { 
+                x = e.offsetX;
+                y = e.offsetY;
+            }
+
+            if (!started) {
+                context.beginPath();
+                context.moveTo(x, y);
+                started = true;
+            } else {
+                context.lineTo(x, y);
+                context.stroke();
+            }
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="200" style="border:1px solid black;">
+        Браузер не поддерживает canvas
+    </canvas>
+</body>
+</html>

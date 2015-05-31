@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Dialog - Modal message</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/external/jquery.bgiframe-2.1.2.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.mouse.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.button.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.draggable.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.position.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.resizable.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.dialog.js"></script>
+    <script>
+
+        $(function () {
+            $("#dialog-message").dialog({
+                modal: true,
+                // определение кнопок, которые будут отображаться в конце окна
+                buttons: {
+                    Ok: function () {
+                        // Закрытие текущего диалогового окна
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="dialog-message" title="Download complete">
+        <p>
+            <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0;"></span>
+            Вы успешно скачали файл.
+        </p>
+    </div>
+</body>
+</html>

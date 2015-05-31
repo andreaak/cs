@@ -1,0 +1,26 @@
+﻿<!--
+    С помощью Modernizr можно проверить поддержку необходимой функции и определить какой JavaScript сценарии необходим клиенту.
+    Тот, который основан на возможностях браузера и использует новые возможности HTML5 и CSS3 или тот скрипт, который программно имитирует
+    возможноси HTML5 и CSS3
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modernizer load test</title>
+
+    <script src="Modernizr-2.5.3.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        Modernizr.load({
+            test: Modernizr.input.placeholder,
+            yep: 'Yep.js',
+            nope: 'No.js'
+        });
+    </script>
+
+</head>
+<body>
+    Modernizr.load() test page
+</body>
+</html>

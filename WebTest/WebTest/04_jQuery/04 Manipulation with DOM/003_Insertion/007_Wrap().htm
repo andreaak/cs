@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Методы wrap(), empty(), remove().</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // wrap() - вставляет каждый совпавший элемент набора в указанную конструкцию HTML кода. Этот процесс наиболее полезен для встраивания дополнительной структуры в документ без необходимости разрушения его первоначальных семантических свойств.
+        // empty() - удаляет все содержимое из каждого элемента в наборе совпавших элементов.
+        // remove() - удаляет все совпавшие элементы из DOM. Эта функция НЕ удаляет элементы из объекта jQuery, позволяя Вам воспользоваться ими позже. Обратите внимание, начиная с версии 1.2.2 эта функция также удаляет все обработчики событий и внутренние закешированные данные.
+
+        $(function () {
+            $("span").wrap("<div>");
+
+            $("#clearBtn").click(function () {
+                $("p").empty();
+            });
+
+            $("#removeBtn").click(function () {
+                $("span").remove();
+            });
+        });
+
+    </script>
+    <style>
+        div {
+            background-color: Blue;
+            padding: 10px;
+        }
+
+        span {
+            background-color: White;
+        }
+    </style>
+</head>
+<body>
+    <span>Paragraph</span>
+    <p>Hello world</p>
+    <input type="button" value="Clear" id="clearBtn" />
+    <input type="button" value="Remove" id="removeBtn" />
+</body>
+</html>

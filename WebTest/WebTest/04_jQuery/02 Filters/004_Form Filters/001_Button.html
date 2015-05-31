@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Фильтр :button</title>
+        <script src="jquery-1.10.2.js"></script>
+        <script>
+
+            // :button - фильтр, который выбирает все кнопки на странице.
+
+            $(function () {
+
+                $(":button").css("font-weight","bold");
+
+            });
+
+        </script>
+    </head>
+    <body>
+        <form>
+            Login <input type="text" value="" /><br />
+            Password <input type="text" value="" /><br />
+            <input type="submit" value="Send" /><br />
+            <input type="button" value="Show" />
+        </form>
+    </body>
+</html>

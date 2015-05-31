@@ -1,0 +1,52 @@
+﻿div {
+    width: 100px;
+    height: 100px;
+    margin:10px;
+}
+
+@base-color: #fff200;
+
+div.class1 {
+    // сделать светлее на 30%
+    background-color: lighten(@base-color, 30%);
+}
+
+div.class2 {
+    // сделать темнее на 20%
+    background-color: darken(@base-color, 20%);
+}
+
+div.class3 {
+    // добавить насыщенности
+    background-color: saturate(@base-color, 40%);
+}
+
+div.class4 {
+    // убрать насыщенность
+    background-color: desaturate(@base-color, 50%);
+}
+
+/* Результирующий CSS
+
+    div {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+    }
+
+    div.class1 {
+      background-color: #fffa99;
+    }
+
+    div.class2 {
+      background-color: #999100;
+    }
+
+    div.class3 {
+      background-color: #fff200;
+    }
+
+    div.class4 {
+      background-color: #bfb940;
+    }
+*/

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Menu - Navigation Menu</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.position.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.menu.js"></script>
+    <script>
+
+        $(function () {
+            // Создание меню
+            $("#menu").menu({
+                // определение обработчика на смену выбранного пункта меню
+                select: function (event, ui) {
+                    // получение первой ссылки в элементе по которому произвели нажатие
+                    var link = ui.item.children("a:first");
+
+                    // если при нажатии на ссылку была зажата клавиша ctrl или shift или у элемента присутствует атрибут target - ничего не делаем
+                    if (link.attr("target") || event.metaKey || event.shiftKey || event.ctrlKey) {
+                        return;
+                    }
+                    // производим переход по выбранному адресу
+                    location.href = link.attr("href");
+                }
+            });
+        });
+
+    </script>
+    <style>
+        .ui-menu {
+            width: 200px;
+            margin-bottom: 2em;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li><a href="?Aberdeen">Aberdeen</a></li>
+        <li><a href="?Ada">Ada</a></li>
+        <li><a href="?Adamsville">Adamsville</a></li>
+        <li><a href="?Addyston">Addyston</a></li>
+        <li>
+            <a href="?Delphi">Delphi</a>
+            <ul>
+                <li><a href="?Ada">Ada</a></li>
+                <li><a href="?Saarland">Saarland</a></li>
+                <li><a href="?Salzburg">Salzburg</a></li>
+            </ul>
+        </li>
+        <li><a href="?Saarland">Saarland</a></li>
+        <li>
+            <a href="?Salzburg">Salzburg</a>
+            <ul>
+                <li>
+                    <a href="?Delphi">Delphi</a>
+                    <ul>
+                        <li><a href="?Ada">Ada</a></li>
+                        <li><a href="?Saarland">Saarland</a></li>
+                        <li><a href="?Salzburg">Salzburg</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="?Delphi">Delphi</a>
+                    <ul>
+                        <li><a href="?Ada">Ada</a></li>
+                        <li><a href="?Saarland">Saarland</a></li>
+                        <li><a href="?Salzburg">Salzburg</a></li>
+                    </ul>
+                </li>
+                <li><a href="?Perch">Perch</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

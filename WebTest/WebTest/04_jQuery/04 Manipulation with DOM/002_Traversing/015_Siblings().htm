@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод siblings()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод siblings() - получение всех родственных элементов.
+
+        $(function () {
+
+            var len = $(".highlight")
+                .siblings()
+                .css("color", "red")
+                .length;
+
+            $("b").text(len);
+        });
+
+    </script>
+    <style>
+        ul {
+            float: left;
+            margin: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        p {
+            color: blue;
+            margin: 10px 20px;
+            font-size: 16px;
+            padding: 5px;
+            font-weight: bolder;
+            clear: both;
+        }
+
+        .highlight {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li class="highlight">Three</li>
+        <li>Four</li>
+    </ul>
+
+    <ul>
+        <li>Five</li>
+        <li>Six</li>
+        <li>Seven</li>
+    </ul>
+
+    <ul>
+        <li>Eight</li>
+        <li class="highlight">Nine</li>
+    </ul>
+
+    <p>Unique siblings: <b></b></p>
+</body>
+</html>

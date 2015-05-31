@@ -1,0 +1,27 @@
+﻿<Window x:Class="TextConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Text Converter" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button Content="Open..." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Name="buttonOpen" Tag="buttonOpen" ToolTip="Open" Click="ButtonOpen_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="90,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Name="textBoxDirectory" 
+                 Text="{Binding Text, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <Button Content="Convert" Command="Save" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Width="75" Name="buttonConvert">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                        Executed="Convert_Executed" CanExecute="Convert_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+            <ComboBox HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="220" Name="comboSrcEncoding"
+            ItemsSource="{Binding ViewModelConverter.Encodings}" 
+            DisplayMemberPath="DisplayName" 
+            SelectedValuePath="Name" 
+            SelectedValue="{Binding ViewModelConverter.SrcEncodingName}" />
+        <ComboBox HorizontalAlignment="Left" Margin="287,49,0,0" VerticalAlignment="Top" Width="220" Name="comboDstEncoding"
+            ItemsSource="{Binding ViewModelConverter.Encodings}" 
+            DisplayMemberPath="DisplayName" 
+            SelectedValuePath="Name" 
+            SelectedValue="{Binding ViewModelConverter.DstEncodingName}" />
+
+    </Grid>
+</Window>

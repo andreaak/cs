@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Событие ready</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // ready - определяет функцию, которая будет запущена после полной загрузки DOM
+
+        // Первый вариант.
+
+        $(document).ready(function () {
+            alert("Page Loaded I");
+        });
+
+        // Второй вариант.
+        $(document).ready(after_ready);
+
+        function after_ready() {
+            alert("Page Loaded II");
+        }
+
+        // Третий вариант вариант. (Сокращенная запись)
+        $(function () {
+            alert("Page Loaded III");
+        });
+
+    </script>
+</head>
+<body>
+
+    <!-- Разметка страницы -->
+
+</body>
+</html>

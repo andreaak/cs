@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод addEventListener()</title>
+    <script>
+
+        window.addEventListener('load', function () {           // Установка обработичка на событие load.
+            
+            function show_msg() {
+                alert('Hello world');
+            }
+
+            var div = document.getElementById('test');
+            div.addEventListener('mouseover', show_msg, false); // Установка обработичка на событие mouseover для элемента c id test.
+        }, false);
+
+    </script>
+    <style>
+        #test {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="test"></div>
+    <p>Наведите курсор мыши на див.</p>
+</body>
+</html>

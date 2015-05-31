@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Уведомления об обновлениях Web Storage</title>
+    <script type="text/javascript">
+
+        // Событие storage происходит при внесении изменений в localStorage (при добавлении, удалении или изменении значений).
+        // Для того что бы увидить работу этого примера, откройте в браузере две вкладки
+        // в первой вносите изменения в localStorage, а на второй вкладке отслеживайте изменения.
+        window.addEventListener("storage", displayEvent, true);
+        window.addEventListener("load", init, false);
+
+        function init() {
+            var key = document.getElementById("keyInput");
+            var val = document.getElementById("valueInput");
+
+            document.getElementById("btnSave").onclick = function () {
+                window.localStorage.setItem(key.value, val.value);
+            }
+
+            document.getElementById("btnRemove").onclick = function () {
+                window.localStorage.removeItem(key.value);
+            }
+
+            document.getElementById("btnGet").onclick = function () {
+                alert(window.localStorage.getItem(key.value));
+            }
+        }
+
+        function displayEvent(e) {
+            var d = document.getElementById("output");
+            var message = "key: " + e.key + "<br />";               // измененный ключ
+            message += "newValue: " + e.newValue + "<br />";        // новое значение ключа
+            message += "oldValue: " + e.oldValue + "<br />";        // старое значение ключа
+            message += "url: " + e.url + "<br />";                  // адрес страницы на которой произошли изменения
+            message += "storageArea: " + e.storageArea + "<br />";  // ссылка на объект хранилища
+            d.innerHTML = message;
+        }
+    </script>
+</head>
+<body>
+    Ключ <input id="keyInput" />
+    Значение <input id="valueInput" />
+    <br />
+    <button id="btnSave">Сохранить</button>
+    <button id="btnGet">Прочитать</button>
+    <button id="btnRemove">Удалить по ключу</button>
+    <div id="output">
+    </div>
+</body>
+</html>

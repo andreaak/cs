@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод data()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+        $(function () {
+
+            $("p:first").data("obj",
+                {
+                    first: 123,
+                    second: "Text",
+                });
+
+            var dataP = $("p:first").data("obj");
+
+            alert(dataP.first + " " + dataP.second);
+        });
+
+    </script>
+</head>
+<body>
+    <p>Параграф №1</p>
+</body>
+</html>

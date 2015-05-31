@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка по атрибутам.</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            // $("E[A]") - соответствует элементам E с атрибутом A, имеющим любое значение.
+
+            // Выбор всех элементов "a", с атрибутом "target", имеющим любое значение.
+
+            $("a[target]").css("color", "red");
+
+        });
+
+    </script>
+</head>
+<body>
+    <a href="http://edu.cbsystematics.com/ ">CyberBionic Systematics</a><br />
+    <a href="http://edu.cbsystematics.com/video/ru/ " target="_blank">Video CyberBionic Systematics</a>
+</body>
+</html>

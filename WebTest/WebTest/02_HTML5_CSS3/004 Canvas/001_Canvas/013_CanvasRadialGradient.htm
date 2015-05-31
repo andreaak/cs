@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>RadialGradient</title>
+    <script src="Modernizr-2.0.6.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function draw() {
+            if (!Modernizr.canvas) return;
+
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+
+            // Создание радиального градиента.
+            var gradient = context.createRadialGradient(150, 150, 100, 150, 150, 200);
+            gradient.addColorStop(0, "Orange");
+            gradient.addColorStop(1, "Red");
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, 300, 300);
+        }
+
+        if (window.addEventListener)
+            window.addEventListener("load", draw, true);
+    </script>
+</head>
+<body>
+    <canvas id="canvas" height="300" width="300" style="border: solid 1px black;">
+        Ваш браузер не поддерживает элемент <b>Canvas</b>
+    </canvas>
+</body>
+</html>

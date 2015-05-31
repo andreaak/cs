@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Datepicker - Default functionality</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.datepicker.js"></script>
+    <script>
+
+        $(function () {
+            // Инициализация виджета datapicker
+            $("#datepicker").datepicker();
+        });
+
+    </script>
+</head>
+<body>
+    <p>
+        Date:
+        <input type="text" id="datepicker">
+    </p>
+    <div class="demo-description">
+        <p>
+           Widget datepicker по умолчанию привязывается к элементу input. 
+           Когда input получает фокус (click или tab key) открывается небольшой календарь.
+        </p>
+    </div>
+</body>
+</html>

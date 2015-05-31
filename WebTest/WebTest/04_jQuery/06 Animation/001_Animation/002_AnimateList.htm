@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Несколько анимаций одновременно</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+            $("div")
+                .animate(
+                {
+                    opacity: 0.25,
+                    marginLeft: '550px'
+                }, 5000)
+                .animate(
+                {
+                    opacity: 1.0,
+                    marginLeft: '0px'
+                }, 5000);
+            // анимации будут выполняться друг за другом
+        });
+
+    </script>
+    <style>
+        #id1 {
+            background-color: Green;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            color: White;
+        }
+    </style>
+</head>
+<body>
+    <div id="id1">
+        Test div
+    </div>
+</body>
+</html>

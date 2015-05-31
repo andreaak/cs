@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Событие onload.</title>
+    <script>
+
+        // onload - событие готовности страницы.
+        // Данное событие будет вызываться только после полной загрузки документа (включая картинки, сценарии и стили)
+
+        window.onload = function () {
+            var paragraph = document.getElementsByTagName("p");
+            paragraph[0].innerHTML = "Hello World (JS)";
+        }
+
+    </script>
+</head>
+<body>
+    <p></p>
+</body>
+</html>

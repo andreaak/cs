@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Canvas</title>
+    <script src="Modernizr-2.0.6.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function draw() {
+            // проверка поддержки элемента canvas в браузере.
+            if (!Modernizr.canvas) return;
+
+            // получение элемента и его графического контекста.
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+
+            // создание пути.
+            context.beginPath();
+            context.moveTo(100, 100);
+            context.lineTo(200, 200);
+
+            // черчение линии на холсте.
+            context.stroke();
+        }
+
+        if (window.addEventListener)
+            window.addEventListener("load", draw, true);
+    </script>
+</head>
+<body>
+    <canvas id="canvas" height="300" width="300" style="border: solid 1px black;">
+        Ваш браузер не поддерживает элемент <b>Canvas</b>
+    </canvas>
+</body>
+</html>

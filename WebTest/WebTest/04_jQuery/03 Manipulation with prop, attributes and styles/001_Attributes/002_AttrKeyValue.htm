@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление нового атрибута</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Добавление/изменение атрибута с помощью метода attr().
+        // attr("имя_атрибута","значение");
+
+        $(function () {
+            // Установка значеня атрибута "class" у всех параграфов
+            $("p").attr("class", "testClass");
+        });
+
+    </script>
+    <style>
+        .testClass {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Test string 1
+    </p>
+    <p class="testClass">
+        Test string 2
+    </p>
+    <p>
+        Test string 3
+    </p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Проверка поддержки WebStorage</title>
+    <script type="text/javascript">
+        function init() {
+            var e = document.getElementById("support");
+
+            if (window.sessionStorage) {
+                e.innerHTML = "Этот браузер поддерживает sessionStorage";
+            } else {
+                e.innerHTML = "Этот браузер НЕ поддерживает sessionStorage";
+            }
+
+            e.innerHTML += "<br />";
+
+            if (window.localStorage) {
+                e.innerHTML += "Этот браузер поддерживает localStorage";
+            } else {
+                e.innerHTML += "Этот браузер НЕ поддерживает localStorage";
+            }
+        }
+
+        window.addEventListener("load", init, false);
+    </script>
+</head>
+<body>
+    <div id="support">
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод fadeOut()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // Метод fadeOut -  плавно делает элемент невидимым, меняя его прозрачность.
+
+        $(function () {
+            $("p").click(function () {
+                $(this).fadeOut("slow");
+            });
+
+        });
+    </script>
+    <style>
+        p {
+            font-size: 150%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Click me
+    </p>
+</body>
+</html>

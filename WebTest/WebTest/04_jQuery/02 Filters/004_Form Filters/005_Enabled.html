@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Фильтр :enabled</title>
+        <script src="jquery-1.10.2.js"></script>
+        <script>
+            
+            // :enabled - фильтр выбирает только элементы форм, находящиеся в активном состоянии
+
+            $(function () {
+
+                $("input:enabled").val("enabled");
+
+            });
+
+        </script>
+    </head>
+    <body>
+        <form>
+            <input type="text" disabled="disabled" />
+            <input type="text" />
+        </form>
+    </body>
+</html>

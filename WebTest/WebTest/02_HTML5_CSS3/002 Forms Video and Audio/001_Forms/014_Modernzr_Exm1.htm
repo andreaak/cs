@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование Modernizr</title>
+    <script src="modernizr.custom.52481.js"></script>
+</head>
+<body>
+   
+     <!--Код формы, использующей атрибут autofocus:-->
+    <form>
+        <p>
+            <label>
+                Search
+                <input type="search" name="query" id="query" autofocus="autofocus" /></label>
+        </p>
+        <p>
+            <input type="submit" value="Отправить" />
+        </p>
+    </form>
+
+    <script>
+        // Если браузер не поддерживает атрибут autofocus вызываем метод focus на необходимом элементе.
+        if (!Modernizr.input.autofocus) {
+            document.getElementById("query").focus();
+        }
+    </script>
+</body>
+</html>

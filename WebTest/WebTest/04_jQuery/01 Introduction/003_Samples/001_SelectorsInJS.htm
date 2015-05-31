@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка элементов с помощью JavaScript</title>
+    <script>
+
+        window.addEventListener("load", JavaScriptSelection, true);
+
+        function JavaScriptSelection() {
+            document.getElementsByTagName("p")[0].innerHTML = "<u>getElementsByTagName()</u> - выборка по имени тега";
+            document.getElementsByName("input_background")[0].style.background = "yellow";;
+            document.getElementsByClassName("bold_paragraph")[0].style.fontWeight = "bold";
+            document.getElementById("red_paragraph").style.color = "red";
+        }
+
+    </script>
+</head>
+<body>
+    <p></p>
+    <input type="text" name="input_background" />
+    <p class="bold_paragraph"><u>getElementsByClassName()</u> - выборка по имени класса.</p>
+    <p id="red_paragraph"><u>getElementById()</u> - выборка по идентификатору</p>
+</body>
+</html>

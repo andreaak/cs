@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery UI Button - Icons</title>
+    <link rel="stylesheet" href="../jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
+    <script src="../jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.widget.js"></script>
+    <script src="../jquery-ui-1.10.3/ui/jquery.ui.button.js"></script>
+    <script>
+
+        // primary - иконка на кнопке слева
+        // secondary - иконка на кнопке справа
+        // text: false - не отображать текст на кнопке
+
+        $(function () {
+            $("button:first").button({
+                icons: {
+                    primary: "ui-icon-locked"
+                },
+                text: false
+            }).next().button({
+                icons: {
+                    primary: "ui-icon-locked"
+                }
+            }).next().button({
+                icons: {
+                    primary: "ui-icon-gear",
+                    secondary: "ui-icon-triangle-1-s"
+                }
+            }).next().button({
+                icons: {
+                    primary: "ui-icon-gear",
+                    secondary: "ui-icon-triangle-1-s"
+                },
+                text: false
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <button>Button with icon only</button>
+    <button>Button with icon on the left</button>
+    <button>Button with two icons</button>
+    <button>Button with two icons and no text</button>
+</body>
+</html>

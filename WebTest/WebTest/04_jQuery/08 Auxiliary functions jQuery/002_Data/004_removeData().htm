@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Метод removeData()</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(function () {
+
+            $("p").data("name1", "value 1");
+            $("p").data("name2", "value 2");
+            $("p").data("name3", "value 3");
+            $("p").data("name4", "value 4");
+            $("p").data("name5", "value 5");
+            $("p").data("name6", "value 6");
+
+            var dataP = $("p:first").data();
+
+            for (item in dataP) {
+                $("span").eq(0).html($("span").html() + item + " " + dataP[item] + "<br/>");
+            }
+
+            $("p").removeData("name3 name4 name5");
+
+            for (item in dataP) {
+                $("span").eq(1).html($("span").eq(1).html() + item + " " + dataP[item] + "<br/>");
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <p>Параграф №1</p>
+    <span></span>
+    <br />
+    <br />
+    <span></span>
+</body>
+</html>
