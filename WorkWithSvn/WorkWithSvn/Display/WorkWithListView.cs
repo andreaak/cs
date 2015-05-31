@@ -10,9 +10,9 @@ namespace Display
 {
     public class WorkWithListView
     {
-        private delegate void delegateUpdate(RepoEntityData entity);
-        private delegate void delegateUpdateItems(List<RepoEntityData> selCollection, RepoFileTypes list);
-        private delegate void delegateRename(RepoEntityData entity, string oldName);
+        private delegate void delegateUpdate(RepositoryItem entity);
+        private delegate void delegateUpdateItems(List<RepositoryItem> selCollection, RepoFileTypes list);
+        private delegate void delegateRename(RepositoryItem entity, string oldName);
         private delegate List<string> delegateGet();
         private ListViewColumnSorter lvwColumnSorter;
         ContextMenuStrip contextMenuStripListView;
@@ -79,7 +79,7 @@ namespace Display
 
         #region FILL
 
-        public void Fill(RepoDirectoryData currentDir, RepoFileTypes fileStatus, string changeList, List<string> selectedExtensions)
+        public void Fill(RepositoryDirectory currentDir, RepoFileTypes fileStatus, string changeList, IEnumerable<string> selectedExtensions)
         {
             if (currentDir == null)
             {
@@ -90,38 +90,38 @@ namespace Display
             listView.ListViewItemSorter = lvwColumnSorter;
         }
 
-        private void Fill(RepoDirectoryData baseDir, string changeList, List<string> selectedExtensions, RepoFileTypes fileStatus)
+        private void Fill(RepositoryDirectory baseDir, string changeList, IEnumerable<string> selectedExtensions, RepoFileTypes fileStatus)
         {
-            foreach (RepoFileData file in baseDir.FilesList)
+            foreach (RepositoryFile file in baseDir.FilesList)
             {
-                if (file.GetData().IsIgnoredEntity(fileStatus)
-                    || UTILS.IsIgnoredChangeList(changeList, file.GetData())
-                    || UTILS.IsIgnoredExtension(selectedExtensions, file.GetData()))
+                if (file.IsIgnoredItem(fileStatus)
+                    || UTILS.IsIgnoredChangeList(changeList, file)
+                    || UTILS.IsIgnoredExtension(selectedExtensions, file))
                 {
                     continue;
                 }
-                AddItem(file.GetData());
+                AddItem(file);
             }
 
-            foreach (RepoDirectoryData dir in baseDir.DirectoriesList)
+            foreach (RepositoryDirectory dir in baseDir.DirectoriesList)
             {
-                if (!(dir.GetData().IsIgnoredEntity(fileStatus)
-                    || UTILS.IsIgnoredChangeList(changeList, dir.GetData())
-                    || UTILS.IsIgnoredEntity(dir.Data.FullPath)))
+                if (!(dir.IsIgnoredItem(fileStatus)
+                    || UTILS.IsIgnoredChangeList(changeList, dir)
+                    || UTILS.IsIgnoredEntity(dir.FullName)))
                 {
-                    AddItem(dir.GetData()); 
+                    AddItem(dir); 
                 }
                 Fill(dir, changeList, selectedExtensions, fileStatus);
             }
         }
         
-        private void AddItem(RepoEntityData entity)
+        private void AddItem(RepositoryItem entity)
         {
-            if (GetListViewItem(entity.Data.FullPath) != null)
+            if (GetListViewItem(entity.FullName) != null)
             {
                 return;
             }
-            ListViewItem listviewitem = new ListViewItem(entity.Data.Name);
+            ListViewItem listviewitem = new ListViewItem(entity.Name);
             listviewitem.UseItemStyleForSubItems = false;
             FillSubItem(listviewitem, entity);
             Color color = GetColor(entity);
@@ -132,7 +132,7 @@ namespace Display
             listView.Items.Add(listviewitem);
         }
 
-        private static Color GetColor(RepoEntityData repoData)
+        private static Color GetColor(RepositoryItem repoData)
         {
             Color color = Color.Empty;
 
@@ -148,7 +148,7 @@ namespace Display
             {
                 color = Color.Aqua;
             }
-            else if (repoData.IsDeleted)
+            else if (repoData.IsDeletedLocal)
             {
                 color = Color.Red;
             }
@@ -160,7 +160,7 @@ namespace Display
             return color;
         }
 
-        private static void FillSubItem(ListViewItem listviewitem, RepoEntityData file)
+        private static void FillSubItem(ListViewItem listviewitem, RepositoryItem file)
         {
             System.Windows.Forms.ListViewItem.ListViewSubItem lvsi = new ListViewItem.ListViewSubItem();
 
@@ -182,7 +182,7 @@ namespace Display
 
             lvsi = new ListViewItem.ListViewSubItem();
             lvsi.Name = Constants.FULL_PATH_COLUMN;
-            lvsi.Text = file.Data.FullPath;
+            lvsi.Text = file.FullName;
             listviewitem.SubItems.Add(lvsi);
 
             lvsi = new ListViewItem.ListViewSubItem();
@@ -196,7 +196,7 @@ namespace Display
             listviewitem.SubItems.Add(lvsi);
         }
 
-        public static void ColorSubItems(ListViewItem lvi, RepoEntityData entity)
+        public static void ColorSubItems(ListViewItem lvi, RepositoryItem entity)
         {
             Color color = GetColor(entity);
 
@@ -243,7 +243,7 @@ namespace Display
             return lvi.SubItems[Constants.FULL_PATH_COLUMN].Text;
         }
 
-        public void UpdateItemsInListView(List<RepoEntityData> selCollection, RepoFileTypes list)
+        public void UpdateItemsInListView(List<RepositoryItem> selCollection, RepoFileTypes list)
         {
             if (listView.InvokeRequired)
             {
@@ -252,15 +252,15 @@ namespace Display
             }
             else
             {
-                foreach (RepoEntityData entity in selCollection)
+                foreach (RepositoryItem entity in selCollection)
                 {
-                    if (entity.IsIgnoredEntity(list))
+                    if (entity.IsIgnoredItem(list))
                     {
                         Remove(entity);
                     }
                     else if (entity.IsAdded)
                     {
-                        if (GetListViewItem(entity.Data.FullPath) == null)
+                        if (GetListViewItem(entity.FullName) == null)
                         {
                             Add(entity);
                         }
@@ -279,7 +279,7 @@ namespace Display
             }
         }
 
-        public void Add(RepoEntityData entity)
+        public void Add(RepositoryItem entity)
         {
             if (listView.InvokeRequired)
             {
@@ -292,7 +292,7 @@ namespace Display
             }
         }
 
-        public void Remove(RepoEntityData entity)
+        public void Remove(RepositoryItem entity)
         {
             if (listView.InvokeRequired)
             {
@@ -301,7 +301,7 @@ namespace Display
             }
             else
             {
-                ListViewItem item = GetListViewItem(entity.Data.FullPath);
+                ListViewItem item = GetListViewItem(entity.FullName);
                 if (item != null)
                 {
                     listView.Items.Remove(item);
@@ -309,7 +309,7 @@ namespace Display
             }
         }
 
-        private void Update(RepoEntityData entity)
+        private void Update(RepositoryItem entity)
         {
             if (listView.InvokeRequired)
             {
@@ -318,7 +318,7 @@ namespace Display
             }
             else
             {
-                ListViewItem item = GetListViewItem(entity.Data.FullPath);
+                ListViewItem item = GetListViewItem(entity.FullName);
                 if (item == null)
                 {
                     AddItem(entity);
@@ -352,7 +352,7 @@ namespace Display
                 item.SubItems[Constants.REMOTE_STATUS_COLUMN].BackColor = color;
         }
 
-        public void RenameItemsInListView(RepoEntityData entity, string newPath)
+        public void RenameItemsInListView(RepositoryItem entity, string newPath)
         {
             if (listView.InvokeRequired)
             {
@@ -361,7 +361,7 @@ namespace Display
             }
             else
             {
-                ListViewItem item = GetListViewItem(entity.Data.FullPath);
+                ListViewItem item = GetListViewItem(entity.FullName);
                 if (item == null)
                 {
                     return;

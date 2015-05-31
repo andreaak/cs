@@ -98,11 +98,13 @@
     <Compile Include="DiffChanges.Designer.cs">
       <DependentUpon>DiffChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiskHierarchy\DefaultRepositoryHelper.cs" />
+    <Compile Include="DiskHierarchy\IRepositoryHelper.cs" />
     <Compile Include="DiskHierarchy\RepoFileTypes.cs" />
-    <Compile Include="DiskHierarchy\RepoFileData.cs" />
-    <Compile Include="DiskHierarchy\RepoDirectoryData.cs" />
-    <Compile Include="DiskHierarchy\SvnEntityData.cs" />
-    <Compile Include="DiskHierarchy\SvnFileTypes.cs" />
+    <Compile Include="DiskHierarchy\RepositoryFile.cs" />
+    <Compile Include="DiskHierarchy\RepositoryDirectory.cs" />
+    <Compile Include="DiskHierarchy\Svn\SvnFileTypes.cs" />
+    <Compile Include="DiskHierarchy\Svn\SvnRepositoryHelper.cs" />
     <Compile Include="Utils\CommitData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,8 +118,8 @@
       <DependentUpon>CommitMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="DiskHierarchy\SvnFileData.cs" />
-    <Compile Include="DiskHierarchy\SvnDirectoryData.cs" />
+    <Compile Include="DiskHierarchy\Svn\SvnFile.cs" />
+    <Compile Include="DiskHierarchy\Svn\SvnDirectory.cs" />
     <Compile Include="GridForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,7 +141,7 @@
     <Compile Include="SwitchLocation.Designer.cs">
       <DependentUpon>SwitchLocation.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiskHierarchy\RepoEntityData.cs" />
+    <Compile Include="DiskHierarchy\RepositoryItem.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

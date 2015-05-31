@@ -6,14 +6,14 @@ namespace WorkWithSvn
 {
     public partial class SelectExtensions : Form
     {
-        List<string> extensions;
-        List<string> selectedExtensions;
-        public List<string> SelectedExtensions
+        ISet<string> extensions;
+        ISet<string> selectedExtensions;
+        public ISet<string> SelectedExtensions
         {
             get { return selectedExtensions; }
         }
 
-        public SelectExtensions(List<string> extensions)
+        public SelectExtensions(ISet<string> extensions)
         {
             this.extensions = extensions;
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace WorkWithSvn
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            selectedExtensions = new List<string>();
+            selectedExtensions = new HashSet<string>();
             foreach (string item in listBox1.SelectedItems)
             {
                 selectedExtensions.Add(item);

@@ -16,13 +16,13 @@ namespace WorkWithSvn.Providers
 {
     public class SvnProvider : AProvider
     {
-        private SvnDirectoryData workingCopy;
+        private SvnDirectory workingCopy;
         private delegate void InvokeMethod(ControlsData ctrlData);
         Collection<SvnStatusEventArgs> list;
         public event Action ProcessEnded;
         public event Action Increment;
 
-        public RepoDirectoryData WorkingCopy
+        public RepositoryDirectory WorkingCopy
         {
             get { return workingCopy; }
         }
@@ -43,7 +43,7 @@ namespace WorkWithSvn.Providers
         public void GetDirectories()
         {
             DirectoryInfo dir = new DirectoryInfo(Options.GetInstance.WorkingCopyPath);
-            workingCopy = new SvnDirectoryData(dir);
+            workingCopy = new SvnDirectory(dir);
             OnProcessEnded();
         }
 
@@ -75,7 +75,7 @@ namespace WorkWithSvn.Providers
                 string cl = ctrlData.ChangeList != null ? ctrlData.ChangeList : Constants.ALL_ITEM;
                 ListView.ListViewCtrl.BeginUpdate();
                 ListView.Clear();
-                ListView.Fill(workingCopy.GetDirectory(Tree.SelNode.FullPath) as SvnDirectoryData,
+                ListView.Fill(workingCopy.GetDirectory(Tree.SelNode.FullPath) as SvnDirectory,
                     GetFilesTypes(ctrlData), cl, ctrlData.SelectedExtensions);
                 ListView.ListViewCtrl.EndUpdate();
             }
@@ -141,11 +141,11 @@ namespace WorkWithSvn.Providers
                         RemoveFilesFromChanged(list);
                     }
 
-                    foreach (SvnStatusEventArgs entityArgs in list)
+                    foreach (SvnStatusEventArgs arg in list)
                     {
-                        if (!UTILS.IsIgnoredEntity(entityArgs))
+                        if (!SvnRepositoryHelper.IsIgnoredItem(arg))
                         {
-                            SetEntityData(entityArgs);
+                            SetEntityData(arg);
                         }
                     }
                 }
@@ -162,17 +162,17 @@ namespace WorkWithSvn.Providers
 
         public void RefreshFileStatus(ControlsData ctrlData)
         {
-            foreach (SvnEntityData entity in GetSelectedItems())
+            foreach (RepositoryItem repItem in GetSelectedItems())
             {
-                SetEntityData(entity);
+                SetEntityData(repItem);
                 OnIncrement();
             }
             OnProcessEnded();
         }
 
-        public bool IsNotVersioned(RepoEntityData entity)
+        public bool IsNotVersioned(RepositoryItem repItem)
         {
-            return (entity as SvnEntityData).RemoteContentStatus == SvnStatus.NotVersioned;
+            return repItem.IsNotVersioned;
         }
 
         public void AddFile(string fullPath)
@@ -219,13 +219,6 @@ namespace WorkWithSvn.Providers
             }
         }
 
-        public bool IsDeletedEntity(RepoEntityData entity)
-        {
-            SvnEntityData svnEntity = entity as SvnEntityData;
-            return svnEntity.LocalContentStatus != SvnStatus.Deleted
-                    && svnEntity.RemoteContentStatus != SvnStatus.Deleted;
-        }
-
         public void SetEntityData(string fullPath,  ControlsData ctrlData)
         {
             using (SvnClient client = new SvnClient())
@@ -251,10 +244,10 @@ namespace WorkWithSvn.Providers
         {
             using (SvnClient client = new SvnClient())
             {
-                foreach (SvnEntityData entity in GetSelectedItems())
+                foreach (RepositoryItem repItem in GetSelectedItems())
                 {
-                    client.Resolved(entity.Data.FullPath);
-                    SetEntityData(entity);
+                    client.Resolved(repItem.FullName);
+                    SetEntityData(repItem);
                     OnIncrement();
                 }
                 OnProcessEnded();
@@ -270,24 +263,24 @@ namespace WorkWithSvn.Providers
                 try
                 {
                     bool ok = false;
-                    foreach (SvnEntityData entity in GetSelectedItems())
+                    foreach (RepositoryItem repItem in GetSelectedItems())
                     {
 
                         if (backup)
                         {
-                            UTILS.BackUpFile(WorkingCopy.Data.FullPath,
-                                WorkingCopy.Data.Name, entity.Data.FullPath);
+                            UTILS.BackUpFile(WorkingCopy.FullName,
+                                WorkingCopy.Name, repItem.FullName);
                         }
 
-                        ok = client.Switch(entity.Data.FullPath, GetTargetLocationUri(entity.Data.FullPath, targetLocation));
+                        ok = client.Switch(repItem.FullName, GetTargetLocationUri(repItem.FullName, targetLocation));
 
                         if (restore)
                         {
-                            UTILS.RestoreFile(WorkingCopy.Data.FullPath,
-                                WorkingCopy.Data.Name, entity.Data.FullPath);
+                            UTILS.RestoreFile(WorkingCopy.FullName,
+                                WorkingCopy.Name, repItem.FullName);
                         }
 
-                        SetEntityData(entity);
+                        SetEntityData(repItem);
                         OnIncrement();
                     }
                 }
@@ -309,8 +302,8 @@ namespace WorkWithSvn.Providers
             {
                 try
                 {
-                    List<RepoEntityData> selCollection = GetSelectedItems();
-                    List<string> pathes = selCollection.Select(item => item.Data.FullPath).ToList();
+                    List<RepositoryItem> selCollection = GetSelectedItems();
+                    List<string> pathes = selCollection.Select(item => item.FullName).ToList();
                     SvnUpdateArgs argsU = new SvnUpdateArgs();
                     SvnUpdateResult res;
                     if (!client.Update(pathes, out res))
@@ -352,9 +345,9 @@ namespace WorkWithSvn.Providers
 
                     foreach (string path in files)
                     {
-                        SvnFileData file = workingCopy.GetFile(path);
-                        file.SvnData.LocalContentStatus = SvnStatus.Normal;
-                        file.SvnData.RemoteContentStatus = SvnStatus.None;
+                        RepositoryItem file = workingCopy.GetFile(path);
+                        file.LocalStatus = SvnStatus.Normal;
+                        file.RemoteStatus = SvnStatus.None;
                     }
                 }
                 catch (Exception ex)
@@ -375,10 +368,10 @@ namespace WorkWithSvn.Providers
             {
                 try
                 {
-                    foreach (SvnEntityData entity in GetSelectedItems())
+                    foreach (RepositoryItem repItem in GetSelectedItems())
                     {
-                        client.Revert(entity.Data.FullPath);
-                        SetEntityData(entity);
+                        client.Revert(repItem.FullName);
+                        SetEntityData(repItem);
                         OnIncrement();
                     }
                 }
@@ -398,10 +391,10 @@ namespace WorkWithSvn.Providers
             using (SvnClient client = new SvnClient())
             {
                 StringBuilder all = new StringBuilder();
-                foreach (SvnEntityData entity in GetSelectedItems())
+                foreach (RepositoryItem repItem in GetSelectedItems())
                 {
-                    SvnTarget from = SvnTarget.FromString(entity.Data.FullPath);
-                    SvnTarget to = SvnTarget.FromUri(client.GetUriFromWorkingCopy(entity.Data.FullPath));
+                    SvnTarget from = SvnTarget.FromString(repItem.FullName);
+                    SvnTarget to = SvnTarget.FromUri(client.GetUriFromWorkingCopy(repItem.FullName));
                     MemoryStream stream = new MemoryStream();
                     if (client.Diff(from, to, stream))
                     {
@@ -422,13 +415,13 @@ namespace WorkWithSvn.Providers
             bool ret = false;
             using (SvnClient client = new SvnClient())
             {
-                foreach (SvnEntityData entity in GetSelectedItems())
+                foreach (RepositoryItem repItem in GetSelectedItems())
                 {
-                    if (string.IsNullOrEmpty(entity.ChangeList))
+                    if (string.IsNullOrEmpty(repItem.ChangeList))
                     {
                         string changeListName = changeList;
-                        client.AddToChangeList(entity.Data.FullPath, changeListName);
-                        entity.ChangeList = changeListName;
+                        client.AddToChangeList(repItem.FullName, changeListName);
+                        repItem.ChangeList = changeListName;
                     }
                 }
             }
@@ -439,10 +432,10 @@ namespace WorkWithSvn.Providers
         {
             using (SvnClient client = new SvnClient())
             {
-                foreach (SvnEntityData entity in GetSelectedItems())
+                foreach (RepositoryItem repItem in GetSelectedItems())
                 {
-                    client.RemoveFromChangeList(entity.Data.FullPath);
-                    entity.ChangeList = null;
+                    client.RemoveFromChangeList(repItem.FullName);
+                    repItem.ChangeList = null;
                 }
             }
         }
@@ -486,9 +479,9 @@ namespace WorkWithSvn.Providers
             return logs;
         }
 
-        public RepoEntityData GetEntity(string fullPath)
+        public RepositoryItem GetEntity(string fullPath)
         {
-            if (fullPath == WorkingCopy.Data.FullPath
+            if (fullPath == WorkingCopy.FullName
                 || UTILS.IsIgnoredEntity(fullPath))
             {
                 return null;
@@ -496,69 +489,59 @@ namespace WorkWithSvn.Providers
 
             if (!UTILS.IsDirectory(fullPath))
             {
-                SvnFileData file = workingCopy.GetFile(fullPath);
-                if (file != null)
-                {
-                    return file.SvnData;
-                }
+                return workingCopy.GetFile(fullPath);
             }
             else
             {
-                SvnDirectoryData dir = workingCopy.GetDirectory(fullPath);
-                if (dir != null)
-                {
-                    return dir.SvnData;
-                }
+                return workingCopy.GetDirectory(fullPath);
             }
-            return null;
         }
 
-        public RepoEntityData GetDeletedEntity(string fullPath)
+        public RepositoryItem GetDeletedEntity(string fullPath)
         {
-            if (fullPath == WorkingCopy.Data.FullPath
+            if (fullPath == WorkingCopy.FullName
                 || UTILS.IsIgnoredEntity(fullPath))
             {
                 return null;
             }
-            SvnFileData file = workingCopy.GetFile(fullPath);
+            RepositoryItem file = workingCopy.GetFile(fullPath);
             if (file != null)
             {
-                return file.SvnData;
+                return file;
             }
-            SvnDirectoryData dir = workingCopy.GetDirectory(fullPath);
+            RepositoryItem dir = workingCopy.GetDirectory(fullPath);
             if (dir != null)
             {
-                return dir.SvnData;
+                return dir;
             }
             return null;
         }
 
-        public bool IsUnchanged(RepoEntityData entity)
+        public bool IsUnchanged(RepositoryItem repItem)
         {
-            SvnEntityData svnEntity = entity as SvnEntityData;
-            return svnEntity.IsUnchanged;
+            return repItem.IsUnchanged;
         }
 
-        public List<RepoEntityData> GetSelectedItems()
+        public List<RepositoryItem> GetSelectedItems()
         {
             List<string> filesPath = ListView.GetSelectedItemsPath();
-            List<RepoEntityData> list = new List<RepoEntityData>();
+            List<RepositoryItem> list = new List<RepositoryItem>();
             foreach (String path in filesPath)
             {
                 if (UTILS.IsDirectory(path))
                 {
-                    RepoDirectoryData dir = WorkingCopy.GetDirectory(path);
+                    RepositoryDirectory dir = WorkingCopy.GetDirectory(path);
                     if (dir != null)
                     {
-                        list.Add(dir.GetData());
+                        list.Add(dir);
                     }
                 }
                 else
                 {
-                    RepoFileData file = WorkingCopy.GetFile(path);
+                    RepositoryFile file = WorkingCopy.GetFile(path);
                     if (file != null)
                     {
-                        list.Add(file.GetData());
+                        list.Add(file);
                     }
                 }
             }
@@ -572,9 +555,9 @@ namespace WorkWithSvn.Providers
             {
                 try
                 {
-                    List<RepoEntityData> selCollection = GetSelectedItems();
+                    List<RepositoryItem> selCollection = GetSelectedItems();
 
-                    List<string> pathes = selCollection.Select(item => item.Data.FullPath).ToList();
+                    List<string> pathes = selCollection.Select(item => item.FullName).ToList();
                     foreach (string itemPath in pathes)
                     {
                         client.Add(itemPath, SvnDepth.Empty);
@@ -601,8 +584,8 @@ namespace WorkWithSvn.Providers
             {
                 try
                 {
-                    List<RepoEntityData> selCollection = GetSelectedItems();
-                    List<string> pathes = selCollection.Select(item => item.Data.FullPath).ToList();
+                    List<RepositoryItem> selCollection = GetSelectedItems();
+                    List<string> pathes = selCollection.Select(item => item.FullName).ToList();
                     SvnDeleteArgs args = new SvnDeleteArgs();
                     args.Force = true;
                     args.ThrowOnError = false;
@@ -726,7 +709,7 @@ namespace WorkWithSvn.Providers
             List<string> files = new List<string>();
             foreach (SvnStatusEventArgs file in list)
             {
-                if (UTILS.IsIgnoredEntity(file))
+                if (SvnRepositoryHelper.IsIgnoredItem(file))
                 {
                     continue;
                 }
@@ -735,98 +718,98 @@ namespace WorkWithSvn.Providers
             WorkingCopy.RemoveFilesFromChanged(files);
         }
 
-        private void SetEntitysData(List<RepoEntityData> selCollection)
+        private void SetEntitysData(List<RepositoryItem> selCollection)
         {
-            foreach (SvnEntityData entity in selCollection)
+            foreach (RepositoryItem entity in selCollection)
             {
                 SetEntityData(entity);
             }
         }
 
-        private void SetEntityData(SvnEntityData entity)
+        private void SetEntityData(RepositoryItem repItem)
         {
             using (SvnClient client = new SvnClient())
             {
                 SvnStatusArgs args = new SvnStatusArgs();
                 args.RetrieveRemoteStatus = true;
                 args.RetrieveAllEntries = true;
-                client.GetStatus(entity.Data.FullPath, args, out list);
+                client.GetStatus(repItem.FullName, args, out list);
 
                 if (list.Count > 0)
                 {
-                    SetEntityData(entity, list[0]);
+                    SetEntityData(repItem, list[0]);
                 }
                 else
                 {
-                    entity.LocalContentStatus = SvnStatus.Normal;
-                    entity.RemoteContentStatus = SvnStatus.None;
-                    entity.IsSwitched = false;
+                    repItem.LocalStatus = SvnStatus.Normal;
+                    repItem.RemoteStatus = SvnStatus.None;
+                    repItem.IsSwitched = false;
                 }
             }
         }
 
-        private void SetEntityData(SvnStatusEventArgs entityArgs)
+        private void SetEntityData(SvnStatusEventArgs arg)
         {
-            if (entityArgs.FullPath == WorkingCopy.Data.FullPath
-                || UTILS.IsIgnoredEntity(entityArgs))
+            if (arg.FullPath == WorkingCopy.FullName
+                || SvnRepositoryHelper.IsIgnoredItem(arg))
             {
                 return;
             }
 
-            if (!UTILS.IsDirectory(entityArgs))
+            if (!SvnRepositoryHelper.IsDirectory(arg))
             {
-                SvnFileData file = workingCopy.GetFileOrCreate(entityArgs.FullPath);
-                SetFileData(file, entityArgs);
+                RepositoryItem file = workingCopy.GetFileOrCreate(arg.FullPath);
+                SetEntityData(file, arg);
             }
             else
             {
-                SvnDirectoryData dir = workingCopy.GetDirectoryOrCreate(entityArgs.FullPath);
-                SetDirectoryData(dir, entityArgs);
+                RepositoryItem dir = workingCopy.GetDirectoryOrCreate(arg.FullPath);
+                SetEntityData(dir, arg);
             }
         }
 
-        private static void SetEntityData(SvnEntityData entity, SvnStatusEventArgs entityArgs)
+        private static void SetEntityData(RepositoryItem repItem, SvnStatusEventArgs arg)
         {
-            if (entity == null)
+            if (repItem == null)
             {
                 return;
             }
-            entity.Revision = entityArgs.Revision != -1 ? entityArgs.Revision.ToString() : null;
-            entity.LocalContentStatus = entityArgs.LocalContentStatus;
-            entity.RemoteContentStatus = entityArgs.RemoteContentStatus;
-            entity.ChangeList = entityArgs.ChangeList;
-            entity.Location = GetLocation_(entity.Data.FullPath);
-            entity.IsSwitched = entityArgs.Switched;
+            repItem.Revision = arg.Revision != -1 ? arg.Revision.ToString() : null;
+            repItem.LocalStatus = arg.LocalContentStatus;
+            repItem.RemoteStatus = arg.RemoteContentStatus;
+            repItem.ChangeList = arg.ChangeList;
+            repItem.Location = GetLocation_(repItem.FullName);
+            repItem.IsSwitched = arg.Switched;
         }
 
-        private static void SetFileData(SvnFileData file, SvnStatusEventArgs le)
-        {
-            if (file == null)
-            {
-                return;
-            }
-            file.SvnData.Revision = le.Revision != -1 ? le.Revision.ToString() : null;
-            file.SvnData.LocalContentStatus = le.LocalContentStatus;
-            file.SvnData.RemoteContentStatus = le.RemoteContentStatus;
-            file.SvnData.ChangeList = le.ChangeList;
-            file.SvnData.Location = GetLocation_(file.Data.FullPath);
-            file.SvnData.IsSwitched = le.Switched;
-        }
+        //private static void SetFileData(RepositoryItem file, SvnStatusEventArgs arg)
+        //{
+        //    if (file == null)
+        //    {
+        //        return;
+        //    }
+        //    file.Revision = arg.Revision != -1 ? arg.Revision.ToString() : null;
+        //    file.LocalStatus = arg.LocalContentStatus;
+        //    file.RemoteStatus = arg.RemoteContentStatus;
+        //    file.ChangeList = arg.ChangeList;
+        //    file.Location = GetLocation_(file.FullName);
+        //    file.IsSwitched = arg.Switched;
+        //}
 
-        private static void SetDirectoryData(SvnDirectoryData dir, SvnStatusEventArgs le)
-        {
-            if (dir == null)
-            {
-                return;
-            }
+        //private static void SetDirectoryData(RepositoryItem dir, SvnStatusEventArgs le)
+        //{
+        //    if (dir == null)
+        //    {
+        //        return;
+        //    }
 
-            dir.SvnData.Revision = le.Revision != -1 ? le.Revision.ToString() : null;
-            dir.SvnData.LocalContentStatus = le.LocalContentStatus;
-            dir.SvnData.RemoteContentStatus = le.RemoteContentStatus;
-            dir.SvnData.ChangeList = le.ChangeList;
-            dir.SvnData.Location = GetLocation_(dir.Data.FullPath);
-            dir.SvnData.IsSwitched = le.Switched;
-        }
+        //    dir.Revision = le.Revision != -1 ? le.Revision.ToString() : null;
+        //    dir.LocalStatus = le.LocalContentStatus;
+        //    dir.RemoteStatus = le.RemoteContentStatus;
+        //    dir.ChangeList = le.ChangeList;
+        //    dir.Location = GetLocation_(dir.FullName);
+        //    dir.IsSwitched = le.Switched;
+        //}
 
         private static void GetFileFromServer(string baseFilePath, SvnClient client, SvnTarget target)
         {
@@ -872,7 +855,7 @@ namespace WorkWithSvn.Providers
 
                 else
                 {
-                    outStr.Append(temp.Replace(WorkingCopy.Data.FullPath.Replace(@"\", "/") + "/", "") + "\n");
+                    outStr.Append(temp.Replace(WorkingCopy.FullName.Replace(@"\", "/") + "/", "") + "\n");
                 }
 
                 if (isPlus && isMinus)
@@ -894,7 +877,7 @@ namespace WorkWithSvn.Providers
             int ind1 = temp.IndexOf("(", 0);
             int ind2 = temp.IndexOf(")", ind1);
             string temp2 = temp.Substring(0, ind1)
-                .Replace(WorkingCopy.Data.FullPath.Replace(@"\", "/") + "/", "")
+                .Replace(WorkingCopy.FullName.Replace(@"\", "/") + "/", "")
                 + temp.Substring(ind2 + 1);
             return temp2.Replace("\t\t", "\t");
         }
@@ -928,7 +911,5 @@ namespace WorkWithSvn.Providers
                 Increment();
             }
         }
-
-
     }
 }

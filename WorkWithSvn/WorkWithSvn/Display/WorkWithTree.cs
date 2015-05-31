@@ -37,27 +37,27 @@ namespace Display
             treeView.Nodes.Clear();
         }
 
-        public void Fill(RepoDirectoryData directoryData)
+        public void Fill(RepositoryDirectory directoryData)
         {
             if (directoryData == null)
                 return;
             Clear();
-            treeView.Nodes.Add(directoryData.Data.FullPath);
+            treeView.Nodes.Add(directoryData.FullName);
             treeView.Nodes[treeView.Nodes.Count - 1].ImageIndex = 0;
             treeView.Nodes[treeView.Nodes.Count - 1].SelectedImageIndex = 1;
             treeView.Nodes[treeView.Nodes.Count - 1].StateImageIndex = 0;
             Fill(directoryData, treeView.Nodes[treeView.Nodes.Count - 1]);
         }
 
-        private void Fill(RepoDirectoryData directoryData, TreeNode treeNode)
+        private void Fill(RepositoryDirectory directoryData, TreeNode treeNode)
         {
-            foreach (RepoDirectoryData directory in directoryData.DirectoriesList)
+            foreach (RepositoryDirectory directory in directoryData.DirectoriesList)
             {
-                if (UTILS.IsIgnoredDirectory(directory.Data.FullPath))
+                if (UTILS.IsIgnoredDirectory(directory.FullName))
                 {
                     continue;
                 }
-                treeNode.Nodes.Add(directory.Data.Name);
+                treeNode.Nodes.Add(directory.Name);
                 treeNode.Nodes[treeNode.Nodes.Count - 1].ImageIndex = 0;
                 treeNode.Nodes[treeNode.Nodes.Count - 1].SelectedImageIndex = 1;
                 treeNode.Nodes[treeNode.Nodes.Count - 1].StateImageIndex = 0;

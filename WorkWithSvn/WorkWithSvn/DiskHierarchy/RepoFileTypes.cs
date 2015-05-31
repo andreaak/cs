@@ -10,13 +10,13 @@ namespace WorkWithSvn.DiskHierarchy
         public bool isModifiedOnServer;
         public bool isSwitched;
 
-        public virtual bool IsModified
+        private bool IsModified
         {
             get
             {
-                return statusList.Contains(SvnStatus.Modified)
-                    || statusList.Contains(SvnStatus.Added)
-                    || statusList.Contains(SvnStatus.Deleted);
+                return statusList.Contains("Modified")
+                    || statusList.Contains("Added")
+                    || statusList.Contains("Deleted");
             }
         }
 
@@ -24,12 +24,12 @@ namespace WorkWithSvn.DiskHierarchy
         {
         }
 
-        public virtual void Add(object status)
+        public void Add(object status)
         {
             statusList.Add(status);
         }
 
-        public virtual bool Contains(object status, bool isLocalStatus)
+        public bool Contains(object status, bool isLocalStatus)
         {
             bool contains = Contains(status);
             if (!IsModified)
@@ -43,7 +43,7 @@ namespace WorkWithSvn.DiskHierarchy
             return isModifiedOnServer && contains;
         }
 
-        public bool Contains(object status)
+        private bool Contains(object status)
         {
             return statusList.Contains(status);
         }

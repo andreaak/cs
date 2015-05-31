@@ -13,7 +13,7 @@ namespace WorkWithSvn.Providers
         void GetDirectories();
         WorkWithTree Tree { get; set;}
         WorkWithListView ListView { get; set; }
-        RepoDirectoryData WorkingCopy { get; }
+        RepositoryDirectory WorkingCopy { get; }
         Exception Error { get; }
 
         void FillTree();
@@ -22,10 +22,9 @@ namespace WorkWithSvn.Providers
         void ClearWorkingCopy();
         void SetChangedEntitysData(string fullPath, ControlsData ctrlData);
         void RefreshFileStatus(ControlsData ctrlData);
-        bool IsNotVersioned(RepoEntityData entity);
+        bool IsNotVersioned(RepositoryItem entity);
         void AddFile(string fullPath);
         void ShowDiff(ControlsData controlsData);
-        bool IsDeletedEntity(RepoEntityData entity);
         void SetEntityData(string fullPath, ControlsData ctrlData);
         void Resolved(ControlsData ctrlData);
         void Switch(ControlsData ctrlData, bool backup, bool restore, string targetLocation);
@@ -36,10 +35,10 @@ namespace WorkWithSvn.Providers
         bool MoveToChangeList(string changeList);
         void RemoveFromChangeList();
         CommitData GetLogs(string author);
-        RepoEntityData GetEntity(string fullPath);
-        RepoEntityData GetDeletedEntity(string fullPath);
-        bool IsUnchanged(RepoEntityData entity);
-        List<RepoEntityData> GetSelectedItems();
+        RepositoryItem GetEntity(string fullPath);
+        RepositoryItem GetDeletedEntity(string fullPath);
+        bool IsUnchanged(RepositoryItem entity);
+        List<RepositoryItem> GetSelectedItems();
         void Add(ControlsData ctrlData);
         void Delete(ControlsData ctrlData);
         string GetLocation(string path);

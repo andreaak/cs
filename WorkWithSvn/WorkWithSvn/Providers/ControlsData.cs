@@ -6,7 +6,7 @@ namespace WorkWithSvn.Providers
     {
         public string ChangeList { get; set; }
 
-        public List<string> SelectedExtensions { get; set; }
+        public ISet<string> SelectedExtensions { get; set; }
 
         public bool ShowModified { get; set; }
 

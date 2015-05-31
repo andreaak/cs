@@ -100,20 +100,23 @@
     <Compile Include="ActionWindow\DisplayMessage.cs" />
     <Compile Include="ActionWindow\ThreadVisualization.cs" />
     <Compile Include="ConstantsUtils.cs" />
-    <Compile Include="DiskHierarchy\EntityData.cs" />
-    <Compile Include="DiskHierarchy\DirectoryData.cs" />
+    <Compile Include="DiskHierarchy\DirectoryHelper.cs" />
+    <Compile Include="DiskHierarchy\DiskItem.cs" />
+    <Compile Include="DiskHierarchy\DirectoryItem.cs" />
     <Compile Include="DiskHierarchy\ExplorerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DiskHierarchy\ExplorerControl.Designer.cs">
       <DependentUpon>ExplorerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiskHierarchy\FileData.cs" />
-    <Compile Include="DiskHierarchy\FileSystem.Designer.cs">
-      <DependentUpon>FileSystem.xsd</DependentUpon>
+    <Compile Include="DiskHierarchy\FileItem.cs" />
+    <Compile Include="DiskHierarchy\FileSystemDataSet.Designer.cs">
+      <DependentUpon>FileSystemDataSet.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="DiskHierarchy\IDirectory.cs" />
+    <Compile Include="DiskHierarchy\IFile.cs" />
     <Compile Include="OptionsUtils.cs" />
     <Compile Include="WorkWithDB\ADBConnection.cs" />
     <Compile Include="WorkWithDB\DBConnectionDL.cs">
@@ -197,16 +200,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DiskHierarchy\FileSystem.xsc">
-      <DependentUpon>FileSystem.xsd</DependentUpon>
+    <None Include="DiskHierarchy\FileSystemDataSet.xsc">
+      <DependentUpon>FileSystemDataSet.xsd</DependentUpon>
     </None>
-    <None Include="DiskHierarchy\FileSystem.xsd">
+    <None Include="DiskHierarchy\FileSystemDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FileSystem.Designer.cs</LastGenOutput>
+      <LastGenOutput>FileSystemDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DiskHierarchy\FileSystem.xss">
-      <DependentUpon>FileSystem.xsd</DependentUpon>
+    <None Include="DiskHierarchy\FileSystemDataSet.xss">
+      <DependentUpon>FileSystemDataSet.xsd</DependentUpon>
     </None>
     <None Include="WorkWithDB\DbStructureDataset.xsc">
       <DependentUpon>DbStructureDataset.xsd</DependentUpon>

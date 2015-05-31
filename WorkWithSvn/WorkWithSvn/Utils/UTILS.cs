@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using SharpSvn;
 using System.IO;
+using System.Linq;
 using WorkWithSvn;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace Utils
                     || IsIgnored(fullPath);
         }
 
-        private static bool IsIgnored(string fullPath)
+        public static bool IsIgnored(string fullPath)
         {
             bool isIgnored;
             if (IsDirectory(fullPath))
@@ -31,22 +32,6 @@ namespace Utils
                 isIgnored = IsIgnoredFile(fullPath);
             }
             return isIgnored || IsIgnoredDirectoryInPath(fullPath);
-        }
-
-        public static bool IsIgnoredEntity(SvnStatusEventArgs file)
-        {
-            if (IsDirectory(file) 
-                && !Options.GetInstance.IsDisplayDir
-                || SvnFileData.IsUnknownFile(file))
-            {
-                return true;
-            }
-            return IsIgnored(file.FullPath);
-        }
-
-        public static bool IsDirectory(SvnStatusEventArgs file)
-        {
-            return (IsDirectory(file.FullPath) || file.NodeKind == SvnNodeKind.Directory);
         }
 
         public static bool IsDirectory(string fullPath)
@@ -73,13 +58,13 @@ namespace Utils
             return dirs.Exists(dirName => Options.GetInstance.IgnoredDirectories.Contains(dirName));
         }
 
-        public static bool IsIgnoredExtension(List<string> selectedExtensions, RepoEntityData entity)
+        public static bool IsIgnoredExtension(IEnumerable<string> selectedExtensions, RepositoryItem entity)
         {
-            return (selectedExtensions != null && selectedExtensions.Count > 0
-                && !selectedExtensions.Contains(Path.GetExtension(entity.Data.Name)));
+            return (selectedExtensions != null 
+                && !selectedExtensions.Contains(Path.GetExtension(entity.Name)));
         }
 
-        public static bool IsIgnoredChangeList(string changeListItem, RepoEntityData entity)
+        public static bool IsIgnoredChangeList(string changeListItem, RepositoryItem entity)
         {
             return (!changeListItem.Equals(Constants.ALL_ITEM)
                 && (string.IsNullOrEmpty(entity.ChangeList) || !changeListItem.Equals(entity.ChangeList)));
@@ -205,6 +190,4 @@ namespace Utils
         }
 
     }
-
-    
 }

@@ -5,9 +5,9 @@ namespace WorkWithSvn.DiskHierarchy
 {
     public class SvnFileTypes : RepoFileTypes
     {
-        List<SvnStatus> statusList = new List<SvnStatus>();
+        ISet<SvnStatus> statusList = new HashSet<SvnStatus>();
 
-        public override bool IsModified
+        private bool IsModified
         {
             get
             {
@@ -19,22 +19,18 @@ namespace WorkWithSvn.DiskHierarchy
 
         public override void AddModified()
         {
-            if (statusList.Contains(SvnStatus.Modified))
-            {
-                return;
-            }
             statusList.Add(SvnStatus.Modified);
             statusList.Add(SvnStatus.Added);
             statusList.Add(SvnStatus.Deleted);
         }
 
-        public override void Add(object st)
+        public void Add(SvnStatus st)
         {
             SvnStatus status = (SvnStatus)st;
             statusList.Add(status);
         }
 
-        public override bool Contains(object st, bool isLocalStatus)
+        public bool Contains(SvnStatus st, bool isLocalStatus)
         {
             SvnStatus status = (SvnStatus)st;
             bool contains = Contains(status);

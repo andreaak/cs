@@ -17,27 +17,27 @@ namespace Utils.DiskHierarchy
             treeView.Nodes.Clear();
         }
 
-        public virtual void FillTree(DirectoryData directoryData)
+        public virtual void FillTree(DirectoryItem directoryData)
         {
             if (directoryData == null)
                 return;
             ClearTree();
-            treeView.Nodes.Add(directoryData.Data.FullPath);
+            treeView.Nodes.Add(directoryData.FullName);
             treeView.Nodes[treeView.Nodes.Count - 1].ImageIndex = 0;
             treeView.Nodes[treeView.Nodes.Count - 1].SelectedImageIndex = 1;
             treeView.Nodes[treeView.Nodes.Count - 1].StateImageIndex = 0;
             FillTree(directoryData, treeView.Nodes[treeView.Nodes.Count - 1]);
         }
 
-        protected virtual void FillTree(DirectoryData directoryData, TreeNode treeNode)
+        protected virtual void FillTree(DirectoryItem directoryData, TreeNode treeNode)
         {
-            foreach (DirectoryData directory in directoryData.DirectoriesList)
+            foreach (DirectoryItem directory in directoryData.DirectoriesList)
             {
                 if (IsIgnoredDirectory(directory))
                 {
                     continue;
                 }
-                treeNode.Nodes.Add(directory.Data.Name);
+                treeNode.Nodes.Add(directory.Name);
                 treeNode.Nodes[treeNode.Nodes.Count - 1].ImageIndex = 0;
                 treeNode.Nodes[treeNode.Nodes.Count - 1].SelectedImageIndex = 1;
                 treeNode.Nodes[treeNode.Nodes.Count - 1].StateImageIndex = 0;
@@ -45,7 +45,7 @@ namespace Utils.DiskHierarchy
             }
         }
 
-        public virtual bool IsIgnoredDirectory(DirectoryData dir)
+        public virtual bool IsIgnoredDirectory(DirectoryItem dir)
         {
             return false;
         }
@@ -55,25 +55,25 @@ namespace Utils.DiskHierarchy
             listView.Items.Clear();
         }
 
-        public virtual void FillListView(DirectoryData baseDir, List<string> selectedExtensions)
+        public virtual void FillListView(DirectoryItem baseDir, List<string> selectedExtensions)
         {
             if (baseDir == null)
             {
                 return;
             }
-            foreach (FileData file in baseDir.FilesList)
+            foreach (FileItem file in baseDir.FilesList)
             {
                 if (IsIgnoredFile(file))
                 {
                     continue;
                 }
-                if (
-                    (selectedExtensions != null && selectedExtensions.Count > 0 && !selectedExtensions.Contains(Path.GetExtension(file.Data.Name)))
-                    )
+                if (selectedExtensions != null 
+                    && selectedExtensions.Count != 0 
+                    && !selectedExtensions.Contains(Path.GetExtension(file.Name)))
                 {
                     continue;
                 }
-                ListViewItem listviewitem = new ListViewItem(file.Data.Name);
+                ListViewItem listviewitem = new ListViewItem(file.Name);
                 listviewitem.UseItemStyleForSubItems = false;
 
                 FillListViewSubItem(listviewitem, file, listviewitem.SubItems[0].BackColor);
@@ -81,24 +81,24 @@ namespace Utils.DiskHierarchy
 
             }
 
-            foreach (DirectoryData dir in baseDir.DirectoriesList)
+            foreach (DirectoryItem dir in baseDir.DirectoriesList)
             {
                 FillListView(dir, selectedExtensions);
             }
         }
 
-        protected virtual void FillListViewSubItem(ListViewItem listviewitem, FileData file, Color color)
+        protected virtual void FillListViewSubItem(ListViewItem listviewitem, FileItem file, Color color)
         {
             System.Windows.Forms.ListViewItem.ListViewSubItem lvsi = new ListViewItem.ListViewSubItem();
 
             lvsi = new ListViewItem.ListViewSubItem();
             lvsi.Name = "FullPath";
-            lvsi.Text = file.Data.FullPath;
+            lvsi.Text = file.FullName;
             lvsi.BackColor = color;
             listviewitem.SubItems.Add(lvsi);
         }
 
-        public virtual bool IsIgnoredFile(FileData file)
+        public virtual bool IsIgnoredFile(FileItem file)
         {
             return false;
         }
