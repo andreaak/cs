@@ -4,21 +4,24 @@ namespace Utils
 {
     public static class SelectFolder
     {
+        private static string selectedPath;
+
         public static bool Select(string description, ref string folderName)
         {
-            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
-            folderDialog.Description = description;
-            folderDialog.ShowNewFolderButton = false;
-            if (folderName != null && folderName != "")
+            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
             {
-                folderDialog.SelectedPath = folderName;
+                dlg.Description = description;
+                dlg.SelectedPath = string.IsNullOrEmpty(folderName) ? selectedPath : folderName;
+                dlg.ShowNewFolderButton = false;
+                DialogResult result = dlg.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.OK
+                    && dlg.SelectedPath.Length > 0)
+                {
+                    folderName = selectedPath = dlg.SelectedPath;
+                    return true;
+                }
+                return false;
             }
-            if (folderDialog.ShowDialog() == DialogResult.OK && folderDialog.SelectedPath.Length > 0)
-            {
-                folderName = folderDialog.SelectedPath;
-                return true;
-            }
-            return false;
         }
 
         /*

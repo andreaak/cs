@@ -4,14 +4,14 @@ using WorkWithSvn.DiskHierarchy;
 
 namespace Display
 {
-    public class WorkWithTree
+    public class TreeProvider
     {
         TreeView treeView;
         ContextMenuStrip contextMenuStrip;
         private delegate TreeNode IncrementCallbackUpdate();
 
 
-        public WorkWithTree(TreeView treeView, ContextMenuStrip contextMenuStrip)
+        public TreeProvider(TreeView treeView, ContextMenuStrip contextMenuStrip)
         {
             this.treeView = treeView;
             this.contextMenuStrip = contextMenuStrip;
@@ -84,6 +84,11 @@ namespace Display
             {
                 return treeView.SelectedNode;
             }
+        }
+
+        public void FillTree(RepositoryDirectory repositoryDirectory)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

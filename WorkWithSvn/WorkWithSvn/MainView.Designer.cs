@@ -1,6 +1,6 @@
 namespace WorkWithSvn
 {
-    partial class Main
+    partial class MainView
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace WorkWithSvn
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonOpenWorkingCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonGetDirectories = new System.Windows.Forms.ToolStripButton();

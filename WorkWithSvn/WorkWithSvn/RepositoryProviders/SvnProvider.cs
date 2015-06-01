@@ -16,7 +16,6 @@ namespace WorkWithSvn.Providers
 {
     public class SvnProvider : AProvider
     {
-        private SvnDirectory workingCopy;
         private delegate void InvokeMethod(ControlsData ctrlData);
         Collection<SvnStatusEventArgs> list;
         public event Action ProcessEnded;
@@ -24,64 +23,77 @@ namespace WorkWithSvn.Providers
 
         public RepositoryDirectory WorkingCopy
         {
-            get { return workingCopy; }
+            get;
+            private set;
         }
         
-        private int SelItemsCount
-        {
-            get { return ListView.ListViewCtrl.SelectedItems.Count; }
-        }
-
         public Exception Error
         {
             get;
             private set;
         }
 
+        public IMainView View { get; set; }
+
         #region AProvider Members
 
         public void GetDirectories()
         {
             DirectoryInfo dir = new DirectoryInfo(Options.GetInstance.WorkingCopyPath);
-            workingCopy = new SvnDirectory(dir);
+            WorkingCopy = new SvnDirectory(dir);
             OnProcessEnded();
         }
 
-        public WorkWithTree Tree
+        public IEnumerable<RepositoryItem> GetActiveItems(string fullName)
         {
-            get; set;
-        }
-
-        public WorkWithListView ListView
-        {
-            get; set;
-        }
-
-        public void FillTree()
-        {
-            Tree.Fill(workingCopy);
-            ListView.Clear();
-        }
-
-        public void FillListView(ControlsData ctrlData)
-        {
-            if (ListView.ListViewCtrl.InvokeRequired)
+            RepositoryDirectory dir = WorkingCopy.GetDirectory(fullName);
+            List<RepositoryItem> list = new List<RepositoryItem>();
+            if (dir != null)
             {
-                InvokeMethod d = new InvokeMethod(FillListView);
-                ListView.ListViewCtrl.Invoke(d, ctrlData);
+                ControlsData ctrlData = View.ControlsData;
+                string changeList = ctrlData.ChangeList != null ? ctrlData.ChangeList : Constants.ALL_ITEM;
+                RepoFileTypes filesTypes = GetFilesTypes(ctrlData);
+                GetActiveItems(dir, filesTypes, changeList, ctrlData.SelectedExtensions, list);
             }
-            else
+            return list;
+        }
+
+        private void GetActiveItems(RepositoryDirectory baseDir, RepoFileTypes filesTypes, string changeList
+            , IEnumerable<string> selectedExtensions, List<RepositoryItem> list)
+        {
+            foreach (RepositoryFile file in baseDir.FilesList)
             {
-                string cl = ctrlData.ChangeList != null ? ctrlData.ChangeList : Constants.ALL_ITEM;
-                ListView.ListViewCtrl.BeginUpdate();
-                ListView.Clear();
-                ListView.Fill(workingCopy.GetDirectory(Tree.SelNode.FullPath) as SvnDirectory,
-                    GetFilesTypes(ctrlData), cl, ctrlData.SelectedExtensions);
-                ListView.ListViewCtrl.EndUpdate();
+                if (IsValidFile(filesTypes, changeList, selectedExtensions, file))
+                {
+                    list.Add(file);
+                }
+            }
+
+            foreach (RepositoryDirectory dir in baseDir.DirectoriesList)
+            {
+                if (IsValidDirectory(filesTypes, changeList, dir))
+                {
+                    list.Add(dir);
+                }
+                GetActiveItems(dir, filesTypes, changeList, selectedExtensions, list);
             }
         }
 
-        public RepoFileTypes GetFilesTypes(ControlsData ctrlData)
+        private static bool IsValidDirectory(RepoFileTypes filesTypes, string changeList, RepositoryDirectory dir)
+        {
+            return !(dir.IsIgnoredItem(filesTypes)
+                                || UTILS.IsIgnoredChangeList(changeList, dir)
+                                || UTILS.IsIgnoredEntity(dir.FullName));
+        }
+
+        private static bool IsValidFile(RepoFileTypes filesTypes, string changeList, IEnumerable<string> selectedExtensions, RepositoryFile file)
+        {
+            return !(file.IsIgnoredItem(filesTypes)
+                                || UTILS.IsIgnoredChangeList(changeList, file)
+                                || UTILS.IsIgnoredExtension(selectedExtensions, file));
+        }
+
+        private RepoFileTypes GetFilesTypes(ControlsData ctrlData)
         {
             SvnFileTypes fileTypes = new SvnFileTypes();
             if (ctrlData.ShowModified)
@@ -113,11 +125,9 @@ namespace WorkWithSvn.Providers
             return fileTypes;
         }
 
-        public void ClearWorkingCopy()
+        public void Clear()
         {
-            ListView.Clear();
-            Tree.Clear();
-            workingCopy = null;
+            WorkingCopy = null;
         }
 
         public void SetChangedEntitysData(string fullPath, ControlsData ctrlData)
@@ -160,9 +170,9 @@ namespace WorkWithSvn.Providers
             }
         }
 
-        public void RefreshFileStatus(ControlsData ctrlData)
+        public void RefreshFileStatus(ControlsData ctrlData, List<string> pathes)
         {
-            foreach (RepositoryItem repItem in GetSelectedItems())
+            foreach (RepositoryItem repItem in GetSelectedItems(pathes))
             {
                 SetEntityData(repItem);
                 OnIncrement();
@@ -183,9 +193,8 @@ namespace WorkWithSvn.Providers
             }
         }
 
-        public void ShowDiff(ControlsData controlsData)
+        public void ShowDiff(ControlsData controlsData, List<string> pathes)
         {
-            List<string> pathes = ListView.GetSelectedItemsPath();
             if (pathes.Count == 0)
             {
                 OnProcessEnded();
@@ -219,7 +228,7 @@ namespace WorkWithSvn.Providers
             }
         }
 
-        public void SetEntityData(string fullPath,  ControlsData ctrlData)
+        public void SetEntityData(string fullPath, ControlsData ctrlData)
         {
             using (SvnClient client = new SvnClient())
             {
@@ -240,11 +249,11 @@ namespace WorkWithSvn.Providers
             }
         }
 
-        public void Resolved(ControlsData ctrlData)
+        public void Resolved(ControlsData ctrlData, List<string> filesPath)
         {
             using (SvnClient client = new SvnClient())
             {
-                foreach (RepositoryItem repItem in GetSelectedItems())
+                foreach (RepositoryItem repItem in GetSelectedItems(filesPath))
                 {
                     client.Resolved(repItem.FullName);
                     SetEntityData(repItem);
@@ -255,7 +264,7 @@ namespace WorkWithSvn.Providers
         }
 
         public void Switch(ControlsData ctrlData,
-            bool backup, bool restore, string targetLocation)
+            bool backup, bool restore, string targetLocation, List<string> filesPath)
         {
             Error = null;
             using (SvnClient client = new SvnClient())
@@ -263,7 +272,7 @@ namespace WorkWithSvn.Providers
                 try
                 {
                     bool ok = false;
-                    foreach (RepositoryItem repItem in GetSelectedItems())
+                    foreach (RepositoryItem repItem in GetSelectedItems(filesPath))
                     {
 
                         if (backup)
@@ -295,14 +304,14 @@ namespace WorkWithSvn.Providers
             }
         }
 
-        public void Update(ControlsData ctrlData)
+        public void Update(ControlsData ctrlData, List<string> filesPath)
         {
             Error = null;
             using (SvnClient client = new SvnClient())
             {
                 try
                 {
-                    List<RepositoryItem> selCollection = GetSelectedItems();
+                    List<RepositoryItem> selCollection = GetSelectedItems(filesPath);
                     List<string> pathes = selCollection.Select(item => item.FullName).ToList();
                     SvnUpdateArgs argsU = new SvnUpdateArgs();
                     SvnUpdateResult res;
@@ -345,7 +354,7 @@ namespace WorkWithSvn.Providers
 
                     foreach (string path in files)
                     {
-                        RepositoryItem file = workingCopy.GetFile(path);
+                        RepositoryItem file = WorkingCopy.GetFile(path);
                         file.LocalStatus = SvnStatus.Normal;
                         file.RemoteStatus = SvnStatus.None;
                     }
@@ -361,14 +370,14 @@ namespace WorkWithSvn.Providers
             }
         }
 
-        public void Revert()
+        public void Revert(List<string> filesPath)
         {
             Error = null;
             using (SvnClient client = new SvnClient())
             {
                 try
                 {
-                    foreach (RepositoryItem repItem in GetSelectedItems())
+                    foreach (RepositoryItem repItem in GetSelectedItems(filesPath))
                     {
                         client.Revert(repItem.FullName);
                         SetEntityData(repItem);
@@ -386,12 +395,12 @@ namespace WorkWithSvn.Providers
             }
         }
 
-        public StringBuilder CreatePatch()
+        public StringBuilder CreatePatch(List<string> filesPath)
         {
             using (SvnClient client = new SvnClient())
             {
                 StringBuilder all = new StringBuilder();
-                foreach (RepositoryItem repItem in GetSelectedItems())
+                foreach (RepositoryItem repItem in GetSelectedItems(filesPath))
                 {
                     SvnTarget from = SvnTarget.FromString(repItem.FullName);
                     SvnTarget to = SvnTarget.FromUri(client.GetUriFromWorkingCopy(repItem.FullName));
@@ -410,29 +419,26 @@ namespace WorkWithSvn.Providers
             }
         }
 
-        public bool MoveToChangeList(string changeList)
+        public void MoveToChangeList(string changeList, List<string> filesPath)
         {
-            bool ret = false;
             using (SvnClient client = new SvnClient())
             {
-                foreach (RepositoryItem repItem in GetSelectedItems())
+                foreach (RepositoryItem repItem in GetSelectedItems(filesPath))
                 {
                     if (string.IsNullOrEmpty(repItem.ChangeList))
                     {
-                        string changeListName = changeList;
-                        client.AddToChangeList(repItem.FullName, changeListName);
-                        repItem.ChangeList = changeListName;
+                        client.AddToChangeList(repItem.FullName, changeList);
+                        repItem.ChangeList = changeList;
                     }
                 }
             }
-            return ret;
         }
 
-        public void RemoveFromChangeList()
+        public void RemoveFromChangeList(List<string> filesPath)
         {
             using (SvnClient client = new SvnClient())
             {
-                foreach (RepositoryItem repItem in GetSelectedItems())
+                foreach (RepositoryItem repItem in GetSelectedItems(filesPath))
                 {
                     client.RemoveFromChangeList(repItem.FullName);
                     repItem.ChangeList = null;
@@ -489,11 +495,11 @@ namespace WorkWithSvn.Providers
 
             if (!UTILS.IsDirectory(fullPath))
             {
-                return workingCopy.GetFile(fullPath);
+                return WorkingCopy.GetFile(fullPath);
             }
             else
             {
-                return workingCopy.GetDirectory(fullPath);
+                return WorkingCopy.GetDirectory(fullPath);
             }
         }
 
@@ -504,12 +510,12 @@ namespace WorkWithSvn.Providers
             {
                 return null;
             }
-            RepositoryItem file = workingCopy.GetFile(fullPath);
+            RepositoryItem file = WorkingCopy.GetFile(fullPath);
             if (file != null)
             {
                 return file;
             }
-            RepositoryItem dir = workingCopy.GetDirectory(fullPath);
+            RepositoryItem dir = WorkingCopy.GetDirectory(fullPath);
             if (dir != null)
             {
                 return dir;
@@ -522,9 +528,8 @@ namespace WorkWithSvn.Providers
             return repItem.IsUnchanged;
         }
 
-        public List<RepositoryItem> GetSelectedItems()
+        public List<RepositoryItem> GetSelectedItems(List<string> filesPath)
         {
-            List<string> filesPath = ListView.GetSelectedItemsPath();
             List<RepositoryItem> list = new List<RepositoryItem>();
             foreach (String path in filesPath)
             {
@@ -548,14 +553,14 @@ namespace WorkWithSvn.Providers
             return list;
         }
 
-        public void Add(ControlsData ctrlData)
+        public void Add(ControlsData ctrlData, List<string> filesPath)
         {
             Error = null;
             using (SvnClient client = new SvnClient())
             {
                 try
                 {
-                    List<RepositoryItem> selCollection = GetSelectedItems();
+                    List<RepositoryItem> selCollection = GetSelectedItems(filesPath);
 
                     List<string> pathes = selCollection.Select(item => item.FullName).ToList();
                     foreach (string itemPath in pathes)
@@ -577,14 +582,14 @@ namespace WorkWithSvn.Providers
             }
         }
         
-        public void Delete(ControlsData ctrlData)
+        public void Delete(ControlsData ctrlData, List<string> filesPath)
         {
             Error = null;
             using (SvnClient client = new SvnClient())
             {
                 try
                 {
-                    List<RepositoryItem> selCollection = GetSelectedItems();
+                    List<RepositoryItem> selCollection = GetSelectedItems(filesPath);
                     List<string> pathes = selCollection.Select(item => item.FullName).ToList();
                     SvnDeleteArgs args = new SvnDeleteArgs();
                     args.Force = true;
@@ -758,12 +763,12 @@ namespace WorkWithSvn.Providers
 
             if (!SvnRepositoryHelper.IsDirectory(arg))
             {
-                RepositoryItem file = workingCopy.GetFileOrCreate(arg.FullPath);
+                RepositoryItem file = WorkingCopy.GetFileOrCreate(arg.FullPath);
                 SetEntityData(file, arg);
             }
             else
             {
-                RepositoryItem dir = workingCopy.GetDirectoryOrCreate(arg.FullPath);
+                RepositoryItem dir = WorkingCopy.GetDirectoryOrCreate(arg.FullPath);
                 SetEntityData(dir, arg);
             }
         }

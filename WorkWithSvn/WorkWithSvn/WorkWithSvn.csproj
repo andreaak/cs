@@ -86,16 +86,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddChangeList.cs">
+    <Compile Include="Forms\AddChangeList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddChangeList.Designer.cs">
+    <Compile Include="Forms\AddChangeList.Designer.cs">
       <DependentUpon>AddChangeList.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiffChanges.cs">
+    <Compile Include="Forms\DiffChanges.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DiffChanges.Designer.cs">
+    <Compile Include="Forms\DiffChanges.Designer.cs">
       <DependentUpon>DiffChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="DiskHierarchy\DefaultRepositoryHelper.cs" />
@@ -105,79 +105,81 @@
     <Compile Include="DiskHierarchy\RepositoryDirectory.cs" />
     <Compile Include="DiskHierarchy\Svn\SvnFileTypes.cs" />
     <Compile Include="DiskHierarchy\Svn\SvnRepositoryHelper.cs" />
+    <Compile Include="IMainView.cs" />
+    <Compile Include="MainPresenter.cs" />
     <Compile Include="Utils\CommitData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CommitData.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Providers\AProvider.cs" />
-    <Compile Include="CommitMessage.cs">
+    <Compile Include="RepositoryProviders\AProvider.cs" />
+    <Compile Include="Forms\CommitMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CommitMessage.Designer.cs">
+    <Compile Include="Forms\CommitMessage.Designer.cs">
       <DependentUpon>CommitMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="DiskHierarchy\Svn\SvnFile.cs" />
     <Compile Include="DiskHierarchy\Svn\SvnDirectory.cs" />
-    <Compile Include="GridForm.cs">
+    <Compile Include="Forms\GridForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GridForm.Designer.cs">
+    <Compile Include="Forms\GridForm.Designer.cs">
       <DependentUpon>GridForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Options.cs" />
-    <Compile Include="Providers\ControlsData.cs" />
-    <Compile Include="Providers\SvnProvider.cs" />
-    <Compile Include="SelectExtensions.cs">
+    <Compile Include="RepositoryProviders\ControlsData.cs" />
+    <Compile Include="RepositoryProviders\SvnProvider.cs" />
+    <Compile Include="Forms\SelectExtensions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SelectExtensions.Designer.cs">
+    <Compile Include="Forms\SelectExtensions.Designer.cs">
       <DependentUpon>SelectExtensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="SwitchLocation.cs">
+    <Compile Include="Forms\SwitchLocation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SwitchLocation.Designer.cs">
+    <Compile Include="Forms\SwitchLocation.Designer.cs">
       <DependentUpon>SwitchLocation.cs</DependentUpon>
     </Compile>
     <Compile Include="DiskHierarchy\RepositoryItem.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\GridViewColumnSorter.cs" />
     <Compile Include="Utils\ListViewColumnSorter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddChangeList.resx">
+    <EmbeddedResource Include="Forms\AddChangeList.resx">
       <SubType>Designer</SubType>
       <DependentUpon>AddChangeList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CommitMessage.resx">
+    <EmbeddedResource Include="Forms\CommitMessage.resx">
       <DependentUpon>CommitMessage.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DiffChanges.resx">
+    <EmbeddedResource Include="Forms\DiffChanges.resx">
       <DependentUpon>DiffChanges.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\res.ru-RU.resx" />
-    <EmbeddedResource Include="GridForm.resx">
+    <EmbeddedResource Include="Forms\GridForm.resx">
       <DependentUpon>GridForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\res.en-US.resx" />
-    <EmbeddedResource Include="SelectExtensions.resx">
+    <EmbeddedResource Include="Forms\SelectExtensions.resx">
       <DependentUpon>SelectExtensions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SwitchLocation.resx">
+    <EmbeddedResource Include="Forms\SwitchLocation.resx">
       <DependentUpon>SwitchLocation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="MainView.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>Main.cs</DependentUpon>
+      <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -210,8 +212,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Utils\UTILS.cs" />
-    <Compile Include="Display\WorkWithTree.cs" />
-    <Compile Include="Display\WorkWithListView.cs" />
+    <Compile Include="Display\TreeProvider.cs" />
+    <Compile Include="Display\ListViewProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\2010-02-14_172019.png" />
@@ -356,6 +358,7 @@
   <ItemGroup>
     <Content Include="Download.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
