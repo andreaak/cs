@@ -28,7 +28,16 @@ namespace WorkWithSvn.DiskHierarchy
             Helper = new SvnRepositoryHelper(this);
         }
 
-        
+        protected override RepositoryDirectory CreateDirectory(string dirName)
+        {
+            return new SvnDirectory(FullName + "\\" + dirName);
+        }
+
+        protected override RepositoryFile CreateFile(string filePath)
+        {
+            return new SvnFile(filePath);
+        }
+
         protected override void CleanData(RepositoryItem repItem)
         {
             base.CleanData(repItem);

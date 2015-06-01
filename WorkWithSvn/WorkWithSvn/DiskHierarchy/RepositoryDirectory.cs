@@ -76,12 +76,12 @@ namespace WorkWithSvn.DiskHierarchy
         }
 
 
-        private RepositoryDirectory CreateDirectory(string dirName)
+        protected virtual RepositoryDirectory CreateDirectory(string dirName)
         {
             return new RepositoryDirectory(FullName + "\\" + dirName, -1);
         }
 
-        private RepositoryFile CreateFile(string filePath)
+        protected virtual RepositoryFile CreateFile(string filePath)
         {
             return new RepositoryFile(filePath, -1);
         }
@@ -126,7 +126,7 @@ namespace WorkWithSvn.DiskHierarchy
         public ISet<String> GetChangeLists()
         {
             ISet<String> changeLists = new HashSet<string>();
-            GetChangeLists();
+            GetChangeLists(changeLists);
             return changeLists;
         }
 
