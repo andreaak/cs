@@ -31,10 +31,21 @@ namespace WorkWithSvn
             }
         }
 
+        private bool isWatcherActive;
         public bool IsWatcherActive
         {
-            get;
-            set;
+            get
+            {
+                return isWatcherActive;
+            }
+            set
+            {
+                isWatcherActive = value;
+                if (watcher != null)
+                {
+                    watcher.EnableRaisingEvents = value;
+                }
+            }
         }
 
         public MainPresenter(IMainView view)
@@ -44,6 +55,8 @@ namespace WorkWithSvn
             culture = OptionsUtils.Culture = Options.Culture;
             repositoryProvider = Options.Provider;
         }
+
+        #region PUBLIC
 
         public bool OpenWorkingCopy()
         {
@@ -126,7 +139,6 @@ namespace WorkWithSvn
             Action action = () => repositoryProvider.Switch(fullNames, ctrlData, backup, restore, targetLocation);
             return RunTask(action, headerText);
         }
-
         //COUNT
         public bool AddItems(List<string> fullNames, ControlsData ctrlData)
         {
@@ -187,7 +199,6 @@ namespace WorkWithSvn
             }
             return false;
         }
-
         //COUNT
         public bool Revert(List<string> fullNames)
         {
@@ -247,7 +258,6 @@ namespace WorkWithSvn
             string directory = Path.GetDirectoryName(fullNames[0]);
             UTILS.OpenDirectory(directory);
         }
-
         //COUNT
         public void BackUp(List<string> fullNames)
         {
@@ -374,7 +384,9 @@ namespace WorkWithSvn
             return false;
         }
 
-        #region UTILS
+        #endregion
+
+        #region PRIVATE
 
         private bool RunTask(Action act, string headerText)
         {
@@ -502,14 +514,6 @@ namespace WorkWithSvn
             watcher.Created += new FileSystemEventHandler(watcher_Created);
             watcher.Renamed += new RenamedEventHandler(watcher_Renamed);
             watcher.Deleted += new FileSystemEventHandler(watcher_Deleted);
-        }
-
-        private void toolStripButtonHandleFilesChanges_CheckedChanged(object sender, EventArgs e)
-        {
-            if (watcher != null)
-            {
-                watcher.EnableRaisingEvents = IsWatcherActive;
-            }
         }
 
         private void watcher_Created(object sender, FileSystemEventArgs e)

@@ -7,7 +7,6 @@ using Utils.DiskHierarchy;
 
 namespace WorkWithSvn.DiskHierarchy.Base
 {
-
     [Serializable]
     public class RepositoryDirectory : RepositoryItem, IDirectory
     {

@@ -12,8 +12,6 @@ namespace Utils
 {
     public class UTILS
     {
-        public const string EMPTY = "";
-
         public static bool IsIgnoredEntity(string fullPath)
         {
             return IsDirectory(fullPath) && !Options.GetInstance.IsDisplayDir 
@@ -188,6 +186,5 @@ namespace Utils
                     Options.ResManager.GetString("ERROR", Options.Culture), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }

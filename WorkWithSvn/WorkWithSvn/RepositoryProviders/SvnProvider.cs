@@ -512,7 +512,7 @@ namespace WorkWithSvn.RepositoryProviders
                 {
                     return null;
                 }
-                string location = path.Replace(workingRoot, UTILS.EMPTY).Replace(Path.DirectorySeparatorChar, '/');
+                string location = path.Replace(workingRoot, string.Empty).Replace(Path.DirectorySeparatorChar, '/');
                 Uri targetUri = new Uri(repositoryRoot + targetLocation + location);
                 IsTargetLocationValid(path, targetUri);
                 return targetUri;
@@ -557,22 +557,19 @@ namespace WorkWithSvn.RepositoryProviders
             }
             using (SvnClient client = new SvnClient())
             {
-                string uri = client.GetUriFromWorkingCopy(path) != null ? client.GetUriFromWorkingCopy(path).ToString() : null;
-                string repositoryRoot = client.GetRepositoryRoot(path) != null ? client.GetRepositoryRoot(path).ToString() : null;
-                Uri ur1 = client.GetRepositoryRoot(path);
-                string workingRoot = client.GetWorkingCopyRoot(path);
-                if (uri == null || repositoryRoot == null)
+                string uri = Convert.ToString(client.GetUriFromWorkingCopy(path));
+                string repositoryRoot = Convert.ToString(client.GetRepositoryRoot(path));
+                if (string.IsNullOrEmpty(uri) || string.IsNullOrEmpty(repositoryRoot))
                 {
                     return null;
                 }
-                string serverPart = uri.Replace(repositoryRoot, UTILS.EMPTY);
-                string forReplace = path.Replace(workingRoot, UTILS.EMPTY).Replace(Path.DirectorySeparatorChar, '/');
+                string workingRoot = client.GetWorkingCopyRoot(path);
+                string forReplace = path.Replace(workingRoot, string.Empty).Replace(Path.DirectorySeparatorChar, '/');
                 if (string.IsNullOrEmpty(forReplace))
                 {
                     return null;
                 }
-                string location = serverPart.Replace(forReplace, UTILS.EMPTY);
-                return location;
+                return uri.Replace(repositoryRoot, string.Empty).Replace(forReplace, string.Empty);
             }
         }
 
@@ -660,7 +657,6 @@ namespace WorkWithSvn.RepositoryProviders
             }
             return formatedFilesSb.ToString();
         }
-
 
         private void GetActiveItems(RepositoryDirectory baseDir, RepositoryFileStatuses filesTypes, string changeList
             , ISet<string> selectedExtensions, List<RepositoryItem> list)
