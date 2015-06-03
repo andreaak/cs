@@ -67,13 +67,6 @@ namespace Utils
 
         private void CancelForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (!task.IsCompleted)
-            //{
-            //    e.Cancel = true;
-            //    cts.Cancel();
-            //    task.ContinueWith(t => Close(),
-            //        TaskScheduler.FromCurrentSynchronizationContext());
-            //}
             if (!isExternalIncrement)
             {
                 timer1.Stop();

@@ -23,7 +23,7 @@ namespace VisualProviders
             set
             {
                 Clear();
-                if (value == null)
+                if (value != null)
                 {
                     treeView.Nodes.Add(value.FullName);
                     treeView.Nodes[treeView.Nodes.Count - 1].ImageIndex = 0;
