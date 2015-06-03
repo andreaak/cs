@@ -5,30 +5,46 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Utils
 {
-    public partial class CancelForm : Form
+    public partial class CancelFormTask : Form
     {
         private bool isExternalIncrement;
         private int count;
         private int currentValue;
+        Task task;
+        CancellationTokenSource cts;
 
-
-        public CancelForm()
+        public CancelFormTask()
         {
             InitializeComponent();
         }
 
-        public CancelForm(string text)
+        public CancelFormTask(string text, Task task, CancellationTokenSource cts)
             :this()
         {
             this.Text = text;
+            this.task = task;
+            this.cts = cts;
+            this.task.ContinueWith(t => 
+            {
+                if (!cts.IsCancellationRequested)
+                {
+                    Close();
+                }
+                else
+                {
+                    Exception ex = t.Exception;
+                }
+            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        public CancelForm(string text, int count)
-            : this(text)
+        public CancelFormTask(string text, int count, Task task, CancellationTokenSource cts)
+            : this(text, task, cts)
         {
             this.isExternalIncrement = true;
             this.count = count;
@@ -43,8 +59,21 @@ namespace Utils
             }
         }
 
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            cts.Cancel();
+            Close();
+        }
+
         private void CancelForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //if (!task.IsCompleted)
+            //{
+            //    e.Cancel = true;
+            //    cts.Cancel();
+            //    task.ContinueWith(t => Close(),
+            //        TaskScheduler.FromCurrentSynchronizationContext());
+            //}
             if (!isExternalIncrement)
             {
                 timer1.Stop();
@@ -77,7 +106,7 @@ namespace Utils
         {
             if (!isExternalIncrement)
             {
-                TimeIncrement();
+                TimerIncrement();
             }
             else
             {
@@ -90,7 +119,7 @@ namespace Utils
             }
         }
 
-        private void TimeIncrement()
+        private void TimerIncrement()
         {
             if (progressBar1.Value >= progressBar1.Maximum)
             {
@@ -112,18 +141,20 @@ namespace Utils
             }
         }
 
-        public void CloseForm()
-        {
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action(CloseForm));
-            }
-            else
-            {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-        }
+
+
+        //public void CloseForm()
+        //{
+        //    if (this.InvokeRequired)
+        //    {
+        //        this.Invoke(new Action(CloseForm));
+        //    }
+        //    else
+        //    {
+        //        this.DialogResult = DialogResult.OK;
+        //        this.Close();
+        //    }
+        //}
     }
 
 }

@@ -5,8 +5,9 @@ using Utils;
 using System.Linq;
 using Utils.DiskHierarchy;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Base
 {
+
     [Serializable]
     public class RepositoryDirectory : RepositoryItem, IDirectory
     {
@@ -123,7 +124,7 @@ namespace WorkWithSvn.DiskHierarchy
 
         #endregion
 
-        public ISet<String> GetChangeLists()
+        public ISet<String> GetChangeList()
         {
             ISet<String> changeLists = new HashSet<string>();
             GetChangeLists(changeLists);
@@ -150,14 +151,14 @@ namespace WorkWithSvn.DiskHierarchy
             }
         }
 
-        public virtual void DeleteEntity(RepositoryItem entity)
+        public virtual void DeleteItem(RepositoryItem item)
         {
-            if (UTILS.IsIgnoredEntity(entity.FullName))
+            if (UTILS.IsIgnoredEntity(item.FullName))
             {
                 return;
             }
-            DirectoryHelper.DeleteFile(this, entity.FullName);
-            DirectoryHelper.DeleteDirectory(this, entity.FullName);
+            DirectoryHelper.DeleteFile(this, item.FullName);
+            DirectoryHelper.DeleteDirectory(this, item.FullName);
         }
 
         #region IDirectory

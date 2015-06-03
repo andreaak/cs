@@ -2,7 +2,7 @@
 using System.IO;
 using Utils.DiskHierarchy;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Base
 {
     [Serializable]
     public class RepositoryItem : DiskItem
@@ -100,7 +100,7 @@ namespace WorkWithSvn.DiskHierarchy
 
         public bool IsUnchanged { get { return Helper.IsUnchanged; } }
         
-        public bool IsIgnoredItem(RepoFileTypes list)
+        public bool IsIgnoredItem(RepositoryFileStatuses list)
         {
             return Helper.IsIgnoredItem(list);
         }

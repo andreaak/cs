@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WorkWithSvn.Providers
+namespace WorkWithSvn.RepositoryProviders
 {
     public class ControlsData
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using WorkWithSvn;
 using System.Diagnostics;
 using System.Windows.Forms;
-using WorkWithSvn.DiskHierarchy;
+using WorkWithSvn.DiskHierarchy.Base;
 
 namespace Utils
 {
@@ -58,9 +58,9 @@ namespace Utils
             return dirs.Exists(dirName => Options.GetInstance.IgnoredDirectories.Contains(dirName));
         }
 
-        public static bool IsIgnoredExtension(IEnumerable<string> selectedExtensions, RepositoryItem entity)
+        public static bool IsIgnoredExtension(ISet<string> selectedExtensions, RepositoryItem entity)
         {
-            return (selectedExtensions != null 
+            return (selectedExtensions.Count != 0 
                 && !selectedExtensions.Contains(Path.GetExtension(entity.Name)));
         }
 

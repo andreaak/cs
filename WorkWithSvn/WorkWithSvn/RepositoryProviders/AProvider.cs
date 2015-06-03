@@ -1,49 +1,40 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Display;
+using VisualProviders;
 using Utils;
-using WorkWithSvn.DiskHierarchy;
+using WorkWithSvn.DiskHierarchy.Base;
 using WorkWithSvn.Utils;
 
-namespace WorkWithSvn.Providers
+namespace WorkWithSvn.RepositoryProviders
 {
     public interface AProvider
     {
-        void GetDirectories();
-        //TreeProvider Tree { get; set;}
-        //ListViewProvider ListView { get; set; }
         RepositoryDirectory WorkingCopy { get; }
-        Exception Error { get; }
-        IEnumerable<RepositoryItem> GetActiveItems(string fullName);
+        
         void Clear();
-        void SetChangedEntitysData(string fullPath, ControlsData ctrlData);
-        void RefreshFileStatus(ControlsData ctrlData, List<string> filesPath);
+        void ReadDirectories(string fullName);
+        void ScanDirectory(string fullName, ControlsData ctrlData);
+        void RefreshFilesStatus(List<string> fullNames, ControlsData ctrlData);
+        void ShowDiff(List<string> fullNames, ControlsData ctrlData);
+        void Resolved(List<string> fullNames, ControlsData ctrlData);
+        void AddItems(List<string> fullNames, ControlsData ctrlData);
+        void DeleteItems(List<string> fullNames, ControlsData ctrlData);
+        void Switch(List<string> fullNames, ControlsData ctrlData, bool backup, bool restore, string targetLocation);
+        void Update(List<string> fullNames, ControlsData ctrlData);
+        void Commit(List<string> fullNames, string message);
+        List<RepositoryItem> GetItems(List<string> fullNames);
         bool IsNotVersioned(RepositoryItem entity);
         void AddFile(string fullPath);
-        void ShowDiff(ControlsData controlsData, List<string> filesPath);
-        void SetEntityData(string fullPath, ControlsData ctrlData);
-        void Resolved(ControlsData ctrlData, List<string> filesPath);
-        void Switch(ControlsData ctrlData, bool backup, bool restore, string targetLocation, List<string> filesPath);
-        void Update(ControlsData ctrlData, List<string> filesPath);
-        void Commit(List<string> files, string message);
-        void Revert(List<string> filesPath);
-        StringBuilder CreatePatch(List<string> filesPath);
-        void MoveToChangeList(string changeList, List<string> filesPath);
-        void RemoveFromChangeList(List<string> filesPath);
-        CommitData GetLogs(string author);
-        RepositoryItem GetEntity(string fullPath);
-        RepositoryItem GetDeletedEntity(string fullPath);
-        bool IsUnchanged(RepositoryItem entity);
-        List<RepositoryItem> GetSelectedItems(List<string> filesPath);
-        void Add(ControlsData ctrlData, List<string> filesPath);
-        void Delete(ControlsData ctrlData, List<string> filesPath);
+        void Revert(List<string> fullNames);
+        StringBuilder CreatePatch(List<string> fullNames);
+        void MoveToChangeList(string changeListName, List<string> fullNames);
+        void RemoveFromChangeList(List<string> fullNames);
+        CommitData LogByAuthor(string author);
+        bool SetItemData(string fullName, ControlsData ctrlData);
+        RepositoryItem GetDeletedItem(string fullPath);
         string GetLocation(string path);
         Uri GetRepository(string path);
-        event Action ProcessEnded;
-        event Action Increment;
-        void UnsubscribeEvents();
-
-        IMainView View { get; set; }
+        IEnumerable<RepositoryItem> GetActiveItems(string fullName, ControlsData ctrlData);
     }
 }

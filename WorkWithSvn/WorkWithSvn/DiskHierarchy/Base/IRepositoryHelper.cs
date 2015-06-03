@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Base
 {
     public interface IRepositoryHelper
     {
@@ -25,7 +25,7 @@ namespace WorkWithSvn.DiskHierarchy
 
         bool IsUnchanged { get; }
 
-        bool IsIgnoredItem(RepoFileTypes list);
+        bool IsIgnoredItem(RepositoryFileStatuses list);
 
         bool IsNotVersioned { get; }
 

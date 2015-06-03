@@ -97,6 +97,12 @@
     <Compile Include="ActionWindow\CancelForm.designer.cs">
       <DependentUpon>CancelForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ActionWindow\CancelFormTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\CancelFormTask.designer.cs">
+      <DependentUpon>CancelFormTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="ActionWindow\DisplayMessage.cs" />
     <Compile Include="ActionWindow\ThreadVisualization.cs" />
     <Compile Include="ConstantsUtils.cs" />
@@ -162,6 +168,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ActionWindow\CancelForm.resx">
       <DependentUpon>CancelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\CancelFormTask.resx">
+      <DependentUpon>CancelFormTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DiskHierarchy\ExplorerControl.resx">
       <DependentUpon>ExplorerControl.cs</DependentUpon>

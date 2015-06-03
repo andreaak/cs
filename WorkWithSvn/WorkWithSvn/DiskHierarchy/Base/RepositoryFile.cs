@@ -2,7 +2,7 @@
 using System.IO;
 using Utils.DiskHierarchy;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Base
 {
     [Serializable]
     public class RepositoryFile : RepositoryItem, IFile

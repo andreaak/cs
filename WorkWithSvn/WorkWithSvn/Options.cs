@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Configuration;
 using System.Threading;
 using System.IO;
-using WorkWithSvn.Providers;
+using WorkWithSvn.RepositoryProviders;
 
 namespace WorkWithSvn
 {

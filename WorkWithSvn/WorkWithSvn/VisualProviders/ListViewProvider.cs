@@ -1,20 +1,42 @@
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Utils;
 using WorkWithSvn;
-using System.Drawing;
-using System.IO;
-using WorkWithSvn.DiskHierarchy;
-using WorkWithSvn.Providers;
-using System;
+using WorkWithSvn.DiskHierarchy.Base;
 
-namespace Display
+namespace VisualProviders
 {
     public class ListViewProvider
     {
         private ListViewColumnSorter lvwColumnSorter;
         ContextMenuStrip contextMenuStripListView;
         ListView listView;
+
+        public IEnumerable<RepositoryItem> DataSource
+        {
+            set
+            {
+                listView.BeginUpdate();
+                listView.ListViewItemSorter = null;
+                Clear();
+                foreach (var item in value)
+                {
+                    AddItem(item);
+                }
+                listView.ListViewItemSorter = lvwColumnSorter;
+                listView.EndUpdate();
+            }
+        }
+
+        public bool IsListItemSelected
+        {
+            get
+            {
+                return listView.SelectedItems.Count != 0;
+            }
+        }
 
         public ListViewProvider(ListView listView, ContextMenuStrip contextMenuStripListView)
         {
@@ -26,24 +48,11 @@ namespace Display
             this.listView.MouseClick += new System.Windows.Forms.MouseEventHandler(listView1_MouseClick);
         }
 
-        public void Fill(IEnumerable<RepositoryItem> items)
-        {
-            listView.BeginUpdate();
-            listView.ListViewItemSorter = null;
-            Clear();
-            foreach (var item in items)
-            {
-                AddItem(item);
-            }
-            listView.ListViewItemSorter = lvwColumnSorter;
-            listView.EndUpdate();
-        }
-
-        public List<string> GetSelectedItemsPath()
+        public List<string> GetSelectedItemsFullName()
         {
             if (listView.InvokeRequired)
             {
-                Func<List<string>> d = GetSelectedItemsPath;
+                Func<List<string>> d = GetSelectedItemsFullName;
                 return (List<string>)listView.Invoke(d);
             }
             else
@@ -163,6 +172,8 @@ namespace Display
             listviewitem.SubItems.Add(lvsi);
         }
 
+        #endregion
+
         //public static void ColorSubItems(ListViewItem lvi, RepositoryItem item)
         //{
         //    Color color = GetColor(item);
@@ -172,8 +183,6 @@ namespace Display
         //        lvsi.BackColor = color;
         //    }
         //}
-
-        #endregion
 
         //private string GetFullPath(ListViewItem lvi)
         //{
@@ -212,7 +221,7 @@ namespace Display
         //    InvokeMethod(invoker);
         //}
 
-        //public void Add(RepositoryItem entity)
+        //public void AddItem(RepositoryItem entity)
         //{
         //    MethodInvoker invoker = delegate
         //    {
@@ -221,7 +230,7 @@ namespace Display
         //    InvokeMethod(invoker);
         //}
 
-        //public void Remove(RepositoryItem entity)
+        //public void RemoveItem(RepositoryItem entity)
         //{
         //    MethodInvoker invoker = delegate
         //    {
@@ -234,7 +243,7 @@ namespace Display
         //    InvokeMethod(invoker);
         //}
 
-        //private void Update(RepositoryItem entity)
+        //private void UpdateItem(RepositoryItem entity)
         //{
         //    MethodInvoker invoker = delegate
         //    {
@@ -262,7 +271,7 @@ namespace Display
         //    InvokeMethod(invoker);
         //}
 
-        //public void RenameItemsInListView(RepositoryItem entity, string newPath)
+        //public void RenameItem(RepositoryItem entity, string newPath)
         //{
         //    MethodInvoker invoker = delegate
         //    {
@@ -316,16 +325,18 @@ namespace Display
             item.SubItems[Constants.REMOTE_STATUS_COLUMN].BackColor = color;
         }
 
-        private void InvokeMethod(MethodInvoker invoker)
-        {
-            if (listView.InvokeRequired)
-            {
-                listView.BeginInvoke(invoker);
-            }
-            else
-            {
-                invoker();
-            }
-        }
+        //private void InvokeMethod(MethodInvoker invoker)
+        //{
+        //    if (listView.InvokeRequired)
+        //    {
+        //        listView.BeginInvoke(invoker);
+        //    }
+        //    else
+        //    {
+        //        invoker();
+        //    }
+        //}
+
+
     }
 }

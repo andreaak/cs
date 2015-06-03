@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Base
 {
     public class DefaultRepositoryHelper : IRepositoryHelper
     {
@@ -56,7 +56,7 @@ namespace WorkWithSvn.DiskHierarchy
 
         public virtual bool IsUnchanged { get { return LocalStatusDesc == "Normal"; } }
 
-        public virtual bool IsIgnoredItem(RepoFileTypes list)
+        public virtual bool IsIgnoredItem(RepositoryFileStatuses list)
         {
             return !(repItem.IsSwitched && list.isSwitched);
         }

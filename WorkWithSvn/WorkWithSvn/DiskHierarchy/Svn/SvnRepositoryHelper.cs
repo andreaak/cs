@@ -1,11 +1,9 @@
-﻿using SharpSvn;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
+using SharpSvn;
 using Utils;
+using WorkWithSvn.DiskHierarchy.Base;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Svn
 {
     public class SvnRepositoryHelper : DefaultRepositoryHelper, IRepositoryHelper
     {
@@ -31,9 +29,8 @@ namespace WorkWithSvn.DiskHierarchy
         } 
        
         private RepositoryItem repItem;
-        private SvnStatus localStatus;
-        private SvnStatus remoteStatus;
 
+        private SvnStatus localStatus;
         public override object LocalStatus
         {
             get
@@ -46,6 +43,7 @@ namespace WorkWithSvn.DiskHierarchy
             }
         }
 
+        private SvnStatus remoteStatus;
         public override object RemoteStatus
         {
             get
@@ -84,9 +82,9 @@ namespace WorkWithSvn.DiskHierarchy
             }
         }
 
-        public override bool IsIgnoredItem(RepoFileTypes st)
+        public override bool IsIgnoredItem(RepositoryFileStatuses st)
         {
-            SvnFileTypes list = st as SvnFileTypes;
+            SvnFileStatuses list = st as SvnFileStatuses;
             if (list == null)
             {
                 throw new Exception("Wrong File Status");

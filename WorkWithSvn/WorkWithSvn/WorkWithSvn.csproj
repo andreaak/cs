@@ -98,12 +98,12 @@
     <Compile Include="Forms\DiffChanges.Designer.cs">
       <DependentUpon>DiffChanges.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiskHierarchy\DefaultRepositoryHelper.cs" />
-    <Compile Include="DiskHierarchy\IRepositoryHelper.cs" />
-    <Compile Include="DiskHierarchy\RepoFileTypes.cs" />
-    <Compile Include="DiskHierarchy\RepositoryFile.cs" />
-    <Compile Include="DiskHierarchy\RepositoryDirectory.cs" />
-    <Compile Include="DiskHierarchy\Svn\SvnFileTypes.cs" />
+    <Compile Include="DiskHierarchy\Base\DefaultRepositoryHelper.cs" />
+    <Compile Include="DiskHierarchy\Base\IRepositoryHelper.cs" />
+    <Compile Include="DiskHierarchy\Base\RepositoryFileStatuses.cs" />
+    <Compile Include="DiskHierarchy\Base\RepositoryFile.cs" />
+    <Compile Include="DiskHierarchy\Base\RepositoryDirectory.cs" />
+    <Compile Include="DiskHierarchy\Svn\SvnFileStatuses.cs" />
     <Compile Include="DiskHierarchy\Svn\SvnRepositoryHelper.cs" />
     <Compile Include="IMainView.cs" />
     <Compile Include="MainPresenter.cs" />
@@ -143,7 +143,7 @@
     <Compile Include="Forms\SwitchLocation.Designer.cs">
       <DependentUpon>SwitchLocation.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiskHierarchy\RepositoryItem.cs" />
+    <Compile Include="DiskHierarchy\Base\RepositoryItem.cs" />
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,8 +212,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Utils\UTILS.cs" />
-    <Compile Include="Display\TreeProvider.cs" />
-    <Compile Include="Display\ListViewProvider.cs" />
+    <Compile Include="VisualProviders\TreeProvider.cs" />
+    <Compile Include="VisualProviders\ListViewProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\2010-02-14_172019.png" />

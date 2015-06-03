@@ -1,7 +1,7 @@
 ﻿using System;
-using SharpSvn;
+using WorkWithSvn.DiskHierarchy.Base;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Svn
 {
     [Serializable]
     public class SvnFile : RepositoryFile

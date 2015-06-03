@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using SharpSvn;
-using Utils.DiskHierarchy;
+using WorkWithSvn.DiskHierarchy.Base;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Svn
 {
     [Serializable]
     public class SvnDirectory : RepositoryDirectory

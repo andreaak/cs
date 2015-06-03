@@ -32,7 +32,7 @@ namespace WorkWithSvn
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonOpenWorkingCopy = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonGetDirectories = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonReadDirectories = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonUseServerData = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonFastScan = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonScan = new System.Windows.Forms.ToolStripButton();
@@ -55,7 +55,7 @@ namespace WorkWithSvn
             this.toolStripButtonRevert = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCreatePatch = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonMoveToChangeSet = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonMoveToChangeList = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRemoveFromChangeList = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonOpenDirectory = new System.Windows.Forms.ToolStripButton();
@@ -70,11 +70,11 @@ namespace WorkWithSvn
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxChangeListToShow = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButtonShowFiles = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonFilterFiles = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPrintProperties = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBoxAuthor = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButtonLog = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDiffChanges = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonLogByAuthor = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDiffChangesBetweenBranches = new System.Windows.Forms.ToolStripButton();
             this.listViewFiles = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -117,7 +117,7 @@ namespace WorkWithSvn
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonOpenWorkingCopy,
-            this.toolStripButtonGetDirectories,
+            this.toolStripButtonReadDirectories,
             this.toolStripButtonUseServerData,
             this.toolStripButtonFastScan,
             this.toolStripButtonScan,
@@ -140,7 +140,7 @@ namespace WorkWithSvn
             this.toolStripButtonRevert,
             this.toolStripButtonCreatePatch,
             this.toolStripSeparator3,
-            this.toolStripButtonMoveToChangeSet,
+            this.toolStripButtonMoveToChangeList,
             this.toolStripButtonRemoveFromChangeList,
             this.toolStripSeparator4,
             this.toolStripButtonOpenDirectory,
@@ -155,11 +155,11 @@ namespace WorkWithSvn
             this.toolStripSeparator5,
             this.toolStripLabel1,
             this.toolStripComboBoxChangeListToShow,
-            this.toolStripButtonShowFiles,
+            this.toolStripButtonFilterFiles,
             this.toolStripButtonPrintProperties,
             this.toolStripTextBoxAuthor,
-            this.toolStripButtonLog,
-            this.toolStripButtonDiffChanges});
+            this.toolStripButtonLogByAuthor,
+            this.toolStripButtonDiffChangesBetweenBranches});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1307, 25);
@@ -176,15 +176,15 @@ namespace WorkWithSvn
             this.toolStripButtonOpenWorkingCopy.Text = "Open Working Copy";
             this.toolStripButtonOpenWorkingCopy.Click += new System.EventHandler(this.toolStripButtonOpenWorkingCopy_Click);
             // 
-            // toolStripButtonGetDirectories
+            // toolStripButtonReadDirectories
             // 
-            this.toolStripButtonGetDirectories.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonGetDirectories.Image = global::WorkWithSvn.Properties.Resources.krdc;
-            this.toolStripButtonGetDirectories.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonGetDirectories.Name = "toolStripButtonGetDirectories";
-            this.toolStripButtonGetDirectories.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonGetDirectories.Text = "Get Directories";
-            this.toolStripButtonGetDirectories.Click += new System.EventHandler(this.toolStripButtonGetDirectories_Click);
+            this.toolStripButtonReadDirectories.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonReadDirectories.Image = global::WorkWithSvn.Properties.Resources.krdc;
+            this.toolStripButtonReadDirectories.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonReadDirectories.Name = "toolStripButtonReadDirectories";
+            this.toolStripButtonReadDirectories.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonReadDirectories.Text = "Read Directories";
+            this.toolStripButtonReadDirectories.Click += new System.EventHandler(this.toolStripButtonReadDirectories_Click);
             // 
             // toolStripButtonUseServerData
             // 
@@ -256,7 +256,7 @@ namespace WorkWithSvn
             this.toolStripButtonDiff.Name = "toolStripButtonDiff";
             this.toolStripButtonDiff.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonDiff.Text = "Diff";
-            this.toolStripButtonDiff.Click += new System.EventHandler(this.toolStripButtonDiff_Click);
+            this.toolStripButtonDiff.Click += new System.EventHandler(this.toolStripButtonShowDiff_Click);
             // 
             // toolStripButtonIsSVNDiff
             // 
@@ -328,7 +328,7 @@ namespace WorkWithSvn
             this.toolStripButtonAddItem.Name = "toolStripButtonAddItem";
             this.toolStripButtonAddItem.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonAddItem.Text = "Add Item";
-            this.toolStripButtonAddItem.Click += new System.EventHandler(this.toolStripButtonAddItem_Click);
+            this.toolStripButtonAddItem.Click += new System.EventHandler(this.toolStripButtonAddItems_Click);
             // 
             // toolStripButtonDeleteItem
             // 
@@ -395,15 +395,15 @@ namespace WorkWithSvn
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButtonMoveToChangeSet
+            // toolStripButtonMoveToChangeList
             // 
-            this.toolStripButtonMoveToChangeSet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonMoveToChangeSet.Image = global::WorkWithSvn.Properties.Resources._2010_02_14_172039;
-            this.toolStripButtonMoveToChangeSet.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonMoveToChangeSet.Name = "toolStripButtonMoveToChangeSet";
-            this.toolStripButtonMoveToChangeSet.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonMoveToChangeSet.Text = "Move To Change List";
-            this.toolStripButtonMoveToChangeSet.Click += new System.EventHandler(this.toolStripButtonMoveToChangeList_Click);
+            this.toolStripButtonMoveToChangeList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonMoveToChangeList.Image = global::WorkWithSvn.Properties.Resources._2010_02_14_172039;
+            this.toolStripButtonMoveToChangeList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonMoveToChangeList.Name = "toolStripButtonMoveToChangeList";
+            this.toolStripButtonMoveToChangeList.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonMoveToChangeList.Text = "Move To Change List";
+            this.toolStripButtonMoveToChangeList.Click += new System.EventHandler(this.toolStripButtonMoveToChangeList_Click);
             // 
             // toolStripButtonRemoveFromChangeList
             // 
@@ -540,15 +540,15 @@ namespace WorkWithSvn
             this.toolStripComboBoxChangeListToShow.ToolTipText = "Change List To Show";
             this.toolStripComboBoxChangeListToShow.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxChangeListToShow_SelectedIndexChanged);
             // 
-            // toolStripButtonShowFiles
+            // toolStripButtonFilterFiles
             // 
-            this.toolStripButtonShowFiles.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonShowFiles.Image = global::WorkWithSvn.Properties.Resources.filter;
-            this.toolStripButtonShowFiles.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonShowFiles.Name = "toolStripButtonShowFiles";
-            this.toolStripButtonShowFiles.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonShowFiles.Text = "Filter Extensions";
-            this.toolStripButtonShowFiles.Click += new System.EventHandler(this.toolStripButtonShowFiles_Click);
+            this.toolStripButtonFilterFiles.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonFilterFiles.Image = global::WorkWithSvn.Properties.Resources.filter;
+            this.toolStripButtonFilterFiles.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFilterFiles.Name = "toolStripButtonFilterFiles";
+            this.toolStripButtonFilterFiles.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonFilterFiles.Text = "Filter Extensions";
+            this.toolStripButtonFilterFiles.Click += new System.EventHandler(this.toolStripButtonFilterFiles_Click);
             // 
             // toolStripButtonPrintProperties
             // 
@@ -566,25 +566,25 @@ namespace WorkWithSvn
             this.toolStripTextBoxAuthor.Size = new System.Drawing.Size(100, 25);
             this.toolStripTextBoxAuthor.ToolTipText = "Author";
             // 
-            // toolStripButtonLog
+            // toolStripButtonLogByAuthor
             // 
-            this.toolStripButtonLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonLog.Image = global::WorkWithSvn.Properties.Resources.black_list_1;
-            this.toolStripButtonLog.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLog.Name = "toolStripButtonLog";
-            this.toolStripButtonLog.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonLog.Text = "Log ";
-            this.toolStripButtonLog.Click += new System.EventHandler(this.toolStripButtonLog_Click);
+            this.toolStripButtonLogByAuthor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonLogByAuthor.Image = global::WorkWithSvn.Properties.Resources.black_list_1;
+            this.toolStripButtonLogByAuthor.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLogByAuthor.Name = "toolStripButtonLogByAuthor";
+            this.toolStripButtonLogByAuthor.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonLogByAuthor.Text = "Log By Author";
+            this.toolStripButtonLogByAuthor.Click += new System.EventHandler(this.toolStripButtonLogByAuthor_Click);
             // 
-            // toolStripButtonDiffChanges
+            // toolStripButtonDiffChangesBetweenBranches
             // 
-            this.toolStripButtonDiffChanges.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDiffChanges.Image = global::WorkWithSvn.Properties.Resources._1__34_;
-            this.toolStripButtonDiffChanges.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDiffChanges.Name = "toolStripButtonDiffChanges";
-            this.toolStripButtonDiffChanges.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonDiffChanges.Text = "Diff Copies";
-            this.toolStripButtonDiffChanges.Click += new System.EventHandler(this.toolStripButtonDiffChanges_Click);
+            this.toolStripButtonDiffChangesBetweenBranches.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDiffChangesBetweenBranches.Image = global::WorkWithSvn.Properties.Resources._1__34_;
+            this.toolStripButtonDiffChangesBetweenBranches.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDiffChangesBetweenBranches.Name = "toolStripButtonDiffChangesBetweenBranches";
+            this.toolStripButtonDiffChangesBetweenBranches.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonDiffChangesBetweenBranches.Text = "Diff Changes Between Branches";
+            this.toolStripButtonDiffChangesBetweenBranches.Click += new System.EventHandler(this.toolStripButtonDiffChangesBetweenBranches_Click);
             // 
             // listViewFiles
             // 
@@ -693,7 +693,7 @@ namespace WorkWithSvn
             this.diffToolStripMenuItem.Name = "diffToolStripMenuItem";
             this.diffToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.diffToolStripMenuItem.Text = "Diff";
-            this.diffToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonDiff_Click);
+            this.diffToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonShowDiff_Click);
             // 
             // markResolvedToolStripMenuItem
             // 
@@ -820,7 +820,7 @@ namespace WorkWithSvn
             this.splitContainer1.SplitterDistance = 328;
             this.splitContainer1.TabIndex = 3;
             // 
-            // Main
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -828,7 +828,7 @@ namespace WorkWithSvn
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Main";
+            this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Svn Client";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
@@ -861,10 +861,10 @@ namespace WorkWithSvn
         private System.Windows.Forms.ToolStripButton toolStripButtonDiff;
         private System.Windows.Forms.ToolStripButton toolStripButtonCommit;
         private System.Windows.Forms.ToolStripButton toolStripButtonUpdate;
-        private System.Windows.Forms.ToolStripButton toolStripButtonMoveToChangeSet;
+        private System.Windows.Forms.ToolStripButton toolStripButtonMoveToChangeList;
         private System.Windows.Forms.ToolStripButton toolStripButtonRemoveFromChangeList;
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonGetDirectories;
+        private System.Windows.Forms.ToolStripButton toolStripButtonReadDirectories;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -912,16 +912,16 @@ namespace WorkWithSvn
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripButton toolStripButtonCreatePatch;
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenWith;
-        private System.Windows.Forms.ToolStripButton toolStripButtonShowFiles;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFilterFiles;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.ToolStripButton toolStripButtonLog;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLogByAuthor;
 		private System.Windows.Forms.ToolStripButton toolStripButtonPrintProperties;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxAuthor;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripButton toolStripButtonDeleteItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonAddItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonDeleteFromDisk;
-        private System.Windows.Forms.ToolStripButton toolStripButtonDiffChanges;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDiffChangesBetweenBranches;
     }
 }
 

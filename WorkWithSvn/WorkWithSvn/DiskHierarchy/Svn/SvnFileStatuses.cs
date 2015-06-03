@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using SharpSvn;
+using WorkWithSvn.DiskHierarchy.Base;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Svn
 {
-    public class SvnFileTypes : RepoFileTypes
+    public class SvnFileStatuses : RepositoryFileStatuses
     {
         ISet<SvnStatus> statusList = new HashSet<SvnStatus>();
 

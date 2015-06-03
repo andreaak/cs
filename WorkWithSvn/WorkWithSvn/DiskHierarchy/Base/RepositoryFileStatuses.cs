@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using SharpSvn;
 
-namespace WorkWithSvn.DiskHierarchy
+namespace WorkWithSvn.DiskHierarchy.Base
 {
-    public class RepoFileTypes
+    public class RepositoryFileStatuses
     {
         List<object> statusList = new List<object>();
         public bool isModifiedLocal;

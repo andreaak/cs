@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using WorkWithSvn.RepositoryProviders;
 
 namespace WorkWithSvn
 {
     public interface IMainView
     {
-        Providers.ControlsData ControlsData { get; }
+        ControlsData ControlsData { get; }
+        void UpdateItemsList();
     }
 }

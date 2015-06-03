@@ -1,21 +1,49 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Utils;
-using WorkWithSvn.DiskHierarchy;
+using WorkWithSvn.DiskHierarchy.Base;
 
-namespace Display
+namespace VisualProviders
 {
     public class TreeProvider
     {
-        TreeView treeView;
-        ContextMenuStrip contextMenuStrip;
-        private delegate TreeNode IncrementCallbackUpdate();
-
+        private TreeView treeView;
+        private ContextMenuStrip contextMenuStrip;
+        
+        public TreeNode SelectedNode
+        {
+            get
+            {
+                return GetSelectedNode();
+            }
+        } 
+       
+        public RepositoryDirectory DataSource
+        {
+            set
+            {
+                Clear();
+                if (value == null)
+                {
+                    treeView.Nodes.Add(value.FullName);
+                    treeView.Nodes[treeView.Nodes.Count - 1].ImageIndex = 0;
+                    treeView.Nodes[treeView.Nodes.Count - 1].SelectedImageIndex = 1;
+                    treeView.Nodes[treeView.Nodes.Count - 1].StateImageIndex = 0;
+                    FillTreeView(value, treeView.Nodes[treeView.Nodes.Count - 1]);
+                }
+            }
+        }
 
         public TreeProvider(TreeView treeView, ContextMenuStrip contextMenuStrip)
         {
             this.treeView = treeView;
             this.contextMenuStrip = contextMenuStrip;
             this.treeView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
+        }
+
+        public void Clear()
+        {
+            treeView.Nodes.Clear();
         }
 
         #region HANDLERS
@@ -32,24 +60,7 @@ namespace Display
 
         #endregion
 
-        public void Clear()
-        {
-            treeView.Nodes.Clear();
-        }
-
-        public void Fill(RepositoryDirectory directoryData)
-        {
-            if (directoryData == null)
-                return;
-            Clear();
-            treeView.Nodes.Add(directoryData.FullName);
-            treeView.Nodes[treeView.Nodes.Count - 1].ImageIndex = 0;
-            treeView.Nodes[treeView.Nodes.Count - 1].SelectedImageIndex = 1;
-            treeView.Nodes[treeView.Nodes.Count - 1].StateImageIndex = 0;
-            Fill(directoryData, treeView.Nodes[treeView.Nodes.Count - 1]);
-        }
-
-        private void Fill(RepositoryDirectory directoryData, TreeNode treeNode)
+        private void FillTreeView(RepositoryDirectory directoryData, TreeNode treeNode)
         {
             foreach (RepositoryDirectory directory in directoryData.DirectoriesList)
             {
@@ -61,34 +72,21 @@ namespace Display
                 treeNode.Nodes[treeNode.Nodes.Count - 1].ImageIndex = 0;
                 treeNode.Nodes[treeNode.Nodes.Count - 1].SelectedImageIndex = 1;
                 treeNode.Nodes[treeNode.Nodes.Count - 1].StateImageIndex = 0;
-                Fill(directory, treeNode.Nodes[treeNode.Nodes.Count - 1]);
+                FillTreeView(directory, treeNode.Nodes[treeNode.Nodes.Count - 1]);
             }
         }
 
-        public TreeNode SelNode 
-        { 
-            get
-            {
-                return GetSelNode();
-            }
-        }
-
-        private TreeNode GetSelNode()
+        private TreeNode GetSelectedNode()
         {
             if (treeView.InvokeRequired)
             {
-                IncrementCallbackUpdate d = new IncrementCallbackUpdate(GetSelNode);
+                Func<TreeNode> d = GetSelectedNode;
                 return (TreeNode)treeView.Invoke(d);
             }
             else
             {
                 return treeView.SelectedNode;
             }
-        }
-
-        public void FillTree(RepositoryDirectory repositoryDirectory)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
