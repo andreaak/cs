@@ -57,7 +57,7 @@ namespace WorkWithSvn
             this.buttonSwitch.TabIndex = 7;
             this.buttonSwitch.Text = "Switch";
             this.buttonSwitch.UseVisualStyleBackColor = true;
-            this.buttonSwitch.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonSwitch.Click += new System.EventHandler(this.buttonSwitch_Click);
             // 
             // textBoxLocation
             // 

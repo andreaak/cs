@@ -5,10 +5,10 @@ namespace WorkWithSvn
 {
     public partial class CommitMessage : Form
     {
-        private string commitMessage;
         public string Message
         {
-            get { return commitMessage; }
+            get;
+            private set;
         }
 
         public CommitMessage()
@@ -19,7 +19,7 @@ namespace WorkWithSvn
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            commitMessage = richTextBoxCommitMessage.Text;
+            Message = richTextBoxCommitMessage.Text;
         }
     }
 }

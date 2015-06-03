@@ -6,26 +6,23 @@ namespace WorkWithSvn
 {
     public partial class SwitchLocation : Form
     {
-        private string baseLocation;
-        private Uri repository;
-        private string targetLocation;
         public string TargetLocation
         {
-            get { return targetLocation; }
+            get;
+            private set;
         }
  
-        private bool restoreFile;
-        public bool RestoreFile
+        public bool IsRestoreFile
         {
-            get { return restoreFile; }
+            get;
+            private set;
         }
 
-        private bool backupFile;
-        public bool BackupFile
+        public bool IsBackupFile
         {
-            get { return backupFile; }
+            get;
+            private set;
         }
-
 
         public SwitchLocation(string path, AProvider provider)
         {
@@ -34,18 +31,15 @@ namespace WorkWithSvn
             {
                 return;
             }
-            baseLocation = provider.GetLocation(path);
-            textBoxLocation.Text = baseLocation;
-            repository = provider.GetRepository(path);
-            textBoxRepository.Text = repository.ToString();
+            textBoxLocation.Text = provider.GetLocation(path);
+            textBoxRepository.Text = Convert.ToString(provider.GetRepository(path));
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void buttonSwitch_Click(object sender, EventArgs e)
         {
-            targetLocation = textBoxTargetLocation.Text;
-            restoreFile = checkBoxRestoreFile.Checked;
-            backupFile = checkBoxBackUpFile.Checked;
-            this.Close();
+            TargetLocation = textBoxTargetLocation.Text;
+            IsRestoreFile = checkBoxRestoreFile.Checked;
+            IsBackupFile = checkBoxBackUpFile.Checked;
         }
     }
 }

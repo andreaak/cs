@@ -12,15 +12,14 @@ namespace WorkWithSvn
         public GridForm()
         {
             InitializeComponent();
-
         }
 
         public GridForm(CommitData logs)
         {
             InitializeComponent();
-            bindingSource1 = new BindingSource();
             bindingSource1.DataSource = logs.COMMIT;
             dataGridView1.DataSource = bindingSource1;
+            //bindingSource1.ResetBindings();???
             foreach (DataGridViewColumn item in dataGridView1.Columns)
             {
                 item.DefaultCellStyle.WrapMode = DataGridViewTriState.True;

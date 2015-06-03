@@ -16,7 +16,7 @@ namespace WorkWithSvn.RepositoryProviders
 {
     public class SvnProvider : AProvider
     {
-        Collection<SvnStatusEventArgs> list;
+       // Collection<SvnStatusEventArgs> list;
 
         public RepositoryDirectory WorkingCopy
         {
@@ -88,6 +88,7 @@ namespace WorkWithSvn.RepositoryProviders
             {
                 SvnStatusArgs args = new SvnStatusArgs();
                 args.RetrieveRemoteStatus = true;
+                Collection<SvnStatusEventArgs> list;
                 client.GetStatus(fullPath, args, out list);
                 if (list.Count == 0)
                 {
@@ -426,16 +427,16 @@ namespace WorkWithSvn.RepositoryProviders
 
         private void RemoveFilesFromChanged(Collection<SvnStatusEventArgs> list)
         {
-            List<string> files = new List<string>();
+            List<string> items = new List<string>();
             foreach (SvnStatusEventArgs file in list)
             {
                 if (SvnRepositoryHelper.IsIgnoredItem(file))
                 {
                     continue;
                 }
-                files.Add(file.FullPath);
+                items.Add(file.FullPath);
             }
-            WorkingCopy.RemoveFilesFromChanged(files);
+            WorkingCopy.RemoveFilesFromChanged(items);
         }
 
         private void SetItemsData(List<RepositoryItem> selCollection)
@@ -453,6 +454,7 @@ namespace WorkWithSvn.RepositoryProviders
                 SvnStatusArgs args = new SvnStatusArgs();
                 args.RetrieveRemoteStatus = true;
                 args.RetrieveAllEntries = true;
+                Collection<SvnStatusEventArgs> list;
                 client.GetStatus(repItem.FullName, args, out list);
 
                 if (list.Count > 0)
@@ -661,7 +663,7 @@ namespace WorkWithSvn.RepositoryProviders
         private void GetActiveItems(RepositoryDirectory baseDir, RepositoryFileStatuses filesTypes, string changeList
             , ISet<string> selectedExtensions, List<RepositoryItem> list)
         {
-            foreach (RepositoryFile file in baseDir.FilesList)
+            foreach (RepositoryFile file in baseDir.Files)
             {
                 if (IsValidFile(filesTypes, changeList, selectedExtensions, file))
                 {
@@ -669,7 +671,7 @@ namespace WorkWithSvn.RepositoryProviders
                 }
             }
 
-            foreach (RepositoryDirectory dir in baseDir.DirectoriesList)
+            foreach (RepositoryDirectory dir in baseDir.Directories)
             {
                 if (IsValidDirectory(filesTypes, changeList, dir))
                 {

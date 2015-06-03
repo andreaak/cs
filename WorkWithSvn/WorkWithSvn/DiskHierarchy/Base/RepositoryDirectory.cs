@@ -12,13 +12,13 @@ namespace WorkWithSvn.DiskHierarchy.Base
     {
         private DirectoryItem diskDirectory;
 
-        public List<RepositoryDirectory> DirectoriesList
+        public List<RepositoryDirectory> Directories
         {
             get;
             set;
         }
 
-        public List<RepositoryFile> FilesList
+        public List<RepositoryFile> Files
         {
             get;
             set;
@@ -29,18 +29,18 @@ namespace WorkWithSvn.DiskHierarchy.Base
             : base(fullName, Path.GetFileName(fullName), parentId)
         {
             diskDirectory = new DirectoryItem(fullName, parentId);
-            DirectoriesList = new List<RepositoryDirectory>();
-            FilesList = new List<RepositoryFile>();
+            Directories = new List<RepositoryDirectory>();
+            Files = new List<RepositoryFile>();
         }
 
         public void AddDirectory(RepositoryDirectory dir)
         {
-            DirectoriesList.Add(dir);
+            Directories.Add(dir);
         }
 
         public void AddFile(RepositoryFile fileData)
         {
-            FilesList.Add(fileData);
+            Files.Add(fileData);
         }
 
         #region OVERRIDE
@@ -75,7 +75,6 @@ namespace WorkWithSvn.DiskHierarchy.Base
             return (RepositoryDirectory)DirectoryHelper.GetFileDirectory(this, fileFullName);
         }
 
-
         protected virtual RepositoryDirectory CreateDirectory(string dirName)
         {
             return new RepositoryDirectory(FullName + "\\" + dirName, -1);
@@ -86,22 +85,30 @@ namespace WorkWithSvn.DiskHierarchy.Base
             return new RepositoryFile(filePath, -1);
         }
 
-        public virtual void RemoveFilesFromChanged(List<string> files)
+        public void RemoveFilesFromChanged(List<string> items)
         {
-            foreach (RepositoryDirectory dir in DirectoriesList)
+            foreach (RepositoryDirectory dir in Directories.ToList())
             {
-                if (IsVersioned(files, dir))
+                dir.RemoveFilesFromChanged(items);
+                if (IsVersioned(items, dir))
                 {
                     CleanData(dir);
                 }
-                dir.RemoveFilesFromChanged(files);
+                else
+                {
+                    Directories.Remove(dir);
+                }
             }
 
-            foreach (RepositoryFile file in FilesList)
+            foreach (RepositoryFile file in Files.ToList())
 	        {
-                if (IsVersioned(files, file))
+                if (IsVersioned(items, file))
                 {
                     CleanData(file);
+                }
+                else
+                {
+                    Files.Remove(file);
                 }
 	        }
         }
@@ -132,7 +139,7 @@ namespace WorkWithSvn.DiskHierarchy.Base
 
         public void GetChangeLists(ISet<String> changeLists)
         {
-            foreach (RepositoryDirectory dir in DirectoriesList)
+            foreach (RepositoryDirectory dir in Directories)
             {
                 if (UTILS.IsIgnoredDirectory(dir.FullName))
                 {
@@ -140,7 +147,7 @@ namespace WorkWithSvn.DiskHierarchy.Base
                 }
                 dir.GetChangeLists(changeLists);
             }
-            foreach (RepositoryFile file in FilesList)
+            foreach (RepositoryFile file in Files)
             {
                 if (string.IsNullOrEmpty(file.ChangeList) || changeLists.Contains(file.ChangeList))
                 {
@@ -164,12 +171,12 @@ namespace WorkWithSvn.DiskHierarchy.Base
 
         IEnumerable<IDirectory> IDirectory.DirectoriesList
         {
-            get { return DirectoriesList; }
+            get { return Directories; }
         }
 
         IEnumerable<IFile> IDirectory.FilesList
         {
-            get { return FilesList; }
+            get { return Files; }
         }
 
         public IDirectory CreateAndAddDirectory(string fullName)
@@ -181,10 +188,10 @@ namespace WorkWithSvn.DiskHierarchy.Base
 
         public void RemoveDirectory(string fullName)
         {
-            RepositoryDirectory dir = DirectoriesList.FirstOrDefault(item => item.FullName == fullName);
+            RepositoryDirectory dir = Directories.FirstOrDefault(item => item.FullName == fullName);
             if (dir != null)
             {
-                DirectoriesList.Remove(dir);
+                Directories.Remove(dir);
             }
         }
 
@@ -197,10 +204,10 @@ namespace WorkWithSvn.DiskHierarchy.Base
 
         public void RemoveFile(string fileFullName)
         {
-            RepositoryFile file = FilesList.FirstOrDefault(item => item.FullName == fileFullName);
+            RepositoryFile file = Files.FirstOrDefault(item => item.FullName == fileFullName);
             if (file != null)
             {
-                FilesList.Remove(file);
+                Files.Remove(file);
             }
         }
 

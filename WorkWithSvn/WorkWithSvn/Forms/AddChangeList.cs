@@ -5,11 +5,12 @@ namespace WorkWithSvn
 {
     public partial class AddChangeList : Form
     {
-        private string changeListName;
         public string ChangeListName
         {
-            get { return changeListName; }
+            get;
+            private set;
         }
+
         public AddChangeList()
         {
             InitializeComponent();
@@ -17,7 +18,7 @@ namespace WorkWithSvn
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            changeListName = textBoxChangeList.Text;
+            ChangeListName = textBoxChangeList.Text;
         }
     }
 }

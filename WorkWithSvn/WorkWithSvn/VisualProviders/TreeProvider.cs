@@ -62,7 +62,7 @@ namespace VisualProviders
 
         private void FillTreeView(RepositoryDirectory directoryData, TreeNode treeNode)
         {
-            foreach (RepositoryDirectory directory in directoryData.DirectoriesList)
+            foreach (RepositoryDirectory directory in directoryData.Directories)
             {
                 if (UTILS.IsIgnoredDirectory(directory.FullName))
                 {

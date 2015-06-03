@@ -417,8 +417,8 @@ namespace WorkWithSvn
             }
 
             targetLocation = form.TargetLocation;
-            restore = form.RestoreFile;
-            backup = form.BackupFile;
+            restore = form.IsRestoreFile;
+            backup = form.IsBackupFile;
             return true;
         }
 

@@ -94,7 +94,7 @@ namespace Utils.DiskHierarchy
             IFile file = dir.FilesList.FirstOrDefault(item => item.FullName == fileFullName);
             if (file == null)
             {
-                file = currentDir.CreateAndAddFile(fileFullName);
+                file = dir.CreateAndAddFile(fileFullName);
             }
             return file;
         }

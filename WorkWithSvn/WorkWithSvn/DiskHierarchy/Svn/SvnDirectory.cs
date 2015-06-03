@@ -16,7 +16,7 @@ namespace WorkWithSvn.DiskHierarchy.Svn
             {
                 if (dir.Exists && !IsIgnoredDirectories(dir.FullName))
                 {
-                    DirectoriesList.Add(new SvnDirectory(dir));
+                    Directories.Add(new SvnDirectory(dir));
                 }
             }
         }

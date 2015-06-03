@@ -461,9 +461,7 @@ namespace WorkWithSvn
             // 
             // toolStripButtonShowModifiedOnServer
             // 
-            this.toolStripButtonShowModifiedOnServer.Checked = true;
             this.toolStripButtonShowModifiedOnServer.CheckOnClick = true;
-            this.toolStripButtonShowModifiedOnServer.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripButtonShowModifiedOnServer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonShowModifiedOnServer.Image = global::WorkWithSvn.Properties.Resources._1;
             this.toolStripButtonShowModifiedOnServer.ImageTransparentColor = System.Drawing.Color.Magenta;
