@@ -112,7 +112,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CommitData.xsd</DependentUpon>
     </Compile>
-    <Compile Include="RepositoryProviders\AProvider.cs" />
+    <Compile Include="RepositoryProviders\IProvider.cs" />
     <Compile Include="Forms\CommitMessage.cs">
       <SubType>Form</SubType>
     </Compile>

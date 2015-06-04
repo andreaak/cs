@@ -15,7 +15,7 @@ namespace WorkWithSvn
         static Options instance;
         private static ResourceManager rm;
         private static CultureInfo culture;
-        private static AProvider provider;
+        private static IProvider provider;
 
         public static Options GetInstance
         {
@@ -67,7 +67,7 @@ namespace WorkWithSvn
             }
         }
 
-        public static AProvider Provider
+        public static IProvider Provider
         {
             get
             {

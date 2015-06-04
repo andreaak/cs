@@ -20,7 +20,7 @@ namespace WorkWithSvn
         IMainView view;
         private ResourceManager rm;
         private CultureInfo culture;
-        private AProvider repositoryProvider;
+        private IProvider repositoryProvider;
         private FileSystemWatcher watcher;
 
         public RepositoryDirectory WorkingCopy
@@ -60,15 +60,14 @@ namespace WorkWithSvn
 
         public bool OpenWorkingCopy()
         {
-
             string folder = string.Empty;
             string description = rm.GetString("CHOOSE_WORKING_COPY", culture);
             if (!SelectFolder.Select(description, ref folder))
             {
-                return true;
+                return false;
             }
             Options.GetInstance.WorkingCopyPath = folder;
-            return false;
+            return true;
         }
 
         public void Clear()
