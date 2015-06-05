@@ -8,7 +8,7 @@ using WorkWithSvn.Utils;
 
 namespace WorkWithSvn.RepositoryProviders
 {
-    public interface AProvider
+    public interface IProvider
     {
         RepositoryDirectory WorkingCopy { get; }
         

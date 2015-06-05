@@ -14,10 +14,8 @@ using WorkWithSvn.Utils;
 
 namespace WorkWithSvn.RepositoryProviders
 {
-    public class SvnProvider : AProvider
+    public class SvnProvider : IProvider
     {
-       // Collection<SvnStatusEventArgs> list;
-
         public RepositoryDirectory WorkingCopy
         {
             get;

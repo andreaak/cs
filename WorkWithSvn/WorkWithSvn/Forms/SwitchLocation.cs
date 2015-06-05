@@ -24,7 +24,7 @@ namespace WorkWithSvn
             private set;
         }
 
-        public SwitchLocation(string path, AProvider provider)
+        public SwitchLocation(string path, IProvider provider)
         {
             InitializeComponent();
             if (string.IsNullOrEmpty(path))
