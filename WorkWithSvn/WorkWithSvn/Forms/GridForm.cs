@@ -18,27 +18,23 @@ namespace WorkWithSvn
         {
             InitializeComponent();
             bindingSource1.DataSource = logs.COMMIT;
-            dataGridView1.DataSource = bindingSource1;
-            //bindingSource1.ResetBindings();???
             foreach (DataGridViewColumn item in dataGridView1.Columns)
             {
                 item.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                item.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                //item.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 item.SortMode = DataGridViewColumnSortMode.Automatic;
             }
         }
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (string.IsNullOrEmpty(bindingSource1.Sort)
-                || bindingSource1.Sort.Contains(ASC_SORT))
-            {
-                bindingSource1.Sort = string.Format(SORT_TEMPLATE, dataGridView1.Columns[e.ColumnIndex].Name, DESC_SORT);
-            }
-            else
-            {
-                bindingSource1.Sort = string.Format(SORT_TEMPLATE, dataGridView1.Columns[e.ColumnIndex].Name, ASC_SORT); ;
-            }
+            string sortOrder = string.IsNullOrEmpty(bindingSource1.Sort) || bindingSource1.Sort.Contains(ASC_SORT) ? DESC_SORT : ASC_SORT;
+            bindingSource1.Sort = string.Format(SORT_TEMPLATE, dataGridView1.Columns[e.ColumnIndex].DataPropertyName, sortOrder);
+        }
+
+        private void GridForm_SizeChanged(object sender, System.EventArgs e)
+        {
+            dataGridView1.Dock = DockStyle.Fill;
         }
     }
 }
