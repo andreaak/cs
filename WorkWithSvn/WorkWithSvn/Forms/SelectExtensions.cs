@@ -16,7 +16,7 @@ namespace WorkWithSvn
         public SelectExtensions(ISet<string> extensions)
         {
             InitializeComponent();
-            listBox1.DataSource = extensions;
+            listBox1.DataSource = new List<string>(extensions);
         }
 
         private void buttonOk_Click(object sender, EventArgs e)

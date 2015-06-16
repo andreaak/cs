@@ -40,10 +40,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ExtensionMethods\ExtensionClass.cs" />
-    <Compile Include="Classes\ExtensionMethods\SealedClass.cs" />
-    <Compile Include="Classes\ExtensionMethods\Test.cs" />
+    <Compile Include="04_Class\ExtensionMethods\ExtensionClass.cs" />
+    <Compile Include="04_Class\ExtensionMethods\SealedClass.cs" />
+    <Compile Include="04_Class\ExtensionMethods\Test.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\UIContext.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_01_CreateTask.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_02_TaskId.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_03_Wait.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_04_TaskFactory.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_05_Lambda.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_06_ContinueWith.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_07_Result.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_08_Cancel.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_09_Exception.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="01_Elements CS\" />
+    <Folder Include="02_Object\" />
+    <Folder Include="03_Structure\" />
+    <Folder Include="05_Delegates and Events\" />
+    <Folder Include="06_Interface\" />
+    <Folder Include="07_Generics\" />
+    <Folder Include="08_String\" />
+    <Folder Include="09_Array\" />
+    <Folder Include="10_Collections\" />
+    <Folder Include="11_Input Output\" />
+    <Folder Include="12_MultiThreading\01_Thread\" />
+    <Folder Include="12_MultiThreading\02_Synchronization\" />
+    <Folder Include="12_MultiThreading\03_Async Delegates\" />
+    <Folder Include="12_MultiThreading\04_Problems\" />
+    <Folder Include="13_Exceptions\" />
+    <Folder Include="14_Garbage Collection\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

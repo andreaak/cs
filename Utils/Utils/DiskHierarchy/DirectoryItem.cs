@@ -16,13 +16,13 @@ namespace Utils.DiskHierarchy
             }
         }
         
-        public IList<DirectoryItem> DirectoriesList
+        public IList<DirectoryItem> Directories
         {
             get;
             set;
         }
 
-        public List<FileItem> FilesList
+        public List<FileItem> Files
         {
             get;
             set;
@@ -32,8 +32,8 @@ namespace Utils.DiskHierarchy
         public DirectoryItem(string fullName, long parentId)
             : base(fullName, Path.GetFileName(fullName), parentId)
         {
-            DirectoriesList = new List<DirectoryItem>();
-            FilesList = new List<FileItem>();
+            Directories = new List<DirectoryItem>();
+            Files = new List<FileItem>();
         }
 
         public DirectoryItem(DirectoryInfo directory, long parentId)
@@ -43,145 +43,56 @@ namespace Utils.DiskHierarchy
             {
                 if (dir.Exists && !IsIgnoredDirectory(dir.Name))
                 {
-                    DirectoriesList.Add(new DirectoryItem(dir, Id));
+                    Directories.Add(new DirectoryItem(dir, Id));
                 }
             }
             foreach (FileInfo file in directory.GetFiles())
             {
-                FilesList.Add(new FileItem(file.FullName, Id));
+                Files.Add(new FileItem(file.FullName, Id));
             }
         }
 
-        public void AddDirectory(DirectoryInfo directoryData)
+        public void AddDirectoryWithSubItems(DirectoryInfo directoryData)
         {
             AddDirectory(new DirectoryItem(directoryData, Id));
         }
 
-        public void AddDirectory(DirectoryItem dir)
+        public void AddDirectory(DirectoryInfo directoryData)
         {
-            DirectoriesList.Add(dir);
+            AddDirectory(new DirectoryItem(directoryData.FullName, Id));
         }
 
-        public void AddFile(FileItem fileData)
+        public void AddDirectory(DirectoryItem dir)
         {
-            FilesList.Add(fileData);
+            Directories.Add(dir);
+        }
+
+        public void AddFile(FileInfo file)
+        {
+            Files.Add(new FileItem(file.FullName, Id));
+        }
+
+        public void AddFile(FileItem file)
+        {
+            Files.Add(file);
         }
 
         #region VIRTUAL
-        ////
-        //public virtual DirectoryItem GetDirectory(string dirPath)
-        //{
-        //    string pathWithoutWC = dirPath.Replace(FullName, "");
-        //    char[] sep = new char[] { '\\' };
-        //    List<string> dirs = new List<string>(pathWithoutWC.Split(sep, StringSplitOptions.RemoveEmptyEntries));
-        //    return GetDirectory(dirs);
-        //}
-        ////
-        //public virtual DirectoryItem GetDirectoryOrCreate(string dirPath)
-        //{
-        //    string pathWithoutWC = dirPath.Replace(FullName, "");
-        //    char[] sep = new char[] { '\\' };
-        //    List<string> dirs = new List<string>(pathWithoutWC.Split(sep, StringSplitOptions.RemoveEmptyEntries));
-        //    return CreateDirectory(dirs);
-        //}
-        ////
-        //protected virtual DirectoryItem CreateDirectory(List<string> dirs)
-        //{
-        //    DirectoryItem res = GetDirectory(dirs);
-        //    if(res == null)
-        //    {
-        //        res = CreateDirectoryForce(dirs);
-        //    }
-        //    return res;
-        //}
 
         public DirectoryItem CreateDirectory(string dirName)
         {
             return new DirectoryItem(FullName + "\\" + dirName, Id);
         }
 
-        //public void DeleteDirectory(string dirPath)
-        //{
-        //    string parentDirPath = Path.GetDirectoryName(dirPath);
-        //    DirectoryItem dir = GetDirectory(parentDirPath);
-        //    if (dir == null)
-        //    {
-        //        return;
-        //    }
-        //    DirectoryItem file = dir.DirectoriesList.FirstOrDefault(item => item.FullName == dirPath);
-        //    if (file != null)
-        //    {
-        //        dir.DirectoriesList.Remove(file);
-        //    }
-        //}
-
-        //public virtual FileItem GetFile(string fileFullName)
-        //{
-        //    string dirPath = Path.GetDirectoryName(fileFullName);
-        //    DirectoryItem dir = GetDirectory(dirPath);
-        //    if (dir != null)
-        //    {
-        //        foreach (FileItem file in dir.FilesList)
-        //        {
-        //            if (file.FullName == fileFullName)
-        //            {
-        //                return file;
-        //            }
-        //        }
-        //    }
-        //    return null;
-        //}
-
-        //public virtual FileItem GetFileOrCreate(string fileFullName)
-        //{
-        //    string dirPath = Path.GetDirectoryName(fileFullName);
-        //    DirectoryItem dir = GetDirectoryOrCreate(dirPath);
-
-        //    foreach (FileItem file in dir.FilesList)
-        //    {
-        //        if (file.FullName == fileFullName)
-        //        {
-        //            return file;
-        //        }
-        //    }
-            
-        //    FileItem fileOut = CreateFile(fileFullName);
-        //    dir.AddFile(fileOut);
-
-        //    return fileOut;
-        //}
-
-        //public virtual DirectoryItem GetFileDirectory(string fileFullName)
-        //{
-        //    string dirPath = Path.GetDirectoryName(fileFullName);
-        //    return GetDirectory(dirPath);
-        //}
-
         public FileItem CreateFile(string fileFullName)
         {
             return new FileItem(fileFullName, Id);
         }
 
-        //public void DeleteFile(string fileFullName)
-        //{
-        //    string dirPath = Path.GetDirectoryName(fileFullName);
-        //    DirectoryItem dir = GetDirectory(dirPath);
-        //    if (dir == null)
-        //    {
-        //        return;
-        //    }
-
-        //    FileItem file = dir.FilesList.FirstOrDefault(item => item.FullName == fileFullName);
-        //    if (file != null)
-        //    {
-        //        dir.FilesList.Remove(file);
-        //    }
-        //}
-
-        public ISet<string> GetFilesExtensions()
+        public ISet<string> GetFilesExtensions(IDirectory currentDir)
         {
             ISet<String> filesExtensions = new HashSet<string>();
-            GetFilesExtensions(filesExtensions);
+            GetFilesExtensions(currentDir, filesExtensions);
             return filesExtensions;
         }
 
@@ -191,49 +102,19 @@ namespace Utils.DiskHierarchy
         }
 
         #endregion
-        //
-        //private DirectoryItem GetDirectory(List<string> dirs)
-        //{
-        //    if (dirs.Count == 0)
-        //    {
-        //        return this;
-        //    }
 
-        //    foreach (DirectoryItem dir in DirectoriesList)
-        //    {
-        //        if (dir.Name == dirs[0])
-        //        {
-        //            dirs.RemoveAt(0);
-        //            return dir.GetDirectory(dirs);
-        //        }
-        //    }
-        //    return null;
-        //}
-        ////
-        //private DirectoryItem CreateDirectoryForce(List<string> dirs)
-        //{
-        //    if (dirs.Count == 0)
-        //    {
-        //        return this;
-        //    } 
-        //    DirectoryItem newDir = CreateDirectory(dirs[0]);
-        //    DirectoriesList.Add(newDir);
-        //    dirs.RemoveAt(0);
-        //    return newDir.CreateDirectoryForce(dirs);
-        //}
-
-        private void GetFilesExtensions(ISet<String> filesExtensions)
+        private void GetFilesExtensions(IDirectory currentDir, ISet<String> filesExtensions)
         {
-            foreach (DirectoryItem dir in DirectoriesList)
+            foreach (IDirectory dir in currentDir.Directories)
             {
                 if (IsIgnoredDirectory(dir.FullName))
                 {
                     continue;
                 }
-                dir.GetFilesExtensions(filesExtensions);
+                GetFilesExtensions(dir, filesExtensions);
             }
 
-            foreach (FileItem file in FilesList)
+            foreach (IFile file in currentDir.Files)
             {
                 if (string.IsNullOrEmpty(file.Name))
                 {
@@ -262,11 +143,11 @@ namespace Utils.DiskHierarchy
         private void ReadToDataset()
         {
             AddDiskItemRow(this);
-            foreach (FileItem file in FilesList)
+            foreach (FileItem file in Files)
             {
                 AddDiskItemRow(file);
             }
-            foreach (DirectoryItem dir in DirectoriesList)
+            foreach (DirectoryItem dir in Directories)
             {
                 dir.ReadToDataset();
             }
@@ -279,14 +160,14 @@ namespace Utils.DiskHierarchy
 
         #region IDirectory
 
-        IEnumerable<IDirectory> IDirectory.DirectoriesList
+        IEnumerable<IDirectory> IDirectory.Directories
         {
-            get { return DirectoriesList; }
+            get { return Directories; }
         }
 
-        IEnumerable<IFile> IDirectory.FilesList
+        IEnumerable<IFile> IDirectory.Files
         {
-            get { return FilesList; }
+            get { return Files; }
         }
 
         public IDirectory CreateAndAddDirectory(string fullName)
@@ -298,10 +179,10 @@ namespace Utils.DiskHierarchy
 
         public void RemoveDirectory(string fullName)
         {
-            DirectoryItem dir = DirectoriesList.FirstOrDefault(item => item.FullName == fullName);
+            DirectoryItem dir = Directories.FirstOrDefault(item => item.FullName == fullName);
             if (dir != null)
             {
-                DirectoriesList.Remove(dir);
+                Directories.Remove(dir);
             }
         }
 
@@ -314,10 +195,10 @@ namespace Utils.DiskHierarchy
 
         public void RemoveFile(string fileFullName)
         {
-            FileItem file = FilesList.FirstOrDefault(item => item.FullName == fileFullName);
+            FileItem file = Files.FirstOrDefault(item => item.FullName == fileFullName);
             if (file != null)
             {
-                FilesList.Remove(file);
+                Files.Remove(file);
             }
         }
 

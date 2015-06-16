@@ -37,7 +37,7 @@ namespace Utils.DiskHierarchy
 
         private static IDirectory CreateDirectory(IDirectory currentDir, List<string> dirs)
         {
-            IDirectory res = GetDirectory(currentDir, dirs);
+            IDirectory res = GetDirectory(currentDir, new List<string>(dirs));
             if (res == null)
             {
                 res = CreateDirectoryForce(currentDir, dirs);
@@ -52,11 +52,12 @@ namespace Utils.DiskHierarchy
                 return currentDir;
             }
 
-            foreach (IDirectory dir in currentDir.DirectoriesList)
+            foreach (IDirectory dir in currentDir.Directories)
             {
                 if (dir.Name == dirs[0])
                 {
                     dirs.RemoveAt(0);
+
                     return GetDirectory(dir, dirs);
                 }
             }
@@ -69,6 +70,7 @@ namespace Utils.DiskHierarchy
             {
                 return currentDir;
             }
+
             IDirectory newDir = currentDir.CreateAndAddDirectory(dirs[0]);
             dirs.RemoveAt(0);
             return CreateDirectoryForce(newDir, dirs);
@@ -81,7 +83,7 @@ namespace Utils.DiskHierarchy
             IDirectory dir = GetDirectory(currentDir, dirPath);
             if (dir != null)
             {
-                return dir.FilesList.FirstOrDefault(item => item.FullName == fileFullName);
+                return dir.Files.FirstOrDefault(item => item.FullName == fileFullName);
             }
             return null;
         }
@@ -91,7 +93,7 @@ namespace Utils.DiskHierarchy
             string dirPath = Path.GetDirectoryName(fileFullName);
             IDirectory dir = GetDirectoryOrCreate(currentDir, dirPath);
 
-            IFile file = dir.FilesList.FirstOrDefault(item => item.FullName == fileFullName);
+            IFile file = dir.Files.FirstOrDefault(item => item.FullName == fileFullName);
             if (file == null)
             {
                 file = dir.CreateAndAddFile(fileFullName);

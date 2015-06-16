@@ -14,9 +14,9 @@ namespace WorkWithSvn.DiskHierarchy.Svn
             Helper = new SvnRepositoryHelper(this);
             foreach (DirectoryInfo dir in directoryData.GetDirectories())
             {
-                if (dir.Exists && !IsIgnoredDirectories(dir.FullName))
+                if (dir.Exists && !IsIgnoredDirectory(dir.FullName))
                 {
-                    Directories.Add(new SvnDirectory(dir));
+                    AddDirectory(new SvnDirectory(dir));
                 }
             }
         }

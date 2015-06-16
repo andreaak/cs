@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.commitData = new WorkWithSvn.Utils.CommitData();
             this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.revisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.filesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.messageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.commitData = new WorkWithSvn.Utils.CommitData();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commitData)).BeginInit();
@@ -64,16 +64,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(702, 430);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataMember = "COMMIT";
-            this.bindingSource1.DataSource = this.commitData;
-            // 
-            // commitData
-            // 
-            this.commitData.DataSetName = "CommitData";
-            this.commitData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // authorDataGridViewTextBoxColumn
             // 
@@ -118,6 +108,16 @@
             this.dateDataGridViewTextBoxColumn.ReadOnly = true;
             this.dateDataGridViewTextBoxColumn.Width = 132;
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "COMMIT";
+            this.bindingSource1.DataSource = this.commitData;
+            // 
+            // commitData
+            // 
+            this.commitData.DataSetName = "CommitData";
+            this.commitData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // GridForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,6 +125,7 @@
             this.ClientSize = new System.Drawing.Size(702, 430);
             this.Controls.Add(this.dataGridView1);
             this.Name = "GridForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GridForm";
             this.SizeChanged += new System.EventHandler(this.GridForm_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

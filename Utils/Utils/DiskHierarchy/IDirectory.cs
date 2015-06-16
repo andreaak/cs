@@ -7,12 +7,12 @@ namespace Utils.DiskHierarchy
 {
     public interface IDirectory : IDiskItem
     {
-        IEnumerable<IDirectory> DirectoriesList
+        IEnumerable<IDirectory> Directories
         {
             get;
         }
 
-        IEnumerable<IFile> FilesList
+        IEnumerable<IFile> Files
         {
             get;
         }

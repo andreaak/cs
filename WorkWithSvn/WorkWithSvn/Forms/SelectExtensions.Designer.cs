@@ -69,6 +69,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SelectExtensions";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Extensions";
             this.ResumeLayout(false);
 

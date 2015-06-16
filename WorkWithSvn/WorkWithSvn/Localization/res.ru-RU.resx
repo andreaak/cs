@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AUTHOR_OF_REVISION_REQUEST" xml:space="preserve">
     <value>Enter author of the revision</value>
@@ -165,6 +165,9 @@
   <data name="LOAD_DATA_TEXT" xml:space="preserve">
     <value>Идет загрузка данных...</value>
   </data>
+  <data name="MOVE_TO_CHANGELIST_HEADER" xml:space="preserve">
+    <value>Перевод в список изменений</value>
+  </data>
   <data name="PATCH_CREATION_HEADER" xml:space="preserve">
     <value>Создание патча</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="REFRESH_SERVER_FILES_TEXT" xml:space="preserve">
     <value>Идет обновление файлов сервера ...</value>
+  </data>
+  <data name="REMOVE_FROM_CHANGELIST_HEADER" xml:space="preserve">
+    <value>Перевод из списка изменений</value>
   </data>
   <data name="RESOLVE_CONFLICT_HEADER" xml:space="preserve">
     <value>Решение конфликтов файлов рабочей копии</value>

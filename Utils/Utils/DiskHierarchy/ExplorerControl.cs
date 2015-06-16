@@ -31,7 +31,7 @@ namespace Utils.DiskHierarchy
 
         protected virtual void FillTree(DirectoryItem directoryData, TreeNode treeNode)
         {
-            foreach (DirectoryItem directory in directoryData.DirectoriesList)
+            foreach (DirectoryItem directory in directoryData.Directories)
             {
                 if (IsIgnoredDirectory(directory))
                 {
@@ -61,7 +61,7 @@ namespace Utils.DiskHierarchy
             {
                 return;
             }
-            foreach (FileItem file in baseDir.FilesList)
+            foreach (FileItem file in baseDir.Files)
             {
                 if (IsIgnoredFile(file))
                 {
@@ -81,7 +81,7 @@ namespace Utils.DiskHierarchy
 
             }
 
-            foreach (DirectoryItem dir in baseDir.DirectoriesList)
+            foreach (DirectoryItem dir in baseDir.Directories)
             {
                 FillListView(dir, selectedExtensions);
             }

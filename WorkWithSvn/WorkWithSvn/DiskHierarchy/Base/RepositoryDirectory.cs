@@ -38,14 +38,14 @@ namespace WorkWithSvn.DiskHierarchy.Base
             Directories.Add(dir);
         }
 
-        public void AddFile(RepositoryFile fileData)
+        public void AddFile(RepositoryFile file)
         {
-            Files.Add(fileData);
+            Files.Add(file);
         }
 
         #region OVERRIDE
         
-        protected bool IsIgnoredDirectories(string fullName)
+        protected bool IsIgnoredDirectory(string fullName)
         {
             return UTILS.IsIgnoredDirectory(fullName);
         }
@@ -125,7 +125,7 @@ namespace WorkWithSvn.DiskHierarchy.Base
 
         public ISet<string> GetFilesExtensions()
         {
-            return diskDirectory.GetFilesExtensions();
+            return diskDirectory.GetFilesExtensions(this);
         }
 
         #endregion
@@ -169,20 +169,24 @@ namespace WorkWithSvn.DiskHierarchy.Base
 
         #region IDirectory
 
-        IEnumerable<IDirectory> IDirectory.DirectoriesList
+        IEnumerable<IDirectory> IDirectory.Directories
         {
             get { return Directories; }
         }
 
-        IEnumerable<IFile> IDirectory.FilesList
+        IEnumerable<IFile> IDirectory.Files
         {
             get { return Files; }
         }
 
         public IDirectory CreateAndAddDirectory(string fullName)
         {
-            RepositoryDirectory dir = CreateDirectory(fullName);
-            AddDirectory(dir);
+            RepositoryDirectory dir = GetDirectory(fullName);
+            if (dir == null)
+            {
+                dir = CreateDirectory(fullName);
+                AddDirectory(dir);
+            }
             return dir;
         }
 
