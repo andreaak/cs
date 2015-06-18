@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
     [TestClass]
-    public class _08_Cancel
+    public class _08_CancelTask
     {
         // Метод, исполняемый как задача, 
         static void MyTask(object ct)
@@ -50,7 +50,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
                 // пока не завершится задача tsk. 
                 tsk.Wait();
             }
-            catch (AggregateException exc)
+            catch (AggregateException /*exc*/)
             {
                 if (tsk.IsCanceled)
                     Debug.WriteLine("\nЗадача tsk отменена\n");

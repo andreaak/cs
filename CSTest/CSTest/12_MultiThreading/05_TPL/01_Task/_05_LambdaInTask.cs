@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
     [TestClass]
-    public class _05_Lambda
+    public class _05_LambdaInTask
     {
         [TestMethod]
         // Применить лямбда-выражение в качестве задачи.

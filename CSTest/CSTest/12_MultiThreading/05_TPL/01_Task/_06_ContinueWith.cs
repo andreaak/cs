@@ -10,7 +10,6 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
     public class _06_ContinueWith
     {
         CancellationTokenSource cts;
-
         
         // Метод, исполняемый как задача, 
         static void MyTask()
@@ -25,7 +24,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
         }
 
         // Метод, исполняемый как продолжение задачи, 
-        static void ContTask(Task t)
+        static void ContinuationTask(Task t)
         {
             Debug.WriteLine("Продолжение запущено");
             for (int count = 0; count < 5; count++)
@@ -44,7 +43,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             // Сконструировать объект первой задачи. 
             Task tsk = new Task(MyTask);
             //А теперь создать продолжение задачи. 
-            Task taskCont = tsk.ContinueWith(ContTask);
+            Task taskCont = tsk.ContinueWith(ContinuationTask);
             // Начать последовательность задач, 
             tsk.Start();
             // Ожидать завершения продолжения. 

@@ -43,15 +43,30 @@
     <Compile Include="04_Class\ExtensionMethods\ExtensionClass.cs" />
     <Compile Include="04_Class\ExtensionMethods\SealedClass.cs" />
     <Compile Include="04_Class\ExtensionMethods\Test.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\MyThreadAbort.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\MyThreadPriority.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\MyThreadPriority2.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\_03_Priority.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\MyThread.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\MyThreadAutoStart.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\MyThreadWithArgument.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\_01_Basic.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\_02_JoinThread.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\_04_AbortThread.cs" />
+    <Compile Include="12_MultiThreading\01_Thread\_05_Background.cs" />
+    <Compile Include="12_MultiThreading\02_Synchronization\_01_Monitor.cs" />
+    <Compile Include="12_MultiThreading\02_Synchronization\_02_Lock.cs" />
+    <Compile Include="12_MultiThreading\02_Synchronization\_03_MethodImplAttribute.cs" />
+    <Compile Include="12_MultiThreading\02_Synchronization\_04_MonitorThreadInteraction.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\UIContext.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_01_CreateTask.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_02_TaskId.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_03_Wait.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_04_TaskFactory.cs" />
-    <Compile Include="12_MultiThreading\05_TPL\01_Task\_05_Lambda.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_05_LambdaInTask.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_06_ContinueWith.cs" />
-    <Compile Include="12_MultiThreading\05_TPL\01_Task\_07_Result.cs" />
-    <Compile Include="12_MultiThreading\05_TPL\01_Task\_08_Cancel.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_07_ResultFromTask.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\_08_CancelTask.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_09_Exception.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,12 +81,13 @@
     <Folder Include="09_Array\" />
     <Folder Include="10_Collections\" />
     <Folder Include="11_Input Output\" />
-    <Folder Include="12_MultiThreading\01_Thread\" />
-    <Folder Include="12_MultiThreading\02_Synchronization\" />
     <Folder Include="12_MultiThreading\03_Async Delegates\" />
     <Folder Include="12_MultiThreading\04_Problems\" />
     <Folder Include="13_Exceptions\" />
     <Folder Include="14_Garbage Collection\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="12_MultiThreading\01_Thread\ThreadStates.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

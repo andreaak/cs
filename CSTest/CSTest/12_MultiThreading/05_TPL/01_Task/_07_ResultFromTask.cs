@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
     [TestClass]
-    public class _07_Result
+    public class _07_ResultFromTask
     {
         // Простейший метод, возвращающий результат и не принимающий аргументов, 
         static bool MyTask()
