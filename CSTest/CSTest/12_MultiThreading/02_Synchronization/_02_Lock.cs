@@ -44,6 +44,20 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Thread.Sleep(15000);
         }
 
+        [TestMethod]
+        // Lock - не принимает типов значений, а только ссылочные.
+        public void Test4()
+        {
+            Thread[] threads = { new Thread(FunctionWithError), new Thread(FunctionWithError), new Thread(FunctionWithError) };
+
+            foreach (Thread t in threads)
+            {
+                t.Start();
+            }
+            Thread.Sleep(5000);
+        }
+
+
         class SumArray
         {
             int sum;
@@ -165,6 +179,21 @@ namespace CSTest._12_MultiThreading._02_Synchronization
                 }
             }
         }
-    
+
+        
+        static private int counter = 0;
+        // Нельзя использовать объекты блокировки структурного типа.
+        // blockStruct - не может быть структурным.
+        //static private int blockStruct = 0;
+        static private void FunctionWithError()
+        {
+            for (int i = 0; i < 50; ++i)
+            {
+                //lock (blockStruct) // Нельзя использовать объекты блокировки структурного типа.
+                {
+                    Debug.WriteLine(++counter);
+                }
+            }
+        }
     }
 }

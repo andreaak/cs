@@ -35,6 +35,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         }
 
         [TestMethod]
+        //Блокировка в разных методах
         public void Test2()
         {
             var threads = new Thread[2];
@@ -46,6 +47,18 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Thread.Sleep(15000);
         }
 
+        [TestMethod]
+        // Lock - не принимает типов значений, а только ссылочные.
+        public void Test3()
+        {
+            Thread[] threads = { new Thread(FunctionWithError), new Thread(FunctionWithError), new Thread(FunctionWithError) };
+
+            foreach (Thread t in threads)
+            {
+                t.Start();
+            }
+            Thread.Sleep(5000);
+        }
 
         // Выполняется в отдельном потоке.
         private static void Function()
@@ -133,6 +146,27 @@ namespace CSTest._12_MultiThreading._02_Synchronization
                 {
                     Debug.WriteLine("Конец блокировки Function3");
                     Monitor.Exit(block);  // Конец блокировки.
+                }
+            }
+        }
+
+        // Нельзя использовать объекты блокировки структурного типа.
+        // block - не может быть структурным.
+        static private int blockStruct = 0;
+        static private void FunctionWithError()
+        {
+            for (int i = 0; i < 50; ++i)
+            {
+                // Устанавливается блокировка постоянно в новый object (boxing).
+                Monitor.Enter((object)blockStruct);
+                try
+                {
+                    Debug.WriteLine(++counter);
+                }
+                finally
+                {
+                    // Попытка снять блокировку с незаблокированного объекта (boxing создает новый объект).
+                    Monitor.Exit((object)blockStruct);
                 }
             }
         }
