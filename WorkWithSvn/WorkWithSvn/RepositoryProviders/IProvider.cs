@@ -31,7 +31,7 @@ namespace WorkWithSvn.RepositoryProviders
         void MoveToChangeList(string changeListName, List<string> fullNames);
         void RemoveFromChangeList(List<string> fullNames);
         CommitData LogByAuthor(string author);
-        bool SetItemData(string fullName, ControlsData ctrlData);
+        void SetItemData(string fullName, ControlsData ctrlData);
         RepositoryItem GetDeletedItem(string fullPath);
         string GetLocation(string path);
         Uri GetRepository(string path);

@@ -57,7 +57,7 @@ namespace WorkWithSvn.RepositoryProviders
                 {
                     if (!SvnRepositoryHelper.IsIgnoredItem(arg))
                     {
-                        SetItemData(arg);
+                        SetItemData(this, arg);
                     }
                 }
             }
@@ -326,25 +326,14 @@ namespace WorkWithSvn.RepositoryProviders
             return logs;
         }
 
-        public bool SetItemData(string fullName, ControlsData ctrlData)
+        public void SetItemData(string fullName, ControlsData ctrlData)
         {
             using (SvnClient client = new SvnClient())
             {
-                try
-                {
-                    SvnStatusArgs args = new SvnStatusArgs();
-                    args.RetrieveRemoteStatus = ctrlData.UseServerData;
-                    client.Status(fullName, args,
-                    delegate(object lSender, SvnStatusEventArgs itemArgs)
-                    {
-                        SetItemData(itemArgs);
-                    });
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-                return true;
+                SvnStatusArgs args = new SvnStatusArgs();
+                args.RetrieveRemoteStatus = ctrlData.UseServerData;
+                args.RetrieveAllEntries = true;
+                client.Status(fullName, args, SetItemData);
             }
         }
 
@@ -468,7 +457,7 @@ namespace WorkWithSvn.RepositoryProviders
             }
         }
 
-        private void SetItemData(SvnStatusEventArgs arg)
+        private void SetItemData(object sender, SvnStatusEventArgs arg)
         {
             if (arg.FullPath == WorkingCopy.FullName
                 || SvnRepositoryHelper.IsIgnoredItem(arg))
