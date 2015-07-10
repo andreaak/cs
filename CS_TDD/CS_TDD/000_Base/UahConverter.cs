@@ -84,7 +84,7 @@ namespace CS_TDD._000_Base
                 if (value < 0)
                 {
                     // При попытке передать свойству Value значение меньше нуля так же будет сгенерированна исключительная ситуация типа ArgumentOutOfRangeException
-                    throw new ArgumentException("Value");
+                    throw new ArgumentException("Value", "Value");
                 }
                 this.uahValue = value;
             }
