@@ -1,0 +1,50 @@
+<!--
+letter-spacing - свойство, отвечающее за отступы между буквами. Значение указывается в явной величине, при этом могут быть использованы 
+отрицательные значения.
+-->
+
+<html>
+    <head>
+        <title>Свойство letter-spacing</title>
+        <style type="text/css">
+        body
+        {
+	        color: #000000;
+	        background-color: #ffffff;
+	        font-family: arial, verdana, sans-serif;
+	        font-size: 12px;
+        }
+
+        p.one
+        {
+	        letter-spacing: normal;
+        }
+
+        p.two
+        {
+	        letter-spacing: 3px;
+        }
+        p.three
+        {
+	        letter-spacing: 0.5em;
+        }
+        p.four
+        {
+	        letter-spacing: -1px;
+        }
+
+        </style>
+    </head>
+    <body>
+            <h1>
+                letter-spacing</h1>
+            <p class="one">
+                Нормальные отступы между буквами</p>
+            <p class="two">
+                Между каждой буквой 3px</p>
+            <p class="three">
+                Между каждой буквой 0.5 em</p>
+            <p class="four">
+                Между каждой буквой убрано по одному пикселу</p>
+    </body>
+</html>

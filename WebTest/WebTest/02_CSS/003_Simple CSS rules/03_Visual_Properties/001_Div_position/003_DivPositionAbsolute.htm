@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Div Position Absolute</title>
+    <style type="text/css">
+        
+        div
+        {
+            border:1px solid black;
+            width:150px;
+            height:150px;
+            margin:15px;
+            position:absolute;
+        }
+    
+        #MisterGreen
+        {
+            z-index:3;
+            top:30px;
+            left:30px;
+            background-color:Green;
+        }
+    
+        #MisterRed
+        {
+            z-index:2;
+            top:20px;
+            left:20px;
+            background-color:Red;
+        }
+    
+        #MisterYellow
+        {
+            z-index:1;
+            background-color:Yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="MisterGreen">
+    </div>
+    <div id="MisterRed">
+    </div>
+    <div id="MisterYellow">
+</div>
+</body>
+</html>
