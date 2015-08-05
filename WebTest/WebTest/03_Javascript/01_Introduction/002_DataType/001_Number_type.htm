@@ -30,7 +30,14 @@
         document.write("Number.MIN_VALUE = " + Number.MIN_VALUE + "<br/>");
         document.write("Number.POSITIVE_INFINITY = " + Number.POSITIVE_INFINITY + "<br/>");
         document.write("Number.NEGATIVE_INFINITY = " + Number.NEGATIVE_INFINITY + "<br/>");
-
+        var str = "0";
+        document.write(str + " parse to " + parseInt(str) + "<br/>");
+        str = "55G";
+        document.write(str + " parse to " + parseInt(str) + "<br/>");
+        str = "G0";
+        document.write(str + " parse to " + parseInt(str) + "<br/>");
+        str = "G";
+        document.write(str + " parse to " + parseInt(str) + "<br/>");
     </script>
 
 </head>

@@ -14,7 +14,7 @@
             // если элемент не img пропускаем, завершаем функцию.
             if (e.tagName.toLowerCase() != "img") return;
 
-            (new Image()).src = path;
+            (new Image()).src = path;//инициируем загрузку рисунка с севера
             var basePath = e.src;
 
             e.addEventListener("mouseover", function () { this.src = path; })
