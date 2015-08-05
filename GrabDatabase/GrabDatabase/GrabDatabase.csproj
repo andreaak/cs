@@ -199,6 +199,7 @@
       <DependentUpon>ParseQueryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ParseQuery\Parameter.cs" />
+    <Compile Include="ParseQuery\Options.cs" />
     <Compile Include="Program.cs" />
     <EmbeddedResource Include="DB Tools\DBDataForm.resx">
       <DependentUpon>DBDataForm.cs</DependentUpon>
@@ -256,6 +257,7 @@
     <EmbeddedResource Include="ParseQuery\ParseQueryForm.resx">
       <DependentUpon>ParseQueryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

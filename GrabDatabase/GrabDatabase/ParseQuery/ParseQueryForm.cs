@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using gudusoft.gsqlparser.Units;
 using gudusoft.gsqlparser;
 using System.Runtime.InteropServices;
+using GrabDatabase.ParseQuery;
 
 namespace ParseQuery
 {
@@ -20,7 +21,7 @@ namespace ParseQuery
         
         enum FontSize
         { 
-            base_,
+            small,
             medium,
             large,
         }
@@ -50,28 +51,6 @@ namespace ParseQuery
         public extern static int SendMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
         
         
-
-        static Dictionary<string, Color> lexemColor;
-
-        static ParseQueryForm()
-        {
-            lexemColor = new Dictionary<string, Color>();
-            lexemColor.Add("select", Color.Blue);
-            lexemColor.Add("insert", Color.Blue);
-            lexemColor.Add("update", Color.Blue);
-            lexemColor.Add("delete", Color.Blue);
-            lexemColor.Add("into", Color.Blue);
-            lexemColor.Add("all", Color.Purple);
-            lexemColor.Add("union", Color.Purple);
-
-            lexemColor.Add("from", Color.Green);
-            lexemColor.Add("where", Color.DarkMagenta);
-            lexemColor.Add("and", Color.Blue);
-            lexemColor.Add("or", Color.Blue);
-            lexemColor.Add("?", Color.Red);
-
-        }
-
         public ParseQueryForm()
         {
             InitializeComponent();
@@ -160,26 +139,24 @@ namespace ParseQuery
             btnFormatSQL_Click(null, null);
 
             int count = GetParametersNumber(textBoxBase.Text);
-            if (count == 0) 
+            if (count == 0)
             {
                 textBoxParse.Clear();
                 textBoxParse.Text = textBoxBase.Text;
-                ColorLexem(textBoxBase, lexemColor);
-                ColorLexem(textBoxParse, lexemColor);
-				return;
             }
-
-            listBox1.Items.Clear();
-            for (int i = 0; i < count; i++)
+            else
             {
-                listBox1.Items.Add(new Parameter(ParameterType.None, PARAM_PROXY));
+
+                listBox1.Items.Clear();
+                for (int i = 0; i < count; i++)
+                {
+                    listBox1.Items.Add(new Parameter(ParameterType.None, PARAM_PROXY));
+                }
+                this.listBox1.SelectedValueChanged -= new System.EventHandler(this.toolStripButtonParseQueryParameters_Click);
+                listBox1.SelectedIndex = 0;
             }
-            this.listBox1.SelectedValueChanged -= new System.EventHandler(this.toolStripButtonParseQueryParameters_Click);
-            listBox1.SelectedIndex = 0;
-            ColorLexem(textBoxBase, lexemColor);
-            ColorLexem(textBoxParse, lexemColor);
-            //HighlightWords(textBoxBase, paramProxy, false, true, Color.Red);
-           
+            ColorLexem(textBoxBase, Options.LexemColors);
+            ColorLexem(textBoxParse, Options.LexemColors);
         }
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
@@ -198,12 +175,12 @@ namespace ParseQuery
             Dictionary<int, string> parametersPositions;
             textBoxParse.Clear();
             textBoxParse.Text = GetQueryWithParams(textBoxBase.Text, listBox1.Items, out parametersPositions);
-            
-            ColorLexem(textBoxParse, lexemColor);
+
+            ColorLexem(textBoxParse, Options.LexemColors);
             
             foreach (int position in parametersPositions.Keys)
             {
-                HighlightWord(textBoxParse, parametersPositions[position], position, Color.Red, FontSize.large);
+                HighlightWord(textBoxParse, position, parametersPositions[position].Length, Color.Red, FontSize.large);
             }
 
             sync= true;
@@ -214,32 +191,6 @@ namespace ParseQuery
             toolStripComboBoxDatabases.SelectedIndex = 0;
         }
 
-        #endregion
-
-        #region DISPLAY
-        //
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            this.Visible = true;
-            notifyIcon1.Visible = false;
-            this.WindowState = FormWindowState.Normal;
-        }
-        //
-        private void Main_SizeChanged(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Minimized && this.Visible)
-            {
-                this.Visible = false;
-                notifyIcon1.Visible = true;
-            }
-            else
-            {
-                int size = (this.ClientSize.Width - listBox1.Width) / 2 - 20;
-                textBoxBase.Width = listBox1.Left - 5;
-                textBoxParse.Location = new Point(listBox1.Right + 5, textBoxParse.Location.Y);
-                textBoxParse.Width = this.ClientSize.Width - (listBox1.Right + 5);
-            }
-        }
         #endregion
 
         # region UTILS
@@ -316,6 +267,15 @@ namespace ParseQuery
 
         # region RTF
 
+        private static void ColorLexem(RichTextBox rtb, IDictionary<string, Color> clr)
+        {
+            foreach (string item in clr.Keys)
+            {
+                HighlightWords(rtb, item, true, true, clr[item], FontSize.medium);
+            }
+            ColorComments(rtb, Options.CommentsColor, FontSize.small);
+        }
+
         private static void HighlightWords(RichTextBox rtb, string value, bool matchCase, bool wholeWord, Color clr, FontSize fontSize)
         {
             RichTextBoxFinds opt = RichTextBoxFinds.NoHighlight;
@@ -328,41 +288,52 @@ namespace ParseQuery
                 opt |= RichTextBoxFinds.WholeWord;
             }
 
-            int foundStringPos = 0;            
-            int foundPosition = rtb.Find(value, foundStringPos, rtb.TextLength, opt);
-            while(foundPosition > -1)
+            int startFromPosition = 0;            
+            int startPosition = rtb.Find(value, startFromPosition, rtb.TextLength, opt);
+            while(startPosition > -1)
             {
-                HighlightWord(rtb, value, foundPosition, clr, fontSize);
+                HighlightWord(rtb, startPosition, value.Length, clr, fontSize);
                 
-                foundStringPos = foundPosition + value.Length;
-                foundPosition = rtb.Find(value, foundStringPos, rtb.TextLength, opt);
+                startFromPosition = startPosition + value.Length;
+                startPosition = rtb.Find(value, startFromPosition, rtb.TextLength, opt);
             }
             
         }
 
-        private static void HighlightWord(RichTextBox rtb, string value, int foundPosition, Color clr, FontSize fontSize)
+        private static void HighlightWord(RichTextBox rtb, int startPosition,int length, Color clr, FontSize fontSize)
         {
-            rtb.SelectionStart = foundPosition;
-            rtb.SelectionLength = value.Length;
+            rtb.SelectionStart = startPosition;
+            rtb.SelectionLength = length;
             rtb.SelectionColor = clr;
             switch (fontSize)
             { 
-                case FontSize.base_:
+                case FontSize.small:
+                    rtb.SelectionFont = Options.SmallFont;
                     break;
                 case FontSize.medium:
-                    rtb.SelectionFont = new Font("TimesNewRoman", 12f, FontStyle.Bold);
+                    rtb.SelectionFont = Options.MediumFont;
                     break;
                 case FontSize.large:
-                    rtb.SelectionFont = new Font("TimesNewRoman", 14f, FontStyle.Bold);
+                    rtb.SelectionFont = Options.LargeFont;
                     break;
             }
         }
 
-        private static void ColorLexem(RichTextBox rtb, Dictionary<string, Color> clr)
+        private static void ColorComments(RichTextBox rtb, Color color, FontSize fontSize)
         {
-            foreach (string item in clr.Keys)
+            RichTextBoxFinds opt = RichTextBoxFinds.NoHighlight;
+            string startComment = @"/*";
+            string endComment = @"*/";
+            int startFromPosition = 0;
+            int startPosition = rtb.Find(startComment, startFromPosition, rtb.TextLength, opt);
+            while (startPosition > -1)
             {
-                HighlightWords(rtb, item, false, true, clr[item], FontSize.medium);
+                int secondPosition = rtb.Find(endComment, startPosition + startComment.Length, rtb.TextLength, RichTextBoxFinds.NoHighlight);
+                int length = secondPosition > -1 ? secondPosition - startPosition + endComment.Length : rtb.TextLength - startPosition;
+                HighlightWord(rtb, startPosition, length, color, fontSize);
+
+                startFromPosition = startPosition + length;
+                startPosition = rtb.Find(startComment, startFromPosition, rtb.TextLength, opt);
             }
         }
 
