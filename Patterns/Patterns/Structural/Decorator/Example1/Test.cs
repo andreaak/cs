@@ -20,7 +20,7 @@ namespace Patterns.Structural.Decorator
             PrintBeverage(blackTea);
             PrintBeverage(greenTea);
 
-            Debug.WriteLine("-----------");
+            Console.WriteLine("-----------");
 
             BeverageBase capuccino = new SugarCondiment(new MilkCondiment(new Espresso()));
             PrintBeverage(capuccino);
@@ -32,7 +32,7 @@ namespace Patterns.Structural.Decorator
 
         static void PrintBeverage(BeverageBase beverage)
         {
-            Debug.WriteLine(string.Format("Beverage: {0}; Price: {1}",
+            Console.WriteLine(string.Format("Beverage: {0}; Price: {1}",
                 beverage.GetDescription(), beverage.GetCost()));
         }
     }

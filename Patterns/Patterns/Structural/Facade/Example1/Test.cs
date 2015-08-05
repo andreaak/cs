@@ -19,11 +19,11 @@ namespace Patterns.Structural.Facade.Example1
             var washingMachine = new WashingMachine.WashingMachine(dryer, engine, thermo, water);
 
             // Cotton
-            Debug.WriteLine("Cotton");
+            Console.WriteLine("Cotton");
             washingMachine.WashCotton();
 
             // Wool
-            Debug.WriteLine("Wool");
+            Console.WriteLine("Wool");
             washingMachine.WashWool();
 
             int temp = washingMachine.GetTemperature();

@@ -9,12 +9,12 @@ namespace Patterns.Structural.Adapter.Example1.HomeCats
 
         public void Meow()
         {
-            Debug.WriteLine("Мяу мяу!");
+            Console.WriteLine("Мяу мяу!");
         }
 
         public void Scratch()
         {
-            Debug.WriteLine("Я царапаюсь, но не сильно");
+            Console.WriteLine("Я царапаюсь, но не сильно");
         }
     }
 }

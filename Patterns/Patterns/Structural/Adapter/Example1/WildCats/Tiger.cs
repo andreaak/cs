@@ -9,12 +9,12 @@ namespace Patterns.Structural.Adapter.Example1.WildCats
 
         public void Growl()
         {
-            Debug.WriteLine("Grrrrrrr");
+            Console.WriteLine("Grrrrrrr");
         }
 
         public void Scratch()
         {
-            Debug.WriteLine("У меня очень острые когти, царапаюсь до смерти");
+            Console.WriteLine("У меня очень острые когти, царапаюсь до смерти");
         }
     }
 }

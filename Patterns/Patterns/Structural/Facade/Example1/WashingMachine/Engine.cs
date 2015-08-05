@@ -7,12 +7,12 @@ namespace Patterns.Structural.Facade.Example1.WashingMachine
     {
         public void Rotate()
         {
-            Debug.WriteLine("Start rotating");
+            Console.WriteLine("Start rotating");
         }
 
         public void Stop()
         {
-            Debug.WriteLine("Stop rotating");
+            Console.WriteLine("Stop rotating");
         }
     }
 }

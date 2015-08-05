@@ -8,14 +8,14 @@ namespace Patterns.Structural.Adapter.Example1
     {
         public static void PrintCatInfo(IHomeCat cat)
         {
-            Debug.WriteLine("Кошачье досье:");
-            Debug.WriteLine(string.Format("Имя кота: {0}", cat.Name));
+            Console.WriteLine("Кошачье досье:");
+            Console.WriteLine(string.Format("Имя кота: {0}", cat.Name));
             Debug.Write("Вид мяуканья: ");
             cat.Meow();
             Debug.Write("Вид царапанья: ");
             cat.Scratch();
 
-            Debug.WriteLine("");
+            Console.WriteLine("");
         }
     }
 }

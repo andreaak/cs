@@ -10,12 +10,12 @@ namespace Patterns.Structural.Facade.Example1.WashingMachine
     {
         public void FillWater(int litres)
         {
-            Debug.WriteLine("Fill with {0} litres of water", litres);
+            Console.WriteLine("Fill with {0} litres of water", litres);
         }
 
         public void EmptyWater()
         {
-            Debug.WriteLine("Empty water tank");
+            Console.WriteLine("Empty water tank");
         }
     }
 }

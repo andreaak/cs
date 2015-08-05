@@ -12,7 +12,7 @@ namespace Patterns.Structural.Facade.Example1.WashingMachine
 
         public void WarmUp(int degrees)
         {
-            Debug.WriteLine("Warm for {0} degrees", degrees);
+            Console.WriteLine("Warm for {0} degrees", degrees);
         }
     }
 }

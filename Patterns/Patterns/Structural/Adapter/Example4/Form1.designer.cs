@@ -94,7 +94,7 @@
             // 
             this.AddLineButton.BackColor = System.Drawing.Color.Transparent;
             this.AddLineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddLineButton.Image = global::Patterns.Structural.Adapter.Example4.Properties.Resources.line;
+            this.AddLineButton.Image = Patterns.Structural.Adapter.Example4.Properties.Resources.line;
             this.AddLineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddLineButton.Name = "AddLineButton";
             this.AddLineButton.Size = new System.Drawing.Size(29, 29);

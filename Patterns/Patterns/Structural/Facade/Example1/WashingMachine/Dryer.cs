@@ -7,7 +7,7 @@ namespace Patterns.Structural.Facade.Example1.WashingMachine
     {
         public void Dry(int seconds, int intensity)
         {
-            Debug.WriteLine("Drying {0} seconds with intensity {1}", seconds, intensity);
+            Console.WriteLine("Drying {0} seconds with intensity {1}", seconds, intensity);
         }
     }
 }

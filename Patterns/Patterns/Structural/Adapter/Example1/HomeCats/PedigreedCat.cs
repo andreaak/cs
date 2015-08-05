@@ -7,12 +7,12 @@ namespace Patterns.Structural.Adapter.Example1.HomeCats
     {
         public void Meow()
         {
-            Debug.WriteLine("Урррр урррр");
+            Console.WriteLine("Урррр урррр");
         }
 
         public void Scratch()
         {
-            Debug.WriteLine("Я не царапаюсь");
+            Console.WriteLine("Я не царапаюсь");
         }
 
         public string Name { get; set; }
