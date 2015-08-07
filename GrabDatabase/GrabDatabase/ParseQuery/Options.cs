@@ -40,14 +40,14 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("OR", Color.Blue);
             lexemColors.Add("?", Color.Red);
             //ORACLE
-            lexemColors.Add("NUMBER", Color.RoyalBlue);
-            lexemColors.Add("VARCHAR", Color.RoyalBlue);
-            lexemColors.Add("VARCHAR2", Color.RoyalBlue);
-            lexemColors.Add("CURSOR", Color.RoyalBlue);
+            lexemColors.Add("NUMBER", Color.DarkCyan);
+            lexemColors.Add("VARCHAR", Color.DarkCyan);
+            lexemColors.Add("VARCHAR2", Color.DarkCyan);
+            lexemColors.Add("CURSOR", Color.DarkCyan);
             //SQL Server
-            lexemColors.Add("INTEGER", Color.RoyalBlue);
-            lexemColors.Add("DECIMAL", Color.RoyalBlue);
-            lexemColors.Add("MONEY", Color.RoyalBlue);
+            lexemColors.Add("INTEGER", Color.DarkCyan);
+            lexemColors.Add("DECIMAL", Color.DarkCyan);
+            lexemColors.Add("MONEY", Color.DarkCyan);
             
             lexemColors.Add("CREATE", Color.RoyalBlue);
             lexemColors.Add("FUNCTION", Color.RoyalBlue);

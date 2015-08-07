@@ -180,7 +180,7 @@ namespace ParseQuery
             
             foreach (int position in parametersPositions.Keys)
             {
-                HighlightWord(textBoxParse, position, parametersPositions[position].Length, Color.Red, FontSize.large);
+                HighlightSentense(textBoxParse, position, parametersPositions[position].Length, Color.Red, FontSize.large);
             }
 
             sync= true;
@@ -271,12 +271,12 @@ namespace ParseQuery
         {
             foreach (string item in clr.Keys)
             {
-                HighlightWords(rtb, item, true, true, clr[item], FontSize.medium);
+                HighlightWord(rtb, item, true, true, clr[item], FontSize.medium);
             }
             ColorComments(rtb, Options.CommentsColor, FontSize.small);
         }
 
-        private static void HighlightWords(RichTextBox rtb, string value, bool matchCase, bool wholeWord, Color clr, FontSize fontSize)
+        private static void HighlightWord(RichTextBox rtb, string word, bool matchCase, bool wholeWord, Color clr, FontSize fontSize)
         {
             RichTextBoxFinds opt = RichTextBoxFinds.NoHighlight;
             if (matchCase)
@@ -289,18 +289,43 @@ namespace ParseQuery
             }
 
             int startFromPosition = 0;            
-            int startPosition = rtb.Find(value, startFromPosition, rtb.TextLength, opt);
+            int startPosition = rtb.Find(word, startFromPosition, rtb.TextLength, opt);
             while(startPosition > -1)
             {
-                HighlightWord(rtb, startPosition, value.Length, clr, fontSize);
-                
-                startFromPosition = startPosition + value.Length;
-                startPosition = rtb.Find(value, startFromPosition, rtb.TextLength, opt);
+                HighlightSentense(rtb, startPosition, word.Length, clr, fontSize);
+                startFromPosition = startPosition + word.Length;
+                startPosition = rtb.Find(word, startFromPosition, rtb.TextLength, opt);
             }
-            
         }
 
-        private static void HighlightWord(RichTextBox rtb, int startPosition,int length, Color clr, FontSize fontSize)
+        private static void ColorComments(RichTextBox rtb, Color color, FontSize fontSize)
+        {
+            string startComment = @"/*";
+            string endComment = @"*/";
+            color = HighlightSentense(rtb, color, fontSize, startComment, endComment);
+            startComment = @"--";
+            endComment = "\r";
+            color = HighlightSentense(rtb, color, fontSize, startComment, endComment);
+        }
+
+        private static Color HighlightSentense(RichTextBox rtb, Color color, FontSize fontSize, string startSymbol, string endSymbol)
+        {
+            RichTextBoxFinds opt = RichTextBoxFinds.None;
+            int startFromPosition = 0;
+            int startPosition = rtb.Find(startSymbol, startFromPosition, rtb.TextLength, opt);
+            while (startPosition > -1 && startFromPosition < rtb.TextLength)
+            {
+                int secondPosition = rtb.Find(endSymbol, startPosition + startSymbol.Length, rtb.TextLength, opt);
+                int length = secondPosition > -1 ? secondPosition - startPosition + endSymbol.Length : rtb.TextLength - startPosition;
+                HighlightSentense(rtb, startPosition, length, color, fontSize);
+
+                startFromPosition = startPosition + length;
+                startPosition = rtb.Find(startSymbol, startFromPosition, rtb.TextLength, opt);
+            }
+            return color;
+        }
+
+        private static void HighlightSentense(RichTextBox rtb, int startPosition,int length, Color clr, FontSize fontSize)
         {
             rtb.SelectionStart = startPosition;
             rtb.SelectionLength = length;
@@ -316,24 +341,6 @@ namespace ParseQuery
                 case FontSize.large:
                     rtb.SelectionFont = Options.LargeFont;
                     break;
-            }
-        }
-
-        private static void ColorComments(RichTextBox rtb, Color color, FontSize fontSize)
-        {
-            RichTextBoxFinds opt = RichTextBoxFinds.NoHighlight;
-            string startComment = @"/*";
-            string endComment = @"*/";
-            int startFromPosition = 0;
-            int startPosition = rtb.Find(startComment, startFromPosition, rtb.TextLength, opt);
-            while (startPosition > -1)
-            {
-                int secondPosition = rtb.Find(endComment, startPosition + startComment.Length, rtb.TextLength, RichTextBoxFinds.NoHighlight);
-                int length = secondPosition > -1 ? secondPosition - startPosition + endComment.Length : rtb.TextLength - startPosition;
-                HighlightWord(rtb, startPosition, length, color, fontSize);
-
-                startFromPosition = startPosition + length;
-                startPosition = rtb.Find(startComment, startFromPosition, rtb.TextLength, opt);
             }
         }
 
@@ -402,8 +409,5 @@ namespace ParseQuery
         }
 
         #endregion
-
-
-
     }
 }
