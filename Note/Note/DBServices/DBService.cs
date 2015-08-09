@@ -68,9 +68,9 @@ namespace DBServices
             return dbWrapper.GetDBFile();
         }
 
-        public IEnumerable<Entity> GetNewestEntity(DBService dbServiceLocal)
+        public IEnumerable<Tuple<Entity, DataStatus>> GetModifiedEntities(DBService dbServiceLocal)
         {
-            return dataService.GetNewestEntity(dbServiceLocal.dataService);
+            return dataService.GetModifiedEntities(dbServiceLocal.dataService);
         }
 
         #region IDataService Members

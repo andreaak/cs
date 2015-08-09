@@ -279,46 +279,107 @@ namespace DBServices
             }
         }
 
-        public IEnumerable<Entity> GetNewestEntity(IDataService dataService)
+        public IEnumerable<Tuple<Entity, DataStatus>> GetModifiedEntities(IDataService comparedService)
         {
-            List<Entity> list = new List<Entity>();
-            foreach (Entity tempItem in dataService.Entity)
+            List<Tuple<Entity, DataStatus>> list = new List<Tuple<Entity, DataStatus>>();
+            //added
+            foreach (Entity comparedItem in comparedService.Entity)
+            {
+                bool isExist = db.Entity.Any(item => item.ID == comparedItem.ID);
+                if (!isExist)
+                {
+                    AddEntity(list, comparedItem, DataStatus.Added);
+                    AddParentEntities(comparedItem, list);
+                }
+            }
+            //deleted
+            foreach (Entity baseItem in Entity)
+            {
+                bool isExist = comparedService.Entity.Any(item => item.ID == baseItem.ID);
+                if (!isExist)
+                {
+                    AddEntity(list, baseItem, DataStatus.Deleted);
+                    AddParentEntities(baseItem, list);
+                }
+            }
+            
+            foreach (Entity comparedItem in comparedService.Entity)
 	        {
-                Entity ent = db.Entity.FirstOrDefault(item => item.ID == tempItem.ID);
-                if (ent == null
-                    || (!string.IsNullOrEmpty(tempItem.ModDate) && (string.IsNullOrEmpty(ent.ModDate) || DateTime.Parse(tempItem.ModDate) > DateTime.Parse(ent.ModDate))))
+                Entity baseItem = db.Entity.FirstOrDefault(item => item.ID == comparedItem.ID);
+                if (baseItem != null
+                    && !string.IsNullOrEmpty(comparedItem.ModDate) 
+                    && (string.IsNullOrEmpty(baseItem.ModDate) || DateTime.Parse(comparedItem.ModDate) > DateTime.Parse(baseItem.ModDate)))
                 {
 
-                    list.Add(tempItem);
-                    AddParentEntities(tempItem, list);
+                    AddEntity(list, comparedItem, DataStatus.Modified);
+                    AddParentEntities(comparedItem, list);
                 }
 	        }
 
-            foreach (EntityData tempItem in dataService.EntityData)
+            foreach (Entity comparedItem in comparedService.Entity)
             {
-                EntityData ent = db.EntityData.FirstOrDefault(item => item.ID == tempItem.ID);
-                if (ent == null
-                    || (!string.IsNullOrEmpty(tempItem.ModDate) && (string.IsNullOrEmpty(ent.ModDate) || DateTime.Parse(tempItem.ModDate) > DateTime.Parse(ent.ModDate))))
+                Entity baseItem = db.Entity.FirstOrDefault(item => item.ID == comparedItem.ID);
+                if (baseItem != null
+                    && !string.IsNullOrEmpty(baseItem.ModDate)
+                    && (string.IsNullOrEmpty(comparedItem.ModDate) || DateTime.Parse(comparedItem.ModDate) < DateTime.Parse(baseItem.ModDate)))
                 {
-                    Entity entity = dataService.Entity.FirstOrDefault(item => item.ID == tempItem.ID);
-                    if (ent != null)
+
+                    AddEntity(list, comparedItem, DataStatus.Obsolete);
+                    AddParentEntities(comparedItem, list);
+                }
+            }
+
+            foreach (EntityData comparedData in comparedService.EntityData)
+            {
+                EntityData baseData = db.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
+                if (baseData != null
+                    && !string.IsNullOrEmpty(comparedData.ModDate) 
+                    && (string.IsNullOrEmpty(baseData.ModDate) || DateTime.Parse(comparedData.ModDate) > DateTime.Parse(baseData.ModDate)))
+                {
+                    Entity comparedItem = comparedService.Entity.FirstOrDefault(item => item.ID == comparedData.ID);
+                    if (comparedItem != null)
                     {
-                        list.Add(entity);
-                        AddParentEntities(entity, list);
+                        AddEntity(list, comparedItem, DataStatus.Modified);
+                        AddParentEntities(comparedItem, list);
+                    }
+                }
+            }
+
+            foreach (EntityData comparedData in comparedService.EntityData)
+            {
+                EntityData baseData = db.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
+                if (baseData != null
+                    && !string.IsNullOrEmpty(baseData.ModDate)
+                    && (string.IsNullOrEmpty(comparedData.ModDate) || DateTime.Parse(comparedData.ModDate) < DateTime.Parse(baseData.ModDate)))
+                {
+                    Entity comparedItem = comparedService.Entity.FirstOrDefault(item => item.ID == comparedData.ID);
+                    if (comparedItem != null)
+                    {
+                        AddEntity(list, comparedItem, DataStatus.Obsolete);
+                        AddParentEntities(comparedItem, list);
                     }
                 }
             }
             return list.Distinct(new EntityComparer());
         }
 
-        private void AddParentEntities(Entity entity, List<Entity> list)
+        private void AddEntity(List<Tuple<DBServices.Entity, DataStatus>> list, DBServices.Entity entity, DataStatus dataStatus)
+        {
+            Tuple<Entity, DataStatus> item =
+                new Tuple<DBServices.Entity, DataStatus>(entity, dataStatus);
+            list.Add(item);
+        }
+
+        private void AddParentEntities(Entity entity, List<Tuple<Entity, DataStatus>> list)
         {
             while (entity.ParentID.HasValue && entity.ParentID >= 0)
             {
                 Entity ent = db.Entity.FirstOrDefault(item => item.ID == entity.ParentID.Value);
                 if (ent != null)
                 {
-                    list.Add(ent);
+                    Tuple<Entity, DataStatus> item = 
+                        new Tuple<DBServices.Entity, DataStatus>(ent, DataStatus.Parent);
+                    list.Add(item);
                     entity = ent;
                 }
                 else
@@ -435,5 +496,14 @@ namespace DBServices
                         && item.OrderPosition > position);
         }
     
+    }
+
+    public enum DataStatus
+    {
+        Added,
+        Modified,
+        Obsolete,
+        Deleted,
+        Parent,
     }
 }

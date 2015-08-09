@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemsList));
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.colDescription = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colDataStatus = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.imageListState = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +54,8 @@
             this.treeList1.Appearance.SelectedRow.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.treeList1.Appearance.SelectedRow.Options.UseFont = true;
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.colDescription});
+            this.colDescription,
+            this.colDataStatus});
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.treeList1.ImageIndexFieldName = "Type";
@@ -78,6 +80,16 @@
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 0;
             this.colDescription.Width = 299;
+			// 
+            // colState
+            // 
+            this.colDataStatus.Caption = " ";
+            this.colDataStatus.FieldName = "DataStatus";
+            this.colDataStatus.MinWidth = 33;
+            this.colDataStatus.Name = "colState";
+            this.colDataStatus.Visible = true;
+            this.colDataStatus.VisibleIndex = 0;
+            this.colDataStatus.Width = 100;
             // 
             // imageListState
             // 
@@ -105,5 +117,6 @@
         private DevExpress.XtraTreeList.TreeList treeList1;
         private System.Windows.Forms.ImageList imageListState;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colDescription;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colDataStatus;
     }
 }

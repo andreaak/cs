@@ -23,6 +23,6 @@ namespace DBServices
         void ConvertData(ControlWrapper.IWrapper controlWrapper);
         bool IsCanChangeNodeLevel(long position, long parentId, Direction direction);
         void ChangeNodeLevel(long position, long parentId, long id, Direction direction);
-        IEnumerable<Entity> GetNewestEntity(IDataService dataService);
+        IEnumerable<Tuple<Entity, DataStatus>> GetModifiedEntities(IDataService dataService);
     }
 }

@@ -77,7 +77,7 @@ namespace Note
         {
             OptionsUtils.ClearDbData();
             Options.DbFile = null;
-            Init(Connect(true));
+            Init(Connect());
         }
 
         private void barButtonItemAddDir_ItemClick(object sender, EventArgs e)
@@ -240,7 +240,7 @@ namespace Note
             DBService dbServiceLocal;
             if(TryGetDbService(out dbServiceLocal))
             {
-                IEnumerable<Entity> entities = dbService.GetNewestEntity(dbServiceLocal);
+                IEnumerable<Tuple<Entity, DataStatus>> entities = dbService.GetModifiedEntities(dbServiceLocal);
                 ItemsList form = new ItemsList();
                 form.LoadData(entities);
                 form.Show();
@@ -307,7 +307,7 @@ namespace Note
 
         #endregion
 
-        private bool Connect(bool isReconnect = false)
+        private bool Connect()
         {
 
             bool dbConnectionOk = false;
@@ -315,13 +315,10 @@ namespace Note
             string errorMessage = "Connection is absent!";
             try
             {
-                if (isReconnect)
+                DialogResult res = new DBDataForm().ShowDialog(this);
+                if (res != DialogResult.OK)
                 {
-                    DialogResult res = new DBDataForm().ShowDialog(this);
-                    if (res != DialogResult.OK)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
                 dbService = new DBService();
                 if (dbService.IsDBOnline())
@@ -356,15 +353,23 @@ namespace Note
                 errorMessage = ex.Message;
             }
 
-            if (!dbConnectionOk && showMessage)
+            HandleConnect(dbConnectionOk, showMessage, errorMessage);
+            return dbConnectionOk;
+        }
+
+        private void HandleConnect(bool dbConnectionOk, bool showMessage, string errorMessage)
+        {
+            if (!dbConnectionOk)
             {
-                DisplayMessage.ShowError(errorMessage);
+                if (showMessage)
+                {
+                    DisplayMessage.ShowError(errorMessage);
+                }
             }
             else
             {
-                notifyIcon1.Text = Options.DbFile;
+                notifyIcon1.Text = dbService.GetDBFile();
             }
-            return dbConnectionOk;
         }
 
         private bool TryGetDbService(out DBService dbServiceLocal)

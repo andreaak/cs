@@ -336,7 +336,7 @@ namespace DBServices
             }
         }
 
-        public IEnumerable<Entity> GetNewestEntity(IDataService dataService)
+        public IEnumerable<Tuple<Entity, DataStatus>> GetModifiedEntities(IDataService dataService)
         {
             throw new NotImplementedException();
         }
