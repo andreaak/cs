@@ -1,0 +1,47 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Стили</title>
+        <style type="text/css">
+
+            html{
+	            background:#fff;
+	            color:#000;
+            }
+
+            h1, h2, p{
+	            text-align:right;
+            }
+
+            h1, h2{
+	            font-family:sans-serif;
+	            color:#f00;
+            }
+
+            em{
+	            color:#0f0;
+            }
+            /*Правила для печати*/
+            @media print{
+	            *{
+		            color:#000 !important;
+		            font-family:serif !important;
+	            }
+	            h1, h2, p{
+		            text-align:left;
+	            }
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Приватные и публичные программы</h1>
+        <hr>
+        <h2>Приватные программы</h2>
+        <p><em>Приватными программами</em> я называю те, которые будут использоваться только вами (их разработчиками) или очень ограниченным кругом других людей, чьи навыки, требования и компьютеры хорошо известны.</p>
+        <h2>Публичные программы</h2>
+        <p><em>Публичные программы</em> — прямая противоположность приватным. Они распространяются среди большого числа людей.</p>
+        <p><strong>Лу Гринзоу</strong></p>
+    </body>
+</html>

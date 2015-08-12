@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <title>Приоритет правил CSS</title>
+        <style type="text/css">
+            
+            /*Приоритет tags
+            div p{color:#f00;}
+            p{color:#0f0;}
+            */
+
+            /*Приоритет id
+            #top #in{color:#f00;}
+            p#in{color:#0f0;}
+            */
+
+            /*Приоритет class
+            p[id][class]{color:#0f0;}
+            .text .news{color:#f00;}
+            */
+
+            /*Равный приоритет
+            div.text #in{color:#f00;}
+            #top p.news{color:#0f0;}
+            */
+
+            /* Приоритет !important перекрывает style
+            p{color:#f0f !important;}
+            div.text #in{color:#f00;}
+            #top p.news{color:#0f0;}
+            */
+            td
+            {
+                width:150px;
+            }
+        </style>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>0</th>
+                <th>I</th>
+                <th>II</th>
+                <th>III</th>
+            </tr>
+            <tr>
+                <td>!important</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>style</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>#id</td>
+                <td>.class</td>
+                <td>tags</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>:pseudo-class</td>
+                <td>::pseudo-elements</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>[attributes]</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <p>Увеличение приоритета от III к 0</p>
+        <!--!important перекрывает style-->
+        <p style="color:blue">При одинаковом уровне приоритетов считается количество селекторов одного типа по приоритету.
+            У кого количество селекторов больше то правило и применяется.
+            Если значение суммы селекторов одинаково то берется последний селектор.
+        </p>
+        <div id="top" class="text">
+		    <p id="in" class="news">Содержание блока</p>
+	    </div>
+    </body>
+</html>

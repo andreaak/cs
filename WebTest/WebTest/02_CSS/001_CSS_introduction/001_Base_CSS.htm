@@ -1,0 +1,37 @@
+﻿<!--
+    CSS — Cascading Style Sheets (каскадные таблицы стилей) — это средство, позволяющее задавать различные визуальные свойства HTML-тегам.
+    http://www.w3.org/TR/CSS21/cover.html
+    Методы определения таблицы стилей в документе HTML:
+    1 Связывание(linking)
+    2 Встраивание(embeding)
+    3 Вложение(inline)
+    4 Импорт(import)(IE)
+
+    Единица CSS состоит из селектора который выбирает элемент и набора правил которые будут применены к выбранному элементу
+        p/*селектор*/
+        {
+            background-color:aqua;/*правило*/
+            color:Red;/*правило*/
+        }
+    Правило состоит из: свойство(property):значение(value);
+-->
+<html>
+    <head>
+        <title>Тег Table</title>
+        <link href="005_Cascade.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+        p
+        {
+            background-color:aqua;
+            color:Red;
+        }
+        </style>
+    </head>
+
+    <body>
+            Простое содержимое для сравнения
+            <p style="color:Blue">
+            Содержимое параграфа
+            </p>
+    </body>
+</html>

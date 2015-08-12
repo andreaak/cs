@@ -1,0 +1,95 @@
+﻿<!--
+    Тег Table является контейнером для таблицы.
+    Каждая таблица начинается с тэга table. 
+    Каждая строка таблицы - это тэг tr.
+    Каждая ячейка в таблице - это тэг td.
+    Внутри сперва реализуются строки, помещенные в контейнеры tr, далее ячейки, помещенные в теги  td.
+
+    Общие атрибуты
+    Атрибут           Значение
+    bordercolorlight  цвет
+    bordercolordark   цвет
+    bordercolor       цвет
+    bgcolor           цвет
+    
+    Атрибуты элемента TABLE
+    background        файл
+    border            число
+    cellspacing       число
+    cellpadding       число
+    width             число или процент
+    align             left, right, center
+
+    Атрибуты элемента TR
+    align             left, center, right
+    valign            top, middle, bottom, baseline
+
+
+    Атрибуты элемента TD (TH)
+    background        файл
+    width             число или процент
+    align             left, center, right
+    valign            top, middle, bottom, baseline
+    nowrap
+    colspan           число
+    rowspan           число
+-->
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Тег Table</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <td>
+                    100
+                </td>
+            </tr>
+        </table>
+        <!--------------------------------------------------=======Таблица 1Х3========-------------------------------------------------------------->
+        <h4>
+            Одна строка и три колонки:</h4>
+        <table border="1">
+            <tr>
+                <td>
+                    100
+                </td>
+                <td>
+                    200
+                </td>
+                <td>
+                    300
+                </td>
+            </tr>
+        </table>
+        <!--------------------------------------------------=======Таблица 2Х3========-------------------------------------------------------------->
+        <h4>
+            Две строки и три колонки:</h4>
+        <table border="1">
+            <tr>
+                <td>
+                    100
+                </td>
+                <td>
+                    200
+                </td>
+                <td>
+                    300
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    400
+                </td>
+                <td>
+                    500
+                </td>
+                <td>
+                    600
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

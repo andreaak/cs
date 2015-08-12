@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Объединение селекторов</title>
+    <style type="text/css">
+    
+        /*Объединение tags + id
+        p#in{color:#0f0;}
+        */
+
+        /*Объединение tags + class
+        p.news{color:#0f0;}
+        #in.begin{color:#0f0;}
+        */
+
+        /*Объединение class + class
+        .news{color:#f00;}
+        .news.last{color:#0f0;}
+        */
+
+        /*Объединение class + pseudo-class
+        .news:hover{color:#0f0;}
+        */
+
+        /*Объединение class + pseudo-elements
+        .news:first-letter{color:#0f0;}
+        */
+
+        /*Объединение class + attributes
+        .begin[title]{color:#0f0;}
+        */
+
+        /*Объединение attributes + pseudo-elements
+        [title]:first-letter{color:#0f0;}
+        */
+
+        /*Объединение pseudo-class + pseudo-class
+        :first-child:hover{color:#0f0;}
+        :visited:hover{color:#f00;}
+        */
+
+        /*Объединение attributes + attributes
+        [class][title]{color:#0f0;}
+        */
+
+        /*Объединение tags + id + class + attributes + pseudo-class
+        p#in.begin[title]:hover{color:#0f0;}
+        */
+
+        /*Объединение tags + id + class + attributes + pseudo-elements + pseudo-class
+        p#in.begin[title][class][id]:first-child:first-letter{color:#0f0;}
+        */
+
+    </style>
+    </head>
+    <body>
+	    <p id="in" class="begin" title="Подсказка">Содержание p (#in .begin)</p>
+	    <p class="news">Содержание p (.news)</p>
+	    <div class="news">Содержание div (.news)</div>
+	    <p class="news last">Содержание p (.news .last)</p>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!--
+    display - атрибут служит для задания варианта отображения элемента, определяя блочный это элемент, списочный и т.д.
+    none - скрывает элемент и не оставляет в разметке занимаемое им место как-будто его не существует.
+    
+    Строчные
+    inline
+    inline-block
+        - img, iframe, object, embed
+        - audio, video, canvas
+        - input, textarea, select, button
+    inline-table
+
+    Блочные
+    block
+    list-item(li)
+    table(...)
+
+    run-in
+-->
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Правило display</title>
+        <style type="text/css">
+            h1{
+	            background:#ccf;
+	            display:inline;
+            }
+            span{
+	            background:#cfc;
+	            display:block;
+            }
+            em{
+	            display:none;
+            }
+            span:hover em{
+	            display:inline;
+            }
+            p{
+	            background:#fcc;
+	            display:list-item;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+	        <h1>H1 — блочный элемент</h1>
+	        <span>SPAN — строчный <em>элемент</em></span>
+        </div>
+        <blockquote>
+	        <p>Первый параграф</p>
+	        <p>Второй параграф</p>
+	        <p>Третий параграф</p>
+        </blockquote>
+    </body>
+</html>

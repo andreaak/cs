@@ -1,0 +1,66 @@
+﻿<!--
+    Селектор псевдоклассов  
+    :first-child - первый дочерний элемент  
+    //Гиперссылки
+    :link       - гиперссылка в первоначальном состоянии(не посещенные гиперссылки)
+    :visited    - гиперссылка после перехода по ней(состояние ссылки, которая уже была посещена)
+    //Mouse
+    tag:hover   - состояние, когда на элемент наведен курсор мыши
+    :active     - нажатие на елемент мышкой
+    //Только для элементов поддерживающих фокусировку: элементы форм input textarea select button, a, area(карты изображений map)
+    :focus      - сфокусированный элемент
+-->
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Селекторы псевдоклассов</title>
+        <style type="text/css">
+        /* 
+        :first-child
+        {
+            font-size:3em;
+        }
+
+        :link
+        {
+            color:#f00;
+        }
+        :visited
+        {
+            color:#0f0;
+        }
+
+        p:hover
+        {
+            background:#cfc;
+
+        }
+        p:active
+        {
+            background:#ccf;
+        }
+        :active
+        {
+            background:#ccf;
+        }
+
+        :focus
+        {
+            background:#369;
+            color:#fff;
+        }
+        */
+        </style>
+    </head>
+    <body>
+	    <p>Первый параграф в body</p>
+	    <p>Второй параграф в body</p>
+	    <div>
+		    <p>Первый параграф в div</p>
+		    <p>Второй параграф в div</p>
+	    </div>
+	    <p>Текст и <a href="#">ссылка</a> в параграфе</p>
+    </body>
+</html>

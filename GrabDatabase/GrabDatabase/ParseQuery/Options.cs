@@ -39,11 +39,21 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("AND", Color.Blue);
             lexemColors.Add("OR", Color.Blue);
             lexemColors.Add("?", Color.Red);
+            //VARIABLES
+            lexemColors.Add("NULL", Color.DarkCyan);
             //ORACLE
             lexemColors.Add("NUMBER", Color.DarkCyan);
             lexemColors.Add("VARCHAR", Color.DarkCyan);
             lexemColors.Add("VARCHAR2", Color.DarkCyan);
             lexemColors.Add("CURSOR", Color.DarkCyan);
+            lexemColors.Add("DATETIME", Color.DarkCyan);
+            lexemColors.Add("DATE", Color.DarkCyan);
+            lexemColors.Add("TIME", Color.DarkCyan);
+            lexemColors.Add("INTERVAL", Color.DarkCyan);
+            lexemColors.Add("YEAR", Color.DarkCyan);
+            lexemColors.Add("TO MONTH", Color.DarkCyan);
+            lexemColors.Add("DAY", Color.DarkCyan);
+            lexemColors.Add("TO SECOND", Color.DarkCyan);
             //SQL Server
             lexemColors.Add("INTEGER", Color.DarkCyan);
             lexemColors.Add("DECIMAL", Color.DarkCyan);
@@ -68,6 +78,11 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("THEN", Color.RoyalBlue);
             lexemColors.Add("END IF", Color.RoyalBlue);
             
+            lexemColors.Add("CASE", Color.RoyalBlue);
+            lexemColors.Add("WHEN", Color.RoyalBlue);
+            lexemColors.Add("COALESCE", Color.RoyalBlue);
+            lexemColors.Add("NULLIF", Color.RoyalBlue);
+            
             lexemColors.Add("FOR", Color.RoyalBlue);
             lexemColors.Add("EXIT WHEN", Color.RoyalBlue);
             lexemColors.Add("WHILE", Color.RoyalBlue);
@@ -80,7 +95,6 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("CLOSE", Color.RoyalBlue);
 
             lexemColors.Add("EXCEPTION", Color.RoyalBlue);
-            lexemColors.Add("WHEN", Color.RoyalBlue);
             
             lexemColors.Add("DECLARE", Color.RoyalBlue);
             lexemColors.Add("EXEC", Color.RoyalBlue);
