@@ -1,22 +1,48 @@
-﻿<!doctype html>
+﻿<!--
+Для выбора правила которое будет применено идем по шагам
+    0. Если правило с !important или прописано в style то оно выбирается
+            !important перекрывает style
+            Если нет то переходим к шагу I.
+    I. Считаем количество селекторов ID в конкурирующих селекторах 
+            У кого количество больше тот и применяется. ( пример а b)
+            Если количество одинаково то переходим к шагу II.
+    II. Считаем количество селекторов .class, :pseudo-class, [attributes].
+            У кого количество больше тот и применяется. ( пример c )
+            Если количество одинаково то переходим к шагу III.
+    III. Считаем количество селекторов tags, ::pseudo-elements.
+            У кого количество больше тот и применяется. ( пример d )
+            Если количество одинаково то применяется последний селектор.
+-->
+
+<!doctype html>
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
         <title>Приоритет правил CSS</title>
         <style type="text/css">
             
-            /*Приоритет tags
+            /* а) Приоритет id
+            #in{color:#f00;}
+            p{color:#0f0;}
+            */
+
+            /* b) Приоритет id
+            #top #in{color:#f00;}
+            p#in{color:#0f0;}
+            */
+                        
+            /* c) Приоритет class
+            [class]{color:#0f0;}
+            .text .news{color:#f00;}
+            */
+
+            /* d) Приоритет tags
             div p{color:#f00;}
             p{color:#0f0;}
             */
 
-            /*Приоритет id
-            #top #in{color:#f00;}
-            p#in{color:#0f0;}
-            */
-
-            /*Приоритет class
-            p[id][class]{color:#0f0;}
+            /*Равный приоритет
+            [id][class]{color:#0f0;}
             .text .news{color:#f00;}
             */
 
@@ -25,11 +51,12 @@
             #top p.news{color:#0f0;}
             */
 
-            /* Приоритет !important перекрывает style
-            p{color:#f0f !important;}
+            /* Приоритет !important
+            p{color:#00f !important;}
             div.text #in{color:#f00;}
             #top p.news{color:#0f0;}
             */
+
             td
             {
                 width:150px;
@@ -40,9 +67,9 @@
         <table border="1">
             <tr>
                 <th>0</th>
-                <th>I</th>
-                <th>II</th>
-                <th>III</th>
+                <th>I шаг</th>
+                <th>II шаг</th>
+                <th>III шаг</th>
             </tr>
             <tr>
                 <td>!important</td>
@@ -75,12 +102,14 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <p>Увеличение приоритета от III к 0</p>
-        <!--!important перекрывает style-->
-        <p style="color:blue">При одинаковом уровне приоритетов считается количество селекторов одного типа по приоритету.
-            У кого количество селекторов больше то правило и применяется.
-            Если значение суммы селекторов одинаково то берется последний селектор.
+        <!--!important в правиле перекрывает style-->
+        <p style="color:darkcyan">
+            Для выбора правила которое будет применено идем по шагам от 0 к III.
         </p>
+        <!--!important в style перекрывает !important в правиле -->
+        <p style="color:darkcyan !important">
+            Наивысший приоритет.
+        </p> 
         <div id="top" class="text">
 		    <p id="in" class="news">Содержание блока</p>
 	    </div>
