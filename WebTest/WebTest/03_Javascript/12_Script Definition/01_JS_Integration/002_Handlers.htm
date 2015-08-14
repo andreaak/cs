@@ -14,5 +14,12 @@
 
 <body>
     <input type="button" value="Кнопка" onclick="buttonClickHandler()" />
+    <br/>
+    <!--Не рекомендуется использовать псевдопротокол-->
+    <a href="javascript:buttonClickHandler()">Псевдо протокол</a>
+    <br/>
+    <!--Javascript может быть отключен. Предпочтительно использование такой конструкции-->
+    <a href="noJavascript.html" onclick="buttonClickHandler(); return false;">Обработка учитывающая отключение Javascript</a>
+    <br/>
 </body>
 </html>
