@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CS_TDD._000_Base.Program</StartupObject>
+    <StartupObject>CS_TDD._004_StubsAndMocks._003_Mocks_Rhino.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -50,6 +50,10 @@
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,7 +79,7 @@
     <Compile Include="002_NUnit\009_StringTest.cs" />
     <Compile Include="003_DI\000_Base\FileDataObject.cs" />
     <Compile Include="003_DI\000_Base\IDataAccessObject.cs" />
-    <Compile Include="003_DI\000_Base\TestDataObject.cs" />
+    <Compile Include="003_DI\000_Base\Test\TestDataObject.cs" />
     <Compile Include="003_DI\001_Problem\FileManager.cs" />
     <Compile Include="003_DI\001_Problem\FileManagerTest.cs" />
     <Compile Include="003_DI\001_Problem\Program.cs" />
@@ -98,28 +102,46 @@
     <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\AbstractFactory.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\Client.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\ConcreteFactory.cs" />
-    <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\StubConcreteFactory.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\Test\AbstractFactory\StubConcreteFactory.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\FileManager.cs" />
-    <Compile Include="003_DI\008_AbsFactoryInjection\FileManagerTest.cs" />
+    <Compile Include="003_DI\008_AbsFactoryInjection\Test\FileManagerTest.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\IFileManager.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\Program.cs" />
     <Compile Include="003_DI\009_DI_Container\FileManager.cs" />
     <Compile Include="003_DI\009_DI_Container\FileManagerTest.cs" />
     <Compile Include="003_DI\009_DI_Container\Program.cs" />
-    <Compile Include="003_DI\010_Ninject\ConfigFileObjectData.cs" />
+    <Compile Include="003_DI\010_Ninject\Test\ConfigFileObjectData.cs" />
     <Compile Include="003_DI\010_Ninject\FileManager.cs" />
-    <Compile Include="003_DI\010_Ninject\FileManagerTest.cs" />
+    <Compile Include="003_DI\010_Ninject\Test\FileManagerTest.cs" />
     <Compile Include="003_DI\010_Ninject\Program.cs" />
     <Compile Include="003_DI\011_Encapsulation\FileManager.cs" />
     <Compile Include="003_DI\011_Encapsulation\Program.cs" />
     <Compile Include="003_DI\012_Encapsulation\FileManager.cs" />
     <Compile Include="003_DI\012_Encapsulation\FileManagerTest.cs" />
     <Compile Include="003_DI\012_Encapsulation\Program.cs" />
-    <Compile Include="004_StubsAndMocks\001_Mocks\FileManager.cs" />
-    <Compile Include="004_StubsAndMocks\001_Mocks\FileManagerTest.cs" />
-    <Compile Include="004_StubsAndMocks\001_Mocks\ILogService.cs" />
-    <Compile Include="004_StubsAndMocks\001_Mocks\MockLogService.cs" />
+    <Compile Include="004_StubsAndMocks\001_Mocks\IWebService.cs" />
+    <Compile Include="004_StubsAndMocks\001_Mocks\LogAnalyzer.cs" />
     <Compile Include="004_StubsAndMocks\001_Mocks\Program.cs" />
+    <Compile Include="004_StubsAndMocks\001_Mocks\Test\LogAnalyzerTest.cs" />
+    <Compile Include="004_StubsAndMocks\001_Mocks\Test\MockLogService.cs" />
+    <Compile Include="004_StubsAndMocks\002_MocksAndStubs\IEmailService.cs" />
+    <Compile Include="004_StubsAndMocks\002_MocksAndStubs\IWebService.cs" />
+    <Compile Include="004_StubsAndMocks\002_MocksAndStubs\LogAnalyzer.cs" />
+    <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Program.cs" />
+    <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Test\LogAnalyzerTest.cs" />
+    <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Test\MockEmailService.cs" />
+    <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Test\StubLogService.cs" />
+    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\DataAccess.cs" />
+    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\IWarehouse.cs" />
+    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\Order.cs" />
+    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\Program.cs" />
+    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\Test\OrderTest.cs" />
+    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\Warehouse.cs" />
+    <Compile Include="004_StubsAndMocks\004_Mocks\FileManager.cs" />
+    <Compile Include="004_StubsAndMocks\004_Mocks\Test\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\004_Mocks\ILogService.cs" />
+    <Compile Include="004_StubsAndMocks\004_Mocks\Test\MockLogService.cs" />
+    <Compile Include="004_StubsAndMocks\004_Mocks\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
