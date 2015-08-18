@@ -8,7 +8,7 @@ namespace CS_TDD._003_DI._010_Ninject
 {
     class Program
     {
-        static void Main()
+        public static void Main()
         {
             string fileName = "file2.log";
 

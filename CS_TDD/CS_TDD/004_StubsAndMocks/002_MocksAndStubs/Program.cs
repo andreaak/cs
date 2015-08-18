@@ -1,8 +1,8 @@
-﻿namespace CS_TDD._004_StubsAndMocks._001_Mocks 
+﻿namespace CS_TDD._004_StubsAndMocks._002_MocksAndStubs 
 {
     class Program
     {
-        public static void Main()
+        static void Main()
         {
                                                                                                 
         }

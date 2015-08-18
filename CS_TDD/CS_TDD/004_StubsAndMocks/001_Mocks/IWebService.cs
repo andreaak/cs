@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace CS_TDD._004_StubsAndMocks._001_Mocks
 {
-    class MockLogService : ILogService
+    public interface IWebService
     {
-        public string lastError;
-
-        public void LogError(string error)
-        {
-            lastError = error;
-        }
+        void LogError(string message);
     }
 }
