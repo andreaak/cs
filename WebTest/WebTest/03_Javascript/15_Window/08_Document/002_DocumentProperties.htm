@@ -118,8 +118,14 @@
     <br />
     <a href="#anchor">Go To Anchor</a>
     <script type="text/javascript">
+        // documentElement - тег Html.
+        document.write("<br /><b>Element html</b>: " + document.documentElement + " Type " + document.documentElement.nodeType + "<br />");
+
+        // body - тег body.
+        document.write("<br /><b>Element body</b>: " + document.body + " Type " + document.body.nodeType + "<br />");
+
         // anchors - массив якорей(именованых позицый документа) - тегов <a> c атрибутом name.
-        document.write("<br /><b>anchors</b>: " + document.anchors[0].name + "<br />");
+        document.write("<br /><b>anchor[0]</b>: " + document.anchors[0].name + "<br />");
 
         // forms - массив форм HTML документа.
         document.write("<br /><b>forms</b>: " + document.forms + "<br />");
@@ -129,6 +135,25 @@
 
         // links - массив ссылок HTML документа.
         document.write("<br /><b>links</b>: " + document.links + "<br />");
+
+        // anchors - массив anchor HTML документа.
+        document.write("<br /><b>anchors</b>: " + document.anchors + "<br />");
+
+        // applets - массив applet HTML документа.
+        document.write("<br /><b>applets</b>: " + document.applets + "<br />");
+
+        // embeds - массив embed HTML документа.
+        document.write("<br /><b>embeds</b>: " + document.embeds + "<br />");
+
+        // frames - массив frame HTML документа.
+        document.write("<br /><b>frames</b>: " + document.frames + "<br />");
+
+        // plugins - массив plugin HTML документа.
+        document.write("<br /><b>plugins</b>: " + document.plugins + "<br />");
+
+        // scripts - массив script HTML документа.
+        document.write("<br /><b>scripts</b>: " + document.scripts.length + "<br />");
+
     </script>
 </body>
 </html>

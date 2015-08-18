@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿<!--
+    attachEvent(event, handler) -установка обработчика
+    detachEvent(event, handler) -удаление обработчика
+    event.cancelBubble= true-отмена распространения события (только этап всплывания)
+    В модели IE нет понятия перехвата события, но есть понятие всплывания.
+    для того что бы прекратить распространение при всплывании используется e.cancelBubble = true
+    -->
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Модель событий IE</title>
@@ -8,8 +16,6 @@
             var eRemove = document.getElementById("btnRemove");
 
             // установка обработчика на событие click
-            // В модели IE нет понятия перехвата события, но есть понятие всплывания.
-            // для того что бы прекратить распространение при всплывании используется e.cancelBubble = true
             e.attachEvent("onclick", handler);
             eRemove.attachEvent("onclick", function () {
                 // удаление обработчика

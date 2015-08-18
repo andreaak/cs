@@ -1,7 +1,11 @@
-﻿<!DOCTYPE html>
+﻿<!--
+    stopPropagation() – метод, который можно вызвать на объекте события для того что бы прекратить его распространение на этапе перехвата или всплывания. 
+ -->
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>stopPropogation()</title>
+    <title>Прекращение распространения события</title>
 
     <script>
         var isTunnel = false;
@@ -37,6 +41,58 @@
                     e.stopPropagation();
                 },
             isTunnel);
+
+            var e4 = document.getElementById("Div4");
+            e4.addEventListener("click",
+            function (e) {
+                this.style.backgroundColor = "green";
+                alert("Обработчик DIV 4");
+            },
+            isTunnel);
+
+            var e5 = document.getElementById("Div5");
+            e5.addEventListener("click",
+            function (e) {
+                this.style.backgroundColor = "yellow";
+                alert("Обработчик DIV 5");
+            },
+            isTunnel);
+
+            var e6 = document.getElementById("Div6");
+            e6.addEventListener("click",
+            function (e) {
+                this.style.backgroundColor = "red";
+                alert("Обработчик DIV 6");
+            },
+            isTunnel);
+
+            isTunnel = true;
+
+            var e7 = document.getElementById("Div7");
+            e7.addEventListener("click",
+            function (e) {
+                this.style.backgroundColor = "green";
+                alert("Обработчик DIV 7");
+            },
+            isTunnel);
+
+            var e8 = document.getElementById("Div8");
+            e8.addEventListener("click",
+            function (e) {
+                this.style.backgroundColor = "yellow";
+                alert("Обработчик DIV 8");
+            },
+            isTunnel);
+
+            var e9 = document.getElementById("Div9");
+            e9.addEventListener("click",
+            function (e) {
+                this.style.backgroundColor = "red";
+                alert("Обработчик DIV 9");
+            },
+            isTunnel);
+
+
         }
 
     </script>
@@ -50,12 +106,38 @@
     </style>
 </head>
 <body>
+    stopPropagation
+    isTunnel = false
+    <br/>
     Первый
     <div id="first">
         Второй
         <div id="second">
             Третий
             <div id="third">
+            </div>
+        </div>
+    </div>
+    
+    isTunnel = false
+    <br/>
+    4
+    <div id="Div4">
+        5
+        <div id="Div5">
+            6
+            <div id="Div6">
+            </div>
+        </div>
+    </div>
+    isTunnel = true
+    <br/>
+    7
+    <div id="Div7">
+        8
+        <div id="Div8">
+            9
+            <div id="Div9">
             </div>
         </div>
     </div>

@@ -1,11 +1,8 @@
 ﻿<!--
-    События клавиатуры: 
-    onkeydown 
-    onkeypress 
-    onkeyup 
+    События окна: 
+    onload - происходит при окончании загрузки страницы
+    onunload - происходит перед тем как объект будет выгружен (переход на другое окно или закрытие)
 -->
-
-
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,23 +10,7 @@
     <title>События клавиатуры</title>
     <script>
         window.onload = function () {
-            var main = document.getElementById("main");
-
-            main.onkeydown = function () {
-                print("onkeydown event");
-            };
-
-            main.onkeyup = function () {
-                print("onkeyup event");
-            };
-
-            main.onkeypress = function () {
-                print("onkeypress event");
-            };
-
-            function print(message) {
-                document.getElementById("output").innerHTML += message + "<br />";
-            }
+            //
         }
     </script>
 </head>
