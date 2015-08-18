@@ -1,4 +1,5 @@
 ﻿using CS_TDD._003_DI._000_Base;
+using CS_TDD._003_DI._000_Base.Test;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace CS_TDD._003_DI._012_Encapsulation
     class FileManagerTest
     {
         [Test]
-        public void FindLogFileTest12()
+        public void EncapsulationTest()
         {
 #if DEBUG
             FileManager mgr = new FileManager(new TestDataObject());

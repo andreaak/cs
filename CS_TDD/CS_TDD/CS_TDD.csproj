@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CS_TDD._004_StubsAndMocks._003_Mocks_Rhino.Program</StartupObject>
+    <StartupObject>CS_TDD._004_StubsAndMocks._003_RhynoMocks.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -95,10 +95,16 @@
     <Compile Include="003_DI\005_LocalFactoryMethod\FileManager.cs" />
     <Compile Include="003_DI\005_LocalFactoryMethod\FileManagerTest.cs" />
     <Compile Include="003_DI\005_LocalFactoryMethod\Program.cs" />
-    <Compile Include="003_DI\007_FactoryInjection\FactoryClass.cs" />
-    <Compile Include="003_DI\007_FactoryInjection\FileManager.cs" />
-    <Compile Include="003_DI\007_FactoryInjection\FileManagerTest.cs" />
-    <Compile Include="003_DI\007_FactoryInjection\Program.cs" />
+    <Compile Include="003_DI\006_FactoryInjection\FactoryClass.cs" />
+    <Compile Include="003_DI\006_FactoryInjection\FileManager.cs" />
+    <Compile Include="003_DI\006_FactoryInjection\Test\FileManagerTest.cs" />
+    <Compile Include="003_DI\006_FactoryInjection\Program.cs" />
+    <Compile Include="003_DI\007_AbstractTestClassPattern\Program.cs" />
+    <Compile Include="003_DI\007_AbstractTestClassPattern\Test2\AbstractBaseTestClass.cs" />
+    <Compile Include="003_DI\007_AbstractTestClassPattern\Test\AbstractTestClass.cs" />
+    <Compile Include="003_DI\007_AbstractTestClassPattern\Test2\ConcreteFIleManagerTest.cs" />
+    <Compile Include="003_DI\007_AbstractTestClassPattern\Test\ConcreteTest1.cs" />
+    <Compile Include="003_DI\007_AbstractTestClassPattern\Test\ConcreteTest2.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\AbstractFactory.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\Client.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\AbstractFactory\ConcreteFactory.cs" />
@@ -131,17 +137,60 @@
     <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Test\LogAnalyzerTest.cs" />
     <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Test\MockEmailService.cs" />
     <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Test\StubLogService.cs" />
-    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\DataAccess.cs" />
-    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\IWarehouse.cs" />
-    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\Order.cs" />
-    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\Program.cs" />
-    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\Test\OrderTest.cs" />
-    <Compile Include="004_StubsAndMocks\003_Mocks_Rhino\Warehouse.cs" />
+    <Compile Include="004_StubsAndMocks\003_RhynoMocks\DataAccess.cs" />
+    <Compile Include="004_StubsAndMocks\003_RhynoMocks\IWarehouse.cs" />
+    <Compile Include="004_StubsAndMocks\003_RhynoMocks\Order.cs" />
+    <Compile Include="004_StubsAndMocks\003_RhynoMocks\Program.cs" />
+    <Compile Include="004_StubsAndMocks\003_RhynoMocks\Test\OrderTest.cs" />
+    <Compile Include="004_StubsAndMocks\003_RhynoMocks\Warehouse.cs" />
     <Compile Include="004_StubsAndMocks\004_Mocks\FileManager.cs" />
-    <Compile Include="004_StubsAndMocks\004_Mocks\Test\FileManagerTest.cs" />
     <Compile Include="004_StubsAndMocks\004_Mocks\ILogService.cs" />
+    <Compile Include="004_StubsAndMocks\004_Mocks\Test\FileManagerTest.cs" />
     <Compile Include="004_StubsAndMocks\004_Mocks\Test\MockLogService.cs" />
     <Compile Include="004_StubsAndMocks\004_Mocks\Program.cs" />
+    <Compile Include="004_StubsAndMocks\005_MockAndStub\FileManager.cs" />
+    <Compile Include="004_StubsAndMocks\005_MockAndStub\IMailService.cs" />
+    <Compile Include="004_StubsAndMocks\005_MockAndStub\Program.cs" />
+    <Compile Include="004_StubsAndMocks\005_MockAndStub\Test\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\005_MockAndStub\Test\MockMailService.cs" />
+    <Compile Include="004_StubsAndMocks\005_MockAndStub\Test\StubLogService.cs" />
+    <Compile Include="004_StubsAndMocks\006_RhynoMocks\Program.cs" />
+    <Compile Include="004_StubsAndMocks\006_RhynoMocks\Test\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\007_RhynoMocks\Program.cs" />
+    <Compile Include="004_StubsAndMocks\007_RhynoMocks\Test\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\008_RhynoMocksDynamicVersusStrictMocks\FileManager.cs" />
+    <Compile Include="004_StubsAndMocks\008_RhynoMocksDynamicVersusStrictMocks\ILogService.cs" />
+    <Compile Include="004_StubsAndMocks\008_RhynoMocksDynamicVersusStrictMocks\Program.cs" />
+    <Compile Include="004_StubsAndMocks\008_RhynoMocksDynamicVersusStrictMocks\Test\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\009_RhynoMocksReturnsValue\Program.cs" />
+    <Compile Include="004_StubsAndMocks\009_RhynoMocksReturnsValue\Test\TestMock.cs" />
+    <Compile Include="004_StubsAndMocks\009_RhynoMocksReturnsValue\Test\MockReturnsValueTest.cs" />
+    <Compile Include="004_StubsAndMocks\010_RhynoMocksStubs\Program.cs" />
+    <Compile Include="004_StubsAndMocks\010_RhynoMocksStubs\Test\RhinoStubTest.cs" />
+    <Compile Include="004_StubsAndMocks\011_RhynoMocksConstraints\Program.cs" />
+    <Compile Include="004_StubsAndMocks\011_RhynoMocksConstraints\Test\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\012_RhynoMocksContainsConstraints\Program.cs" />
+    <Compile Include="004_StubsAndMocks\012_RhynoMocksContainsConstraints\Test\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\013_RhynoMocksPropertyConstraints\FileManager.cs" />
+    <Compile Include="004_StubsAndMocks\013_RhynoMocksPropertyConstraints\IMailService.cs" />
+    <Compile Include="004_StubsAndMocks\013_RhynoMocksPropertyConstraints\MailMessage.cs" />
+    <Compile Include="004_StubsAndMocks\013_RhynoMocksPropertyConstraints\Program.cs" />
+    <Compile Include="004_StubsAndMocks\013_RhynoMocksPropertyConstraints\Test\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\014_RhynoMocksIsMatchingConstraint\Test\FileManagerTest.cs" />
+    <Compile Include="004_StubsAndMocks\015_RhynoMocksEventRelatedTests\IModel.cs" />
+    <Compile Include="004_StubsAndMocks\015_RhynoMocksEventRelatedTests\IView.cs" />
+    <Compile Include="004_StubsAndMocks\015_RhynoMocksEventRelatedTests\Presenter.cs" />
+    <Compile Include="004_StubsAndMocks\015_RhynoMocksEventRelatedTests\Program.cs" />
+    <Compile Include="004_StubsAndMocks\015_RhynoMocksEventRelatedTests\Test\TestClass.cs" />
+    <Compile Include="004_StubsAndMocks\016_RhynoMocksEventRaiser\IModel.cs" />
+    <Compile Include="004_StubsAndMocks\016_RhynoMocksEventRaiser\Presenter.cs" />
+    <Compile Include="004_StubsAndMocks\016_RhynoMocksEventRaiser\Program.cs" />
+    <Compile Include="004_StubsAndMocks\016_RhynoMocksEventRaiser\Test\TestClass.cs" />
+    <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Dll\EventsVerifier.cs" />
+    <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\IView.cs" />
+    <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Program.cs" />
+    <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Test\TestClass.cs" />
+    <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Test\TestView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

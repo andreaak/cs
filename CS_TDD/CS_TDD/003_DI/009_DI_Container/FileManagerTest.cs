@@ -1,4 +1,5 @@
 ﻿using CS_TDD._003_DI._000_Base;
+using CS_TDD._003_DI._000_Base.Test;
 using Microsoft.Practices.Unity;
 using NUnit.Framework;
 using System;
@@ -12,7 +13,7 @@ namespace CS_TDD._003_DI._009_DI_Container
     class FileManagerTest
     {
         [Test]
-        public void FindLogFileTest5()
+        public void DIContainerTest()
         {
             // Создание DI контейнера.
             IUnityContainer container = new UnityContainer();

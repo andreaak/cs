@@ -1,9 +1,6 @@
 ﻿using CS_TDD._003_DI._000_Base;
+using CS_TDD._003_DI._000_Base.Test;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CS_TDD._003_DI._005_LocalFactoryMethod
 {
@@ -20,7 +17,7 @@ namespace CS_TDD._003_DI._005_LocalFactoryMethod
     class FileManagerTest
     {
         [Test]
-        public void FindLogFileTest9()
+        public void LocalFactoryTest()
         {
             var mgr = new FileManagerUnderTest();
 

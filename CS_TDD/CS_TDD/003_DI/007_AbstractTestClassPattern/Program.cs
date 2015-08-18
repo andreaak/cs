@@ -1,14 +1,11 @@
-﻿using CS_TDD._003_DI._000_Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
+using CS_TDD._003_DI._006_FactoryInjection;
 
-namespace CS_TDD._003_DI._007_FactoryInjection
+namespace CS_TDD._003_DI._007_AbstractTestClassPattern
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
             string fileName = "file2.log";
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CS_TDD._004_StubsAndMocks._003_Mocks_Rhino 
+namespace CS_TDD._004_StubsAndMocks._003_RhynoMocks 
 {
     class Program
     {

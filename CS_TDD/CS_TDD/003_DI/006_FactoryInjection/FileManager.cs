@@ -1,10 +1,7 @@
-﻿using CS_TDD._003_DI._000_Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using CS_TDD._003_DI._000_Base;
 
-namespace CS_TDD._003_DI._007_FactoryInjection
+namespace CS_TDD._003_DI._006_FactoryInjection
 {
     class FileManager
     {

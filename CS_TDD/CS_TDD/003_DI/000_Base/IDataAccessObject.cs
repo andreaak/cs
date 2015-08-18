@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CS_TDD._003_DI._000_Base
 {
-    interface IDataAccessObject
+    public interface IDataAccessObject
     {
         List<string> GetFiles();
     }

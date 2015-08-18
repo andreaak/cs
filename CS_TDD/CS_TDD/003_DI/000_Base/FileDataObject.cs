@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CS_TDD._003_DI._000_Base
 {
-    class FileDataObject : IDataAccessObject
+    public class FileDataObject : IDataAccessObject
     {
         public List<string> GetFiles()
         {

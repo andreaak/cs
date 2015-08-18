@@ -1,8 +1,6 @@
-﻿using CS_TDD._003_DI._000_Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using CS_TDD._003_DI._000_Base;
 
 namespace CS_TDD._003_DI._003_PropertyInjection
 {

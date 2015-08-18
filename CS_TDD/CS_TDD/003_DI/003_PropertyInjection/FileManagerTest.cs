@@ -1,4 +1,5 @@
 ﻿using CS_TDD._003_DI._000_Base;
+using CS_TDD._003_DI._000_Base.Test;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace CS_TDD._003_DI._003_PropertyInjection
     class FileManagerTest
     {
         [Test]
-        public void FindLogFileTest3()
+        public void PropertyInjectionTest()
         {
             FileManager mgr = new FileManager();
             mgr.DataAccessObject = new TestDataObject();
