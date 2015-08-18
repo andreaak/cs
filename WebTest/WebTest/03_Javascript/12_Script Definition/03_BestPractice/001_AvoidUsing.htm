@@ -1,0 +1,29 @@
+﻿<!--
+    CСтарайтесь избегать использование:
+    - document.write().
+    - определение браузера для определения выполняемой функции. Вместо этого используйте проверку функции на существование.
+    - eval().
+    - не используйте псевдопротокол
+
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Обработчики на события</title>
+    <script type="text/javascript">
+
+    </script>
+    
+</head>
+
+<body>
+    <!--Не рекомендуется использовать псевдопротокол-->
+    <a href="javascript:buttonClickHandler()">Псевдо протокол</a>
+    <br/>
+    <!--Javascript может быть отключен. Предпочтительно использование такой конструкции-->
+    <a href="noJavascript.html" onclick="buttonClickHandler(); return false;">Обработка учитывающая отключение Javascript</a>
+    <br/>
+</body>
+</html>

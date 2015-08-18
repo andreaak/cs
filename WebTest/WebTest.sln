@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "JavascriptTest", "http://localhost:2949", "{A209F6C1-1002-4BB4-8FB7-E7DC77EC3322}"
 	ProjectSection(WebsiteProperties) = preProject
+		Frontpage = "false"
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_2949"
@@ -23,13 +24,22 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "JavascriptTest", "http://lo
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AJAX_Basics_JavaScript", "WebTest\04_jQuery\09 Ajax in jQuery\AJAX_Basics_JavaScript\AJAX_Basics_JavaScript.csproj", "{C3794F90-BAC2-4B6F-B307-F9F8D329A938}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A209F6C1-1002-4BB4-8FB7-E7DC77EC3322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A209F6C1-1002-4BB4-8FB7-E7DC77EC3322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A209F6C1-1002-4BB4-8FB7-E7DC77EC3322}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A209F6C1-1002-4BB4-8FB7-E7DC77EC3322}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{C3794F90-BAC2-4B6F-B307-F9F8D329A938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3794F90-BAC2-4B6F-B307-F9F8D329A938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3794F90-BAC2-4B6F-B307-F9F8D329A938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3794F90-BAC2-4B6F-B307-F9F8D329A938}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

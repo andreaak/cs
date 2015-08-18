@@ -5,10 +5,13 @@
 
     <script>
         // В последних версиях IE (>=9 IE) также поддерживается метод addEventListener
-        if (window.addEventListener)
+        /*if (window.addEventListener)
             window.addEventListener("load", init, false);
         else if (window.attachEvent)
-            window.attachEvent("onload", init);
+            window.attachEvent("onload", init);*/
+
+        addCrossBrowserEventListener(window, "load", handler2);//better use JQuery
+
 
         function init() {
             var e = document.getElementById("button");
@@ -18,6 +21,20 @@
 
         function handler() {
             alert("Hello world");
+        }
+
+        function handler2() {
+            alert("Hello world2");
+        }
+
+        function addCrossBrowserEventListener(element, eventName, handler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, handler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent("on" + eventName, handler)
+            } else {
+                el["on" + eventName] = handler;
+            }
         }
     </script>
 

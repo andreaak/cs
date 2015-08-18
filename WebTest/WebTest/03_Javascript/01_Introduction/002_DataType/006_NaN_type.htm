@@ -1,6 +1,6 @@
 ﻿<!--
 
-    NaN - это тип данных, когда выражение не может быть вычилено. 
+    NaN - это тип данных, когда выражение не может быть приведено к числу. 
     - деление 0 на 0
     - парсинг строки в число
 
@@ -18,6 +18,22 @@
         document.write(" 0 / 0  = " + a/b + "<br/>");
         var str = "G0";
         document.write(str + " parse to " + parseInt(str) + "<br/>");
+
+        test1("TEST")
+
+        test1()//undefined param x
+
+        function test1(x) {
+            var y = x * 8;
+            document.writeln(y + "<br/>")
+        }
+
+        var с = 8;
+        //Javascript пытается привести строковый операнд к числу(результат NaN)
+        var string2 = "12b";
+        result = string2 - с;
+        document.write("12b - с = " + result + "<br />");
+
 
     </script>
 

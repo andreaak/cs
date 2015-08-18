@@ -1,4 +1,20 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!--
+    Исходная модель обработки 
+    Была частично стандартизирована в HTML 4 и неформально рассматривается как часть прикладного интерфейса DOM Level 0. Несмотря на ограниченность возможностей, данная модель поддерживается всеми браузерами. 
+ 
+    Стандартная модель обработки событий 
+    Эта мощная и богатая возможностями модель обработки событий была стандартизирована в DOM Level 2. Она поддерживается всеми современными браузерами, кроме Internet Explorer ниже 9 версии. 
+ 
+    Модель обработки событий Internet Explorer 
+    Эта модель реализована в IE 4 и расширена в IE 5. Она схожа со стандартной моделью обработки событий. 
+ 
+    Способы создания обработчиков событий в модели DOM Level 0: 
+    · Обработчик события как атрибут. 
+    · Обработчик события как свойства элемента. 
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>События</title>
@@ -26,17 +42,17 @@
         <tr>
             <td class="style1">onblur</td>
             <td>Элемент теряет фокус</td>
-            <td>&lt;button&gt;, &lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;body&gt;</td>
+            <td>&lt;button&gt;, &lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;body&gt;, &lt;a&gt;, &lt;area&gt;</td>
         </tr>
         <tr>
             <td class="style1">onchange</td>
             <td>Элемент потерял фокус и его значения с момента получения фокуса изменилось</td>
             <td>&lt;input&gt;, &lt;select&gt;, &lt;textarea&gt;</td>
-            <tr>
-                <td class="style1">onclick</td>
-                <td>Была нажата и отпущена клавиша мыши.</td>
-                <td>Большинство элементов.</td>
-            </tr>
+        </tr>
+        <tr>
+            <td class="style1">onclick</td>
+            <td>Была нажата и отпущена клавиша мыши.</td>
+            <td>Большинство элементов.</td>
         </tr>
         <tr>
             <td class="style1">ondblclick</td>
@@ -51,7 +67,7 @@
         <tr>
             <td class="style1">onfocus</td>
             <td>Элемент получил фокус</td>
-            <td>&lt;button&gt;, &lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;body&gt;</td>
+            <td>&lt;button&gt;, &lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;body&gt;, &lt;a&gt;, &lt;area&gt;</td>
         </tr>
         <tr>
             <td class="style1">onkeydown</td>

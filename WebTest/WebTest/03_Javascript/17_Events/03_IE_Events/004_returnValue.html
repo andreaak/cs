@@ -1,0 +1,36 @@
+﻿<!--
+
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Прекращение распространения события</title>
+
+    <script>
+        var isTunnel = false;
+
+        window.onload = function () {
+            var e1 = document.getElementById("frm");
+            e1.attachEvent("onsubmit", handler);
+            function handler(e) {
+                e.returnValue = false;
+            }
+        }
+
+    </script>
+
+    <style>
+        div {
+            border: 3px solid gray;
+            padding: 50px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <form id="frm">
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+﻿<!--
+    event.cancelBubble= true-отмена распространения события (только этап всплывания)
+    В модели IE нет понятия перехвата события, но есть понятие всплывания.
+    для того что бы прекратить распространение при всплывании используется e.cancelBubble = true
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Прекращение распространения события</title>
+
+    <script>
+        var isTunnel = false;
+
+        window.onload = function () {
+            var e1 = document.getElementById("first");
+            var e2 = document.getElementById("second");
+            var e3 = document.getElementById("third");
+
+            e1.attachEvent("onclick", handler1);
+            function handler1(e) {
+                    this.style.backgroundColor = "green";
+                    alert("Обработчик DIV 1");
+                    // прекращение дальнейшего маршрута события.
+                    e.cancelBubble = true;
+            }
+            e2.attachEvent("onclick", handler1);
+            function handler2(e) {
+                this.style.backgroundColor = "yellow";
+                alert("Обработчик DIV 2");
+                e.cancelBubble = true;
+            }
+
+            e3.attachEvent("onclick", handler1);
+            function handler3(e) {
+                this.style.backgroundColor = "red";
+                alert("Обработчик DIV 3");
+                e.cancelBubble = true;
+            }
+        }
+
+    </script>
+
+    <style>
+        div {
+            border: 3px solid gray;
+            padding: 50px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    Первый
+    <div id="first">
+        Второй
+        <div id="second">
+            Третий
+            <div id="third">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
