@@ -15,7 +15,7 @@ namespace CS_TDD._003_DI._004_InterfaceInjection
         public void InterfaceInjectionTest()
         {
             FileManager mgr = new FileManager();
-            Assert.IsTrue(mgr.FindLogFile("file2.log", new TestDataObject()));
+            Assert.IsTrue(mgr.FindLogFile("file2.log", new StubFileDataObject()));
         }
     }
 }

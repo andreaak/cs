@@ -15,7 +15,7 @@ namespace CS_TDD._003_DI._003_PropertyInjection
         public void PropertyInjectionTest()
         {
             FileManager mgr = new FileManager();
-            mgr.DataAccessObject = new TestDataObject();
+            mgr.DataAccessObject = new StubFileDataObject();
             Assert.IsTrue(mgr.FindLogFile("file2.log"));
         }
     }

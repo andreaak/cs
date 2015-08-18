@@ -10,7 +10,7 @@ namespace _011_EncapsulationTest
         [Test]
         public void FindLogFileTest2()
         {
-            FileManager mgr = new FileManager(new TestDataObject());
+            FileManager mgr = new FileManager(new StubFileDataObject());
             Assert.IsTrue(mgr.FindLogFile("file2.log"));
         }
     }

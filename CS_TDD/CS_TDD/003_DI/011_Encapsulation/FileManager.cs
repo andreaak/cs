@@ -5,7 +5,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
+//Делает internal типы видимыми для заданной сборки
 [assembly: InternalsVisibleTo("011_EncapsulationTest")]
+//Как правило типы и элементы с модификатором доступа internal доступны только в сборке, в которой они определены. 
+//Атрибут InternalsVisibleToAttribute делает их также видимыми для типов в указанной сборке, которая называется "дружественная сборка".
+
 
 namespace CS_TDD._003_DI._011_Encapsulation
 {

@@ -79,7 +79,7 @@
     <Compile Include="002_NUnit\009_StringTest.cs" />
     <Compile Include="003_DI\000_Base\FileDataObject.cs" />
     <Compile Include="003_DI\000_Base\IDataAccessObject.cs" />
-    <Compile Include="003_DI\000_Base\Test\TestDataObject.cs" />
+    <Compile Include="003_DI\000_Base\Test\StubFileDataObject.cs" />
     <Compile Include="003_DI\001_Problem\FileManager.cs" />
     <Compile Include="003_DI\001_Problem\FileManagerTest.cs" />
     <Compile Include="003_DI\001_Problem\Program.cs" />
@@ -113,9 +113,9 @@
     <Compile Include="003_DI\008_AbsFactoryInjection\Test\FileManagerTest.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\IFileManager.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\Program.cs" />
-    <Compile Include="003_DI\009_DI_Container\FileManager.cs" />
-    <Compile Include="003_DI\009_DI_Container\FileManagerTest.cs" />
-    <Compile Include="003_DI\009_DI_Container\Program.cs" />
+    <Compile Include="003_DI\009_Unity\FileManager.cs" />
+    <Compile Include="003_DI\009_Unity\Test\FileManagerTest.cs" />
+    <Compile Include="003_DI\009_Unity\Program.cs" />
     <Compile Include="003_DI\010_Ninject\Test\ConfigFileObjectData.cs" />
     <Compile Include="003_DI\010_Ninject\FileManager.cs" />
     <Compile Include="003_DI\010_Ninject\Test\FileManagerTest.cs" />
@@ -196,7 +196,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="004_StubsAndMocks\mock.png" />
+    <Content Include="004_StubsAndMocks\mockSample.png" />
+    <Content Include="004_StubsAndMocks\RhinoMocks.png" />
+    <Content Include="004_StubsAndMocks\stub.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

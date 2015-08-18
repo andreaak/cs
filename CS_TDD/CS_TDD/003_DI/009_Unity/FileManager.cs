@@ -1,34 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using CS_TDD._003_DI._000_Base;
+using Microsoft.Practices.Unity;
 
-namespace CS_TDD._003_DI._003_PropertyInjection
+namespace CS_TDD._003_DI._009_Unity
 {
     class FileManager
     {
-        IDataAccessObject dataAccessObject;
-
         public FileManager()
         {
         }
 
         // Свойство, через которое будет внедрена зависимость.
-        public IDataAccessObject DataAccessObject
-        {
-            set { dataAccessObject = value; }
-            get
-            {
-                if (dataAccessObject == null)
-                {
-                    throw new MemberAccessException("DataAccessObject has not been initialized.");
-                }
-                return dataAccessObject;
-            }
-        }
+        [Dependency]
+        public IDataAccessObject DataAccessObject { get; set; }
 
         public bool FindLogFile(string fileName)
         {
-            //Вызов метода Stub объекта
+            if (DataAccessObject == null)
+            {
+                throw new ArgumentNullException("dataAccessObject", "Parameter dataAcessObject cannot be null");
+            }
+
             List<string> files = DataAccessObject.GetFiles();
 
             foreach (var file in files)

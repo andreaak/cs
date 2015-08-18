@@ -8,7 +8,7 @@ namespace CS_TDD._003_DI._005_LocalFactoryMethod
     {
         protected override IDataAccessObject LocalFactoryMethod()
         {
-            return new TestDataObject();
+            return new StubFileDataObject();
         }
     }
 

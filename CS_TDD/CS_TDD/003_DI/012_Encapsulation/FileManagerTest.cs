@@ -15,7 +15,7 @@ namespace CS_TDD._003_DI._012_Encapsulation
         public void EncapsulationTest()
         {
 #if DEBUG
-            FileManager mgr = new FileManager(new TestDataObject());
+            FileManager mgr = new FileManager(new StubFileDataObject());
             Assert.IsTrue(mgr.FindLogFile("file2.log"));
 #endif
         }

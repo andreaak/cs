@@ -11,7 +11,7 @@ namespace CS_TDD._003_DI._002_ConstructorInjection
         {
             this.dataAccessObject = new FileDataObject();
         }
-
+        //Конструктор, через который будет внедрена зависимость
         public FileManager(IDataAccessObject dataAccessObject)
         {
             this.dataAccessObject = dataAccessObject;
@@ -19,6 +19,7 @@ namespace CS_TDD._003_DI._002_ConstructorInjection
 
         public bool FindLogFile(string fileName)
         {
+            //Вызов метода Stub объекта
             List<string> files = dataAccessObject.GetFiles();
 
             foreach (var file in files)
