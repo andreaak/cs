@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace DBServices {
+namespace ControlWrapper.Binding {
     
     
     /// <summary>
@@ -20,19 +20,19 @@ namespace DBServices {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DBServiceDataset")]
+    [global::System.Xml.Serialization.XmlRootAttribute("BindingDataset")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DBServiceDataset : global::System.Data.DataSet {
+    public partial class BindingDataset : global::System.Data.DataSet {
         
-        private EntityDataTable tableEntity;
+        private DescriptionDataTable tableDescription;
         
-        private EntityDataDataTable tableEntityData;
+        private DataDataTable tableData;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public DBServiceDataset() {
+        public BindingDataset() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -43,7 +43,7 @@ namespace DBServices {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected DBServiceDataset(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected BindingDataset(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -56,11 +56,11 @@ namespace DBServices {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Entity"] != null)) {
-                    base.Tables.Add(new EntityDataTable(ds.Tables["Entity"]));
+                if ((ds.Tables["Description"] != null)) {
+                    base.Tables.Add(new DescriptionDataTable(ds.Tables["Description"]));
                 }
-                if ((ds.Tables["EntityData"] != null)) {
-                    base.Tables.Add(new EntityDataDataTable(ds.Tables["EntityData"]));
+                if ((ds.Tables["Data"] != null)) {
+                    base.Tables.Add(new DataDataTable(ds.Tables["Data"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -84,9 +84,9 @@ namespace DBServices {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public EntityDataTable Entity {
+        public DescriptionDataTable Description {
             get {
-                return this.tableEntity;
+                return this.tableDescription;
             }
         }
         
@@ -94,9 +94,9 @@ namespace DBServices {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public EntityDataDataTable EntityData {
+        public DataDataTable Data {
             get {
-                return this.tableEntityData;
+                return this.tableData;
             }
         }
         
@@ -142,7 +142,7 @@ namespace DBServices {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DBServiceDataset cln = ((DBServiceDataset)(base.Clone()));
+            BindingDataset cln = ((BindingDataset)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -167,11 +167,11 @@ namespace DBServices {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Entity"] != null)) {
-                    base.Tables.Add(new EntityDataTable(ds.Tables["Entity"]));
+                if ((ds.Tables["Description"] != null)) {
+                    base.Tables.Add(new DescriptionDataTable(ds.Tables["Description"]));
                 }
-                if ((ds.Tables["EntityData"] != null)) {
-                    base.Tables.Add(new EntityDataDataTable(ds.Tables["EntityData"]));
+                if ((ds.Tables["Data"] != null)) {
+                    base.Tables.Add(new DataDataTable(ds.Tables["Data"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -206,16 +206,16 @@ namespace DBServices {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableEntity = ((EntityDataTable)(base.Tables["Entity"]));
+            this.tableDescription = ((DescriptionDataTable)(base.Tables["Description"]));
             if ((initTable == true)) {
-                if ((this.tableEntity != null)) {
-                    this.tableEntity.InitVars();
+                if ((this.tableDescription != null)) {
+                    this.tableDescription.InitVars();
                 }
             }
-            this.tableEntityData = ((EntityDataDataTable)(base.Tables["EntityData"]));
+            this.tableData = ((DataDataTable)(base.Tables["Data"]));
             if ((initTable == true)) {
-                if ((this.tableEntityData != null)) {
-                    this.tableEntityData.InitVars();
+                if ((this.tableData != null)) {
+                    this.tableData.InitVars();
                 }
             }
         }
@@ -223,26 +223,26 @@ namespace DBServices {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DBServiceDataset";
+            this.DataSetName = "BindingDataset";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DBServiceDataset.xsd";
+            this.Namespace = "http://tempuri.org/BindingDataset.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableEntity = new EntityDataTable();
-            base.Tables.Add(this.tableEntity);
-            this.tableEntityData = new EntityDataDataTable();
-            base.Tables.Add(this.tableEntityData);
+            this.tableDescription = new DescriptionDataTable();
+            base.Tables.Add(this.tableDescription);
+            this.tableData = new DataDataTable();
+            base.Tables.Add(this.tableData);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeEntity() {
+        private bool ShouldSerializeDescription() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeEntityData() {
+        private bool ShouldSerializeData() {
             return false;
         }
         
@@ -257,7 +257,7 @@ namespace DBServices {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DBServiceDataset ds = new DBServiceDataset();
+            BindingDataset ds = new BindingDataset();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -302,17 +302,17 @@ namespace DBServices {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void EntityRowChangeEventHandler(object sender, EntityRowChangeEvent e);
+        public delegate void DescriptionRowChangeEventHandler(object sender, DescriptionRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void EntityDataRowChangeEventHandler(object sender, EntityDataRowChangeEvent e);
+        public delegate void DataRowChangeEventHandler(object sender, DataRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class EntityDataTable : global::System.Data.TypedTableBase<EntityRow> {
+        public partial class DescriptionDataTable : global::System.Data.TypedTableBase<DescriptionRow> {
             
             private global::System.Data.DataColumn columnID;
             
@@ -328,8 +328,8 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityDataTable() {
-                this.TableName = "Entity";
+            public DescriptionDataTable() {
+                this.TableName = "Description";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -337,7 +337,7 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal EntityDataTable(global::System.Data.DataTable table) {
+            internal DescriptionDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -354,7 +354,7 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected EntityDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DescriptionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -418,34 +418,34 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityRow this[int index] {
+            public DescriptionRow this[int index] {
                 get {
-                    return ((EntityRow)(this.Rows[index]));
+                    return ((DescriptionRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EntityRowChangeEventHandler EntityRowChanging;
+            public event DescriptionRowChangeEventHandler DescriptionRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EntityRowChangeEventHandler EntityRowChanged;
+            public event DescriptionRowChangeEventHandler DescriptionRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EntityRowChangeEventHandler EntityRowDeleting;
+            public event DescriptionRowChangeEventHandler DescriptionRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EntityRowChangeEventHandler EntityRowDeleted;
+            public event DescriptionRowChangeEventHandler DescriptionRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddEntityRow(EntityRow row) {
+            public void AddDescriptionRow(DescriptionRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityRow AddEntityRow(long ID, long ParentID, string Description, byte Type, long OrderPosition, string ModDate) {
-                EntityRow rowEntityRow = ((EntityRow)(this.NewRow()));
+            public DescriptionRow AddDescriptionRow(long ID, long ParentID, string Description, byte Type, long OrderPosition, string ModDate) {
+                DescriptionRow rowDescriptionRow = ((DescriptionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         ParentID,
@@ -453,15 +453,15 @@ namespace DBServices {
                         Type,
                         OrderPosition,
                         ModDate};
-                rowEntityRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowEntityRow);
-                return rowEntityRow;
+                rowDescriptionRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDescriptionRow);
+                return rowDescriptionRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                EntityDataTable cln = ((EntityDataTable)(base.Clone()));
+                DescriptionDataTable cln = ((DescriptionDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -469,7 +469,7 @@ namespace DBServices {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new EntityDataTable();
+                return new DescriptionDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -507,28 +507,28 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityRow NewEntityRow() {
-                return ((EntityRow)(this.NewRow()));
+            public DescriptionRow NewDescriptionRow() {
+                return ((DescriptionRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new EntityRow(builder);
+                return new DescriptionRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(EntityRow);
+                return typeof(DescriptionRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.EntityRowChanged != null)) {
-                    this.EntityRowChanged(this, new EntityRowChangeEvent(((EntityRow)(e.Row)), e.Action));
+                if ((this.DescriptionRowChanged != null)) {
+                    this.DescriptionRowChanged(this, new DescriptionRowChangeEvent(((DescriptionRow)(e.Row)), e.Action));
                 }
             }
             
@@ -536,8 +536,8 @@ namespace DBServices {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.EntityRowChanging != null)) {
-                    this.EntityRowChanging(this, new EntityRowChangeEvent(((EntityRow)(e.Row)), e.Action));
+                if ((this.DescriptionRowChanging != null)) {
+                    this.DescriptionRowChanging(this, new DescriptionRowChangeEvent(((DescriptionRow)(e.Row)), e.Action));
                 }
             }
             
@@ -545,8 +545,8 @@ namespace DBServices {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.EntityRowDeleted != null)) {
-                    this.EntityRowDeleted(this, new EntityRowChangeEvent(((EntityRow)(e.Row)), e.Action));
+                if ((this.DescriptionRowDeleted != null)) {
+                    this.DescriptionRowDeleted(this, new DescriptionRowChangeEvent(((DescriptionRow)(e.Row)), e.Action));
                 }
             }
             
@@ -554,14 +554,14 @@ namespace DBServices {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.EntityRowDeleting != null)) {
-                    this.EntityRowDeleting(this, new EntityRowChangeEvent(((EntityRow)(e.Row)), e.Action));
+                if ((this.DescriptionRowDeleting != null)) {
+                    this.DescriptionRowDeleting(this, new DescriptionRowChangeEvent(((DescriptionRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveEntityRow(EntityRow row) {
+            public void RemoveDescriptionRow(DescriptionRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -570,7 +570,7 @@ namespace DBServices {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DBServiceDataset ds = new DBServiceDataset();
+                BindingDataset ds = new BindingDataset();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -588,7 +588,7 @@ namespace DBServices {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "EntityDataTable";
+                attribute2.FixedValue = "DescriptionDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -634,20 +634,20 @@ namespace DBServices {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class EntityDataDataTable : global::System.Data.TypedTableBase<EntityDataRow> {
+        public partial class DataDataTable : global::System.Data.TypedTableBase<DataRow> {
             
             private global::System.Data.DataColumn columnID;
             
             private global::System.Data.DataColumn columnData;
             
-            private global::System.Data.DataColumn columnTextData;
+            private global::System.Data.DataColumn columnPlainText;
             
             private global::System.Data.DataColumn columnModDate;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityDataDataTable() {
-                this.TableName = "EntityData";
+            public DataDataTable() {
+                this.TableName = "Data";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -655,7 +655,7 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal EntityDataDataTable(global::System.Data.DataTable table) {
+            internal DataDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -672,7 +672,7 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected EntityDataDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DataDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -695,9 +695,9 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TextDataColumn {
+            public global::System.Data.DataColumn PlainTextColumn {
                 get {
-                    return this.columnTextData;
+                    return this.columnPlainText;
                 }
             }
             
@@ -720,48 +720,48 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityDataRow this[int index] {
+            public DataRow this[int index] {
                 get {
-                    return ((EntityDataRow)(this.Rows[index]));
+                    return ((DataRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EntityDataRowChangeEventHandler EntityDataRowChanging;
+            public event DataRowChangeEventHandler DataRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EntityDataRowChangeEventHandler EntityDataRowChanged;
+            public event DataRowChangeEventHandler DataRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EntityDataRowChangeEventHandler EntityDataRowDeleting;
+            public event DataRowChangeEventHandler DataRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EntityDataRowChangeEventHandler EntityDataRowDeleted;
+            public event DataRowChangeEventHandler DataRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddEntityDataRow(EntityDataRow row) {
+            public void AddDataRow(DataRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityDataRow AddEntityDataRow(long ID, string Data, string TextData, string ModDate) {
-                EntityDataRow rowEntityDataRow = ((EntityDataRow)(this.NewRow()));
+            public DataRow AddDataRow(long ID, string Data, string PlainText, string ModDate) {
+                DataRow rowDataRow = ((DataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         Data,
-                        TextData,
+                        PlainText,
                         ModDate};
-                rowEntityDataRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowEntityDataRow);
-                return rowEntityDataRow;
+                rowDataRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataRow);
+                return rowDataRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                EntityDataDataTable cln = ((EntityDataDataTable)(base.Clone()));
+                DataDataTable cln = ((DataDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -769,7 +769,7 @@ namespace DBServices {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new EntityDataDataTable();
+                return new DataDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -777,7 +777,7 @@ namespace DBServices {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnData = base.Columns["Data"];
-                this.columnTextData = base.Columns["TextData"];
+                this.columnPlainText = base.Columns["PlainText"];
                 this.columnModDate = base.Columns["ModDate"];
             }
             
@@ -788,8 +788,8 @@ namespace DBServices {
                 base.Columns.Add(this.columnID);
                 this.columnData = new global::System.Data.DataColumn("Data", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnData);
-                this.columnTextData = new global::System.Data.DataColumn("TextData", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTextData);
+                this.columnPlainText = new global::System.Data.DataColumn("PlainText", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPlainText);
                 this.columnModDate = new global::System.Data.DataColumn("ModDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnModDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -800,28 +800,28 @@ namespace DBServices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityDataRow NewEntityDataRow() {
-                return ((EntityDataRow)(this.NewRow()));
+            public DataRow NewDataRow() {
+                return ((DataRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new EntityDataRow(builder);
+                return new DataRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(EntityDataRow);
+                return typeof(DataRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.EntityDataRowChanged != null)) {
-                    this.EntityDataRowChanged(this, new EntityDataRowChangeEvent(((EntityDataRow)(e.Row)), e.Action));
+                if ((this.DataRowChanged != null)) {
+                    this.DataRowChanged(this, new DataRowChangeEvent(((DataRow)(e.Row)), e.Action));
                 }
             }
             
@@ -829,8 +829,8 @@ namespace DBServices {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.EntityDataRowChanging != null)) {
-                    this.EntityDataRowChanging(this, new EntityDataRowChangeEvent(((EntityDataRow)(e.Row)), e.Action));
+                if ((this.DataRowChanging != null)) {
+                    this.DataRowChanging(this, new DataRowChangeEvent(((DataRow)(e.Row)), e.Action));
                 }
             }
             
@@ -838,8 +838,8 @@ namespace DBServices {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.EntityDataRowDeleted != null)) {
-                    this.EntityDataRowDeleted(this, new EntityDataRowChangeEvent(((EntityDataRow)(e.Row)), e.Action));
+                if ((this.DataRowDeleted != null)) {
+                    this.DataRowDeleted(this, new DataRowChangeEvent(((DataRow)(e.Row)), e.Action));
                 }
             }
             
@@ -847,14 +847,14 @@ namespace DBServices {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.EntityDataRowDeleting != null)) {
-                    this.EntityDataRowDeleting(this, new EntityDataRowChangeEvent(((EntityDataRow)(e.Row)), e.Action));
+                if ((this.DataRowDeleting != null)) {
+                    this.DataRowDeleting(this, new DataRowChangeEvent(((DataRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveEntityDataRow(EntityDataRow row) {
+            public void RemoveDataRow(DataRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -863,7 +863,7 @@ namespace DBServices {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DBServiceDataset ds = new DBServiceDataset();
+                BindingDataset ds = new BindingDataset();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -881,7 +881,7 @@ namespace DBServices {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "EntityDataDataTable";
+                attribute2.FixedValue = "DataDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -925,25 +925,25 @@ namespace DBServices {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class EntityRow : global::System.Data.DataRow {
+        public partial class DescriptionRow : global::System.Data.DataRow {
             
-            private EntityDataTable tableEntity;
+            private DescriptionDataTable tableDescription;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal EntityRow(global::System.Data.DataRowBuilder rb) : 
+            internal DescriptionRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableEntity = ((EntityDataTable)(this.Table));
+                this.tableDescription = ((DescriptionDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long ID {
                 get {
-                    return ((long)(this[this.tableEntity.IDColumn]));
+                    return ((long)(this[this.tableDescription.IDColumn]));
                 }
                 set {
-                    this[this.tableEntity.IDColumn] = value;
+                    this[this.tableDescription.IDColumn] = value;
                 }
             }
             
@@ -952,14 +952,14 @@ namespace DBServices {
             public long ParentID {
                 get {
                     try {
-                        return ((long)(this[this.tableEntity.ParentIDColumn]));
+                        return ((long)(this[this.tableDescription.ParentIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ParentID\' in table \'Entity\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ParentID\' in table \'Description\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEntity.ParentIDColumn] = value;
+                    this[this.tableDescription.ParentIDColumn] = value;
                 }
             }
             
@@ -968,14 +968,14 @@ namespace DBServices {
             public string Description {
                 get {
                     try {
-                        return ((string)(this[this.tableEntity.DescriptionColumn]));
+                        return ((string)(this[this.tableDescription.DescriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'Entity\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'Description\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEntity.DescriptionColumn] = value;
+                    this[this.tableDescription.DescriptionColumn] = value;
                 }
             }
             
@@ -984,14 +984,14 @@ namespace DBServices {
             public byte Type {
                 get {
                     try {
-                        return ((byte)(this[this.tableEntity.TypeColumn]));
+                        return ((byte)(this[this.tableDescription.TypeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Type\' in table \'Entity\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Type\' in table \'Description\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEntity.TypeColumn] = value;
+                    this[this.tableDescription.TypeColumn] = value;
                 }
             }
             
@@ -999,10 +999,10 @@ namespace DBServices {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long OrderPosition {
                 get {
-                    return ((long)(this[this.tableEntity.OrderPositionColumn]));
+                    return ((long)(this[this.tableDescription.OrderPositionColumn]));
                 }
                 set {
-                    this[this.tableEntity.OrderPositionColumn] = value;
+                    this[this.tableDescription.OrderPositionColumn] = value;
                 }
             }
             
@@ -1011,88 +1011,88 @@ namespace DBServices {
             public string ModDate {
                 get {
                     try {
-                        return ((string)(this[this.tableEntity.ModDateColumn]));
+                        return ((string)(this[this.tableDescription.ModDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ModDate\' in table \'Entity\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ModDate\' in table \'Description\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEntity.ModDateColumn] = value;
+                    this[this.tableDescription.ModDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsParentIDNull() {
-                return this.IsNull(this.tableEntity.ParentIDColumn);
+                return this.IsNull(this.tableDescription.ParentIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetParentIDNull() {
-                this[this.tableEntity.ParentIDColumn] = global::System.Convert.DBNull;
+                this[this.tableDescription.ParentIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDescriptionNull() {
-                return this.IsNull(this.tableEntity.DescriptionColumn);
+                return this.IsNull(this.tableDescription.DescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDescriptionNull() {
-                this[this.tableEntity.DescriptionColumn] = global::System.Convert.DBNull;
+                this[this.tableDescription.DescriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTypeNull() {
-                return this.IsNull(this.tableEntity.TypeColumn);
+                return this.IsNull(this.tableDescription.TypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTypeNull() {
-                this[this.tableEntity.TypeColumn] = global::System.Convert.DBNull;
+                this[this.tableDescription.TypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsModDateNull() {
-                return this.IsNull(this.tableEntity.ModDateColumn);
+                return this.IsNull(this.tableDescription.ModDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetModDateNull() {
-                this[this.tableEntity.ModDateColumn] = global::System.Convert.DBNull;
+                this[this.tableDescription.ModDateColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class EntityDataRow : global::System.Data.DataRow {
+        public partial class DataRow : global::System.Data.DataRow {
             
-            private EntityDataDataTable tableEntityData;
+            private DataDataTable tableData;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal EntityDataRow(global::System.Data.DataRowBuilder rb) : 
+            internal DataRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableEntityData = ((EntityDataDataTable)(this.Table));
+                this.tableData = ((DataDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long ID {
                 get {
-                    return ((long)(this[this.tableEntityData.IDColumn]));
+                    return ((long)(this[this.tableData.IDColumn]));
                 }
                 set {
-                    this[this.tableEntityData.IDColumn] = value;
+                    this[this.tableData.IDColumn] = value;
                 }
             }
             
@@ -1101,30 +1101,30 @@ namespace DBServices {
             public string Data {
                 get {
                     try {
-                        return ((string)(this[this.tableEntityData.DataColumn]));
+                        return ((string)(this[this.tableData.DataColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Data\' in table \'EntityData\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Data\' in table \'Data\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEntityData.DataColumn] = value;
+                    this[this.tableData.DataColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TextData {
+            public string PlainText {
                 get {
                     try {
-                        return ((string)(this[this.tableEntityData.TextDataColumn]));
+                        return ((string)(this[this.tableData.PlainTextColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TextData\' in table \'EntityData\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PlainText\' in table \'Data\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEntityData.TextDataColumn] = value;
+                    this[this.tableData.PlainTextColumn] = value;
                 }
             }
             
@@ -1133,51 +1133,51 @@ namespace DBServices {
             public string ModDate {
                 get {
                     try {
-                        return ((string)(this[this.tableEntityData.ModDateColumn]));
+                        return ((string)(this[this.tableData.ModDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ModDate\' in table \'EntityData\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ModDate\' in table \'Data\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEntityData.ModDateColumn] = value;
+                    this[this.tableData.ModDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDataNull() {
-                return this.IsNull(this.tableEntityData.DataColumn);
+                return this.IsNull(this.tableData.DataColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDataNull() {
-                this[this.tableEntityData.DataColumn] = global::System.Convert.DBNull;
+                this[this.tableData.DataColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTextDataNull() {
-                return this.IsNull(this.tableEntityData.TextDataColumn);
+            public bool IsPlainTextNull() {
+                return this.IsNull(this.tableData.PlainTextColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTextDataNull() {
-                this[this.tableEntityData.TextDataColumn] = global::System.Convert.DBNull;
+            public void SetPlainTextNull() {
+                this[this.tableData.PlainTextColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsModDateNull() {
-                return this.IsNull(this.tableEntityData.ModDateColumn);
+                return this.IsNull(this.tableData.ModDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetModDateNull() {
-                this[this.tableEntityData.ModDateColumn] = global::System.Convert.DBNull;
+                this[this.tableData.ModDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1185,22 +1185,22 @@ namespace DBServices {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class EntityRowChangeEvent : global::System.EventArgs {
+        public class DescriptionRowChangeEvent : global::System.EventArgs {
             
-            private EntityRow eventRow;
+            private DescriptionRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityRowChangeEvent(EntityRow row, global::System.Data.DataRowAction action) {
+            public DescriptionRowChangeEvent(DescriptionRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityRow Row {
+            public DescriptionRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1219,22 +1219,22 @@ namespace DBServices {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class EntityDataRowChangeEvent : global::System.EventArgs {
+        public class DataRowChangeEvent : global::System.EventArgs {
             
-            private EntityDataRow eventRow;
+            private DataRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityDataRowChangeEvent(EntityDataRow row, global::System.Data.DataRowAction action) {
+            public DataRowChangeEvent(DataRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EntityDataRow Row {
+            public DataRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using DataManager;
+using DataManager.Domain;
+using DataManager.Repository;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using System.Collections;
@@ -15,7 +18,6 @@ using Utils.ActionWindow;
 using Note.ControlWrapper;
 using DevExpress.XtraBars;
 using Utils.WorkWithDB.Wrappers;
-using DBServices;
 using ControlWrapper;
 using Utils.WorkWithFiles;
 using Properties;
@@ -25,7 +27,7 @@ namespace Note
 {
     public partial class Main : Form
     {
-        DBService dbService;
+        NoteDataManager dataManager;
         IWrapper controlWrapper;
         private const string TITLE = "Note";
 
@@ -65,9 +67,9 @@ namespace Note
             controlWrapper.EnableControls(isConnect);
             if (isConnect)
             {
-                controlWrapper.DBService = dbService; 
+                controlWrapper.DataManager = dataManager; 
                 controlWrapper.LoadEntityFromDB();
-                this.Text = string.Format("{0} {1}", TITLE, dbService.GetConnectionDescription());
+                this.Text = string.Format("{0} {1}", TITLE, dataManager.GetConnectionDescription());
             }
         }
 
@@ -101,7 +103,8 @@ namespace Note
             {
                 try
                 {
-                    dbService.DeleteNode(id);
+                    dataManager.DeleteNode(id);
+                    controlWrapper.UpdateBinding();
                 }
                 catch (Exception ex)
                 {
@@ -112,12 +115,12 @@ namespace Note
 
         private void barButtonItemUp_ItemClick(object sender, EventArgs e)
         {
-            ChangeNodeLocation(dbService.IsCanMoveNode, dbService.MoveNode, Direction.UP);
+            ChangeNodeLocation(dataManager.IsCanMoveNode, dataManager.MoveNode, Direction.UP);
         }
 
         private void barButtonItemDown_ItemClick(object sender, EventArgs e)
         {
-            ChangeNodeLocation(dbService.IsCanMoveNode, dbService.MoveNode, Direction.DOWN);
+            ChangeNodeLocation(dataManager.IsCanMoveNode, dataManager.MoveNode, Direction.DOWN);
         }
 
         private void barButtonItemSaveAll_ItemClick(object sender, EventArgs e)
@@ -172,18 +175,18 @@ namespace Note
 
         private void barButtonItemConvertDb_ItemClick(object sender, EventArgs e)
         {
-            if (Options.InType == DocTypes.None || Options.OutType == DocTypes.None)
-            {
-                return;
-            }
-            controlWrapper.BeginUpdateRtfControl();             
-            string backup = controlWrapper.RtfText;
+            //if (Options.InType == DocTypes.None || Options.OutType == DocTypes.None)
+            //{
+            //    return;
+            //}
+            //controlWrapper.BeginUpdateRtfControl();             
+            //string backup = controlWrapper.RtfText;
             
-            DBService tempDbService = new DBService();
-            tempDbService.ConvertData(controlWrapper);
+            //DBService tempDbService = new DBService();
+            //tempDbService.ConvertData(controlWrapper);
 
-            controlWrapper.RtfText = backup;
-            controlWrapper.EndUpdateRtfControl();
+            //controlWrapper.RtfText = backup;
+            //controlWrapper.EndUpdateRtfControl();
         }
 
         private void barButtonItemVacuum_ItemClick(object sender, EventArgs e)
@@ -193,12 +196,12 @@ namespace Note
 
         private void barButtonItemLevelUp_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ChangeNodeLocation(dbService.IsCanChangeNodeLevel, dbService.ChangeNodeLevel, Direction.UP);
+            ChangeNodeLocation(dataManager.IsCanChangeNodeLevel, dataManager.ChangeNodeLevel, Direction.UP);
         }
 
         private void barButtonItemLevelDown_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ChangeNodeLocation(dbService.IsCanChangeNodeLevel, dbService.ChangeNodeLevel, Direction.DOWN);
+            ChangeNodeLocation(dataManager.IsCanChangeNodeLevel, dataManager.ChangeNodeLevel, Direction.DOWN);
         }
 
         private void barButtonItemImport_ItemClick(object sender, EventArgs e)
@@ -221,13 +224,14 @@ namespace Note
                 foreach (string file in fileNames.Where(file => File.Exists(file)))
 	            {
 		            string rtf = File.ReadAllText(file);
-                    long id = dbService.InsertNode(controlWrapper.GetParentId(true), Path.GetFileNameWithoutExtension(file), DataTypes.NOTE);
+                    long id = dataManager.InsertNode(controlWrapper.GetParentId(true), Path.GetFileNameWithoutExtension(file), DataTypes.NOTE);
+                    controlWrapper.UpdateBinding();
                     if (controlWrapper.IsNodeSelect())
                     {
                         controlWrapper.FocusSelectedNode();
                     }
                     controlWrapper.Data = rtf;
-                    dbService.UpdateNodeData(id, controlWrapper.Data, controlWrapper.TextData);
+                    dataManager.UpdateData(id, controlWrapper.Data, controlWrapper.TextData);
                     controlWrapper.FocusParentNode();
 	            }
                 controlWrapper.EnableFocusing();
@@ -237,12 +241,12 @@ namespace Note
 
         private void barButtonItemCheckNewestEntity_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DBService dbServiceLocal;
-            if(TryGetDbService(out dbServiceLocal))
+            NoteDataManager dataManagerLocal;
+            if(TryGetDbService(out dataManagerLocal))
             {
-                IEnumerable<Tuple<Entity, DataStatus>> entities = dbService.GetModifiedEntities(dbServiceLocal);
+                IEnumerable<Tuple<Entity, DataStatus>> descriptions = dataManager.GetModifiedDescriptions(dataManagerLocal);
                 ItemsList form = new ItemsList();
-                form.LoadData(entities);
+                form.LoadData(descriptions);
                 form.Show();
             }
         }
@@ -320,10 +324,10 @@ namespace Note
                 {
                     return false;
                 }
-                dbService = new DBService();
-                if (dbService.IsDBOnline())
+                dataManager = new NoteDataManager();
+                if (dataManager.IsDBOnline())
                 {
-                    if (!dbService.IsProperDB)
+                    if (!dataManager.IsProperDB)
                     {
                         dbConnectionOk = CreateDb();
                     }
@@ -339,7 +343,7 @@ namespace Note
             }
             catch (OperationCanceledException)
             {
-                if (dbService == null)
+                if (dataManager == null)
                 {
                     showMessage = false;
                 }
@@ -368,17 +372,17 @@ namespace Note
             }
             else
             {
-                notifyIcon1.Text = dbService.GetDBFile();
+                notifyIcon1.Text = dataManager.GetDBFile();
             }
         }
 
-        private bool TryGetDbService(out DBService dbServiceLocal)
+        private bool TryGetDbService(out NoteDataManager dataManagerLocal)
         {
 
             bool dbConnectionOk = false;
             bool showMessage = true;
             string errorMessage = "Connection is absent!";
-            dbServiceLocal = null;
+            dataManagerLocal = null;
             try
             {
                 if (true)
@@ -389,8 +393,8 @@ namespace Note
                         return false;
                     }
                 }
-                dbServiceLocal = new DBService();
-                if (dbServiceLocal.IsDBOnline())
+                dataManagerLocal = new NoteDataManager();
+                if (dataManagerLocal.IsDBOnline())
                 {
                     dbConnectionOk = true;
                 }
@@ -415,16 +419,16 @@ namespace Note
         private bool CreateDb()
         {
             string errorMessage = "Database fault!";
-            return dbService.CreateDb(errorMessage);
+            return dataManager.CreateDb(errorMessage);
         }
 
         private void VacuumDb(bool isSilent)
         {
             try
             {
-                if (dbService != null)
+                if (dataManager != null)
                 {
-                    dbService.VacuumDb();
+                    dataManager.VacuumDb();
                 }
                 if (!isSilent)
                 {
@@ -453,15 +457,15 @@ namespace Note
                 return;
             }
 
-            dbService.InsertNode(controlWrapper.GetParentId(form.IsChildNode), form.Description, type);
-
+            dataManager.InsertNode(controlWrapper.GetParentId(form.IsChildNode), form.Description, type);
+            controlWrapper.UpdateBinding();
             if (controlWrapper.IsNodeSelect())
             {
                 controlWrapper.FocusSelectedNode();
             }
         }
 
-        private void ChangeNodeLocation(Func<long, long, Direction, bool> IsValidAction, Action<long, long, long, Direction> PerformAction, Direction dir)
+        private void ChangeNodeLocation(Func<long, long, Direction, bool> IsValidAction, Func<long, long, long, Direction, bool> PerformAction, Direction dir)
         {
             controlWrapper.DisableFocusing();
             if (!controlWrapper.IsNodeSelect())
@@ -479,7 +483,10 @@ namespace Note
             }
 
             long id = controlWrapper.SelectedNodeId;
-            PerformAction(position, parentId, id, dir);
+            if (PerformAction(position, parentId, id, dir))
+            {
+                controlWrapper.UpdateBinding();
+            }
             controlWrapper.EnableFocusing();
         }
     }

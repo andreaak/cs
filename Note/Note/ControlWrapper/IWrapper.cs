@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DBServices;
+﻿using DataManager;
 using Note;
 
 namespace ControlWrapper
 {
     public interface IWrapper
     {
-        DBService DBService { set; }
+        NoteDataManager DataManager { set; }
         
         long SelectedNodeId { get; }
         long Position { get; }
@@ -48,5 +44,7 @@ namespace ControlWrapper
         void InitHandlers();
 
         void FocusParentNode();
+
+        void UpdateBinding();
     }
 }

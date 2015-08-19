@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 using System.Windows.Forms;
-using DBServices;
+using DataManager;
 using Utils.ActionWindow;
 
 namespace Note
@@ -39,8 +39,8 @@ namespace Note
             {
                 if (dbFile == null)
                 {
-                    DBService dbService = new DBService();
-                    dbFile = dbService.GetDBFile();
+                    NoteDataManager dataManager = new NoteDataManager();
+                    dbFile = dataManager.GetDBFile();
                 }
                 return dbFile;
             }

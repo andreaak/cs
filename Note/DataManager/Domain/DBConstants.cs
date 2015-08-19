@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Utils.WorkWithDB;
 
-namespace Note
+namespace DataManager.Domain
 {
-    static class  DBConstants
+    public static class  DBConstants
     {
         public const int BASE_LEVEL =  -1;
         public const string ENTITY_TABLE = "Entity";

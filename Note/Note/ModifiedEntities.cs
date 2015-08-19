@@ -1,4 +1,5 @@
-﻿using DBServices;
+﻿using DataManager.Domain;
+using DataManager.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,27 +24,6 @@ namespace Note
             treeList1.DataSource = GetTableForBinding(items);
             SortTreeList();
         }
-
-        //private static DBServiceDataset.EntityDataTable GetTableForBinding(IEnumerable<Tuple<Entity, DataStatus>> items)
-        //{
-        //    List<object> list = new List<object>();
-            
-            
-        //    DBServiceDataset.EntityDataTable table = new DBServiceDataset.EntityDataTable();
-            
-        //    foreach (var item in items)
-        //    {
-        //        table.AddEntityRow(
-        //            item.Item1.ID,
-        //            (long)item.Item1.ParentID,
-        //            item.Item1.Description,
-        //            (byte)item.Item1.Type,
-        //            (long)item.Item1.OrderPosition,
-        //            item.Item1.ModDate
-        //            );
-        //    }
-        //    return table;
-        //}
 
         private static List<object> GetTableForBinding(IEnumerable<Tuple<Entity, DataStatus>> items)
         {

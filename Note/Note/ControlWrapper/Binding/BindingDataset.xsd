@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DBServiceDataset" targetNamespace="http://tempuri.org/DBServiceDataset.xsd" xmlns:mstns="http://tempuri.org/DBServiceDataset.xsd" xmlns="http://tempuri.org/DBServiceDataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="BindingDataset" targetNamespace="http://tempuri.org/BindingDataset.xsd" xmlns:mstns="http://tempuri.org/BindingDataset.xsd" xmlns="http://tempuri.org/BindingDataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -9,10 +9,10 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DBServiceDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DBServiceDataset" msprop:Generator_UserDSName="DBServiceDataset">
+  <xs:element name="BindingDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="BindingDataset" msprop:Generator_UserDSName="BindingDataset">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Entity" msprop:Generator_TableClassName="EntityDataTable" msprop:Generator_TableVarName="tableEntity" msprop:Generator_RowChangedName="EntityRowChanged" msprop:Generator_TablePropName="Entity" msprop:Generator_RowDeletingName="EntityRowDeleting" msprop:Generator_RowChangingName="EntityRowChanging" msprop:Generator_RowEvHandlerName="EntityRowChangeEventHandler" msprop:Generator_RowDeletedName="EntityRowDeleted" msprop:Generator_RowClassName="EntityRow" msprop:Generator_UserTableName="Entity" msprop:Generator_RowEvArgName="EntityRowChangeEvent">
+        <xs:element name="Description" msprop:Generator_TableClassName="DescriptionDataTable" msprop:Generator_TableVarName="tableDescription" msprop:Generator_TablePropName="Description" msprop:Generator_RowDeletingName="DescriptionRowDeleting" msprop:Generator_RowChangingName="DescriptionRowChanging" msprop:Generator_RowEvHandlerName="DescriptionRowChangeEventHandler" msprop:Generator_RowDeletedName="DescriptionRowDeleted" msprop:Generator_UserTableName="Description" msprop:Generator_RowChangedName="DescriptionRowChanged" msprop:Generator_RowEvArgName="DescriptionRowChangeEvent" msprop:Generator_RowClassName="DescriptionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
@@ -24,12 +24,12 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="EntityData" msprop:Generator_TableClassName="EntityDataDataTable" msprop:Generator_TableVarName="tableEntityData" msprop:Generator_RowChangedName="EntityDataRowChanged" msprop:Generator_TablePropName="EntityData" msprop:Generator_RowDeletingName="EntityDataRowDeleting" msprop:Generator_RowChangingName="EntityDataRowChanging" msprop:Generator_RowEvHandlerName="EntityDataRowChangeEventHandler" msprop:Generator_RowDeletedName="EntityDataRowDeleted" msprop:Generator_RowClassName="EntityDataRow" msprop:Generator_UserTableName="EntityData" msprop:Generator_RowEvArgName="EntityDataRowChangeEvent">
+        <xs:element name="Data" msprop:Generator_TableClassName="DataDataTable" msprop:Generator_TableVarName="tableData" msprop:Generator_TablePropName="Data" msprop:Generator_RowDeletingName="DataRowDeleting" msprop:Generator_RowChangingName="DataRowChanging" msprop:Generator_RowEvHandlerName="DataRowChangeEventHandler" msprop:Generator_RowDeletedName="DataRowDeleted" msprop:Generator_UserTableName="Data" msprop:Generator_RowChangedName="DataRowChanged" msprop:Generator_RowEvArgName="DataRowChangeEvent" msprop:Generator_RowClassName="DataRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
               <xs:element name="Data" msprop:Generator_ColumnVarNameInTable="columnData" msprop:Generator_ColumnPropNameInRow="Data" msprop:Generator_ColumnPropNameInTable="DataColumn" msprop:Generator_UserColumnName="Data" type="xs:string" minOccurs="0" />
-              <xs:element name="TextData" msprop:Generator_ColumnVarNameInTable="columnTextData" msprop:Generator_ColumnPropNameInRow="TextData" msprop:Generator_ColumnPropNameInTable="TextDataColumn" msprop:Generator_UserColumnName="TextData" type="xs:string" minOccurs="0" />
+              <xs:element name="PlainText" msprop:Generator_ColumnVarNameInTable="columnPlainText" msprop:Generator_ColumnPropNameInRow="PlainText" msprop:Generator_ColumnPropNameInTable="PlainTextColumn" msprop:Generator_UserColumnName="PlainText" type="xs:string" minOccurs="0" />
               <xs:element name="ModDate" msprop:Generator_ColumnVarNameInTable="columnModDate" msprop:Generator_ColumnPropNameInRow="ModDate" msprop:Generator_ColumnPropNameInTable="ModDateColumn" msprop:Generator_UserColumnName="ModDate" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
@@ -37,11 +37,11 @@
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1">
-      <xs:selector xpath=".//mstns:Entity" />
+      <xs:selector xpath=".//mstns:Description" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
-    <xs:unique name="EntityData_Constraint1" msdata:ConstraintName="Constraint1">
-      <xs:selector xpath=".//mstns:EntityData" />
+    <xs:unique name="Data_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Data" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>

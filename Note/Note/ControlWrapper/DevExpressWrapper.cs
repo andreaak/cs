@@ -1,30 +1,29 @@
-using Note.ControlWrapper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DevExpress.XtraRichEdit;
-using DevExpress.XtraRichEdit.Utils;
-using DevExpress.XtraRichEdit.API.Native;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using System.Threading;
-using DevExpress.XtraTreeList.Nodes;
-using System.IO;
 using System.Data;
-using DevExpress.XtraTreeList;
-using DevExpress.XtraBars;
-using DBServices;
+using System.Linq;
+using System.Windows.Forms;
 using ControlWrapper;
+using ControlWrapper.Binding;
+using DataManager;
+using DataManager.Domain;
+using DataManager.Repository;
+using DevExpress.XtraBars;
+using DevExpress.XtraRichEdit.API.Native;
+using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Nodes;
+using ExportData;
+using Note.ControlWrapper;
 
 namespace Note
 {
     class DevExpressWrapper : IWrapper
     {
-        DBService dbService;
+        NoteDataManager dataManager;
         private TreeList treeList1;
         private MyRichEditControl richEditControl;
         private ExportHelper export;
+        BindingDataset.DescriptionDataTable table; 
         
         BarItem[] controls;
 
@@ -33,6 +32,7 @@ namespace Note
             this.treeList1 = treeList1;
             this.richEditControl = richEditControl;
             this.controls = controls;
+            table = new BindingDataset.DescriptionDataTable();
         }
         
         public long SelectedNodeId
@@ -278,7 +278,7 @@ namespace Note
 
         public void InitHandlers()
         {
-            this.treeList1.CompareNodeValues += new DevExpress.XtraTreeList.CompareNodeValuesEventHandler(CompareNodeValues);
+            this.treeList1.CompareNodeValues += CompareNodeValues;
         }
 
         public void LoadEntityFromDB()
@@ -286,18 +286,62 @@ namespace Note
             DisableFocusing();
             ClearTreeList();
             ClearRtfControl();
-            dbService.InitEntity();
-            treeList1.DataSource = dbService.BindEntity;
+            dataManager.InitEntity();
+            UpdateBinding();
+            treeList1.DataSource = table;
             SortTreeList();
             EnableFocusing();
         }
 
-        public DBService DBService
+        public void UpdateBinding()
+        {
+            IEnumerable<long> tableIds = table.Where(Utils.IsActiveRow).Select(row => row.ID).ToList();
+            IEnumerable<long> entityIds = dataManager.Description.Select(item => item.ID).ToList();
+            long[] idsForAdding = entityIds.Except(tableIds).ToArray();
+            long[] idsForDeleting = tableIds.Except(entityIds).ToArray();
+
+            //add
+            foreach (var item in dataManager.Description.Where(item => idsForAdding.Contains(item.ID)))
+            {
+                table.AddDescriptionRow(
+                    item.ID,
+                    (long)item.ParentID,
+                    item.Description,
+                    (byte)item.Type,
+                    (long)item.OrderPosition,
+                    item.ModDate
+                    );
+            }
+
+            //remove
+            table.Where(row => Utils.IsActiveRow(row) && idsForDeleting.Contains(row.ID))
+                .ToList()
+                .ForEach(row => table.RemoveDescriptionRow(row));
+            
+            //update
+            foreach (var item in dataManager.Updates)
+            {
+                Entity itm = item as Entity;
+                if (itm != null)
+                {
+                    var rw = table.FirstOrDefault(row => row.ID == itm.ID);
+                    if (rw != null)
+                    {
+                        rw.Description = itm.Description;
+                        rw.OrderPosition = itm.OrderPosition ?? LinqToSqlRepository.WRONG_POSITION;
+                        rw.ParentID = itm.ParentID ?? LinqToSqlRepository.WRONG_POSITION;
+                    }
+                }
+            }
+            table.AcceptChanges();
+        }
+
+        public NoteDataManager DataManager
         {
             set 
             {
-                this.dbService = value; 
-                export = new ExportHelper(treeList1, richEditControl, dbService);
+                this.dataManager = value; 
+                export = new ExportHelper(treeList1, richEditControl, dataManager);
             }
         }
 
@@ -404,7 +448,7 @@ namespace Note
             if (table != null )
             {
                 DataRow row = table.AsEnumerable()
-                                .FirstOrDefault(rw => UTILS.IsActiveRow(rw) && rw.Field<long>(DBConstants.ENTITY_TABLE_ID) == 
+                                .FirstOrDefault(rw => Utils.IsActiveRow(rw) && rw.Field<long>(DBConstants.ENTITY_TABLE_ID) == 
                                     (long)node.GetValue(DBConstants.ENTITY_TABLE_ID));
                 return row != null && row.RowState == DataRowState.Modified;
             }
@@ -414,13 +458,14 @@ namespace Note
         private void UpdateNodeData(TreeListNode node)
         {
             long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
-            dbService.UpdateNodeData(id, Data, TextData);
+            dataManager.UpdateData(id, Data, TextData);
         }
 
         private void UpdateNodeDescription(TreeListNode node)
         {
             long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
-            dbService.UpdateNodeDescription(id);
+            string description = (string)node.GetValue(DBConstants.ENTITY_TABLE_DESC);
+            dataManager.UpdateDescription(id, description);
         }
 
         private void CompareNodeValues(object sender, EventArgs arg)
@@ -447,7 +492,7 @@ namespace Note
             if (isNoteNode)
             {
                 long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
-                Data = dbService.GetEntityData(id); //selRow.Data;
+                Data = dataManager.GetData(id); //selRow.Data;
             }
 
             if (changeControlState)

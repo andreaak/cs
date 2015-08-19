@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Data;
 using System.IO;
+using System.Threading;
+using System.Windows.Forms;
+using DataManager;
+using DataManager.Domain;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
-using DBServices;
-using System.Windows.Forms;
-using System.Threading;
-using Utils.ActionWindow;
+using Note;
+using Note.ControlWrapper;
 using Utils;
+using Utils.ActionWindow;
 
-namespace Note.ControlWrapper
+namespace ExportData
 {
     public class ExportHelper
     {
@@ -18,16 +21,16 @@ namespace Note.ControlWrapper
         
         private TreeList treeList;
         private MyRichEditControl richEditControl;
-        private DBService dbService;
+        private NoteDataManager dataManager;
         private bool isCreateFolders;
 
         private Func<TreeListNode, string> GetPrefixDelegate;
 
-        public ExportHelper(TreeList treeList, MyRichEditControl richEditControl, DBService dbService)
+        public ExportHelper(TreeList treeList, MyRichEditControl richEditControl, NoteDataManager dataManager)
         {
             this.treeList = treeList;
             this.richEditControl = richEditControl;
-            this.dbService = dbService;
+            this.dataManager = dataManager;
         }
 
         public void SaveNodesDataToFile()
@@ -108,16 +111,16 @@ namespace Note.ControlWrapper
             string nodeText = node.GetDisplayText(0);
             if (DevExpressWrapper.IsNoteNode(node))
             {
-                string fileName = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + UTILS.GetValidFileName(nodeText) + "." + exp.GetExtension();
+                string fileName = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Note.Utils.GetValidFileName(nodeText) + "." + exp.GetExtension();
                 long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
-                string data = dbService.GetEntityData(id);
+                string data = dataManager.GetData(id);
                 exp.Export(fileName, data);
             }
             else
             {
                 if (isCreateFolders)
                 {
-                    string folder = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + UTILS.GetValidFileName(nodeText);
+                    string folder = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Note.Utils.GetValidFileName(nodeText);
                     if (!Directory.Exists(folder))
                     {
                         Directory.CreateDirectory(folder);
@@ -141,7 +144,7 @@ namespace Note.ControlWrapper
                 case ExportDocTypes.Doc:
                 case ExportDocTypes.Rtf:
                 default:
-                    return new ControlExporter(format);
+                    return new MultiFormatExporter(format);
             }
         }
 

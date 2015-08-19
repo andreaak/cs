@@ -1,15 +1,15 @@
-﻿using System;
-using System.IO;
-using System.Threading;
+﻿using System.Threading;
+using Note;
+using Note.ControlWrapper;
 
-namespace Note.ControlWrapper
+namespace ExportData
 {
-    public class ControlExporter : Exporter
+    public class MultiFormatExporter : Exporter
     {
         MyRichEditControl control;
         DevExpress.XtraRichEdit.DocumentFormat format;
  
-        public ControlExporter(ExportDocTypes format)
+        public MultiFormatExporter(ExportDocTypes format)
             :base(format)
 	    {
             this.control = new MyRichEditControl();

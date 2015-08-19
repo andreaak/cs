@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Note
 {
-    public class UTILS
+    public static class Utils
     {
 
         public static string GetValidFileName(string nodeText)

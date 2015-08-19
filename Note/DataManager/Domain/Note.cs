@@ -9,10 +9,9 @@ using DbLinq.Vendor;
 #endif  // MONO_STRICT
 using System.Data.Linq.Mapping;
 using System.Diagnostics;
-using Note;
 
 
-namespace DBServices
+namespace DataManager.Domain
 {
 
 [Table(Name = "main.Entity")]

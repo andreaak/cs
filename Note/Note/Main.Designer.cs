@@ -2953,7 +2953,7 @@
             this.treeList1.SelectImageList = this.imageListState;
             this.treeList1.Size = new System.Drawing.Size(301, 520);
             this.treeList1.TabIndex = 0;
-            // 
+            // Parent
             // colDescription
             // 
             this.colDescription.Caption = " ";
