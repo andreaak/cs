@@ -1,10 +1,8 @@
 ﻿using System;
-using DevExpress.XtraRichEdit;
-using DevExpress.XtraRichEdit.API.Native;
 
 namespace Note.ControlWrapper
 {
-    public class MyRichEditControl : RichEditControl
+    public class MyRichEditControl : DevExpress.XtraRichEdit.RichEditControl
     {
         private const string WordPrefix = "<?mso-application progid=\"Word.Document\"?>";
         private const string RtfPrefix = @"{\rtf1";

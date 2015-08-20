@@ -76,8 +76,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BindingDataset.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ControlWrapper\DevExpress\RtfWrapper.cs" />
-    <Compile Include="ControlWrapper\DevExpress\TreeWrapper.cs" />
+    <Compile Include="ControlWrapper\DevExpressWrappers\RtfWrapper.cs" />
+    <Compile Include="ControlWrapper\DevExpressWrappers\TreeWrapper.cs" />
     <Compile Include="ControlWrapper\IRtfWrapper.cs" />
     <Compile Include="ControlWrapper\ITreeWrapper.cs" />
     <Compile Include="ControlWrapper\Node.cs" />

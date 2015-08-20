@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using DataManager.Repository;
 using DevExpress.XtraBars;
 using Note.ControlWrapper;
-using Note.ControlWrapper.DevExpress;
+using Note.ControlWrapper.DevExpressWrappers;
 using Note.ExportData;
 using Note.Properties;
 using Utils;
@@ -39,7 +39,7 @@ namespace Note
             spellCheckerCustomDictionary1.DictionaryPath = Options.DictionaryPath;
             this.spellChecker1.Dictionaries.Add(spellCheckerCustomDictionary1);
             
-            rtfWrapper = new RtfWrapper(richEditControl1);
+            rtfWrapper = new RtfWrapper(myRichEditControl);
             treeWrapper = new TreeWrapper(treeList1, rtfWrapper, presenter);
             exportHelper = new ExportHelper(treeWrapper, presenter);
             Init(false);

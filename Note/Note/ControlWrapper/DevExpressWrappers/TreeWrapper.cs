@@ -9,7 +9,7 @@ using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using Note.ControlWrapper.Binding;
 
-namespace Note.ControlWrapper.DevExpress
+namespace Note.ControlWrapper.DevExpressWrappers
 {
     public class TreeWrapper : ITreeWrapper
     {
@@ -48,7 +48,7 @@ namespace Note.ControlWrapper.DevExpress
         {
             set
             {
-                control.Enabled = true;
+                control.Enabled = value;
             }
         }
 

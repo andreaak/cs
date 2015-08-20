@@ -1,7 +1,7 @@
 ﻿using DevExpress.Office.Utils;
 using DevExpress.XtraRichEdit.API.Native;
 
-namespace Note.ControlWrapper.DevExpress
+namespace Note.ControlWrapper.DevExpressWrappers
 {
     public class RtfWrapper : IRtfWrapper
     {
@@ -39,7 +39,7 @@ namespace Note.ControlWrapper.DevExpress
         {
             set
             {
-                control.Enabled = true;
+                control.Enabled = value;
             }
         }
 

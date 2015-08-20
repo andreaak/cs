@@ -118,7 +118,7 @@
             this.toggleShowTableGridLinesItem1 = new DevExpress.XtraRichEdit.UI.ToggleShowTableGridLinesItem();
             this.changeTableBorderLineStyleItem1 = new DevExpress.XtraRichEdit.UI.ChangeTableBorderLineStyleItem();
             this.repositoryItemBorderLineStyle1 = new DevExpress.XtraRichEdit.Forms.Design.RepositoryItemBorderLineStyle();
-            this.richEditControl1 = new Note.ControlWrapper.MyRichEditControl();
+            this.myRichEditControl = new Note.ControlWrapper.MyRichEditControl();
             this.changeTableBorderLineWeightItem1 = new DevExpress.XtraRichEdit.UI.ChangeTableBorderLineWeightItem();
             this.repositoryItemBorderLineWeight1 = new DevExpress.XtraRichEdit.Forms.Design.RepositoryItemBorderLineWeight();
             this.changeTableBorderColorItem1 = new DevExpress.XtraRichEdit.UI.ChangeTableBorderColorItem();
@@ -1235,23 +1235,23 @@
             this.repositoryItemBorderLineStyle1.AutoHeight = false;
             this.repositoryItemBorderLineStyle1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemBorderLineStyle1.Control = this.richEditControl1;
+            this.repositoryItemBorderLineStyle1.Control = this.myRichEditControl;
             this.repositoryItemBorderLineStyle1.Name = "repositoryItemBorderLineStyle1";
             // 
-            // richEditControl1
+            // myRichEditControl
             // 
-            this.richEditControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richEditControl1.Location = new System.Drawing.Point(0, 0);
-            this.richEditControl1.MenuManager = this.ribbonControl1;
-            this.richEditControl1.Name = "richEditControl1";
-            this.richEditControl1.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-            this.richEditControl1.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-            this.richEditControl1.Size = new System.Drawing.Size(1023, 520);
-            this.richEditControl1.TabIndex = 0;
-            this.richEditControl1.Text = "Type Text";
-            this.spellChecker1.SetShowSpellCheckMenu(this.richEditControl1, false);
-            this.richEditControl1.SpellChecker = this.spellChecker1;
-            this.spellChecker1.SetSpellCheckerOptions(this.richEditControl1, optionsSpelling1);
+            this.myRichEditControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.myRichEditControl.Location = new System.Drawing.Point(0, 0);
+            this.myRichEditControl.MenuManager = this.ribbonControl1;
+            this.myRichEditControl.Name = "myRichEditControl";
+            this.myRichEditControl.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
+            this.myRichEditControl.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
+            this.myRichEditControl.Size = new System.Drawing.Size(1023, 520);
+            this.myRichEditControl.TabIndex = 0;
+            this.myRichEditControl.Text = "Type Text";
+            this.spellChecker1.SetShowSpellCheckMenu(this.myRichEditControl, false);
+            this.myRichEditControl.SpellChecker = this.spellChecker1;
+            this.spellChecker1.SetSpellCheckerOptions(this.myRichEditControl, optionsSpelling1);
             // 
             // changeTableBorderLineWeightItem1
             // 
@@ -1265,7 +1265,7 @@
             this.repositoryItemBorderLineWeight1.AutoHeight = false;
             this.repositoryItemBorderLineWeight1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemBorderLineWeight1.Control = this.richEditControl1;
+            this.repositoryItemBorderLineWeight1.Control = this.myRichEditControl;
             this.repositoryItemBorderLineWeight1.Name = "repositoryItemBorderLineWeight1";
             // 
             // changeTableBorderColorItem1
@@ -1512,7 +1512,7 @@
             this.checkSpellingItem1.Id = 114;
             this.checkSpellingItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("checkSpellingItem1.LargeGlyph")));
             this.checkSpellingItem1.Name = "checkSpellingItem1";
-            this.checkSpellingItem1.RichEditControl = richEditControl1;
+            this.checkSpellingItem1.RichEditControl = myRichEditControl;
             this.checkSpellingItem1.Enabled = true;
             // 
             // protectDocumentItem1
@@ -1829,7 +1829,7 @@
             this.repositoryItemRichEditFontSizeEdit1.AutoHeight = false;
             this.repositoryItemRichEditFontSizeEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemRichEditFontSizeEdit1.Control = this.richEditControl1;
+            this.repositoryItemRichEditFontSizeEdit1.Control = this.myRichEditControl;
             this.repositoryItemRichEditFontSizeEdit1.Name = "repositoryItemRichEditFontSizeEdit1";
             // 
             // fontSizeIncreaseItem1
@@ -2151,7 +2151,7 @@
             this.repositoryItemRichEditStyleEdit1.AutoHeight = false;
             this.repositoryItemRichEditStyleEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemRichEditStyleEdit1.Control = this.richEditControl1;
+            this.repositoryItemRichEditStyleEdit1.Control = this.myRichEditControl;
             this.repositoryItemRichEditStyleEdit1.Name = "repositoryItemRichEditStyleEdit1";
             // 
             // findItem1
@@ -2194,7 +2194,7 @@
             this.repositoryItemFloatingObjectOutlineWeight1.AutoHeight = false;
             this.repositoryItemFloatingObjectOutlineWeight1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemFloatingObjectOutlineWeight1.Control = this.richEditControl1;
+            this.repositoryItemFloatingObjectOutlineWeight1.Control = this.myRichEditControl;
             this.repositoryItemFloatingObjectOutlineWeight1.Name = "repositoryItemFloatingObjectOutlineWeight1";
             // 
             // changeFloatingObjectTextWrapTypeItem1
@@ -2913,7 +2913,7 @@
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.treeList1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.richEditControl1);
+            this.splitContainerControl1.Panel2.Controls.Add(this.myRichEditControl);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1329, 520);
             this.splitContainerControl1.SplitterPosition = 301;
@@ -3191,7 +3191,7 @@
             this.richEditBarController1.BarItems.Add(this.floatingObjectSendBackwardItem1);
             this.richEditBarController1.BarItems.Add(this.floatingObjectSendToBackItem1);
             this.richEditBarController1.BarItems.Add(this.floatingObjectSendBehindTextItem1);
-            this.richEditBarController1.Control = this.richEditControl1;
+            this.richEditBarController1.Control = this.myRichEditControl;
             // 
             // showInsertTableCellsFormItem1
             // 
@@ -3362,7 +3362,7 @@
         private DevExpress.XtraRichEdit.UI.ToggleShowTableGridLinesItem toggleShowTableGridLinesItem1;
         private DevExpress.XtraRichEdit.UI.ChangeTableBorderLineStyleItem changeTableBorderLineStyleItem1;
         private DevExpress.XtraRichEdit.Forms.Design.RepositoryItemBorderLineStyle repositoryItemBorderLineStyle1;
-        private Note.ControlWrapper.MyRichEditControl richEditControl1;
+        private Note.ControlWrapper.MyRichEditControl myRichEditControl;
         private DevExpress.XtraRichEdit.UI.ChangeTableBorderLineWeightItem changeTableBorderLineWeightItem1;
         private DevExpress.XtraRichEdit.Forms.Design.RepositoryItemBorderLineWeight repositoryItemBorderLineWeight1;
         private DevExpress.XtraRichEdit.UI.ChangeTableBorderColorItem changeTableBorderColorItem1;
