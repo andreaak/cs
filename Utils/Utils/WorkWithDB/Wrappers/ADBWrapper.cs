@@ -362,7 +362,7 @@ namespace Utils.WorkWithDB.Wrappers
 
         #endregion
 
-        public virtual string GetDBFile()
+        public virtual string GetDBFileName()
         {
             return null;
         }

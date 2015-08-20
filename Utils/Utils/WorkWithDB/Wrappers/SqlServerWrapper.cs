@@ -128,7 +128,7 @@ namespace Utils.WorkWithDB.Wrappers
             {
                 return base.OpenConnection();
             }
-            string file = GetDBFile();
+            string file = GetDBFileName();
             if (string.IsNullOrEmpty(file))
             {
                 throw new Exception("Wrong Connection String");
@@ -149,7 +149,7 @@ namespace Utils.WorkWithDB.Wrappers
             return res;
         }
 
-        public override string GetDBFile()
+        public override string GetDBFileName()
         {
             return new SqlConnectionStringBuilder(DBConnection.Connection.ConnectionString).AttachDBFilename.Replace("DataDirectory", "").Replace("||", "|").Replace('|', '\\');
         }
