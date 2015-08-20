@@ -11,7 +11,7 @@ using System.Data.Linq.Mapping;
 using System.Diagnostics;
 
 
-namespace DataManager.Domain
+namespace DataManager.Domain.LinqToSql
 {
 
 [Table(Name = "main.Entity")]

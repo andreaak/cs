@@ -7,6 +7,7 @@ using ControlWrapper;
 using ControlWrapper.Binding;
 using DataManager;
 using DataManager.Domain;
+using DataManager.Domain.LinqToSql;
 using DataManager.Repository;
 using DevExpress.XtraBars;
 using DevExpress.XtraRichEdit.API.Native;
@@ -19,22 +20,26 @@ namespace Note
 {
     class DevExpressWrapper : IWrapper
     {
-        NoteDataManager dataManager;
+        DatabaseManager dataManager_;
         private TreeList treeList1;
         private MyRichEditControl richEditControl;
-        private ExportHelper export;
+        private ExportHelper exportHelper;
         BindingDataset.DescriptionDataTable table; 
-        
         BarItem[] controls;
 
-        public DevExpressWrapper(TreeList treeList1, MyRichEditControl richEditControl, BarItem[] controls)
+        public DatabaseManager DataManager
         {
-            this.treeList1 = treeList1;
-            this.richEditControl = richEditControl;
-            this.controls = controls;
-            table = new BindingDataset.DescriptionDataTable();
+            set
+            {
+                this.dataManager_ = value;
+                exportHelper = new ExportHelper(treeList1, richEditControl, dataManager_);
+            }
+            get
+            {
+                return dataManager_;
+            }
         }
-        
+
         public long SelectedNodeId
         {
             get
@@ -44,12 +49,12 @@ namespace Note
             }
         }
 
-        public long Position
+        public int Position
         {
             get
             {
                 TreeListNode node = treeList1.Selection[0];
-                return (long)node.GetValue(DBConstants.ENTITY_TABLE_POSITION); ;
+                return (int)node.GetValue(DBConstants.ENTITY_TABLE_POSITION); ;
             }
         }
 
@@ -61,6 +66,63 @@ namespace Note
                 return (long)node.GetValue(DBConstants.ENTITY_TABLE_PARENTID);
             }
         }
+
+        public string EditValue
+        {
+            get
+            {
+                return richEditControl.Data;
+            }
+            set
+            {
+                richEditControl.Data = value;
+            }
+        }
+
+        public string PlainText
+        {
+            get
+            {
+                return richEditControl.Text;
+            }
+        }
+
+        public DevExpressWrapper(TreeList treeList1, MyRichEditControl richEditControl, BarItem[] controls)
+        {
+            this.treeList1 = treeList1;
+            this.richEditControl = richEditControl;
+            this.controls = controls;
+            table = new BindingDataset.DescriptionDataTable();
+        }
+
+        public void EnableControls(bool isEnable)
+        {
+            foreach (BarItem item in controls)
+            {
+                item.Enabled = isEnable;
+            }
+            treeList1.Enabled = isEnable;
+            richEditControl.Enabled = isEnable;
+        }
+
+        public void Export()
+        {
+            exportHelper.Export();
+        }
+
+        public void LoadEntityFromDB()
+        {
+            DisableFocusing();
+            ClearTreeList();
+            ClearRtfControl();
+            DataManager.InitEntity();
+            UpdateBinding();
+            treeList1.DataSource = table;
+            SortTreeList();
+            EnableFocusing();
+        }
+
+        #region RTF
 
         public void BeginUpdateRtfControl()
         {
@@ -180,173 +242,6 @@ namespace Note
             par.FirstLineIndent = 60.0f;
         }
 
-        public bool IsNodeSelect()
-        {
-            return treeList1.Selection.Count > 0;
-        }
-
-        public bool IsNoteNode()
-        {
-            return IsNoteNode(treeList1.Selection[0]);
-        }
-
-        public void EnableFocusing()
-        {
-            this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.FocusedNodeChanged);
-        }
-
-        public void DisableFocusing()
-        {
-            this.treeList1.FocusedNodeChanged -= new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.FocusedNodeChanged);
-        }
-
-        public void EnableControls(bool isEnable)
-        {
-            foreach (BarItem item in controls)
-            {
-                item.Enabled = isEnable;
-            }
-            treeList1.Enabled = isEnable;
-            richEditControl.Enabled = isEnable;
-        }
-
-        public string Data
-        {
-            get
-            {
-                return richEditControl.Data;
-            }
-            set
-            {
-                richEditControl.Data = value;
-            }
-        }
-
-        public string TextData
-        {
-            get
-            {
-                return richEditControl.Text;
-            }
-        }
-
-        public string RtfText
-        {
-            get
-            {
-                return richEditControl.RtfText;
-            }
-            set
-            {
-                richEditControl.RtfText = value;
-            }
-        }
-
-        public string GetConvertedData(string data, DocTypes inType, DocTypes outType)
-        {
-            return richEditControl.GetConvertedData(data, inType, outType);
-        }
-
-        public void SaveNodesDataToFile()
-        {
-            export.SaveNodesDataToFile();
-        }
-
-        public long GetParentId(bool isChildNode)
-        {
-            long parentId = DBConstants.BASE_LEVEL;
-            if (IsNodeSelect())
-            {
-                TreeListNode selNode = treeList1.Selection[0];
-                if (isChildNode)
-                {
-                    parentId = (long)selNode.GetValue(DBConstants.ENTITY_TABLE_ID);
-                }
-                else if (selNode.ParentNode != null)
-                {
-                    parentId = (long)selNode.ParentNode.GetValue(DBConstants.ENTITY_TABLE_ID);
-                }
-            }
-            return parentId;
-        }
-
-        public void FocusSelectedNode()
-        {
-            treeList1.Selection[0].Expanded = true;
-            treeList1.FocusedNode = treeList1.Selection[0].LastNode;
-        }
-
-        public void InitHandlers()
-        {
-            this.treeList1.CompareNodeValues += CompareNodeValues;
-        }
-
-        public void LoadEntityFromDB()
-        {
-            DisableFocusing();
-            ClearTreeList();
-            ClearRtfControl();
-            dataManager.InitEntity();
-            UpdateBinding();
-            treeList1.DataSource = table;
-            SortTreeList();
-            EnableFocusing();
-        }
-
-        public void UpdateBinding()
-        {
-            IEnumerable<long> tableIds = table.Where(Utils.IsActiveRow).Select(row => row.ID).ToList();
-            IEnumerable<long> entityIds = dataManager.Description.Select(item => item.ID).ToList();
-            long[] idsForAdding = entityIds.Except(tableIds).ToArray();
-            long[] idsForDeleting = tableIds.Except(entityIds).ToArray();
-
-            //add
-            foreach (var item in dataManager.Description.Where(item => idsForAdding.Contains(item.ID)))
-            {
-                table.AddDescriptionRow(
-                    item.ID,
-                    (long)item.ParentID,
-                    item.Description,
-                    (byte)item.Type,
-                    (long)item.OrderPosition,
-                    item.ModDate
-                    );
-            }
-
-            //remove
-            table.Where(row => Utils.IsActiveRow(row) && idsForDeleting.Contains(row.ID))
-                .ToList()
-                .ForEach(row => table.RemoveDescriptionRow(row));
-            
-            //update
-            foreach (var item in dataManager.Updates)
-            {
-                Entity itm = item as Entity;
-                if (itm != null)
-                {
-                    var rw = table.FirstOrDefault(row => row.ID == itm.ID);
-                    if (rw != null)
-                    {
-                        rw.Description = itm.Description;
-                        rw.OrderPosition = itm.OrderPosition ?? LinqToSqlRepository.WRONG_POSITION;
-                        rw.ParentID = itm.ParentID ?? LinqToSqlRepository.WRONG_POSITION;
-                    }
-                }
-            }
-            table.AcceptChanges();
-        }
-
-        public NoteDataManager DataManager
-        {
-            set 
-            {
-                this.dataManager = value; 
-                export = new ExportHelper(treeList1, richEditControl, dataManager);
-            }
-        }
-
-        #region RTF
-
         private void ChangeState(bool isNoteNode)
         {
             if (!isNoteNode)
@@ -378,7 +273,103 @@ namespace Note
         #endregion
 
         #region TREE
-        
+
+        public bool IsNodeSelect()
+        {
+            return treeList1.Selection.Count > 0;
+        }
+
+        public bool IsNoteNode()
+        {
+            return IsNoteNode(treeList1.Selection[0]);
+        }
+
+        public void EnableFocusing()
+        {
+            this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(FocusedNodeChanged);
+        }
+
+        public void DisableFocusing()
+        {
+            this.treeList1.FocusedNodeChanged -= new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(FocusedNodeChanged);
+        }
+
+        public long GetParentId(bool isChildNode)
+        {
+            long parentId = DBConstants.BASE_LEVEL;
+            if (IsNodeSelect())
+            {
+                TreeListNode selNode = treeList1.Selection[0];
+                if (isChildNode)
+                {
+                    parentId = (long)selNode.GetValue(DBConstants.ENTITY_TABLE_ID);
+                }
+                else if (selNode.ParentNode != null)
+                {
+                    parentId = (long)selNode.ParentNode.GetValue(DBConstants.ENTITY_TABLE_ID);
+                }
+            }
+            return parentId;
+        }
+
+        public void FocusSelectedNode()
+        {
+            treeList1.Selection[0].Expanded = true;
+            treeList1.FocusedNode = treeList1.Selection[0].LastNode;
+        }
+
+        public void InitHandlers()
+        {
+            this.treeList1.CompareNodeValues += CompareNodeValues;
+        }
+
+        public void UpdateBinding()
+        {
+            IEnumerable<long> tableIds = table.Where(Utils.IsActiveRow).Select(row => row.ID).ToList();
+            IEnumerable<long> entityIds = DataManager.Description.Select(item => item.ID).ToList();
+            long[] idsForAdding = entityIds.Except(tableIds).ToArray();
+            long[] idsForDeleting = tableIds.Except(entityIds).ToArray();
+
+            //add
+            foreach (var item in DataManager.Description.Where(item => idsForAdding.Contains(item.ID)))
+            {
+                table.AddDescriptionRow(
+                    item.ID,
+                    item.ParentID,
+                    item.EditValue,
+                    (byte)item.Type,
+                    item.OrderPosition
+                    );
+            }
+
+            //remove
+            table.Where(row => Utils.IsActiveRow(row) && idsForDeleting.Contains(row.ID))
+                .ToList()
+                .ForEach(row => table.RemoveDescriptionRow(row));
+            
+            //update
+            foreach (var item in DataManager.Updates)
+            {
+                Description itm = item as Description;
+                if (itm != null)
+                {
+                    var rw = table.FirstOrDefault(row => row.ID == itm.ID);
+                    if (rw != null)
+                    {
+                        rw.Description = itm.EditValue;
+                        rw.OrderPosition = itm.OrderPosition;
+                        rw.ParentID = itm.ParentID;
+                    }
+                }
+            }
+            table.AcceptChanges();
+        }
+
+        public void FocusParentNode()
+        {
+            treeList1.FocusedNode = treeList1.Selection[0].ParentNode;
+        }
+
         public static bool IsEmptyNode(TreeListNode node)
         {
             if (node == null || Convert.IsDBNull(node.GetValue(DBConstants.ENTITY_TABLE_ID)))
@@ -390,7 +381,7 @@ namespace Note
 
         public static bool IsNoteNode(TreeListNode node)
         {
-            if (!IsEmptyNode(node) && (byte)DataTypes.NOTE == (byte)node.GetValue(DBConstants.ENTITY_TABLE_TYPE))
+            if (!IsEmptyNode(node) && DataTypes.NOTE == (DataTypes)node.GetValue(DBConstants.ENTITY_TABLE_TYPE))
             {
                 return true;
             }
@@ -409,36 +400,41 @@ namespace Note
             treeList1.Nodes.Clear();
         }
 
+        private void CompareNodeValues(object sender, EventArgs arg)
+        {
+            CompareNodeValuesEventArgs e = arg as CompareNodeValuesEventArgs;
+            if (e != null)
+            {
+                e.Result = ((int)e.Node1.GetValue(DBConstants.ENTITY_TABLE_POSITION)).CompareTo(
+                    (int)e.Node2.GetValue(DBConstants.ENTITY_TABLE_POSITION));
+            }
+        } 
+  
         #endregion
 
-        private void FocusedNodeChanged(object sender, EventArgs e)
+        private void FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
         {
             DisableFocusing();
-            UpdateNode(e);
+            UpdatePreviousNode(e);
             SetRTFData(e);
             EnableFocusing();
         }
 
-        private void UpdateNode(EventArgs arg)
+        private void UpdatePreviousNode(FocusedNodeChangedEventArgs e)
         {
-            if (arg is FocusedNodeChangedEventArgs)
+            TreeListNode node = e.OldNode;
+            if (IsEmptyNode(node))
             {
-                FocusedNodeChangedEventArgs argum = (FocusedNodeChangedEventArgs)arg;
-
-                TreeListNode node = argum.OldNode;
-                if (IsEmptyNode(node))
-                {
-                    return;
-                }
-                if (IsChangedDescription(node))
-                {
-                    UpdateNodeDescription(node);
-                }
+                return;
+            }
+            if (IsChangedDescription(node))
+            {
+                UpdateDescription(node);
+            }
                 
-                if (IsNoteNode(node) && richEditControl.Modified)
-                {
-                    UpdateNodeData(node);
-                }
+            if (IsNoteNode(node) && richEditControl.Modified)
+            {
+                UpdateTextData(node);
             }
         }
 
@@ -455,56 +451,34 @@ namespace Note
             return false;
         }
 
-        private void UpdateNodeData(TreeListNode node)
+        #region DATA CHANGING
+
+        private void UpdateTextData(TreeListNode node)
         {
             long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
-            dataManager.UpdateData(id, Data, TextData);
+            DataManager.UpdateTextData(id, EditValue, PlainText);
         }
 
-        private void UpdateNodeDescription(TreeListNode node)
+        private void UpdateDescription(TreeListNode node)
         {
             long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
             string description = (string)node.GetValue(DBConstants.ENTITY_TABLE_DESC);
-            dataManager.UpdateDescription(id, description);
+            DataManager.UpdateDescription(id, description);
         }
 
-        private void CompareNodeValues(object sender, EventArgs arg)
-        {
-            CompareNodeValuesEventArgs e = arg as CompareNodeValuesEventArgs;
-            if (e != null)
-            {
-                e.Result = ((long)e.Node1.GetValue(DBConstants.ENTITY_TABLE_POSITION)).CompareTo(
-                    (long)e.Node2.GetValue(DBConstants.ENTITY_TABLE_POSITION));
-            }
-        }        
+        #endregion
 
-        private void SetRTFData(EventArgs arg)
+        private void SetRTFData(FocusedNodeChangedEventArgs e)
         {
-            if (arg is NodeEventArgs)
-            {
-                SetRTFData(((NodeEventArgs)arg).Node);
-            }
-        }
-        
-        private void SetRTFData(TreeListNode node, bool changeControlState = true)
-        {
+            TreeListNode node = e.Node;
             bool isNoteNode = IsNoteNode(node);
             if (isNoteNode)
             {
                 long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
-                Data = dataManager.GetData(id); //selRow.Data;
+                EditValue = DataManager.GetTextData(id); //selRow.Data;
             }
-
-            if (changeControlState)
-            {
-                ChangeState(isNoteNode);
-            }
+            ChangeState(isNoteNode);
         }
 
-
-        public void FocusParentNode()
-        {
-            treeList1.FocusedNode = treeList1.Selection[0].ParentNode;
-        }
     }
 }

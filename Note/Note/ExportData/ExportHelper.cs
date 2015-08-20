@@ -21,19 +21,19 @@ namespace ExportData
         
         private TreeList treeList;
         private MyRichEditControl richEditControl;
-        private NoteDataManager dataManager;
+        private DatabaseManager dataManager;
         private bool isCreateFolders;
 
         private Func<TreeListNode, string> GetPrefixDelegate;
 
-        public ExportHelper(TreeList treeList, MyRichEditControl richEditControl, NoteDataManager dataManager)
+        public ExportHelper(TreeList treeList, MyRichEditControl richEditControl, DatabaseManager dataManager)
         {
             this.treeList = treeList;
             this.richEditControl = richEditControl;
             this.dataManager = dataManager;
         }
 
-        public void SaveNodesDataToFile()
+        public void Export()
         {
 
             string path = null;
@@ -113,7 +113,7 @@ namespace ExportData
             {
                 string fileName = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Note.Utils.GetValidFileName(nodeText) + "." + exp.GetExtension();
                 long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
-                string data = dataManager.GetData(id);
+                string data = dataManager.GetTextData(id);
                 exp.Export(fileName, data);
             }
             else

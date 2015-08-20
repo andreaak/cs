@@ -39,7 +39,7 @@ namespace Note
             {
                 if (dbFile == null)
                 {
-                    NoteDataManager dataManager = new NoteDataManager();
+                    DatabaseManager dataManager = new DatabaseManager();
                     dbFile = dataManager.GetDBFile();
                 }
                 return dbFile;

@@ -324,8 +324,6 @@ namespace ControlWrapper.Binding {
             
             private global::System.Data.DataColumn columnOrderPosition;
             
-            private global::System.Data.DataColumn columnModDate;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DescriptionDataTable() {
@@ -401,14 +399,6 @@ namespace ControlWrapper.Binding {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ModDateColumn {
-                get {
-                    return this.columnModDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -444,15 +434,14 @@ namespace ControlWrapper.Binding {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DescriptionRow AddDescriptionRow(long ID, long ParentID, string Description, byte Type, long OrderPosition, string ModDate) {
+            public DescriptionRow AddDescriptionRow(long ID, long ParentID, string Description, int Type, int OrderPosition) {
                 DescriptionRow rowDescriptionRow = ((DescriptionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         ParentID,
                         Description,
                         Type,
-                        OrderPosition,
-                        ModDate};
+                        OrderPosition};
                 rowDescriptionRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDescriptionRow);
                 return rowDescriptionRow;
@@ -480,7 +469,6 @@ namespace ControlWrapper.Binding {
                 this.columnDescription = base.Columns["Description"];
                 this.columnType = base.Columns["Type"];
                 this.columnOrderPosition = base.Columns["OrderPosition"];
-                this.columnModDate = base.Columns["ModDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -492,16 +480,16 @@ namespace ControlWrapper.Binding {
                 base.Columns.Add(this.columnParentID);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
-                this.columnType = new global::System.Data.DataColumn("Type", typeof(byte), null, global::System.Data.MappingType.Element);
+                this.columnType = new global::System.Data.DataColumn("Type", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnType);
-                this.columnOrderPosition = new global::System.Data.DataColumn("OrderPosition", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnOrderPosition = new global::System.Data.DataColumn("OrderPosition", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrderPosition);
-                this.columnModDate = new global::System.Data.DataColumn("ModDate", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnModDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnParentID.AllowDBNull = false;
+                this.columnType.AllowDBNull = false;
                 this.columnOrderPosition.AllowDBNull = false;
             }
             
@@ -642,8 +630,6 @@ namespace ControlWrapper.Binding {
             
             private global::System.Data.DataColumn columnPlainText;
             
-            private global::System.Data.DataColumn columnModDate;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DataDataTable() {
@@ -703,14 +689,6 @@ namespace ControlWrapper.Binding {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ModDateColumn {
-                get {
-                    return this.columnModDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -746,13 +724,12 @@ namespace ControlWrapper.Binding {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataRow AddDataRow(long ID, string Data, string PlainText, string ModDate) {
+            public DataRow AddDataRow(long ID, string Data, string PlainText) {
                 DataRow rowDataRow = ((DataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         Data,
-                        PlainText,
-                        ModDate};
+                        PlainText};
                 rowDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataRow);
                 return rowDataRow;
@@ -778,7 +755,6 @@ namespace ControlWrapper.Binding {
                 this.columnID = base.Columns["ID"];
                 this.columnData = base.Columns["Data"];
                 this.columnPlainText = base.Columns["PlainText"];
-                this.columnModDate = base.Columns["ModDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -790,8 +766,6 @@ namespace ControlWrapper.Binding {
                 base.Columns.Add(this.columnData);
                 this.columnPlainText = new global::System.Data.DataColumn("PlainText", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPlainText);
-                this.columnModDate = new global::System.Data.DataColumn("ModDate", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnModDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
                 this.columnID.AllowDBNull = false;
@@ -951,12 +925,7 @@ namespace ControlWrapper.Binding {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long ParentID {
                 get {
-                    try {
-                        return ((long)(this[this.tableDescription.ParentIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ParentID\' in table \'Description\' is DBNull.", e);
-                    }
+                    return ((long)(this[this.tableDescription.ParentIDColumn]));
                 }
                 set {
                     this[this.tableDescription.ParentIDColumn] = value;
@@ -981,14 +950,9 @@ namespace ControlWrapper.Binding {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public byte Type {
+            public int Type {
                 get {
-                    try {
-                        return ((byte)(this[this.tableDescription.TypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Type\' in table \'Description\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableDescription.TypeColumn]));
                 }
                 set {
                     this[this.tableDescription.TypeColumn] = value;
@@ -997,41 +961,13 @@ namespace ControlWrapper.Binding {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long OrderPosition {
+            public int OrderPosition {
                 get {
-                    return ((long)(this[this.tableDescription.OrderPositionColumn]));
+                    return ((int)(this[this.tableDescription.OrderPositionColumn]));
                 }
                 set {
                     this[this.tableDescription.OrderPositionColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ModDate {
-                get {
-                    try {
-                        return ((string)(this[this.tableDescription.ModDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ModDate\' in table \'Description\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDescription.ModDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsParentIDNull() {
-                return this.IsNull(this.tableDescription.ParentIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetParentIDNull() {
-                this[this.tableDescription.ParentIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1044,30 +980,6 @@ namespace ControlWrapper.Binding {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDescriptionNull() {
                 this[this.tableDescription.DescriptionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTypeNull() {
-                return this.IsNull(this.tableDescription.TypeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTypeNull() {
-                this[this.tableDescription.TypeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsModDateNull() {
-                return this.IsNull(this.tableDescription.ModDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetModDateNull() {
-                this[this.tableDescription.ModDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1130,22 +1042,6 @@ namespace ControlWrapper.Binding {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ModDate {
-                get {
-                    try {
-                        return ((string)(this[this.tableData.ModDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ModDate\' in table \'Data\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableData.ModDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDataNull() {
                 return this.IsNull(this.tableData.DataColumn);
             }
@@ -1166,18 +1062,6 @@ namespace ControlWrapper.Binding {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPlainTextNull() {
                 this[this.tableData.PlainTextColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsModDateNull() {
-                return this.IsNull(this.tableData.ModDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetModDateNull() {
-                this[this.tableData.ModDateColumn] = global::System.Convert.DBNull;
             }
         }
         

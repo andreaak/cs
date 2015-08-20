@@ -55,25 +55,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataManager.cs" />
+    <Compile Include="DatabaseManager.cs" />
     <Compile Include="Domain\DBConstants.cs" />
-    <Compile Include="Domain\EntityComparer.cs" />
-    <Compile Include="Domain\Note.cs">
+    <Compile Include="Domain\LinqToSql\EntityComparer.cs" />
+    <Compile Include="Domain\LinqToSql\Note.cs">
       <DependentUpon>Note.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Enums.cs" />
+    <Compile Include="Repository\TextData.cs" />
+    <Compile Include="Repository\Description.cs" />
     <Compile Include="Repository\DLRepository.cs" />
     <Compile Include="Repository\IDataRepository.cs" />
     <Compile Include="Repository\LinqToSqlRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Domain\Note.dbml">
+    <None Include="Domain\LinqToSql\Note.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Domain\Note.dbml.layout">
+    <None Include="Domain\LinqToSql\Note.dbml.layout">
       <DependentUpon>Note.dbml</DependentUpon>
     </None>
   </ItemGroup>

@@ -9,28 +9,16 @@ using Utils.WorkWithDB.Wrappers;
 
 namespace DataManager
 {
-    public enum DataTypes
-    {
-        DIR,
-        NOTE,
-    }
-
-    public enum Direction
-    {
-        UP,
-        DOWN,
-    }
-    
-    public class NoteDataManager
+    public class DatabaseManager
     {
         private readonly ADBWrapper dbWrapper = null;
         private readonly IDataRepository dataRepository = null;
 
-        public NoteDataManager()
+        public DatabaseManager()
         {
             dbWrapper = WrapperFactory.GetWrapper();
-            //DLDataService _dataRepository = new DLDataService(dbWrapper);
-            this.dataRepository = new LinqToSqlRepository(dbWrapper.DBConnection.Connection.ConnectionString);
+            //dataRepository = new DLRepository(dbWrapper);
+            dataRepository = new LinqToSqlRepository(dbWrapper.DBConnection.Connection.ConnectionString);
         }
 
         public bool IsDBOnline()
@@ -48,10 +36,10 @@ namespace DataManager
             dbWrapper.NonQueryMethod("vacuum;");
         }
 
-        public bool CreateDb(string errorMessage)
+        public bool CreateDb()
         {
-            string message = string.Format("{0} {1}Do you want to create new database: {2}?",
-                                            errorMessage, Environment.NewLine, GetDBFile());
+            string message = string.Format("Database fault!{0}Do you want to create new database: {1}?",
+                                            Environment.NewLine, GetDBFile());
             if (DisplayMessage.ShowWarningYesNO(message) == DialogResult.Yes)
             {
                 return dbWrapper.CreateDB(Application.StartupPath + "\\" + GetDBFile(), DBConstants.GetScript(dbWrapper.DBConnection.DbType));
@@ -74,7 +62,7 @@ namespace DataManager
             }
         }
 
-        public IEnumerable<Entity> Description
+        public IEnumerable<Description> Description
         {
             get
             {
@@ -82,11 +70,11 @@ namespace DataManager
             }
         }
 
-        public IEnumerable<EntityData> Data
+        public IEnumerable<TextData> Texts
         {
             get
             {
-                return dataRepository.Data;
+                return dataRepository.Texts;
             }
         }
 
@@ -113,34 +101,34 @@ namespace DataManager
             dataRepository.DeleteNode(id);
         }
 
-        public bool IsCanChangeNodeLevel(long position, long parentId, Direction direction)
+        public bool IsCanChangeNodeLevel(int position, long parentId, Direction direction)
         {
             return dataRepository.IsCanChangeNodeLevel(position, parentId, direction);
         }
 
-        public bool ChangeNodeLevel(long position, long parentId, long id, Direction direction)
+        public bool ChangeNodeLevel(int position, long parentId, long id, Direction direction)
         {
             return dataRepository.ChangeNodeLevel(position, parentId, id, direction);
         } 
 
-        public bool IsCanMoveNode(long position, long parentId, Direction direction)
+        public bool IsCanMoveNode(int position, long parentId, Direction direction)
         {
             return dataRepository.IsCanMoveNode(position, parentId, direction);
         }
 
-        public bool MoveNode(long currentPosition, long parentId, long id, Direction direction)
+        public bool MoveNode(int position, long parentId, long id, Direction direction)
         {
-            return dataRepository.MoveNode(currentPosition, parentId, id, direction);
+            return dataRepository.MoveNode(position, parentId, id, direction);
         }
 
-        public string GetData(long id)
+        public string GetTextData(long id)
         {
-            return dataRepository.GetData(id);
+            return dataRepository.GetTextData(id);
         }
 
-        public bool UpdateData(long id, string data, string textData)
+        public bool UpdateTextData(long id, string editValue, string plainText)
         {
-            return dataRepository.UpdateData(id, data, textData);
+            return dataRepository.UpdateTextData(id, editValue, plainText);
         }
 
         public bool UpdateDescription(long id, string description)
@@ -148,13 +136,11 @@ namespace DataManager
             return dataRepository.UpdateDescription(id, description);
         }
         
-        public IEnumerable<Tuple<Entity, DataStatus>> GetModifiedDescriptions(NoteDataManager dbServiceLocal)
+        public IEnumerable<Tuple<Description, DataStatus>> GetModifiedDescriptions(DatabaseManager dbServiceLocal)
         {
             return dataRepository.GetModifiedDescriptions(dbServiceLocal.dataRepository);
         }
        
         #endregion
-
     }
-
 }

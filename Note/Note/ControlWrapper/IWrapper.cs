@@ -5,15 +5,14 @@ namespace ControlWrapper
 {
     public interface IWrapper
     {
-        NoteDataManager DataManager { set; }
+        DatabaseManager DataManager { set; }
         
         long SelectedNodeId { get; }
-        long Position { get; }
+        int Position { get; }
         long ParentId { get; }
         
-        string RtfText { get; set; }
-        string TextData { get;}
-        string Data { get; set; }
+        string PlainText { get;}
+        string EditValue { get; set; }
 
         void EnableControls(bool isEnable);
         void EnableFocusing();
@@ -31,7 +30,6 @@ namespace ControlWrapper
         
         void BeginUpdateRtfControl();
         void EndUpdateRtfControl();
-        string GetConvertedData(string data, DocTypes inType, DocTypes outType);
         
         bool IsNodeSelect();
         bool IsNoteNode();
@@ -39,7 +37,7 @@ namespace ControlWrapper
         long GetParentId(bool isChildNode);
 
         void LoadEntityFromDB();
-        void SaveNodesDataToFile();
+        void Export();
 
         void InitHandlers();
 

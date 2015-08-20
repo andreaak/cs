@@ -27,7 +27,7 @@ namespace Note
 {
     public partial class Main : Form
     {
-        NoteDataManager dataManager;
+        DatabaseManager dataManager;
         IWrapper controlWrapper;
         private const string TITLE = "Note";
 
@@ -125,7 +125,7 @@ namespace Note
 
         private void barButtonItemSaveAll_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.SaveNodesDataToFile();
+            controlWrapper.Export();
         }
 
         private void barButtonItemDefinitionFormat_ItemClick(object sender, EventArgs e)
@@ -230,8 +230,8 @@ namespace Note
                     {
                         controlWrapper.FocusSelectedNode();
                     }
-                    controlWrapper.Data = rtf;
-                    dataManager.UpdateData(id, controlWrapper.Data, controlWrapper.TextData);
+                    controlWrapper.EditValue = rtf;
+                    dataManager.UpdateTextData(id, controlWrapper.EditValue, controlWrapper.PlainText);
                     controlWrapper.FocusParentNode();
 	            }
                 controlWrapper.EnableFocusing();
@@ -241,10 +241,10 @@ namespace Note
 
         private void barButtonItemCheckNewestEntity_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            NoteDataManager dataManagerLocal;
-            if(TryGetDbService(out dataManagerLocal))
+            DatabaseManager dataManagerLocal;
+            if(TryGetDataManager(out dataManagerLocal))
             {
-                IEnumerable<Tuple<Entity, DataStatus>> descriptions = dataManager.GetModifiedDescriptions(dataManagerLocal);
+                IEnumerable<Tuple<Description, DataStatus>> descriptions = dataManager.GetModifiedDescriptions(dataManagerLocal);
                 ItemsList form = new ItemsList();
                 form.LoadData(descriptions);
                 form.Show();
@@ -324,12 +324,12 @@ namespace Note
                 {
                     return false;
                 }
-                dataManager = new NoteDataManager();
+                dataManager = new DatabaseManager();
                 if (dataManager.IsDBOnline())
                 {
                     if (!dataManager.IsProperDB)
                     {
-                        dbConnectionOk = CreateDb();
+                        dbConnectionOk = dataManager.CreateDb();
                     }
                     else
                     {
@@ -339,7 +339,7 @@ namespace Note
             }
             catch (DbFileNotExistException)
             {
-                dbConnectionOk = CreateDb();
+                dbConnectionOk = dataManager.CreateDb();
             }
             catch (OperationCanceledException)
             {
@@ -376,24 +376,21 @@ namespace Note
             }
         }
 
-        private bool TryGetDbService(out NoteDataManager dataManagerLocal)
+        private bool TryGetDataManager(out DatabaseManager dataManagerLocal)
         {
 
             bool dbConnectionOk = false;
             bool showMessage = true;
-            string errorMessage = "Connection is absent!";
+            string errorMessage = null;
             dataManagerLocal = null;
             try
             {
-                if (true)
+                DialogResult res = new DBDataForm().ShowDialog(this);
+                if (res != DialogResult.OK)
                 {
-                    DialogResult res = new DBDataForm().ShowDialog(this);
-                    if (res != DialogResult.OK)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
-                dataManagerLocal = new NoteDataManager();
+                dataManagerLocal = new DatabaseManager();
                 if (dataManagerLocal.IsDBOnline())
                 {
                     dbConnectionOk = true;
@@ -410,16 +407,10 @@ namespace Note
 
             if (!dbConnectionOk && showMessage)
             {
-                DisplayMessage.ShowError(errorMessage);
+                DisplayMessage.ShowError(errorMessage ?? "Connection is absent!");
             }
 
             return dbConnectionOk;
-        }
-
-        private bool CreateDb()
-        {
-            string errorMessage = "Database fault!";
-            return dataManager.CreateDb(errorMessage);
         }
 
         private void VacuumDb(bool isSilent)
@@ -465,7 +456,7 @@ namespace Note
             }
         }
 
-        private void ChangeNodeLocation(Func<long, long, Direction, bool> IsValidAction, Func<long, long, long, Direction, bool> PerformAction, Direction dir)
+        private void ChangeNodeLocation(Func<int, long, Direction, bool> IsValidAction, Func<int, long, long, Direction, bool> PerformAction, Direction dir)
         {
             controlWrapper.DisableFocusing();
             if (!controlWrapper.IsNodeSelect())
@@ -474,7 +465,7 @@ namespace Note
                 return;
             }
 
-            long position = controlWrapper.Position;
+            int position = controlWrapper.Position;
             long parentId = controlWrapper.ParentId;
             if (!IsValidAction(position, parentId, dir))
             {

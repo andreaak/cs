@@ -1,13 +1,7 @@
-﻿using DataManager.Domain;
-using DataManager.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using DataManager.Repository;
 
 namespace Note
 {
@@ -18,14 +12,14 @@ namespace Note
             InitializeComponent();
         }
 
-        public void LoadData(IEnumerable<Tuple<Entity, DataStatus>> items)
+        public void LoadData(IEnumerable<Tuple<Description, DataStatus>> items)
         {
             ClearTreeList();
             treeList1.DataSource = GetTableForBinding(items);
             SortTreeList();
         }
 
-        private static List<object> GetTableForBinding(IEnumerable<Tuple<Entity, DataStatus>> items)
+        private static List<object> GetTableForBinding(IEnumerable<Tuple<Description, DataStatus>> items)
         {
             List<object> list = new List<object>();
             foreach (var item in items)
@@ -33,10 +27,10 @@ namespace Note
                 list.Add(new 
                 {
                     ID = item.Item1.ID,
-                    ParentID = (long)item.Item1.ParentID,
-                    Description = item.Item1.Description,
-                    Type = (byte)item.Item1.Type,
-                    OrderPosition = (long)item.Item1.OrderPosition,
+                    ParentID = item.Item1.ParentID,
+                    Description = item.Item1.EditValue,
+                    Type = item.Item1.Type,
+                    OrderPosition = item.Item1.OrderPosition,
                     DataStatus = item.Item2 == DataStatus.Parent ? string.Empty: item.Item2.ToString() ,
                 });
             }
