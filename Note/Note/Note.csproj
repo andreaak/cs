@@ -25,6 +25,9 @@
   <PropertyGroup>
     <ApplicationIcon>ToolDoc.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Note</RootNamespace>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DbLinq">
       <HintPath>Dll\DbLinq.dll</HintPath>
@@ -73,6 +76,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BindingDataset.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ControlWrapper\DevExpress\RtfWrapper.cs" />
+    <Compile Include="ControlWrapper\DevExpress\TreeWrapper.cs" />
+    <Compile Include="ControlWrapper\IRtfWrapper.cs" />
+    <Compile Include="ControlWrapper\ITreeWrapper.cs" />
+    <Compile Include="ControlWrapper\Node.cs" />
     <Compile Include="ExportData\Exporter\Exporter.cs" />
     <Compile Include="ExportData\Exporter\MultiFormatExporter.cs" />
     <Compile Include="ExportData\ExportOptions.cs">
@@ -82,7 +90,6 @@
       <DependentUpon>ExportOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportData\ExportHelper.cs" />
-    <Compile Include="ControlWrapper\IWrapper.cs" />
     <Compile Include="ControlWrapper\MyRichEditControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -93,7 +100,8 @@
     <Compile Include="DatabaseConnectionInfo.Designer.cs">
       <DependentUpon>DatabaseConnectionInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlWrapper\DevExpressWrapper.cs" />
+    <Compile Include="IMainView.cs" />
+    <Compile Include="MainPresenter.cs" />
     <Compile Include="ModifiedEntities.cs">
       <SubType>Form</SubType>
     </Compile>

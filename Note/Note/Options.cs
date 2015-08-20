@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Configuration;
-using System.Windows.Forms;
 using DataManager;
 using Utils.ActionWindow;
 
@@ -32,19 +28,22 @@ namespace Note
     {
 
 
-        private static string dbFile = null;
-        public static string DbFile
+        private static string dbFileName = null;
+        public static string DbFileName
         {
             get
             {
-                if (dbFile == null)
+                if (dbFileName == null)
                 {
                     DatabaseManager dataManager = new DatabaseManager();
-                    dbFile = dataManager.GetDBFile();
+                    dbFileName = dataManager.GetDBFileName();
                 }
-                return dbFile;
+                return dbFileName;
             }
-            set { dbFile = value; }
+            set
+            {
+                dbFileName = value;
+            }
         }
 
         private static DocTypes dbFormatType = DocTypes.None;

@@ -6,6 +6,7 @@ namespace DataManager.Domain
     public static class  DBConstants
     {
         public const int BASE_LEVEL =  -1;
+        public const int START_POSITION = 0;
         public const string ENTITY_TABLE = "Entity";
 
         public const string ENTITY_TABLE_ID = "ID";

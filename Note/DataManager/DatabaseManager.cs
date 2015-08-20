@@ -39,17 +39,17 @@ namespace DataManager
         public bool CreateDb()
         {
             string message = string.Format("Database fault!{0}Do you want to create new database: {1}?",
-                                            Environment.NewLine, GetDBFile());
+                                            Environment.NewLine, GetDBFileName());
             if (DisplayMessage.ShowWarningYesNO(message) == DialogResult.Yes)
             {
-                return dbWrapper.CreateDB(Application.StartupPath + "\\" + GetDBFile(), DBConstants.GetScript(dbWrapper.DBConnection.DbType));
+                return dbWrapper.CreateDB(Application.StartupPath + "\\" + GetDBFileName(), DBConstants.GetScript(dbWrapper.DBConnection.DbType));
             }
             return false;
         }
 
-        public string GetDBFile()
+        public string GetDBFileName()
         {
-            return dbWrapper.GetDBFile();
+            return dbWrapper.GetDBFileName();
         }
 
         #region IDataRepository Members
@@ -62,7 +62,7 @@ namespace DataManager
             }
         }
 
-        public IEnumerable<Description> Description
+        public IEnumerable<Description> Descriptions
         {
             get
             {
@@ -86,39 +86,39 @@ namespace DataManager
             }
         }
 
-        public void InitEntity()
+        public void Init()
         {
             dataRepository.Init();
         }
 
-        public long InsertNode(long parentId, string description,  DataTypes type)
+        public long Insert(long parentId, string description,  DataTypes type)
         {
-            return dataRepository.InsertNode(parentId, description,  type);
+            return dataRepository.Insert(parentId, description,  type);
         }
 
-        public void DeleteNode(long id)
+        public void Delete(long id)
         {
-            dataRepository.DeleteNode(id);
+            dataRepository.Delete(id);
         }
 
-        public bool IsCanChangeNodeLevel(int position, long parentId, Direction direction)
+        public bool IsCanChangeLevel(int position, long parentId, Direction direction)
         {
-            return dataRepository.IsCanChangeNodeLevel(position, parentId, direction);
+            return dataRepository.IsCanChangeLevel(position, parentId, direction);
         }
 
-        public bool ChangeNodeLevel(int position, long parentId, long id, Direction direction)
+        public bool ChangeLevel(int position, long parentId, long id, Direction direction)
         {
-            return dataRepository.ChangeNodeLevel(position, parentId, id, direction);
+            return dataRepository.ChangeLevel(position, parentId, id, direction);
         } 
 
-        public bool IsCanMoveNode(int position, long parentId, Direction direction)
+        public bool IsCanMove(int position, long parentId, Direction direction)
         {
-            return dataRepository.IsCanMoveNode(position, parentId, direction);
+            return dataRepository.IsCanMove(position, parentId, direction);
         }
 
-        public bool MoveNode(int position, long parentId, long id, Direction direction)
+        public bool Move(int position, long parentId, long id, Direction direction)
         {
-            return dataRepository.MoveNode(position, parentId, id, direction);
+            return dataRepository.Move(position, parentId, id, direction);
         }
 
         public string GetTextData(long id)
@@ -135,10 +135,10 @@ namespace DataManager
         {
             return dataRepository.UpdateDescription(id, description);
         }
-        
-        public IEnumerable<Tuple<Description, DataStatus>> GetModifiedDescriptions(DatabaseManager dbServiceLocal)
+
+        public IEnumerable<Tuple<Description, DataStatus>> GetModifiedDescriptions(DatabaseManager dataManagerLocal)
         {
-            return dataRepository.GetModifiedDescriptions(dbServiceLocal.dataRepository);
+            return dataRepository.GetModifiedDescriptions(dataManagerLocal.dataRepository);
         }
        
         #endregion

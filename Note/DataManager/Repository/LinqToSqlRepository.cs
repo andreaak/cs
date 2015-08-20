@@ -10,15 +10,14 @@ namespace DataManager.Repository
 {
     public class LinqToSqlRepository : IDataRepository
     {
-        private SQLiteConnection connection = null;
-        private NoteDataContext db = null;
         private const int WRONG_POSITION = -1;
-        private const int START_POSITION = 0;
+        
+        private readonly NoteDataContext dataContext = null;
 
         public LinqToSqlRepository(string connectionString)
         {
-            connection = new SQLiteConnection(connectionString);
-            db = new NoteDataContext(connection, new SqliteVendor());
+            SQLiteConnection connection = new SQLiteConnection(connectionString);
+            dataContext = new NoteDataContext(connection, new SqliteVendor());
         } 
        
         #region IDataRepository Members
@@ -29,8 +28,8 @@ namespace DataManager.Repository
             {
                 try
                 {
-                    db.ExecuteQuery<Entity>(DBConstants.GetEntityExistQuery()).ToArray();
-                    db.ExecuteQuery<EntityData>(DBConstants.GetEntityExistQuery()).ToArray();
+                    dataContext.ExecuteQuery<Entity>(DBConstants.GetEntityExistQuery()).ToArray();
+                    dataContext.ExecuteQuery<EntityData>(DBConstants.GetEntityExistQuery()).ToArray();
                 }
                 catch (Exception)
                 {
@@ -40,12 +39,11 @@ namespace DataManager.Repository
             }
         }
 
-
         public IList<Description> Descriptions
         {
             get
             {
-                return Convert(db.Entity);
+                return Convert(dataContext.Entity);
             }
         }
 
@@ -53,7 +51,7 @@ namespace DataManager.Repository
         {
             get
             {
-                return Convert(db.EntityData);
+                return Convert(dataContext.EntityData);
             }
         }
 
@@ -61,15 +59,15 @@ namespace DataManager.Repository
         {
             get
             {
-                return Convert(db.GetChangeSet().Updates);
+                return Convert(dataContext.GetChangeSet().Updates);
             }
         }
 
         public void Init(){}
 
-        public long InsertNode(long parentId, string description, DataTypes type)
+        public long Insert(long parentId, string description, DataTypes type)
         {
-            var maxPos = db.Entity
+            var maxPos = dataContext.Entity
                 .Where(itm => itm.ParentID == parentId)
                 .Select(itm => itm.OrderPosition)
                 .Max();
@@ -77,52 +75,91 @@ namespace DataManager.Repository
             {
                 ParentID = parentId,
                 Description = description,
-                OrderPosition = maxPos.HasValue ? maxPos + 1 : START_POSITION,
+                OrderPosition = maxPos.HasValue ? maxPos + 1 : DBConstants.START_POSITION,
                 Type = (byte) type,
                 ModDate = DateTime.Now.ToString()
             };
-            db.Entity.InsertOnSubmit(item);
-            db.SubmitChanges();
+            dataContext.Entity.InsertOnSubmit(item);
+            dataContext.SubmitChanges();
 
             if (type == DataTypes.NOTE)
             {
-                EntityData itemData = new EntityData();
-                itemData.ID = item.ID;
-                itemData.ModDate = DateTime.Now.ToString();
-                db.EntityData.InsertOnSubmit(itemData);
-                db.SubmitChanges();
+                EntityData itemData = new EntityData
+                {
+                    ID = item.ID,
+                    ModDate = DateTime.Now.ToString()
+                };
+                dataContext.EntityData.InsertOnSubmit(itemData);
+                dataContext.SubmitChanges();
             }
             return item.ID; ;
         }
 
-        public void DeleteNode(long id)
+        public string GetTextData(long id)
         {
-            Entity item = db.Entity.FirstOrDefault(row => row.ID == id);
+            EntityData item = dataContext.EntityData.FirstOrDefault(row => row.ID == id);
             if (item != null)
             {
-                Entity[] subItems = db.Entity
+                return item.Data;
+            }
+            return null;
+        }
+
+        public bool UpdateTextData(long id, string editValue, string plainText)
+        {
+            EntityData entityData = dataContext.EntityData.FirstOrDefault(item => item.ID == id);
+            if (entityData != null && editValue != entityData.Data)
+            {
+                entityData.Data = editValue;
+                entityData.TextData = plainText;
+                entityData.ModDate = DateTime.Now.ToString();
+                dataContext.SubmitChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateDescription(long id, string description)
+        {
+            Entity entity = dataContext.Entity.FirstOrDefault(item => item.ID == id);
+            if (entity != null && entity.Description != description)
+            {
+                entity.Description = description;
+                entity.ModDate = DateTime.Now.ToString();
+                dataContext.SubmitChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public void Delete(long id)
+        {
+            Entity item = dataContext.Entity.FirstOrDefault(row => row.ID == id);
+            if (item != null)
+            {
+                Entity[] subItems = dataContext.Entity
                     .Where(subItem => subItem.ParentID == item.ID)
                     .SelectMany(RecurseSelect).ToArray();
                 if (subItems.Length != 0)
                 {
                     long[] ids = subItems.Select(subItem => subItem.ID).ToArray();
-                    IEnumerable<EntityData> subItemsData = db.EntityData
+                    IEnumerable<EntityData> subItemsData = dataContext.EntityData
                         .Where(subItemData => ids.Contains(subItemData.ID));
-                    db.EntityData.DeleteAllOnSubmit(subItemsData);
-                    db.Entity.DeleteAllOnSubmit(subItems);
+                    dataContext.EntityData.DeleteAllOnSubmit(subItemsData);
+                    dataContext.Entity.DeleteAllOnSubmit(subItems);
                 }
 
-                EntityData itemData = db.EntityData.FirstOrDefault(subItem => subItem.ID == item.ID);
+                EntityData itemData = dataContext.EntityData.FirstOrDefault(subItem => subItem.ID == item.ID);
                 if (itemData != null)
                 {
-                    db.EntityData.DeleteOnSubmit(itemData);
+                    dataContext.EntityData.DeleteOnSubmit(itemData);
                 }
-                db.Entity.DeleteOnSubmit(item);
-                db.SubmitChanges();
+                dataContext.Entity.DeleteOnSubmit(item);
+                dataContext.SubmitChanges();
             }
         }
 
-        public bool IsCanChangeNodeLevel(int position, long parentId, Direction direction)
+        public bool IsCanChangeLevel(int position, long parentId, Direction direction)
         {
             if (direction == Direction.UP)
             {
@@ -131,9 +168,9 @@ namespace DataManager.Repository
             return !IsMinLevel(position, parentId);
         }
 
-        public bool ChangeNodeLevel(int position, long parentId, long id, Direction direction)
+        public bool ChangeLevel(int position, long parentId, long id, Direction direction)
         {
-            Entity currentitem = db.Entity.FirstOrDefault(item => item.ID == id);
+            Entity currentitem = dataContext.Entity.FirstOrDefault(item => item.ID == id);
             if (currentitem == null)
             {
                 return false;
@@ -142,7 +179,7 @@ namespace DataManager.Repository
             long? destItemId;
             if (direction == Direction.UP)
             {
-                Entity levelUpItem = db.Entity.FirstOrDefault(item => item.ID == currentitem.ParentID && item.Type == (int)DataTypes.DIR);
+                Entity levelUpItem = dataContext.Entity.FirstOrDefault(item => item.ID == currentitem.ParentID && item.Type == (int)DataTypes.DIR);
                 if (levelUpItem == null)
                 {
                     return false;
@@ -151,7 +188,7 @@ namespace DataManager.Repository
             }
             else
             {
-                Entity destItem = db.Entity
+                Entity destItem = dataContext.Entity
                     .Where(item => item.ParentID == currentitem.ParentID
                     && item.Type == (int)DataTypes.DIR
                     && item.OrderPosition > currentitem.OrderPosition)
@@ -164,23 +201,23 @@ namespace DataManager.Repository
                 destItemId = destItem.ID;
             }
 
-            long destPosition = db.Entity
+            long destPosition = dataContext.Entity
                 .Where(item => item.ParentID == destItemId)
                 .Select(item => item.OrderPosition)
-                .Max() + 1 ?? START_POSITION;
+                .Max() + 1 ?? DBConstants.START_POSITION;
 
             if (destItemId.HasValue)
             {
                 currentitem.ParentID = destItemId;
                 currentitem.OrderPosition = destPosition;
                 currentitem.ModDate = DateTime.Now.ToString();
-                db.SubmitChanges();
+                dataContext.SubmitChanges();
                 return true;
             }
             return false;
         }
 
-        public bool IsCanMoveNode(int position, long parentId, Direction direction)
+        public bool IsCanMove(int position, long parentId, Direction direction)
         {
             if (direction == Direction.UP)
             {
@@ -189,9 +226,9 @@ namespace DataManager.Repository
             return !IsMaxPosition(position, parentId);
         }
 
-        public bool MoveNode(int position, long parentId, long id, Direction direction)
+        public bool Move(int position, long parentId, long id, Direction direction)
         {
-            Entity currentitem = db.Entity.FirstOrDefault(item => item.ID == id);
+            Entity currentitem = dataContext.Entity.FirstOrDefault(item => item.ID == id);
             if (currentitem == null)
             {
                 return false;
@@ -200,14 +237,14 @@ namespace DataManager.Repository
             long destPosition;
             if (direction == Direction.UP)
             {
-                destPosition = db.Entity
+                destPosition = dataContext.Entity
                     .Where(item => item.ParentID == parentId && item.OrderPosition < position)
                     .Select(item => item.OrderPosition)
                     .Max() ?? WRONG_POSITION;
             }
             else
             {
-                destPosition = db.Entity
+                destPosition = dataContext.Entity
                     .Where(item => item.ParentID == parentId && item.OrderPosition > position)
                     .Select(item => item.OrderPosition)
                     .Min() ?? WRONG_POSITION;
@@ -217,51 +254,14 @@ namespace DataManager.Repository
                 return false;
             }
 
-            Entity switchItem = db.Entity.FirstOrDefault(item => item.ParentID == parentId && item.OrderPosition == destPosition);
+            Entity switchItem = dataContext.Entity.FirstOrDefault(item => item.ParentID == parentId && item.OrderPosition == destPosition);
             if (switchItem != null)
             {
                 currentitem.OrderPosition = destPosition;
                 currentitem.ModDate = DateTime.Now.ToString();
                 switchItem.OrderPosition = position;
                 switchItem.ModDate = DateTime.Now.ToString();
-                db.SubmitChanges();
-                return true;
-            }
-            return false;
-        }
-
-        public string GetTextData(long id)
-        {
-            EntityData item = db.EntityData.FirstOrDefault(row => row.ID == id);
-            if (item != null)
-            {
-                return item.Data;
-            }
-            return null;
-        }
-
-        public bool UpdateTextData(long id, string editValue, string plainText)
-        {
-            EntityData entityData = db.EntityData.FirstOrDefault(item => item.ID == id);
-            if (entityData != null && editValue != entityData.Data)
-            {
-                entityData.Data = editValue;
-                entityData.TextData = plainText;
-                entityData.ModDate = DateTime.Now.ToString();
-                db.SubmitChanges();
-                return true;
-            }
-            return false;
-        }
-
-        public bool UpdateDescription(long id, string description)
-        {
-            Entity entity = db.Entity.FirstOrDefault(item => item.ID == id);
-            if (entity != null && entity.Description != description)
-            {
-                entity.Description = description;
-                entity.ModDate = DateTime.Now.ToString();
-                db.SubmitChanges();
+                dataContext.SubmitChanges();
                 return true;
             }
             return false;
@@ -273,7 +273,7 @@ namespace DataManager.Repository
             //added
             foreach (var comparedItem in comparedRepository.Descriptions)
             {
-                bool isExist = db.Entity.Any(item => item.ID == comparedItem.ID);
+                bool isExist = dataContext.Entity.Any(item => item.ID == comparedItem.ID);
                 if (!isExist)
                 {
                     AddDescription(list, comparedItem, DataStatus.Added);
@@ -293,7 +293,7 @@ namespace DataManager.Repository
 
             foreach (var comparedItem in comparedRepository.Descriptions)
 	        {
-                var baseItem = db.Entity.FirstOrDefault(item => item.ID == comparedItem.ID);
+                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID);
                 if (baseItem != null
                     && (string.IsNullOrEmpty(baseItem.ModDate) || comparedItem.ModDate > DateTime.Parse(baseItem.ModDate)))
                 {
@@ -305,7 +305,7 @@ namespace DataManager.Repository
 
             foreach (var comparedItem in comparedRepository.Descriptions)
             {
-                var baseItem = db.Entity.FirstOrDefault(item => item.ID == comparedItem.ID);
+                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID);
                 if (baseItem != null
                     && !string.IsNullOrEmpty(baseItem.ModDate)
                     && comparedItem.ModDate < DateTime.Parse(baseItem.ModDate))
@@ -318,7 +318,7 @@ namespace DataManager.Repository
 
             foreach (TextData comparedData in comparedRepository.Texts)
             {
-                var baseData = db.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
+                var baseData = dataContext.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
                 if (baseData != null
                     && (string.IsNullOrEmpty(baseData.ModDate) || comparedData.ModDate > DateTime.Parse(baseData.ModDate)))
                 {
@@ -333,7 +333,7 @@ namespace DataManager.Repository
 
             foreach (TextData comparedData in comparedRepository.Texts)
             {
-                var baseData = db.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
+                var baseData = dataContext.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
                 if (baseData != null
                     && !string.IsNullOrEmpty(baseData.ModDate)
                     && comparedData.ModDate < DateTime.Parse(baseData.ModDate))
@@ -353,19 +353,19 @@ namespace DataManager.Repository
 
         private IEnumerable<Entity> RecurseSelect(Entity item)
         {
-            return (new [] { item }).Union(db.Entity
+            return (new [] { item }).Union(dataContext.Entity
             .Where(subItem => subItem.ParentID == item.ID)
             .SelectMany(RecurseSelect));
         }
 
         private bool IsMinPosition(long position, long parentId)
         {
-            return !db.Entity.Any(item => item.ParentID == parentId && item.OrderPosition < position);
+            return !dataContext.Entity.Any(item => item.ParentID == parentId && item.OrderPosition < position);
         }
 
         private bool IsMaxPosition(long position, long parentId)
         {
-            return !db.Entity.Any(item => item.ParentID == parentId && item.OrderPosition > position);
+            return !dataContext.Entity.Any(item => item.ParentID == parentId && item.OrderPosition > position);
         }
 
         private bool IsMaxLevel(long parentId)
@@ -375,7 +375,7 @@ namespace DataManager.Repository
 
         private bool IsMinLevel(long position, long parentId)
         {
-            return !db.Entity.Any(item => item.ParentID == parentId
+            return !dataContext.Entity.Any(item => item.ParentID == parentId
                         && item.Type == (int)DataTypes.DIR
                         && item.OrderPosition > position);
         }
@@ -389,10 +389,10 @@ namespace DataManager.Repository
 
         private void AddParentDescriptions(long id, List<Tuple<Description, DataStatus>> list)
         {
-            var entity = db.Entity.FirstOrDefault(item => item.ID == id);
+            var entity = dataContext.Entity.FirstOrDefault(item => item.ID == id);
             while (entity != null && entity.ParentID.HasValue && entity.ParentID > DBConstants.BASE_LEVEL)
             {
-                Entity parent = db.Entity.FirstOrDefault(item => item.ID == entity.ParentID.Value);
+                Entity parent = dataContext.Entity.FirstOrDefault(item => item.ID == entity.ParentID.Value);
                 if (parent != null)
                 {
                     Tuple<Description, DataStatus> item =

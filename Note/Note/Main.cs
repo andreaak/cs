@@ -1,76 +1,48 @@
 using System;
 using System.Collections.Generic;
-using System.Data;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using DataManager;
-using DataManager.Domain;
 using DataManager.Repository;
-using DevExpress.XtraTreeList;
-using DevExpress.XtraTreeList.Nodes;
-using System.Collections;
-using System.IO;
-using System.Threading;
-using System.Text;
-using Utils;
-using Utils.WorkWithDB;
-using Utils.ActionWindow;
-using Note.ControlWrapper;
 using DevExpress.XtraBars;
-using Utils.WorkWithDB.Wrappers;
-using ControlWrapper;
-using Utils.WorkWithFiles;
-using Properties;
-using System.Drawing;
+using Note.ControlWrapper;
+using Note.ControlWrapper.DevExpress;
+using Note.ExportData;
+using Note.Properties;
+using Utils;
+using Utils.ActionWindow;
 
 namespace Note
 {
-    public partial class Main : Form
+    public partial class Main : Form, IMainView
     {
-        DatabaseManager dataManager;
-        IWrapper controlWrapper;
         private const string TITLE = "Note";
+
+        private readonly ITreeWrapper treeWrapper;
+        private readonly IRtfWrapper rtfWrapper;
+        private readonly ExportHelper exportHelper;
+        private readonly MainPresenter presenter;
+
+        Form IMainView.Form
+        {
+            get
+            {
+                return this;
+            }
+        }
 
         public Main()
         {
             InitializeComponent();
+            presenter = new MainPresenter(this);
             spellCheckerCustomDictionary1.AlphabetPath = Options.AlphabetPath;
             spellCheckerCustomDictionary1.DictionaryPath = Options.DictionaryPath;
             this.spellChecker1.Dictionaries.Add(spellCheckerCustomDictionary1);
             
-            controlWrapper = new DevExpressWrapper(treeList1, richEditControl1, GetControls());
-
+            rtfWrapper = new RtfWrapper(richEditControl1);
+            treeWrapper = new TreeWrapper(treeList1, rtfWrapper, presenter);
+            exportHelper = new ExportHelper(treeWrapper, presenter);
             Init(false);
-            controlWrapper.InitHandlers();
-
-            //Rectangle rect = Settings.Default.WindowPosition;
-            //if (rect.Width != 0 && rect.Height != 0)
-            //{
-            //    this.Bounds = rect;
-            //}
-        }
-
-        private BarItem[] GetControls()
-        {
-            return new BarItem[] {
-                barButtonItemAddDir, barButtonItemAddNote, barButtonItemDelete, barButtonItemDown, barButtonItemUp
-            , barButtonItemClassFormat, barButtonItemCodeFormat, barButtonItemDefinitionFormat
-            , barButtonItemHeaderFormat, barButtonItemImport, barButtonItemInfoFormat, barButtonItemMethodFormat
-            , barButtonItemRemoveLineBreak, barButtonItemRemoveWhiteSpace, barButtonItemRemoveDoubleWhiteSpace
-            , barButtonItemSaveAll, barButtonItemVacuum , barButtonItemLevelUp, barButtonItemLevelDown, barButtonItemConvertDb
-            , barButtonItemCheckNewestEntity, barButtonItemSpelling
-            };
-        }
-
-        private void Init(bool isConnect)
-        {
-            controlWrapper.EnableControls(isConnect);
-            if (isConnect)
-            {
-                controlWrapper.DataManager = dataManager; 
-                controlWrapper.LoadEntityFromDB();
-                this.Text = string.Format("{0} {1}", TITLE, dataManager.GetConnectionDescription());
-            }
         }
 
         #region BUTTON_HANDLERS
@@ -78,99 +50,86 @@ namespace Note
         private void barButtonConnect_ItemClick(object sender, EventArgs e)
         {
             OptionsUtils.ClearDbData();
-            Options.DbFile = null;
-            Init(Connect());
+            Options.DbFileName = null;
+            Init(presenter.Connect());
         }
 
         private void barButtonItemAddDir_ItemClick(object sender, EventArgs e)
         {
-            AddNode(DataTypes.DIR);
+            Insert(DataTypes.DIR);
         }
 
         private void barButtonItemAddNote_ItemClick(object sender, EventArgs e)
         {
-            AddNode(DataTypes.NOTE);
+            if (treeWrapper.IsNodeSelect())
+            {
+                Insert(DataTypes.NOTE);
+            }
         }
 
         private void barButtonItemDelete_ItemClick(object sender, EventArgs e)
         {
-            if (!controlWrapper.IsNodeSelect())
-            {
-                return;
-            }
-            long id = controlWrapper.SelectedNodeId;
-            if (DisplayMessage.ShowWarningYesNO("Delete Selected Node") == DialogResult.Yes)
-            {
-                try
-                {
-                    dataManager.DeleteNode(id);
-                    controlWrapper.UpdateBinding();
-                }
-                catch (Exception ex)
-                {
-                    DisplayMessage.ShowError(ex.Message);
-                }
-            }
+            Delete();
         }
 
         private void barButtonItemUp_ItemClick(object sender, EventArgs e)
         {
-            ChangeNodeLocation(dataManager.IsCanMoveNode, dataManager.MoveNode, Direction.UP);
+            treeWrapper.ChangeNodeLocation(presenter.IsCanMove, presenter.Move, Direction.UP);
         }
 
         private void barButtonItemDown_ItemClick(object sender, EventArgs e)
         {
-            ChangeNodeLocation(dataManager.IsCanMoveNode, dataManager.MoveNode, Direction.DOWN);
+            treeWrapper.ChangeNodeLocation(presenter.IsCanMove, presenter.Move, Direction.DOWN);
         }
 
         private void barButtonItemSaveAll_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.Export();
+            exportHelper.Export();
         }
 
         private void barButtonItemDefinitionFormat_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.SetDefinitionFormat();
+            rtfWrapper.SetDefinitionFormat();
         }
 
         private void barButtonItemMethodFormat_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.SetMethodFormat();
+            rtfWrapper.SetMethodFormat();
         }
 
         private void barButtonItemClassFormat_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.SetClassFormat();
+            rtfWrapper.SetClassFormat();
         }
 
         private void barButtonItemHeaderFormat_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.SetHeaderFormat();
+            rtfWrapper.SetHeaderFormat();
         }
 
         private void barButtonItemInfoFormat_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.SetInfoFormat();
+            rtfWrapper.SetInfoFormat();
         }
 
         private void barButtonItemCodeFormat_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.SetCodeFormat();
+            rtfWrapper.SetCodeFormat();
         }
 
         private void barButtonItemRemoveWhiteSpace_ItemClick(object sender, ItemClickEventArgs e)
         {
-            controlWrapper.RemoveWhiteSpace();
+            rtfWrapper.RemoveWhiteSpace();
         }
 
         private void barButtonItemRemoveDoubleWhiteSpace_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.RemoveDoubleWhiteSpace();
+            rtfWrapper.RemoveDoubleWhiteSpace();
         }
 
         private void barButtonItemRemoveLineBreak_ItemClick(object sender, EventArgs e)
         {
-            controlWrapper.RemoveLineBreak();
+            rtfWrapper.RemoveLineBreak();
         }
 
         private void barButtonItemConvertDb_ItemClick(object sender, EventArgs e)
@@ -191,22 +150,22 @@ namespace Note
 
         private void barButtonItemVacuum_ItemClick(object sender, EventArgs e)
         {
-            VacuumDb(false);
+            presenter.VacuumDb(false);
         }
 
         private void barButtonItemLevelUp_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ChangeNodeLocation(dataManager.IsCanChangeNodeLevel, dataManager.ChangeNodeLevel, Direction.UP);
+            treeWrapper.ChangeNodeLocation(presenter.IsCanChangeLevel, presenter.ChangeLevel, Direction.UP);
         }
 
         private void barButtonItemLevelDown_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ChangeNodeLocation(dataManager.IsCanChangeNodeLevel, dataManager.ChangeNodeLevel, Direction.DOWN);
+            treeWrapper.ChangeNodeLocation(presenter.IsCanChangeLevel, presenter.ChangeLevel, Direction.DOWN);
         }
 
         private void barButtonItemImport_ItemClick(object sender, EventArgs e)
         {
-            if (controlWrapper.IsNoteNode())
+            if (treeWrapper.IsNoteSelect())
             {
                 return;
             }
@@ -216,42 +175,32 @@ namespace Note
                 "Rtf Files (*.rtf)|*.rtf|",
                 "All Files (*.*)|*.*"
             };
-            string title = "File's Import";
+            const string title = "File's Import";
             string[] fileNames;
             if (SelectFile.OpenFiles(title, string.Empty, out fileNames, extensions))
             {
-                controlWrapper.DisableFocusing();
-                foreach (string file in fileNames.Where(file => File.Exists(file)))
+                treeWrapper.DisableFocusing();
+                foreach (string file in fileNames.Where(File.Exists))
 	            {
 		            string rtf = File.ReadAllText(file);
-                    long id = dataManager.InsertNode(controlWrapper.GetParentId(true), Path.GetFileNameWithoutExtension(file), DataTypes.NOTE);
-                    controlWrapper.UpdateBinding();
-                    if (controlWrapper.IsNodeSelect())
-                    {
-                        controlWrapper.FocusSelectedNode();
-                    }
-                    controlWrapper.EditValue = rtf;
-                    dataManager.UpdateTextData(id, controlWrapper.EditValue, controlWrapper.PlainText);
-                    controlWrapper.FocusParentNode();
+	                long parentId = treeWrapper.GetParentId(true);
+	                string description = Path.GetFileNameWithoutExtension(file);
+                    long id = presenter.Insert(parentId, description, DataTypes.NOTE);
+                    treeWrapper.Insert(id, parentId, description, DataTypes.NOTE);
+                    rtfWrapper.EditValue = rtf;
+                    presenter.UpdateTextData(id, rtfWrapper.EditValue, rtfWrapper.PlainText);
+                    treeWrapper.FocusParentNode();
 	            }
-                controlWrapper.EnableFocusing();
+                treeWrapper.EnableFocusing();
             }
         }
 
-
-        private void barButtonItemCheckNewestEntity_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemCheckNewestEntity_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DatabaseManager dataManagerLocal;
-            if(TryGetDataManager(out dataManagerLocal))
-            {
-                IEnumerable<Tuple<Description, DataStatus>> descriptions = dataManager.GetModifiedDescriptions(dataManagerLocal);
-                ItemsList form = new ItemsList();
-                form.LoadData(descriptions);
-                form.Show();
-            }
+            presenter.CheckChangedItems();
         }
 
-        void barButtonItemSpelling_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        void barButtonItemSpelling_CheckedChanged(object sender, ItemClickEventArgs e)
         {
             this.spellChecker1.SpellCheckMode = barButtonItemSpelling.Checked ? 
                 DevExpress.XtraSpellChecker.SpellCheckMode.AsYouType 
@@ -260,12 +209,84 @@ namespace Note
 
         #endregion
 
+        private void Init(bool isConnect)
+        {
+            EnableControls(isConnect);
+            if (isConnect)
+            {
+                presenter.Init();
+                rtfWrapper.Clear();
+                treeWrapper.DataSource(presenter.GetBindingTable());
+                this.Text = string.Format("{0} {1}", TITLE, presenter.GetConnectionDescription());
+                notifyIcon1.Text = presenter.GetDBFileName();
+            }
+        }
+
+        private void EnableControls(bool isEnable)
+        {
+            foreach (BarItem item in GetBarButtons())
+            {
+                item.Enabled = isEnable;
+            }
+            treeWrapper.Enabled = isEnable;
+            rtfWrapper.Enabled = isEnable;
+        }
+
+        private IEnumerable<BarItem> GetBarButtons()
+        {
+            return new BarItem[] {
+                barButtonItemAddDir, barButtonItemAddNote, barButtonItemDelete, barButtonItemDown, barButtonItemUp
+            , barButtonItemClassFormat, barButtonItemCodeFormat, barButtonItemDefinitionFormat
+            , barButtonItemHeaderFormat, barButtonItemImport, barButtonItemInfoFormat, barButtonItemMethodFormat
+            , barButtonItemRemoveLineBreak, barButtonItemRemoveWhiteSpace, barButtonItemRemoveDoubleWhiteSpace
+            , barButtonItemSaveAll, barButtonItemVacuum , barButtonItemLevelUp, barButtonItemLevelDown, barButtonItemConvertDb
+            , barButtonItemCheckNewestEntity, barButtonItemSpelling
+            };
+        }
+
+        private void Insert(DataTypes type)
+        {
+            if (treeWrapper.IsNoteSelect())
+            {
+                return;
+            }
+            AddDescription form = new AddDescription();
+            if (form.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            long parentId = treeWrapper.GetParentId(form.IsChildNode);
+            long id = presenter.Insert(parentId, form.Description, type);
+            treeWrapper.Insert(id, parentId, form.Description, type);
+        }
+
+        private void Delete()
+        {
+            if (!treeWrapper.IsNodeSelect())
+            {
+                return;
+            }
+            if (DisplayMessage.ShowWarningYesNO("Delete Selected Node") == DialogResult.Yes)
+            {
+                try
+                {
+                    long id = treeWrapper.SelectedNodeId;
+                    presenter.Delete(id);
+                    treeWrapper.Delete(id);
+                }
+                catch (Exception ex)
+                {
+                    DisplayMessage.ShowError(ex.Message);
+                }
+            }
+        }
 
         #region DISPLAY
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
+
             this.Visible = true;
             notifyIcon1.Visible = false;
             this.SizeChanged -= new System.EventHandler(this.Main_SizeChanged);
@@ -310,175 +331,5 @@ namespace Note
         }
 
         #endregion
-
-        private bool Connect()
-        {
-
-            bool dbConnectionOk = false;
-            bool showMessage = true;
-            string errorMessage = "Connection is absent!";
-            try
-            {
-                DialogResult res = new DBDataForm().ShowDialog(this);
-                if (res != DialogResult.OK)
-                {
-                    return false;
-                }
-                dataManager = new DatabaseManager();
-                if (dataManager.IsDBOnline())
-                {
-                    if (!dataManager.IsProperDB)
-                    {
-                        dbConnectionOk = dataManager.CreateDb();
-                    }
-                    else
-                    {
-                        dbConnectionOk = true;
-                    }
-                }
-            }
-            catch (DbFileNotExistException)
-            {
-                dbConnectionOk = dataManager.CreateDb();
-            }
-            catch (OperationCanceledException)
-            {
-                if (dataManager == null)
-                {
-                    showMessage = false;
-                }
-                else
-                {
-                    dbConnectionOk = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-            }
-
-            HandleConnect(dbConnectionOk, showMessage, errorMessage);
-            return dbConnectionOk;
-        }
-
-        private void HandleConnect(bool dbConnectionOk, bool showMessage, string errorMessage)
-        {
-            if (!dbConnectionOk)
-            {
-                if (showMessage)
-                {
-                    DisplayMessage.ShowError(errorMessage);
-                }
-            }
-            else
-            {
-                notifyIcon1.Text = dataManager.GetDBFile();
-            }
-        }
-
-        private bool TryGetDataManager(out DatabaseManager dataManagerLocal)
-        {
-
-            bool dbConnectionOk = false;
-            bool showMessage = true;
-            string errorMessage = null;
-            dataManagerLocal = null;
-            try
-            {
-                DialogResult res = new DBDataForm().ShowDialog(this);
-                if (res != DialogResult.OK)
-                {
-                    return false;
-                }
-                dataManagerLocal = new DatabaseManager();
-                if (dataManagerLocal.IsDBOnline())
-                {
-                    dbConnectionOk = true;
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                showMessage = false;
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-            }
-
-            if (!dbConnectionOk && showMessage)
-            {
-                DisplayMessage.ShowError(errorMessage ?? "Connection is absent!");
-            }
-
-            return dbConnectionOk;
-        }
-
-        private void VacuumDb(bool isSilent)
-        {
-            try
-            {
-                if (dataManager != null)
-                {
-                    dataManager.VacuumDb();
-                }
-                if (!isSilent)
-                {
-                    DisplayMessage.ShowInfo(DisplayMessage.INFO_DONE_CONST);
-                }
-            }
-            catch (Exception ex)
-            {
-                if (!isSilent)
-                {
-                    DisplayMessage.ShowError(ex.Message);
-                }
-            }
-        }
-
-        private void AddNode(DataTypes type)
-        {
-            if (!controlWrapper.IsNodeSelect() && type == DataTypes.NOTE
-                || controlWrapper.IsNodeSelect() && controlWrapper.IsNoteNode())
-            {
-                return;
-            }
-            AddDescription form = new AddDescription();
-            if (form.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-
-            dataManager.InsertNode(controlWrapper.GetParentId(form.IsChildNode), form.Description, type);
-            controlWrapper.UpdateBinding();
-            if (controlWrapper.IsNodeSelect())
-            {
-                controlWrapper.FocusSelectedNode();
-            }
-        }
-
-        private void ChangeNodeLocation(Func<int, long, Direction, bool> IsValidAction, Func<int, long, long, Direction, bool> PerformAction, Direction dir)
-        {
-            controlWrapper.DisableFocusing();
-            if (!controlWrapper.IsNodeSelect())
-            {
-                controlWrapper.EnableFocusing();
-                return;
-            }
-
-            int position = controlWrapper.Position;
-            long parentId = controlWrapper.ParentId;
-            if (!IsValidAction(position, parentId, dir))
-            {
-                controlWrapper.EnableFocusing();
-                return;
-            }
-
-            long id = controlWrapper.SelectedNodeId;
-            if (PerformAction(position, parentId, id, dir))
-            {
-                controlWrapper.UpdateBinding();
-            }
-            controlWrapper.EnableFocusing();
-        }
     }
 }

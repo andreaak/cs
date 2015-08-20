@@ -1,43 +1,39 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using DataManager;
 using DataManager.Domain;
-using DevExpress.XtraTreeList;
-using DevExpress.XtraTreeList.Nodes;
-using Note;
+using ExportData;
 using Note.ControlWrapper;
 using Utils;
 using Utils.ActionWindow;
 
-namespace ExportData
+namespace Note.ExportData
 {
     public class ExportHelper
     {
         private static int nodeIndex = 0;
         private static int charCount = 0;
+
+        private readonly ITreeWrapper treeWrapper;
+        private readonly MainPresenter presenter;
         
-        private TreeList treeList;
-        private MyRichEditControl richEditControl;
-        private DatabaseManager dataManager;
         private bool isCreateFolders;
+        private Func<Node, string> GetPrefixDelegate;
 
-        private Func<TreeListNode, string> GetPrefixDelegate;
-
-        public ExportHelper(TreeList treeList, MyRichEditControl richEditControl, DatabaseManager dataManager)
+        public ExportHelper(ITreeWrapper treeWrapper, MainPresenter presenter)
         {
-            this.treeList = treeList;
-            this.richEditControl = richEditControl;
-            this.dataManager = dataManager;
+            this.treeWrapper = treeWrapper;
+            this.presenter = presenter;
         }
 
         public void Export()
         {
 
             string path = null;
-            if (!Utils.SelectFolder.Select("Select destination folder", ref path))
+            if (!global::Utils.SelectFolder.Select("Select destination folder", ref path))
             {
                 return;
             }
@@ -51,11 +47,9 @@ namespace ExportData
             Thread workThread = new Thread(new ThreadStart(delegate
             {
                 isCreateFolders = form.IsCreateFolders;
-                SetPrefixAlgoritmth(form);
+                SetPrefixAlgoritmth(form, treeWrapper.Nodes);
                 Exporter exp = GetExporter(form.Type);
-                richEditControl.BackupData();
-                SaveNodesData(path, treeList.Nodes, exp);
-                richEditControl.RestoreData();
+                SaveNodesData(path, treeWrapper.Nodes, exp);
                 ThreadVisualization.OnProcessEnded();
             }));
 
@@ -69,7 +63,7 @@ namespace ExportData
             }
         }
 
-        private void SetPrefixAlgoritmth(ExportOptions form)
+        private void SetPrefixAlgoritmth(ExportOptions form, IList<Node> nodes)
         {
             if (!form.IndexNumeration)
             {
@@ -78,11 +72,8 @@ namespace ExportData
             else if (form.ThroughNumeration)
             {
                 nodeIndex = 0;
-                DataTable table = treeList.DataSource as DataTable;
-                if (table != null)
-                {
-                    charCount = table.Rows.Count.ToString().Length + 1;
-                }
+                int count = nodes.SelectMany(item => item.Nodes).Union(nodes).Count();
+                charCount = count.ToString().Length + 1;
                 GetPrefixDelegate = GetIndexPrefix;
             }
             else
@@ -91,11 +82,11 @@ namespace ExportData
             }
         }
 
-        private void SaveNodesData(string path, TreeListNodes nodes, Exporter exp)
+        private void SaveNodesData(string path, IList<Node> nodes, Exporter exp)
         {
             try
             {
-                foreach (TreeListNode node in nodes)
+                foreach (Node node in nodes)
                 {
                     SaveNodeData(path, node, exp);
                 }
@@ -106,21 +97,19 @@ namespace ExportData
             }
         }
 
-        private void SaveNodeData(string path, TreeListNode node, Exporter exp)
+        private void SaveNodeData(string path, Node node, Exporter exp)
         {
-            string nodeText = node.GetDisplayText(0);
-            if (DevExpressWrapper.IsNoteNode(node))
+            if (node.IsNote)
             {
-                string fileName = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Note.Utils.GetValidFileName(nodeText) + "." + exp.GetExtension();
-                long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
-                string data = dataManager.GetTextData(id);
+                string fileName = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Note.Utils.GetValidFileName(node.EditValue) + "." + exp.GetExtension();
+                string data = presenter.GetTextData(node.ID);
                 exp.Export(fileName, data);
             }
             else
             {
                 if (isCreateFolders)
                 {
-                    string folder = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Note.Utils.GetValidFileName(nodeText);
+                    string folder = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Note.Utils.GetValidFileName(node.EditValue);
                     if (!Directory.Exists(folder))
                     {
                         Directory.CreateDirectory(folder);
@@ -148,29 +137,24 @@ namespace ExportData
             }
         }
 
-        private string GetEmptyPrefix(TreeListNode node)
+        private string GetEmptyPrefix(Node node)
         {
             return null;
         }
 
-        private string GetPrefix(TreeListNode node)
+        private string GetPrefix(Node node)
         {
-            if (node == null)
+            if (node == null
+                || node.Index == DBConstants.BASE_LEVEL)
             {
                 return "";
             }
 
-            TreeListNodes nodes = node.ParentNode == null ? node.TreeList.Nodes : node.ParentNode.Nodes;
-            int nodeIndex = nodes.IndexOf(node);
-            int charCount = nodes.Count.ToString().Length + 1;
-            if (nodeIndex == DBConstants.BASE_LEVEL)
-            {
-                return "";
-            }
-            return nodeIndex.ToString().PadLeft(charCount, '0') + '_';
+            int charCount = node.SiblingsCount.ToString().Length + 1;
+            return node.Index.ToString().PadLeft(charCount, '0') + '_';
         }
 
-        private string GetIndexPrefix(TreeListNode node)
+        private string GetIndexPrefix(Node node)
         {
             return nodeIndex++.ToString().PadLeft(charCount, '0') + '_';
         }

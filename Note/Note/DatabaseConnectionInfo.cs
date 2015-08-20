@@ -17,14 +17,14 @@ namespace Note
             InitializeComponent();
             textBoxProvider.Text = OptionsUtils.Provider;
             textBoxConStr.Text = OptionsUtils.ConnectionString;
-            textBoxDbName.Text = Options.DbFile;
+            textBoxDbName.Text = Options.DbFileName;
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
             OptionsUtils.Provider = textBoxProvider.Text;
             OptionsUtils.ConnectionString = textBoxConStr.Text;
-            Options.DbFile = textBoxDbName.Text;
+            Options.DbFileName = textBoxDbName.Text;
         }
     }
 }

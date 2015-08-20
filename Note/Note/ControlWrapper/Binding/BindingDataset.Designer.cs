@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace ControlWrapper.Binding {
+namespace Note.ControlWrapper.Binding {
     
     
     /// <summary>

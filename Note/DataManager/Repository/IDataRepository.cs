@@ -10,15 +10,15 @@ namespace DataManager.Repository
         IList<TextData> Texts{get;}
         IList<object> Updates{get;}
         void Init();
-        long InsertNode(long parentId, string description, DataTypes type);
-        void DeleteNode(long id);
-        bool IsCanChangeNodeLevel(int position, long parentId, Direction direction);
-        bool ChangeNodeLevel(int position, long parentId, long id, Direction direction);
-        bool IsCanMoveNode(int position, long parentId, Direction direction);
-        bool MoveNode(int position, long parentId, long id, Direction direction);
+        long Insert(long parentId, string description, DataTypes type);
         string GetTextData(long id);
         bool UpdateDescription(long id, string description);
         bool UpdateTextData(long id, string editValue, string textData);
+        void Delete(long id);
+        bool IsCanChangeLevel(int position, long parentId, Direction direction);
+        bool ChangeLevel(int position, long parentId, long id, Direction direction);
+        bool IsCanMove(int position, long parentId, Direction direction);
+        bool Move(int position, long parentId, long id, Direction direction);
         IEnumerable<Tuple<Description, DataStatus>> GetModifiedDescriptions(IDataRepository dataRepository);
     }
 }
