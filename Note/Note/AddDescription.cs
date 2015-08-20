@@ -19,7 +19,7 @@ namespace Note
         
         public bool IsChildNode
         {
-            get { return checkEdit1.Checked; }
+            get { return checkEditInsertChild.Checked; }
         }
 
         public AddDescription()

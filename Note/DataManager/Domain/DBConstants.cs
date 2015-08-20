@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataManager.Properties;
+using System;
 using Utils.WorkWithDB;
 
 namespace DataManager.Domain
@@ -83,7 +84,7 @@ namespace DataManager.Domain
                     outStr = SQLiteScript;
                     break;            
                 default:
-                    throw new Exception("Script not defined");
+                    throw new Exception(Resources.ScriptErrorMessage);
             }
             return outStr.Replace(Environment.NewLine, " ").Trim();
         }

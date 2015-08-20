@@ -22,7 +22,7 @@ namespace Note.ControlWrapper
         public override bool Export(string fileName, string data)
         {
             {
-                control.Data = data;
+                control.EditValue = data;
                 PdfExportOptions options = new PdfExportOptions();
                 options.ImageQuality = PdfJpegImageQuality.Medium;
                 control.ExportToPdf(fileName, options);

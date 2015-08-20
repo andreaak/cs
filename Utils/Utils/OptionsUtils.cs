@@ -97,7 +97,7 @@ namespace Utils
             }
             else
             {
-                ConnectionName = "";
+                ConnectionName = string.Empty;
             }
             return ConnectionName;
         }

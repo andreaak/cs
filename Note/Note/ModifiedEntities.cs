@@ -15,7 +15,7 @@ namespace Note
         public void LoadData(IEnumerable<Tuple<Description, DataStatus>> items)
         {
             ClearTreeList();
-            treeList1.DataSource = GetTableForBinding(items);
+            treeList.DataSource = GetTableForBinding(items);
             SortTreeList();
         }
 
@@ -39,14 +39,14 @@ namespace Note
 
         private void SortTreeList()
         {
-            this.treeList1.BeginSort();
-            this.treeList1.Columns[0].SortOrder = SortOrder.Ascending;
-            this.treeList1.EndSort();
+            this.treeList.BeginSort();
+            this.treeList.Columns[0].SortOrder = SortOrder.Ascending;
+            this.treeList.EndSort();
         }
 
         private void ClearTreeList()
         {
-            treeList1.Nodes.Clear();
+            treeList.Nodes.Clear();
         }
     }
 }

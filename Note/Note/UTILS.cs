@@ -11,11 +11,11 @@ namespace Note
 
         public static string GetValidFileName(string nodeText)
         {
-            char[] del = { '\\', '/', '*', '?', '\"', '<', '>', '|' , '\n', '\r', ':'};
+            char[] forbiddenSymbols = { '\\', '/', '*', '?', '\"', '<', '>', '|', '\n', '\r', ':' };
             StringBuilder outStr = new StringBuilder(nodeText.Length);
             foreach (char ch in nodeText)
             {
-                if (!del.Contains(ch))
+                if (!forbiddenSymbols.Contains(ch))
                 {
                     outStr.Append(ch);
                 }

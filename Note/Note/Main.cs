@@ -175,7 +175,7 @@ namespace Note
                 "Rtf Files (*.rtf)|*.rtf|",
                 "All Files (*.*)|*.*"
             };
-            const string title = "File's Import";
+            string title = Resources.FilesImportCaption;
             string[] fileNames;
             if (SelectFile.OpenFiles(title, string.Empty, out fileNames, extensions))
             {
@@ -267,7 +267,7 @@ namespace Note
             {
                 return;
             }
-            if (DisplayMessage.ShowWarningYesNO("Delete Selected Node") == DialogResult.Yes)
+            if (DisplayMessage.ShowWarningYesNO(Resources.DeleteQuestion) == DialogResult.Yes)
             {
                 try
                 {

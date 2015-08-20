@@ -5,6 +5,7 @@ using System.Linq;
 using DataManager.Domain;
 using DataManager.Domain.LinqToSql;
 using DbLinq.Sqlite;
+using DataManager.Properties;
 
 namespace DataManager.Repository
 {
@@ -459,7 +460,7 @@ namespace DataManager.Repository
             {
                 return Convert(entityData);
             }
-            throw new ArgumentException("Wrong database item");
+            throw new ArgumentException(Resources.WrongDbEntity);
         }
     }
 }

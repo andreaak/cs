@@ -6,14 +6,10 @@ namespace Note.ControlWrapper
 {
     public class MyRichEditControl : RichEditControl
     {
-        private MyRichEditControl richEditControl;
-
-        public MyRichEditControl()
-        {
-            richEditControl = this;
-        }
+        private const string WordPrefix = "<?mso-application progid=\"Word.Document\"?>";
+        private const string RtfPrefix = @"{\rtf1";
         
-        public string Data
+        public string EditValue
         {
             get
             {
@@ -22,6 +18,23 @@ namespace Note.ControlWrapper
             set
             {
                 SetData(value);
+            }
+        }
+
+        private string GetData(DocTypes outType)
+        {
+            switch (outType)
+            {
+                case DocTypes.Doc:
+                    return WordMLText;
+                case DocTypes.Rtf:
+                    return RtfText;
+                case DocTypes.Html:
+                    return HtmlText;
+                case DocTypes.Mht:
+                    return MhtText;
+                default:
+                    return string.Empty;
             }
         }
 
@@ -46,16 +59,16 @@ namespace Note.ControlWrapper
                     switch (Note.Options.DbFormatType)
                     {
                         case DocTypes.Doc:
-                            richEditControl.WordMLText = data;
+                            WordMLText = data;
                             break;
                         case DocTypes.Rtf:
-                            richEditControl.RtfText = data;
+                            RtfText = data;
                             break;
                         case DocTypes.Html:
-                            richEditControl.HtmlText = data;
+                            HtmlText = data;
                             break;
                         case DocTypes.Mht:
-                            richEditControl.MhtText = data;
+                            MhtText = data;
                             break;
                     }
                 }
@@ -71,77 +84,12 @@ namespace Note.ControlWrapper
 
         private static bool IsWord(string data)
         {
-            return !string.IsNullOrEmpty(data) && data.Contains("<?mso-application progid=\"Word.Document\"?>");
+            return !string.IsNullOrEmpty(data) && data.Contains(WordPrefix);
         }
 
         private static bool IsRtf(string data)
         {
-            return !string.IsNullOrEmpty(data) && data.StartsWith(@"{\rtf1");
+            return !string.IsNullOrEmpty(data) && data.StartsWith(RtfPrefix);
         }
-
-        public string GetConvertedData(string data, DocTypes inType, DocTypes outType)
-        {
-            BackupData();
-            SetData(data);
-
-            string res = GetData(outType);
-
-            RestoreData();
-            return res;
-        }
-
-        private string GetData(DocTypes outType)
-        {
-            string res;
-            switch (outType)
-            {
-                case DocTypes.Doc:
-                    res = richEditControl.WordMLText;
-                    break;
-                case DocTypes.Rtf:
-                    res = richEditControl.RtfText;
-                    break;
-                case DocTypes.Html:
-                    res = richEditControl.HtmlText;
-                    break;
-                case DocTypes.Mht:
-                    res = richEditControl.MhtText;
-                    break;
-                default:
-                    res = "";
-                    break;
-            }
-            return res;
-        }
-
-        string data;
-        public void BackupData()
-        {
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action(BackupData));
-            }
-            else
-            {
-                data = this.Data;
-                this.BeginUpdate();
-            }
-        }
-
-        public void RestoreData()
-        {
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action(RestoreData));
-            }
-            else
-            {
-                this.Data = data;
-                this.EndUpdate();
-            }
-        }
-
     }
-
-
 }

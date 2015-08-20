@@ -6,6 +6,8 @@ using DataManager.Repository;
 using Utils.ActionWindow;
 using Utils.WorkWithDB;
 using Utils.WorkWithDB.Wrappers;
+using DataManager.Properties;
+using System.IO;
 
 namespace DataManager
 {
@@ -28,7 +30,7 @@ namespace DataManager
 
         public string GetConnectionDescription()
         {
-            return string.Format(" {0}", dbWrapper.DBConnection.Connection.ConnectionString);
+            return dbWrapper.DBConnection.Connection.ConnectionString;
         }
 
         public void VacuumDb()
@@ -38,11 +40,11 @@ namespace DataManager
 
         public bool CreateDb()
         {
-            string message = string.Format("Database fault!{0}Do you want to create new database: {1}?",
-                                            Environment.NewLine, GetDBFileName());
+            string message = string.Format(Resources.DatabaseCreationQuestion, Environment.NewLine, GetDBFileName());
             if (DisplayMessage.ShowWarningYesNO(message) == DialogResult.Yes)
             {
-                return dbWrapper.CreateDB(Application.StartupPath + "\\" + GetDBFileName(), DBConstants.GetScript(dbWrapper.DBConnection.DbType));
+                string fileFullName = Application.StartupPath + Path.DirectorySeparatorChar + GetDBFileName();
+                return dbWrapper.CreateDB(fileFullName, DBConstants.GetScript(dbWrapper.DBConnection.DbType));
             }
             return false;
         }

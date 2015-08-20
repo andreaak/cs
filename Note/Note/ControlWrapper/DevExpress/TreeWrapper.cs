@@ -65,8 +65,10 @@ namespace Note.ControlWrapper.DevExpress
             this.control = control;
             this.rtfWrapper = rtfWrapper;
             this.presenter = presenter;
-            InitHandlers();
+            SubscribeEvents();
         }
+
+        #region PUBLIC
 
         public void DataSource(BindingDataset.DescriptionDataTable table)
         {
@@ -75,8 +77,6 @@ namespace Note.ControlWrapper.DevExpress
             SortTreeList();
             EnableFocusing();
         }
-
-        #region TREE
 
         public void ChangeNodeLocation(Func<int, long, Direction, bool> IsValidAction, Func<int, long, long, Direction, bool> PerformAction, Direction dir)
         {
@@ -196,6 +196,35 @@ namespace Note.ControlWrapper.DevExpress
         {
             control.FocusedNode = control.Selection[0].ParentNode;
         }
+        
+        #endregion
+
+        #region EVENTS
+
+        private void CompareNodeValues(object sender, EventArgs arg)
+        {
+            CompareNodeValuesEventArgs e = arg as CompareNodeValuesEventArgs;
+            if (e != null)
+            {
+                e.Result = ((int)e.Node1.GetValue(DBConstants.ENTITY_TABLE_POSITION)).CompareTo(
+                    (int)e.Node2.GetValue(DBConstants.ENTITY_TABLE_POSITION));
+            }
+        }
+        
+        private void FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
+        {
+            DisableFocusing();
+            UpdatePreviousNode(e.OldNode);
+            SetRTFData(e.Node);
+            EnableFocusing();
+        }
+
+        #endregion
+
+        private void SubscribeEvents()
+        {
+            this.control.CompareNodeValues += CompareNodeValues;
+        }
 
         private void Delete(long id, BindingDataset.DescriptionDataTable table)
         {
@@ -230,36 +259,8 @@ namespace Note.ControlWrapper.DevExpress
             return false;
         }
 
-        private void SortTreeList()
+        private void UpdatePreviousNode(TreeListNode node)
         {
-            this.control.BeginSort();
-            this.control.Columns[0].SortOrder = SortOrder.Ascending;
-            this.control.EndSort();
-        }
-
-        private void CompareNodeValues(object sender, EventArgs arg)
-        {
-            CompareNodeValuesEventArgs e = arg as CompareNodeValuesEventArgs;
-            if (e != null)
-            {
-                e.Result = ((int)e.Node1.GetValue(DBConstants.ENTITY_TABLE_POSITION)).CompareTo(
-                    (int)e.Node2.GetValue(DBConstants.ENTITY_TABLE_POSITION));
-            }
-        }
-
-        #endregion
-
-        private void FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
-        {
-            DisableFocusing();
-            UpdatePreviousNode(e);
-            SetRTFData(e.Node);
-            EnableFocusing();
-        }
-
-        private void UpdatePreviousNode(FocusedNodeChangedEventArgs e)
-        {
-            TreeListNode node = e.OldNode;
             if (IsEmptyNode(node))
             {
                 return;
@@ -315,11 +316,6 @@ namespace Note.ControlWrapper.DevExpress
             rtfWrapper.ChangeState(isNoteNode);
         }
 
-        private void InitHandlers()
-        {
-            this.control.CompareNodeValues += CompareNodeValues;
-        }
-
         private IList<Node> Convert(TreeListNodes treeListNodes)
         {
             List<Node> nodes = new List<Node>();
@@ -339,6 +335,13 @@ namespace Note.ControlWrapper.DevExpress
                 nodes.Add(res);
             }
             return nodes;
+        }
+
+        private void SortTreeList()
+        {
+            this.control.BeginSort();
+            this.control.Columns[0].SortOrder = SortOrder.Ascending;
+            this.control.EndSort();
         }
 
         private void FocusSelectedNode()

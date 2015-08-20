@@ -19,11 +19,11 @@ namespace Note.ControlWrapper.DevExpress
         {
             get
             {
-                return control.Data;
+                return control.EditValue;
             }
             set
             {
-                control.Data = value;
+                control.EditValue = value;
             }
         }
 
@@ -180,7 +180,7 @@ namespace Note.ControlWrapper.DevExpress
 
         public void Clear()
         {
-            control.Text = "";
+            control.Text = string.Empty;
         }
 
         #endregion

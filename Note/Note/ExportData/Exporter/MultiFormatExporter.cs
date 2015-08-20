@@ -18,7 +18,7 @@ namespace ExportData
 
         public override bool Export(string fileName, string data)
         {
-            control.Data = data;
+            control.EditValue = data;
             control.SaveDocument(fileName, format);
             Thread.Sleep(1000);
             return true;

@@ -7,13 +7,12 @@ using DataManager.Repository;
 using Note.ControlWrapper.Binding;
 using Utils.ActionWindow;
 using Utils.WorkWithDB.Wrappers;
+using Note.Properties;
 
 namespace Note
 {
     public class MainPresenter
     {
-        private const string ConnectionErrorMessage = "Connection is absent!";
-
         private IMainView view;
 
         public DatabaseManager DataManager
@@ -203,7 +202,7 @@ namespace Note
         {
             if (showMessage)
             {
-                DisplayMessage.ShowError(errorMessage ?? ConnectionErrorMessage);
+                DisplayMessage.ShowError(errorMessage ?? Resources.ConnectionErrorMessage);
             }
         }
 

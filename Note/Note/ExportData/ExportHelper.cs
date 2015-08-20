@@ -9,11 +9,16 @@ using ExportData;
 using Note.ControlWrapper;
 using Utils;
 using Utils.ActionWindow;
+using Note.Properties;
 
 namespace Note.ExportData
 {
     public class ExportHelper
     {
+        private const char Separator = '_';
+        private const char PaddingSymbol = '0';
+        private const char FileExtensionSaparator = '.';
+
         private static int nodeIndex = 0;
         private static int charCount = 0;
 
@@ -33,7 +38,7 @@ namespace Note.ExportData
         {
 
             string path = null;
-            if (!global::Utils.SelectFolder.Select("Select destination folder", ref path))
+            if (!SelectFolder.Select(Resources.SelectFolder, ref path))
             {
                 return;
             }
@@ -53,7 +58,7 @@ namespace Note.ExportData
                 ThreadVisualization.OnProcessEnded();
             }));
 
-            string headerText = "Data Export";
+            string headerText = Resources.ExportCaption;
             CancelForm visForm = new CancelForm(headerText);
             ThreadVisualization.ProcessEnded += visForm.CloseForm;
             workThread.SetApartmentState(ApartmentState.STA);
@@ -101,7 +106,12 @@ namespace Note.ExportData
         {
             if (node.IsNote)
             {
-                string fileName = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Note.Utils.GetValidFileName(node.EditValue) + "." + exp.GetExtension();
+                string fileName = path + 
+                    Path.DirectorySeparatorChar + 
+                    GetPrefixDelegate(node) + 
+                    Utils.GetValidFileName(node.EditValue) + 
+                    FileExtensionSaparator + 
+                    exp.GetExtension();
                 string data = presenter.GetTextData(node.ID);
                 exp.Export(fileName, data);
             }
@@ -109,7 +119,7 @@ namespace Note.ExportData
             {
                 if (isCreateFolders)
                 {
-                    string folder = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Note.Utils.GetValidFileName(node.EditValue);
+                    string folder = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Utils.GetValidFileName(node.EditValue);
                     if (!Directory.Exists(folder))
                     {
                         Directory.CreateDirectory(folder);
@@ -147,16 +157,16 @@ namespace Note.ExportData
             if (node == null
                 || node.Index == DBConstants.BASE_LEVEL)
             {
-                return "";
+                return string.Empty;
             }
 
             int charCount = node.SiblingsCount.ToString().Length + 1;
-            return node.Index.ToString().PadLeft(charCount, '0') + '_';
+            return node.Index.ToString().PadLeft(charCount, PaddingSymbol) + Separator;
         }
 
         private string GetIndexPrefix(Node node)
         {
-            return nodeIndex++.ToString().PadLeft(charCount, '0') + '_';
+            return nodeIndex++.ToString().PadLeft(charCount, PaddingSymbol) + Separator;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Configuration;
 using DataManager;
 using Utils.ActionWindow;
+using Note.Properties;
 
 namespace Note
 {
@@ -54,7 +55,7 @@ namespace Note
                 if (dbFormatType == DocTypes.None)
                 {
                     string temp = ConfigurationManager.AppSettings["dbFormatType"];
-                    dbFormatType = GetType(temp, "Wrong db type parameter");
+                    dbFormatType = GetType(temp, Resources.WrongDbFormatType);
                 }
                 return dbFormatType;
             }
@@ -68,7 +69,7 @@ namespace Note
                 if (inType == DocTypes.None)
                 {
                     string temp = ConfigurationManager.AppSettings["inType"];
-                    inType = GetType(temp, "Wrong in parameter");
+                    inType = GetType(temp, Resources.WrongInType);
                 }
                 return inType;
             }
@@ -82,7 +83,7 @@ namespace Note
                 if (outType == DocTypes.None)
                 {
                     string temp = ConfigurationManager.AppSettings["outType"];
-                    outType = GetType(temp, "Wrong out parameter");
+                    outType = GetType(temp, Resources.WrongOutType);
                 }
                 return outType;
             }
@@ -100,19 +101,6 @@ namespace Note
                 DisplayMessage.ShowError(errorMessage);
             }
             return type;
-        }
-
-        private static bool? idexPrefix;
-        public static bool IndexPrefix
-        {
-            get
-            {
-                if (!idexPrefix.HasValue)
-                {
-                    idexPrefix = ConfigurationManager.AppSettings["indexPrefix"].ToLower() == "y";
-                }
-                return idexPrefix.Value;
-            }
         }
 
         private static string dictionaryPath;
