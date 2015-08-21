@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DataManager.Repository;
+using DataManager.Repository.Common;
 
 namespace Note
 {

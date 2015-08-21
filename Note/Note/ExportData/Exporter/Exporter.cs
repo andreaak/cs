@@ -1,6 +1,4 @@
-﻿using Note;
-
-namespace ExportData
+﻿namespace Note.ExportData.Exporter
 {
     public abstract class Exporter
     {
@@ -10,12 +8,12 @@ namespace ExportData
             private set;
         }
 
-        public Exporter(ExportDocTypes format)
+        protected Exporter(ExportDocTypes format)
 	    {
             Format = format;
 	    }
 
-        public abstract bool Export(string fileName, string data);
+        public abstract void Export(string fileName, string data);
 
         public string GetExtension()
         {
@@ -29,9 +27,9 @@ namespace ExportData
                     return "docx";
                 case ExportDocTypes.Pdf:
                     return "pdf";
-                 case ExportDocTypes.Txt:
+                case ExportDocTypes.Txt:
                     return "txt";
-               case ExportDocTypes.Rtf:
+                case ExportDocTypes.Rtf:
                 default:
                     return "rtf";
             }

@@ -80,9 +80,9 @@
       <DependentUpon>Note.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\Enums.cs" />
-    <Compile Include="Repository\TextData.cs" />
-    <Compile Include="Repository\Description.cs" />
+    <Compile Include="Repository\Common\Enums.cs" />
+    <Compile Include="Repository\Common\TextData.cs" />
+    <Compile Include="Repository\Common\Description.cs" />
     <Compile Include="Repository\DLRepository.cs" />
     <Compile Include="Repository\IDataRepository.cs" />
     <Compile Include="Repository\LinqToSqlRepository.cs" />

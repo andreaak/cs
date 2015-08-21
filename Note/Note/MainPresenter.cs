@@ -1,21 +1,22 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using DataManager;
-using DataManager.Repository;
+using DataManager.Domain;
+using DataManager.Repository.Common;
 using Note.ControlWrapper.Binding;
+using Note.Properties;
 using Utils.ActionWindow;
 using Utils.WorkWithDB.Wrappers;
-using Note.Properties;
 
 namespace Note
 {
     public class MainPresenter
     {
-        private IMainView view;
+        private readonly IMainView view;
 
-        public DatabaseManager DataManager
+        private DatabaseManager DataManager
         {
             set;
             get;
@@ -37,14 +38,6 @@ namespace Note
             }
         }
 
-        public IList<object> Updates
-        {
-            get
-            {
-                return DataManager.Updates;
-            }
-        }
-
         public MainPresenter(IMainView view)
         {
             this.view = view;
@@ -52,7 +45,14 @@ namespace Note
 
         public void Init()
         {
-            DataManager.Init();
+            try
+            {
+                DataManager.Init();
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+            }
         }
 
         public bool Connect()
@@ -102,37 +102,92 @@ namespace Note
 
         public string GetDBFileName()
         {
-            return DataManager.GetDBFileName();
+            try
+            {
+                return DataManager.GetDBFileName();
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return string.Empty;
+            }
         }
 
         public string GetConnectionDescription()
         {
-            return DataManager.GetConnectionDescription();
+            try
+            {
+                return DataManager.GetConnectionDescription();
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return string.Empty;
+            }
         }
 
         public long Insert(long parentId, string description, DataTypes type)
         {
-            return DataManager.Insert(parentId, description, type);
+            try
+            {
+                return DataManager.Insert(parentId, description, type);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return DBConstants.BASE_LEVEL;
+            }
         }
 
         public void Delete(long id)
         {
-            DataManager.Delete(id);
+            try
+            {
+                DataManager.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+            }
         }
 
         public string GetTextData(long id)
         {
-            return DataManager.GetTextData(id);
+            try
+            {
+                return DataManager.GetTextData(id);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return string.Empty;
+            }
         }
 
         public bool UpdateTextData(long id, string editValue, string plainText)
         {
-            return DataManager.UpdateTextData(id, editValue, plainText);
+            try
+            {
+                return DataManager.UpdateTextData(id, editValue, plainText);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return false;
+            }
         }
 
         public bool UpdateDescription(long id, string description)
         {
-            return DataManager.UpdateDescription(id, description);
+            try
+            {
+                return DataManager.UpdateDescription(id, description);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return false;
+            }
         }
 
         public void VacuumDb(bool isSilent)
@@ -150,40 +205,80 @@ namespace Note
 
         public BindingDataset.DescriptionDataTable GetBindingTable()
         {
-            BindingDataset.DescriptionDataTable table = new BindingDataset.DescriptionDataTable();
-            IEnumerable<long> entityIds = Descriptions.Select(item => item.ID).ToList();
-            foreach (var item in Descriptions.Where(item => entityIds.Contains(item.ID)))
+            try
             {
-                table.AddDescriptionRow(
-                    item.ID,
-                    item.ParentID,
-                    item.EditValue,
-                    (byte)item.Type,
-                    item.OrderPosition
-                    );
+                BindingDataset.DescriptionDataTable table = new BindingDataset.DescriptionDataTable();
+                IEnumerable<long> entityIds = Descriptions.Select(item => item.ID).ToList();
+                foreach (var item in Descriptions.Where(item => entityIds.Contains(item.ID)))
+                {
+                    table.AddDescriptionRow(
+                        item.ID,
+                        item.ParentID,
+                        item.EditValue,
+                        (byte)item.Type,
+                        item.OrderPosition
+                        );
+                }
+                table.AcceptChanges();
+                return table;
             }
-            table.AcceptChanges();
-            return table;
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return null;
+            }
         }
 
         public bool IsCanChangeLevel(int position, long parentId, Direction direction)
         {
-            return DataManager.IsCanChangeLevel(position, parentId, direction);
+            try
+            {
+                return DataManager.IsCanChangeLevel(position, parentId, direction);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return false;
+            }
         }
 
         public bool ChangeLevel(int position, long parentId, long id, Direction direction)
         {
-            return DataManager.ChangeLevel(position, parentId, id, direction);
+            try
+            {
+                return DataManager.ChangeLevel(position, parentId, id, direction);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return false;
+            }
         }
 
         public bool IsCanMove(int position, long parentId, Direction direction)
         {
-            return DataManager.IsCanMove(position, parentId, direction);
+            try
+            {
+                return DataManager.IsCanMove(position, parentId, direction);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return false;
+            }
         }
 
         public bool Move(int position, long parentId, long id, Direction direction)
         {
-            return DataManager.Move(position, parentId, id, direction);
+            try
+            {
+                return DataManager.Move(position, parentId, id, direction);
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return false;
+            }
         }
 
         public void CheckChangedItems()
@@ -191,10 +286,17 @@ namespace Note
             DatabaseManager dataManagerLocal;
             if (TryGetDataManager(out dataManagerLocal))
             {
-                IEnumerable<Tuple<Description, DataStatus>> descriptions = GetModifiedDescriptions(dataManagerLocal);
-                ItemsList form = new ItemsList();
-                form.LoadData(descriptions);
-                form.Show();
+                try
+                {
+                    IEnumerable<Tuple<Description, DataStatus>> descriptions = GetModifiedDescriptions(dataManagerLocal);
+                    ItemsList form = new ItemsList();
+                    form.LoadData(descriptions);
+                    form.Show();
+                }
+                catch (Exception ex)
+                {
+                    DisplayMessage.ShowError(ex.Message);
+                }
             }
         }
 
@@ -245,6 +347,5 @@ namespace Note
         {
             return DataManager.GetModifiedDescriptions(dataManagerLocal);
         }
-
     }
 }

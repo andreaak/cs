@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using DataManager.Domain;
 using DataManager.Repository;
+using DataManager.Repository.Common;
 using DevExpress.XtraBars;
 using Note.ControlWrapper;
 using Note.ControlWrapper.DevExpressWrappers;
@@ -134,18 +136,7 @@ namespace Note
 
         private void barButtonItemConvertDb_ItemClick(object sender, EventArgs e)
         {
-            //if (Options.InType == DocTypes.None || Options.OutType == DocTypes.None)
-            //{
-            //    return;
-            //}
-            //controlWrapper.BeginUpdateRtfControl();             
-            //string backup = controlWrapper.RtfText;
-            
-            //DBService tempDbService = new DBService();
-            //tempDbService.ConvertData(controlWrapper);
 
-            //controlWrapper.RtfText = backup;
-            //controlWrapper.EndUpdateRtfControl();
         }
 
         private void barButtonItemVacuum_ItemClick(object sender, EventArgs e)
@@ -186,9 +177,12 @@ namespace Note
 	                long parentId = treeWrapper.GetParentId(true);
 	                string description = Path.GetFileNameWithoutExtension(file);
                     long id = presenter.Insert(parentId, description, DataTypes.NOTE);
-                    treeWrapper.Insert(id, parentId, description, DataTypes.NOTE);
-                    rtfWrapper.EditValue = rtf;
-                    presenter.UpdateTextData(id, rtfWrapper.EditValue, rtfWrapper.PlainText);
+                    if (id != DBConstants.BASE_LEVEL)
+                    {
+                        treeWrapper.Insert(id, parentId, description, DataTypes.NOTE);
+                        rtfWrapper.EditValue = rtf;
+                        presenter.UpdateTextData(id, rtfWrapper.EditValue, rtfWrapper.PlainText);
+                    }
                     treeWrapper.FocusParentNode();
 	            }
                 treeWrapper.EnableFocusing();
@@ -217,8 +211,8 @@ namespace Note
                 presenter.Init();
                 rtfWrapper.Clear();
                 treeWrapper.DataSource(presenter.GetBindingTable());
-                this.Text = string.Format("{0} {1}", TITLE, presenter.GetConnectionDescription());
-                notifyIcon1.Text = presenter.GetDBFileName();
+                Text = string.Format("{0} {1}", TITLE, presenter.GetConnectionDescription());
+                notifyIcon.Text = presenter.GetDBFileName();
             }
         }
 
@@ -258,7 +252,10 @@ namespace Note
 
             long parentId = treeWrapper.GetParentId(form.IsChildNode);
             long id = presenter.Insert(parentId, form.Description, type);
-            treeWrapper.Insert(id, parentId, form.Description, type);
+            if (id != DBConstants.BASE_LEVEL)
+            {
+                treeWrapper.Insert(id, parentId, form.Description, type);
+            }
         }
 
         private void Delete()
@@ -288,7 +285,7 @@ namespace Note
         {
 
             this.Visible = true;
-            notifyIcon1.Visible = false;
+            notifyIcon.Visible = false;
             this.SizeChanged -= new System.EventHandler(this.Main_SizeChanged);
             this.LocationChanged -= Main_LocationChanged;
             this.WindowState = FormWindowState.Normal;
@@ -308,7 +305,7 @@ namespace Note
             {
 
                 this.Visible = false;
-                notifyIcon1.Visible = true;
+                notifyIcon.Visible = true;
             }
             else
             {

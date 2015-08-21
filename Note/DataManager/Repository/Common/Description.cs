@@ -1,10 +1,16 @@
 ﻿using System;
 
-namespace DataManager.Repository
+namespace DataManager.Repository.Common
 {
-    public class TextData
+    public class Description
     {
         public long ID
+        {
+            get;
+            set;
+        }
+
+        public long ParentID
         {
             get;
             set;
@@ -16,13 +22,19 @@ namespace DataManager.Repository
             set;
         }
 
-        public string EditValue
+        public int OrderPosition
         {
             get;
             set;
         }
 
-        public string PlainText
+        public DataTypes Type
+        {
+            get;
+            set;
+        }
+
+        public string EditValue
         {
             get;
             set;

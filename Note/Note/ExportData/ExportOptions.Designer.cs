@@ -1,4 +1,4 @@
-﻿namespace Note.ControlWrapper
+﻿namespace Note.ExportData
 {
     partial class ExportOptions
     {

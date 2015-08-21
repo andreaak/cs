@@ -1,17 +1,12 @@
-﻿using DevExpress.XtraPrinting;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using ExportData;
+﻿using System.Threading;
+using DevExpress.XtraPrinting;
+using Note.ControlWrapper;
 
-namespace Note.ControlWrapper
+namespace Note.ExportData.Exporter
 {
     class PdfExporter : Exporter
     {
-        MyRichEditControl control;
+        private readonly MyRichEditControl control;
 
         public PdfExporter()
             : base(ExportDocTypes.Pdf)
@@ -19,16 +14,13 @@ namespace Note.ControlWrapper
             this.control = new MyRichEditControl();
         }
 
-        public override bool Export(string fileName, string data)
+        public override void Export(string fileName, string data)
         {
-            {
-                control.EditValue = data;
-                PdfExportOptions options = new PdfExportOptions();
-                options.ImageQuality = PdfJpegImageQuality.Medium;
-                control.ExportToPdf(fileName, options);
-                Thread.Sleep(1000);
-            }
-            return true;
+            control.EditValue = data;
+            PdfExportOptions options = new PdfExportOptions();
+            options.ImageQuality = PdfJpegImageQuality.Medium;
+            control.ExportToPdf(fileName, options);
+            Thread.Sleep(1000);
         }
     }
 }

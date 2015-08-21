@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Linq;
 using DataManager.Domain;
 using DataManager.Domain.LinqToSql;
+using DataManager.Repository.Common;
 using DbLinq.Sqlite;
 using DataManager.Properties;
 
@@ -13,7 +14,7 @@ namespace DataManager.Repository
     {
         private const int WRONG_POSITION = -1;
         
-        private readonly NoteDataContext dataContext = null;
+        private readonly NoteDataContext dataContext;
 
         public LinqToSqlRepository(string connectionString)
         {
@@ -53,14 +54,6 @@ namespace DataManager.Repository
             get
             {
                 return Convert(dataContext.EntityData);
-            }
-        }
-
-        public IList<object> Updates
-        {
-            get
-            {
-                return Convert(dataContext.GetChangeSet().Updates);
             }
         }
 
@@ -441,26 +434,6 @@ namespace DataManager.Repository
                 PlainText = item.TextData,
                 ModDate = string.IsNullOrEmpty(item.ModDate) ? DateTime.MinValue : DateTime.Parse(item.ModDate),
             };
-        }
-
-        private IList<object> Convert(IEnumerable<object> list)
-        {
-            return list.Select(Convert).ToList();
-        }
-
-        private object Convert(object item)
-        {
-            Entity entity = item as Entity;
-            if (entity != null)
-            {
-                return Convert(entity);
-            }
-            EntityData entityData = item as EntityData;
-            if (entityData != null)
-            {
-                return Convert(entityData);
-            }
-            throw new ArgumentException(Resources.WrongDbEntity);
         }
     }
 }

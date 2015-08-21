@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DataManager.Repository;
+using DataManager.Repository.Common;
 
 namespace DataManager.Domain.LinqToSql
 {

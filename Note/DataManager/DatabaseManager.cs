@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using DataManager.Domain;
 using DataManager.Repository;
+using DataManager.Repository.Common;
 using Utils.ActionWindow;
 using Utils.WorkWithDB;
 using Utils.WorkWithDB.Wrappers;
@@ -77,14 +78,6 @@ namespace DataManager
             get
             {
                 return dataRepository.Texts;
-            }
-        }
-
-        public IList<object> Updates
-        {
-            get
-            {
-                return dataRepository.Updates;
             }
         }
 

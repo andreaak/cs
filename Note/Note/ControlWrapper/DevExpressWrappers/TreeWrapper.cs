@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DataManager.Domain;
 using DataManager.Repository;
+using DataManager.Repository.Common;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using Note.ControlWrapper.Binding;

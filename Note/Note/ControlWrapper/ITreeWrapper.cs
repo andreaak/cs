@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DataManager.Repository;
+using DataManager.Repository.Common;
 using Note.ControlWrapper.Binding;
 
 namespace Note.ControlWrapper

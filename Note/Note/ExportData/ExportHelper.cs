@@ -5,8 +5,8 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using DataManager.Domain;
-using ExportData;
 using Note.ControlWrapper;
+using Note.ExportData.Exporter;
 using Utils;
 using Utils.ActionWindow;
 using Note.Properties;
@@ -19,14 +19,14 @@ namespace Note.ExportData
         private const char PaddingSymbol = '0';
         private const char FileExtensionSaparator = '.';
 
-        private static int nodeIndex = 0;
-        private static int charCount = 0;
+        private static int nodeIndex;
+        private static int charCount;
 
         private readonly ITreeWrapper treeWrapper;
         private readonly MainPresenter presenter;
         
         private bool isCreateFolders;
-        private Func<Node, string> GetPrefixDelegate;
+        private Func<Node, string> GetPrefix;
 
         public ExportHelper(ITreeWrapper treeWrapper, MainPresenter presenter)
         {
@@ -53,7 +53,7 @@ namespace Note.ExportData
             {
                 isCreateFolders = form.IsCreateFolders;
                 SetPrefixAlgoritmth(form, treeWrapper.Nodes);
-                Exporter exp = GetExporter(form.Type);
+                Exporter.Exporter exp = GetExporter(form.Type);
                 SaveNodesData(path, treeWrapper.Nodes, exp);
                 ThreadVisualization.OnProcessEnded();
             }));
@@ -72,22 +72,22 @@ namespace Note.ExportData
         {
             if (!form.IndexNumeration)
             {
-                GetPrefixDelegate = GetEmptyPrefix;
+                GetPrefix = GetEmptyPrefix;
             }
             else if (form.ThroughNumeration)
             {
                 nodeIndex = 0;
                 int count = nodes.SelectMany(item => item.Nodes).Union(nodes).Count();
                 charCount = count.ToString().Length + 1;
-                GetPrefixDelegate = GetIndexPrefix;
+                GetPrefix = GetGlobalIndexPrefix;
             }
             else
             {
-                GetPrefixDelegate = GetPrefix;
+                GetPrefix = GetLocalIndexPrefix;
             }
         }
 
-        private void SaveNodesData(string path, IList<Node> nodes, Exporter exp)
+        private void SaveNodesData(string path, IEnumerable<Node> nodes, Exporter.Exporter exp)
         {
             try
             {
@@ -102,13 +102,13 @@ namespace Note.ExportData
             }
         }
 
-        private void SaveNodeData(string path, Node node, Exporter exp)
+        private void SaveNodeData(string path, Node node, Exporter.Exporter exp)
         {
             if (node.IsNote)
             {
                 string fileName = path + 
                     Path.DirectorySeparatorChar + 
-                    GetPrefixDelegate(node) + 
+                    GetPrefix(node) + 
                     Utils.GetValidFileName(node.EditValue) + 
                     FileExtensionSaparator + 
                     exp.GetExtension();
@@ -119,7 +119,7 @@ namespace Note.ExportData
             {
                 if (isCreateFolders)
                 {
-                    string folder = path + Path.DirectorySeparatorChar + GetPrefixDelegate(node) + Utils.GetValidFileName(node.EditValue);
+                    string folder = path + Path.DirectorySeparatorChar + GetPrefix(node) + Utils.GetValidFileName(node.EditValue);
                     if (!Directory.Exists(folder))
                     {
                         Directory.CreateDirectory(folder);
@@ -133,7 +133,7 @@ namespace Note.ExportData
             }
         }
 
-        private Exporter GetExporter(ExportDocTypes format)
+        private Exporter.Exporter GetExporter(ExportDocTypes format)
         {
             switch (format)
             {
@@ -152,7 +152,7 @@ namespace Note.ExportData
             return null;
         }
 
-        private string GetPrefix(Node node)
+        private string GetLocalIndexPrefix(Node node)
         {
             if (node == null
                 || node.Index == DBConstants.BASE_LEVEL)
@@ -164,7 +164,7 @@ namespace Note.ExportData
             return node.Index.ToString().PadLeft(charCount, PaddingSymbol) + Separator;
         }
 
-        private string GetIndexPrefix(Node node)
+        private string GetGlobalIndexPrefix(Node node)
         {
             return nodeIndex++.ToString().PadLeft(charCount, PaddingSymbol) + Separator;
         }

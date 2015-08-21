@@ -1,5 +1,5 @@
 ﻿
-namespace DataManager.Repository
+namespace DataManager.Repository.Common
 {
     public enum DataStatus
     {

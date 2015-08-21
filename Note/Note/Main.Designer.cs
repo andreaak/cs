@@ -345,7 +345,7 @@
             this.showFontFormItem1 = new DevExpress.XtraRichEdit.UI.ShowFontFormItem();
             this.showParagraphFormItem1 = new DevExpress.XtraRichEdit.UI.ShowParagraphFormItem();
             this.showEditStyleFormItem1 = new DevExpress.XtraRichEdit.UI.ShowEditStyleFormItem();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             DevExpress.XtraSpellChecker.OptionsSpelling optionsSpelling1 = new DevExpress.XtraSpellChecker.OptionsSpelling();
             this.spellChecker1 = new DevExpress.XtraSpellChecker.SpellChecker();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
@@ -3223,12 +3223,12 @@
             // 
             // notifyIcon1
             // 
-            this.notifyIcon1.BalloonTipText = "Note";
-            this.notifyIcon1.BalloonTipTitle = "Note";
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Note";
-            this.notifyIcon1.Visible = false;
-            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            this.notifyIcon.BalloonTipText = "Note";
+            this.notifyIcon.BalloonTipTitle = "Note";
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon.Text = "Note";
+            this.notifyIcon.Visible = false;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // spellChecker1
             // 
@@ -3567,7 +3567,7 @@
         private DevExpress.XtraRichEdit.UI.ShowParagraphFormItem showParagraphFormItem1;
         private DevExpress.XtraRichEdit.UI.ShowEditStyleFormItem showEditStyleFormItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditExtension;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
         private DevExpress.XtraBars.BarButtonItem barButtonItemHeaderFormat;
         private DevExpress.XtraBars.BarButtonItem barButtonItemInfoFormat;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCodeFormat;

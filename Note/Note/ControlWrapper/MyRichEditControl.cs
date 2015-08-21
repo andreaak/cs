@@ -1,8 +1,9 @@
 ﻿using System;
+using DevExpress.XtraRichEdit;
 
 namespace Note.ControlWrapper
 {
-    public class MyRichEditControl : DevExpress.XtraRichEdit.RichEditControl
+    public class MyRichEditControl : RichEditControl
     {
         private const string WordPrefix = "<?mso-application progid=\"Word.Document\"?>";
         private const string RtfPrefix = @"{\rtf1";
@@ -11,15 +12,15 @@ namespace Note.ControlWrapper
         {
             get
             {
-                return GetData(Note.Options.DbFormatType);
+                return GetEditValue(Note.Options.DbFormatType);
             }
             set
             {
-                SetData(value);
+                SetEditValue(value);
             }
         }
 
-        private string GetData(DocTypes outType)
+        private string GetEditValue(DocTypes outType)
         {
             switch (outType)
             {
@@ -36,11 +37,11 @@ namespace Note.ControlWrapper
             }
         }
 
-        private void SetData(string data)
+        private void SetEditValue(string data)
         {
             if (this.InvokeRequired)
             {
-                Invoke(new Action<string>(SetData), data);
+                Invoke(new Action<string>(SetEditValue), data);
             }
             else
             {
@@ -76,7 +77,6 @@ namespace Note.ControlWrapper
                 Document.Sections[0].Margins.Bottom =
                 Document.Sections[0].Margins.Left =
                 Document.Sections[0].Margins.Right = 200f;
-
             }
         }
 

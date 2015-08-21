@@ -1,13 +1,13 @@
 ﻿using System.Threading;
-using Note;
+using DevExpress.XtraRichEdit;
 using Note.ControlWrapper;
 
-namespace ExportData
+namespace Note.ExportData.Exporter
 {
     public class MultiFormatExporter : Exporter
     {
-        MyRichEditControl control;
-        DevExpress.XtraRichEdit.DocumentFormat format;
+        readonly MyRichEditControl control;
+        readonly DocumentFormat format;
  
         public MultiFormatExporter(ExportDocTypes format)
             :base(format)
@@ -16,29 +16,27 @@ namespace ExportData
             this.format = GetFormat(Format);
 	    }
 
-        public override bool Export(string fileName, string data)
+        public override void Export(string fileName, string data)
         {
             control.EditValue = data;
             control.SaveDocument(fileName, format);
             Thread.Sleep(1000);
-            return true;
         }
 
-        private DevExpress.XtraRichEdit.DocumentFormat GetFormat(ExportDocTypes format)
+        private DocumentFormat GetFormat(ExportDocTypes format)
         {
             switch (format)
             {
                 case ExportDocTypes.Html:
-                    return DevExpress.XtraRichEdit.DocumentFormat.Html;
+                    return DocumentFormat.Html;
                 case ExportDocTypes.Doc:
-                    return DevExpress.XtraRichEdit.DocumentFormat.Doc;
+                    return DocumentFormat.Doc;
                 case ExportDocTypes.Docx:
-                    return DevExpress.XtraRichEdit.DocumentFormat.OpenXml;
+                    return DocumentFormat.OpenXml;
                 case ExportDocTypes.Txt:
-                    return DevExpress.XtraRichEdit.DocumentFormat.PlainText;
-                case ExportDocTypes.Rtf:
+                    return DocumentFormat.PlainText;
                 default:
-                    return DevExpress.XtraRichEdit.DocumentFormat.Rtf;
+                    return DocumentFormat.Rtf;
             }
         }
     }

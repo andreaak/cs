@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DataManager.Repository.Common;
 
 namespace DataManager.Repository
 {
@@ -8,7 +9,6 @@ namespace DataManager.Repository
         bool IsProperDB{get;}
         IList<Description> Descriptions{get;}
         IList<TextData> Texts{get;}
-        IList<object> Updates{get;}
         void Init();
         long Insert(long parentId, string description, DataTypes type);
         string GetTextData(long id);
