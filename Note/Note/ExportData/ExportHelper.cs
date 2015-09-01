@@ -89,6 +89,10 @@ namespace Note.ExportData
 
         private void SaveNodesData(string path, IEnumerable<Node> nodes, Exporter.Exporter exp)
         {
+            if (nodes == null)
+            {
+                return;
+            }
             try
             {
                 foreach (Node node in nodes)
@@ -119,17 +123,13 @@ namespace Note.ExportData
             {
                 if (isCreateFolders)
                 {
-                    string folder = path + Path.DirectorySeparatorChar + GetPrefix(node) + Utils.GetValidFileName(node.EditValue);
-                    if (!Directory.Exists(folder))
+                    path = path + Path.DirectorySeparatorChar + GetPrefix(node) + Utils.GetValidFileName(node.EditValue);
+                    if (!Directory.Exists(path))
                     {
-                        Directory.CreateDirectory(folder);
+                        Directory.CreateDirectory(path);
                     }
-                    SaveNodesData(folder, node.Nodes, exp);
                 }
-                else
-                {
-                    SaveNodesData(path, node.Nodes, exp);
-                }
+                SaveNodesData(path, node.Nodes, exp);
             }
         }
 

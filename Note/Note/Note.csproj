@@ -90,9 +90,7 @@
       <DependentUpon>ExportOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportData\ExportHelper.cs" />
-    <Compile Include="ControlWrapper\MyRichEditControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="ControlWrapper\MyRichEditControl.cs" />
     <Compile Include="ExportData\Exporter\PdfExporter.cs" />
     <Compile Include="DatabaseConnectionInfo.cs">
       <SubType>Form</SubType>

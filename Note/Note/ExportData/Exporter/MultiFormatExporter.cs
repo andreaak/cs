@@ -6,19 +6,19 @@ namespace Note.ExportData.Exporter
 {
     public class MultiFormatExporter : Exporter
     {
-        readonly MyRichEditControl control;
+        readonly RichEditControl control;
         readonly DocumentFormat format;
  
         public MultiFormatExporter(ExportDocTypes format)
             :base(format)
 	    {
-            this.control = new MyRichEditControl();
+            this.control = new RichEditControl();
             this.format = GetFormat(Format);
 	    }
 
         public override void Export(string fileName, string data)
         {
-            control.EditValue = data;
+            control.SetEditValue(data);
             control.SaveDocument(fileName, format);
             Thread.Sleep(1000);
         }

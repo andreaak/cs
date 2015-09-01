@@ -331,6 +331,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
                 res.SiblingsCount = treeListNodes.Count;
                 if (node.HasChildren)
                 {
+                    res.Nodes = new List<Node>();
                     res.Nodes.AddRange(Convert(node.Nodes));
                 }
                 nodes.Add(res);

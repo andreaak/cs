@@ -3,80 +3,80 @@ using DevExpress.XtraRichEdit;
 
 namespace Note.ControlWrapper
 {
-    public class MyRichEditControl : RichEditControl
+    public static class MyRichEditControl
     {
         private const string WordPrefix = "<?mso-application progid=\"Word.Document\"?>";
         private const string RtfPrefix = @"{\rtf1";
         
-        public string EditValue
-        {
-            get
-            {
-                return GetEditValue(Note.Options.DbFormatType);
-            }
-            set
-            {
-                SetEditValue(value);
-            }
-        }
+        //public string EditValue
+        //{
+        //    get
+        //    {
+        //        return GetEditValue(Note.Options.DbFormatType);
+        //    }
+        //    set
+        //    {
+        //        SetEditValue(value);
+        //    }
+        //}
 
-        private string GetEditValue(DocTypes outType)
+        public static string GetEditValue(this RichEditControl control)
         {
-            switch (outType)
+            switch (Note.Options.DbFormatType)
             {
                 case DocTypes.Doc:
-                    return WordMLText;
+                    return control.WordMLText;
                 case DocTypes.Rtf:
-                    return RtfText;
+                    return control.RtfText;
                 case DocTypes.Html:
-                    return HtmlText;
+                    return control.HtmlText;
                 case DocTypes.Mht:
-                    return MhtText;
+                    return control.MhtText;
                 default:
                     return string.Empty;
             }
         }
 
-        private void SetEditValue(string data)
+        public static void SetEditValue(this RichEditControl control, string data)
         {
-            if (this.InvokeRequired)
+            if (control.InvokeRequired)
             {
-                Invoke(new Action<string>(SetEditValue), data);
+                control.Invoke(new Action<string>(control.SetEditValue), data);
             }
             else
             {
                 if (IsRtf(data))
                 {
-                    this.RtfText = data;
+                    control.RtfText = data;
                 }
                 else if (IsWord(data))
                 {
-                    this.WordMLText = data;
+                    control.WordMLText = data;
                 }
                 else
                 {
                     switch (Note.Options.DbFormatType)
                     {
                         case DocTypes.Doc:
-                            WordMLText = data;
+                            control.WordMLText = data;
                             break;
                         case DocTypes.Rtf:
-                            RtfText = data;
+                            control.RtfText = data;
                             break;
                         case DocTypes.Html:
-                            HtmlText = data;
+                            control.HtmlText = data;
                             break;
                         case DocTypes.Mht:
-                            MhtText = data;
+                            control.MhtText = data;
                             break;
                     }
                 }
                 //Document.Unit = DevExpress.Office.DocumentUnit.Inch;
-                Document.Sections[0].Page.PaperKind = System.Drawing.Printing.PaperKind.A4;
-                Document.Sections[0].Margins.Top =
-                Document.Sections[0].Margins.Bottom =
-                Document.Sections[0].Margins.Left =
-                Document.Sections[0].Margins.Right = 200f;
+                control.Document.Sections[0].Page.PaperKind = System.Drawing.Printing.PaperKind.A4;
+                control.Document.Sections[0].Margins.Top =
+                control.Document.Sections[0].Margins.Bottom =
+                control.Document.Sections[0].Margins.Left =
+                control.Document.Sections[0].Margins.Right = 200f;
             }
         }
 

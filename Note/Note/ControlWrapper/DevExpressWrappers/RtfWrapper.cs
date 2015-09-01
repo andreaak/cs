@@ -1,11 +1,12 @@
 ﻿using DevExpress.Office.Utils;
+using DevExpress.XtraRichEdit;
 using DevExpress.XtraRichEdit.API.Native;
 
 namespace Note.ControlWrapper.DevExpressWrappers
 {
     public class RtfWrapper : IRtfWrapper
     {
-        private readonly MyRichEditControl control;
+        private readonly RichEditControl control;
         
         public bool IsModified
         {
@@ -19,11 +20,11 @@ namespace Note.ControlWrapper.DevExpressWrappers
         {
             get
             {
-                return control.EditValue;
+                return control.GetEditValue();
             }
             set
             {
-                control.EditValue = value;
+                control.SetEditValue(value);
             }
         }
 
@@ -43,7 +44,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             }
         }
 
-        public RtfWrapper(MyRichEditControl control)
+        public RtfWrapper(RichEditControl control)
         {
             this.control = control;
         }
