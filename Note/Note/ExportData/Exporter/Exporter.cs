@@ -1,7 +1,12 @@
-﻿namespace Note.ExportData.Exporter
+﻿using DevExpress.XtraRichEdit;
+
+namespace Note.ExportData.Exporter
 {
     public abstract class Exporter
     {
+        protected readonly RichEditControl control;
+        protected const int SleepTime = 200;
+
         public ExportDocTypes Format
         {
             get;
@@ -11,6 +16,7 @@
         protected Exporter(ExportDocTypes format)
 	    {
             Format = format;
+            this.control = new RichEditControl();
 	    }
 
         public abstract void Export(string fileName, string data);

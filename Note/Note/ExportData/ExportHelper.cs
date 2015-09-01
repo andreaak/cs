@@ -10,6 +10,7 @@ using Note.ExportData.Exporter;
 using Utils;
 using Utils.ActionWindow;
 using Note.Properties;
+using System.Threading.Tasks;
 
 namespace Note.ExportData
 {
@@ -47,24 +48,42 @@ namespace Note.ExportData
             if (form.ShowDialog() != DialogResult.OK)
             {
                 return;
-            }            
-            
-            Thread workThread = new Thread(new ThreadStart(delegate
+            }
+
+            string headerText = Resources.ExportCaption;
+            Action action = () => 
             {
                 isCreateFolders = form.IsCreateFolders;
                 SetPrefixAlgoritmth(form, treeWrapper.Nodes);
                 Exporter.Exporter exp = GetExporter(form.Type);
                 SaveNodesData(path, treeWrapper.Nodes, exp);
-                ThreadVisualization.OnProcessEnded();
-            }));
+            };
+            RunTask(action, headerText);
+        }
 
-            string headerText = Resources.ExportCaption;
-            CancelForm visForm = new CancelForm(headerText);
-            ThreadVisualization.ProcessEnded += visForm.CloseForm;
-            workThread.SetApartmentState(ApartmentState.STA);
-            if (!ThreadVisualization.StartWorkThread(visForm, workThread))
+        private void RunTask(Action act, string headerText)
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            Task task = Task.Factory.StartNew(act, cts.Token);
+
+            new CancelFormTask(headerText, task, cts).ShowDialog();
+            HandleTask(cts, task);
+        }
+
+        private void HandleTask(CancellationTokenSource cts, Task task)
+        {
+            if (cts.IsCancellationRequested)
             {
                 return;
+            }
+            try
+            {
+                task.Wait();
+            }
+            catch (AggregateException ex)
+            {
+                DisplayMessage.ShowError(ex.InnerException.Message);
             }
         }
 

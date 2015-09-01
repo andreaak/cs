@@ -8,18 +8,6 @@ namespace Note.ControlWrapper
         private const string WordPrefix = "<?mso-application progid=\"Word.Document\"?>";
         private const string RtfPrefix = @"{\rtf1";
         
-        //public string EditValue
-        //{
-        //    get
-        //    {
-        //        return GetEditValue(Note.Options.DbFormatType);
-        //    }
-        //    set
-        //    {
-        //        SetEditValue(value);
-        //    }
-        //}
-
         public static string GetEditValue(this RichEditControl control)
         {
             switch (Note.Options.DbFormatType)
@@ -39,12 +27,12 @@ namespace Note.ControlWrapper
 
         public static void SetEditValue(this RichEditControl control, string data)
         {
-            if (control.InvokeRequired)
-            {
-                control.Invoke(new Action<string>(control.SetEditValue), data);
-            }
-            else
-            {
+            //if (control.InvokeRequired)
+            //{
+            //    control.Invoke(new Action<string>(control.SetEditValue), data);
+            //}
+            //else
+            //{
                 if (IsRtf(data))
                 {
                     control.RtfText = data;
@@ -77,7 +65,7 @@ namespace Note.ControlWrapper
                 control.Document.Sections[0].Margins.Bottom =
                 control.Document.Sections[0].Margins.Left =
                 control.Document.Sections[0].Margins.Right = 200f;
-            }
+            //}
         }
 
         private static bool IsWord(string data)
