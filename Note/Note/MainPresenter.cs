@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using DataManager;
-using DataManager.Domain;
-using DataManager.Repository.Common;
 using Note.ControlWrapper.Binding;
+using Note.Domain;
+using Note.Domain.Common;
+using Note.Domain.Concrete;
+using Note.Domain.Entities;
 using Note.Properties;
 using Utils.ActionWindow;
-using Utils.WorkWithDB.Wrappers;
+using Utils.WorkWithDB;
 
 namespace Note
 {
@@ -67,7 +68,7 @@ namespace Note
                 {
                     return false;
                 }
-                DataManager = new DatabaseManager();
+                DataManager = ObjectsFactory.Instance.GetService<DatabaseManager>();
                 if (DataManager.IsDBOnline())
                 {
                     dbConnectionOk = DataManager.IsProperDB || DataManager.CreateDb();
@@ -321,7 +322,7 @@ namespace Note
                 {
                     return false;
                 }
-                dataManagerLocal = new DatabaseManager();
+                dataManagerLocal = ObjectsFactory.Instance.GetService<DatabaseManager>();
                 if (dataManagerLocal.IsDBOnline())
                 {
                     dbConnectionOk = true;

@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data;
 using System.Data.Common;
+using Utils.WorkWithDB.Connections;
 
 namespace Utils.WorkWithDB.Wrappers
 {
 
-    public class OracleWrapper : ADBWrapper
+    public class OracleWrapper : DBWrapperBase, IDBWrapper
     {
         static Dictionary<int, string> typeList = null;
 
@@ -42,14 +42,14 @@ namespace Utils.WorkWithDB.Wrappers
         
         public OracleWrapper()
         {
-            DBConnection.DbType = DataBaseType.Oracle;
+            DbType = DataBaseType.Oracle;
             Init();
         }
 
         public OracleWrapper(string provider, string connString)
             :base(provider, connString)
         {
-            DBConnection.DbType = DataBaseType.Oracle;
+            DbType = DataBaseType.Oracle;
             Init();
         }
 
@@ -89,7 +89,7 @@ namespace Utils.WorkWithDB.Wrappers
             string sql = string.Format("DROP TABLE {0}", schemeTable.TableName);
             try
             {
-                DBConnection.NonQueryCommand(sql);
+                NonQueryCommand(sql);
             }
             catch (Exception)
             {
@@ -121,11 +121,11 @@ namespace Utils.WorkWithDB.Wrappers
 
             try
             {
-                DBConnection.NonQueryCommand(sql);
+                NonQueryCommand(sql);
             }
             finally
             {
-                DBConnection.CloseConnection();
+                CloseConnection();
             }
         }
 
@@ -213,14 +213,14 @@ namespace Utils.WorkWithDB.Wrappers
             }
 
             List<string> temp = new List<string>();
-            DbDataReader dr = DBConnection.ExecuteReaderCommand(sql);
+            DbDataReader dr = ExecuteReaderCommand(sql);
 
             while (dr.Read())
             {
                 temp.Add(dr.GetValue(0).ToString());
             }
 
-            DBConnection.CloseConnection();
+            CloseConnection();
 
             return temp.ToArray();
         }
@@ -231,14 +231,14 @@ namespace Utils.WorkWithDB.Wrappers
 
             string sql = string.Format("select text from USER_SOURCE where name = '{0}' order by line", name);
 
-            DbDataReader dr = DBConnection.ExecuteReaderCommand(sql);
+            DbDataReader dr = ExecuteReaderCommand(sql);
             string temp = string.Empty;
             while (dr.Read())
             {
                 temp += dr.GetValue(0).ToString();
             }
 
-            DBConnection.CloseConnection();
+            CloseConnection();
 
             return temp;
         }

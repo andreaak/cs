@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Utils.WorkWithDB;
+using Utils.WorkWithDB.Connections;
 
 namespace GrabDatabase
 {

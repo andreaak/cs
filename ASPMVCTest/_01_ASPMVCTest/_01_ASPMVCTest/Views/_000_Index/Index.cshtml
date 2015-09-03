@@ -24,14 +24,18 @@
                         <li>@Html.ActionLink("Base Controller 2", "Index2", "_001_Base")</li>
                         <li>@Html.ActionLink("Basic Info", "Index", "_002_BasicInfoController")</li>
                         <li>@Html.ActionLink("Open not default view", "OtherView", "_002_BasicInfoController")</li>
-                        <li>@Html.ActionLink("Get data from context objects", "GetDataFromContextObjects", "_003_ReceiveData")</li>
-                        <li>@Html.ActionLink("Get data from request", "GetDataFromRequest", "_003_ReceiveData")</li>
-                        <li>@Html.ActionLink("Get symple types from request", "GetDataFromRequestSimpleType", "_003_ReceiveData")</li>
-                        <li>@Html.ActionLink("Simple form", "SimpleForm", "_003_ReceiveData")</li>
-                        <li>@Html.ActionLink("Simple type with route's parameter", "SimpleType/5", "_003_ReceiveData")</li>
-                        <li><a href="~/_003_ReceiveData/SimpleType/5" >Simple type with route's parameter</a></li>
-                        <li><a href="~/_003_ReceiveData/SimpleType?id=5" >Simple type with id parameter</a></li>
-                        <li><a href="~/_003_ReceiveData/SimpleType2?ff=5" >Simple type with ff parameter</a></li>
+                        <li>Receive data
+                            <ul style="list-style:square">
+                                <li>@Html.ActionLink("Get data from context objects", "GetDataFromContextObjects", "_003_ReceiveData")</li>
+                                <li>@Html.ActionLink("Get data from request", "GetDataFromRequest", "_003_ReceiveData")</li>
+                                <li>@Html.ActionLink("Get symple types from request", "GetDataFromRequestSimpleType", "_004_ReceiveDataSimpleTypes")</li>
+                                <li>@Html.ActionLink("Simple type with route's parameter", "SimpleType/5", "_004_ReceiveDataSimpleTypes")</li>
+                                <li><a href="~/_004_ReceiveDataSimpleTypes/SimpleType/5" >Simple type with route's parameter</a></li>
+                                <li><a href="~/_004_ReceiveDataSimpleTypes/SimpleType?id=5" >Simple type with id parameter</a></li>
+                                <li><a href="~/_004_ReceiveDataSimpleTypes/SimpleType2?ff=5" >Simple type with ff parameter</a></li>
+                                <li>@Html.ActionLink("Simple form", "SimpleForm", "_004_ReceiveDataSimpleTypes")</li>
+                            </ul>
+                        </li>
                     </ol>
                 </li>
                 <li>

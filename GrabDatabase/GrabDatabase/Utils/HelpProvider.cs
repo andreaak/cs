@@ -6,6 +6,7 @@ using Utils.WorkWithDB;
 using System.Windows.Forms;
 using Utils.ActionWindow;
 using Utils.WorkWithDB.Wrappers;
+using Utils.WorkWithDB.Connections;
 
 namespace GrabDatabase
 {
@@ -25,7 +26,7 @@ namespace GrabDatabase
             string errorMessage = "Help Database Error: ";
             try
             {
-                if (dbService.IsValidConnection())
+                if (dbService.IsValidConnection)
                 {
                     if (!IsProperDB())
                     {

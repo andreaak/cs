@@ -133,6 +133,7 @@
     <Compile Include="Controllers\001_Controllers\_001_BaseController.cs" />
     <Compile Include="Controllers\001_Controllers\_002_BasicInfoControllerController.cs" />
     <Compile Include="Controllers\001_Controllers\_003_ReceiveDataController.cs" />
+    <Compile Include="Controllers\001_Controllers\_004_ReceiveDataSimpleTypesController.cs" />
     <Compile Include="Controllers\002_View\_001_BasicInfoViewController.cs" />
     <Compile Include="Controllers\_000_IndexController.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,8 +233,8 @@
     <Content Include="Views\Shared\001_Controller\_003_ReceiveData\GetDataFromContextObjects.cshtml" />
     <Content Include="Views\Shared\001_Controller\_003_ReceiveData\GetDataFromRequest.cshtml" />
     <Content Include="Views\Shared\Index.cshtml" />
-    <Content Include="Views\Shared\001_Controller\_003_ReceiveData\GetDataFromRequestSimpleType.cshtml" />
-    <Content Include="Views\Shared\001_Controller\_003_ReceiveData\SimpleForm.cshtml" />
+    <Content Include="Views\Shared\001_Controller\_004_ReceiveDataSimpleTypes\GetDataFromRequestSimpleType.cshtml" />
+    <Content Include="Views\Shared\001_Controller\_004_ReceiveDataSimpleTypes\SimpleForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

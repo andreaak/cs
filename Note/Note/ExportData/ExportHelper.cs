@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using DataManager.Domain;
+using Note.Domain.Concrete;
 using Note.ControlWrapper;
 using Note.ExportData.Exporter;
 using Utils;

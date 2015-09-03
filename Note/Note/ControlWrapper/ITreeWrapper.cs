@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DataManager.Repository;
-using DataManager.Repository.Common;
+using Note.Domain.Repository;
 using Note.ControlWrapper.Binding;
+using Note.Domain.Common;
 
 namespace Note.ControlWrapper
 {

@@ -1,26 +1,25 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.IO;
-using System.Linq;
+using Utils.WorkWithDB.Connections;
 
 namespace Utils.WorkWithDB.Wrappers
 {
-    public class SQLiteDBWrapper : ADBWrapper
+    public class SQLiteDBWrapper : DBWrapperBase, IDBWrapper
     {
         public SQLiteDBWrapper()
         {
-            DBConnection.DbType = DataBaseType.SQLite;
+            DbType = DataBaseType.SQLite;
             Init();
         }
 
         public SQLiteDBWrapper(string provider, string connString)
             :base(provider, connString)
         {
-            DBConnection.DbType = DataBaseType.SQLite;
+            DbType = DataBaseType.SQLite;
             Init();
         }
 
@@ -79,14 +78,14 @@ namespace Utils.WorkWithDB.Wrappers
             }
 
             List<string> temp = new List<string>();
-            DbDataReader dr = DBConnection.ExecuteReaderCommand(sql);
+            DbDataReader dr = ExecuteReaderCommand(sql);
 
             while (dr.Read())
             {
                 temp.Add(dr.GetValue(0).ToString());
             }
 
-            DBConnection.CloseConnection();
+            CloseConnection();
 
             return temp.ToArray();
         }
@@ -112,7 +111,6 @@ namespace Utils.WorkWithDB.Wrappers
             get { return "SELECT * FROM ({0}) LIMIT {1}"; }
         }
 
-        private const string DATASOURCE = "Data Source";
         public override bool OpenConnection()
         {
             string file = GetDBFileName();
@@ -128,7 +126,7 @@ namespace Utils.WorkWithDB.Wrappers
             }
 
             string error;
-            bool res = DBConnection.OpenConnection(out error);
+            bool res = Connection.OpenConnection(out error);
             if (!string.IsNullOrEmpty(error))
             {
                 throw new Exception(error);
@@ -138,7 +136,7 @@ namespace Utils.WorkWithDB.Wrappers
 
         public override string GetDBFileName()
         {
-            return new SQLiteConnectionStringBuilder(DBConnection.Connection.ConnectionString).DataSource;
+            return new SQLiteConnectionStringBuilder(ConnectionString).DataSource;
         }
 
         public override bool IsDBOnline()
@@ -149,7 +147,7 @@ namespace Utils.WorkWithDB.Wrappers
 	        }
 	        finally
 	        {
-                DBConnection.CloseConnection();
+                CloseConnection();
 	        }
         }
     }

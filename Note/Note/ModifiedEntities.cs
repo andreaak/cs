@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using DataManager.Repository;
-using DataManager.Repository.Common;
+using Note.Domain.Common;
+using Note.Domain.Repository;
+using Note.Domain.Entities;
 
 namespace Note
 {

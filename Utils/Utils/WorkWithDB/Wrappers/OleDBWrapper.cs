@@ -1,23 +1,23 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data;
 using System.Data.Common;
+using Utils.WorkWithDB.Connections;
 
 namespace Utils.WorkWithDB.Wrappers
 {
-    public class OleDBWrapper : ADBWrapper
+    public class OleDBWrapper : DBWrapperBase, IDBWrapper
     {
         public OleDBWrapper()
         {
-            DBConnection.DbType = DataBaseType.OleDb;
+            DbType = DataBaseType.OleDb;
             Init();
         }
 
         public OleDBWrapper(string provider, string connString)
             :base(provider, connString)
         {
-            DBConnection.DbType = DataBaseType.OleDb;
+            DbType = DataBaseType.OleDb;
             Init();
         }
 
@@ -32,7 +32,7 @@ namespace Utils.WorkWithDB.Wrappers
 
             string sql;
             sql = "GRANT SELECT ON TABLE MSysObjects TO PUBLIC";
-            DBConnection.NonQueryCommand(sql);
+            NonQueryCommand(sql);
 
             if (string.IsNullOrEmpty(type))
             {
@@ -44,7 +44,7 @@ namespace Utils.WorkWithDB.Wrappers
             }
 
             List<string> temp = new List<string>();
-            DbDataReader dr = DBConnection.ExecuteReaderCommand(sql);
+            DbDataReader dr = ExecuteReaderCommand(sql);
 
 
             while (dr.Read())
@@ -52,7 +52,7 @@ namespace Utils.WorkWithDB.Wrappers
                 temp.Add(dr.GetValue(0).ToString());
             }
 
-            DBConnection.CloseConnection();
+            CloseConnection();
 
             return temp.ToArray();
         }

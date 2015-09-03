@@ -2,23 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.IO;
 using System.Data.SqlClient;
+using System.IO;
+using Utils.WorkWithDB.Connections;
 
 namespace Utils.WorkWithDB.Wrappers
 {
-    public class SqlServerWrapper : ADBWrapper
+    public class SqlServerWrapper : DBWrapperBase, IDBWrapper
     {
         public SqlServerWrapper()
         {
-            DBConnection.DbType = DataBaseType.SQLServer;
+            DbType = DataBaseType.SQLServer;
             Init();
         }
 
         public SqlServerWrapper(string provider, string connString)
             :base(provider, connString)
         {
-            DBConnection.DbType = DataBaseType.SQLServer;
+            DbType = DataBaseType.SQLServer;
             Init();
         }
 
@@ -68,14 +69,14 @@ namespace Utils.WorkWithDB.Wrappers
             }
 
             List<string> temp = new List<string>();
-            DbDataReader dr = DBConnection.ExecuteReaderCommand(sql);
+            DbDataReader dr = ExecuteReaderCommand(sql);
 
             while (dr.Read())
             {
                 temp.Add(dr.GetValue(0).ToString());
             }
 
-            DBConnection.CloseConnection();
+            CloseConnection();
 
             return temp.ToArray();
         }
@@ -118,7 +119,7 @@ namespace Utils.WorkWithDB.Wrappers
             }
             finally
             {
-                DBConnection.CloseConnection();
+                CloseConnection();
             }
         }
 
@@ -141,7 +142,7 @@ namespace Utils.WorkWithDB.Wrappers
             }
 
             string error;
-            bool res = DBConnection.OpenConnection(out error);
+            bool res = Connection.OpenConnection(out error);
             if (!string.IsNullOrEmpty(error))
             {
                 throw new Exception(error);
@@ -151,12 +152,12 @@ namespace Utils.WorkWithDB.Wrappers
 
         public override string GetDBFileName()
         {
-            return new SqlConnectionStringBuilder(DBConnection.Connection.ConnectionString).AttachDBFilename.Replace("DataDirectory", "").Replace("||", "|").Replace('|', '\\');
+            return new SqlConnectionStringBuilder(ConnectionString).AttachDBFilename.Replace("DataDirectory", "").Replace("||", "|").Replace('|', '\\');
         }
 
         private bool IsSqlExpress()
         {
-            return new SqlConnectionStringBuilder(DBConnection.Connection.ConnectionString).DataSource == @".\SQLEXPRESS";
+            return new SqlConnectionStringBuilder(ConnectionString).DataSource == @".\SQLEXPRESS";
         }
     }
 }

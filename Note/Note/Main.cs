@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using DataManager.Domain;
-using DataManager.Repository;
-using DataManager.Repository.Common;
 using DevExpress.XtraBars;
+using DevExpress.XtraSpellChecker;
 using Note.ControlWrapper;
 using Note.ControlWrapper.DevExpressWrappers;
+using Note.Domain.Common;
+using Note.Domain.Concrete;
 using Note.ExportData;
 using Note.Properties;
 using Utils;
@@ -37,9 +37,8 @@ namespace Note
         {
             InitializeComponent();
             presenter = new MainPresenter(this);
-            spellCheckerCustomDictionary1.AlphabetPath = Options.AlphabetPath;
-            spellCheckerCustomDictionary1.DictionaryPath = Options.DictionaryPath;
-            this.spellChecker1.Dictionaries.Add(spellCheckerCustomDictionary1);
+
+            InitSpellChecker();
             
             rtfWrapper = new RtfWrapper(myRichEditControl);
             treeWrapper = new TreeWrapper(treeList1, rtfWrapper, presenter);
@@ -52,7 +51,6 @@ namespace Note
         private void barButtonConnect_ItemClick(object sender, EventArgs e)
         {
             OptionsUtils.ClearDbData();
-            Options.DbFileName = null;
             Init(presenter.Connect());
         }
 
@@ -203,6 +201,17 @@ namespace Note
 
         #endregion
 
+        private void InitSpellChecker()
+        {
+            SpellCheckerCustomDictionary spellCheckerCustomDictionary = new SpellCheckerCustomDictionary();
+            spellCheckerCustomDictionary.CacheKey = null;
+            spellCheckerCustomDictionary.Culture = new System.Globalization.CultureInfo("ru-RU");
+            spellCheckerCustomDictionary.Encoding = ((System.Text.UTF8Encoding)(System.Text.Encoding.GetEncoding(65001)));
+            spellCheckerCustomDictionary.AlphabetPath = Options.AlphabetPath;
+            spellCheckerCustomDictionary.DictionaryPath = Options.DictionaryPath;
+            this.spellChecker1.Dictionaries.Add(spellCheckerCustomDictionary);
+        }
+
         private void Init(bool isConnect)
         {
             EnableControls(isConnect);
@@ -303,7 +312,6 @@ namespace Note
         {
             if (this.WindowState == FormWindowState.Minimized && this.Visible)
             {
-
                 this.Visible = false;
                 notifyIcon.Visible = true;
             }

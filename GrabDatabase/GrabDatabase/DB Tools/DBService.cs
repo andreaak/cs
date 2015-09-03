@@ -1,20 +1,47 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using DBLinks;
-using Utils.WorkWithDB.Wrappers;
 using Utils.WorkWithDB;
-using System.Collections.Generic;
+using Utils.WorkWithDB.Connections;
+using Utils.WorkWithDB.Wrappers;
 
 namespace GrabDatabase
 {
 
     public class DBService
     {
-        private ADBWrapper dbWrapper = null;
+        private IDBWrapper dbWrapper = null;
+
+        public bool IsValidConnection
+        {
+            get
+            {
+                try
+                {
+                    return dbWrapper.OpenConnection();
+                }
+                finally
+                {
+                    dbWrapper.CloseConnection();
+                }
+            }
+        }
 
         public DataBaseType DatabaseType
         {
-            get { return dbWrapper.DBConnection.DbType; }
+            get
+            {
+                return dbWrapper.DbType;
+            }
+        }
+
+        public string RowRestrictionQuery
+        {
+            get
+            {
+                return dbWrapper.RowLimitQuery;
+            }
         }
 
         public DBService()
@@ -27,20 +54,8 @@ namespace GrabDatabase
             dbWrapper = WrapperFactory.GetWrapper(provider, connString);
         }
 
-        public bool IsValidConnection()
-        {
-            try
-            {
-                return dbWrapper.OpenConnection();
-            }
-            finally
-            {
-                dbWrapper.DBConnection.CloseConnection();
-            }
-        }
-
         #region SELECT XML
-        
+
         public string GetDBScheme(string name, string[] restrictions)
         {
             return dbWrapper.GetDBScheme(name, restrictions);
@@ -69,28 +84,28 @@ namespace GrabDatabase
 
         #endregion
 
-        #region NONQUERY
+        #region CONNECTED LAYER
 
         public void ExecuteScript(string script, string procName)
         {
-            dbWrapper.ScriptMethod(script);
-        }
-        
-        #endregion
-        
-        public DataSet SelectQuery(string query)
-        {
-            return dbWrapper.SelectMethodDataset(query, "SELECT", null);
+            dbWrapper.ExecuteScript(script);
         }
 
         public object ScalarQuery(string query)
         {
-            return dbWrapper.ScalarMethod(query);
+            return dbWrapper.ScalarCommand(query);
         }
 
         public int CRUDQuery(string query)
         {
-            return dbWrapper.NonQueryMethod(query);
+            return dbWrapper.NonQueryCommand(query);
+        }
+
+        #endregion
+
+        public DataSet SelectQuery(string query)
+        {
+            return dbWrapper.SelectMethodDataset(query, "SELECT", null);
         }
 
         public void AddTable(string tableScheme, string tableData)
@@ -113,7 +128,7 @@ namespace GrabDatabase
             {
                 return null;
             }
-            
+
             DataTable dataTable = new DataTable();
             DataTable schemeTable = new DataTable();
 
@@ -139,17 +154,12 @@ namespace GrabDatabase
 
         public bool CreateHelpDB(string file)
         {
-            return dbWrapper.CreateDB(file, DBConstants.GetHelpScript(dbWrapper.DBConnection.DbType));
-        }
-
-        public string RowRestrictionQuery 
-        {
-            get { return dbWrapper.RowLimitQuery; }
+            return dbWrapper.CreateDB(file, DBConstants.GetHelpScript(dbWrapper.DbType));
         }
 
         public string GetConnectionDescription()
         {
-            return string.Format(" {0}", dbWrapper.DBConnection.Connection.ConnectionString) ;
+            return string.Format(" {0}", dbWrapper.ConnectionString);
         }
 
         public string GetMetaDataColumn(DBObjects dbObj, string key)
@@ -184,7 +194,7 @@ namespace GrabDatabase
 
         public void Close()
         {
-            dbWrapper.DBConnection.CloseConnection();
+            dbWrapper.CloseConnection();
         }
     }
 }

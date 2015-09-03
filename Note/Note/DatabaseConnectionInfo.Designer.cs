@@ -30,8 +30,6 @@
         {
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.labelDbName = new System.Windows.Forms.Label();
-            this.textBoxDbName = new System.Windows.Forms.TextBox();
             this.labelProvider = new System.Windows.Forms.Label();
             this.textBoxProvider = new System.Windows.Forms.TextBox();
             this.labelConString = new System.Windows.Forms.Label();
@@ -41,7 +39,7 @@
             // buttonOk
             // 
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOk.Location = new System.Drawing.Point(145, 103);
+            this.buttonOk.Location = new System.Drawing.Point(144, 71);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 4;
@@ -52,33 +50,17 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(226, 103);
+            this.buttonCancel.Location = new System.Drawing.Point(225, 71);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // labelDbName
-            // 
-            this.labelDbName.AutoSize = true;
-            this.labelDbName.Location = new System.Drawing.Point(0, 15);
-            this.labelDbName.Name = "labelDbName";
-            this.labelDbName.Size = new System.Drawing.Size(87, 13);
-            this.labelDbName.TabIndex = 2;
-            this.labelDbName.Text = "Database Name:";
-            // 
-            // textBoxDbName
-            // 
-            this.textBoxDbName.Location = new System.Drawing.Point(93, 12);
-            this.textBoxDbName.Name = "textBoxDbName";
-            this.textBoxDbName.Size = new System.Drawing.Size(343, 20);
-            this.textBoxDbName.TabIndex = 1;
-            // 
             // labelProvider
             // 
             this.labelProvider.AutoSize = true;
-            this.labelProvider.Location = new System.Drawing.Point(0, 41);
+            this.labelProvider.Location = new System.Drawing.Point(-1, 9);
             this.labelProvider.Name = "labelProvider";
             this.labelProvider.Size = new System.Drawing.Size(49, 13);
             this.labelProvider.TabIndex = 2;
@@ -86,7 +68,7 @@
             // 
             // textBoxProvider
             // 
-            this.textBoxProvider.Location = new System.Drawing.Point(93, 38);
+            this.textBoxProvider.Location = new System.Drawing.Point(92, 6);
             this.textBoxProvider.Name = "textBoxProvider";
             this.textBoxProvider.Size = new System.Drawing.Size(343, 20);
             this.textBoxProvider.TabIndex = 2;
@@ -94,7 +76,7 @@
             // labelConString
             // 
             this.labelConString.AutoSize = true;
-            this.labelConString.Location = new System.Drawing.Point(0, 67);
+            this.labelConString.Location = new System.Drawing.Point(-1, 35);
             this.labelConString.Name = "labelConString";
             this.labelConString.Size = new System.Drawing.Size(94, 13);
             this.labelConString.TabIndex = 2;
@@ -102,7 +84,7 @@
             // 
             // textBoxConStr
             // 
-            this.textBoxConStr.Location = new System.Drawing.Point(93, 64);
+            this.textBoxConStr.Location = new System.Drawing.Point(92, 32);
             this.textBoxConStr.Name = "textBoxConStr";
             this.textBoxConStr.Size = new System.Drawing.Size(343, 20);
             this.textBoxConStr.TabIndex = 3;
@@ -113,14 +95,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(448, 134);
+            this.ClientSize = new System.Drawing.Size(448, 104);
             this.ControlBox = false;
             this.Controls.Add(this.textBoxConStr);
             this.Controls.Add(this.labelConString);
             this.Controls.Add(this.textBoxProvider);
             this.Controls.Add(this.labelProvider);
-            this.Controls.Add(this.textBoxDbName);
-            this.Controls.Add(this.labelDbName);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -128,7 +108,7 @@
             this.MinimizeBox = false;
             this.Name = "DBDataForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DB Data Form";
+            this.Text = "Database";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,8 +118,6 @@
 
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Label labelDbName;
-        private System.Windows.Forms.TextBox textBoxDbName;
         private System.Windows.Forms.Label labelProvider;
         private System.Windows.Forms.TextBox textBoxProvider;
         private System.Windows.Forms.Label labelConString;

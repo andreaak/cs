@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Get Data From Request Simple Type</title>
+</head>
+<body>
+    <div>
+        <!--Данные отправляются с помощью POST запроса-->
+        <form action="/_004_ReceiveDataSimpleTypes/PostInformationSimpleType" method="post">
+            <input type="text" name="message" />
+            <input type="submit" value="Отправить на сервер" />
+        </form>
+
+        <!--Данные отправляются с помощью GET запроса, как данные в маршруте-->
+        <a href="/_004_ReceiveDataSimpleTypes/RouteInformationSimpleType/hello-world-routedata">Route Data</a>
+
+        <br />
+        <!--Данные отправляются с помощью GET запроса, как данные адресной строки-->
+        <a href="/_004_ReceiveDataSimpleTypes/QueryInformationSimpleType?message=hello-world-querystring">QueryString Data</a>
+    </div>
+</body>
+</html>

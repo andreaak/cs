@@ -124,11 +124,15 @@
     <Compile Include="DiskHierarchy\IDirectory.cs" />
     <Compile Include="DiskHierarchy\IFile.cs" />
     <Compile Include="OptionsUtils.cs" />
-    <Compile Include="WorkWithDB\ADBConnection.cs" />
-    <Compile Include="WorkWithDB\DBConnectionDL.cs">
+    <Compile Include="WorkWithDB\Connections\DBConnectionBase.cs" />
+    <Compile Include="WorkWithDB\Connections\ConnectionFactory.cs" />
+    <Compile Include="WorkWithDB\Connections\DBConnectionDL.cs">
     </Compile>
-    <Compile Include="WorkWithDB\DBConnectionCL.cs" />
-    <Compile Include="WorkWithDB\DBConnectionFactory.cs" />
+    <Compile Include="WorkWithDB\Connections\DBConnectionCL.cs" />
+    <Compile Include="WorkWithDB\Connections\DBConnectionFromFactory.cs" />
+    <Compile Include="WorkWithDB\Connections\IDBConnection.cs" />
+    <Compile Include="WorkWithDB\DbFileNotExistException.cs" />
+    <Compile Include="WorkWithDB\DBObjects.cs" />
     <Compile Include="WorkWithDB\DbStructureDataset.cs">
       <DependentUpon>DbStructureDataset.xsd</DependentUpon>
     </Compile>
@@ -138,19 +142,20 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="WorkWithDB\DBUtils.cs" />
-    <Compile Include="WorkWithDB\Parameter.cs" />
+    <Compile Include="WorkWithDB\Connections\DBParameter.cs" />
     <Compile Include="WorkWithDB\SelectConnection.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WorkWithDB\SelectConnection.Designer.cs">
       <DependentUpon>SelectConnection.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkWithDB\Wrappers\ADBWrapper.cs" />
+    <Compile Include="WorkWithDB\Wrappers\DBWrapperBase.cs" />
+    <Compile Include="WorkWithDB\Wrappers\IDBWrapper.cs" />
     <Compile Include="WorkWithDB\Wrappers\OleDBWrapper.cs" />
     <Compile Include="WorkWithDB\Wrappers\OracleWrapper.cs" />
     <Compile Include="WorkWithDB\Wrappers\SQLiteDBWrapper.cs" />
     <Compile Include="WorkWithDB\Wrappers\SqlServerWrapper.cs" />
-    <Compile Include="WorkWithDB\WrapperFactory.cs" />
+    <Compile Include="WorkWithDB\Wrappers\WrapperFactory.cs" />
     <Compile Include="WorkWithFiles\IWriter.cs" />
     <Compile Include="WorkWithFiles\Logger.cs" />
     <Compile Include="WorkWithFiles\ReadInfo.cs" />

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Configuration;
-using DataManager;
+using Note.Domain;
 using Utils.ActionWindow;
 using Note.Properties;
+using Note.Domain.Common;
 
 namespace Note
 {
@@ -27,26 +28,6 @@ namespace Note
     
     public class Options
     {
-
-
-        private static string dbFileName = null;
-        public static string DbFileName
-        {
-            get
-            {
-                if (dbFileName == null)
-                {
-                    DatabaseManager dataManager = new DatabaseManager();
-                    dbFileName = dataManager.GetDBFileName();
-                }
-                return dbFileName;
-            }
-            set
-            {
-                dbFileName = value;
-            }
-        }
-
         private static DocTypes dbFormatType = DocTypes.None;
         public static DocTypes DbFormatType
         {

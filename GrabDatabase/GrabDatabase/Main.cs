@@ -279,7 +279,7 @@ namespace GrabDatabase
             dbService = new DBService();
             try
             {
-                dbConnectionOk = dbService.IsValidConnection();
+                dbConnectionOk = dbService.IsValidConnection;
             }
             catch (Exception ex)
             {

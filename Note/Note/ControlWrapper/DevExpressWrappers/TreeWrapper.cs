@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using DataManager.Domain;
-using DataManager.Repository;
-using DataManager.Repository.Common;
+using Note.Domain.Concrete;
+using Note.Domain.Repository;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using Note.ControlWrapper.Binding;
+using Note.Domain.Common;
 
 namespace Note.ControlWrapper.DevExpressWrappers
 {

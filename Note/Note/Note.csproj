@@ -29,12 +29,6 @@
     <RootNamespace>Note</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DbLinq">
-      <HintPath>Dll\DbLinq.dll</HintPath>
-    </Reference>
-    <Reference Include="DbLinq.Sqlite">
-      <HintPath>Dll\DbLinq.Sqlite.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Office.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -52,10 +46,6 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Data.SQLite, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dll\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -177,9 +167,9 @@
       <Project>{724DA50C-C404-4A3A-8583-FBC2F4FB9963}</Project>
       <Name>utilsVS10</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataManager\DataManager.csproj">
+    <ProjectReference Include="..\Note.Domain\Note.Domain.csproj">
       <Project>{51236eb7-45e9-4f77-95b1-5d547ebd1e1d}</Project>
-      <Name>DataManager</Name>
+      <Name>Note.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
