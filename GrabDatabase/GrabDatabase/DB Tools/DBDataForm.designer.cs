@@ -108,7 +108,7 @@
             this.MinimizeBox = false;
             this.Name = "DBDataForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Database Data";
+            this.Text = "Database";
             this.ResumeLayout(false);
             this.PerformLayout();
 

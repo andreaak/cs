@@ -27,8 +27,8 @@ namespace GrabDatabase
         public const string DELETE_TEMPLATE = "DELETE FROM {table_name} WHERE {some_column=some_value}";
         public const string ADD_COLUMN_TEMPLATE = "ALTER TABLE {table_name} ADD {column_name} {datatype}";
         public const string DROP_COLUMN_TEMPLATE = "ALTER TABLE {table_name} DROP COLUMN {column_name}";
-        public const string MODIFY_COLUMN_TEMPLATE = @"ALTER TABLE {table_name} MODIFY COLUMN {column_name} {datatype}; (for Oracle);
-ALTER TABLE {table_name} ALTER COLUMN {column_name} {datatype}; (for SQLServer)";
+        public const string MODIFY_COLUMN_TEMPLATE = @"ALTER TABLE {table_name} MODIFY COLUMN {column_name} {datatype} [PRIMARY KEY] [NOT NULL] [UNIQUE]; (for Oracle);
+ALTER TABLE {table_name} ALTER COLUMN {column_name} {datatype} [PRIMARY KEY] [NOT NULL] [UNIQUE]; (for SQLServer)";
         public const string INNER_JOIN_TEMPLATE = @"SELECT {column_name(s)}
  FROM {table1}
  INNER JOIN {table2}
@@ -39,9 +39,9 @@ ALTER TABLE {table_name} ALTER COLUMN {column_name} {datatype}; (for SQLServer)"
  ON {table1.column_name=table2.column_name}";
 
         public const string CREATE_TABLE_TEMPLATE = @"CREATE TABLE {table_name}(
-{column_name1} {datatype} {PRIMARY KEY} {NOT NULL},
-{column_name2} {datatype} {PRIMARY KEY} {NOT NULL},
-{column_name3} {datatype} {PRIMARY KEY} {NOT NULL}
+{column_name1} {datatype} [PRIMARY KEY] [NOT NULL] [UNIQUE],
+{column_name2} {datatype} [PRIMARY KEY] [NOT NULL] [UNIQUE],
+{column_name3} {datatype} [PRIMARY KEY] [NOT NULL] [UNIQUE]
 )";
 
         const string SQLiteCreationScript = @"

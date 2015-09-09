@@ -257,7 +257,6 @@
     <EmbeddedResource Include="ParseQuery\ParseQueryForm.resx">
       <DependentUpon>ParseQueryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -340,6 +339,9 @@
       <Project>{724da50c-c404-4a3a-8583-fbc2f4fb9963}</Project>
       <Name>utilsVS10</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dll\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

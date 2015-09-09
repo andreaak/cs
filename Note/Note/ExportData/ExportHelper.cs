@@ -112,16 +112,10 @@ namespace Note.ExportData
             {
                 return;
             }
-            try
+
+            foreach (Node node in nodes)
             {
-                foreach (Node node in nodes)
-                {
-                    SaveNodeData(path, node, exp);
-                }
-            }
-            catch (Exception ex)
-            {
-                DisplayMessage.ShowError(ex.Message);
+                SaveNodeData(path, node, exp);
             }
         }
 
