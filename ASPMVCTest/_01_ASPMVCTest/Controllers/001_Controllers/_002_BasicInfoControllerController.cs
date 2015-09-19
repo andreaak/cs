@@ -23,6 +23,20 @@ namespace _01_ASPMVCTest.Controllers._001_Controllers
             return View("001_Controller/_002_BasicInfoController/Index");
         }
 
+        [HttpPost]
+        public ActionResult Index(int id)
+        {
+            return View("001_Controller/_002_BasicInfoController/Index");
+        }
+
+        //Нельзя определить два действия с одним глаголом HTTP
+        //Система не может выбрать используемое действие  
+        //[HttpPost]
+        //public ActionResult Index(string id)
+        //{
+        //    return View("001_Controller/_002_BasicInfoController/Index");
+        //}
+
         //Open other view
         public ActionResult OtherView()
         {

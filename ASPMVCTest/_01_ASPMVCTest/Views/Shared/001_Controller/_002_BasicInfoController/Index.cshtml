@@ -18,6 +18,12 @@
         <p>
             Также данный метод может быть запущен при выполнении запроса <b>'http://localhost:port/'</b>, если путь <b>/_002_BasicInfoController/Index</b> настроен как путь по умолчанию в файле /App_Start/RouteConfig.cs
         </p>
+
+        @using (Html.BeginForm("Index/1", "_002_BasicInfoController", FormMethod.Post))
+        { 
+           <input type="submit" value= "Submit"/> 
+        }
+
     </div>
 </body>
 </html>

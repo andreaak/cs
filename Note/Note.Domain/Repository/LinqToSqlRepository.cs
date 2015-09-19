@@ -289,6 +289,7 @@ namespace Note.Domain.Repository
 	        {
                 var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID);
                 if (baseItem != null
+                    && IsCanCompare(baseItem.ModDate, comparedItem.ModDate)
                     && (string.IsNullOrEmpty(baseItem.ModDate) || comparedItem.ModDate > DateTime.Parse(baseItem.ModDate)))
                 {
 
@@ -314,6 +315,7 @@ namespace Note.Domain.Repository
             {
                 var baseData = dataContext.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
                 if (baseData != null
+                    && IsCanCompare(baseData.ModDate, comparedData.ModDate)
                     && (string.IsNullOrEmpty(baseData.ModDate) || comparedData.ModDate > DateTime.Parse(baseData.ModDate)))
                 {
                     var comparedItem = comparedRepository.Descriptions.FirstOrDefault(item => item.ID == comparedData.ID);
@@ -341,6 +343,11 @@ namespace Note.Domain.Repository
                 }
             }
             return list.Distinct(new EntityComparer());
+        }
+
+        private bool IsCanCompare(string baseDate, DateTime comparedDate)
+        {
+            return !(string.IsNullOrEmpty(baseDate) && comparedDate == DateTime.MinValue);
         }
 
         #endregion
