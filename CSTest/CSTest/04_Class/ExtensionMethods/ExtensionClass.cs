@@ -12,7 +12,10 @@ namespace CSTest.Classes.ExtensionMethods
         {
             if (obj != null)
             {
+                //int nonCompiled = obj.protectedInt;//protectedInt is inaccessible due to its protection level
+                //int nonCompiled = obj.privateInt;//privateInt is inaccessible due to its protection level
                 int publicInt = obj.publicInt;
+
             }
         }
     }
