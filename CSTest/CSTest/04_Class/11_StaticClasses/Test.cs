@@ -6,7 +6,7 @@ namespace CSTest._04_Class._11_StaticClasses
     public class Test
     {
         [TestMethod]
-        public void Test1()
+        public void TestClassStatic1()
         {
         }
     }

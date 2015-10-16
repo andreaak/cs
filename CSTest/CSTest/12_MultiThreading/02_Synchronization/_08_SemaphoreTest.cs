@@ -10,7 +10,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     public class _08_SemaphoreTest
     {
         [TestMethod]
-        public void Test1()
+        public void TestSemaphore1()
         {
             // Первый аргумент:
             // Задаем количество слотов для использования в данный момент (не более максимального клоличества).
@@ -32,7 +32,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
 
         [TestMethod]
         // SemaphoreSlim  - легковесный класс-семафор, который не использует объекты синхронизации ядра.
-        public void Test2()
+        public void TestSemaphore2()
         {
             Thread[] threads = { new Thread(Function), new Thread(Function), new Thread(Function) };
 

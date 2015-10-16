@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace CSTest._03_Structure
 {
@@ -17,7 +14,7 @@ namespace CSTest._03_Structure
 
         public void Show()
         {
-            Console.WriteLine(field);
+            Debug.WriteLine(field);
         }
     }
 }

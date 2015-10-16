@@ -8,7 +8,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     public class _11_ManualResetEventSlimTest
     {
         [TestMethod]
-        public void Test1()
+        public void TestManualResetEventSlim1()
         {
             Thread[] threads = { new Thread(Function), new Thread(Function), new Thread(Function) };
 
@@ -28,7 +28,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
 
         [TestMethod]
         //ManualresetEventSlimPerformance
-        public void Test2()
+        public void TestManualResetEventSlim2()
         {
             var mres = new ManualResetEventSlim(false);
             var mres2 = new ManualResetEventSlim(false);
@@ -47,12 +47,12 @@ namespace CSTest._12_MultiThreading._02_Synchronization
                 //запускаем установку в потоке пула
                 ThreadPool.QueueUserWorkItem((obj) =>
                 {
-                  //  MethodSlim(mres, true);
+                    //  MethodSlim(mres, true);
                     Method(mre, true);
                     mres2.Set();
                 });
                 //запускаем сброс в основном потоке
-              //  MethodSlim(mres, false);
+                //  MethodSlim(mres, false);
                 Method(mre, false);
 
                 //Ждём, пока выполнится поток пула

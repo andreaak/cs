@@ -12,7 +12,7 @@ namespace CSTest._04_Class._09_AbstractClasses
             AbstractClass instance = new ConcreteClass();
             instance.Method();
         }
-        
+
         [TestMethod]
         public void TestAbstract2()
         {
@@ -50,7 +50,6 @@ namespace CSTest._04_Class._09_AbstractClasses
             Debug.WriteLine(new string('-', 55));
 
             instance.AbstractMethod();
-
         }
     }
 }

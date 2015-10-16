@@ -6,7 +6,7 @@ namespace CSTest._04_Class._06_Indexers
     public class Test
     {
         [TestMethod]
-        public void Test1()
+        public void TestIndexer1()
         {
         }
     }

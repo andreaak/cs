@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CSTest._04_Class._03_Constructors
 {
@@ -28,7 +29,7 @@ namespace CSTest._04_Class._03_Constructors
         // Конструктор по умолчанию, инициализирует поля значениями по умолчанию.
         public Point()
         {
-            Console.WriteLine("Конструктор по умолчанию!");
+            Debug.WriteLine("Конструктор по умолчанию!");
         }
 
         // Пользовательский конструктор, инициализирует поля значениями заданными пользователем.
@@ -39,7 +40,7 @@ namespace CSTest._04_Class._03_Constructors
         // приводит к вызову этого конструктора.
         public Point(int x, int y)
         {
-            Console.WriteLine("Пользовательский конструктор!");
+            Debug.WriteLine("Пользовательский конструктор!");
             this.x = x;
             this.y = y;
         }
@@ -49,7 +50,7 @@ namespace CSTest._04_Class._03_Constructors
         public Point(string name)
             : this(300, 400)
         {
-            Console.WriteLine("Конструктор с одним параметром.");
+            Debug.WriteLine("Конструктор с одним параметром.");
             this.name = name;
         }
     }

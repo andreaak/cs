@@ -7,7 +7,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
     public class Test
     {
         [TestMethod]
-        public void Test1()
+        public void TestClassAnonymous1()
         {
         }
     }

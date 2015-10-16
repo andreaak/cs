@@ -8,7 +8,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     public class _09_AutoResetEventTest
     {
         [TestMethod]
-        public void Test()
+        public void TestAutoResetEvent()
         {
             Debug.WriteLine("Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.\n");
 

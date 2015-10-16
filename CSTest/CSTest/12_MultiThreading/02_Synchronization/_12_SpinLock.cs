@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
-    public class SpinLock
+    public class _12_SpinLock
     {
         // Указывает выполняется ли блок кода потоком. 0 - блок свободен. 1 - блок занят.
         private int block;
@@ -11,7 +11,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         //  Интервал через который потоки проверяют переменную block.
         private readonly int wait;
 
-        public SpinLock(int wait)
+        public _12_SpinLock(int wait)
         {
             this.wait = wait;
         }
@@ -44,9 +44,9 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     // Логика работы lock
     public class SpinLockManager : IDisposable
     {
-        private readonly SpinLock block;
+        private readonly _12_SpinLock block;
 
-        public SpinLockManager(SpinLock block)
+        public SpinLockManager(_12_SpinLock block)
         {
             this.block = block;
             block.Enter();

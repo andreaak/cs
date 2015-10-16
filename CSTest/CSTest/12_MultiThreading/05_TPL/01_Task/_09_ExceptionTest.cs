@@ -11,7 +11,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
     {
         [TestMethod]
         //Задача с необработанным исключением может приводить к генерированию исключения в GC
-        public void Test1()
+        public void TestTaskException1()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:
@@ -26,7 +26,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         //Обработка исключения через Wait
-        public void Test2()
+        public void TestTaskException2()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:
@@ -52,7 +52,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         //Обработка исключения через свойство Exception
-        public void Test3()
+        public void TestTaskException3()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:
@@ -71,7 +71,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         //Обработка исключения через свойство Exception
-        public void Test4()
+        public void TestTaskException4()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:

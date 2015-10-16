@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace CSTest._03_Structure._00_Base
+namespace CSTest._03_Structure
 {
     //The modifier 'static' is not valid for this item
     //static struct BookStatic
     //{
     //}
-    
-    struct Book : IEquatable<int> //В структуре можно реализовать один или несколько интерфейсов
+
+    struct BookBase
+    {
+
+    }
+
+    struct _01_StructureBook : IEquatable<_01_StructureBook> //В структуре можно реализовать один или несколько интерфейсов
     // : BookBase Cтруктуры не могут наследовать другие структуры и классы 
     // или служить в качестве базовых для других структур и классов
     {
@@ -20,48 +26,62 @@ namespace CSTest._03_Structure._00_Base
         public string Title;
         public int ISBN;
 
-        static Book()
+        public static int staticField;
+        public static int StaticField
+        {
+            get { return staticField; }
+            set { staticField = value; }
+        }
+
+        public int field;
+        public int Field
+        {
+            get { return field; }
+            set { field = value; }
+        }
+        
+        static _01_StructureBook()
         {
             initStatic = "SRT";
         }
 
         //Structs cannot contain explicit parameterless constructors
-        //public Book()
+        //public _01_StructureBook()
         //{
         //}
 
         //Fields must be fully assigned before control is returned to the caller
-        //public Book(string a)
+        //public _01_StructureBook(string a)
         //{
         //    Author = a;
         //}
 
-        public Book(string a)
+        public _01_StructureBook(string a)
             : this() //can use initializator
         {
             Author = a;
         }
 
-        public Book(string a, string t, int c)
+        public _01_StructureBook(string a, string t, int c)
         //: base() // structs cannot call base class constructors
         {
             Author = a;
             Title = t;
             ISBN = c;
+            field = 1;
         }
 
-        public Book(Book book)
+        public _01_StructureBook(_01_StructureBook book)
         {
             this = book;
         }
 
+        public void ChangeBook(_01_StructureBook book)
+        {
+            this = book;
+        }
         public void Dispose()
         {
-        }
-
-        public void ChangeBook(Book book)
-        {
-            this = book;
         }
 
         //Only class types can contain destructors
@@ -89,16 +109,18 @@ namespace CSTest._03_Structure._00_Base
         //{
         //}
 
-        public bool Equals(int other)
+        public bool Equals(_01_StructureBook other)
         {
-            return ISBN == other;
+            Debug.WriteLine("Equals");
+            return ISBN == other.ISBN;
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is int)
+            Debug.WriteLine("Equals object");
+            if (obj is _01_StructureBook)
             {
-                return this.Equals((int)obj);
+                return this.Equals((_01_StructureBook)obj);
             }
             return false;
         }
@@ -118,7 +140,7 @@ namespace CSTest._03_Structure._00_Base
     {
         //Структура, определенная как поле класса, инициализируется 
         //автоматическим обнулением при инициализации ее включающего объекта
-        private Book book;
+        private _01_StructureBook book;
 
         public int GetISBN()
         {

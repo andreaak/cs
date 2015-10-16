@@ -12,7 +12,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     public class _07_MutexTest
     {
         [TestMethod]
-        public void Test1()
+        public void TestMutex1()
         {
             var threads = new Thread[5];
 
@@ -30,7 +30,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         }
 
         [TestMethod]
-        public void Test2()
+        public void TestMutex2()
         {
             for (int i = 0; i < 5; i++)
             {
@@ -45,7 +45,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
 
         [TestMethod]
         // Рекурсивное запирание.
-        public void Test3()
+        public void TestMutex3()
         {
             var instance = new SomeClass();
 

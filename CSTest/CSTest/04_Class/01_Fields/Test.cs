@@ -6,7 +6,7 @@ namespace CSTest._04_Class._01_Fields
     public class Test
     {
         [TestMethod]
-        public void Test1()
+        public void TestClassFields1()
         {
         }
     }

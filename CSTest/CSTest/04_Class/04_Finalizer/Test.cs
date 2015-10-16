@@ -6,7 +6,7 @@ namespace CSTest._04_Class._04_Finalizer
     public class Test
     {
         [TestMethod]
-        public void Test1()
+        public void TestFinalizer1()
         {
         }
     }

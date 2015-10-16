@@ -1,22 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 
 namespace CSTest._04_Class._09_AbstractClasses
 {
-    // Абстрактный класс может быть унаследован от конкретного класса.
-
     // Конкретный класс A.
     class ConcreteClassA
     {
         public void Operation()
         {
-            Console.WriteLine("ConcreteClassA.Operation");
+            Debug.WriteLine("ConcreteClassA.Operation");
         }
     }
 
-    // Абстрактный класс.
+    // Абстрактный класс может быть унаследован от конкретного класса.
     abstract class AbstractClass2 : ConcreteClassA
     {
         public abstract void Method();
@@ -27,7 +23,7 @@ namespace CSTest._04_Class._09_AbstractClasses
     {
         public override void Method()
         {
-            Console.WriteLine("ConcreteClassB.Method");
+            Debug.WriteLine("ConcreteClassB.Method");
         }
     }
 
@@ -51,12 +47,12 @@ namespace CSTest._04_Class._09_AbstractClasses
     {
         public override void OperationA()
         {
-            Console.WriteLine("ConcreteClass.OperationA");
+            Debug.WriteLine("ConcreteClass.OperationA");
         }
 
         public override void OperationB()
         {
-            Console.WriteLine("ConcreteClass.OperationB");
+            Debug.WriteLine("ConcreteClass.OperationB");
         }
     }
 }

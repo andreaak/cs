@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics;
 
 namespace CSTest._04_Class._14_PartialClasses.PartialMethods
 {
@@ -8,7 +8,7 @@ namespace CSTest._04_Class._14_PartialClasses.PartialMethods
         // Определение частичного метода. 
         partial void PartialMethod()
         {
-            Console.WriteLine("Вызван частичный метод - PartialMethod()");
+            Debug.WriteLine("Вызван частичный метод - PartialMethod()");
         }
 
         // Вызов частичного метода через метод обертку.
@@ -25,7 +25,7 @@ namespace CSTest._04_Class._14_PartialClasses.PartialMethods
 
         //partial void MyMethod()
         //{
-        //    Console.WriteLine("Реализация частичных методов в других частях класса PartialClass - необязательна!"); ;
+        //    Debug.WriteLine("Реализация частичных методов в других частях класса PartialClass - необязательна!"); ;
         //}
         
         #endregion

@@ -6,7 +6,7 @@ namespace CSTest._04_Class._10_InnerClasses
     public class Test
     {
         [TestMethod]
-        public void Test1()
+        public void TestClassInner1()
         {
         }
     }

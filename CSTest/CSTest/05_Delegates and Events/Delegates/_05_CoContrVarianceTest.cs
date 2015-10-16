@@ -8,18 +8,18 @@ namespace CSTest._05_Delegates_and_Events.Delegates
     public class _05_CoContrVarianceTest
     {
         [TestMethod]
-        public void Test1()
+        public void TestDelegateCoContrVariance1()
         {
-            Func<TestClass, TestClassBase> first = FirstMethod;
-            first(new TestClass());
+            TestDelegate first = FirstMethod;
+            TestClassBase res = first(new TestClass());
             first = SecondMethod;
-            first(new TestClass());
+            res = first(new TestClass());
             first = ThirdMethod;
-            first(new TestClass());
+            res = first(new TestClass());
             first = FourthMethod;
-            first(new TestClass());
+            res = first(new TestClass());
         }
-        //invariance
+        //base
         private TestClassBase FirstMethod(TestClass arg)
         {
             Debug.WriteLine("FirstMethod");

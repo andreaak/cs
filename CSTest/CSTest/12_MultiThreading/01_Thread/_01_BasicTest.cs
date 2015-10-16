@@ -9,7 +9,7 @@ namespace CSTest._12_MultiThreading._01_Thread
     {
         [TestMethod]
         // Создать поток исполнения.
-        public void Test1()
+        public void TestThreadStart1()
         {
             Debug.WriteLine("Основной поток начат.");
             // Сначала сконструировать объект типа MyThread. 
@@ -29,7 +29,7 @@ namespace CSTest._12_MultiThreading._01_Thread
 
         [TestMethod]
         // Другой способ запуска потока.
-        public void Test2()
+        public void TestThreadStart2()
         {
             Debug.WriteLine("Основной поток начат.");
             // Сначала сконструировать объект типа MyThread. 
@@ -45,7 +45,7 @@ namespace CSTest._12_MultiThreading._01_Thread
 
         [TestMethod]
         // Создать несколько потоков исполнения.
-        public void Test3()
+        public void TestThreadStart3()
         {
             Debug.WriteLine("Основной поток начат.");
             // Сконструировать три потока. 
@@ -64,7 +64,7 @@ namespace CSTest._12_MultiThreading._01_Thread
 
         [TestMethod]
         // Пример передачи аргумента методу потока.
-        public void Test4()
+        public void TestThreadStart4()
         {
             // Обратите внимание на то, что число повторений 
             // передается этим двум объектам типа MyThread. 

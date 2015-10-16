@@ -30,7 +30,7 @@ namespace CSTest._01_Elements_CS._05_Constants
     public class Test
     {
         [TestMethod]
-        public void Test1()
+        public void TestReadOnly1()
         {
             _02_ReadOnly program = new _02_ReadOnly();
 

@@ -7,11 +7,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
     [TestClass]
-    public class _05_InterLockedTest
+    public class _05_InterlockedTest
     {
         [TestMethod]
         // Interlocked - Предоставляет атомарные операции для переменных, общедоступных нескольким потокам. 
-        public void Test1()
+        public void TestInterlocked1()
         {
             var reporter = new Thread(Report)
             {
@@ -31,7 +31,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         }
 
         [TestMethod]
-        public void Test2()
+        public void TestInterlocked2()
         {
             var threads = new Thread[50];
 
@@ -84,7 +84,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
 
 
         //SpinLock
-        static readonly SpinLock block = new SpinLock(10); // Интервал 10 млск.
+        static readonly _12_SpinLock block = new _12_SpinLock(10); // Интервал 10 млск.
         static readonly FileStream stream = File.Open("log.txt", FileMode.Append, FileAccess.Write, FileShare.None);
         static readonly StreamWriter writer = new StreamWriter(stream);
 
@@ -106,6 +106,5 @@ namespace CSTest._12_MultiThreading._02_Synchronization
                 writer.Flush(); // Очищает буфер writer и записывает данные в файл.
             }   // Вызывается public void Dispose() { block.Exit(); }
         }
-    
     }
 }

@@ -20,9 +20,9 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         Когда контролирующий поток завершит работу, он вызовет метод Set для сообщения о том, что ожидающие потоки могут продолжить работу. 
         Все ожидающие потоки освобождаются.
         */
-        
+
         [TestMethod]
-        public void Test1()
+        public void TestManualResetEvent1()
         {
             Debug.WriteLine("Нажмите на любую клавишу для перевода ManualResetEvent в сигнальное состояние.\n");
 
@@ -40,9 +40,9 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         }
 
         [TestMethod]
-        public void Test2()
+        public void TestManualResetEvent2()
         {
-                        // false - установка несигнального состояния.
+            // false - установка несигнального состояния.
             var manual = new ManualResetEvent(false);
 
             var thread = new Work("1", manual);
@@ -62,7 +62,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             // Delay.
             Thread.Sleep(15000);
         }
-        
+
         // ManualResetEvent - Уведомляет один или более ожидающих потоков о том, что произошло событие.
         private static ManualResetEvent manual = new ManualResetEvent(false);
         static void Function1()

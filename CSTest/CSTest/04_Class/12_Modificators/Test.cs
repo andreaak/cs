@@ -7,7 +7,7 @@ namespace CSTest._04_Class._12_Modificators
     public class Test
     {
         [TestMethod]
-        public void Test1()
+        public void TestClassModificator()
         {
         }
     }

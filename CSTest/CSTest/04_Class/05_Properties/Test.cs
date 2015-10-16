@@ -48,7 +48,7 @@ namespace CSTest._04_Class._05_Properties
             _02_Properties constants = new _02_Properties();
 
             constants.Pi = 3.14159265D;
-            //Console.WriteLine(constants.Pi); // Недопустимо.
+            //Debug.WriteLine(constants.Pi); // Недопустимо.
 
             //constants.E = 3.71D;             // Недопустимо.
             Debug.WriteLine("e = {0}", constants.E);

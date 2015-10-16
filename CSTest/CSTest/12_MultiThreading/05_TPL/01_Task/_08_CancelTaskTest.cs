@@ -32,7 +32,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Простой пример отмены задачи с использованием опроса.
-        public void Test()
+        public void TestTaskCancel()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Создать объект источника признаков отмены. 

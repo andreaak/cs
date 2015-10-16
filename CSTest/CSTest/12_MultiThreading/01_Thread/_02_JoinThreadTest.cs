@@ -9,7 +9,7 @@ namespace CSTest._12_MultiThreading._01_Thread
     {
         [TestMethod]
         // Использовать свойство IsAlive для отслеживания момента окончания потоков
-        public void Test1()
+        public void TestThreadJoin1()
         {
             Debug.WriteLine("Основной поток начат.");
             // Сконструировать три потока. 
@@ -29,7 +29,7 @@ namespace CSTest._12_MultiThreading._01_Thread
 
         [TestMethod]
         // Использовать метод Join(). 
-        public void Test2()
+        public void TestThreadJoin2()
         {
             // Использовать метод Join() для ожидания до тех пор, 
             // пока потоки не завершатся, 

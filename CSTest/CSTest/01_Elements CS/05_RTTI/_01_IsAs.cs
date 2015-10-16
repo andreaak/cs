@@ -1,17 +1,17 @@
 ﻿using CSTest._04_Class._07_Inheritance;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSTest._01_Elements_CS._03_Casting
+namespace CSTest._01_Elements_CS._05_RTTI
 {
     class ClassA { /* ... */ }
 
     class ClassB : ClassA { /* ... */ }
 
     [TestClass]
-    public class IsAs
+    public class _01_IsAs
     {
         [TestMethod]
-        public void TestCasting1()
+        public void TestCasting1Is()
         {
             ClassB b = new ClassB();
             ClassA a = null;
@@ -44,7 +44,7 @@ namespace CSTest._01_Elements_CS._03_Casting
         }
 
         [TestMethod]
-        public void TestCasting2()
+        public void TestCasting2As()
         {
             DerivedClass instance = new DerivedClass();
             instance.Method();

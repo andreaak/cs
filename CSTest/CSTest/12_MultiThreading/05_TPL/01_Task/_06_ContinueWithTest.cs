@@ -37,7 +37,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Продемонстрировать продолжение задачи.
-        public void Test()
+        public void TestTaskContinue1()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Сконструировать объект первой задачи. 
@@ -55,7 +55,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Продемонстрировать продолжение задачи при исключении.
-        public void TestContinueInTask()
+        public void TestTaskContinue2()
         {
             Debug.WriteLine("Основной поток запущен.");
             UIContext.Initialize();
@@ -92,7 +92,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Продемонстрировать продолжение задачи при отмене.
-        public void TestCancelTask()
+        public void TestTaskCancel()
         {
             Debug.WriteLine("Основной поток запущен.");
             UIContext.Initialize();
@@ -131,7 +131,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Продемонстрировать продолжение задачи при исключении.
-        public void TestExceptionInTask()
+        public void TestTaskException()
         {
             Debug.WriteLine("Основной поток запущен.");
             UIContext.Initialize();

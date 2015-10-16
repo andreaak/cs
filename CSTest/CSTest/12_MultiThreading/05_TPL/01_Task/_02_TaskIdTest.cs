@@ -23,7 +23,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Возвратить значение из задачи.
-        public void Test()
+        public void TestTaskId()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Сконструировать объекты двух задач.

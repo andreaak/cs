@@ -9,10 +9,10 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     {
         // Объект для блокировки.
         private static readonly object block = new object();
-        
+
         [TestMethod]
         // Использовать блокировку для синхронизации доступа к объекту.
-        public void Test1()
+        public void TestLock1()
         {
             int[] a = { 1, 2, 3, 4, 5 };
             MyThread mtl = new MyThread("Потомок #1", a);
@@ -23,7 +23,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
 
         [TestMethod]
         // Другой способ блокировки для синхронизации доступа к объекту. 
-        public void Test2()
+        public void TestLock2()
         {
             int[] a = { 1, 2, 3, 4, 5 };
             MyThread2 mtl = new MyThread2("Потомок #1", a);
@@ -33,7 +33,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         }
 
         [TestMethod]
-        public void Test3()
+        public void TestLock3()
         {
             var threads = new Thread[2];
 
@@ -46,7 +46,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
 
         [TestMethod]
         // Lock - не принимает типов значений, а только ссылочные.
-        public void Test4()
+        public void TestLock4()
         {
             Thread[] threads = { new Thread(FunctionWithError), new Thread(FunctionWithError), new Thread(FunctionWithError) };
 
@@ -180,7 +180,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             }
         }
 
-        
+
         static private int counter = 0;
         // Нельзя использовать объекты блокировки структурного типа.
         // blockStruct - не может быть структурным.

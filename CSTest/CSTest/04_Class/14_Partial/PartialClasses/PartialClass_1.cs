@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics;
 
 namespace CSTest._04_Class._14_PartialClasses.PartialClasses
 {
@@ -7,7 +7,7 @@ namespace CSTest._04_Class._14_PartialClasses.PartialClasses
     {
         public void MethodFromPart1()
         {
-            Console.WriteLine("I Part");
+            Debug.WriteLine("I Part");
         }
     }
 }

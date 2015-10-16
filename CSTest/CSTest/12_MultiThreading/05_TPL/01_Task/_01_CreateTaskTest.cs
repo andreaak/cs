@@ -34,7 +34,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Создать и запустить задачу на исполнение. 
-        public void Test1()
+        public void TestTaskStart1()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Сконструировать объект задачи. 
@@ -52,7 +52,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Использовать метод экземпляра в качестве задачи. 
-        public void Test2()
+        public void TestTaskStart2()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Сконструировать объект типа _01_CreateTask. 

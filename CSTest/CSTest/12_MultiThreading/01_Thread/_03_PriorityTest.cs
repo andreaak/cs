@@ -9,7 +9,7 @@ namespace CSTest._12_MultiThreading._01_Thread
     {
         [TestMethod]
         // Продемонстрировать влияние приоритетов потоков.
-        public void Test1()
+        public void TestThreadPriority1()
         {
             MyThreadPriority mt1 = new MyThreadPriority("с высоким приоритетом");
             MyThreadPriority mt2 = new MyThreadPriority("с низким приоритетом");
@@ -31,7 +31,7 @@ namespace CSTest._12_MultiThreading._01_Thread
 
         [TestMethod]
         // Продемонстрировать влияние приоритетов потоков.
-        public void Test2()
+        public void TestThreadPriority2()
         {
             //Debug.SetWindowSize(80, 40);
 

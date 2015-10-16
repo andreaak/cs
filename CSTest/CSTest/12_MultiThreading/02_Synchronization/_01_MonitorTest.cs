@@ -15,7 +15,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         static private readonly System.Random random = new System.Random();
 
         [TestMethod]
-        public void Test1()
+        public void TestMonitor1()
         {
             var reporter = new Thread(Report)
             {
@@ -36,7 +36,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
 
         [TestMethod]
         //Блокировка в разных методах
-        public void Test2()
+        public void TestMonitor2()
         {
             var threads = new Thread[2];
 
@@ -49,7 +49,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
 
         [TestMethod]
         // Lock - не принимает типов значений, а только ссылочные.
-        public void Test3()
+        public void TestMonitor3()
         {
             Thread[] threads = { new Thread(FunctionWithError), new Thread(FunctionWithError), new Thread(FunctionWithError) };
 

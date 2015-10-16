@@ -11,7 +11,7 @@ namespace CSTest._12_MultiThreading._01_Thread
     public class _05_BackgroundTest
     {
         [TestMethod]
-        public void Test()
+        public void TestThreadIsBackground()
         {
             var thread = new Thread(Function);
 
@@ -35,7 +35,5 @@ namespace CSTest._12_MultiThreading._01_Thread
             }
             Debug.WriteLine("\nЗавершение вторичного потока.");
         }
-
-
     }
 }

@@ -23,7 +23,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Применить метод Wait()
-        public void Test()
+        public void TestTaskWait()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Сконструировать объекты двух задач. 

@@ -9,7 +9,7 @@ namespace CSTest._12_MultiThreading._01_Thread
     public class _06_ThreadStaticTest
     {
         [TestMethod]
-        public void Test()
+        public void TestThreadStatic()
         {
             // Запуск вторичного потока.
             var thread = new Thread(Method);
@@ -22,10 +22,10 @@ namespace CSTest._12_MultiThreading._01_Thread
 
         // Общая переменная счетчик.
         //[ThreadStatic] //Если снять комментарий то для каждого потока будет своя переменная counter
-        public static int counter;
+        private static int counter;
 
         // Рекурсивный запуск потоков.
-        public static void Method()
+        private static void Method()
         {
             if (counter < 100)
             {

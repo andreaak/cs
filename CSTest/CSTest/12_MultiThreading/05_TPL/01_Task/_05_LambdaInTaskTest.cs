@@ -10,7 +10,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
     {
         [TestMethod]
         // Применить лямбда-выражение в качестве задачи.
-        public void Test()
+        public void TestTaskLambda()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Далее лямбда-выражение используется для определения задачи. 

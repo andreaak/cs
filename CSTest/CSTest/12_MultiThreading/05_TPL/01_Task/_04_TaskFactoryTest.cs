@@ -21,7 +21,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Создать и запустить задачу на исполнение. 
-        public void Test()
+        public void TestTaskFactory()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Сконструировать объект задачи и Запустить задачу на исполнение 
