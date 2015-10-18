@@ -186,7 +186,7 @@
     <Compile Include="004_StubsAndMocks\016_RhynoMocksEventRaiser\Presenter.cs" />
     <Compile Include="004_StubsAndMocks\016_RhynoMocksEventRaiser\Program.cs" />
     <Compile Include="004_StubsAndMocks\016_RhynoMocksEventRaiser\Test\TestClass.cs" />
-    <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Dll\EventsVerifier.cs" />
+    <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Dll_\EventsVerifier.cs" />
     <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\IView.cs" />
     <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Program.cs" />
     <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Test\TestClass.cs" />
