@@ -35,4 +35,6 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Debug.WriteLine("\nОсновной поток завершен.");
         }
     }
+
+
 }

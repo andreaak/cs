@@ -5,10 +5,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
-    [TestClass]
     // Использование Mutex для синхронизации доступа к защищенным ресурсам.
     // Mutex - Примитив синхронизации, который также может использоваться в межпроцессной и междоменной синхронизации.
     // MutEx - Mutual Exclusion (Взаимное Исключение).
+    [TestClass]
     public class _07_MutexTest
     {
         [TestMethod]
@@ -29,6 +29,22 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Thread.Sleep(15000);
         }
 
+        // Mutex - Примитив синхронизации, который также может использоваться в межпроцессорной синхронизации.
+        // функционирует аналогично AutoResetEvent но снабжен дополнительной логикой:
+        // 1. Запоминает какой поток им владеет. ReleaseMutex не может вызвать поток, который не владеет мьютексом.
+        // 2. Управляет рекурсивным счетчиком, указывающим, сколько раз поток-владелец уже владел объектом.
+        private static readonly Mutex Mutex1 = new Mutex(false, "MutexSample:AAED7056-380D-412E-9608-763495211EA8");
+        static void Function()
+        {
+            bool myMutex = Mutex1.WaitOne();
+
+            Debug.WriteLine("Поток {0} зашел в защищенную область.", Thread.CurrentThread.Name);
+            Thread.Sleep(2000);
+            Debug.WriteLine("Поток {0}  покинул защищенную область.\n", Thread.CurrentThread.Name);
+
+            Mutex1.ReleaseMutex();
+        }
+
         [TestMethod]
         public void TestMutex2()
         {
@@ -42,41 +58,6 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             // Delay.
             Thread.Sleep(15000);
         }
-
-        [TestMethod]
-        // Рекурсивное запирание.
-        public void TestMutex3()
-        {
-            var instance = new SomeClass();
-
-            var thread = new Thread(instance.Method1);
-            thread.Start();
-
-            var thread2 = new Thread(instance.Method1);
-            thread2.Start();
-
-            // Delay.
-            thread.Join();
-            thread2.Join();
-            // Delay.
-            Thread.Sleep(15000);
-        }
-
-        // Mutex - Примитив синхронизации, который также может использоваться в межпроцессорной синхронизации.
-        // функционирует аналогично AutoResetEvent но снабжен дополнительной логикой:
-        // 1. Запоминает какой поток им владеет. ReleaseMutex не может вызвать поток, который не владеет мьютексом.
-        // 2. Управляет рекурсивным счетчиком, указывающим, сколько раз поток-владелец уже владел объектом.
-        private static readonly Mutex Mutex1 = new Mutex(false, "MutexSample:AAED7056-380D-412E-9608-763495211EA8");
-        static void Function()
-        {
-            bool myMutex = Mutex1.WaitOne();
-
-            Debug.WriteLine("Поток {0} зашел в защищенную область.", Thread.CurrentThread.Name);
-            Thread.Sleep(2000);
-            Debug.WriteLine("Поток {0}  покинул защищенную область.\n", Thread.CurrentThread.Name);
-            Mutex1.ReleaseMutex();
-        }
-
 
         ///////////////////////
         private static Mutex mutex = new Mutex();
@@ -103,6 +84,34 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             mutex.ReleaseMutex();  // Освобождение Mutex.
 
             Thread.Sleep(1000); // Выполнение некоторой работы...
+        }
+
+        [TestMethod]
+        // Рекурсивное запирание.
+        public void TestMutex3()
+        {
+            var instance = new SomeClass();
+
+            var thread = new Thread(instance.Method1);
+            thread.Start();
+
+            var thread2 = new Thread(instance.Method1);
+            thread2.Start();
+
+            // Delay.
+            thread.Join();
+            thread2.Join();
+
+            /*
+            Method1 Start 14
+            Method2 Start 14
+            Method2 End 14
+            Method1 End 14
+            Method1 Start 13
+            Method2 Start 13
+            Method2 End 13
+            Method1 End 13
+            */
         }
     }
 

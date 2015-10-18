@@ -80,6 +80,13 @@ namespace CSTest._04_Class._07_Inheritance
             // Проверка.
             Debug.WriteLine("instance Id     {0}", instance.GetHashCode());
             Debug.WriteLine("newInstance Id  {0}", newInstance.GetHashCode());
+            /*
+            1
+            2
+            3
+            instance Id     26376641
+            newInstance Id  26376641
+            */
         }
 
         [TestMethod]
@@ -95,9 +102,11 @@ namespace CSTest._04_Class._07_Inheritance
             // DownCast
             DerivedClass instanceDown = (DerivedClass)instanceUp;
             instanceDown.Method();
-            /*Method from DerivedClass
+            /*
+            Method from DerivedClass
             Method from BaseClass
-            Method from DerivedClass*/
+            Method from DerivedClass
+            */
         }
 
         [TestMethod]
@@ -113,9 +122,11 @@ namespace CSTest._04_Class._07_Inheritance
             // DownCast
             DerivedClass instanceDown = (DerivedClass)instanceUp;
             instanceDown.MethodVirtual();
-            /*MethodVirtual from DerivedClass
+            /*
             MethodVirtual from DerivedClass
-            MethodVirtual from DerivedClass*/
+            MethodVirtual from DerivedClass
+            MethodVirtual from DerivedClass
+            */
         }
 
         [TestMethod]
@@ -123,8 +134,26 @@ namespace CSTest._04_Class._07_Inheritance
         {
             DerivedClass instance = new DerivedClass();
             instance.MethodVirtual2();
-            /*MethodVirtual2 from BaseClass
-            MethodVirtual2 from DerivedClass*/
+            /*
+            MethodVirtual2 from BaseClass
+            MethodVirtual2 from DerivedClass
+            */
+        }
+
+        [TestMethod]
+        public void TestInheritance9()
+        {
+            _01_ConstructorsDerived instance = new _01_ConstructorsDerived();
+            /*
+            Derived.InitStaticVariable
+            Derived.StaticCtor
+            Derived.InitInstanceVariable
+            Base.InitStaticVariable
+            Base.StaticCtor
+            Base.InitInstanceVariable
+            Base.Ctor
+            Derived.Ctor
+            */
         }
     }
 }

@@ -32,71 +32,6 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             mt2.Thrd.Join();
         }
 
-        [TestMethod]
-        public void TestLock3()
-        {
-            var threads = new Thread[2];
-
-            new Thread(Function2).Start();
-
-            new Thread(Function3).Start();
-
-            Thread.Sleep(15000);
-        }
-
-        [TestMethod]
-        // Lock - не принимает типов значений, а только ссылочные.
-        public void TestLock4()
-        {
-            Thread[] threads = { new Thread(FunctionWithError), new Thread(FunctionWithError), new Thread(FunctionWithError) };
-
-            foreach (Thread t in threads)
-            {
-                t.Start();
-            }
-            Thread.Sleep(5000);
-        }
-
-
-        class SumArray
-        {
-            int sum;
-            object lockOn = new object(); // закрытый объект, доступный 
-            // для последующей блокировки 
-            public int SumIt(int[] nums)
-            {
-                lock (lockOn)
-                { // заблокировать весь метод 
-                    sum = 0; // установить исходное значение суммы 
-                    for (int i = 0; i < nums.Length; i++)
-                    {
-                        sum += nums[i];
-                        Debug.WriteLine("Текущая сумма для потока " +
-                        Thread.CurrentThread.Name + " равна " + sum);
-                        Thread.Sleep(100); // разрешить переключение задач 
-                    }
-                    return sum;
-                }
-            }
-        }
-
-        class SumArray2
-        {
-            int sum;
-            public int SumIt(int[] nums)
-            {
-                sum = 0; // установить исходное значение суммы 
-                for (int i = 0; i < nums.Length; i++)
-                {
-                    sum += nums[i];
-                    Debug.WriteLine("Текущая сумма для потока " +
-                    Thread.CurrentThread.Name + " равна " + sum);
-                    Thread.Sleep(100); // разрешить переключение задач 
-                }
-                return sum;
-            }
-        }
-
         class MyThread
         {
             public Thread Thrd;
@@ -120,6 +55,28 @@ namespace CSTest._12_MultiThreading._02_Synchronization
                 answer = sa.SumIt(a);
                 Debug.WriteLine("Сумма для потока " + Thrd.Name + " равна " + answer);
                 Debug.WriteLine(Thrd.Name + " завершен.");
+            }
+        }
+
+        class SumArray
+        {
+            int sum;
+            object lockOn = new object(); // закрытый объект, доступный 
+            // для последующей блокировки 
+            public int SumIt(int[] nums)
+            {
+                lock (lockOn)
+                { // заблокировать весь метод 
+                    sum = 0; // установить исходное значение суммы 
+                    for (int i = 0; i < nums.Length; i++)
+                    {
+                        sum += nums[i];
+                        Debug.WriteLine("Текущая сумма для потока " +
+                        Thread.CurrentThread.Name + " равна " + sum);
+                        Thread.Sleep(100); // разрешить переключение задач 
+                    }
+                    return sum;
+                }
             }
         }
 
@@ -154,6 +111,35 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             }
         }
 
+        class SumArray2
+        {
+            int sum;
+            public int SumIt(int[] nums)
+            {
+                sum = 0; // установить исходное значение суммы 
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    sum += nums[i];
+                    Debug.WriteLine("Текущая сумма для потока " +
+                    Thread.CurrentThread.Name + " равна " + sum);
+                    Thread.Sleep(100); // разрешить переключение задач 
+                }
+                return sum;
+            }
+        }
+
+        [TestMethod]
+        public void TestLock3()
+        {
+            //var threads = new Thread[2];
+
+            new Thread(Function2).Start();
+
+            new Thread(Function3).Start();
+
+            Thread.Sleep(15000);
+        }
+
         private static void Function2()
         {
             for (uint i = 0; i < 3; ++i)
@@ -180,11 +166,23 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             }
         }
 
+        [TestMethod]
+        // Lock - не принимает типов значений, а только ссылочные.
+        public void TestLock4()
+        {
+            Thread[] threads = { new Thread(FunctionWithError), new Thread(FunctionWithError), new Thread(FunctionWithError) };
+
+            foreach (Thread t in threads)
+            {
+                t.Start();
+            }
+            Thread.Sleep(5000);
+        }
 
         static private int counter = 0;
         // Нельзя использовать объекты блокировки структурного типа.
         // blockStruct - не может быть структурным.
-        //static private int blockStruct = 0;
+        static private int blockStruct = 0;
         static private void FunctionWithError()
         {
             for (int i = 0; i < 50; ++i)

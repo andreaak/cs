@@ -7,28 +7,37 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     [TestClass]
     public class _09_AutoResetEventTest
     {
+        // AutoResetEvent - Уведомляет ожидающий поток о том, что произошло событие. 
+        static readonly AutoResetEvent auto = new AutoResetEvent(false);
+        
         [TestMethod]
-        public void TestAutoResetEvent()
+        public void TestAutoResetEvent1()
         {
-            Debug.WriteLine("Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.\n");
 
             var thread = new Thread(Function1);
             thread.Start();
 
-            // Delay.
-            Thread.Sleep(15000);
+            Debug.WriteLine("Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.\n");
+            Thread.Sleep(500);
             auto.Set(); // Послать сигнал первому потоку
 
-            // Delay.
-            Thread.Sleep(15000);
+            Debug.WriteLine("Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.\n");
+            Thread.Sleep(500);
             auto.Set(); // Послать сигнал второму потоку
 
             // Delay.
-            Thread.Sleep(15000);
+            Thread.Sleep(200);
+            /*
+            Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.
+
+            Красный свет
+            Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.
+
+            Желтый
+            Зеленый
+            */
         }
 
-        // AutoResetEvent - Уведомляет ожидающий поток о том, что произошло событие. 
-        static readonly AutoResetEvent auto = new AutoResetEvent(false);
         static void Function1()
         {
             Debug.WriteLine("Красный свет");
@@ -36,6 +45,48 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Debug.WriteLine("Желтый");
             auto.WaitOne(); // после завершения WaitOne() AutoResetEvent автоматически переходит в несигнальное состояние.
             Debug.WriteLine("Зеленый");
+        }
+
+        [TestMethod]
+        public void TestAutoResetEvent2()
+        {
+            var thread = new Thread(Function3);
+            thread.Start();
+            var thread2 = new Thread(Function4);
+            thread2.Start();
+
+            Thread.Sleep(1000);
+            Debug.WriteLine("Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.\n");
+            Thread.Sleep(500);
+            auto.Set(); // Послать сигнал первому потоку
+            auto.Set(); // Послать сигнал второму потоку
+            // Delay.
+            thread.Join();
+            thread2.Join();
+            Thread.Sleep(2000);
+            /*
+            Поток 1 запущен и ожидает сигнала.
+            Поток 2 запущен и ожидает сигнала.
+            Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.
+
+            Поток 1 завершается.
+            Поток 2 завершается.
+            */
+        }
+
+        static void Function3()
+        {
+            Debug.WriteLine("Поток 1 запущен и ожидает сигнала.");
+            auto.WaitOne(); // Остановка выполнения вторичного потока 1
+            Debug.WriteLine("Поток 1 завершается.");
+
+        }
+
+        static void Function4()
+        {
+            Debug.WriteLine("Поток 2 запущен и ожидает сигнала.");
+            auto.WaitOne(); // Остановка выполнения вторичного потока 2
+            Debug.WriteLine("Поток 2 завершается.");
         }
     }
 }

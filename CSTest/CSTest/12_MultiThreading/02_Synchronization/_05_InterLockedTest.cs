@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CSTest._12_MultiThreading._02_Synchronization._0_Setup;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
@@ -30,21 +31,17 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Thread.Sleep(15000);
         }
 
-        [TestMethod]
-        public void TestInterlocked2()
+        // Проверка количества запущеных потоков. 
+        private static void Report()
         {
-            var threads = new Thread[50];
-
-            for (uint i = 0; i < 50; ++i)
+            while (true)
             {
-                threads[i] = new Thread(Function2);
-                threads[i].Start();
+                long number = Interlocked.Read(ref counter);
+
+                Debug.WriteLine("{0} поток(ов) активно.", number);
+                Thread.Sleep(100);
             }
-
-            // Задержка.
-            Console.ReadKey();
         }
-
 
         // Счетчик запущеных потоков.
         static private long counter;
@@ -70,21 +67,23 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             }
         }
 
-        // Проверка количества запущеных потоков. 
-        private static void Report()
+        [TestMethod]
+        public void TestInterlocked2()
         {
-            while (true)
-            {
-                long number = Interlocked.Read(ref counter);
+            var threads = new Thread[50];
 
-                Debug.WriteLine("{0} поток(ов) активно.", number);
-                Thread.Sleep(100);
+            for (uint i = 0; i < 50; ++i)
+            {
+                threads[i] = new Thread(Function2);
+                threads[i].Start();
             }
+
+            // Задержка.
+            Console.ReadKey();
         }
 
-
         //SpinLock
-        static readonly _12_SpinLock block = new _12_SpinLock(10); // Интервал 10 млск.
+        static readonly SpinLock_ block = new SpinLock_(10); // Интервал 10 млск.
         static readonly FileStream stream = File.Open("log.txt", FileMode.Append, FileAccess.Write, FileShare.None);
         static readonly StreamWriter writer = new StreamWriter(stream);
 

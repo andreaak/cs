@@ -165,6 +165,9 @@ namespace CSTest._13_Exceptions
             {
                 ClassWithException instance = new ClassWithException();
                 instance.RecurseMethod();
+                
+                //Если генерировать StackOverflowException то finally сработает
+                //throw new StackOverflowException();
             }
             catch (Exception ex)
             {
@@ -173,7 +176,7 @@ namespace CSTest._13_Exceptions
             finally
             {
                 // finally - не сработает при StackOverflowException.
-                while (true)
+                //while (true)
                 {
                     Debug.WriteLine("Finally");
                 }

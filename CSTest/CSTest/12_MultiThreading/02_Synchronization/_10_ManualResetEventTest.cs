@@ -20,23 +20,52 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         Когда контролирующий поток завершит работу, он вызовет метод Set для сообщения о том, что ожидающие потоки могут продолжить работу. 
         Все ожидающие потоки освобождаются.
         */
+        // ManualResetEvent - Уведомляет один или более ожидающих потоков о том, что произошло событие.
+        private static ManualResetEvent manual = new ManualResetEvent(false);
 
         [TestMethod]
         public void TestManualResetEvent1()
         {
-            Debug.WriteLine("Нажмите на любую клавишу для перевода ManualResetEvent в сигнальное состояние.\n");
 
             Thread[] threads = { new Thread(Function1), new Thread(Function2) };
 
             foreach (Thread thread in threads)
+            {
                 thread.Start();
+            }
 
             // Delay.
-            Thread.Sleep(15000);
+            Debug.WriteLine("Нажмите на любую клавишу для перевода ManualResetEvent в сигнальное состояние.\n");
+            Thread.Sleep(2000);
+            Debug.WriteLine("Нажатие кнопки.\n");
             manual.Set(); // Просылает сигнал всем потокам.
 
             // Delay.
-            Thread.Sleep(15000);
+            Thread.Sleep(2000);
+            /*
+            Нажмите на любую клавишу для перевода ManualResetEvent в сигнальное состояние.
+
+            Поток 1 запущен и ожидает сигнала.
+            Поток 2 запущен и ожидает сигнала.
+            Нажатие кнопки.
+
+            Поток 1 завершается.
+            Поток 2 завершается.
+            */
+        }
+        static void Function1()
+        {
+            Debug.WriteLine("Поток 1 запущен и ожидает сигнала.");
+            manual.WaitOne(); // после завершения WaitOne() ManualResetEvent остаеться в сигнальном сотоянии.
+            Debug.WriteLine("Поток 1 завершается.");
+
+        }
+
+        static void Function2()
+        {
+            Debug.WriteLine("Поток 2 запущен и ожидает сигнала.");
+            manual.WaitOne(); // после завершения WaitOne() ManualResetEvent остаеться в сигнальном сотоянии.
+            Debug.WriteLine("Поток 2 завершается.");
         }
 
         [TestMethod]
@@ -60,24 +89,25 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Debug.WriteLine("\nОсновной поток получил уведомление о событии от второго потока.");
 
             // Delay.
-            Thread.Sleep(15000);
-        }
+            Thread.Sleep(10000);
 
-        // ManualResetEvent - Уведомляет один или более ожидающих потоков о том, что произошло событие.
-        private static ManualResetEvent manual = new ManualResetEvent(false);
-        static void Function1()
-        {
-            Debug.WriteLine("Поток 1 запущен и ожидает сигнала.");
-            manual.WaitOne(); // после завершения WaitOne() ManualResetEvent остаеться в сигнальном сотоянии.
-            Debug.WriteLine("Поток 1 завершается.");
+            /*
+            Основной поток ожидает событие.
 
-        }
+            Запущен поток 1
+            . . . . . . . . . . 
+            Поток 1 завершен
 
-        static void Function2()
-        {
-            Debug.WriteLine("Поток 2 запущен и ожидает сигнала.");
-            manual.WaitOne(); // после завершения WaitOne() ManualResetEvent остаеться в сигнальном сотоянии.
-            Debug.WriteLine("Поток 2 завершается.");
+            Основной поток получил уведомление о событии от первого потока.
+
+            Основной поток ожидает событие.
+
+            Запущен поток 2
+            . . . . . . . . . . 
+            Поток 2 завершен
+
+            Основной поток получил уведомление о событии от второго потока.
+            */
         }
     }
 

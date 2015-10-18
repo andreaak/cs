@@ -7,6 +7,10 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     [TestClass]
     public class _11_ManualResetEventSlimTest
     {
+        // ManualResetEventSlim - изначально используется SpinWait блокировка на 1000 итераций, 
+        // после чего происходит синхронизация с помощью объекта ядра.
+        static ManualResetEventSlim slim = new ManualResetEventSlim(false, 1000);
+        
         [TestMethod]
         public void TestManualResetEventSlim1()
         {
@@ -70,9 +74,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Thread.Sleep(15000);
         }
 
-        // ManualResetEventSlim - изначально используется SpinWait блокировка на 1000 итераций, 
-        // после чего происходит синхронизация с помощью объекта ядра.
-        static ManualResetEventSlim slim = new ManualResetEventSlim(false, 1000);
+
         static void Function()
         {
             slim.Wait();
