@@ -28,7 +28,7 @@ ParseQuery2/
 SocialNetwork/
 #WorkWithSvn/
 WsdlGeneration/
-#Test/
+Tests/
 Dll/
 .svn/
 #.gitignore
