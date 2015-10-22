@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CSTest</RootNamespace>
     <AssemblyName>CSTest</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,11 +30,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -181,6 +185,12 @@
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_07_ResultFromTaskTest.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_08_CancelTaskTest.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_09_ExceptionTest.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\0_Setup\Setup.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\TestClass.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\Test.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\TestClassReflected.cs" />
+    <Compile Include="12_MultiThreading\08_WinFormsWPF\0_Setup\Setup.cs" />
+    <Compile Include="12_MultiThreading\08_WinFormsWPF\Test.cs" />
     <Compile Include="13_Exceptions\0_Setup\ClassWithException.cs" />
     <Compile Include="13_Exceptions\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

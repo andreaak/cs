@@ -26,6 +26,19 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             }
         }
 
+        SynchronizationContext synchronizationContext;
+        public static SynchronizationContext SynchronizationContext
+        {
+            get
+            {
+                if (SynchronizationContext.Current == null)
+                {
+                    SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
+                }
+                return SynchronizationContext.Current;
+            }
+        }
+
         /// <summary>
         /// Should be initialized on application startup
         /// </summary>

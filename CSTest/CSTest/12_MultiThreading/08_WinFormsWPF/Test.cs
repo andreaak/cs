@@ -1,53 +1,74 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using CSTest._12_MultiThreading._05_TPL._01_Task;
+using CSTest._12_MultiThreading._08_WinFormsWPF._0_Setup;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSTest._12_MultiThreading._05_TPL._01_Task
+namespace CSTest._12_MultiThreading._08_WinFormsWPF
 {
     [TestClass]
-    public class _06_ContinueWithTest
+    public class Test
     {
-        CancellationTokenSource cts;
-        
         [TestMethod]
-        // Продемонстрировать продолжение задачи.
-        public void TestTaskContinue1()
+        public void TestWinFormsWPF1()
         {
-            Debug.WriteLine("Основной поток запущен.");
-            // Сконструировать объект первой задачи. 
-            Task tsk = new Task(MyTask);
-            //А теперь создать продолжение задачи. 
-            Task taskCont = tsk.ContinueWith(ContinuationTask);
-            // Начать последовательность задач, 
-            tsk.Start();
-            // Ожидать завершения продолжения. 
-            taskCont.Wait();
-            tsk.Dispose();
-            taskCont.Dispose();
-            Debug.WriteLine("Основной поток завершен.");
+            //dataTextBox.Text += "Beginning download\n";
+            Debug.WriteLine("Beginning download");
+            var sync = UIContext.SynchronizationContext;
+            var req = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
+            req.Method = "GET";
+            req.BeginGetResponse(
+                asyncResult =>
+                {
+                    var resp = (HttpWebResponse)req.EndGetResponse(asyncResult);
+                    string headersText = resp.Headers.ToString();
+                    sync.Post(
+                        state => /*dataTextBox.Text += headersText*/ Debug.WriteLine(headersText),
+                        null);
+                },
+                null);
+            /*dataTextBox.Text += "Download started async\n";*/
+            Debug.WriteLine("Download started async");
+            Thread.Sleep(5000);
+            /*
+            Beginning download
+            Download started async
+            Age: 157
+            X-Cache: HIT from proxy-zp.isd.dp.ua
+            Connection: keep-alive
+            Accept-Ranges: bytes
+            Content-Length: 1020
+            Content-Type: text/html
+            Date: Thu, 22 Oct 2015 12:05:11 GMT
+            ETag: "6082151bd56ea922e1357f5896a90d0a:1425454794"
+            Last-Modified: Wed, 04 Mar 2015 07:39:54 GMT
+            Server: Apache
+            Via: 1.1 proxy-zp.isd.dp.ua (squid/3.5.10)
+            */
         }
 
         [TestMethod]
         // Продемонстрировать продолжение задачи при исключении.
-        public void TestTaskContinue2()
+        public void TestWinFormsWPFTaskContinue2()
         {
             Debug.WriteLine("Основной поток запущен.");
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
             UIContext.Initialize();
-            cts = new CancellationTokenSource();
+            CancellationTokenSource cts = new CancellationTokenSource();
             var task = Task.Factory.StartNew((object tc) =>
             {
                 Debug.WriteLine("Рабочий поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
-                LongMethod();
+                Setup.LongMethod();
                 ((CancellationToken)tc).ThrowIfCancellationRequested();
             }, cts.Token, cts.Token);
             task.ContinueWith((t) =>
             {
                 Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 Debug.WriteLine("Обработка при отмене задачи");
-                DisposeCancellationTokenSource();
+                Setup.DisposeCancellationTokenSource(cts);
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnCanceled,
                 UIContext.Current);
@@ -55,7 +76,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             {
                 Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 Debug.WriteLine("Обработка при исключении в задаче");
-                DisposeCancellationTokenSource();
+                Setup.DisposeCancellationTokenSource(cts);
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnFaulted,
                 UIContext.Current);
@@ -63,7 +84,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             {
                 Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 Debug.WriteLine("Обработка при нормальном завершении задачи");
-                DisposeCancellationTokenSource();
+                Setup.DisposeCancellationTokenSource(cts);
             }, cts.Token,
                 TaskContinuationOptions.OnlyOnRanToCompletion,
                 UIContext.Current);
@@ -73,62 +94,62 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [TestMethod]
         // Продемонстрировать продолжение задачи при отмене.
-        public void TestTaskCancel()
+        public void TestWinFormsWPFTaskCancel()
         {
             Debug.WriteLine("Основной поток запущен.");
             UIContext.Initialize();
-            cts = new CancellationTokenSource();
+            CancellationTokenSource cts = new CancellationTokenSource();
             var task = Task.Factory.StartNew((object tc) =>
             {
-                LongMethod();
+                Setup.LongMethod();
                 ((CancellationToken)tc).ThrowIfCancellationRequested();
             }, cts.Token, cts.Token);
             task.ContinueWith((t) =>
             {
                 Debug.WriteLine("Обработка при отмене задачи");
-                DisposeCancellationTokenSource();
+                Setup.DisposeCancellationTokenSource(cts);
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnCanceled,
                 UIContext.Current);
             task.ContinueWith((t) =>
             {
                 Debug.WriteLine("Обработка при исключении в задаче");
-                DisposeCancellationTokenSource();
+                Setup.DisposeCancellationTokenSource(cts);
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnFaulted,
                 UIContext.Current);
             task.ContinueWith((t) =>
             {
                 Debug.WriteLine("Обработка при нормальном завершении задачи");
-                DisposeCancellationTokenSource();
+                Setup.DisposeCancellationTokenSource(cts);
             }, cts.Token,
                 TaskContinuationOptions.OnlyOnRanToCompletion,
                 UIContext.Current);
             Thread.Sleep(2000);
-            CancelTask();
+            Setup.CancelTask(cts);
             Thread.Sleep(10000);
             Debug.WriteLine("Основной поток завершен.");
         }
 
         [TestMethod]
         // Продемонстрировать продолжение задачи при исключении.
-        public void TestTaskException()
+        public void TestWinFormsWPFTaskException()
         {
             Debug.WriteLine("Основной поток запущен.");
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
             UIContext.Initialize();
-            cts = new CancellationTokenSource();
+            CancellationTokenSource cts = new CancellationTokenSource();
             var task = Task.Factory.StartNew((object tc) =>
             {
                 Debug.WriteLine("Рабочий поток: Id {0} ", Thread.CurrentThread.ManagedThreadId);
-                ExceptionMethod();
+                Setup.ExceptionMethod();
                 ((CancellationToken)tc).ThrowIfCancellationRequested();
             }, cts.Token, cts.Token);
             task.ContinueWith((t) =>
             {
                 Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 Debug.WriteLine("Обработка при отмене задачи");
-                DisposeCancellationTokenSource();
+                Setup.DisposeCancellationTokenSource(cts);
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnCanceled,
                 UIContext.Current);
@@ -136,7 +157,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             {
                 Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 Debug.WriteLine("Обработка при исключении в задаче");
-                DisposeCancellationTokenSource();
+                Setup.DisposeCancellationTokenSource(cts);
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnFaulted,
                 UIContext.Current);
@@ -144,7 +165,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             {
                 Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 Debug.WriteLine("Обработка при нормальном завершении задачи");
-                DisposeCancellationTokenSource();
+                Setup.DisposeCancellationTokenSource(cts);
             }, cts.Token,
                 TaskContinuationOptions.OnlyOnRanToCompletion,
                 UIContext.Current);
@@ -163,58 +184,50 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             */
         }
 
-        // Метод, исполняемый как задача, 
-        static void MyTask()
+        async Task DoDownloadAsync()
         {
-            Debug.WriteLine("MyTask() запущен");
-            for (int count = 0; count < 5; count++)
-            {
-                Thread.Sleep(500);
-                Debug.WriteLine("В методе MyTask() подсчет равен " + count);
-            }
-            Debug.WriteLine("MyTask завершен");
+            var req = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
+            req.Method = "GET";
+            var resp = (HttpWebResponse)await req.GetResponseAsync();
+            // или
+            // Task<WebResponse> getResponseTask = Task.Factory.FromAsync<WebResponse>(
+            // req.BeginGetResponse, req.EndGetResponse, null);
+            // var resp = (HttpWebResponse) await getResponseTask;
+
+            //dataTextBox.Text += resp.Headers.ToString();
+            //dataTextBox.Text += "Async download completed";
+            Debug.WriteLine(resp.Headers.ToString());
+            Debug.WriteLine("Async download completed");
         }
 
-        // Метод, исполняемый как продолжение задачи, 
-        static void ContinuationTask(Task t)
+        [TestMethod]
+        public void TestWinFormsWPF2()
         {
-            Debug.WriteLine("Продолжение запущено");
-            for (int count = 0; count < 5; count++)
-            {
-                Thread.Sleep(500);
-                Debug.WriteLine("В продолжении подсчет равен " + count);
-            }
-            Debug.WriteLine("Продолжение завершено");
-        }
+            Debug.WriteLine("Staring async download\n");
+            DoDownloadAsync();
+            Debug.WriteLine("Async download started\n");
 
-        private void ExceptionMethod()
-        {
-            Debug.WriteLine("Начало работы");
             Thread.Sleep(5000);
-            Debug.WriteLine("Возникновение исключения");
-            throw new Exception("TEST");
-        }
+            /*
+            Staring async download
 
-        private void CancelTask()
-        {
-            if (cts != null)
-            {
-                Debug.WriteLine("Отмена задачи");
-                cts.Cancel();
-            }
-        }
+            Async download started
 
-        private void DisposeCancellationTokenSource()
-        {
-            cts.Dispose();
-            cts = null;
-        }
+            Age: 2399
+            X-Cache: HIT from proxy-zp.isd.dp.ua
+            Connection: keep-alive
+            Accept-Ranges: bytes
+            Content-Length: 1020
+            Content-Type: text/html
+            Date: Thu, 22 Oct 2015 12:05:11 GMT
+            ETag: "6082151bd56ea922e1357f5896a90d0a:1425454794"
+            Last-Modified: Wed, 04 Mar 2015 07:39:54 GMT
+            Server: Apache
+            Via: 1.1 proxy-zp.isd.dp.ua (squid/3.5.10)
 
-        private void LongMethod()
-        {
-            Debug.WriteLine("Начало работы");
-            Thread.Sleep(5000);
-            Debug.WriteLine("Окончание работы");
+
+            Async download completed
+            */
         }
     }
 }

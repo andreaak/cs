@@ -31,5 +31,7 @@ namespace CSTest._04_Class._09_AbstractClasses
         {
             Debug.WriteLine("Реализация метода AbstractMethod() в ConcreteClass  {0}", s);
         }
+
+        public override event System.EventHandler Changed;
     }
 }

@@ -284,7 +284,7 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
             Callback метод завершил работу.
             */
         }
-        
+
         // По умолчанию в Асинхронном шаблоне, IsBackground = true (С завершением первичного потока завершается вторичный).
         // IsBackground = false (Первичный поток ожидает окончания работы вторичного потока).
         [TestMethod]

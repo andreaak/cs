@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace CSTest._04_Class._09_AbstractClasses
 {
@@ -15,8 +16,10 @@ namespace CSTest._04_Class._09_AbstractClasses
 
             Debug.WriteLine("2 AbstractClass()");
         }
-        
+
         public abstract void Method();
+        public abstract event EventHandler Changed;
+        //public abstract delegate void TestDelegate(); //The modifier 'abstract' is not valid for this item
 
         // 1.
         // Обычный метод передается производному классу как при наследовании от конкретного класса.
