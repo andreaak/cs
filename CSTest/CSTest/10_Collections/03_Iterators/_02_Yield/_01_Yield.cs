@@ -36,15 +36,30 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             }
         }
 
-        public IEnumerable MyItr(int end)
+        public IEnumerable IterateEnumerable(int end)
         {
             for (int i = 0; i < end; i++)
             {
+                Debug.WriteLine("yield return " + (char)(ch1 + i));
                 yield return (char)(ch1 + i);
             }
         }
+
+        public IEnumerable IterateEnumerableAll(int end)
+        {
+            ArrayList list = new ArrayList();
+            
+            for (int i = 0; i < end; i++)
+            {
+                Debug.WriteLine("Value " + (char)(ch1 + i));
+                list.Add((char)(ch1 + i));
+            }
+
+            return list;
+        }
+
         // Этот итератор возвращает буквы в заданных пределах, 
-        public IEnumerable MyItr(int begin, int end)
+        public IEnumerable IterateEnumerable(int begin, int end)
         {
             for (int i = begin; i < end; i++)
             {

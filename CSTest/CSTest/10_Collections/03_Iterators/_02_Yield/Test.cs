@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CSTest._10_Collections._03_Iterators._02_Yield
 {
@@ -36,13 +37,13 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             */
 
             Debug.WriteLine("Возвратить по очереди первые 7 букв:");
-            foreach (char ch in mc.MyItr(7))
+            foreach (char ch in mc.IterateEnumerable(7))
             {
                 Debug.Write(ch + " ");
             }
             Debug.WriteLine("\n");
             Debug.WriteLine("Возвратить по очереди буквы от F до L:");
-            foreach (char ch in mc.MyItr(5, 12))
+            foreach (char ch in mc.IterateEnumerable(5, 12))
             {
                 Debug.Write(ch + " ");
             }
@@ -134,12 +135,76 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
         [TestMethod]
         public void TestYield5()
         {
-            List<int> lst = new List<int> { 1, 2 };
-            System.Collections.IEnumerator en = lst.GetEnumerator();
-            while (en.MoveNext())
+            _01_Yield mc = new _01_Yield();
+            foreach (char ch in mc.IterateEnumerable(10))
             {
-                Debug.WriteLine(en.Current);
+                Debug.WriteLine(ch + " ");
             }
+            Debug.WriteLine("");
+            foreach (char ch2 in mc.IterateEnumerableAll(10))
+            {
+                Debug.Write(ch2 + " ");
+            }
+            Debug.WriteLine("");
+            /*
+            yield return A
+            A 
+            yield return B
+            B 
+            yield return C
+            C 
+            yield return D
+            D 
+            yield return E
+            E 
+            yield return F
+            F 
+            yield return G
+            G 
+            yield return H
+            H 
+            yield return I
+            I 
+            yield return J
+            J 
+
+            Value A
+            Value B
+            Value C
+            Value D
+            Value E
+            Value F
+            Value G
+            Value H
+            Value I
+            Value J
+            A B C D E F G H I J 
+            */
+        }
+
+        [TestMethod]
+        public void TestYield6()
+        {
+
+            char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M' };
+            _04_YieldGeneric<char> mc = new _04_YieldGeneric<char>(chars);
+            mc.IterateEnumerable(10).First();
+            Debug.WriteLine("");
+            mc.IterateEnumerableAll(10).First();
+            /*
+            yield return A
+
+            Value A
+            Value B
+            Value C
+            Value D
+            Value E
+            Value F
+            Value G
+            Value H
+            Value I
+            Value J
+            */
         }
     }
 }
