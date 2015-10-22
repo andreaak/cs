@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Diagnostics;
 
-namespace CSTest._10_Collections.Iterators
+namespace CSTest._10_Collections._03_Iterators._01_IEnumerable
 {
     /*
     Перечислитель — это объект, который выполняет итерацию в связанной с ним коллекции. 

@@ -1,4 +1,4 @@
-﻿using CSTest._07_Generics._0_SetUp;
+﻿using CSTest._07_Generics._0_Setup;
 using System;
 using System.Collections.Generic;
 using System.Linq;

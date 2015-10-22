@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace CSTest._10_Collections.Iterators
+namespace CSTest._10_Collections._03_Iterators._02_Yield
 {
-    class _07_YieldGeneric<T>
+    class _04_YieldGeneric<T>
     {
         T[] array;
-        public _07_YieldGeneric(T[] a)
+        public _04_YieldGeneric(T[] a)
         {
             array = a;
         }

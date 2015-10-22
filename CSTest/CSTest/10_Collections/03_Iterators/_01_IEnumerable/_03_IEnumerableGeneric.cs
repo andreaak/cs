@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace CSTest._10_Collections.Iterators
+namespace CSTest._10_Collections._03_Iterators._01_IEnumerable
 {
     // Реализовать интерфейсы IEnumerable<char> и IEnumerator<char>. 
     class _03_IEnumerableGeneric : IEnumerator<char>, IEnumerable<char>

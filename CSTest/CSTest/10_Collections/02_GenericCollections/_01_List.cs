@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace CSTest._10_Collections
+namespace CSTest._10_Collections._02_GenericCollections
 {
     /*
     Коллекция представляет собой набор объектов схожих типов, сгруппированных вместе.  
@@ -20,7 +20,7 @@ namespace CSTest._10_Collections
     */
 
     [TestClass]
-    public partial class _01_Base
+    public partial class _01_List
     {
         const int Iterations = 1000;
 

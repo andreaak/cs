@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Diagnostics;
 
-namespace CSTest._10_Collections.Iterators
+namespace CSTest._10_Collections._03_Iterators._02_Yield
 {
     /*
     Ключевое слово yield сообщает компилятору, что метод, в котором оно содержится, 
@@ -13,7 +13,7 @@ namespace CSTest._10_Collections.Iterators
     Ключевое слово yield всегда используется вместе с ключевым словом break для обозначения конца итерации. 
     Оператор yield не может использоваться в анонимных методах. 
     */
-    class _04_Yield
+    class _01_Yield
     {
         char ch1 = 'A';
         char[] chrs = { 'A', 'B', 'C', 'D' };

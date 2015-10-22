@@ -1,4 +1,4 @@
-﻿using CSTest._07_Generics._0_SetUp;
+﻿using CSTest._07_Generics._0_Setup;
 
 namespace CSTest._07_Generics
 {

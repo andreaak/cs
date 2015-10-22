@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CSTest._07_Generics._0_SetUp
+namespace CSTest._07_Generics._0_Setup
 {
     public abstract class Shape { }
     public class Circle : Shape { }

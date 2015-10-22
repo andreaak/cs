@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="01_Elements CS\01_Types\0_SetUp\DynamicClass.cs" />
+    <Compile Include="01_Elements CS\01_Types\0_Setup\DynamicClass.cs" />
     <Compile Include="01_Elements CS\01_Types\_08_Nullable.cs" />
     <Compile Include="01_Elements CS\01_Types\_01_BaseTypes.cs" />
     <Compile Include="01_Elements CS\01_Types\_02_Numeric.cs" />
@@ -67,8 +67,8 @@
     <Compile Include="02_Object\Test.cs" />
     <Compile Include="02_Object\TestClass.cs" />
     <Compile Include="03_Structure\_01_StructureBook.cs" />
-    <Compile Include="03_Structure\0_SetUp\MyStruct.cs" />
-    <Compile Include="03_Structure\0_SetUp\MyStruct1.cs" />
+    <Compile Include="03_Structure\0_Setup\MyStruct.cs" />
+    <Compile Include="03_Structure\0_Setup\MyStruct1.cs" />
     <Compile Include="03_Structure\Test.cs" />
     <Compile Include="04_Class\00_Base\Test.cs" />
     <Compile Include="04_Class\01_Fields\Test.cs" />
@@ -112,10 +112,10 @@
     <Compile Include="04_Class\16_Polymorfizm\Test.cs" />
     <Compile Include="05_Delegates and Events\Delegates\_05_CoContrVarianceTest.cs" />
     <Compile Include="05_Delegates and Events\Delegates\TestClass.cs" />
-    <Compile Include="06_Interface\0_SetUp\BaseClass.cs" />
+    <Compile Include="06_Interface\0_Setup\BaseClass.cs" />
     <Compile Include="06_Interface\_02_DerivedClass.cs" />
-    <Compile Include="06_Interface\0_SetUp\Interface1.cs" />
-    <Compile Include="06_Interface\0_SetUp\Interface2.cs" />
+    <Compile Include="06_Interface\0_Setup\Interface1.cs" />
+    <Compile Include="06_Interface\0_Setup\Interface2.cs" />
     <Compile Include="06_Interface\Test.cs" />
     <Compile Include="06_Interface\_01_Base.cs" />
     <Compile Include="06_Interface\_03_InterfaceInheritance.cs" />
@@ -123,7 +123,7 @@
     <Compile Include="06_Interface\_05_InterfaceUnion.cs" />
     <Compile Include="06_Interface\_06_AbstractClass.cs" />
     <Compile Include="06_Interface\_07_InterfaceWithBaseClass.cs" />
-    <Compile Include="07_Generics\0_SetUp\Base.cs" />
+    <Compile Include="07_Generics\0_Setup\Base.cs" />
     <Compile Include="07_Generics\_09_FirstLevelConstraints.cs" />
     <Compile Include="07_Generics\_01_GenericClass.cs" />
     <Compile Include="07_Generics\_03_GenericDelegateClass.cs" />
@@ -137,15 +137,16 @@
     <Compile Include="07_Generics\_10_SecondLevelConstraints.cs" />
     <Compile Include="07_Generics\_11_ThirdLevelConstraints.cs" />
     <Compile Include="08_String\Test.cs" />
-    <Compile Include="10_Collections\Iterators\Test.cs" />
-    <Compile Include="10_Collections\Iterators\_02_IEnumerable.cs" />
-    <Compile Include="10_Collections\Iterators\_01_IEnumerable.cs" />
-    <Compile Include="10_Collections\Iterators\_03_IEnumerableGeneric.cs" />
-    <Compile Include="10_Collections\Iterators\_04_Yield.cs" />
-    <Compile Include="10_Collections\Iterators\_05_YieldBreak.cs" />
-    <Compile Include="10_Collections\Iterators\_06_YieldMulti.cs" />
-    <Compile Include="10_Collections\Iterators\_07_YieldGeneric.cs" />
-    <Compile Include="10_Collections\_01_Base.cs" />
+    <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\Test.cs" />
+    <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\_02_IEnumerable.cs" />
+    <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\_01_IEnumerable.cs" />
+    <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\_03_IEnumerableGeneric.cs" />
+    <Compile Include="10_Collections\03_Iterators\_02_Yield\Test.cs" />
+    <Compile Include="10_Collections\03_Iterators\_02_Yield\_01_Yield.cs" />
+    <Compile Include="10_Collections\03_Iterators\_02_Yield\_02_YieldBreak.cs" />
+    <Compile Include="10_Collections\03_Iterators\_02_Yield\_03_YieldMulti.cs" />
+    <Compile Include="10_Collections\03_Iterators\_02_Yield\_04_YieldGeneric.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\_01_List.cs" />
     <Compile Include="12_MultiThreading\01_Thread\MyThreadAbort.cs" />
     <Compile Include="12_MultiThreading\01_Thread\MyThreadPriority.cs" />
     <Compile Include="12_MultiThreading\01_Thread\MyThreadPriority2.cs" />
@@ -199,7 +200,6 @@
     <Folder Include="05_Delegates and Events\Events\" />
     <Folder Include="09_Array\" />
     <Folder Include="10_Collections\01_BaseCollections\" />
-    <Folder Include="10_Collections\02_GenericCollections\" />
     <Folder Include="11_Input Output\" />
     <Folder Include="12_MultiThreading\04_Problems\" />
     <Folder Include="12_MultiThreading\06_ThreadPool\" />
