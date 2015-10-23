@@ -1,109 +1,82 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading;
 using CSTest._12_MultiThreading._02_Synchronization._0_Setup;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
     [TestClass]
+    /*
+    Класс Interlocked предоставляет доступ к атомарным операциям, доступным в нескольких потоках.
+    Операции, выполняемые при помощи методов класса Interlocked гарантировано блокируются для остальных потоков, 
+    что позволяет избежать некоторых проблем синхронизации.
+    */ 
     public class _05_InterlockedTest
     {
         [TestMethod]
-        // Interlocked - Предоставляет атомарные операции для переменных, общедоступных нескольким потокам. 
         public void TestInterlocked1()
         {
-            var reporter = new Thread(Report)
+            var reporter = new Thread(_05_InterlockedUtils.Report)
             {
                 IsBackground = true
             };
             reporter.Start();
 
-            var threads = new Thread[150];
+            var threads = new Thread[5];
 
-            for (uint i = 0; i < 150; ++i)
+            for (uint i = 0; i < 5; ++i)
             {
-                threads[i] = new Thread(Function);
+                threads[i] = new Thread(_05_InterlockedUtils.Function);
+                threads[i].Name = "Thread " + i;
                 threads[i].Start();
             }
 
-            Thread.Sleep(15000);
-        }
+            Thread.Sleep(7000);
 
-        // Проверка количества запущеных потоков. 
-        private static void Report()
-        {
-            while (true)
-            {
-                long number = Interlocked.Read(ref counter);
-
-                Debug.WriteLine("{0} поток(ов) активно.", number);
-                Thread.Sleep(100);
-            }
-        }
-
-        // Счетчик запущеных потоков.
-        static private long counter;
-        static private readonly Random random = new Random();
-
-        private static void Function()
-        {
-            // Поток увеличивает счетчик.
-            // Interlocked.Increment(ref counter);
-
-            counter++;
-            try
-            {
-                // Поток ожидает произвольный период времени от 1 до 12 секунд.
-                int time = random.Next(1, 12);
-                Thread.Sleep(time);
-            }
-            finally
-            {
-                // Поток уменьшает счетчик. 
-                // Interlocked.Decrement(ref counter);
-                counter--;
-            }
+            /*
+            0 поток(ов) активно.
+            5 поток(ов) активно.
+            5 поток(ов) активно.
+            The thread 'Thread 1' (0x1ba0) has exited with code 0 (0x0).
+            4 поток(ов) активно.
+            4 поток(ов) активно.
+            4 поток(ов) активно.
+            The thread 'Thread 2' (0xa20) has exited with code 0 (0x0).
+            The thread 'Thread 4' (0x2588) has exited with code 0 (0x0).
+            2 поток(ов) активно.
+            2 поток(ов) активно.
+            2 поток(ов) активно.
+            The thread 'Thread 0' (0x23bc) has exited with code 0 (0x0).
+            The thread 'Thread 3' (0x26d0) has exited with code 0 (0x0).
+            0 поток(ов) активно.
+            */
         }
 
         [TestMethod]
         public void TestInterlocked2()
         {
-            var threads = new Thread[50];
+            var threads = new Thread[5];
 
-            for (uint i = 0; i < 50; ++i)
+            for (uint i = 0; i < 5; ++i)
             {
-                threads[i] = new Thread(Function2);
+                threads[i] = new Thread(_05_InterlockedUtils.Function2);
+                threads[i].Name = "Thread " + i;
                 threads[i].Start();
             }
 
-            // Задержка.
-            Console.ReadKey();
-        }
+            Thread.Sleep(7000);
 
-        //SpinLock
-        static readonly SpinLock_ block = new SpinLock_(10); // Интервал 10 млск.
-        static readonly FileStream stream = File.Open("log.txt", FileMode.Append, FileAccess.Write, FileShare.None);
-        static readonly StreamWriter writer = new StreamWriter(stream);
-
-        // Будет запускаться в отдельном потоке.
-        static void Function2()
-        {
-            using (new SpinLockManager(block)) // Вызывается block.Enter();
-            {
-                writer.WriteLine("Поток {0} запускается.", Thread.CurrentThread.GetHashCode());
-                writer.Flush(); // Очищает буфер writer и записывает данные в файл.
-            }   // Вызывается public void Dispose() { block.Exit(); }
-
-            int time = random.Next(10, 200);
-            Thread.Sleep(time); // Усыпляется поток на случайный период времени.
-
-            using (new SpinLockManager(block)) // Вызывается block.Enter();
-            {
-                writer.WriteLine("Поток [{0}] завершается.", Thread.CurrentThread.GetHashCode());
-                writer.Flush(); // Очищает буфер writer и записывает данные в файл.
-            }   // Вызывается public void Dispose() { block.Exit(); }
+            /*
+            Поток 13 запускается.
+            Поток 16 запускается.
+            Поток 17 запускается.
+            Поток 15 запускается.
+            Поток 14 запускается.
+            Поток [14] завершается.
+            Поток [15] завершается.
+            Поток [13] завершается.
+            Поток [17] завершается.
+            Поток [16] завершается.
+            */
         }
     }
 }

@@ -2,38 +2,54 @@
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-// Есть два варианта работы потоков Foreground и Background
-// Foreground - Будет работать после завершения работы первичного потока.
-// Background - Завершает работу вместе с первичным потоком.
 namespace CSTest._12_MultiThreading._01_Thread
 {
+    /*
+    Существуют две разновидности потоков: приоритетный Foreground и фоновый Background. 
+    Отличие между ними заключается в том, что процесс не завершится до тех пор, 
+    пока не окончится приоритетный поток, тогда как фоновые потоки завершаются автоматически после окончания всех приоритетных потоков. 
+    Foreground - Будет работать после завершения работы первичного потока.
+    Background - Завершает работу вместе с первичным потоком.
+    По умолчанию создаваемый поток становится приоритетным. 
+    Для того чтобы сделать поток фоновым, достаточно присвоить логическое значение true свойству IsBackground. 
+    А логическое значение false указывает на то, что поток является приоритетным.
+    */
+
     [TestClass]
     public class _05_BackgroundTest
     {
         [TestMethod]
         public void TestThreadIsBackground()
         {
-            var thread = new Thread(Function);
+            Thread thread = new Thread(Function);
 
             // IsBackground - устанавливает поток как фоновый. Не ждем завершения вторичного потока в данном случае.
-            // По умолчанию - thread.IsBackground = false; 
-
-            thread.IsBackground = true; // Закомментировать!
+            //По умолчанию свойство IsBackground равно false.
+            thread.IsBackground = true;
             thread.Start();
 
             Thread.Sleep(500);
 
             Debug.WriteLine("\nЗавершение главного потока.");
+            /*
+                      .
+                      .
+
+            Завершение главного потока.
+            A first chance exception of type 'System.Threading.ThreadAbortException' occurred in mscorlib.dll
+            */
         }
 
         private static void Function()
         {
-            for (int i = 0; i < 500; i++)
+            string temp = new string(' ', 10);
+
+            for (int i = 0; i < 10; i++)
             {
-                Thread.Sleep(10);
-                Debug.Write(".");
+                Thread.Sleep(200);
+                Debug.WriteLine(temp + ".");
             }
-            Debug.WriteLine("\nЗавершение вторичного потока.");
+            Debug.WriteLine(temp + "Завершение вторичного потока.");
         }
     }
 }

@@ -5,38 +5,51 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSTest._12_MultiThreading._01_Thread
 {
     [TestClass]
+    /*
+    У каждого потока имеется свой приоритет, который отчасти определяет, насколько часто поток получает доступ к ЦП. 
+    Вообще говоря, низкоприоритетные потоки  получают доступ к ЦП реже, чем высокоприоритетные. 
+    Следует иметь в виду, что, помимо приоритета, на частоту доступа потока к ЦП оказывают влияние и другие факторы. 
+    Так, если высокоприоритетный поток ожидает доступа к некоторому ресурсу, 
+    например для ввода с клавиатуры, он блокируется, а вместо него выполняется низкоприоритетный поток. 
+    В подобной ситуации низкоприоритетный поток может получать доступ к ЦП чаще, 
+    чем высокоприоритетный поток в течение определенного периода времени. 
+    И наконец, конкретное планирование задач на уровне операционной системы также оказывает влияние на время ЦП, выделяемое для потока. 
+    Приоритет потока можно изменить с помощью свойства Priority, являющегося членом класса Thread. 
+    По умолчанию для потока устанавливается значение приоритета ThreadPriority.Normal. 
+    Многопоточный код может вести себя по-разному в различных средах, 
+    поэтому никогда не следует полагаться на результаты его выполнения только в одной среде. 
+    Так, было бы ошибкой полагать, что низкоприоритетный поток из примера будет всегда выполняться 
+    лишь в течение небольшого периода времени до тех пор, пока не завершится высокоприоритетный поток. 
+    В другой среде высокоприоритетный поток может, например, завершиться еще до того, 
+    как низкоприоритетный поток выполнится хотя бы один раз.
+    */
     public class _03_PriorityTest
     {
         [TestMethod]
         // Продемонстрировать влияние приоритетов потоков.
         public void TestThreadPriority1()
         {
-            MyThreadPriority mt1 = new MyThreadPriority("с высоким приоритетом");
-            MyThreadPriority mt2 = new MyThreadPriority("с низким приоритетом");
+            _03_PriorityThread mt1 = new _03_PriorityThread("с высоким приоритетом");
+            _03_PriorityThread mt2 = new _03_PriorityThread("с низким приоритетом");
             // Установить приоритеты для потоков. 
-            mt1.Thrd.Priority = ThreadPriority.AboveNormal;
-            mt2.Thrd.Priority = ThreadPriority.BelowNormal;
+            mt1.Thread.Priority = ThreadPriority.AboveNormal;
+            mt2.Thread.Priority = ThreadPriority.BelowNormal;
             // Начать потоки, 
-            mt1.Thrd.Start();
-            mt2.Thrd.Start();
-            mt1.Thrd.Join();
-            mt2.Thrd.Join();
+            mt1.Thread.Start();
+            mt2.Thread.Start();
+            mt1.Thread.Join();
+            mt2.Thread.Join();
             Debug.WriteLine("");
-            Debug.WriteLine("Поток " + mt1.Thrd.Name +
-            " досчитал до " + mt1.Count);
-            Debug.WriteLine("Поток " + mt2.Thrd.Name +
-            " досчитал до " + mt2.Count);
-
+            Debug.WriteLine("Поток " + mt1.Thread.Name + " досчитал до " + mt1.Count);
+            Debug.WriteLine("Поток " + mt2.Thread.Name + " досчитал до " + mt2.Count);
         }
 
         [TestMethod]
         // Продемонстрировать влияние приоритетов потоков.
         public void TestThreadPriority2()
         {
-            //Debug.SetWindowSize(80, 40);
-
-            var work1 = new MyThreadPriority2("с высоким приоритетом", System.ConsoleColor.Red);
-            var work2 = new MyThreadPriority2("с низким приоритетом", System.ConsoleColor.Yellow);
+            var work1 = new _03_PriorityThread2("с высоким приоритетом", System.ConsoleColor.Red);
+            var work2 = new _03_PriorityThread2("с низким приоритетом", System.ConsoleColor.Yellow);
 
             // Установить приоритеты для потоков. 
             work1.Priority = ThreadPriority.Highest;
@@ -50,12 +63,20 @@ namespace CSTest._12_MultiThreading._01_Thread
             work2.EndInvoke();
 
             Debug.WriteLine("");
-            Debug.WriteLine("Поток " + work1.RunThread.Name + " досчитал до " + work1.Count);
-            Debug.WriteLine("Поток " + work2.RunThread.Name + " досчитал до " + work2.Count);
+            Debug.WriteLine("Поток " + work1.Thread.Name + " досчитал до " + work1.Count);
+            Debug.WriteLine("Поток " + work2.Thread.Name + " досчитал до " + work2.Count);
 
-            // Delay.
-            //Debug.ReadKey();
+            /*
+            Поток с высоким приоритетом начат.
+            Поток с низким приоритетом начат.
 
+            Поток с высоким приоритетом завершен.
+
+            Поток с низким приоритетом завершен.
+
+            Поток с высоким приоритетом досчитал до 20000000
+            Поток с низким приоритетом досчитал до 18776497
+            */
         }
     }
 }

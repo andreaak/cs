@@ -1,24 +1,48 @@
-﻿using System.Diagnostics;
-using System.Threading;
+﻿using System.Threading;
+using CSTest._12_MultiThreading._02_Synchronization._0_Setup;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
     [TestClass]
+    /* Критическая секция (critical section).
+    Ключевое слово lock не позволит одному потоку войти в важный раздел кода в тот момент, когда в нем находится другой поток. 
+    lock - блокирует блок кода так, что в каждый отдельный момент времени, этот блок кода
+    сможет использовать только один поток. Все остальные потоки ждут пока текущий поток, закончит работу.
+    При попытке входа другого потока в заблокированный код потребуется дождаться снятия блокировки объекта. 
+    Ключевое слово lock вызывает Monitor.Enter() в начале блока и Monitor.Exit() в конце блока.
+    */
     public class _02_LockTest
     {
-        // Объект для блокировки.
-        private static readonly object block = new object();
-
         [TestMethod]
         // Использовать блокировку для синхронизации доступа к объекту.
         public void TestLock1()
         {
             int[] a = { 1, 2, 3, 4, 5 };
-            MyThread mtl = new MyThread("Потомок #1", a);
-            MyThread mt2 = new MyThread("Потомок #2", a);
-            mtl.Thrd.Join();
-            mt2.Thrd.Join();
+            _02_LockThread mtl = new _02_LockThread("Потомок #1", a);
+            _02_LockThread mt2 = new _02_LockThread("Потомок #2", a);
+            mtl.Thread.Join();
+            mt2.Thread.Join();
+            /*
+            Потомок #1 начат.
+            Потомок #2 начат.
+            Текущая сумма для потока Потомок #1 равна 1
+            Текущая сумма для потока Потомок #1 равна 3
+            Текущая сумма для потока Потомок #1 равна 6
+            Текущая сумма для потока Потомок #1 равна 10
+            Текущая сумма для потока Потомок #1 равна 15
+            Сумма для потока Потомок #1 равна 15
+            Потомок #1 завершен.
+            The thread 'Потомок #1' (0x10ec) has exited with code 0 (0x0).
+            Текущая сумма для потока Потомок #2 равна 1
+            Текущая сумма для потока Потомок #2 равна 3
+            Текущая сумма для потока Потомок #2 равна 6
+            Текущая сумма для потока Потомок #2 равна 10
+            Текущая сумма для потока Потомок #2 равна 15
+            Сумма для потока Потомок #2 равна 15
+            Потомок #2 завершен.
+            The thread 'Потомок #2' (0x2350) has exited with code 0 (0x0).
+            */
         }
 
         [TestMethod]
@@ -26,151 +50,65 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         public void TestLock2()
         {
             int[] a = { 1, 2, 3, 4, 5 };
-            MyThread2 mtl = new MyThread2("Потомок #1", a);
-            MyThread2 mt2 = new MyThread2("Потомок #2", a);
-            mtl.Thrd.Join();
-            mt2.Thrd.Join();
-        }
-
-        class MyThread
-        {
-            public Thread Thrd;
-            int[] a;
-            int answer;
-            // Создать один объект типа SumArray для всех 
-            // экземпляров класса MyThread. 
-            static SumArray sa = new SumArray();
-            // Сконструировать новый поток. 
-            public MyThread(string name, int[] nums)
-            {
-                a = nums;
-                Thrd = new Thread(this.Run);
-                Thrd.Name = name;
-                Thrd.Start(); // начать поток 
-            }
-            // Начать выполнение нового потока, 
-            void Run()
-            {
-                Debug.WriteLine(Thrd.Name + " начат.");
-                answer = sa.SumIt(a);
-                Debug.WriteLine("Сумма для потока " + Thrd.Name + " равна " + answer);
-                Debug.WriteLine(Thrd.Name + " завершен.");
-            }
-        }
-
-        class SumArray
-        {
-            int sum;
-            object lockOn = new object(); // закрытый объект, доступный 
-            // для последующей блокировки 
-            public int SumIt(int[] nums)
-            {
-                lock (lockOn)
-                { // заблокировать весь метод 
-                    sum = 0; // установить исходное значение суммы 
-                    for (int i = 0; i < nums.Length; i++)
-                    {
-                        sum += nums[i];
-                        Debug.WriteLine("Текущая сумма для потока " +
-                        Thread.CurrentThread.Name + " равна " + sum);
-                        Thread.Sleep(100); // разрешить переключение задач 
-                    }
-                    return sum;
-                }
-            }
-        }
-
-        class MyThread2
-        {
-            public Thread Thrd;
-            int[] a;
-            int answer;
-            /* Создать один объект типа SumArray для всех 
-            экземпляров класса MyThread. */
-            static SumArray2 sa = new SumArray2();
-            // Сконструировать новый поток. 
-            public MyThread2(string name, int[] nums)
-            {
-                a = nums;
-                Thrd = new Thread(this.Run);
-                Thrd.Name = name;
-                Thrd.Start(); // начать поток 
-            }
-            // Начать выполнение нового потока, 
-            void Run()
-            {
-                Debug.WriteLine(Thrd.Name + " начат.");
-                // Заблокировать вызовы метода Sumlt(). 
-                lock (sa)
-                {
-                    answer = sa.SumIt(a);
-                }
-                Debug.WriteLine("Сумма для потока " + Thrd.Name +
-                " равна " + answer);
-                Debug.WriteLine(Thrd.Name + " завершен.");
-            }
-        }
-
-        class SumArray2
-        {
-            int sum;
-            public int SumIt(int[] nums)
-            {
-                sum = 0; // установить исходное значение суммы 
-                for (int i = 0; i < nums.Length; i++)
-                {
-                    sum += nums[i];
-                    Debug.WriteLine("Текущая сумма для потока " +
-                    Thread.CurrentThread.Name + " равна " + sum);
-                    Thread.Sleep(100); // разрешить переключение задач 
-                }
-                return sum;
-            }
+            _02_LockThread2 mtl = new _02_LockThread2("Потомок #1", a);
+            _02_LockThread2 mt2 = new _02_LockThread2("Потомок #2", a);
+            mtl.Thread.Join();
+            mt2.Thread.Join();
+            /*
+            Потомок #1 начат.
+            Потомок #2 начат.
+            Текущая сумма для потока Потомок #1 равна 1
+            Текущая сумма для потока Потомок #1 равна 3
+            Текущая сумма для потока Потомок #1 равна 6
+            Текущая сумма для потока Потомок #1 равна 10
+            Текущая сумма для потока Потомок #1 равна 15
+            Текущая сумма для потока Потомок #2 равна 1
+            Сумма для потока Потомок #1 равна 15
+            Потомок #1 завершен.
+            The thread 'Потомок #1' (0x13dc) has exited with code 0 (0x0).
+            Текущая сумма для потока Потомок #2 равна 3
+            Текущая сумма для потока Потомок #2 равна 6
+            Текущая сумма для потока Потомок #2 равна 10
+            Текущая сумма для потока Потомок #2 равна 15
+            Сумма для потока Потомок #2 равна 15
+            Потомок #2 завершен.
+            The thread 'Потомок #2' (0x1c54) has exited with code 0 (0x0).
+            */
         }
 
         [TestMethod]
         public void TestLock3()
         {
-            //var threads = new Thread[2];
+            new Thread(_02_LockThreadUtils.Function2).Start();
 
-            new Thread(Function2).Start();
+            new Thread(_02_LockThreadUtils.Function3).Start();
 
-            new Thread(Function3).Start();
-
-            Thread.Sleep(15000);
-        }
-
-        private static void Function2()
-        {
-            for (uint i = 0; i < 3; ++i)
-            {
-                lock (block)
-                {
-                    Debug.WriteLine("Начало блокировки Function2");
-                    Thread.Sleep(1000);
-                    Debug.WriteLine("Конец блокировки Function2");
-                }
-            }
-        }
-
-        private static void Function3()
-        {
-            for (uint i = 0; i < 3; ++i)
-            {
-                lock (block)
-                {
-                    Debug.WriteLine("Начало блокировки Function3");
-                    Thread.Sleep(1000);
-                    Debug.WriteLine("Конец блокировки Function3");
-                }
-            }
+            Thread.Sleep(2000);
+            /*
+            Начало блокировки Function2
+            Конец блокировки Function2
+            Начало блокировки Function3
+            Конец блокировки Function3
+            Начало блокировки Function2
+            Конец блокировки Function2
+            Начало блокировки Function3
+            Конец блокировки Function3
+            Начало блокировки Function2
+            Конец блокировки Function2
+            The thread '<No Name>' (0x1680) has exited with code 0 (0x0).
+            Начало блокировки Function3
+            Конец блокировки Function3
+            The thread '<No Name>' (0x1edc) has exited with code 0 (0x0).
+            */
         }
 
         [TestMethod]
         // Lock - не принимает типов значений, а только ссылочные.
         public void TestLock4()
         {
-            Thread[] threads = { new Thread(FunctionWithError), new Thread(FunctionWithError), new Thread(FunctionWithError) };
+            Thread[] threads = { new Thread(_02_LockThreadUtils.FunctionWithError), 
+                                   new Thread(_02_LockThreadUtils.FunctionWithError), 
+                                   new Thread(_02_LockThreadUtils.FunctionWithError) };
 
             foreach (Thread t in threads)
             {
@@ -179,19 +117,5 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Thread.Sleep(5000);
         }
 
-        static private int counter = 0;
-        // Нельзя использовать объекты блокировки структурного типа.
-        // blockStruct - не может быть структурным.
-        static private int blockStruct = 0;
-        static private void FunctionWithError()
-        {
-            for (int i = 0; i < 50; ++i)
-            {
-                //lock (blockStruct) // Нельзя использовать объекты блокировки структурного типа.
-                {
-                    Debug.WriteLine(++counter);
-                }
-            }
-        }
     }
 }

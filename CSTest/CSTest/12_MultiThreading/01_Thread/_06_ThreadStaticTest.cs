@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -12,12 +11,11 @@ namespace CSTest._12_MultiThreading._01_Thread
         public void TestThreadStatic()
         {
             // Запуск вторичного потока.
-            var thread = new Thread(Method);
+            Thread thread = new Thread(Method);
             thread.Start();
             thread.Join();
 
             Debug.WriteLine("Основной поток завершил работу...");
-
         }
 
         // Общая переменная счетчик.
