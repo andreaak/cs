@@ -14,6 +14,20 @@ namespace CSTest._04_Class._00_Base
         {
             Debug.WriteLine(field);
         }
+
+        // Объект не может скрывать (инкапсулировать) ничего, от другого объекта того же класса.
+        public void CallMethod(MyClass my)
+        {
+            // private метод виден на экземпляре!
+            my.PrivateMethod();
+        }
+
+        private void PrivateMethod()
+        {
+            Debug.WriteLine(field);
+        }
+
+
     }
     
     

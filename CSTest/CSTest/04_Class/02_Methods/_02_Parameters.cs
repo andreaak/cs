@@ -18,7 +18,7 @@ namespace CSTest._04_Class._02_Methods
             , TestClass testClass2 = default(TestClass)//null
             //, int k //Optional parameters must appear after all required parameters
             , params double[] prm// Ключевое слово params, позволяет определить параметр метода, 
-                                //принимающий переменное количество аргументов.
+                                // принимающий переменное количество аргументов.
                                 // Параметр с ключевым словом params, должен быть только один и 
                                 // стоять последним в списке параметров метода.
             )

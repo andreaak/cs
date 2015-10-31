@@ -139,6 +139,8 @@
     <Compile Include="07_Generics\_10_SecondLevelConstraints.cs" />
     <Compile Include="07_Generics\_11_ThirdLevelConstraints.cs" />
     <Compile Include="08_String\Test.cs" />
+    <Compile Include="09_Array\0_Setup\TestClass.cs" />
+    <Compile Include="09_Array\Test.cs" />
     <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\Test.cs" />
     <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\_02_IEnumerable.cs" />
     <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\_01_IEnumerable.cs" />
@@ -200,7 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="05_Delegates and Events\Events\" />
-    <Folder Include="09_Array\" />
     <Folder Include="10_Collections\01_BaseCollections\" />
     <Folder Include="11_Input Output\" />
     <Folder Include="12_MultiThreading\04_Problems\" />
