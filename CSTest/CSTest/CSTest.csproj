@@ -66,6 +66,8 @@
     <Compile Include="01_Elements CS\02_Variables\_04_sizeof.cs" />
     <Compile Include="02_Object\Test.cs" />
     <Compile Include="02_Object\TestClass.cs" />
+    <Compile Include="03_Structure\02_Enums\Test.cs" />
+    <Compile Include="03_Structure\02_Enums\TestFlagsEnum.cs" />
     <Compile Include="03_Structure\_01_StructureBook.cs" />
     <Compile Include="03_Structure\0_Setup\MyStruct.cs" />
     <Compile Include="03_Structure\0_Setup\MyStruct1.cs" />
@@ -204,6 +206,7 @@
     <Folder Include="12_MultiThreading\04_Problems\" />
     <Folder Include="12_MultiThreading\06_ThreadPool\" />
     <Folder Include="14_Garbage Collection\" />
+    <Folder Include="20_Algorithms\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="01_Elements CS\04_TypeConversion\Conversions.jpg" />

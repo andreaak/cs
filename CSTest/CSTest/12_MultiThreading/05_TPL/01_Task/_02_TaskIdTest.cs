@@ -5,6 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
+    // Id - Получает уникальный идентификатор данного экземпляра Task.
+    // CurrentId - Возвращает уникальный идентификатор выполняющейся в настоящее время задачи Task.
     [TestClass]
     public class _02_TaskIdTest
     {
@@ -15,8 +17,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             for (int count = 0; count < 10; count++)
             {
                 Thread.Sleep(500);
-                Debug.WriteLine("В методе MyTask() #" + Task.CurrentId +
-                ", подсчет равен " + count);
+                Debug.WriteLine("В методе MyTask() #" + Task.CurrentId + ", подсчет равен " + count);
             }
             Debug.WriteLine("MyTask №" + Task.CurrentId + " завершен");
         }

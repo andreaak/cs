@@ -42,9 +42,13 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             catch (AggregateException aex)
             {
                 if (aex.InnerException is NullReferenceException)
+                {
                     Debug.WriteLine("Null!");
+                }
                 else
+                {
                     Debug.WriteLine("Unknown!");
+                }
             }
             Thread.Sleep(2000);
             Debug.WriteLine("Основной поток завершен.");
@@ -87,7 +91,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
                 {
                     Debug.WriteLine("Exception: " + t.Exception.InnerException.Message);
                 }
-            },TaskContinuationOptions.OnlyOnFaulted);
+            }, TaskContinuationOptions.OnlyOnFaulted);
             Thread.Sleep(2000);
             Debug.WriteLine("Основной поток завершен.");
         }

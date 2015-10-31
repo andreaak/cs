@@ -6,27 +6,47 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
+    // Продолжение - автоматический запуск новой задачи, после завершения первой задачи.
+
     [TestClass]
     public class _06_ContinueWithTest
     {
         CancellationTokenSource cts;
-        
+
         [TestMethod]
         // Продемонстрировать продолжение задачи.
         public void TestTaskContinue1()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Сконструировать объект первой задачи. 
-            Task tsk = new Task(MyTask);
+            Task task = new Task(TestTask);
             //А теперь создать продолжение задачи. 
-            Task taskCont = tsk.ContinueWith(ContinuationTask);
+            Task taskContinuation = task.ContinueWith(ContinuationTask);
             // Начать последовательность задач, 
-            tsk.Start();
+            task.Start();
             // Ожидать завершения продолжения. 
-            taskCont.Wait();
-            tsk.Dispose();
-            taskCont.Dispose();
+            taskContinuation.Wait();
+            task.Dispose();
+            taskContinuation.Dispose();
             Debug.WriteLine("Основной поток завершен.");
+            /*
+            Основной поток запущен.
+            MyTask() запущен
+            В методе MyTask() подсчет равен 0
+            В методе MyTask() подсчет равен 1
+            В методе MyTask() подсчет равен 2
+            В методе MyTask() подсчет равен 3
+            В методе MyTask() подсчет равен 4
+            MyTask завершен
+            Продолжение запущено
+            В продолжении подсчет равен 0
+            В продолжении подсчет равен 1
+            В продолжении подсчет равен 2
+            В продолжении подсчет равен 3
+            В продолжении подсчет равен 4
+            Продолжение завершено
+            Основной поток завершен.
+            */
         }
 
         [TestMethod]
@@ -164,7 +184,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
         }
 
         // Метод, исполняемый как задача, 
-        static void MyTask()
+        static void TestTask()
         {
             Debug.WriteLine("MyTask() запущен");
             for (int count = 0; count < 5; count++)

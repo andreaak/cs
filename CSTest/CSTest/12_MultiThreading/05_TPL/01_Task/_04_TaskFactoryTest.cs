@@ -5,10 +5,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
+    // Применение класса TaskFactory для создания и запуска задачи.
+
     [TestClass]
     public class _04_TaskFactoryTest
     {
-        public static void MyStaticTask()
+        public static void TestStaticTask()
         {
             Debug.WriteLine("MyStaticTask() запущен");
             for (int count = 0; count < 10; count++)
@@ -24,17 +26,18 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
         public void TestTaskFactory()
         {
             Debug.WriteLine("Основной поток запущен.");
+            
+            // Создание экземпляра задачи с использованием свойства Factory, типа TaskFactory.
             // Сконструировать объект задачи и Запустить задачу на исполнение 
-            Task tsk = Task.Factory.StartNew(_04_TaskFactoryTest.MyStaticTask);
-            // метод Test1() активным до завершения метода MyStaticTask(). 
+            // В случае запуска задачи через TaskFactory, вызов метода task.Start() не требуется.
+            Task tsk = Task.Factory.StartNew(_04_TaskFactoryTest.TestStaticTask);
+            
             for (int i = 0; i < 60; i++)
             {
-                Debug.Write(".");
+                Debug.WriteLine(".");
                 Thread.Sleep(100);
             }
             Debug.WriteLine("\nОсновной поток завершен.");
         }
     }
-
-
 }
