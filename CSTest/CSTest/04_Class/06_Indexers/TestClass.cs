@@ -61,7 +61,6 @@ namespace CSTest._04_Class._06_Indexers
             get { return items[index1]; }
             set { items[index1] = value; }
         }
-
     }
 
     class DerivedClass : TestClass
@@ -78,10 +77,10 @@ namespace CSTest._04_Class._06_Indexers
         }
 
         // Переопределенный индексатор.
-        [IndexerName("Itm")]
-        public override string this[int index]
+        //[IndexerName("Itm")]//Cannot set the IndexerName attribute on an indexer marked override
+        public override int this[int index]
         {
-            get { return base[index] + " - " + derivedArray[index]; }
+            get { return base[index]; }
         }
     }
 }
