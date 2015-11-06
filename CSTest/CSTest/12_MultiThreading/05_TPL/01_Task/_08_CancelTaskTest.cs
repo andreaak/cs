@@ -10,12 +10,12 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
     public class _08_CancelTaskTest
     {
         // Метод, исполняемый как задача, 
-        static void MyTask(object ct)
+        static void TestTask(object ct)
         {
             CancellationToken cancelTok = (CancellationToken)ct;
             // Проверить, отменена ли задача, прежде чем запускать ее. 
             cancelTok.ThrowIfCancellationRequested();
-            Debug.WriteLine("MyTask() запущен");
+            Debug.WriteLine("TestTask() запущен");
             for (int count = 0; count < 10; count++)
             {
                 // В данном примере для отслеживания отмены задачи применяется опрос, 
@@ -25,9 +25,9 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
                     cancelTok.ThrowIfCancellationRequested();
                 }
                 Thread.Sleep(500);
-                Debug.WriteLine("В методе MyTask() подсчет равен " + count);
+                Debug.WriteLine("В методе TestTask() подсчет равен " + count);
             }
-            Debug.WriteLine("MyTask завершен");
+            Debug.WriteLine("TestTask завершен");
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             // Создать объект источника признаков отмены. 
             CancellationTokenSource cancelTokSrc = new CancellationTokenSource();
             // Запустить задачу, передав признак отмены ей самой и делегату. 
-            Task tsk = Task.Factory.StartNew(MyTask, cancelTokSrc.Token,
+            Task task = Task.Factory.StartNew(TestTask, cancelTokSrc.Token,
             cancelTokSrc.Token);
             // Дать задаче возможность исполняться вплоть до ее отмены. 
             Thread.Sleep(2000);
@@ -48,18 +48,20 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
                 cancelTokSrc.Cancel();
                 // Приостановить выполнение метода Test() до тех пор, 
                 // пока не завершится задача tsk. 
-                tsk.Wait();
+                task.Wait();
             }
             catch (AggregateException /*exc*/)
             {
-                if (tsk.IsCanceled)
-                    Debug.WriteLine("\nЗадача tsk отменена\n");
+                if (task.IsCanceled)
+                {
+                    Debug.WriteLine("\nЗадача task отменена\n");
+                }
                 //Для просмотра исключения снять комментарии со следующей строки кода: 
                 // Debug.WriteLine(exc); 
             }
             finally
             {
-                tsk.Dispose();
+                task.Dispose();
                 cancelTokSrc.Dispose();
             }
             Debug.WriteLine("Основной поток завершен.");
