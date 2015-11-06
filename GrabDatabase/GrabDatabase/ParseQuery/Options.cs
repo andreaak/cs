@@ -25,20 +25,70 @@ namespace GrabDatabase.ParseQuery
         {
             Dictionary<string, Color> lexemColors = new Dictionary<string, Color>();
             lexemColors.Add("SELECT", Color.Blue);
+            lexemColors.Add("DISTINCT", Color.Blue);
+            
+            lexemColors.Add("FROM", Color.SaddleBrown);
+
+            lexemColors.Add("ON", Color.SaddleBrown);
+            lexemColors.Add("JOIN", Color.SaddleBrown);
+            lexemColors.Add("CROSS JOIN", Color.SaddleBrown);
+            lexemColors.Add("INNER JOIN", Color.SaddleBrown);
+            lexemColors.Add("LEFT JOIN", Color.SaddleBrown);
+            lexemColors.Add("LEFT OUTER JOIN", Color.SaddleBrown);
+            lexemColors.Add("RIGHT JOIN", Color.SaddleBrown);
+            lexemColors.Add("RIGHT OUTER JOIN", Color.SaddleBrown);
+            lexemColors.Add("FULL OUTER JOIN", Color.SaddleBrown);
+            lexemColors.Add("NATURAL JOIN", Color.SaddleBrown);
+            lexemColors.Add("USING", Color.SaddleBrown);
+            
+            lexemColors.Add("WHERE", Color.DarkMagenta);
+            lexemColors.Add("AND", Color.DarkMagenta);
+            lexemColors.Add("OR", Color.DarkMagenta);
+            lexemColors.Add("?", Color.Red);
+            lexemColors.Add("IN", Color.DarkMagenta);
+            lexemColors.Add("BETWEEN", Color.DarkMagenta);
+            lexemColors.Add("LIKE", Color.DarkMagenta);
+            lexemColors.Add("NOT", Color.DarkMagenta);
+            
+            lexemColors.Add("MAX", Color.Brown);
+            lexemColors.Add("MIN", Color.Brown);
+            lexemColors.Add("COUNT", Color.Brown);
+            lexemColors.Add("AVG", Color.Brown);
+            lexemColors.Add("SUM", Color.Brown);
+            
+            lexemColors.Add("ALL", Color.Purple);
+            lexemColors.Add("UNION", Color.Purple);
+            
+            lexemColors.Add("GROUP  BY", Color.DeepSkyBlue);
+            lexemColors.Add("HAVING", Color.DeepSkyBlue);
+
+            lexemColors.Add("ORDER  BY", Color.DarkSlateBlue);
+            lexemColors.Add("ASC", Color.DarkSlateBlue);
+            lexemColors.Add("DESC", Color.DarkSlateBlue);
+            
             lexemColors.Add("INSERT", Color.Blue);
             lexemColors.Add("INTO", Color.Blue);
             lexemColors.Add("VALUES", Color.Blue);
+            
             lexemColors.Add("UPDATE", Color.Blue);
             lexemColors.Add("SET", Color.Blue);
+            
             lexemColors.Add("DELETE", Color.Blue);
-            lexemColors.Add("ALL", Color.Purple);
-            lexemColors.Add("UNION", Color.Purple);
 
-            lexemColors.Add("FROM", Color.DarkOrange);
-            lexemColors.Add("WHERE", Color.DarkMagenta);
-            lexemColors.Add("AND", Color.Blue);
-            lexemColors.Add("OR", Color.Blue);
-            lexemColors.Add("?", Color.Red);
+            lexemColors.Add("CREATE", Color.Blue);
+            lexemColors.Add("ALTER", Color.Blue);
+            lexemColors.Add("ADD", Color.Blue);
+            lexemColors.Add("DROP", Color.Blue);
+            lexemColors.Add("MODIFY", Color.Blue);
+            lexemColors.Add("TABLE", Color.Blue);
+            lexemColors.Add("COLUMN", Color.Blue);
+            lexemColors.Add("SEQUENCE", Color.Blue);
+            lexemColors.Add("DATATYPE", Color.Blue);
+            
+            lexemColors.Add("CONSTRAINT", Color.Blue);
+            lexemColors.Add("RESTRICT", Color.Blue);
+            lexemColors.Add("CASCADE", Color.Blue);
+
             //VARIABLES
             lexemColors.Add("NULL", Color.DarkCyan);
             //ORACLE
@@ -58,12 +108,38 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("INTEGER", Color.DarkCyan);
             lexemColors.Add("DECIMAL", Color.DarkCyan);
             lexemColors.Add("MONEY", Color.DarkCyan);
+            lexemColors.Add("CHAR", Color.DarkCyan);
+            lexemColors.Add("INT", Color.DarkCyan);
+            lexemColors.Add("BIT", Color.DarkCyan);
+            lexemColors.Add("BIGINT", Color.DarkCyan);
+            lexemColors.Add("TINYINT", Color.DarkCyan);
             
-            lexemColors.Add("CREATE", Color.RoyalBlue);
+            
+            lexemColors.Add("NOT NULL", Color.DarkCyan);
+            lexemColors.Add("PRIMARY KEY", Color.DarkCyan);
+            lexemColors.Add("UNIQUE", Color.DarkCyan);
+            lexemColors.Add("CHECK", Color.DarkCyan);
+            lexemColors.Add("DEFAULT", Color.DarkCyan);
+            lexemColors.Add("FOREIGN KEY", Color.DarkCyan);
+            lexemColors.Add("REFERENCES", Color.DarkCyan);
+            lexemColors.Add("ON UPDATE", Color.DarkCyan);
+            lexemColors.Add("ON DELETE", Color.DarkCyan);
+            lexemColors.Add("SET NULL", Color.DarkCyan);
+            lexemColors.Add("SET DEFAULT", Color.DarkCyan);
+            lexemColors.Add("NO ACTION", Color.DarkCyan);
+            
+            lexemColors.Add("NEXTVAL", Color.DarkCyan);
+            lexemColors.Add("MINVALUE", Color.DarkCyan);
+            lexemColors.Add("START WITH", Color.DarkCyan);
+            lexemColors.Add("INCREMENT BY", Color.DarkCyan);
+            lexemColors.Add("CACHE", Color.DarkCyan);
+            lexemColors.Add("AUTOINCREMENT", Color.DarkCyan);
+            lexemColors.Add("IDENTITY", Color.DarkCyan);
+            lexemColors.Add("AUTO_INCREMENT", Color.DarkCyan);
+            
             lexemColors.Add("FUNCTION", Color.RoyalBlue);
             lexemColors.Add("PROCEDURE", Color.RoyalBlue);
             lexemColors.Add("PROC", Color.RoyalBlue);
-            lexemColors.Add("IN", Color.RoyalBlue);
             lexemColors.Add("OUT", Color.RoyalBlue);
             lexemColors.Add("AS", Color.RoyalBlue);
             lexemColors.Add("IS", Color.RoyalBlue);
@@ -98,6 +174,10 @@ namespace GrabDatabase.ParseQuery
             
             lexemColors.Add("DECLARE", Color.RoyalBlue);
             lexemColors.Add("EXEC", Color.RoyalBlue);
+
+
+            lexemColors.Add("IS NULL", Color.DarkMagenta);
+            lexemColors.Add("IS NOT NULL", Color.DarkMagenta);
             
             return lexemColors;
         }
