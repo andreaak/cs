@@ -49,6 +49,9 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("BETWEEN", Color.DarkMagenta);
             lexemColors.Add("LIKE", Color.DarkMagenta);
             lexemColors.Add("NOT", Color.DarkMagenta);
+            lexemColors.Add("EXISTS", Color.DarkMagenta);
+            lexemColors.Add("ANY", Color.DarkMagenta);
+            lexemColors.Add("ALL", Color.DarkMagenta);
             
             lexemColors.Add("MAX", Color.Brown);
             lexemColors.Add("MIN", Color.Brown);
@@ -56,8 +59,11 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("AVG", Color.Brown);
             lexemColors.Add("SUM", Color.Brown);
             
-            lexemColors.Add("ALL", Color.Purple);
-            lexemColors.Add("UNION", Color.Purple);
+            lexemColors.Add("UNION", Color.Aqua);
+            lexemColors.Add("UNION ALL", Color.Aqua);
+            lexemColors.Add("EXCEPT", Color.Aqua);
+            lexemColors.Add("INTERSECT", Color.Aqua);
+            lexemColors.Add("MINUS", Color.Aqua);
             
             lexemColors.Add("GROUP  BY", Color.DeepSkyBlue);
             lexemColors.Add("HAVING", Color.DeepSkyBlue);
@@ -84,6 +90,10 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("COLUMN", Color.Blue);
             lexemColors.Add("SEQUENCE", Color.Blue);
             lexemColors.Add("DATATYPE", Color.Blue);
+
+            lexemColors.Add("COMMIT", Color.Blue);
+            lexemColors.Add("ROLLBACK", Color.Blue);
+            lexemColors.Add("AUTOCOMMIT", Color.Blue);
             
             lexemColors.Add("CONSTRAINT", Color.Blue);
             lexemColors.Add("RESTRICT", Color.Blue);
@@ -114,7 +124,6 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("BIGINT", Color.DarkCyan);
             lexemColors.Add("TINYINT", Color.DarkCyan);
             
-            
             lexemColors.Add("NOT NULL", Color.DarkCyan);
             lexemColors.Add("PRIMARY KEY", Color.DarkCyan);
             lexemColors.Add("UNIQUE", Color.DarkCyan);
@@ -136,7 +145,8 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("AUTOINCREMENT", Color.DarkCyan);
             lexemColors.Add("IDENTITY", Color.DarkCyan);
             lexemColors.Add("AUTO_INCREMENT", Color.DarkCyan);
-            
+
+            lexemColors.Add("DECLARE", Color.RoyalBlue);
             lexemColors.Add("FUNCTION", Color.RoyalBlue);
             lexemColors.Add("PROCEDURE", Color.RoyalBlue);
             lexemColors.Add("PROC", Color.RoyalBlue);
@@ -145,7 +155,6 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("IS", Color.RoyalBlue);
             lexemColors.Add("BEGIN", Color.RoyalBlue);
             lexemColors.Add("RETURN", Color.RoyalBlue);
-            lexemColors.Add("COMMIT", Color.RoyalBlue);
             lexemColors.Add("END", Color.RoyalBlue);
             
             lexemColors.Add("IF", Color.RoyalBlue);
@@ -165,20 +174,41 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("LOOP", Color.RoyalBlue);
             lexemColors.Add("END LOOP", Color.RoyalBlue);
             
+            lexemColors.Add("CURSOR FOR", Color.RoyalBlue);
             lexemColors.Add("OPEN", Color.RoyalBlue);
             lexemColors.Add("FETCH", Color.RoyalBlue);
             lexemColors.Add("@@FETCH_STATUS", Color.RoyalBlue);
             lexemColors.Add("CLOSE", Color.RoyalBlue);
 
             lexemColors.Add("EXCEPTION", Color.RoyalBlue);
-            
-            lexemColors.Add("DECLARE", Color.RoyalBlue);
-            lexemColors.Add("EXEC", Color.RoyalBlue);
+
+            lexemColors.Add("EXECUTE", Color.Blue);
+            lexemColors.Add("EXEC", Color.Blue);
 
 
             lexemColors.Add("IS NULL", Color.DarkMagenta);
             lexemColors.Add("IS NOT NULL", Color.DarkMagenta);
-            
+
+            lexemColors.Add("TRIGGER", Color.Blue);
+            //Oracle
+            lexemColors.Add("BEFORE INSERT ON", Color.Blue);
+            lexemColors.Add("BEFORE UPDATE ON", Color.Blue);
+            lexemColors.Add("BEFORE DELETE ON", Color.Blue);
+            lexemColors.Add("AFTER INSERT ON", Color.Blue);
+            lexemColors.Add("AFTER UPDATE ON", Color.Blue);
+            lexemColors.Add("AFTER DELETE ON", Color.Blue);
+            //SqlServer
+            lexemColors.Add("FOR INSERT", Color.Blue);
+            lexemColors.Add("FOR UPDATE", Color.Blue);
+            lexemColors.Add("FOR DELETE", Color.Blue);
+            lexemColors.Add("RAISERROR", Color.Red);
+
+            lexemColors.Add("VIEW", Color.Blue);
+            lexemColors.Add("WITH CHECK OPTION", Color.Blue);
+            lexemColors.Add("WITH LOCAL CHECK OPTION", Color.Blue);
+            lexemColors.Add("WITH CASCADED CHECK OPTION", Color.Blue);
+
+
             return lexemColors;
         }
 

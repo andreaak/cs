@@ -271,7 +271,7 @@ namespace ParseQuery
         {
             foreach (string item in clr.Keys)
             {
-                HighlightWord(rtb, item, true, true, clr[item], FontSize.medium);
+                HighlightWord(rtb, item, false, true, clr[item], FontSize.medium);
             }
             ColorComments(rtb, Options.CommentsColor, FontSize.small);
         }
