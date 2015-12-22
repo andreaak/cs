@@ -7,6 +7,8 @@ namespace Utils
     {
         public static bool OpenFile(string title, string initialDirectory, ref string filePath, params string[] extensions)
         {
+            //openFileDialog1.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
+            
             OpenFileDialog oFileDlg = new OpenFileDialog();
             if(extensions.Length == 0)
             {

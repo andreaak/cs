@@ -190,13 +190,20 @@ namespace GrabDatabase.ParseQuery
             lexemColors.Add("IS NOT NULL", Color.DarkMagenta);
 
             lexemColors.Add("TRIGGER", Color.Blue);
+            lexemColors.Add("FOR EACH ROW", Color.Blue);
+            lexemColors.Add("DISABLE", Color.Blue);
+            lexemColors.Add("NEW.", Color.Blue);
+            lexemColors.Add("REFERENCING OLD AS", Color.Blue);
+            lexemColors.Add("NEW AS", Color.Blue);
             //Oracle
             lexemColors.Add("BEFORE INSERT ON", Color.Blue);
             lexemColors.Add("BEFORE UPDATE ON", Color.Blue);
+            lexemColors.Add("BEFORE UPDATE OF", Color.Blue);
             lexemColors.Add("BEFORE DELETE ON", Color.Blue);
             lexemColors.Add("AFTER INSERT ON", Color.Blue);
             lexemColors.Add("AFTER UPDATE ON", Color.Blue);
             lexemColors.Add("AFTER DELETE ON", Color.Blue);
+
             //SqlServer
             lexemColors.Add("FOR INSERT", Color.Blue);
             lexemColors.Add("FOR UPDATE", Color.Blue);

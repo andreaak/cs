@@ -187,8 +187,14 @@ namespace Utils.WorkWithFiles
         {
             if (writer != null)
             {
-                writer.Flush();
-                writer.Close();
+                try
+                {
+                    writer.Flush();
+                    writer.Close();
+                }
+                catch (Exception)
+                {
+                }
             }
         } 
         
