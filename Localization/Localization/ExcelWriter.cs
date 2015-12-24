@@ -22,9 +22,9 @@ namespace Localization
         public void Write(SortedDictionary<string, string> words)
         {
             writter.Init(filePath);
-            foreach (string item in words.Keys)
+            foreach (var item in words)
             {
-                writter.WriteLine(item + Options.ExcelSeparator);
+                writter.WriteLine(item.Key + Options.ExcelSeparator + item.Value);
             }
             writter.Close();
         }

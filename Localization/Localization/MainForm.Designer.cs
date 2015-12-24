@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.buttonReadDataFromPo = new System.Windows.Forms.Button();
             this.buttonSaveToTxtForExcel = new System.Windows.Forms.Button();
             this.buttonReadFromCsv = new System.Windows.Forms.Button();
             this.buttonAddFromCsv = new System.Windows.Forms.Button();
+            this.buttonAddDataFromCsvCI = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonReadDataFromPo
@@ -46,7 +48,7 @@
             // 
             // buttonSaveToTxtForExcel
             // 
-            this.buttonSaveToTxtForExcel.Location = new System.Drawing.Point(291, 12);
+            this.buttonSaveToTxtForExcel.Location = new System.Drawing.Point(289, 12);
             this.buttonSaveToTxtForExcel.Name = "buttonSaveToTxtForExcel";
             this.buttonSaveToTxtForExcel.Size = new System.Drawing.Size(128, 23);
             this.buttonSaveToTxtForExcel.TabIndex = 0;
@@ -66,23 +68,35 @@
             // 
             // buttonAddFromCsv
             // 
-            this.buttonAddFromCsv.Location = new System.Drawing.Point(12, 70);
+            this.buttonAddFromCsv.Location = new System.Drawing.Point(146, 12);
             this.buttonAddFromCsv.Name = "buttonAddFromCsv";
-            this.buttonAddFromCsv.Size = new System.Drawing.Size(128, 23);
+            this.buttonAddFromCsv.Size = new System.Drawing.Size(137, 23);
             this.buttonAddFromCsv.TabIndex = 0;
             this.buttonAddFromCsv.Text = "Add data from csv file";
             this.buttonAddFromCsv.UseVisualStyleBackColor = true;
             this.buttonAddFromCsv.Click += new System.EventHandler(this.buttonAddFromCsv_Click);
             // 
+            // buttonAddDataFromCsvCI
+            // 
+            this.buttonAddDataFromCsvCI.Location = new System.Drawing.Point(146, 41);
+            this.buttonAddDataFromCsvCI.Name = "buttonAddDataFromCsvCI";
+            this.buttonAddDataFromCsvCI.Size = new System.Drawing.Size(137, 23);
+            this.buttonAddDataFromCsvCI.TabIndex = 0;
+            this.buttonAddDataFromCsvCI.Text = "Add data from csv file(CI)";
+            this.buttonAddDataFromCsvCI.UseVisualStyleBackColor = true;
+            this.buttonAddDataFromCsvCI.Click += new System.EventHandler(this.buttonAddDataFromCsvCI_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 133);
+            this.ClientSize = new System.Drawing.Size(425, 105);
             this.Controls.Add(this.buttonSaveToTxtForExcel);
+            this.Controls.Add(this.buttonAddDataFromCsvCI);
             this.Controls.Add(this.buttonAddFromCsv);
             this.Controls.Add(this.buttonReadFromCsv);
             this.Controls.Add(this.buttonReadDataFromPo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Localization";
             this.ResumeLayout(false);
@@ -95,6 +109,7 @@
         private System.Windows.Forms.Button buttonSaveToTxtForExcel;
         private System.Windows.Forms.Button buttonReadFromCsv;
         private System.Windows.Forms.Button buttonAddFromCsv;
+        private System.Windows.Forms.Button buttonAddDataFromCsvCI;
     }
 }
 

@@ -1,7 +1,7 @@
 "C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\devenv.exe" /ResetAddIn Assist.Connect /Command File.Exit
 
 "C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe" /ResetAddIn Assist.Connect /Command File.Exit
-
+"C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe" /ResetAddIn Assist.Connect /Command File.Exit
 {CCB8B9D5-1643-4B41-8395-53C5B5ED5284}
 {6D799B25-7F32-4173-A4EB-521827D4AE4F}
 
