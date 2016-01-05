@@ -199,6 +199,12 @@ namespace Note
                 : DevExpress.XtraSpellChecker.SpellCheckMode.OnDemand;
         }
 
+        private void barButtonItemFind_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Find form = new Find(presenter.DataManager);
+            form.Show();
+        }
+
         #endregion
 
         private void InitSpellChecker()
@@ -243,7 +249,7 @@ namespace Note
             , barButtonItemHeaderFormat, barButtonItemImport, barButtonItemInfoFormat, barButtonItemMethodFormat
             , barButtonItemRemoveLineBreak, barButtonItemRemoveWhiteSpace, barButtonItemRemoveDoubleWhiteSpace
             , barButtonItemSaveAll, barButtonItemVacuum , barButtonItemLevelUp, barButtonItemLevelDown, barButtonItemConvertDb
-            , barButtonItemCheckNewestEntity, barButtonItemSpelling
+            , barButtonItemCheckNewestEntity, barButtonItemSpelling, barButtonItemFind
             };
         }
 
@@ -336,5 +342,7 @@ namespace Note
         }
 
         #endregion
+
+
     }
 }

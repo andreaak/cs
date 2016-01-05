@@ -17,4 +17,17 @@ namespace Note.Domain.Concrete.LinqToSql
             return obj.Item1.ID.GetHashCode();
         }
     }
+
+    class SimpleEntityComparer : IEqualityComparer<Description>
+    {
+        public bool Equals(Description x, Description y)
+        {
+            return x.ID == y.ID;
+        }
+
+        public int GetHashCode(Description obj)
+        {
+            return obj.ID.GetHashCode();
+        }
+    }
 }

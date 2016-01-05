@@ -17,10 +17,10 @@ namespace Note
     {
         private readonly IMainView view;
 
-        private DatabaseManager DataManager
+        public DatabaseManager DataManager
         {
-            set;
             get;
+            private set;
         }
 
         public IEnumerable<Description> Descriptions

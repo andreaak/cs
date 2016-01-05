@@ -88,6 +88,12 @@
     <Compile Include="DatabaseConnectionInfo.Designer.cs">
       <DependentUpon>DatabaseConnectionInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Find.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Find.Designer.cs">
+      <DependentUpon>Find.cs</DependentUpon>
+    </Compile>
     <Compile Include="IMainView.cs" />
     <Compile Include="MainPresenter.cs" />
     <Compile Include="ModifiedEntities.cs">
@@ -118,12 +124,16 @@
     <EmbeddedResource Include="DatabaseConnectionInfo.resx">
       <DependentUpon>DatabaseConnectionInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Find.resx">
+      <DependentUpon>Find.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModifiedEntities.resx">
       <DependentUpon>ModifiedEntities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -248,6 +258,9 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Search44.png" />
+    <None Include="Resources\spelling.jpg" />
+    <None Include="Resources\spelling2.jpg" />
     <Content Include="ToolDoc.ico" />
   </ItemGroup>
   <ItemGroup>

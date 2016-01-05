@@ -289,6 +289,7 @@
             this.barButtonItemRemoveWhiteSpace = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCheckNewestEntity = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSpelling = new DevExpress.XtraBars.BarCheckItem();
+            this.barButtonItemFind = new DevExpress.XtraBars.BarButtonItem();
             this.headerFooterToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.HeaderFooterToolsRibbonPageCategory();
             this.tableToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.TableToolsRibbonPageCategory();
             this.tableDesignRibbonPage1 = new DevExpress.XtraRichEdit.UI.TableDesignRibbonPage();
@@ -609,9 +610,10 @@
             this.barButtonItemLevelDown,
             this.barButtonItemRemoveWhiteSpace,
             this.barButtonItemCheckNewestEntity,
-            this.barButtonItemSpelling});
+            this.barButtonItemSpelling,
+            this.barButtonItemFind});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 249;
+            this.ribbonControl1.MaxItemId = 250;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.headerFooterToolsRibbonPageCategory1,
@@ -2541,9 +2543,19 @@
             this.barButtonItemSpelling.Caption = "Spelling";
             this.barButtonItemSpelling.Checked = true;
             this.barButtonItemSpelling.Id = 248;
+            this.barButtonItemSpelling.LargeGlyph = global::Note.Properties.Resources.spelling2;
             this.barButtonItemSpelling.Name = "barButtonItemSpelling";
             this.barButtonItemSpelling.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemSpelling.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSpelling_CheckedChanged);
+            // 
+            // barButtonItemFind
+            // 
+            this.barButtonItemFind.Caption = "Find";
+            this.barButtonItemFind.Id = 249;
+            this.barButtonItemFind.LargeGlyph = global::Note.Properties.Resources.Search44;
+            this.barButtonItemFind.Name = "barButtonItemFind";
+            this.barButtonItemFind.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButtonItemFind.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFind_ItemClick);
             // 
             // headerFooterToolsRibbonPageCategory1
             // 
@@ -2691,6 +2703,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemVacuum);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemCheckNewestEntity);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemSpelling);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemFind);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
             // homeRibbonPage1
@@ -3579,6 +3592,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemCheckNewestEntity;
         private DevExpress.XtraBars.BarCheckItem barButtonItemSpelling;
         private DevExpress.XtraSpellChecker.SpellChecker spellChecker1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemFind;
     }
 }
 

@@ -247,6 +247,16 @@ namespace Note.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search44 {
+            get {
+                object obj = ResourceManager.GetObject("Search44", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select destination folder.
         /// </summary>
         internal static string SelectFolder {
@@ -271,6 +281,26 @@ namespace Note.Properties {
         internal static System.Drawing.Bitmap signature {
             get {
                 object obj = ResourceManager.GetObject("signature", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spelling {
+            get {
+                object obj = ResourceManager.GetObject("spelling", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spelling2 {
+            get {
+                object obj = ResourceManager.GetObject("spelling2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

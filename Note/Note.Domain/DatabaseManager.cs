@@ -139,7 +139,14 @@ namespace Note.Domain
         {
             return dataRepository.GetModifiedDescriptions(dataManagerLocal.dataRepository);
         }
-       
+
+        public IEnumerable<Description> Find(string text)
+        {
+            return dataRepository.Find(text);
+        } 
+      
         #endregion
+
+
     }
 }
