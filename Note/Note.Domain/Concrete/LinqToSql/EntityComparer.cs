@@ -5,29 +5,43 @@ using Note.Domain.Entities;
 
 namespace Note.Domain.Concrete.LinqToSql
 {
-    class EntityComparer : IEqualityComparer<Tuple<Description, DataStatus>>
+    class EntityComparer<T> : IEqualityComparer<T> where T : Description
     {
-        public bool Equals(Tuple<Description, DataStatus> x, Tuple<Description, DataStatus> y)
-        {
-            return x.Item1.ID == y.Item1.ID;
-        }
-
-        public int GetHashCode(Tuple<Description, DataStatus> obj)
-        {
-            return obj.Item1.ID.GetHashCode();
-        }
-    }
-
-    class SimpleEntityComparer : IEqualityComparer<Description>
-    {
-        public bool Equals(Description x, Description y)
+        public bool Equals(T x, T y)
         {
             return x.ID == y.ID;
         }
 
-        public int GetHashCode(Description obj)
+        public int GetHashCode(T obj)
         {
             return obj.ID.GetHashCode();
         }
     }
+    
+    
+    //class EntityComparer : IEqualityComparer<DescriptionWithStatus>
+    //{
+    //    public bool Equals(DescriptionWithStatus x, DescriptionWithStatus y)
+    //    {
+    //        return x.ID == y.ID;
+    //    }
+
+    //    public int GetHashCode(DescriptionWithStatus obj)
+    //    {
+    //        return obj.ID.GetHashCode();
+    //    }
+    //}
+
+    //class SimpleEntityComparer : IEqualityComparer<DescriptionWithText>
+    //{
+    //    public bool Equals(DescriptionWithText x, DescriptionWithText y)
+    //    {
+    //        return x.ID == y.ID;
+    //    }
+
+    //    public int GetHashCode(DescriptionWithText obj)
+    //    {
+    //        return obj.ID.GetHashCode();
+    //    }
+    //}
 }

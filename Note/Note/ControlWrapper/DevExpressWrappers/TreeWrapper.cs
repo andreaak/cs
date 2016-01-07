@@ -75,7 +75,13 @@ namespace Note.ControlWrapper.DevExpressWrappers
         {
             DisableFocusing();
             control.DataSource = table;
-            SortTreeList();
+            EnableFocusing();
+        }
+
+        public void SetDataSource()
+        {
+            DisableFocusing();
+            control.DataSource = presenter.GetDataSource();
             EnableFocusing();
         }
 
@@ -99,8 +105,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             long id = SelectedNodeId;
             if (PerformAction(position, parentId, id, dir))
             {
-                control.DataSource = presenter.GetBindingTable();
-                SortTreeList();
+                control.DataSource = presenter.GetDataSource();
                 FocusNode(id);
             }
             EnableFocusing();
@@ -337,13 +342,6 @@ namespace Note.ControlWrapper.DevExpressWrappers
                 nodes.Add(res);
             }
             return nodes;
-        }
-
-        private void SortTreeList()
-        {
-            this.control.BeginSort();
-            this.control.Columns[0].SortOrder = SortOrder.Ascending;
-            this.control.EndSort();
         }
 
         private void FocusSelectedNode()

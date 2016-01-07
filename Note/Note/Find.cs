@@ -1,12 +1,8 @@
-﻿using Note.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using Note.Domain;
+using Note.Domain.Entities;
 
 namespace Note
 {
@@ -19,7 +15,7 @@ namespace Note
             InitializeComponent();
         }
 
-        public Find(Domain.DatabaseManager databaseManager)
+        public Find(DatabaseManager databaseManager)
         {
             this.databaseManager = databaseManager;
             InitializeComponent();
@@ -28,12 +24,16 @@ namespace Note
         private void simpleButtonFind_Click(object sender, EventArgs e)
         {
             ClearTreeList();
-            IEnumerable<Description> items = databaseManager.Find(textEdit1.Text);
-            treeList.DataSource = GetTableForBinding(items);
-            SortTreeList();
+            IEnumerable<DescriptionWithText> items = databaseManager.Find(textEdit1.Text);
+            treeList.DataSource = GetDataSource(items);
         }
 
-        private static List<object> GetTableForBinding(IEnumerable<Description> items)
+        private void ClearTreeList()
+        {
+            treeList.Nodes.Clear();
+        }
+
+        private static object GetDataSource(IEnumerable<DescriptionWithText> items)
         {
             List<object> list = new List<object>();
             foreach (var item in items)
@@ -45,21 +45,10 @@ namespace Note
                     Description = item.EditValue,
                     Type = item.Type,
                     OrderPosition = item.OrderPosition,
+                    Text = item.Text,
                 });
             }
             return list;
-        }
-
-        private void SortTreeList()
-        {
-            this.treeList.BeginSort();
-            this.treeList.Columns[0].SortOrder = SortOrder.Ascending;
-            this.treeList.EndSort();
-        }
-
-        private void ClearTreeList()
-        {
-            treeList.Nodes.Clear();
         }
     }
 }

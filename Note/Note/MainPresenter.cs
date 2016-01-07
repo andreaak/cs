@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using Note.ControlWrapper.Binding;
 using Note.Domain;
@@ -204,13 +203,12 @@ namespace Note
             }
         }
 
-        public BindingDataset.DescriptionDataTable GetBindingTable()
+        public object GetDataSource()
         {
             try
             {
                 BindingDataset.DescriptionDataTable table = new BindingDataset.DescriptionDataTable();
-                IEnumerable<long> entityIds = Descriptions.Select(item => item.ID).ToList();
-                foreach (var item in Descriptions.Where(item => entityIds.Contains(item.ID)))
+                foreach (var item in Descriptions)
                 {
                     table.AddDescriptionRow(
                         item.ID,
@@ -289,7 +287,7 @@ namespace Note
             {
                 try
                 {
-                    IEnumerable<Tuple<Description, DataStatus>> descriptions = GetModifiedDescriptions(dataManagerLocal);
+                    IEnumerable<DescriptionWithStatus> descriptions = GetModifiedDescriptions(dataManagerLocal);
                     ItemsList form = new ItemsList();
                     form.LoadData(descriptions);
                     form.Show();
@@ -344,7 +342,7 @@ namespace Note
             return dbConnectionOk;
         }
 
-        private IEnumerable<Tuple<Description, DataStatus>> GetModifiedDescriptions(DatabaseManager dataManagerLocal)
+        private IEnumerable<DescriptionWithStatus> GetModifiedDescriptions(DatabaseManager dataManagerLocal)
         {
             return DataManager.GetModifiedDescriptions(dataManagerLocal);
         }

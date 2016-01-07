@@ -33,13 +33,15 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.treeList = new DevExpress.XtraTreeList.TreeList();
             this.colDescription = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colText = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colOrderPosition = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.simpleButtonFind = new DevExpress.XtraEditors.SimpleButton();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItemFindText = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItemFindButton = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItemTree = new DevExpress.XtraLayout.LayoutControlItem();
-            this.imageList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).BeginInit();
@@ -65,12 +67,34 @@
             // 
             // treeList
             // 
+            this.treeList.Appearance.FocusedCell.BackColor = System.Drawing.Color.White;
+            this.treeList.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.White;
+            this.treeList.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.treeList.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.treeList.Appearance.FocusedCell.Options.UseFont = true;
+            this.treeList.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.treeList.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.treeList.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.treeList.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.treeList.Appearance.FocusedRow.Options.UseFont = true;
+            this.treeList.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.treeList.Appearance.Row.Options.UseFont = true;
+            this.treeList.Appearance.SelectedRow.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeList.Appearance.SelectedRow.Options.UseFont = true;
             this.treeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.colDescription});
+            this.colDescription,
+            this.colText,
+            this.colOrderPosition});
+            this.treeList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.treeList.ImageIndexFieldName = "Type";
             this.treeList.Location = new System.Drawing.Point(12, 38);
             this.treeList.Name = "treeList";
+            this.treeList.OptionsBehavior.KeepSelectedOnClick = false;
+            this.treeList.OptionsSelection.MultiSelect = true;
+            this.treeList.OptionsSelection.UseIndicatorForSelection = true;
+            this.treeList.OptionsView.ShowHorzLines = false;
             this.treeList.OptionsView.ShowIndicator = false;
+            this.treeList.OptionsView.ShowVertLines = false;
             this.treeList.SelectImageList = this.imageList;
             this.treeList.Size = new System.Drawing.Size(650, 519);
             this.treeList.TabIndex = 6;
@@ -79,9 +103,34 @@
             // 
             this.colDescription.Caption = "Description";
             this.colDescription.FieldName = "Description";
+            this.colDescription.MinWidth = 33;
             this.colDescription.Name = "colDescription";
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 0;
+            this.colDescription.Width = 217;
+            // 
+            // colText
+            // 
+            this.colText.Caption = "Text";
+            this.colText.FieldName = "Text";
+            this.colText.Name = "colText";
+            this.colText.Visible = true;
+            this.colText.VisibleIndex = 1;
+            this.colText.Width = 431;
+            // 
+            // colOrderPosition
+            // 
+            this.colOrderPosition.Caption = "OrderPosition";
+            this.colOrderPosition.FieldName = "OrderPosition";
+            this.colOrderPosition.Name = "colOrderPosition";
+            this.colOrderPosition.SortOrder = System.Windows.Forms.SortOrder.Ascending;
+            // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "folder.png");
+            this.imageList.Images.SetKeyName(1, "paste.png");
             // 
             // simpleButtonFind
             // 
@@ -155,20 +204,15 @@
             this.layoutControlItemTree.TextToControlDistance = 0;
             this.layoutControlItemTree.TextVisible = false;
             // 
-            // imageList
-            // 
-            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "folder.png");
-            this.imageList.Images.SetKeyName(1, "paste.png");
-            // 
             // Find
             // 
+            this.AcceptButton = this.simpleButtonFind;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 569);
             this.Controls.Add(this.layoutControl1);
             this.Name = "Find";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Find";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -194,5 +238,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemTree;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colDescription;
         private System.Windows.Forms.ImageList imageList;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colText;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colOrderPosition;
     }
 }

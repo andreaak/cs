@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using CSTest._06_Interface._0_Setup;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,6 +14,51 @@ namespace CSTest._06_Interface
             _01_Base my = new _01_Base();
 
             my.Method();
+        }
+
+        // Вызов реализации.
+        [TestMethod]
+        public void TestInterface1VirtualMethod()
+        {
+
+            BaseClass baseInstance = new BaseClass();
+            baseInstance.DisposeNonVirtual();
+            ((IDisposablee)baseInstance).DisposeNonVirtual();
+            baseInstance.DisposeVirtual();
+            ((IDisposablee)baseInstance).DisposeVirtual();
+
+            Debug.WriteLine(new string('-', 40));
+
+            _02_DerivedClass derivedInstance = new _02_DerivedClass();
+            derivedInstance.DisposeNonVirtual();
+            ((IDisposablee)derivedInstance).DisposeNonVirtual();
+            derivedInstance.DisposeVirtual();
+            ((IDisposablee)derivedInstance).DisposeVirtual();
+
+            Debug.WriteLine(new string('-', 40));
+
+            baseInstance = new _02_DerivedClass();
+            baseInstance.DisposeNonVirtual();
+            ((IDisposablee)baseInstance).DisposeNonVirtual();
+            baseInstance.DisposeVirtual();
+            ((IDisposablee)baseInstance).DisposeVirtual();
+
+            /*
+            Реализация метода DisposeNonVirtual() в BaseClass
+            Реализация метода DisposeNonVirtual() в BaseClass
+            Реализация метода DisposeVirtual() в BaseClass
+            Реализация метода DisposeVirtual() в BaseClass
+            ----------------------------------------
+            Реализация метода DisposeNonVirtual() в _02_DerivedClass
+            Реализация метода DisposeNonVirtual() в _02_DerivedClass
+            Реализация метода DisposeVirtual() в _02_DerivedClass
+            Реализация метода DisposeVirtual() в _02_DerivedClass
+            ----------------------------------------
+            Реализация метода DisposeNonVirtual() в BaseClass
+            Реализация метода DisposeNonVirtual() в _02_DerivedClass
+            Реализация метода DisposeVirtual() в _02_DerivedClass
+            Реализация метода DisposeVirtual() в _02_DerivedClass
+            */
         }
 
         [TestMethod]

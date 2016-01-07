@@ -41,4 +41,23 @@ namespace Note.Domain.Entities
             set;
         }
     }
+
+    public class DescriptionWithStatus : Description
+    {
+        public DataStatus Status
+        {
+            get;
+            set;
+        }
+    }
+
+    public class DescriptionWithText : Description
+    {
+        public string Text
+        {
+            get;
+            set;
+        }
+    }
+
 }

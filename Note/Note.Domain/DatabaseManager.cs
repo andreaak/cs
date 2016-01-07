@@ -135,18 +135,16 @@ namespace Note.Domain
             return dataRepository.UpdateDescription(id, description);
         }
 
-        public IEnumerable<Tuple<Description, DataStatus>> GetModifiedDescriptions(DatabaseManager dataManagerLocal)
+        public IEnumerable<DescriptionWithStatus> GetModifiedDescriptions(DatabaseManager dataManagerLocal)
         {
             return dataRepository.GetModifiedDescriptions(dataManagerLocal.dataRepository);
         }
 
-        public IEnumerable<Description> Find(string text)
+        public IEnumerable<DescriptionWithText> Find(string text)
         {
             return dataRepository.Find(text);
         } 
       
         #endregion
-
-
     }
 }

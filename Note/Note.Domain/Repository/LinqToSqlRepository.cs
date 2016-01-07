@@ -13,15 +13,15 @@ namespace Note.Domain.Repository
     public class LinqToSqlRepository : IDataRepository
     {
         private const int WRONG_POSITION = -1;
-        
+
         private readonly NoteDataContext dataContext;
 
         public LinqToSqlRepository(string connectionString)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
             dataContext = new NoteDataContext(connection, new SqliteVendor());
-        } 
-       
+        }
+
         #region IDataRepository Members
 
         public bool IsProperDB
@@ -57,7 +57,9 @@ namespace Note.Domain.Repository
             }
         }
 
-        public void Init(){}
+        public void Init()
+        {
+        }
 
         public long Insert(long parentId, string description, DataTypes type)
         {
@@ -70,7 +72,7 @@ namespace Note.Domain.Repository
                 ParentID = parentId,
                 Description = description,
                 OrderPosition = maxPos.HasValue ? maxPos + 1 : DBConstants.START_POSITION,
-                Type = (byte) type,
+                Type = (byte)type,
                 ModDate = DateTime.Now.ToString()
             };
             dataContext.Entity.InsertOnSubmit(item);
@@ -86,7 +88,8 @@ namespace Note.Domain.Repository
                 dataContext.EntityData.InsertOnSubmit(itemData);
                 dataContext.SubmitChanges();
             }
-            return item.ID; ;
+            return item.ID;
+            ;
         }
 
         public string GetTextData(long id)
@@ -261,57 +264,57 @@ namespace Note.Domain.Repository
             return false;
         }
 
-        public IEnumerable<Tuple<Description, DataStatus>> GetModifiedDescriptions(IDataRepository comparedRepository)
+        public IEnumerable<DescriptionWithStatus> GetModifiedDescriptions(IDataRepository comparedRepository)
         {
-            List<Tuple<Description, DataStatus>> list = new List<Tuple<Description, DataStatus>>();
+            List<DescriptionWithStatus> list = new List<DescriptionWithStatus>();
             //added
             foreach (var comparedItem in comparedRepository.Descriptions)
             {
-                bool isExist = dataContext.Entity.Any(item => item.ID == comparedItem.ID 
+                bool isExist = dataContext.Entity.Any(item => item.ID == comparedItem.ID
                     && item.Description == comparedItem.EditValue);
                 if (!isExist)
                 {
-                    AddDescription(list, comparedItem, DataStatus.Added);
-                    AddParentDescriptions(comparedItem.ID, list);
+                    AddDescription(comparedItem, DataStatus.Added, list);
+                    AddParentDescriptions(comparedRepository, comparedItem.ID, list);
                 }
             }
             //deleted
             foreach (var baseItem in Descriptions)
             {
-                bool isExist = comparedRepository.Descriptions.Any(item => item.ID == baseItem.ID 
+                bool isExist = comparedRepository.Descriptions.Any(item => item.ID == baseItem.ID
                     && item.EditValue == baseItem.EditValue);
                 if (!isExist)
                 {
-                    AddDescription(list, baseItem, DataStatus.Deleted);
-                    AddParentDescriptions(baseItem.ID, list);
+                    AddDescription(baseItem, DataStatus.Deleted, list);
+                    AddParentDescriptions(this, baseItem.ID, list);
                 }
             }
 
             foreach (var comparedItem in comparedRepository.Descriptions)
-	        {
-                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID 
+            {
+                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID
                     && item.Description == comparedItem.EditValue);
                 if (baseItem != null
                     && IsCanCompare(baseItem.ModDate, comparedItem.ModDate)
                     && (string.IsNullOrEmpty(baseItem.ModDate) || comparedItem.ModDate > DateTime.Parse(baseItem.ModDate)))
                 {
 
-                    AddDescription(list, comparedItem, DataStatus.Modified);
-                    AddParentDescriptions(comparedItem.ID, list);
+                    AddDescription(comparedItem, DataStatus.Modified, list);
+                    AddParentDescriptions(comparedRepository, comparedItem.ID, list);
                 }
-	        }
+            }
 
             foreach (var comparedItem in comparedRepository.Descriptions)
             {
-                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID 
+                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID
                     && item.Description == comparedItem.EditValue);
                 if (baseItem != null
                     && !string.IsNullOrEmpty(baseItem.ModDate)
                     && comparedItem.ModDate < DateTime.Parse(baseItem.ModDate))
                 {
 
-                    AddDescription(list, comparedItem, DataStatus.Obsolete);
-                    AddParentDescriptions(comparedItem.ID, list);
+                    AddDescription(comparedItem, DataStatus.Obsolete, list);
+                    AddParentDescriptions(comparedRepository, comparedItem.ID, list);
                 }
             }
 
@@ -325,8 +328,8 @@ namespace Note.Domain.Repository
                     var comparedItem = comparedRepository.Descriptions.FirstOrDefault(item => item.ID == comparedData.ID);
                     if (comparedItem != null)
                     {
-                        AddDescription(list, comparedItem, DataStatus.Modified);
-                        AddParentDescriptions(comparedItem.ID, list);
+                        AddDescription(comparedItem, DataStatus.Modified, list);
+                        AddParentDescriptions(comparedRepository, comparedItem.ID, list);
                     }
                 }
             }
@@ -341,12 +344,12 @@ namespace Note.Domain.Repository
                     var comparedItem = comparedRepository.Descriptions.FirstOrDefault(item => item.ID == comparedData.ID);
                     if (comparedItem != null)
                     {
-                        AddDescription(list, comparedItem, DataStatus.Obsolete);
-                        AddParentDescriptions(comparedItem.ID, list);
+                        AddDescription(comparedItem, DataStatus.Obsolete, list);
+                        AddParentDescriptions(comparedRepository, comparedItem.ID, list);
                     }
                 }
             }
-            return list.Distinct(new EntityComparer());
+            return list.Distinct(new EntityComparer<DescriptionWithStatus>());
         }
 
         private bool IsCanCompare(string baseDate, DateTime comparedDate)
@@ -354,9 +357,9 @@ namespace Note.Domain.Repository
             return !(string.IsNullOrEmpty(baseDate) && comparedDate == DateTime.MinValue);
         }
 
-        public IEnumerable<Description> Find(string text)
+        public IEnumerable<DescriptionWithText> Find(string text)
         {
-            List<Description> descriptions = new List<Description>();
+            List<DescriptionWithText> descriptions = new List<DescriptionWithText>();
             var items = dataContext.EntityData.Where(item => item.TextData.Contains(text));
             if (items != null)
             {
@@ -365,20 +368,21 @@ namespace Note.Domain.Repository
                     Entity entity = dataContext.Entity.FirstOrDefault(item => item.ID == data.ID);
                     if (entity != null)
                     {
-                        AddDescription(entity, descriptions);
+                        string trimedText = GetText(text, data.TextData);
+                        AddDescription(entity, trimedText, descriptions);
                         AddParentDescriptions(entity, descriptions);
                     }
                 }
-                
+
             }
-            return descriptions.Distinct(new SimpleEntityComparer());
+            return descriptions.Distinct(new EntityComparer<DescriptionWithText>());
         }
 
         #endregion
 
         private IEnumerable<Entity> RecurseSelect(Entity item)
         {
-            return (new [] { item }).Union(dataContext.Entity
+            return (new[] { item }).Union(dataContext.Entity
             .Where(subItem => subItem.ParentID == item.ID)
             .SelectMany(RecurseSelect));
         }
@@ -405,47 +409,58 @@ namespace Note.Domain.Repository
                         && item.OrderPosition > position);
         }
 
-        private void AddDescription(List<Tuple<Description, DataStatus>> list, Description entity, DataStatus dataStatus)
+        private void AddDescription(Description entity, DataStatus dataStatus, List<DescriptionWithStatus> list)
         {
-            Tuple<Description, DataStatus> item =
-                new Tuple<Description, DataStatus>(entity, dataStatus);
-            list.Add(item);
+            DescriptionWithStatus desc = new DescriptionWithStatus();
+            LinqToSqlConverter.Convert(desc, entity);
+            desc.Status = dataStatus;
+            list.Add(desc);
         }
 
-        private void AddParentDescriptions(long id, List<Tuple<Description, DataStatus>> list)
+        private void AddParentDescriptions(IDataRepository repository, long id, List<DescriptionWithStatus> list)
         {
-            Entity entity = dataContext.Entity.FirstOrDefault(item => item.ID == id);
-            while (entity != null && entity.ParentID.HasValue && entity.ParentID > DBConstants.BASE_LEVEL)
+            Description entity = repository.Descriptions.FirstOrDefault(item => item.ID == id);
+            while (entity != null && entity.ParentID > DBConstants.BASE_LEVEL)
             {
-                Entity parent = dataContext.Entity.FirstOrDefault(item => item.ID == entity.ParentID.Value);
+                Description parent = repository.Descriptions.FirstOrDefault(item => item.ID == entity.ParentID);
                 if (parent != null)
                 {
-                    Tuple<Description, DataStatus> item =
-                        new Tuple<Description, DataStatus>(LinqToSqlConverter.Convert(parent), DataStatus.Parent);
-                    list.Add(item);
+                    DescriptionWithStatus desc = new DescriptionWithStatus();
+                    LinqToSqlConverter.Convert(desc, entity);
+                    desc.Status = DataStatus.Parent;
+                    list.Add(desc);
                 }
                 entity = parent;
             }
         }
 
-        private void AddDescription(Entity entity, List<Description> list)
+        private string GetText(string text, string fullText)
         {
-            list.Add(LinqToSqlConverter.Convert(entity));
+            int index = fullText.IndexOf(text, StringComparison.OrdinalIgnoreCase);
+            int startIndex = index < Options.SymbolsForFind ? 0 : index - Options.SymbolsForFind;
+            int length = index + text.Length + Options.SymbolsForFind > fullText.Length
+                ? fullText.Length - startIndex : index - startIndex + text.Length + Options.SymbolsForFind;
+            return fullText.Substring(startIndex, length)
+                .Replace(Environment.NewLine, " ")
+                .Replace("  ", " ");
         }
 
-        private void AddParentDescriptions(Entity entity, List<Description> list)
+        private void AddDescription(Entity entity, string text, List<DescriptionWithText> list)
+        {
+            list.Add(LinqToSqlConverter.Convert(entity, text));
+        }
+
+        private void AddParentDescriptions(Entity entity, List<DescriptionWithText> list)
         {
             while (entity != null && entity.ParentID.HasValue && entity.ParentID > DBConstants.BASE_LEVEL)
             {
                 Entity parent = dataContext.Entity.FirstOrDefault(item => item.ID == entity.ParentID.Value);
                 if (parent != null)
                 {
-                      list.Add(LinqToSqlConverter.Convert(parent));
+                    list.Add(LinqToSqlConverter.ConvertWithText(parent));
                 }
                 entity = parent;
             }
         }
-
-
     }
 }

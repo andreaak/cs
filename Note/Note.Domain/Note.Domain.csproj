@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Common\NinjectObjectsFactory.cs" />
     <Compile Include="Common\ObjectsFactory.cs" />
+    <Compile Include="Common\Options.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="Concrete\DBConstants.cs" />
     <Compile Include="Concrete\LinqToSql\EntityComparer.cs" />
