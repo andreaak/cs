@@ -13,15 +13,15 @@ namespace Note.Domain.Repository
     public class LinqToSqlRepository : IDataRepository
     {
         private const int WRONG_POSITION = -1;
-        
+
         private readonly NoteDataContext dataContext;
 
         public LinqToSqlRepository(string connectionString)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
             dataContext = new NoteDataContext(connection, new SqliteVendor());
-        } 
-       
+        }
+
         #region IDataRepository Members
 
         public bool IsProperDB
@@ -57,7 +57,7 @@ namespace Note.Domain.Repository
             }
         }
 
-        public void Init(){}
+        public void Init() { }
 
         public long Insert(long parentId, string description, DataTypes type)
         {
@@ -70,7 +70,7 @@ namespace Note.Domain.Repository
                 ParentID = parentId,
                 Description = description,
                 OrderPosition = maxPos.HasValue ? maxPos + 1 : DBConstants.START_POSITION,
-                Type = (byte) type,
+                Type = (byte)type,
                 ModDate = DateTime.Now.ToString()
             };
             dataContext.Entity.InsertOnSubmit(item);
@@ -267,7 +267,7 @@ namespace Note.Domain.Repository
             //added
             foreach (var comparedItem in comparedRepository.Descriptions)
             {
-                bool isExist = dataContext.Entity.Any(item => item.ID == comparedItem.ID 
+                bool isExist = dataContext.Entity.Any(item => item.ID == comparedItem.ID
                     && item.Description == comparedItem.EditValue);
                 if (!isExist)
                 {
@@ -278,7 +278,7 @@ namespace Note.Domain.Repository
             //deleted
             foreach (var baseItem in Descriptions)
             {
-                bool isExist = comparedRepository.Descriptions.Any(item => item.ID == baseItem.ID 
+                bool isExist = comparedRepository.Descriptions.Any(item => item.ID == baseItem.ID
                     && item.EditValue == baseItem.EditValue);
                 if (!isExist)
                 {
@@ -288,8 +288,8 @@ namespace Note.Domain.Repository
             }
 
             foreach (var comparedItem in comparedRepository.Descriptions)
-	        {
-                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID 
+            {
+                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID
                     && item.Description == comparedItem.EditValue);
                 if (baseItem != null
                     && IsCanCompare(baseItem.ModDate, comparedItem.ModDate)
@@ -299,11 +299,11 @@ namespace Note.Domain.Repository
                     AddDescription(list, comparedItem, DataStatus.Modified);
                     AddParentDescriptions(comparedItem.ID, list);
                 }
-	        }
+            }
 
             foreach (var comparedItem in comparedRepository.Descriptions)
             {
-                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID 
+                var baseItem = dataContext.Entity.FirstOrDefault(item => item.ID == comparedItem.ID
                     && item.Description == comparedItem.EditValue);
                 if (baseItem != null
                     && !string.IsNullOrEmpty(baseItem.ModDate)
@@ -369,7 +369,6 @@ namespace Note.Domain.Repository
                         AddParentDescriptions(entity, descriptions);
                     }
                 }
-                
             }
             return descriptions.Distinct(new SimpleEntityComparer());
         }
@@ -378,7 +377,7 @@ namespace Note.Domain.Repository
 
         private IEnumerable<Entity> RecurseSelect(Entity item)
         {
-            return (new [] { item }).Union(dataContext.Entity
+            return (new[] { item }).Union(dataContext.Entity
             .Where(subItem => subItem.ParentID == item.ID)
             .SelectMany(RecurseSelect));
         }
@@ -440,12 +439,10 @@ namespace Note.Domain.Repository
                 Entity parent = dataContext.Entity.FirstOrDefault(item => item.ID == entity.ParentID.Value);
                 if (parent != null)
                 {
-                      list.Add(LinqToSqlConverter.Convert(parent));
+                    list.Add(LinqToSqlConverter.Convert(parent));
                 }
                 entity = parent;
             }
         }
-
-
     }
 }
