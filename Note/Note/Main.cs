@@ -225,7 +225,8 @@ namespace Note
             {
                 presenter.Init();
                 rtfWrapper.Clear();
-                treeWrapper.DataSource(presenter.GetBindingTable());
+                //treeWrapper.DataSource(presenter.GetBindingTable());
+                treeWrapper.SetDataSource();
                 Text = string.Format("{0} {1}", TITLE, presenter.GetConnectionDescription());
                 notifyIcon.Text = presenter.GetDBFileName();
             }
@@ -342,7 +343,5 @@ namespace Note
         }
 
         #endregion
-
-
     }
 }

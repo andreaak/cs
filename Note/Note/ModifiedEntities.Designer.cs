@@ -32,12 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemsList));
             this.treeList = new DevExpress.XtraTreeList.TreeList();
             this.colDescription = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.colDataStatus = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colState = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.imageListState = new System.Windows.Forms.ImageList(this.components);
+            this.colOrderPosition = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).BeginInit();
             this.SuspendLayout();
             // 
-            // treeList1
+            // treeList
             // 
             this.treeList.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.treeList.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -55,12 +56,13 @@
             this.treeList.Appearance.SelectedRow.Options.UseFont = true;
             this.treeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.colDescription,
-            this.colDataStatus});
+            this.colState,
+            this.colOrderPosition});
             this.treeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.treeList.ImageIndexFieldName = "Type";
             this.treeList.Location = new System.Drawing.Point(0, 0);
-            this.treeList.Name = "treeList1";
+            this.treeList.Name = "treeList";
             this.treeList.OptionsBehavior.KeepSelectedOnClick = false;
             this.treeList.OptionsSelection.MultiSelect = true;
             this.treeList.OptionsSelection.UseIndicatorForSelection = true;
@@ -73,23 +75,23 @@
             // 
             // colDescription
             // 
-            this.colDescription.Caption = " ";
+            this.colDescription.Caption = " Node";
             this.colDescription.FieldName = "Description";
             this.colDescription.MinWidth = 33;
             this.colDescription.Name = "colDescription";
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 0;
             this.colDescription.Width = 299;
-			// 
+            // 
             // colState
             // 
-            this.colDataStatus.Caption = " ";
-            this.colDataStatus.FieldName = "DataStatus";
-            this.colDataStatus.MinWidth = 33;
-            this.colDataStatus.Name = "colState";
-            this.colDataStatus.Visible = true;
-            this.colDataStatus.VisibleIndex = 0;
-            this.colDataStatus.Width = 100;
+            this.colState.Caption = " State";
+            this.colState.FieldName = "DataStatus";
+            this.colState.MinWidth = 33;
+            this.colState.Name = "colState";
+            this.colState.Visible = true;
+            this.colState.VisibleIndex = 1;
+            this.colState.Width = 100;
             // 
             // imageListState
             // 
@@ -97,6 +99,13 @@
             this.imageListState.TransparentColor = System.Drawing.Color.Transparent;
             this.imageListState.Images.SetKeyName(0, "folder.png");
             this.imageListState.Images.SetKeyName(1, "paste.png");
+            // 
+            // colOrderPosition
+            // 
+            this.colOrderPosition.Caption = "OrderPosition";
+            this.colOrderPosition.FieldName = "OrderPosition";
+            this.colOrderPosition.Name = "colOrderPosition";
+            this.colOrderPosition.SortOrder = System.Windows.Forms.SortOrder.Ascending;
             // 
             // ItemsList
             // 
@@ -117,6 +126,7 @@
         private DevExpress.XtraTreeList.TreeList treeList;
         private System.Windows.Forms.ImageList imageListState;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colDescription;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn colDataStatus;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colState;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colOrderPosition;
     }
 }

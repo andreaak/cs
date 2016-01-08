@@ -20,8 +20,7 @@ namespace Note.Domain.Repository
         bool ChangeLevel(int position, long parentId, long id, Direction direction);
         bool IsCanMove(int position, long parentId, Direction direction);
         bool Move(int position, long parentId, long id, Direction direction);
-        IEnumerable<Tuple<Description, DataStatus>> GetModifiedDescriptions(IDataRepository dataRepository);
-
-        IEnumerable<Description> Find(string text);
+        IEnumerable<DescriptionWithStatus> GetModifiedDescriptions(IDataRepository dataRepository);
+        IEnumerable<DescriptionWithText> Find(string text);
     }
 }

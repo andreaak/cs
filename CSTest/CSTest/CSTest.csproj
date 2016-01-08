@@ -115,6 +115,7 @@
     <Compile Include="05_Delegates and Events\Delegates\_05_CoContrVarianceTest.cs" />
     <Compile Include="05_Delegates and Events\Delegates\TestClass.cs" />
     <Compile Include="06_Interface\0_Setup\BaseClass.cs" />
+    <Compile Include="06_Interface\0_Setup\IDisposablee.cs" />
     <Compile Include="06_Interface\_02_DerivedClass.cs" />
     <Compile Include="06_Interface\0_Setup\Interface1.cs" />
     <Compile Include="06_Interface\0_Setup\Interface2.cs" />

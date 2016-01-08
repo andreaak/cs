@@ -30,7 +30,8 @@ namespace Note.ControlWrapper
         bool IsNoteSelect();
         long GetParentId(bool isChildNode);
 
-        void DataSource(BindingDataset.DescriptionDataTable table);
+        //void DataSource(BindingDataset.DescriptionDataTable table);
+        void SetDataSource();
 
         void Insert(long id, long parentId, string description, DataTypes type);
 

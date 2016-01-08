@@ -1245,6 +1245,7 @@
             this.myRichEditControl.Location = new System.Drawing.Point(0, 0);
             this.myRichEditControl.MenuManager = this.ribbonControl1;
             this.myRichEditControl.Name = "myRichEditControl";
+            this.myRichEditControl.Options.Fields.UseCurrentCultureDateTimeFormat = false;
             this.myRichEditControl.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
             this.myRichEditControl.Options.MailMerge.KeepLastParagraph = false;
             this.myRichEditControl.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
@@ -2980,6 +2981,7 @@
             this.colDescription.FieldName = "Description";
             this.colDescription.MinWidth = 33;
             this.colDescription.Name = "colDescription";
+            this.colDescription.SortOrder = System.Windows.Forms.SortOrder.Ascending;
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 0;
             this.colDescription.Width = 299;

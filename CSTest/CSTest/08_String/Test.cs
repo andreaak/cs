@@ -85,5 +85,59 @@ namespace CSTest._08_String
         {
             return object.ReferenceEquals(s1, s2);
         }
+
+        [TestMethod]
+        public void TestString3Clone()
+        {
+            string first = "First";
+            string second = (string)first.Clone();
+            Debug.WriteLine("first.Equals(second): " + first.Equals(second));
+            Debug.WriteLine("ReferenceEquals(first,second): " + ReferenceEquals(first, second));
+            string third = string.Copy(first);
+            Debug.WriteLine("first.Equals(third): " + first.Equals(third));
+            Debug.WriteLine("ReferenceEquals(first,third): " + ReferenceEquals(first, third));
+
+            StringTest test1;
+            test1.First = "First";
+            test1.Second = (string)test1.First.Clone();
+            test1.Third = string.Copy(test1.First);
+            Debug.WriteLine("ReferenceEquals(test1.First, test1.Second): " + ReferenceEquals(test1.First, test1.Second));
+            Debug.WriteLine("ReferenceEquals(test1.Second, test1.Third): " + ReferenceEquals(test1.Second, test1.Third));
+
+            StringTest test2 = test1;
+            Debug.WriteLine("ReferenceEquals(test1.First, test2.First): " + ReferenceEquals(test1.First, test2.First));
+            Debug.WriteLine("ReferenceEquals(test1.Second, test2.Second): " + ReferenceEquals(test1.Second, test2.Second));
+            Debug.WriteLine("ReferenceEquals(test1.Third, test2.Third): " + ReferenceEquals(test1.Third, test2.Third));
+
+            object temp = test1;
+            StringTest test3 = (StringTest)temp;
+            Debug.WriteLine("ReferenceEquals(test1.First, test3.First): " + ReferenceEquals(test1.First, test3.First));
+            Debug.WriteLine("ReferenceEquals(test1.Second, test3.Second): " + ReferenceEquals(test1.Second, test3.Second));
+            Debug.WriteLine("ReferenceEquals(test1.Third, test3.Third): " + ReferenceEquals(test1.Third, test3.Third));
+            /*
+            first.Equals(second): True
+            ReferenceEquals(first,second): True
+            first.Equals(third): True
+            ReferenceEquals(first,third): False
+
+            ReferenceEquals(test1.First, test1.Second): True
+            ReferenceEquals(test1.Second, test1.Third): False
+
+            ReferenceEquals(test1.First, test2.First): True
+            ReferenceEquals(test1.Second, test2.Second): True
+            ReferenceEquals(test1.Third, test2.Third): True
+
+            ReferenceEquals(test1.First, test3.First): True
+            ReferenceEquals(test1.Second, test3.Second): True
+            ReferenceEquals(test1.Third, test3.Third): True
+            */
+        }
+
+        struct StringTest
+        {
+            public string First;
+            public string Second;
+            public string Third;
+        }
     }
 }
