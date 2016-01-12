@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="55adb22399ed49a88a8278d7f4e81a02" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopDBModel.CUSTOMERS" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.Customers2" Width="1.5" PointX="10" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.Employees" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.OFFICES" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.ORDERS" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.Orders2" Width="1.5" PointX="12.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.PRODUCTS" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.Salespeople" Width="1.5" PointX="7.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.SALESREPS" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="ShopDBModel.HASREP" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.PLACEDBY" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.FK_Customers_Salespeople" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.FK__Employees__manag__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.HASMGR" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.WORKSIN" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.ISFOR" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.TAKENBY" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.FK_Orders_Salespeople" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopDBModel.FK__SALESREPS__MANAG__619B8048" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

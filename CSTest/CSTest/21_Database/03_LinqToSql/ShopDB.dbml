@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ShopDB" Class="ShopDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS2012;AttachDbFilename=|DataDirectory|\ShopDB.mdf;Integrated Security=True" SettingsObjectName="CSTest.Properties.Settings" SettingsPropertyName="ShopDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CUSTOMERS" Member="CUSTOMERs">
+    <Type Name="CUSTOMER">
+      <Column Name="CUST_NUM" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="COMPANY" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CUST_REP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREDIT_LIMIT" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="CUSTOMER_ORDER" Member="ORDERs" ThisKey="CUST_NUM" OtherKey="CUST" Type="ORDER" />
+      <Association Name="SALESREP_CUSTOMER" Member="SALESREP" ThisKey="CUST_REP" OtherKey="EMPL_NUM" Type="SALESREP" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SALESREPS" Member="SALESREPs">
+    <Type Name="SALESREP">
+      <Column Name="EMPL_NUM" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AGE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="REP_OFFICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TITLE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="HIRE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MANAGER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QUOTA" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SALES" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="SALESREP_CUSTOMER" Member="CUSTOMERs" ThisKey="EMPL_NUM" OtherKey="CUST_REP" Type="CUSTOMER" />
+      <Association Name="SALESREP_SALESREP" Member="SALESREPs" ThisKey="EMPL_NUM" OtherKey="MANAGER" Type="SALESREP" />
+      <Association Name="SALESREP_OFFICE" Member="OFFICEs" ThisKey="EMPL_NUM" OtherKey="MGR" Type="OFFICE" />
+      <Association Name="SALESREP_ORDER" Member="ORDERs" ThisKey="EMPL_NUM" OtherKey="REP" Type="ORDER" />
+      <Association Name="SALESREP_SALESREP" Member="SALESREP1" ThisKey="MANAGER" OtherKey="EMPL_NUM" Type="SALESREP" IsForeignKey="true" />
+      <Association Name="OFFICE_SALESREP" Member="OFFICE" ThisKey="REP_OFFICE" OtherKey="OFFICE1" Type="OFFICE" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OFFICES" Member="OFFICEs">
+    <Type Name="OFFICE">
+      <Column Name="OFFICE" Member="OFFICE1" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CITY" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="REGION" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MGR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TARGET" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SALES" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="OFFICE_SALESREP" Member="SALESREPs" ThisKey="OFFICE1" OtherKey="REP_OFFICE" Type="SALESREP" />
+      <Association Name="SALESREP_OFFICE" Member="SALESREP" ThisKey="MGR" OtherKey="EMPL_NUM" Type="SALESREP" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ORDERS" Member="ORDERs">
+    <Type Name="ORDER">
+      <Column Name="ORDER_NUM" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ORDER_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CUST" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="REP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MFR" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="PRODUCT" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="QTY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AMOUNT" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="CUSTOMER_ORDER" Member="CUSTOMER" ThisKey="CUST" OtherKey="CUST_NUM" Type="CUSTOMER" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="SALESREP_ORDER" Member="SALESREP" ThisKey="REP" OtherKey="EMPL_NUM" Type="SALESREP" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="PRODUCT_ORDER" Member="PRODUCT1" ThisKey="MFR,PRODUCT" OtherKey="MFR_ID,PRODUCT_ID" Type="PRODUCT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCTS" Member="PRODUCTs">
+    <Type Name="PRODUCT">
+      <Column Name="MFR_ID" Type="System.String" DbType="Char(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PRODUCT_ID" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="QTY_ON_HAND" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="PRODUCT_ORDER" Member="ORDERs" ThisKey="MFR_ID,PRODUCT_ID" OtherKey="MFR,PRODUCT" Type="ORDER" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spCustomerByName" Method="spCustomerByName">
+    <Parameter Name="Company" Parameter="company" Type="System.String" DbType="NVarChar(25)" />
+    <ElementType Name="spCustomerByNameResult">
+      <Column Name="CUST_NUM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="COMPANY" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CUST_REP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREDIT_LIMIT" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spCustomerById" Method="spCustomerById">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Company" Parameter="company" Type="System.String" DbType="NVarChar(25)" Direction="InOut" />
+    <Parameter Name="Limit" Parameter="limit" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spCustomerByName2" Method="spCustomerByName2">
+    <Parameter Name="Company" Parameter="company" Type="System.String" DbType="NVarChar(25)" />
+    <ElementType Name="spCustomerByName2Result">
+      <Column Name="CUST_NUM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="COMPANY" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CUST_REP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREDIT_LIMIT" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sfCustomerCompanyById" Method="sfCustomerCompanyById" IsComposable="true">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.sfCustomerInfoById" Method="sfCustomerInfoById" IsComposable="true">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sfCustomerInfoByIdResult">
+      <Column Name="CUST_NUM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="COMPANY" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CUST_REP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREDIT_LIMIT" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
