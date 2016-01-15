@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Objects;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CSTest._21_Database._02_EntityFramework._01_DatabaseFirst
 {
@@ -9,7 +10,7 @@ namespace CSTest._21_Database._02_EntityFramework._01_DatabaseFirst
     public class Test
     {
         [TestMethod]
-        public void TestEF1()
+        public void TestEFRead()
         {
             ShopDBEntities context = new ShopDBEntities();
 
@@ -40,6 +41,50 @@ namespace CSTest._21_Database._02_EntityFramework._01_DatabaseFirst
             Id: 2122 Company: Three Way Lines Rep:Bill Adams
             Id: 2123 Company: Carter & Sons Rep:Sue Smith
             Id: 2124 Company: Peter Brothers Rep:Nancy Angelli
+            */
+        }
+
+        [TestMethod]
+        public void TestEFAddRemoveItem()
+        {
+            ShopDBEntities context = new ShopDBEntities();
+
+            //Add customer
+            SALESREPS rep = context.SALESREPS.FirstOrDefault(item => item.NAME == "Sam Clark");
+
+            CUSTOMERS customer = new CUSTOMERS
+            {
+                CUST_NUM = 2130,
+                COMPANY = "Jones Mfg. Rep",
+                CREDIT_LIMIT = 100,
+                SALESREPS = rep,
+            };
+
+            context.CUSTOMERS.Add(customer);
+            context.SaveChanges();
+
+            //Check
+            customer = context.CUSTOMERS.FirstOrDefault(item => item.CUST_NUM == 2130);
+            Debug.WriteLine("After add Id: {0} Company: {1} Rep:{2}", customer.CUST_NUM, customer.COMPANY, customer.SALESREPS.NAME);
+
+            //Remove customer
+            context.CUSTOMERS.Remove(customer);
+            context.SaveChanges();
+
+            //Check
+            customer = context.CUSTOMERS.FirstOrDefault(item => item.CUST_NUM == 2130);
+            if (customer != null)
+            {
+                Debug.WriteLine("After delete Id: {0} Company: {1} Rep:{2}", customer.CUST_NUM, customer.COMPANY, customer.SALESREPS.NAME);
+            }
+            else
+            {
+                Debug.WriteLine("After delete customer is null");
+            }
+
+            /*
+            After add Id: 2130 Company: Jones Mfg. Rep Rep:Sam Clark
+            After delete customer is null
             */
         }
 
@@ -90,15 +135,15 @@ namespace CSTest._21_Database._02_EntityFramework._01_DatabaseFirst
         //public void TestEFFunction4()
         //{
         //    ShopDBEntities context = new ShopDBEntities();
-        //    string result = context.sfCustomerLimitById(2102);
-        //    Debug.WriteLine("Id: {0} Company: {1}", 2102, result);
+        //    //string result = context.sfCustomerCompanyById(2102);
+        //    //Debug.WriteLine("Id: {0} Company: {1}", 2102, result);
         //    /*
         //    Id: 2102 Company: First Corp. 
         //    */
         //}
 
         [TestMethod]
-        public void TestEFFunction5()
+        public void TestEFFunction1()
         {
             ShopDBEntities context = new ShopDBEntities();
             var result = context.sfCustomerInfoById(2102);

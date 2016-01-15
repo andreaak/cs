@@ -48,13 +48,18 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http" />
@@ -223,7 +228,10 @@
     <Compile Include="12_MultiThreading\08_WinFormsWPF\Test.cs" />
     <Compile Include="13_Exceptions\0_Setup\ClassWithException.cs" />
     <Compile Include="13_Exceptions\Test.cs" />
-    <Compile Include="21_Database\01_ADO\Class1.cs" />
+    <Compile Include="21_Database\01_ADO\01_ConnectedLayer\Test.cs" />
+    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\Assets.cs">
+      <DependentUpon>ShopDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\CUSTOMERS.cs">
       <DependentUpon>ShopDB.tt</DependentUpon>
     </Compile>
@@ -275,16 +283,7 @@
     <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\spCustomerByName_Result.cs">
       <DependentUpon>ShopDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ShopDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\sp_helpdiagrams_Result.cs">
-      <DependentUpon>ShopDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\sysdiagrams.cs">
-      <DependentUpon>ShopDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\Test.cs" />
+    <Compile Include="21_Database\02_EntityFramework\Test.cs" />
     <Compile Include="21_Database\03_LinqToSql\ShopDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -313,10 +312,10 @@
     <Content Include="12_MultiThreading\01_Thread\ThreadStates.png" />
     <Content Include="21_Database\DBScript.sql" />
     <Content Include="ShopDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ShopDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>ShopDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
@@ -351,9 +350,7 @@
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -221,18 +221,6 @@ AS
 	WHERE c.COMPANY = @Company;
 GO
 
-CREATE PROC spCustomerById 
-	@Id int,
-	@Company nvarchar(25) out,
-	@Limit decimal out
-AS
-
-	SELECT @Company = c.COMPANY, 
-			@Limit = c.CREDIT_LIMIT 
-	FROM dbo.CUSTOMERS c
-	WHERE c.CUST_NUM = @Id;
-GO
-
 CREATE PROC spCustomerByName2
 	@Company nvarchar(25)
 AS
@@ -240,7 +228,20 @@ AS
 	SELECT c.CUST_NUM, c.COMPANY, c.CUST_REP, c.CREDIT_LIMIT 
 	FROM dbo.CUSTOMERS c
 	WHERE c.COMPANY = @Company;
-	RETURN 0;
+	RETURN 888;
+GO
+
+CREATE PROC spCustomerById 
+	@Id int,
+	@Company varchar(20) out,
+	@Limit decimal out
+AS
+
+	SELECT @Company = c.COMPANY, 
+			@Limit = c.CREDIT_LIMIT 
+	FROM dbo.CUSTOMERS c
+	WHERE c.CUST_NUM = @Id;
+    RETURN 777;
 GO
 
 CREATE FUNCTION sfCustomerCompanyById(@Id int)

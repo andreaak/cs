@@ -8,7 +8,7 @@ namespace CSTest._21_Database._03_LinqToSql
     public class Test
     {
         [TestMethod]
-        public void TestLTS1()
+        public void TestLTSRead()
         {
             ShopDBDataContext context = new ShopDBDataContext();
 
@@ -85,7 +85,7 @@ namespace CSTest._21_Database._03_LinqToSql
         }
 
         [TestMethod]
-        public void TestLTSProcedure4()
+        public void TestLTSFunction1()
         {
             ShopDBDataContext context = new ShopDBDataContext();
             string result = context.sfCustomerCompanyById(2102);
@@ -96,7 +96,7 @@ namespace CSTest._21_Database._03_LinqToSql
         }
 
         [TestMethod]
-        public void TestLTSProcedure5()
+        public void TestLTSFunction2()
         {
             ShopDBDataContext context = new ShopDBDataContext();
             var result = context.sfCustomerInfoById(2102);
