@@ -38,6 +38,7 @@ namespace CSTest._21_Database._02_EntityFramework._01_DatabaseFirst
         public DbSet<Salespeople> Salespeople { get; set; }
         public DbSet<SALESREPS> SALESREPS { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public DbSet<Assets> Assets { get; set; }
     
         [EdmFunction("ShopDBEntities", "sfCustomerInfoById")]
         public virtual IQueryable<sfCustomerInfoById_Result> sfCustomerInfoById(Nullable<int> id)
