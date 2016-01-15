@@ -1,9 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CSTest._21_Database._02_EntityFramework._01_DatabaseFirst;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Objects;
 using System.Diagnostics;
 using System.Linq;
 
-namespace CSTest._21_Database._02_EntityFramework._01_DatabaseFirst
+namespace CSTest._21_Database._02_EntityFramework
 {
 
     [TestClass]
