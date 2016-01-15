@@ -11,7 +11,7 @@ namespace CSTest._21_Database._02_EntityFramework
     public class Test
     {
         [TestMethod]
-        public void TestEF1()
+        public void TestEFRead()
         {
             ShopDBEntities context = new ShopDBEntities();
 
@@ -46,7 +46,7 @@ namespace CSTest._21_Database._02_EntityFramework
         }
 
         [TestMethod]
-        public void TestEFAddRemoveItem1()
+        public void TestEFAddRemoveItem()
         {
             ShopDBEntities context = new ShopDBEntities();
 
@@ -144,7 +144,7 @@ namespace CSTest._21_Database._02_EntityFramework
         //}
 
         [TestMethod]
-        public void TestEFFunction5()
+        public void TestEFFunction1()
         {
             ShopDBEntities context = new ShopDBEntities();
             var result = context.sfCustomerInfoById(2102);

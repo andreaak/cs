@@ -283,15 +283,6 @@
     <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\spCustomerByName_Result.cs">
       <DependentUpon>ShopDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ShopDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\sp_helpdiagrams_Result.cs">
-      <DependentUpon>ShopDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\sysdiagrams.cs">
-      <DependentUpon>ShopDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="21_Database\02_EntityFramework\Test.cs" />
     <Compile Include="21_Database\03_LinqToSql\ShopDB.designer.cs">
       <AutoGen>True</AutoGen>
@@ -321,10 +312,10 @@
     <Content Include="12_MultiThreading\01_Thread\ThreadStates.png" />
     <Content Include="21_Database\DBScript.sql" />
     <Content Include="ShopDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ShopDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>ShopDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
@@ -356,7 +347,9 @@
       <LastGenOutput>ShopDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -14,7 +14,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         string connectionString =  System.Configuration.ConfigurationManager.ConnectionStrings["CSTest.Properties.Settings.ShopDBConnectionString"].ConnectionString;
         
         [TestMethod]
-        public void TestCLDataReader()
+        public void TestDataReader()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -61,7 +61,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [TestMethod]
-        public void TestCLDataReaderBatch()
+        public void TestDataReaderBatch()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -123,7 +123,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [TestMethod]
-        public void TestCLDataReaderWithParam()
+        public void TestDataReaderWithParam()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -169,7 +169,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         //AS  SELECT  Field1,  Field2  FROM Table1
         //DROP  PROCEDURE  StoredProcedura1
         [TestMethod]
-        public void TestCLExecuteNonQuery()
+        public void TestExecuteNonQuery()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -207,7 +207,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
 
         //Выполнение запроса, возвращающего одно значение Предположим, вы хотите выполнить запрос и получить одну ячейку (одну запись, одно поле) данных.
         [TestMethod]
-        public void TestCLExecuteScalar()
+        public void TestExecuteScalar()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -231,7 +231,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [TestMethod]
-        public void TestCLProcedureWithParam()
+        public void TestProcedureWithParam()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -267,7 +267,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [TestMethod]
-        public void TestCLProcedureWithParam2()
+        public void TestProcedureWithParam2()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -311,7 +311,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         } 
 
         [TestMethod]
-        public void TestCLProcedureWithOutParam()
+        public void TestProcedureWithOutParam()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -367,7 +367,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [TestMethod]
-        public void TestCLProcedureWithOutParam2()
+        public void TestProcedureWithOutParam2()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -417,7 +417,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
         
         [TestMethod]
-        public void TestCLFunction()
+        public void TestFunction()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -455,7 +455,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [TestMethod]
-        public void TestCLFunction2()
+        public void TestFunction2()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
