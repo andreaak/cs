@@ -223,6 +223,7 @@
     <Compile Include="12_MultiThreading\08_WinFormsWPF\Test.cs" />
     <Compile Include="13_Exceptions\0_Setup\ClassWithException.cs" />
     <Compile Include="13_Exceptions\Test.cs" />
+    <Compile Include="21_Database\01_ADO\Class1.cs" />
     <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\CUSTOMERS.cs">
       <DependentUpon>ShopDB.tt</DependentUpon>
     </Compile>
@@ -283,7 +284,7 @@
     <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\sysdiagrams.cs">
       <DependentUpon>ShopDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="21_Database\02_EntityFramework\Test.cs" />
+    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\Test.cs" />
     <Compile Include="21_Database\03_LinqToSql\ShopDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -305,7 +306,6 @@
     <Folder Include="12_MultiThreading\06_ThreadPool\" />
     <Folder Include="14_Garbage Collection\" />
     <Folder Include="20_Algorithms\" />
-    <Folder Include="21_Database\01_ADO\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="01_Elements CS\04_TypeConversion\Conversions.jpg" />
@@ -348,8 +348,12 @@
       <LastGenOutput>ShopDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
