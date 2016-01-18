@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="exampleApp">
+<head>
+    <title>$window</title>
+
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="../Libraries/angular.js"></script>
+
+    <script>
+        // Для того, чтобы упросить тестирование приложений, в AngularJS придусмотренно ряд сервисов, которые уменьшают
+        // зависимость JS кода от внешних объектов. При тестировании разработчику проще изолировать тестируемый код при наличии
+        // сервисов подобных $window, $document
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope, $window) {
+            $scope.showHint = function (message) {
+                $window.alert(message); // $window - сервис-обертка над глобальным объектом window
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl" class="well">
+    <button class="btn btn-primary" ng-click="showHint('Hint!')">Click me!</button>
+</body>
+</html>

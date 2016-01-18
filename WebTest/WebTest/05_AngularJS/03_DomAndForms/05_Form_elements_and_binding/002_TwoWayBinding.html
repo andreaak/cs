@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="sampleApp">
+<head>
+    <title>Two Way Binding</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("sampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.tasks = [
+                { action: "Task 1", complete: false },
+                { action: "Task 2", complete: true },
+                { action: "Task 3", complete: false },
+                { action: "Task 4", complete: true }
+            ];
+        });
+    </script>
+</head>
+<body class="text-center well">
+    <div class="panel panel-primary" ng-controller="defaultCtrl">
+
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h3>
+                    Незавершенные задачи
+                    <span class="label label-info">
+                        <!--
+                            filter - позволяет из массива выбрать набор элементов и вернуть их в виде нового массива
+                            Подробнее фильтры будут рассмотрены в следящем уроке.
+                            Выражение установленное ниже позволяет из массива tasks извлечь все элементы и те которые содержат свойство complete со значением false
+                            поместить в новый массив, после чего определяется размерность нового массива и полученное значение выводиться в разметке.
+                        -->
+                        {{(tasks | filter : {complete : 'false'} ).length}}
+                    </span>
+                </h3>
+            </div>
+        </div>
+
+        <table class="table">
+            <tr ng-repeat="task in tasks">
+                <td>{{task.action}}</td>
+                <!--ng-model - двунаправленная привязка -->
+                <td><input type="checkbox" ng-model="task.complete" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+

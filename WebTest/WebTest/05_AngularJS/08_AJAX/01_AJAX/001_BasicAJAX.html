@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+
+<!--
+    $http - сервис для выполнения HTTP запросов.
+    При использовании IIS Express для того, чтобы сервер обрабатывал запросы к ресурсам *.json необходимо добавить web.config файл с секцией настроек system.
+    webServer > staticContent > mimeMap
+
+    методы:
+    get(url, config)        GET запрос по указанному URL, config объект для конфигурации запроса.
+    post(url, data, config) POST запрос по указанному URL, data - передаваемые в запросе данные, config - конфигурационный объект.
+    delete(url, config)     DELETE запрос по указанному URL, config - конфигурационный объект.
+    put(url, data, config)  PUT запрос по указанному URL, data - данные которые передаются в запросе, config - конфигурационный объект.
+    head(url, config)       HEAD запрос по указанному URL, config - конфигурационный объект.
+    jsonp(url, config)      GET запрос для получения в качестве ответа JavaScript сценария который затем будет выполнен (работа с кроссдоменными запросами JSONP)
+-->
+
+<head>
+    <title>$http basics</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope, $http) {
+
+            // $http сервис для работы с AJAX запросами
+
+            $scope.sendRequest = function () {
+                // $http.get - выполняем HTTP GET запрос к указанному ресурсу.
+                $http.get("../DataFolder/data.json").success(function (response) {
+                    // при успешной обработке запроса передаем данные в scope
+                    $scope.items = response;
+                })
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="panel panel-primary" ng-controller="defaultCtrl">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <button class="btn btn-success" ng-click="sendRequest()">
+                    <h2>Get Items</h2>
+                </button>
+            </div>
+        </div>
+        <table class="table">
+            <tr ng-repeat="item in items">
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

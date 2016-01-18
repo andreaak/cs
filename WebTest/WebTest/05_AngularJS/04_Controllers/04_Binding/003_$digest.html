@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="simpleApp">
+<head>
+    <title>$watch example</title>
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        angular.module("simpleApp", []).controller("defaultCtrl", function ($scope) {
+
+            $scope.counter = 0;
+
+            $scope.$watch("counter", function (newValue, oldValue) {
+                console.log("Старое значение - " + oldValue + ", новое значение - " + newValue);
+            });
+
+
+            $scope.increment = function (val) {
+                $scope.counter += val;
+            }
+
+            setInterval(function () {
+                $scope.counter++;
+                $scope.$digest(); // обходим watchers функции и запускаем их при наличии изменений.
+            }, 1000);
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    {{counter}}
+    <button ng-click="increment(1)">+1</button>
+</body>
+</html>
+

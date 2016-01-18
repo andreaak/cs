@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="sampleApp">
+<head>
+    <title>Inheritance</title>
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        var app = angular.module("sampleApp", []);
+
+        app.controller("baseCtrl", function ($scope) {
+
+            $scope.value = "base value";
+
+            $scope.changeValue1 = function () {
+                $scope.value = "changeValue1  - " + new Date().toLocaleTimeString();
+            }
+
+        });
+
+        app.controller("derivedCtrl", function ($scope) {
+
+            $scope.changeValue2 = function () {
+                $scope.value = "changeValue2 - " + new Date().toLocaleTimeString();
+            }
+
+        });
+
+    </script>
+</head>
+<body>
+    <!--baseCtrl - базовый контроллер-->
+    <div ng-controller="baseCtrl">
+
+        <p>{{value}}</p>
+        <button ng-click="changeValue1()">change value 1</button>
+
+        <!-- derivedCtrl - производный контроллер, так как в DOM дереве является дочерним элементом для div использующего ng-controller="baseCtrl"-->
+        <div ng-controller="derivedCtrl">
+            <p>{{value}}</p>
+            <!-- При выполнении changeValue1 меняется значение переменной value в базовом scope. Дочерний scope использует переменную value из родительского scope-->
+            <button ng-click="changeValue1()">change value 1</button>
+
+            <!-- При выполнении функции changeValue2 происходит создание новой переменной value в дочернем scope -->
+            <button ng-click="changeValue2()">change value 2</button>
+        </div>
+    </div>
+</body>
+</html>

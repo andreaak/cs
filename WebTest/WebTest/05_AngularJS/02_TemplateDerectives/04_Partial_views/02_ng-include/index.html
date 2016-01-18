@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html ng-app="SampleApp">
+<head>
+    <title>ng-include</title>
+
+    <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script src="../../Libraries/angular.js"></script>
+    <script src="app.js"></script>
+
+</head>
+<body>
+    <div ng-controller="SampleAppCtrl" class="container" style="margin-top:10px;">
+        <div class="btn-group">
+            <!-- При нажатии на кнопки меняется значение свойсва url, при этом происходит загрузка нового фрагмента, который отображается в ng-include -->
+            <button class="btn btn-default" ng-click="showList()">List</button>
+            <button class="btn btn-default" ng-click="showTable()">Table</button>
+        </div>
+
+        <ng-include src="url"></ng-include>
+    </div>
+</body>
+</html>

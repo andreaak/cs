@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <!-- Фильтры трансформируют информацию до того как она будет обработана директивой, что позволяет одну и ту же информацию
+         по разному отображать в различных частях приложения. Фильтры не меняют данные в scope, а только подготавливать их для отображения-->
+    <title>Currency Filter</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <!-- Фильтры делятся на две категории - для обработки единичных данных и для обработки коллекций.
+
+         Встроенные фильтры для работы с единичными данными:
+         * currency - форматирование валюты
+         * date - форматирование даты
+         * json - генерирует объект из json строки
+         * number - форматирование числовых значений
+         * uppercase/lowercase - используется для преобразования строки в верхний/нижний регистр
+    -->
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.items = [
+                { name: "Item 1", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+                { name: "Item 2", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+                { name: "Item 3", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+                { name: "Item 4", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+
+            // Форматирование данных в контроллер не желательно так как значения меняются в источнике после чего теряется возможность выводить данные
+            // в другом представлении в другом формате.
+
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+
+    <div class="panel panel-primary">
+
+        <div class="panel-heading">
+            <h3>
+                Items in cart
+                <span class="label label-info">{{items.length}}</span>
+            </h3>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Count</th>
+                    <th>Tax</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.name}}</td>
+                    <!-- Для применения фильтра используется символ | -->
+                    <!-- expression | filter : parameters -->
+                    <!--<td>{{item.price | currency}}</td>-->
+                    <td>{{item.price | currency : "UAH "}}</td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.count}}</td>
+                    <td>{{item.tax}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

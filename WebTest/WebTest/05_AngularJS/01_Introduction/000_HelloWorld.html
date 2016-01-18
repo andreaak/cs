@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<!--
+    ng-app - атрибут указывает, что html элемент содержит модуль,
+    который необходимо компилировать и обрабатывать AngularJS
+-->
+
+<html ng-app="helloWorldApp">
+<head>
+    <title>Hello World</title>
+    <script src="Libraries/angular.js"></script>
+    <script>
+
+        // Модель
+        var model = "Hello world";
+
+        // AngularJS прилоежние состоит из одного или нескольких модулей.
+        // angular.module - создание нового angularJS модуля.
+        // первый параметр - имя модуля для создания или получения
+        // второй мараметр - Набор модулей, от которых будет зависить создаваемый модуль. Если параметр указан, то новый модуль будет создан.
+        // https://docs.angularjs.org/api/ng/function/angular.module
+
+        var helloWorldApp = angular.module("helloWorldApp", []);
+
+        // Контроллер
+        // В AngularJS переменные которые начинаются с символа $ являются встроенными элементами фрэймворка.
+        // $scope - используется для передачи данных в представление.
+        // .controller - метод создающий контроллер.
+        // первый параметр - имя контроллера (<Name>Ctrl соглашение по именованию контроллеров)
+        // второй параметр - функция контроллера 
+        helloWorldApp.controller("HelloWorldCtrl", function ($scope) {
+            $scope.message = model;
+        });
+
+    </script>
+</head>
+
+<!-- ng-controllrer - атрибут определяет область разметки, за которую будет отвечать контроллер -->
+<body ng-controller="HelloWorldCtrl">
+    <h1>{{message}}</h1>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="sampleApp">
+<head>
+    <title>Monolitic</title>
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        var app = angular.module("sampleApp", [])
+            .controller("defaultCtrl", function ($scope) {
+                $scope.value = "--------";
+
+                $scope.setNewValue = function () {
+                    $scope.value = "hello world";
+                }
+            });
+    </script>
+</head>
+<!-- Контроллер монолит – один контроллер, который применяется ко всему документу -->
+<body ng-controller="defaultCtrl">
+    {{value}} <br />
+    <button ng-click="setNewValue()">Cahnge</button>
+</body>
+</html>

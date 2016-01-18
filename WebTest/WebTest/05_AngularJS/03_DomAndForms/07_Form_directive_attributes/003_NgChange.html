@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Form directive attributes</title>
+
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="../Libraries/angular.js"></script>
+
+    <script>
+        angular.module('exampleApp', [])
+         .controller('defaultCtrl', function ($scope) {
+             $scope.counter = 0;
+             $scope.change = function () {
+                 $scope.counter++;
+             };
+         });
+    </script>
+
+</head>
+<body>
+    <div ng-controller="defaultCtrl">
+        <!--ng-change позволяет задать выражение, которое будет срабатывать при смене значения элемента-->
+        <input type="checkbox" ng-model="confirmed" ng-change="change()" />
+        <input type="checkbox" ng-model="confirmed" />
+
+        <label for="ng-change-example2">Confirmed</label><br />
+        <tt>debug = {{confirmed}}</tt><br />
+        <tt>counter = {{counter}}</tt><br />
+    </div>
+</body>
+</html>

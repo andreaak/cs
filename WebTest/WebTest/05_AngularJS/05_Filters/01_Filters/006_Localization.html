@@ -1,0 +1,69 @@
+﻿<html ng-app="exampleApp">
+<head>
+    <title>Localizing</title>
+
+    <!--https://code.angularjs.org/1.0.3/i18n/ стабильные версии файлов локализации-->
+    <script src="../Libraries/angular.js"></script>
+    <script src="../Libraries/angular-locale_de-de.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.items = [
+               { name: "Item 1", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+                { name: "Item 2", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+                { name: "Item 3", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+                { name: "Item 4", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+
+            $scope.getExpiryDate = function (days) {
+                var now = new Date();
+                return now.setDate(now.getDate() + days);
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>
+                Items in cart
+                <span class="label label-info">{{items.length}}</span>
+            </h3>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Count</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.price | currency}}</td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.count | number}}</td>
+                    <!-- Форматирование даты и времени с учетом локализации из файла angular-locale_de-de.js-->
+                    <!--Сокращения для форматирования даты
+                    medium - MMM d, y h:mm:ss a
+                    short - M/d/yy h:mm a
+                    fullDate - EEEE, MMMM d,y
+                    long-date - MMMM d, y
+                    mediumDate - MMM d, y
+                    shortDate - M/d/yy
+                    mediumTime - h:mm:ss a
+                    shortTime - h:mm a-->
+                    <td>{{getExpiryDate(item.expiration) | date : "fullDate"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

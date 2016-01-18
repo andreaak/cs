@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="sampleApp">
+<head>
+    <title>Inheritance</title>
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        var app = angular.module("sampleApp", []);
+
+        app.controller("baseCtrl", function ($scope) {
+
+            // ссылочный тип данных (в отличии от предыдущего примера)
+            $scope.value = { data: "base value" };
+
+            $scope.changeValue1 = function () {
+                $scope.value.data = "changeValue1  - " + new Date().toLocaleTimeString();
+            }
+
+        });
+
+        app.controller("derivedCtrl", function ($scope) {
+
+            $scope.changeValue2 = function () {
+                $scope.value.data = "changeValue2 - " + new Date().toLocaleTimeString();
+            }
+
+        });
+
+    </script>
+</head>
+<body>
+    <div ng-controller="baseCtrl">
+
+        <p>{{value.data}}</p>
+        <button ng-click="changeValue1()">change value 1</button>
+
+        <div ng-controller="derivedCtrl">
+            <p>{{value.data}}</p>
+            <button ng-click="changeValue1()">change value 1</button>
+            <!-- Так как value теперь ссылочный тип данных, изменения внесенные в производном контроллере не приводят к созданию новых свойств в scope -->
+            <button ng-click="changeValue2()">change value 2</button>
+        </div>
+    </div>
+</body>
+</html>

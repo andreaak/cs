@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<!--
+    один из самых распространенных способов атаки на веб приложение - это ввод ложных данных, например в поля формы
+    можно ввести javascript сценарий, который может быть выполнен браузером клиента.
+    AngularJs содержит несколько сервисов позволяющих повысить безопасность приложения, чаще всего эти сервисы будут использоваться в приложениях,
+    которые позволяют пользователю генерировать html разметку.
+-->
+<html ng-app="exampleApp">
+<head>
+    <title></title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <!-- ngSanitize - модуль предоставляющий функциональность для очистки HTML кода от вредоносного кода -->
+    <script src="angular_sanitize.js"></script>
+
+    <script>
+        // В данном примере используется директива ng-bind-html, которая находиться в модуле ngSanitize
+        // ng-bind-html позволяет выводить на странице HTML разметку без выполнения ее кодирования.
+        angular.module("exampleApp", ["ngSanitize"])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.htmlData = "<p>This is <b onmouseover=alert('Attack!')>dangerous</b> data</p>";
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="well">
+        <p><input class="form-control" ng-model="htmlData" /></p>
+        <!--
+            Директива ng-bind-html использует сервис $sanitize, который выполняет дополнительную обработку данных отображаемых на странице
+            Директива производит удаление всех небезопасных атрибутов в отображаемой HTML разметке. Все встроенные сценарии и стили будут удалены
+            чтобы избежать проблем при выполнении кода.
+
+            <p>This is <b>dangerous</b> data</p> - разметка, которая будет отображена на странице.
+        -->
+        <p ng-bind-html="htmlData"></p>
+    </div>
+</body>
+</html>
+

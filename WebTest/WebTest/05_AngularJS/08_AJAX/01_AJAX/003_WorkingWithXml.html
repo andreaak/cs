@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Workig with XML</title>
+    <!-- Пример обработки XML ответа от сервера -->
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope, $http) {
+
+            $scope.getItems = function () {
+                $http.get("../DataFolder/data.xml").then(function (response) {
+                    $scope.items = [];
+
+                    // находим в xml файле все элементы item
+                    var source = angular.element(response.data.trim()).find("item");
+
+
+                    for (var i = 0; i < source.length; i++) {
+                        var elem = source.eq(i);
+
+                        // Элементы добавляем в массив items
+                        $scope.items.push({
+                            name: elem.attr("name"),
+                            price: elem.attr("price")
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div id="tasksPanel" class="panel panel-primary" ng-controller="defaultCtrl">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <button class="btn btn-success" ng-click="getItems()">
+                    <h2>Get Items!</h2>
+                </button>
+            </div>
+        </div>
+        <table class="table">
+            <tr ng-repeat="item in items">
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

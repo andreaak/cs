@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="exampleApp">
+<head>
+    <title>Working with other frameworks</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <!--Использование jQuery UI-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.css" />
+
+    <script>
+        $(document).ready(function () {
+            $('#jQueryUI button').button().click(function (e) {
+                // angular.element(angularRegion).scope() - получение scope, который используется элементом разметки с id="angularRegion"
+                // $apply - применяет изменения на объекте scope
+                angular.element(angularRegion).scope().$apply("clickHandler()");
+            });
+        });
+
+        var app = angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+
+            $scope.buttonEnabled = true;
+            $scope.clickCounter = 0;
+
+            $scope.clickHandler = function () {
+                $scope.clickCounter++;
+            }
+
+            // $watch(expression, handler) - установка обработчика, который будет срабатывать при смене указанного значения
+            $scope.$watch("buttonEnabled", function (newValue) {
+                $('#jQueryUI button').button({
+                    disabled: !newValue
+                });
+            });
+        });
+    </script>
+</head>
+<body class="row text-center">
+    <div class="col-xs-6">
+        <div id="angularRegion" class="panel panel-success" ng-controller="defaultCtrl">
+            <div class="panel-heading"><h4>AngularJS</h4></div>
+            <div class="panel-body">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="buttonEnabled" />
+                        Enable button
+                    </label>
+                </div>
+                Click counter: {{clickCounter}}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div id="jQueryUI" class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>jQuery UI</h4>
+            </div>
+            <div class="panel-body">
+                <button class="btn btn-primary">
+                    <h4>Click me!</h4>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

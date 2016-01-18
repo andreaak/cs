@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>XSS</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.htmlData = "<p>This is <b onmouseover=alert('Attack!')>dangerous</b> data</p>";
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="well">
+        <p><input class="form-control" ng-model="htmlData" /></p>
+        <!--
+            При компиляции выражений AngularJS выполняет замену специальных HTML символов (HTML encode)
+            Это предотвращает внедрение на страницу посторонних сценариев.
+        -->
+        <!--&lt;p&gt;This is &lt;b onmouseover=alert('Attack!')&gt;dangerous&lt;/b&gt; data&lt;/p&gt-->
+        <p>{{htmlData}}</p>
+    </div>
+</body>
+</html>

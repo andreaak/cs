@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Directive scope</title>
+
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="../Libraries/angular.js"></script>
+
+    <script>
+        var app = angular.module("exampleApp", []);
+
+        // Директива scopeExample добавляет в разметку input с двунаправленной привязкой свойству data
+        // В разметке данного примера будет создано два экземпляра директивы, но так обе директивы принадлежат одному контроллеру
+        // они будут работать с одним и тем же свойством data
+        app.directive("scopeExample", function () {
+            return {
+                template: "<div class='panel-body'>Type something: <input ng-model='data' /></div>"
+            }
+        })
+
+        app.controller("defaultCtrl", function ($scope) {
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="defaultCtrl" class="panel panel-primary">
+        <div class="panel-body" scope-example></div>
+        <div class="panel-body" scope-example></div>
+    </div>
+</body>
+</html>
+

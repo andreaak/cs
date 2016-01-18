@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html ng-app="SampleApp">
+<head>
+    <!--
+        two-way data binding - привязка данных, которая изменения в двух направлениях. Если меняется модель, то происходят изменения в пользовательском интерфейсе,
+        если новые данные вносяться в элементы управляния, то обновляются свойства модели.
+    -->
+
+    <title>Two-way data-binding</title>
+    <script src="../Libraries/angular.js"></script>
+
+    <script>
+        var app = angular.module("SampleApp", []);
+
+        app.controller("SampleAppCtrl", function ($scope) {
+            $scope.items = [{ name: "Item 1", value: "Value 1" },
+                { name: "Item 2", value: "Value 2" },
+                { name: "Item 3", value: "Value 3" }];
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="SampleAppCtrl">
+
+        Список элементов
+
+        <ul>
+            <li ng-repeat="item in items">{{item.name}}</li>
+        </ul>
+
+        <div>
+            Однонаправленная привязка (one way binding) <input type="text" value="{{items[0].name}}" />
+        </div>
+
+        <div>
+            <!-- При смене значения в поле ввода будет изменено значения элемента по индексу 1 в массиве items -->
+            Двунаправленная привязка (two way binding) <input ng-model="items[1].name" />
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="exampleApp">
+<head>
+    <title>External Template</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+            .directive("orderedList", function () {
+                return {
+                    link: function (scope, element, attributes) {
+                        scope.data = scope[attributes["orderedList"]];
+                    },
+                    restrict: "A",
+                    // адрес внешнего файла с шаблоном
+                    templateUrl: "template.html"
+                }
+            })
+        .controller("defaultCtrl", function ($scope) {
+            $scope.items = [
+                { name: "Table", price: 44.10 },
+                { name: "Chair", price: 21.20 },
+                { name: "Pillow", price: 12.20 },
+                { name: "Picture", price: 112.70 },
+                { name: "Lamp", price: 28.31 }
+            ];
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Items</h3>
+        </div>
+        <div class="panel-body h3">
+            <div ordered-list="items">
+                ...
+            </div>
+        </div>
+    </div>
+</body>
+</html>

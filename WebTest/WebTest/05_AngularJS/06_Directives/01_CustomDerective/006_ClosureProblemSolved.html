@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <script>
+
+        // В JavaScript область видимости представляется функцией а не блоком { },
+        // Когда мы создаем вложенную функцию это означает что область видимости верхней функции добавляется в лексическое окружение
+        // вложенной функции.
+        var data = [];
+
+        function start() {
+            for (var i = 0; i < 5; i++) {
+
+                (function () { // каждая созданная функция будет работать со своей локальной переменной.
+                    var local = i; 
+                    data.push(function () {
+                        console.log(local);
+                    });
+                })(); // immediately invoked function expression (IIFE)
+
+            }
+        }
+        start();
+
+        for (var i = 0; i < 5; i++) {
+            data[i]();
+        }
+    </script>
+
+</body>
+</html>

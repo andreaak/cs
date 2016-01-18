@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<!--
+    В данных примерах показан второй способ создания директив через Derective Definition Object
+
+    Основные свойства Directive Definition Object:
+    link        определяет ссылочную функцию для директивы
+    replace     определяет замещать ли содержимое элемента к которому была применена директива сгенерированным контентом
+    restrict    определяет ограничения на применение директивы
+    scope       создает новый scope или isolated scope для директивы
+    template    определяет шаблон который будет вставлен в HTML разметку
+    templateUrl определяет адрес внешнего шаблона для создания HTML разметки
+-->
+<head>
+    <title>Directive as Attribute</title>
+
+    <script src="../Libraries/angular.js"></script>
+
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script src="001_directive.js"></script>
+
+</head>
+<body ng-controller="defaultCtrl">
+    <div>
+        <div ordered-list="items" property="price | currency"></div>
+    </div>
+</body>
+</html>

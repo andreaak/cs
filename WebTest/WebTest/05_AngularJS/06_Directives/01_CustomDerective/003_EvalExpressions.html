@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Custom Directives</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+            .directive("orderedList", function () {
+                return function (scope, element, attributes) {
+
+                    var data = scope[attributes["orderedList"]];
+                    var expression = attributes["displayProperty"];
+
+                    if (angular.isArray(data)) {
+                        var e = angular.element("<ol>");
+                        element.append(e);
+                        for (var i = 0; i < data.length; i++) {
+
+                            // scope.$eval([expression], [locals]) выполняет выражение на текущем scope
+                            // [expression] выражение которое нужно выполнить
+                            // [locals] объект который содержит переменные для переопределения значений в scope
+                            
+                            e.append(angular.element('<li>').text(scope.$eval(expression, data[i])));
+                            //e.append(angular.element('<li>').text(data[i][expression]));
+                        }
+                    }
+                }
+            })
+        .controller("defaultCtrl", function ($scope) {
+            $scope.items = [
+                { name: "Table", price: 44.10 },
+                { name: "Chair", price: 21.20 },
+                { name: "Pillow", price: 12.20 },
+                { name: "Picture", price: 112.70 },
+                { name: "Lamp", price: 28.31 }
+            ];
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Items</h3>
+        </div>
+        <div class="panel-body h3">
+            <div ordered-list="items" display-property="price | currency"></div>
+        </div>
+    </div>
+</body>
+</html>
+

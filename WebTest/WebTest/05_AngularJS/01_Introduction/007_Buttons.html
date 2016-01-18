@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Buttons</title>
+
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!--panel создает панель с скругленными краями может содержать header и footer-->
+    <div class="panel panel-default">
+        <!--panel-heading создает заголовок для панели-->
+        <h3 class="panel-heading">Стили кнопок</h3>
+
+        <div class="panel-body">    
+
+            <div class="well">
+                <!-- btn - стиль который позволяет для элемента button, input и a задать оформление кнопки -->
+                <button class="btn btn-default">Default button</button>
+
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-warning">Warning</button>
+                <button class="btn btn-info">Info</button>
+                <button class="btn btn-danger">Danger</button>
+            </div>
+
+            <div class="well">
+                <h3 class="panel-heading">Button block</h3>
+
+                <button class="btn btn-default btn-block">Button 1</button>
+                <a class="btn btn-default btn-block">Button 2</a>
+                <input type="submit" class="btn btn-default btn-block" value="Button 3" />
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <a href="http://getbootstrap.com/css/#buttons">Документация на http://getbootstrap.com/</a>
+        </div>
+    </div>
+</body>
+</html>

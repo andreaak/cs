@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html ng-app="sampleApp">
+<head>
+    <!--
+        Boolean attributes - атрибуты, которые изменяют состояние элементов не зависимо от значения. Например, disabled, readonly и т.д.
+        Для того чтобы установить подобные атрибуты с помощью привязок используются директивы -
+
+        ng-checked используется для установки значения выбран\не выбран для input
+        ng-disabled используется для disable элемента применяется для input и button
+        ng-readonly используется для атрибута readonly применяется к input
+        ng-selected используется для атрибута selected в option-->
+
+    <title>Angular attributes</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("sampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.dataValue = false;
+        });
+    </script>
+</head>
+<body>
+    <div id="tasksPanel" class="panel well" ng-controller="defaultCtrl">
+
+        <h3 class="panel-header">Boolean attributes</h3>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="dataValue" />
+                Применить атрибуты
+            </label>
+        </div>
+
+        <div>
+
+            <div class="form-group">
+                <button class="btn btn-success" ng-disabled="dataValue">ng-disabled</button>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    ng-readonly
+                    <input class="form-control" value="Readonly" ng-readonly="dataValue" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" ng-checked="dataValue" />
+                    ng-checked
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="radio" ng-checked="dataValue" />
+                    ng-checked
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    ng-select
+                    <select class="form-control">
+                        <option value="value">text 1</option>
+                        <option value="value" ng-selected="dataValue">ng-selected</option>
+                    </select>
+                </label>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

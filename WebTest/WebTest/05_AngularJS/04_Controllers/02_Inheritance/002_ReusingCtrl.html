@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="sampleApp">
+<head>
+    <title>Reusing Ctrl</title>
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        var app = angular.module("sampleApp", [])
+            .controller("defaultCtrl", function ($scope) {
+                $scope.value = "--------";
+
+                $scope.setNewValue = function () {
+                    $scope.value = "hello world";
+                }
+            });
+    </script>
+</head>
+<body>
+    <!--В данном примере создается два экземпляра scope через одну и ту же фабричную функцию.-->
+    <!--Первый экземпляр-->
+    <div ng-controller="defaultCtrl">
+        {{value}} <br />
+        <button ng-click="setNewValue()">Cahnge</button>
+    </div>
+
+    <!--Второй экземпляр-->
+    <div ng-controller="defaultCtrl">
+        {{value}} <br />
+        <button ng-click="setNewValue()">Cahnge</button>
+    </div>
+</body>
+</html>

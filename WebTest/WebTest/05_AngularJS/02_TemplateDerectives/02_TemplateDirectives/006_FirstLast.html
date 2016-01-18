@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html ng-app="SampleApp">
+<head>
+    <title>Built in variables</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        var app = angular.module("SampleApp", []);
+
+        app.controller("SampleAppCtrl", function ($scope) {
+            $scope.items = [{ name: "Item 1", value: "Value 1" },
+                { name: "Item 2", value: "Value 2" },
+                { name: "Item 3", value: "Value 3" },
+                { name: "Item 4", value: "Value 4" },
+                { name: "Item 5", value: "Value 5" }];
+        });
+    </script>
+    <style>
+        .class1 {
+            background-color: lightgreen;
+        }
+
+        .class2 {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div ng-controller="SampleAppCtrl">
+        <div ng-controller="SampleAppCtrl">
+            <h3 class="panel-header">Items</h3>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+
+                <!-- Переменная $first содержит значение true если элемент первый в коллекции.
+                     Переменная $last содержит значение true если элемент последний в коллекции-->
+                <tr ng-repeat="item in items">
+                    <td>
+                        <!--ng-if выводит или удаляет порцию DOM дерева в зависимости от выражения-->
+                        {{$index+1}}
+                        <span ng-if="$first" class="class1">First</span>
+                        <span ng-if="$last" class="class2">Last</span>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.value}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+

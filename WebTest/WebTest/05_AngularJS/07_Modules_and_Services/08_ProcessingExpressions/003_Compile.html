@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="exampleApp">
+<head>
+    <title>$compile service</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        // $compile - компилирует HTML строку или DOM в шаблон и предоставляюе функицю,
+        // которая в последствии может использоваться для связик $scope и шаблона вместе.
+
+        angular.module("exampleApp", []).controller("defaultCtrl", function ($scope) {
+
+            $scope.items = ["item 1", "item 2", "item 3", "item 4"];
+
+        }).directive("myList", function ($compile) {
+            return function (scpoe, element, attributes) {
+
+                var expr = "<ul><li ng-repeat='item in items'>{{item}}</li></ul>";
+                var ul = angular.element(expr);
+
+                // $compile создает функцию на основе HTML кода, которую можно будет использовать для генерации разметки.
+                var compileFn = $compile(ul);
+
+                // Выполняем компиляцию. Создаем контент выполняя выражения привязки.
+                compileFn(scpoe);
+
+                // Добавляем готовый контент на страницу
+                element.append(ul);
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div my-list></div>
+</body>
+</html>
