@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="SampleApp">
+<head>
+    <title>ng-class even &amp; ng-class-odd</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        var app = angular.module("SampleApp", []);
+
+        app.controller("SampleAppCtrl", function ($scope) {
+
+            $scope.items = ["item1", "item2", "item3", "item4", "item5"];
+            $scope.class1 = "green";
+            $scope.class2 = "red";
+
+        });
+
+    </script>
+
+    <style>
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+
+</head>
+<body ng-controller="SampleAppCtrl">
+
+    <div class="container">
+
+        <!-- ng-class-even и ng-class-odd директивы работают в связке с ng-repeat и позволяют устанавливать определенные классы на четные и нечетные строки-->
+
+        <ul>
+            <li ng-repeat="item in items" 
+                ng-class-even="class1" 
+                ng-class-odd="class2">{{item}}</li>
+        </ul>
+
+    </div>
+</body>
+</html>

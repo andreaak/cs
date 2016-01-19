@@ -1,0 +1,82 @@
+﻿<html ng-app="exampleApp">
+<head>
+    <title>Date Filter</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.items = [
+               { name: "Item 1", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+                { name: "Item 2", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+                { name: "Item 3", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+                { name: "Item 4", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+
+            $scope.getExpiryDate = function (days) {
+                var now = new Date();
+                return now.setDate(now.getDate() + days);
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>
+                Items in cart
+                <span class="label label-info">{{items.length}}</span>
+            </h3>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Count</th>
+                    <th>Tax</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.price | currency}}</td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.count | number}}</td>
+                    <td>{{item.tax | number : 1}}</td>
+                    <!-- Форматирование даты и времени -->
+                    <td>{{getExpiryDate(item.expiration) | date : "dd MMM yy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--Форматирование дат используя date фильтр
+        | уууу | представление года 4-х значное число
+        | уу   | представление года 2-х значное число
+        | ММММ | представление месяца прописью
+        | МММ  | сокращенное представление месяца прописью
+        | ММ   | представление месяца числом
+        | М    | сокращенное представление месяца числом
+        | dd   | представление дня месяца с использованием 2-х чисел
+        | d    | представление дня месяца с использованием одного числа
+        | ЕЕЕЕ | полное название дня недели
+        | ЕЕЕ  | сокращенное полное название дня недели
+        | НН   | представление часов  с использованием 2-х чисел формат 24
+        | Н    | представление часов с использованием одного чисел формат 24
+        | hh   | представление часов с использованием 2-х чисел формат 12
+        | h    | представление часов с использованием одного чисел формат 12
+        | mm   | представление минут с использованием 2-х чисел
+        | m    | представление минут с использованием одного числа
+        | ss   | представление секунд с использованием 2-х чисел
+        | s    | представление секунд  с использованием одного числа
+        | a    | указатель a.m/p.m
+        | Z    | 4-х значное представления временной зоны-->
+
+    </div>
+</body>
+</html>

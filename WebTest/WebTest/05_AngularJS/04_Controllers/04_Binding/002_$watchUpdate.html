@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="simpleApp">
+<head>
+    <title>setInterval problem</title>
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        angular.module("simpleApp", []).controller("defaultCtrl", function ($scope) {
+
+            $scope.counter = 0;
+
+            $scope.$watch("counter", function (newValue, oldValue) {
+                console.log("Старое значение - " + oldValue + ", новое значение - " + newValue);
+            });
+
+
+            $scope.increment = function (val) {
+                $scope.counter += val;
+            }
+
+            // Значение свойства $scope.counter будет изменяться раз в секунду, но это не будет приводить к обновлению
+            // привязки и обходу watchers объектов, так как изменение свойства происходят за пределами angularJS через вызов функции setInterval
+            setInterval(function () {
+                $scope.counter++;
+            }, 1000);
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    {{counter}}
+    <!-- При использовании ng-click происходит обход watchers объектов - обновляются привязки -->
+    <button ng-click="increment(1)">+1</button>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="sampleApp">
+<head>
+    <title>$emit</title>
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        var app = angular.module("sampleApp", []);
+
+        app.controller("testCtrl", function ($scope) {
+
+            // обработка события messageEvent на текущем scope
+            $scope.$on("messageEvent", function (event, args) {
+                //event.stopPropagation(); // останавливаем распространение события
+                $scope.info = args.message;
+            })
+
+            $scope.send = function () {
+                // $emit - отправка события от текущего scope к родительским scope
+                $scope.$emit("messageEvent", {
+                    message: $scope.messageInput
+                });
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <div ng-controller="testCtrl">
+        <p>Controller 1</p>
+        <p>Received message - {{info}}</p>
+
+        <div ng-controller="testCtrl">
+            <p>Controller 2</p>
+            <p>Received message - {{info}}</p>
+
+            <div ng-controller="testCtrl">
+                <p>Controller 3</p>
+                <p>Received message - {{info}}</p>
+
+                <input ng-model="messageInput" />
+                <button ng-click="send()">Send</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

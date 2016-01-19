@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Directives</title>
+
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="../Libraries/angular.js"></script>
+
+    <script>
+        angular.module("exampleApp", [])
+        .directive("scopeExample", function () {
+            return {
+                template: "<div class='panel-body'>Type something: <input ng-model=data /></div>"
+            }
+        })
+        .controller("firstCtrl", function ($scope) {
+
+        })
+        .controller("secondCtrl", function ($scope) {
+
+        });
+    </script>
+</head>
+<body>
+    <!-- Каждая директива работает со scope своего контроллера -->
+    <div class="panel panel-primary">
+        <div ng-controller="firstCtrl" class="panel-body" scope-example></div>
+        <div ng-controller="secondCtrl" class="panel-body" scope-example></div>
+    </div>
+</body>
+</html>

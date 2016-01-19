@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="simpleApp">
+<head>
+    <title>$apply example</title>
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        angular.module("simpleApp", []).controller("defaultCtrl", function ($scope) {
+
+            $scope.counter = 0;
+
+            $scope.$watch("counter", function (newValue, oldValue) {
+                console.log("Старое значение - " + oldValue + ", новое значение - " + newValue);
+            });
+
+
+            $scope.increment = function (val) {
+                $scope.counter += val;
+            }
+
+            setInterval(function () {
+
+                /*
+                $apply - используется для запуска выражения на определенном scope обход watchers начинается с корневого scope
+
+                Псевдо код apply:
+
+                function $apply(expr) {
+                  try {
+                    return $eval(expr);
+                  } catch (e) {
+                    $exceptionHandler(e);
+                  } finally {
+                    $root.$digest();
+                  }
+                }
+
+                */
+                $scope.$apply(function () {
+                    $scope.counter++;
+                });
+            }, 1000);
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    {{counter}}
+    <!-- При использовании ng-click выполняется $digest -->
+    <button ng-click="increment(1)">+1</button>
+</body>
+</html>
+

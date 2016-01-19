@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html ng-app="SampleApp">
+<head>
+    <title>ng-repeat template</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        var app = angular.module("SampleApp", []);
+
+        app.controller("SampleAppCtrl", function ($scope) {
+            $scope.items = [{ name: "Item 1", value: "Value 1" },
+                { name: "Item 2", value: "Value 2" },
+                { name: "Item 3", value: "Value 3" },
+                { name: "Item 4", value: "Value 4" },
+                { name: "Item 5", value: "Value 5" }];
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="SampleAppCtrl">
+        <h3 class="panel-header">Items</h3>
+
+        <!-- Для повторения серии элементов, а не только одного элемента используются специальные точки ng-repeat-start и ng-repeat-end -->
+
+
+        <p ng-repeat-start="item in items">
+            № {{$index + 1}}
+        </p>
+        <span>
+            {{item.name}}
+        </span>
+        <span>
+            {{item.value}}
+        </span>
+        <br ng-repeat-end />
+
+
+    </div>
+</body>
+</html>

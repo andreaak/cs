@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<!--
+    Свойства конфигурационного объекта для натсройки запроса:
+
+    data                содержит данные, которые будут переданы в запросе, если в качестве значения указать объект, то AngularJS автоматически сериализует его в JSON
+    headers             используется для установки заголовков запроса
+    method              устанавливает тип запроса
+    params              позволяет передать URL параметры
+    timeout             устанавливает время ожидания ответа от сервера
+    transformRequest    используется для работы с запросом перед его посылкой на сервер
+    transformResponse   используется для манипуляции с ответом после того как он пришел от сервера
+    url                 устанавливает URL для запроса
+    withCredentials     если в качестве параметра указать true то в запрос будут включены cookies для аутентификации
+-->
+
+<head>
+    <title>Configuration Object. Transform Response</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope, $http) {
+
+            $scope.getItems = function () {
+                var config = {
+                    // Данное свойство используется для определения логик трансформации ответа сервера.
+                    transformResponse: function (response, headers) {
+                        items = [];
+                        var elements = angular.element(response.trim()).find("item");
+                        for (var i = 0; i < elements.length; i++) {
+                            var item = elements.eq(i);
+                            items.push({
+                                name: item.attr("name"),
+                                price: item.attr("price")
+                            });
+                        }
+                        return items;
+                    }
+                }
+
+                // Параметр responseData будет трансформирован перед вызовом метода.
+                // В ответ сервер отдает XML файл, но callback метод передаваемый в success получает обычный JavaScript массив,
+                // благодаря трансформации ответа.
+                $http.get("../DataFolder/data.xml", config).success(function (responseData) {
+                    $scope.items = responseData;
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="tasksPanel" class="panel panel-primary" ng-controller="defaultCtrl">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <button class="btn btn-success" ng-click="getItems()">
+                    <h2>Get Items</h2>
+                </button>
+            </div>
+        </div>
+
+        <table class="table">
+            <tr ng-repeat="item in items">
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+</html>
+

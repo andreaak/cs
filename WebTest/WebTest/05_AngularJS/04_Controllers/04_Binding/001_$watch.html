@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="simpleApp">
+<head>
+    <title>$watch example</title>
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        angular.module("simpleApp", []).controller("defaultCtrl", function ($scope, $interval) {
+
+            $scope.counter = 0;
+
+            // $watch регистрирует функцию в коллекции $$watchers текущего scope.
+            // функция будут выполняться при каждом изменении свойства counter.
+            $scope.$watch("counter", function (newValue, oldValue) {
+                console.log("Старое значение - " + oldValue + ", новое значение - " + newValue);
+            });
+
+            $scope.increment = function (val) {
+                $scope.counter += val;
+            }
+
+            // $interval - сервис, который используется для запуска задач через заданный интервал времени.
+            $interval(function () {
+                $scope.counter++;
+            }, 1000);
+
+
+
+            // $scope.$$watchers - коллекция объектов, которые выполняют отслеживание изменений в scope
+            // При первом запуске происходит обход данной коллекции и объекты запоминают состояние scope на момент запуска приложения.
+            // Если пользователь взаимодействует с приложением, например, нажимает по кнопке и выполняет метод в scope через ng-click, происходи обход
+            // всех объектов $$watchers. Если watcher фиксирует изменения в scope соответствующие элементы интерфейса обновляются.
+            // Для явного обхода $$watchers могут использоваться методы $apply или $digest (рассматриваются в следующих примерах)
+            // В данном приложении будет создано два объекта watcher - для выражения {{counter}} на строке 40 и для $scope.$watch("counter", fn) на строке 13
+
+            //console.log($scope.$$watchers)
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    {{counter}}{{counter}}
+    <button ng-click="increment(1)">+1</button>
+</body>
+</html>
+

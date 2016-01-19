@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Выборка по атрибутам.</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            // $("E[A]") - соответствует элементам E с атрибутом A, имеющим любое значение.
+
+            // Выбор всех элементов "a", с атрибутом "target", имеющим любое значение.
+
+            $("a[target]").css("color", "red");
+
+            // $("E[A=V]") - соответствует элементам E с атрибутом A, который равен V.
+            // Выбор всех элементов "a", с атрибутом "target", имеющим значение text.
+            // Метод val() - метод, который позволяет получить значение атрибута "value" первого элемента в наборе соответствующих селектору элементов или установить новое значение (переданное в качестве аргумента) для всех елементов, подходящих под выборку.
+            $("input[type=text]").val("admin");
+
+            // $("E[AttrName!='value']"); - выбор всех элементов E с атрибутом AttrName не равного value
+            $("img[alt!='new cat']").css("border", "4px solid #9bff70");
+
+            /*
+                $("E[A^=V]") - соответствует элементам E с атрибутом A, который начинается с V.
+                $("E[A$=V]") - соответствует элементам E с атрибутом A, который заканчивается на V.
+                $("E[A*=V]") - соответствует элементам E с атрибутом A, который содержит V.
+            */
+
+            $("a[href^='http://edu']").css("color", "pink");    // Выбор всех элементов "a", с атрибутом "href", который начинается c "http://"
+            $("a[href$='.com']").css("color", "blue");      // Выбор всех элементов "a", с атрибутом "href", который заканчивается на ".com"
+            $("a[href*='html']").css("color", "green");     // Выбор всех элементов "a", с атрибутом "href", который содержит "html"
+
+            // $("E[AttrName~='value']"); - выбор всех элементов E с атрибутом AttrName содержащим value в списке значений, разделенных пробелом
+            $("img[alt~='new']").css("border", "4px solid #005cf2");
+        });
+
+    </script>
+    <style>
+        span {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://edu.cbsystematics.ru/ ">CyberBionic Systematics</a><br />
+    <a href="http://_edu.cbsystematics.com/video/ru/ " target="_blank">Video CyberBionic Systematics</a><br />
+    <a href="http://edu.cbsystematics.com/video/ru">Видео обучение</a><br />
+    <a href="http://jquery.com">jQuery</a><br />
+    <a href="http://htmlbook.ru/">HTML-book</a><br />
+    <span>Логин:</span><input type="text" /><br />
+    <span>Пароль:</span><input type="password" /><br />
+    <img src="images/cat.jpg" alt="new_cat" /><br />
+    <img src="images/cat.jpg" alt="new cat" /><br />
+    <img src="images/cat.jpg" alt="new-cat" /><br />
+    <a href="#" target="_blank1">Live education</a><br />
+</body>
+</html>

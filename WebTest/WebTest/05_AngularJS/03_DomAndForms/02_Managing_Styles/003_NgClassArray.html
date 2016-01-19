@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="SampleApp">
+<head>
+    <title>ng-class</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        var app = angular.module("SampleApp", []);
+
+        app.controller("SampleAppCtrl", function ($scope) {
+
+            $scope.clickHandler = function () {
+                $scope.classNames = ["test-div", "lightGreen"];
+            }
+            
+        });
+
+    </script>
+
+    <style>
+        .lightGreen {
+            background-color: lightgreen;
+        }
+
+        .lightBlue {
+            background-color: lightblue;
+        }
+
+        .lightCoral {
+            background-color: lightcoral;
+        }
+
+        .test-div {
+            border:1px solid black;
+            width:100px;
+            height:100px;
+            padding:10px;
+            margin:10px;
+        }
+    </style>
+</head>
+<body ng-controller="SampleAppCtrl">
+
+    <div class="container">
+
+        <button ng-click="clickHandler()">Set classes</button>
+
+        <!--ng-class - если выражение содержит массив, каждый элемент массива будет восприниматься как отдельный класс-->
+
+        <div ng-class="classNames">Test</div>
+
+    </div>
+</body>
+</html>

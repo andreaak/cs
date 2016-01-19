@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Isolated Scope</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script type="text/ng-template" id="customTemplate">
+        <div class="panel panel-success">
+            <div class="panel-heading">{{data.caption}}</div>
+            <div class="panel-body">Create caption : <input ng-model="data.caption" /></div>
+        </div>
+    </script>
+
+    <script>
+        angular.module("exampleApp", [])
+        .directive("scopeExample", function () {
+            return {
+                template: function () {
+                    return angular.element(document.querySelector("#customTemplate")).html();
+                },
+                scope: {} // В данном случае директива создается с изолированным scope - данный scope не участвует в наследовании.
+            }
+        })
+        .controller("defaultCtrl", function ($scope) {
+            $scope.data = { caption: "Caption" };
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="defaultCtrl" class="panel panel-primary">
+        <div class="panel-body" scope-example></div>
+        <div class="panel-body" scope-example></div>
+    </div>
+</body>
+</html>

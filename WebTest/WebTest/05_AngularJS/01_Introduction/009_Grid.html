@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Grid Layout</title>
+
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+
+    <style>
+        #gridContainer {
+            padding: 20px;
+        }
+
+        .grid-row > div {
+            border: 1px solid gray;
+            padding: 10px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+
+        <h3 class="panel-header">Grid Layout</h3>
+
+        <!--
+            row - класс определяет строку, состоящую из 12 колонок, разработчику
+            после этого необходимо указать сколько именно колонок занимает дочерний элемент используя для этого класс col-xs-N.
+
+            другие варианты классов для дочерних элементов:
+            col-sm-* ячейка отображается горизонтально, когда размер экрана больше чем 768px
+            col-md-* ячейка отображается горизонтально, когда размер экрана больше чем 940px
+            col-lg-* ячейка отображается горизонтально, когда размер экрана больше чем 1170px
+        -->
+
+        <div id="gridContainer">
+            <div class="row grid-row">
+                <div class="col-sm-1">1</div>
+                <div class="col-sm-1">1</div>
+                <div class="col-sm-2">2</div>
+                <div class="col-sm-2">2</div>
+                <div class="col-sm-6">6</div>
+            </div>
+        </div>
+
+        <div id="gridContainer">
+            <div class="row grid-row">
+                <div class="col-sm-3">3</div>
+                <div class="col-sm-4">4</div>
+                <div class="col-sm-5">5</div>
+            </div>
+        </div>
+
+        <div id="gridContainer">
+            <div class="row grid-row">
+                <div class="col-sm-6">6</div>
+                <div class="col-sm-6">6</div>
+            </div>
+        </div>
+
+        <div id="gridContainer">
+            <div class="row grid-row">
+                <div class="col-sm-10">10</div>
+                <div class="col-sm-1">1</div>
+                <div class="col-sm-1">1</div>
+            </div>
+        </div>
+
+        <div id="gridContainer">
+            <div class="row grid-row">
+                <div class="col-sm-12">12</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

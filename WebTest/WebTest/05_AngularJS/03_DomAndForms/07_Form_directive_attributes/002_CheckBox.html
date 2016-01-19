@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Form directive attributes</title>
+
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.inputValue = "yes";
+        });
+    </script>
+
+</head>
+<body>
+    <div ng-controller="defaultCtrl">
+        <!--
+            ng-true-value - определяет значение, которое будет задано через привязку данных (ng-model) свойству модели, когда элемент checkbox будет выбран
+            ng-false-value - значение для модели в случае если выделение будет снято
+        -->
+        <input name="sample" type="checkbox" ng-model="inputValue" ng-true-value="'yes'" ng-false-value="'no'" />
+        <p>Model Value:{{inputValue}}</p>
+    </div>
+</body>
+</html>

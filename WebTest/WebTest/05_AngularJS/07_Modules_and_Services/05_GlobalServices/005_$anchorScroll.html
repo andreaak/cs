@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="exampleApp">
+<head>
+    <title>$anchorScroll Service</title>
+
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="../Libraries/angular.js"></script>
+
+    <script>
+        angular.module("exampleApp", [])
+        //.config(function ($anchorScrollProvider) {
+        //    $anchorScrollProvider.disableAutoScrolling();
+        //})
+        .controller("defaultCtrl", function ($scope, $location, $anchorScroll) {
+
+            $scope.itemCount = 50;
+
+            $scope.items = [];
+
+            for (var i = 0; i < $scope.itemCount; i++) {
+                $scope.items[i] = "Item " + i;
+            }
+
+            $scope.show = function (id) {
+                // Для того чтобы начать исопльзовать сервис $anchorScroll его достаточно просто определить как зависимость для
+                // контроллера. Экземпляр сервиса начинает мониторить изменения свойства $location.hash и выполняет скрол автоматически
+                $location.hash(id);
+                // если сервис $anchorScroll сконфигурирован с использованием $anchorScrollProvider.disableAutoScrolling();
+                // необходимо явно вызвать $anchorScroll() явно, чтобы скролить страницу
+                //$anchorScroll(); 
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="panel panel-default">
+        <h4 class="panel-heading">URL</h4>
+
+        <div class="panel-body">
+            <p id="top">This is the top</p>
+
+            <button class="btn btn-primary" ng-click="show('bottom')">
+                Go to bottom
+            </button>
+
+            <p>
+                <ul>
+                    <li ng-repeat="item in items">{{item}}</li>
+                </ul>
+            </p>
+            <p id="bottom">This is the bottom</p>
+
+            <button class="btn btn-primary" ng-click="show('top')">
+                Go to TOP
+            </button>
+        </div>
+    </div>
+</body>
+</html>

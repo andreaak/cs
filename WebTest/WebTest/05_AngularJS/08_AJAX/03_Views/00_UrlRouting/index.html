@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="exampleApp">
+<head>
+    <title>Routing</title>
+    <!-- base установка базового адреса для всех относительных URL на тсранице -->
+    <base href="/Samples/03_Views/00_UrlRouting/" />
+    <script src="../../Libraries/angular.js"></script>
+    <script src="../../Libraries/angular_route.js"></script>
+    
+    <script>
+        angular.module("exampleApp", ["ngRoute"])
+        .config(function ($routeProvider, $locationProvider) {
+
+            // html5Mode - настраивает сервис loction на использование HTML5 History API
+            // данная настройка позволяет исопльзовать обычные URL вместо URL с символом #
+            $locationProvider.html5Mode(true);
+
+            // при зпросе по адресу /view1 должна отображаться страница view1.html
+            $routeProvider.when("/view1", {
+                templateUrl: "/Samples/03_Views/00_UrlRouting/view1.html"
+            });
+
+            // при зпросе по адресу /view2 должна отображаться страница view2.html
+            $routeProvider.when("/view2", {
+                templateUrl: "/Samples/03_Views/00_UrlRouting/view2.html"
+            });
+
+            // во всех остальных случаях view1.html
+            $routeProvider.otherwise({
+                templateUrl: "/Samples/03_Views/00_UrlRouting/view1.html"
+            });
+        })
+        .controller("defaultCtrl", function ($scope, $location) {
+
+            $scope.goToView1 = function () {
+                $location.path("/view1");
+            }
+
+            $scope.goToView2 = function () {
+                $location.path("/view2");
+            }
+
+        })
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <button ng-click="goToView1()">Go To View 1</button>
+    <button ng-click="goToView2()">Go To View 2</button>
+
+    <a href="view1">Go to View 1</a>
+    <a href="view2">Go to View 2</a>
+
+    <div ng-view></div>
+</body>
+</html>

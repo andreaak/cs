@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+
+<head>
+    <title>Modules</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        // Создание нового модуля exampleApp
+        var module = angular.module("exampleApp", []);
+
+        // контроллер defaultCtrl
+        module.controller("defaultCtrl", function ($scope) {
+
+            $scope.buttons = {
+                names: ["Button #1", "Button #2", "Button #3"],
+                totalClicks: 0
+            };
+
+            $scope.$watch('buttons.totalClicks', function (newVal) {
+                console.log("Total click count: " + newVal);
+            });
+        });
+        // Директива привязывает обработчики на событие click для элементо button
+        module.directive("triButton", function () {
+            return {
+                scope: { counter: "=counter" },
+                link: function (scope, element, attrs) {
+                    element.on("click", function (event) {
+                        console.log("Button click: " + event.target.innerText);
+                        scope.$apply(function () {
+                            scope.counter++;
+                        });
+                    });
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="well">
+        <div class="btn-group" tri-button counter="buttons.totalClicks" source="button.names">
+            <button class="btn btn-default" ng-repeat="name in buttons.names">
+                {{name}}
+            </button>
+        </div>
+        <h5>Total clicks: {{buttons.totalClicks}}</h5>
+    </div>
+</body>
+</html>

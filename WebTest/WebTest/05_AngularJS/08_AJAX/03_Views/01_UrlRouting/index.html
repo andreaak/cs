@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="exampleApp">
+<head>
+    <title>Items Editor</title>
+    <base href="/Samples/03_Views/01_UrlRouting/">
+    <script src="../../Libraries/angular.js"></script>
+    <script src="../../Libraries/angular_resource.js"></script>
+    <script src="../../Libraries/angular_route.js"></script>
+    <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="defaultCtrl">
+    <div class="panel panel-primary">
+        <h3 class="panel-heading">Products</h3>
+        <div ng-view></div>
+    </div>
+</body>
+</html>

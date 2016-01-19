@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Services - Factory Mrthod</title>
+
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script src="directiveModule.js"></script>
+    <script src="customServices.js"></script>
+
+    
+    <script>
+        angular.module("exampleApp", ["directiveModule", "customServices"])
+        // .config дополнительная настройка сервисов созданных с помощью функции module.provider
+        // Для того чтобы получиь провайдер необходимого сервиса необходимо указать в качестве параметра функции аргумент
+        // с именем [имя сервиса]Provider
+        .config(function (logServiceProvider) {
+            logServiceProvider.debugEnabled(true).messageCounterEnabled(false);
+        })
+        .controller("defaultCtrl", function ($scope, logService) {
+            $scope.buttons = {
+                names: ["Button #1", "Button #2", "Button #3"],
+                totalClicks: 0
+            };
+
+            $scope.$watch('buttons.totalClicks', function (newVal) {
+                // использование сервса
+                logService.log("Total click count: " + newVal);
+            });
+            
+        });
+    </script>    
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="well">
+        <div class="btn-group" tri-button counter="buttons.totalClicks" source="button.names">
+            <button class="btn btn-default" ng-repeat="name in buttons.names">
+                {{name}}
+            </button>
+        </div>
+        <h5>Total clicks: {{buttons.totalClicks}}</h5>
+    </div>
+</body>
+</html>

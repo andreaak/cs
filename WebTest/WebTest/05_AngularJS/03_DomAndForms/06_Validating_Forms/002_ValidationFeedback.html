@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <!--
+        AngularJS использует ряд CSS классов для оформления элементов и указания ошибок или действий пользователя.
+        ng-pristine - этот класс используют все элементы с которыми еще не взаимодействовал пользователь.
+        ng-dirty - применяются к тем элементам, с которыми взаимодействовал пользователь.
+        ng-valid - класс добавляется ко всем валидным элементам
+        ng-invalid - класс добавляется ко всем элементам которые неудачно прошли валидацию
+    -->
+    <title>Basic Validation - Feedback</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+            .controller("defaultCtrl", function ($scope) {
+
+                $scope.addNewUser = function (userDetails) {
+                    $scope.message = userDetails.name
+                        + " (" + userDetails.email + ") (" + userDetails.agreed + ")";
+                }
+
+                $scope.message = "Ready";
+            });
+    </script>
+
+    <style>
+        /* Правило для всех элементов, с которыми не взаимодействовал пользователь*/
+        form .ng-pristine {
+            border: 1px dotted gray;
+        }
+
+        /* Данное правило распространяется на все элементы с которыми взаимодействовал прользователь и которые не прошли проверку */
+        form .ng-invalid.ng-dirty {
+            background-color: lightpink;
+        }
+
+        /* Правило для всех элементов, которые прошли проверку после взаимодействия с пользователем */
+        form .ng-valid.ng-dirty {
+            background-color: lightgreen;
+        }
+
+        /* класс, который присваивает оформление для неправильно заполненных полей для email */
+        form .ng-invalid-email {
+            color: red;
+        }
+
+        /*
+            Валидация происходит после каждого изменения в форме.
+            Два следующих правила используются для элемента span в конце формы.
+        */
+        span.summary.ng-invalid {
+            color: red;
+            font-weight: bold;
+        }
+
+        span.summary.ng-valid {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel" style="width:300px" ng-controller="defaultCtrl">
+
+        <form name="myForm" novalidate ng-submit="addNewUser(newUser)">
+            <div class="well">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input name="userName" type="text" class="form-control" required ng-model="newUser.name">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input name="userEmail" type="email" class="form-control" required ng-model="newUser.email">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="agreed" type="checkbox" ng-model="newUser.agreed" required>
+                        I agree to the terms and conditions
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" ng-disabled="myForm.$invalid">
+                    OK
+                </button>
+            </div>
+
+            <div class="well">
+                Message: {{message}}
+                <div>
+                    Valid:
+                    <span class="summary" ng-class="myForm.$valid ? 'ng-valid' : 'ng-invalid'">
+                        {{myForm.$valid}}
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

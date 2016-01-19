@@ -1,0 +1,14 @@
+﻿<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="item in items">
+        <td>{{$index + 1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.value}}</td>
+    </tr>
+</table>

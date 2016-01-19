@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="SampleApp">
+<head>
+    <title>ng-options</title>
+
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script src="../Libraries/angular.js"></script>
+
+    <script>
+        var app = angular.module("SampleApp", []);
+
+        app.controller("SampleAppCtrl", function ($scope) {
+            $scope.items = ['item 1', 'item 2', 'item 3'];
+            $scope.selected = items[2];
+        });
+    </script>
+
+</head>
+<body ng-controller="SampleAppCtrl">
+    <!--ng-options - директива используется для динамической генерации элементов <option> для <select>.
+        Во многих случаях для создания <option> можно использовать ng-repeate.
+        ng-options предоставляет более эффективный способ создания элементов, который потребляет меньшее количество памяти и дает большую производительность
+
+        item for item in items - значение_для_текста for элемент in коллекция
+        использовать значение item как текст элемента при этом извлекать item из коллекции items
+        -->
+    <select ng-model="selected" ng-options="item for item in items"></select>
+</body>
+</html>
+

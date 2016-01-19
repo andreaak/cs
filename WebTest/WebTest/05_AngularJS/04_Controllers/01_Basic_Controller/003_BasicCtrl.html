@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Basic Controller</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+
+            $scope.cities = ["London", "New York", "Paris"];
+
+            $scope.getCountry = function (city) {
+                switch (city) {
+                    case "London":
+                        return "UK";
+                    case "New York":
+                        return "USA";
+                };
+            };
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4>The city is: {{city}}</h4>
+            <h4>The country is : {{getCountry(city) || "Unknown"}}</h4>
+        </div>
+        <div class="panel-body">
+            <label class="h4">Select a City:</label>
+            <!--когда пользователь выбирает элемент то содержимое этого элемента благодаря ng-model записывается в свойство city
+                после чего обновляются привязки и функция getCountry вызывается с новым значением в качестве параметра-->
+            <select ng-options="city for city in cities" ng-model="city"></select>
+        </div>
+    </div>
+</body>
+</html>
+

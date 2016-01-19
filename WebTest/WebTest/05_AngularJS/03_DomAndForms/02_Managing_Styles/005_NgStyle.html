@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="SampleApp">
+<head>
+    <title>ng-style</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        var app = angular.module("SampleApp", []);
+
+        app.controller("SampleAppCtrl", function ($scope) {
+
+            $scope.styleObj = {
+                color: "red",
+                padding: "10px",
+                border: "1px solid green",
+                marginTop : "50px"
+            };
+
+        });
+
+    </script>
+
+</head>
+<body ng-controller="SampleAppCtrl">
+
+    <div class="container">
+
+        <!--ng-style - позволяет установить CSS стили на определенный элемент-->    
+
+        <div ng-style="styleObj">Test</div>
+
+    </div>
+</body>
+</html>
