@@ -11,8 +11,8 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
     public class Test
     {
         string providerName = System.Configuration.ConfigurationManager.ConnectionStrings["CSTest.Properties.Settings.ShopDBConnectionString"].ProviderName;
-        string connectionString =  System.Configuration.ConfigurationManager.ConnectionStrings["CSTest.Properties.Settings.ShopDBConnectionString"].ConnectionString;
-        
+        string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CSTest.Properties.Settings.ShopDBConnectionString"].ConnectionString;
+
         [TestMethod]
         public void TestDataReader()
         {
@@ -67,7 +67,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             DbConnection connection = df.CreateConnection();
             connection.ConnectionString = connectionString;
             DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS;"+
+            cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS;" +
                 "SELECT EMPL_NUM, NAME, TITLE FROM SALESREPS;";
             try
             {
@@ -80,7 +80,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
                         Debug.WriteLine("Id: {0} Description: {1} Other: {2}", reader.GetValue(0), reader.GetValue(1), reader.GetValue(2));
                     }
                 } while (reader.NextResult());
-                
+
                 reader.Close();
             }
             finally
@@ -136,7 +136,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             param.Direction = ParameterDirection.Input;
             param.Value = 2101;
             cmd.Parameters.Add(param);
-            
+
             try
             {
                 connection.Open();
@@ -252,7 +252,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
                 DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 while (reader.Read())
                 {
-                    Debug.WriteLine("Id: {0} Company: {1} Rep: {2} Limit:{3}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), 
+                    Debug.WriteLine("Id: {0} Company: {1} Rep: {2} Limit:{3}", reader.GetValue(reader.GetOrdinal("CUST_NUM")),
                                     reader.GetValue(1), reader.GetValue(2), reader.GetValue(3));
                 }
                 reader.Close();
@@ -275,7 +275,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             DbCommand cmd = connection.CreateCommand();
             cmd.CommandText = "spCustomerByName2";
             cmd.CommandType = CommandType.StoredProcedure;
-            
+
             DbParameter param1 = cmd.CreateParameter();
             param1.ParameterName = "@RetVal";
             param1.Direction = ParameterDirection.ReturnValue;
@@ -308,7 +308,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             Id: 2101 Company: Jones Mfg. Rep: 106 Limit:65000.0000
             @RetVal:
             */
-        } 
+        }
 
         [TestMethod]
         public void TestProcedureWithOutParam()
@@ -325,13 +325,13 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             param1.Direction = ParameterDirection.ReturnValue;
             param1.DbType = DbType.Int32;
             cmd.Parameters.Add(param1);
-            
+
             DbParameter param2 = cmd.CreateParameter();
             param2.ParameterName = "@Id";
             param2.Direction = ParameterDirection.Input;
             param2.Value = 2102;
             cmd.Parameters.Add(param2);
-            
+
             DbParameter param3 = cmd.CreateParameter();
             param3.ParameterName = "@Company";
             param3.DbType = DbType.String;
@@ -350,7 +350,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             {
                 connection.Open();
                 cmd.ExecuteNonQuery();
-                
+
                 Debug.WriteLine("@RetVal: " + param1.Value);
                 Debug.WriteLine("@Company: " + param3.Value);
                 Debug.WriteLine("@Limit: " + param4.Value);
@@ -415,7 +415,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             @Limit: 65000
             */
         }
-        
+
         [TestMethod]
         public void TestFunction()
         {
@@ -486,6 +486,172 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             }
             /*
             Id: 2102 Company: First Corp. Rep: 101 Limit:65000.0000
+            */
+        }
+
+        [TestMethod]
+        public void TestTransaction1()
+        {
+            /*
+            Вы хотите использовать транзакции, чтобы несколько операций обраба­тывались  как  атомарная  единица,  
+            то  есть  либо  все  они  выполняются  успешно, либо все заканчиваются неудачей.
+            Решение. Вы можете создать транзакцию на основе объекта-соединения. 
+            После этого нужно включать ее в каждую выполняемую команду.
+            */
+
+            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
+            DbConnection connection = df.CreateConnection();
+            connection.ConnectionString = connectionString;
+
+            using (connection)
+            {
+                connection.Open();
+                using (DbCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM CUSTOMERS WHERE CUST_NUM = 3000";
+                    cmd.ExecuteNonQuery();
+                }
+
+                Debug.WriteLine("Before attempted inserts:  ");
+                using (DbCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS";
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), reader["COMPANY"], reader.GetValue(2));
+                        }
+                    }
+                }
+
+                using (DbTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        using (DbCommand cmd = connection.CreateCommand())
+                        {
+                            cmd.Transaction = transaction;
+                            cmd.CommandText = "INSERT INTO CUSTOMERS (CUST_NUM, COMPANY, CREDIT_LIMIT) VALUES (3000, 'BOND', 0)";
+                            cmd.ExecuteNonQuery();  //  Это должно работать
+                        }
+                        //  Если программа дошла до этого места,  значит,
+                        //  все в порядке,  можно продолжить  и  выполнить  транзакцию
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        Debug.WriteLine("Exception occurred,  rolling back");
+                        transaction.Rollback();
+                    }
+                }
+
+                Debug.WriteLine("After attempted inserts");
+                using (DbCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS";
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), reader["COMPANY"], reader.GetValue(2));
+                        }
+                    }
+                }
+            }
+
+            /*
+            Before attempted inserts:  
+            Id: 2101 Company: Jones Mfg. Limit:65000.0000
+            ...
+            Id: 2124 Company: Peter Brothers Limit:40000.0000
+            After attempted inserts
+            Id: 2101 Company: Jones Mfg. Limit:65000.0000
+            ...
+            Id: 2124 Company: Peter Brothers Limit:40000.0000
+            Id: 3000 Company: BOND Limit:0.0000
+            */
+        }
+
+        [TestMethod]
+        public void TestTransaction2()
+        {
+            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
+            DbConnection connection = df.CreateConnection();
+            connection.ConnectionString = connectionString;
+
+            using (connection)
+            {
+                connection.Open();
+                using (DbCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM CUSTOMERS WHERE CUST_NUM = 3000";
+                    cmd.ExecuteNonQuery();
+                }
+
+                Debug.WriteLine("Before attempted inserts:  ");
+                using (DbCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS";
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), reader["COMPANY"], reader.GetValue(2));
+                        }
+                    }
+                }
+
+                using (DbTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        using (DbCommand cmd = connection.CreateCommand())
+                        {
+                            cmd.Transaction = transaction;
+                            cmd.CommandText = "INSERT INTO CUSTOMERS (CUST_NUM, COMPANY, CREDIT_LIMIT) VALUES (3001, 'BOND', 'kkk')";
+                            cmd.ExecuteNonQuery();  //  Это HE должно работать
+                        }
+                        //  Если программа дошла до этого места,  значит,
+                        //  все в порядке,  можно продолжить  и  выполнить  транзакцию
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        Debug.WriteLine("Exception occurred, rolling back");
+                        transaction.Rollback();
+                    }
+                }
+
+                Debug.WriteLine("After attempted inserts");
+                using (DbCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS";
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), reader["COMPANY"], reader.GetValue(2));
+                        }
+                    }
+                }
+            }
+
+            /*
+            Before attempted inserts:  
+            Id: 2101 Company: Jones Mfg. Limit:65000.0000
+            ...
+            Id: 2124 Company: Peter Brothers Limit:40000.0000
+            A first chance exception of type 'System.Data.SqlClient.SqlException' occurred in System.Data.dll
+            Exception occurred, rolling back
+            After attempted inserts
+            Id: 2101 Company: Jones Mfg. Limit:65000.0000
+            ...
+            Id: 2124 Company: Peter Brothers Limit:40000.0000           
             */
         }
     }

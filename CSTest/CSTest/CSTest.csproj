@@ -167,6 +167,7 @@
     <Compile Include="07_Generics\_08_DelegateContrvariance.cs" />
     <Compile Include="07_Generics\_10_SecondLevelConstraints.cs" />
     <Compile Include="07_Generics\_11_ThirdLevelConstraints.cs" />
+    <Compile Include="08_String\01_RegularExpression\TestFind.cs" />
     <Compile Include="08_String\Test.cs" />
     <Compile Include="09_Array\0_Setup\TestClass.cs" />
     <Compile Include="09_Array\Test.cs" />
@@ -290,6 +291,7 @@
       <DependentUpon>ShopDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="21_Database\03_LinqToSql\Test.cs" />
+    <Compile Include="22_AppConfig\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Text;
 using Utils;
 
-namespace Localization
+namespace Localization.Readers
 {
     class CsvReader : IReader
     {

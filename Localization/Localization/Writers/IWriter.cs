@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Localization
+namespace Localization.Writers
 {
     interface IWriter
     {
