@@ -8,11 +8,20 @@ namespace CSTest._08_String._01_RegularExpression
     [TestClass]
     public class TestFind
     {
-        const string myText =
+        private const string myText =
         @"This comprehensive compendium provides a broad and thorough investigation of all 
         aspects of programming with ASP.NET. Entirely revised and updated for the fourth 
         release of .NET, this book will give you the information you need to 
         master ASP.NET and build a dynamic, successful, enterprise Web application.";
+
+        private const string translatePattern = @"^[\W\d]*(?<OtherWord>{0})[\W\d]*$";
+
+        const string text = @"XML has made a major impact in almost every aspect of 
+        software development. Designed as an open, extensible, self-describing 
+        language, it has become the standard for data and document delivery on 
+        the web. The panoply of XML-related technologies continues to develop 
+        at breakneck speed, to enable validation, navigation, transformation, 
+        linking, querying, description, and messaging of data.";
 
         [TestMethod]
         public void TestRegExp1()
@@ -79,13 +88,6 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        const string text = @"XML has made a major impact in almost every aspect of 
-        software development. Designed as an open, extensible, self-describing 
-        language, it has become the standard for data and document delivery on 
-        the web. The panoply of XML-related technologies continues to develop 
-        at breakneck speed, to enable validation, navigation, transformation, 
-        linking, querying, description, and messaging of data.";
-
         [TestMethod]
         public void TestRegExp5()
         {
@@ -100,8 +102,6 @@ namespace CSTest._08_String._01_RegularExpression
             Index: 348, 	String: navigation, 	ion, navigation, tra
             */
         }
-
-        string translatePattern = @"^[\W\d]*(?<OtherWord>{0})[\W\d]*$";
 
         [TestMethod]
         public void TestRegExp6()
@@ -128,56 +128,6 @@ namespace CSTest._08_String._01_RegularExpression
         }
 
         [TestMethod]
-        public void TestRegExpReplace1()
-        {
-            string text = "Text For {0} Translate >>>";
-
-            string textBase = "Text for {0} Translate";
-            string translation = "Текст {0} перевода";
-            string pattern = string.Format(translatePattern,  Regex.Escape(textBase));
-
-            MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.IgnoreCase);
-            if (matches.Count != 0)
-            {
-                Debug.WriteLine("Text: {0}{3}Base: {1}{3}Translation: {2}", text, textBase,
-                                text.Replace(matches[0].Groups["OtherWord"].Value, translation), Environment.NewLine);
-            }
-            else
-            {
-                Debug.WriteLine("No matches");
-            }
-
-            /*
-            Text: Text For {0} Translate >>>
-            Base: Text for {0} Translate
-            Translation: Текст {0} перевода >>>
-            */
-        }
-
-        [TestMethod]
-        public void TestRegExpReplace2()
-        {
-            string text = "<<<Text For {0} Translate >>>";
-
-            string textBase = "Text For {0} Translate";
-            //string textBase = "For";
-            string translation = "Текст {0} перевода";
-            string pattern = string.Format(translatePattern, Regex.Escape(textBase));
-
-            Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
-            string result = regex.Replace(text, Translate);
-
-            Debug.WriteLine("Text: {0}{3}Base: {1}{3}Translation: {2}", text, textBase,
-                            result, Environment.NewLine);
-
-            /*
-            Text: Text For {0} Translate >>>
-            Base: Text For {0} Translate
-            Translation: Текст {0} перевода >>>
-            */
-        }
-
-        [TestMethod]
         public void TestRegExpIsMatch1()
         {
             string text = "<<<Text For {0} Translate >>>";
@@ -190,12 +140,6 @@ namespace CSTest._08_String._01_RegularExpression
             /*
             <<<Text For {0} Translate >>> ? ok
             */
-        }
-
-
-        private static string Translate(Match match)
-        {
-            return match.Groups["OtherWord"].Value + 1;
         }
 
         private static void WriteMatches(string text, MatchCollection matches)

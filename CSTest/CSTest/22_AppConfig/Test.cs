@@ -106,5 +106,14 @@ namespace CSTest._21_Database._22_AppConfig
             Key: dbFile_ Value: Test2
             */
         }
+
+        [TestMethod]
+        public void TestReadApplicationSettings()
+        {
+            Debug.WriteLine(string.Format("Key: {0} Value: {1}", "TestString", Properties.Settings.Default.TestString));
+            /*
+            Key: TestString Value: TestStringValue
+            */
+        }
     }
 }

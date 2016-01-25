@@ -41,7 +41,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Demo="clr-namespace:GitSharp.Demo"
     xmlns:CommitView="clr-namespace:GitSharp.Demo.CommitView"
-    Title="GitSharp Demo" MinHeight="300" MinWidth="300" Icon="Download.ico" WindowStartupLocation="CenterScreen">
+    Title="GitSharp Demo" MinHeight="300" MinWidth="300" WindowStartupLocation="CenterScreen" Icon="git.ico">
     <DockPanel>
         <!--menu-->
         <Menu  DockPanel.Dock="Top">

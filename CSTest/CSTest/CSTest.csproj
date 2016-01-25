@@ -167,6 +167,7 @@
     <Compile Include="07_Generics\_08_DelegateContrvariance.cs" />
     <Compile Include="07_Generics\_10_SecondLevelConstraints.cs" />
     <Compile Include="07_Generics\_11_ThirdLevelConstraints.cs" />
+    <Compile Include="08_String\01_RegularExpression\TestReplace.cs" />
     <Compile Include="08_String\01_RegularExpression\TestFind.cs" />
     <Compile Include="08_String\Test.cs" />
     <Compile Include="09_Array\0_Setup\TestClass.cs" />
