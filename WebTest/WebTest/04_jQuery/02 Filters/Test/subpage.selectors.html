@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <link rel="stylesheet" type="text/css" href="sample.css">
+    <script type="text/javascript" src="scripts/jquery-1.12.0.js"></script>
+    <script type="text/javascript" src="scripts/support.labs.js"></script>
+    <script type="text/javascript">
+      function applySelector(selector) {
+        $('*').removeClass('wrappedElement');
+        var wrappedSet = $(selector);
+        wrappedSet.addClass('wrappedElement');
+        return wrappedSet;
+      }
+
+      $(function(){
+        $(document.body).load('sample.dom.html');
+      });
+    </script>
+  </head>
+
+  <body class="plain">
+  </body>
+</html>
