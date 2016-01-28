@@ -2,10 +2,18 @@
 <html>
 <head>
     <title>Метод end().</title>
-    <script src="jquery-1.10.2.js"></script>
+    <script src="/04_jQuery/00_Scripts/jquery-1.10.2.js"></script>
     <script>
 
-        // end() - отменяет последнее деструктивное действие, возвращая тем самым набор элементов к его предыдущему состоянию (до деструктивной операции). Если никакой деструктивной операции не проводилось, то возвращается пустой набор. Под деструктивной операцией понимают операцию, которая изменяет набор элементов jQuery. То есть это любая из Traversing-функций, возвращающая объект jQuery: add, andSelf, children, filter, find, map, next, nextAll, not, parent, parents, prev, prevAll, siblings, и slice, а также clone, appendTo, prependTo, insertBefore, insertAfter, и replaceAll.
+        /*
+        end() - отменяет последнее деструктивное действие, возвращая тем самым набор элементов к его предыдущему состоянию (до деструктивной операции). 
+        Если никакой деструктивной операции не проводилось, то возвращается пустой набор. 
+        Под деструктивной операцией понимают операцию, которая изменяет набор элементов jQuery. 
+        То есть это любая из Traversing-функций, возвращающая объект jQuery: 
+        add, andSelf, children, filter, find, map, next, nextAll, not, 
+        parent, parents, prev, prevAll, siblings, и slice, 
+        clone, appendTo, prependTo, insertBefore, insertAfter, и replaceAll.
+        */
 
         $(function () {
             $("p") // находим все p

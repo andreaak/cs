@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Событие load"</title>
-    <script src="jquery-1.10.2.js"></script>
+    <script src="/04_jQuery/00_Scripts/jquery-1.10.2.js"></script>
     <script>
 
         // Готово DOM дерево
@@ -10,8 +10,10 @@
             alert("Document loaded");
         });
 
-        // load() - устанавливает обработчик на JavaScript событие load
-        // window.load - Загружена вся страница с учетом всех внешних ресурсов (картинок, сценариев, стилей)
+        /*
+        load() - устанавливает обработчик на JavaScript событие load
+        window.load - Загружена вся страница с учетом всех внешних ресурсов (картинок, сценариев, стилей)
+        */
         $(window).load(function () {
             alert("Window loaded");
         });

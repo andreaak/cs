@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Метод find()</title>
-    <script src="jquery-1.10.2.js"></script>
+    <script src="/04_jQuery/00_Scripts/jquery-1.10.2.js"></script>
     <script>
 
         // Метод find(selector) - отыскивает дочерние элементы, соответствующие указанному выражению.
@@ -10,6 +10,7 @@
         $(function () {
             // находим все параграфы и ищем в них элементы span
             $("p").find("span").css('color', 'red');
+            $("div").find("span").css('color', 'green');
         });
 
     </script>
@@ -17,5 +18,12 @@
 <body>
     <p>Тестовый параграф с элементами <span>span</span> и <span>span</span></p>
     <span>Просто span</span>
+    <div>
+        <span>content1</span>
+        <p>Paragraph
+            <span>content2</span>
+        </p>
+        <span>content3</span>
+    </div>
 </body>
 </html>

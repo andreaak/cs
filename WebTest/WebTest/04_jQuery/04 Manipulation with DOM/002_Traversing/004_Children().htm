@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Метод children()</title>
-    <script src="jquery-1.10.2.js"></script>
+    <script src="/04_jQuery/00_Scripts/jquery-1.10.2.js"></script>
     <script>
 
         // Метод children(selector) - получает набор элементов, содержащий всех прямых потомков для каждого совпавшего элемента.
@@ -11,6 +11,7 @@
             $(".class1")
                 .children("p") // получить все дочерние элементы p для элемента с классом class1
                 .css("background-color", "Red");
+            $("div").children("span").css('color', 'green');
         });
 
     </script>
@@ -23,6 +24,13 @@
         <p>
             Lorem ipsum in paragraph
         </p>
+    </div>
+    <div>
+        <span>content1</span>
+        <p>Paragraph
+            <span>content2</span>
+        </p>
+        <span>content3</span>
     </div>
 </body>
 </html>
