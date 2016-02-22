@@ -84,7 +84,6 @@
     <Content Include="003_Event\test.html" />
     <Content Include="005_JSON\001_Javascript JSON.html" />
     <Content Include="005_JSON\002_ajax%28json%29.html" />
-    <Content Include="Task\jquery-1.8.1.js" />
     <Content Include="005_JSON\HandlerObject.ashx" />
     <Content Include="Task\HtmlPage3.html" />
     <Content Include="Task\index.html" />
