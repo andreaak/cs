@@ -4,9 +4,11 @@
     <title>Событие keydown</title>
     <script src="/04_jQuery/00_Scripts/jquery-1.10.2.js"></script>
     <script>
+        /*
+        keydown(функция) - Назначает функцию к событию keydown для каждого элемента набора, срабатывает при нажатии клавиши. 
+        event - объект, определяющий информацию о событии.
+        */
 
-        // keydown() - устанавливает обработчик события keydown для каждого элемента набора. 
-        // event - объект, определяющий информацию о событии.
         $(window).keydown(function (event) {
 
             switch (event.keyCode) {                // event.keyCode - код нажатой клавиши

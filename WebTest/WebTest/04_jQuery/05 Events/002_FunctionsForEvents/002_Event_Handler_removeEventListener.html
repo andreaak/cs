@@ -3,7 +3,13 @@
 <head>
     <title>Метод addEventListener()</title>
     <script>
-
+        /*
+        removeEventListener (‘event’,handler,route) - метод JavaScript,который предназначен для УДАЛЕНИЯ обработчика («слушателя») события. 
+        Он принимает 3 параметра: 
+            event – название события, при котором мы хотим выполнить какой-то функционал; 
+            handler – функция, выполнение которой нужно отменить; 
+            route – этап прохождения события.
+        */
         window.addEventListener('load', function () {           // Установка обработичка на событие load.
             var div = document.getElementById('test');
             var del = document.getElementById('del');
