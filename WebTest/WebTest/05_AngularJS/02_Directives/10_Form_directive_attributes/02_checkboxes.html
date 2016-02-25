@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html ng-app="studyModule">
+    <!--Атрибуты которые могут применятся к input  с типом checkbox :
+        ng-model
+        ng-change используется для определения выражения которое будет выполянтся когда контент элемента изменится
+        ng-true-value определяет значение которое установится выражением привязки данных когда состояние элемента будет "выбран"
+        ng-false-value определяет значение которое установится выражением привязки данных когда состояние элемента будет "не выбран"-->
+<head>
+    <title>Form directive attributes</title>    
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("studyModule", [])
+        .controller("studyCtrl", function ($scope) { });
+    </script>
+</head>
+<body>
+    <div id="tasksPanel" class="panel" ng-controller="studyCtrl">
+        <form name="myForm" novalidate>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="checkbox">
+                        <label>
+                            <input name="sample" type="checkbox" ng-model="inputValue" ng-true-value="Checked" ng-false-value="Unchecked" />
+                            Checkbox
+                        </label>
+                        <!--Обратите внимание что для элементов input у которых атрибут type равен email, url, number
+                не нужно указывать ng-pattern так как angular уже использует его для проверки на валидность содержимое элемента-->
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <p>Model Value:{{inputValue}}</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

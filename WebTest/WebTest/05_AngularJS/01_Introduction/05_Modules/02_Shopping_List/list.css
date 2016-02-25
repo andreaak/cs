@@ -1,0 +1,10 @@
+﻿.done-true {
+     /*Добавляет зачеркивание к выполненому делу.*/
+  text-decoration: line-through;
+  color: grey;
+}
+.done-false {
+    /*Делает красным не выполненное дело*/
+  text-decoration: underline;
+  color: red;
+}

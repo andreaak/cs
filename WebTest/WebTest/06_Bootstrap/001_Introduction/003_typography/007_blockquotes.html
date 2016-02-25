@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Цитаты</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        blockquote {
+            width: 700px;
+            margin: 100px auto;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!--Создание обычной цитаты с помощью тега <blockquote>. По умолчанию с левой стороны будет вертикальная полоса-->
+
+    <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    </blockquote>
+
+    <!--Добавление футера в цитату для определения источника. Источник принято помещать в тег <cite>-->
+
+    <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+
+    <!--Класс ".blockquote-reverse" перемещает цитату вправо-->
+
+    <blockquote class="blockquote-reverse">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html ng-app="studyModule">
+<head>
+    <title>Form directive attributes</title>
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("studyModule", [])
+        .controller("studyCtrl", function ($scope) {
+            $scope.tasks = [
+                {action: "Go to cinema", complete: false },
+                {action: "Buy Big-Mac", complete: true },
+                {action: "Buy a book", complete: false },
+                {action: "Call mom", complete: false }
+            ];
+        });
+    </script>
+</head>
+<body>
+    <div id="tasksPanel" class="panel" ng-controller="studyCtrl">
+        <form name="myForm" novalidate>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3>Selected: {{selectValue || 'None'}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Select an Action:</label>
+                        <select ng-model="selectValue" ng-options="task.action for task in tasks">
+                            <option value="">Select one</option>
+                        </select>
+                        <!--ng-options="item.action for item in tasks" это выражение указывает сгенерировать элементы option для каждого элемента из tasks
+                    и отобразить содержимое свойства item.action-->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

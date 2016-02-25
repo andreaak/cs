@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Контроль размеров</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        .one {
+        
+            width: 300px;
+            margin: 30px auto;
+            border: 1px solid grey;
+            padding: 20px;
+        
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!--Регулируйте высоту с помощью классов "input-lg", "input-sm", а ширину с помощью классов "col-lg-*" -->
+
+    <form class="one">
+
+        <input class="form-control input-lg" type="text" placeholder=".input-lg">
+        <br />
+        <input class="form-control" type="text" placeholder="Default input">
+        <br />
+        <input class="form-control input-sm" type="text" placeholder=".input-sm">
+        <br />
+
+        <select class="form-control input-lg">
+            <option value="1">Item 1</option>
+            <option value="2">Item 2</option>
+            <option value="3">Item 3</option>
+        </select>
+        <br />
+        <select class="form-control">
+            <option value="1">Item 1</option>
+            <option value="2">Item 2</option>
+            <option value="3">Item 3</option>
+        </select>
+        <br />
+        <select class="form-control input-sm">
+            <option value="1">Item 1</option>
+            <option value="2">Item 2</option>
+            <option value="3">Item 3</option>
+        </select>
+        <br />
+
+    </form>
+
+    <br />
+
+    <!--Можно быстро задать размеры группам элементов горизонтальных форм (класс "form-horizontal") с помощью классов "form-group-lg" и "form-group-sm".-->
+
+    <form class="form-horizontal">
+        <div class="form-group form-group-lg">
+            <label class="col-md-2 control-label" for="formGroupInputLarge">Large label</label>
+            <div class="col-md-8">
+                <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-md-2 control-label" for="formGroupInputSmall">Small label</label>
+            <div class="col-md-8">
+                <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+            </div>
+        </div>
+    </form>
+
+    <br />
+
+    <!--Колоночное размещение элементов форм с помощью классов "col-md"-->
+
+    <form>
+        <div class="row">
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder=".col-md-2">
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder=".col-md-3">
+            </div>
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder=".col-md-7">
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>

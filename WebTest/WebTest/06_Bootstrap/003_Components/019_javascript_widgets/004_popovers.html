@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Popovers</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+    <script src="/06_Bootstrap/00_Bootstrap/js/jquery-1.11.1.min.js"></script>
+    <script src="/06_Bootstrap/00_Bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+
+        body {
+        
+            padding: 30px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Класс "data-toggle='popover'" - добавляет особое всплывающее окно к элементу -->
+
+    <!--
+        <div class="popover" role="tooltip">
+            <div class="arrow"></div>
+            <h3 class="popover-title"></h3>
+            <div class="popover-content"></div>
+        </div>
+
+        Класс "arrow" - возможность заменить цвет уголка
+        Класс "popover-title" - возможность заменить стили заголовка всплывающего окна
+        Класс "popover-content" - возможность заменить стили контента всплывающего окна
+
+    -->
+
+    <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+
+    <!-- Активация popover -->
+    <!-- Подробности настройки всплывающих окон находятся в файле 005_popovers_info.html -->
+
+    <script>
+        $(".btn").popover();
+    </script>
+
+</body>
+</html>

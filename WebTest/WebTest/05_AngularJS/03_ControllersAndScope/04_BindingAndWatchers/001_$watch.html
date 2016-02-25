@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="simpleApp">
+<head>
+    <title>$watch example</title>
+    <!--
+        Для взаимодействия с другими фреймворками в AngularJS предусмотрены несколько методов
+        которые позволяют добавлять данные в scope из других фреймворком,
+        а так же создавать функции обработчики для ответа на изменения в scope.
+        $apply(expression) –запуск выражений и применение изменений в scope
+        $watch(expression, handler)–регистрирует обработчик(handler),
+            который будет реагировать на изменения выражения (expression),
+            регистрирует функцию в коллекции $$watchers текущего scope.
+        $watchCollection(object, handler)–регистрация обработчика (handler),
+            который будет реагировать когда одно из свойств объекта(object)изменилось.
+
+        $scope.$$watchers - коллекция объектов, которые выполняют отслеживание изменений в scope
+        При первом запуске происходит обход данной коллекции и объекты запоминают состояние scope на момент запуска приложения.
+        Если пользователь взаимодействует с приложением, например, нажимает по кнопке
+        и выполняет метод в scope через ng-click, происходи обход всех объектов $$watchers.
+        Если watcher фиксирует изменения в scope соответствующие элементы интерфейса обновляются.
+        Для явного обхода $$watchers могут использоваться методы $apply или $digest
+        В данном приложении будет создано два объекта watcher
+            для выражения {{counter}} на строке 51
+            для $scope.$watch("counter", fn) на строке 33
+    -->
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <script>
+        angular.module("simpleApp", []).controller("defaultCtrl", function ($scope, $interval) {
+
+            $scope.counter = 0;
+
+            // функция будут выполняться при каждом изменении свойства counter.
+            $scope.$watch("counter", function (newValue, oldValue) {
+                console.log("Старое значение - " + oldValue + ", новое значение - " + newValue);
+            });
+
+            $scope.increment = function (val) {
+                $scope.counter += val;
+            }
+
+            // $interval - сервис, который используется для запуска задач через заданный интервал времени.
+            $interval(function () {
+                $scope.counter++;
+            }, 1000);
+
+            console.log($scope.$$watchers)
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    {{counter}}<!--{{counter}}-->
+    <button ng-click="increment(1)">+1</button>
+</body>
+</html>
+

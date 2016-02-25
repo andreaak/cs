@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Пункты навигации с выпадающим списком</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+    <script src="/06_Bootstrap/00_Bootstrap/js/jquery-1.11.1.min.js"></script>    <!--Подключение библиотеки jQuery-->
+    <script src="/06_Bootstrap/00_Bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <!--Пункт навигации с выпадающим списком (навигация в виде закладок)-->
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+
+        <!-- Выпадающий пункт меню -->
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <br /><br />
+
+    <!--Пункт меню с выпадающим списком (меню в виде кнопок)-->
+
+    <ul class="nav nav-pills" role="tablist">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+
+        <!-- Выпадающий пункт меню -->
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

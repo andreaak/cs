@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Проверка состояний</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        form {
+       
+            width: 300px;
+            margin: 100px auto;
+            border: 1px solid grey;
+            padding: 20px;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!--Bootstrap содержит стили, предназначенные для оформления полей, которые подлежат валидации (ошибки, предупреждения, успешное заполнение). Для этого нужно использовать классы "has-warning", "has-error" или "has-success" для родительского элемента-->
+
+    <form>
+        <div class="form-group has-success">
+            <label class="control-label" for="inputSuccess">Input with success</label>
+            <input type="text" class="form-control" id="inputSuccess">
+        </div>
+        <div class="form-group has-warning">
+            <label class="control-label" for="inputWarning">Input with warning</label>
+            <input type="text" class="form-control" id="inputWarning">
+        </div>
+        <div class="form-group has-error">
+            <label class="control-label" for="inputError">Input with error</label>
+            <input type="text" class="form-control" id="inputError">
+        </div>
+    </form>
+
+</body>
+</html>

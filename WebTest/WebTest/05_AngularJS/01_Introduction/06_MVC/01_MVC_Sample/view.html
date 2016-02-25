@@ -1,0 +1,26 @@
+﻿<!doctype html>
+<html ng-app>
+<!--ng-app обозначает корень AngularJS-приложения и обычно располагается в корне страницы.-->
+<head>
+    <title></title>
+    <script src="../../angular.js"></script>
+    <link href="../../bootstrap.css" rel="stylesheet" />
+    <link href="../../bootstrap-theme.css" rel="stylesheet" />
+    <script src="controller.js"></script>
+    <script src="model.js"></script>
+    <style>
+        .box {
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" ng-controller="petCtrl">
+        <!--Поведение содержимого в рамках этого элемента будет управляться с помощью контроллера petCtrl.-->
+        <div ng-repeat="pet in pets">
+            <h1 class="h1">Имя: {{pet.name}}</h1>
+            <p>Животное: {{pet.animal}}</p>
+        </div>
+    </div>
+</body>
+</html>

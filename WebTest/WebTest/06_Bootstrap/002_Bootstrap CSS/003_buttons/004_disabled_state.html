@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Неактивная кнопка</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        body {
+        
+            padding: 20px;
+        
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Для того, чтобы сделать кнопку неактивной, для нее нужно добавить атрибут "disabled" -->
+
+    <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
+    <button type="button" class="btn btn-default btn-lg" disabled>Button</button>
+
+    <br /><br />
+
+    <!-- Для того, чтобы сделать сылку-кнопку неактивной, для нее нужно добавить класс "disabled".
+         ВАЖНО!!! При создании ссылок-кнопок могут возникнуть проблемы в устаревших версиях браузеров.
+         Важно!!! Ссылки-кнопки не подходят для создания навигационного меню в Bootstrap -->
+
+    <a href="#" class="btn btn-primary btn-lg disabled">Primary link</a>
+    <a href="#" class="btn btn-default btn-lg disabled">Link</a>
+
+</body>
+</html>

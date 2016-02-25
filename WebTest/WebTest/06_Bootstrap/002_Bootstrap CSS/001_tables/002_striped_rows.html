@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>"Зебра"</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        table, .table {
+        
+            width: 300px;
+            margin: 30px auto;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Таблица после добавления класса "table" -->
+
+    <table class="table">
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Item 1</td>
+            <td>800</td>
+        </tr>
+        <tr>
+            <td>Item 2</td>
+            <td>1200</td>
+        </tr>
+        <tr>
+            <td>Item 3</td>
+            <td>1140</td>
+        </tr>
+    </table>
+
+    <br />
+
+    <!-- Таблица после добавления классов "table" и "table-striped" -->
+    <!-- ВАЖНО!!! Класс "table-striped" использует :nth-child CSS-селектор, который не поддерживается в Internet Explorer 8. -->
+
+    <table class="table table-striped">
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Item 1</td>
+            <td>800</td>
+        </tr>
+        <tr>
+            <td>Item 2</td>
+            <td>1200</td>
+        </tr>
+        <tr>
+            <td>Item 3</td>
+            <td>1140</td>
+        </tr>
+    </table>
+
+</body>
+</html>

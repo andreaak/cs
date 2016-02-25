@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html ng-app="SampleApp">
+<head>
+    <title>Template directives</title>
+
+    <!--
+        Template directives - набор директив, которые могут использоваться для генерации HTML разметки:
+        ng-repeat
+        ng-include
+        ng-cloack
+        ng-repeat-start
+        ng-repeat-end
+        ng-switch
+
+        Директива ng-repeat позволяет обработать каждый элемент из перечислимого набора (object, array) 
+        получить доступ к его свойствам и выполнять манипуляции над данными которые в них содержатся. 
+        Фактически это возможность в декларативном подходе использовать императивный функционал. 
+        Чаще всего эта директива используется для генерации однотипных элементов. 
+        · $index - это системная переменная, изначально равна 0, отражает текущую итерацию при использовании ng-repeat 
+        · $even и $odd - эти переменные для манипулирования четными и нечетными элементами. Чаще всего для указания стилей.  
+        · $first и $last - используются для определения первого и последнего элемента последовательности. 
+            Чаще всего используются в качестве фильтра с директивой ng-if. 
+    -->
+
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+
+    <script>
+        var app = angular.module("SampleApp", []);
+
+        app.controller("SampleAppCtrl", function ($scope) {
+            $scope.items = [{ name: "Item 1", value: "Value 1" },
+                { name: "Item 2", value: "Value 2" },
+                { name: "Item 3", value: "Value 3" }];
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="SampleAppCtrl">
+        <h3 class="panel-header">Items</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+
+            <!--
+             ng-repeat - генерирует новые копии элемента tr.
+            -->
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

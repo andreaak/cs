@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Постраничная навигация. Активные и неактивные пунткты</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        .box {
+            margin: 500px auto;
+            width: 270px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="box">
+
+        <!--Класс "disabled" делает пункт меню неактивным-->
+        <!--Класс "active" выделяет активный пункт меню-->
+
+        <ul class="pagination">
+            <li class="disabled"><a href="#">&laquo;</a></li>
+            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+
+    </div>
+
+</body>
+</html>

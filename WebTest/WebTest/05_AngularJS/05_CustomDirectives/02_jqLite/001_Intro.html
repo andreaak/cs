@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+
+<!--
+    jqLite – урезанная версия JQuery которая встроена в AngularJS.
+    jqLite широко используется для манипулирования элементами разметки,
+    создания, изменения и удаления элементов DOM, обработки событий.
+    Так же существует возможность заменить jqLite на JQuery,
+    но делать это нужно лишь в тех случаях, когда возможностей jqLite вам недостаточно
+    так как используя JQuery вы жертвуете производительностью в пользу больших возможностей.
+
+    jqLite методы для навигации по DOM
+        children() - возвращает jqLite объект, который содержит набор дочерних элементов
+        eq(index) - возвращает jqLite объект, который содержит элемент по определенному индексу из коллекции элементов
+        find(tag) - находит все элементы с указанным именинам тега
+        next() - возвращает следующий элемент (который находится на том же уровне, что и тот, для которого вызывается метод)
+        parent() - возвращает родительский элемент
+-->
+
+<head>
+    <title>jqLite</title>
+
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .directive("customDirective", function () {
+            return function (scope, element, attributes) {
+                // element - jqLite объект
+                var elements = element.children(); // получение всех дочерних элементов
+
+                for (var i = 0; i < elements.length; i++) {
+                    // если элемент содержит текст Red сделать его красным цветом
+                    if (elements.eq(i).text() == "Red") {
+                        elements.eq(i).css("color", "red");
+                    }
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Colors</h3>
+        </div>
+        <div class="panel-body h3">
+            <ul custom-directive>
+                <li>Black</li>
+                <li>Red</li>
+                <li>Yellow</li>
+                <li>Navy</li>
+                <li>Green</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Dismissible alerts</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+    <script src="/06_Bootstrap/00_Bootstrap/js/jquery-1.11.1.min.js"></script>    <!--Подключение библиотеки jQuery-->
+    <script src="/06_Bootstrap/00_Bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+
+        .box {
+            margin: 100px auto;
+            width: 500px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="box">
+
+        <!--Создание модального окна с возможностью закрыть его. Класс "alert-dismissible"-->
+
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>Warning!</strong> Better check yourself, you're not looking too good.
+        </div>
+
+    </div>
+
+</body>
+</html>

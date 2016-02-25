@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Контекстные классы в таблице</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        table, .table {
+        
+            width: 700px;
+            margin: 20px auto;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Таблица после добавления класса "table", "table-striped" и "table-bordered" -->
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Класс</th>
+            <th>Описание</th>
+        </tr>
+        <tr>
+            <td><mark>.active</mark></td>
+            <td>Применяет цвет при наведении на конкретную строку или ячейку</td>
+        </tr>
+        <tr>
+            <td><mark>.success</mark></td>
+            <td>Указывает на успешное или позитивное действие</td>
+        </tr>
+        <tr>
+            <td><mark>.info</mark></td>
+            <td>Указывает на нейтральные информативные изменения или действия</td>
+        </tr>
+        <tr>
+            <td><mark>.warning</mark></td>
+            <td>Указывает на предупреждения, которые могут потребовать внимания</td>
+        </tr>
+        <tr>
+            <td><mark>.danger</mark></td>
+            <td>Указывает на опасное или потенциально негативное действие</td>
+        </tr>
+    </table>
+
+    <br />
+
+    <!-- Таблица после добавления классов "table" и "table-bordered" -->
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Class</th>
+            <th>Color</th>
+        </tr>
+        <tr class="active">
+            <td><mark>.active</mark></td>
+            <td>#F5F5F5</td>
+        </tr>
+        <tr class="success">
+            <td><mark>.success</mark></td>
+            <td>#DFF0D8</td>
+        </tr>
+        <tr class="info">
+            <td><mark>.info</mark></td>
+            <td>#D9EDF7</td>
+        </tr>
+        <tr class="warning">
+            <td><mark>.warning</mark></td>
+            <td>#FCF8E3</td>
+        </tr>
+        <tr class="danger">
+            <td><mark>.danger</mark></td>
+            <td>#F2DEDE</td>
+        </tr>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!<!DOCTYPE html>
+<html>
+<head>
+    <title>Формы. Простой пример.</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        form {
+       
+            width: 300px;
+            margin: 100px auto;
+            border: 1px solid grey;
+            padding: 20px;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Формы автоматически стилизируются средствами Bootstrap. Каждый элемент формы и его метку (тег <label>) принято помещать в див с классом "form-group" для создания нужных отступов между элементами.
+        Класс "form-control" нужно применять для <input>, <textarea> и <select>. Это позволит задать элементам ширину в 100% по умолчанию. -->
+        <!--ВАЖНО!!! Всегда используйте метки (тег <label>) чтобы не возникало проблем с отображением.-->
+
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" id="exampleInputFile">
+            <p class="help-block">Example block-level help text here.</p>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox">
+                Check me out
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+</body>
+</html>

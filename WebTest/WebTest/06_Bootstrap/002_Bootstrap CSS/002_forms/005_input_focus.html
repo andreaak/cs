@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Сфокусированные элементы</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        form {
+       
+            width: 300px;
+            margin: 100px auto;
+            border: 1px solid grey;
+            padding: 20px;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- В Bootstrap были заменены стандартные стили отображения некоторых элементов форм, в которых срабатывало событие "focus" --> 
+
+    <form>
+        <div class="form-group">
+            <label for="Login">Login</label>
+            <input type="text" class="form-control" id="Login" placeholder="Enter your login">
+        </div>
+    </form>
+
+</body>
+</html>

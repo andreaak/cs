@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html ng-app="studyModule">
+<!--Атрибуты которые могут использоватся для валидации в AngularJS:
+    ng-model
+    ng-change используется для определения выражения которое будет выполянтся когда контент элемента изменится
+    ng-minlength устанавливает минимальное колличество символов для того чтобы данные введенные в элемент считались валидными
+    ng-maxlength устанавливает максимальное колличество символов для того чтобы данные введенные в элемент считались валидными
+    ng-pattern устанавливает регулярное выражение, соответствуя которому данные будут считатся валидными
+    ng-required устанавливает обязательность введения данных для элемента-->
+<head>
+    <title>Form directive attributes</title>
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("studyModule", [])
+        .controller("studyCtrl", function ($scope) {
+            $scope.requireValue = true;
+            $scope.matchPattern = new RegExp("^[a-z]");
+        });
+    </script>
+</head>
+<body>
+    <div id="tasksPanel" class="panel" ng-controller="studyCtrl">
+        <form name="myForm" novalidate>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3>Validation info:</h3>
+                    <p>Required Error: {{myForm.sample.$error.required}}</p>
+                    <p>Min Length Error: {{myForm.sample.$error.minlength}}</p>
+                    <p>Max Length Error: {{myForm.sample.$error.maxlength}}</p>
+                    <p>Pattern Error: {{myForm.sample.$error.pattern}}</p>
+                    <p>Element Valid: {{myForm.sample.$valid}}</p>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <textarea name="sample" cols="40" rows="3" ng-model="textValue" ng-required="requireValue"
+                                   ng-minlength="3" ng-maxlength="10" ng-pattern="matchPattern"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

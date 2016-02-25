@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tooltips</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+    <script src="/06_Bootstrap/00_Bootstrap/js/jquery-1.11.1.min.js"></script>
+    <script src="/06_Bootstrap/00_Bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+
+        body {
+        
+            padding: 20px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Класс "data-toggle='tooltip'" - добавляет особую всплывающую подсказку к элементу -->
+
+    <!--
+        <div class="tooltip top" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner">
+                Some tooltip text!
+            </div>
+        </div>
+
+        Класс "tooltip-arrow" - возможность заменить цвет уголка
+        Класс "tooltip-inner" - возможность заменить цвет фона всей всплывающей подсказки
+
+    -->
+
+    <a id="link" href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
+
+    <!-- Активация tooltip -->
+    <!-- Подробности настройки всплывающих подсказок находятся в файле 003_tooltips_info.html -->
+
+    <script>
+        $('#link').tooltip({ placement: "right" });
+    </script>
+
+</body>
+</html>

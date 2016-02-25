@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Badges</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        .box {
+            margin: 180px auto;
+            width: 320px;
+            border: 1px solid grey;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="box">
+
+        <!--Класс "badge" делает подсветку числам-->
+
+        <a href="#">Inbox <span class="badge">42</span></a>
+
+        <br />
+        <br />
+
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active">
+                <a href="#">
+                    <span class="badge pull-right">42</span>
+                    Home
+                </a>
+            </li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#"><span class="badge pull-right">42</span>Messages
+            </a>
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+</html>

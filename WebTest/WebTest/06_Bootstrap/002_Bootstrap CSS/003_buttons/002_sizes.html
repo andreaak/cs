@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Размер кнопок</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        body {
+        
+            padding: 20px;
+        
+        }
+
+        .buttons {
+        
+            border: 1px solid red;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+        
+        }
+    </style>
+
+</head>
+<body>
+
+    <!--Размеры кнопок регулируются с помощью классов "btn-lg", "btn-sm" и "btn-xs"-->
+
+    <p>
+        <button type="button" class="btn btn-primary btn-lg">Large button</button>
+        <button type="button" class="btn btn-default btn-lg">Large button</button>
+    </p>
+    <p>
+        <button type="button" class="btn btn-primary">Default button</button>
+        <button type="button" class="btn btn-default">Default button</button>
+    </p>
+    <p>
+        <button type="button" class="btn btn-primary btn-sm">Small button</button>
+        <button type="button" class="btn btn-default btn-sm">Small button</button>
+    </p>
+    <p>
+        <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+        <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+    </p>
+
+    <!--Класс "btn-block" делает кнопки блочными элементами-->
+
+    <div class="buttons">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+        <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+    </div>
+
+</body>
+</html>

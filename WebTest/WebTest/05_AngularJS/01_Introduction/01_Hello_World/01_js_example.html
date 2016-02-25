@@ -1,0 +1,30 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>Hello World!</title>
+    <link href="../bootstrap.css" rel="stylesheet" />
+    <link href="../bootstrap-theme.css" rel="stylesheet" />
+    <script>
+        window.onload = function () {
+            var input = document.getElementById('input');
+            input.oninput = function () {
+                document.getElementById('output').innerText = "Hello!" + document.getElementById('input').value;
+            };
+        };
+    </script>
+    <style>
+
+        .box {
+            margin:50px;
+            width: 300px
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input id="input" type="text" class="form-control" placeholder="Type something here">
+        <h1 id="output" class="h1">Hello!</h1>
+    </div>
+</body>
+</html>

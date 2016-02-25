@@ -1,0 +1,30 @@
+﻿<!doctype html>
+<html ng-app>
+<!--ng-app обозначает корень AngularJS-приложения и обычно располагается в корне страницы.-->
+<head>
+    <title></title>
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="app.js"></script>
+    <style>
+
+        .box {
+            margin:50px;
+            width: 300px
+        }
+
+    </style>
+</head>
+<body>
+
+    <!--ng-controller - назначает поведение области видимости. Это ключевой аспект поддержки в Angular шаблона Модель-Вид-Контроллер.-->
+
+    <div class="box" ng-controller="countryCtrl">
+        <h1 class="h1">Страна: {{country.name}}</h1>
+        <p>Площадь: {{country.area}}</p>
+        <p>Население: {{country.population}}</p>
+        <p>Столица: {{country.capital.name}}</p>
+    </div>
+</body>
+</html>

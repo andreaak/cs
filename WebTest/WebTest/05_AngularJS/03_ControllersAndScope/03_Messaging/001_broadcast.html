@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="sampleApp">
+<head>
+    <title>$broadcast</title>
+    <!--
+        $rootScope–сервис, который предоставляет доступ к корневому scope.
+        Если у вас есть несколько контроллеров которые работают со своими view
+        и нужно чтобы эти контроллеры могли общаться между собой следует применять $rootScope .
+        Все scope организованы в иерархию которая начинается с $rootScope
+        и каждый scope является дочерним элементом $rootScope.
+        $rootScope также предоставляет функциональность для установки обработчиков на события
+        и создания события для организации общения между scope(позволяет распространять event между scope)
+
+        $broadcast(name, args) –передача события дочерним scope
+            name –имя события, args–дополнительный объект с данными
+        $emit(name, args) –передача события родительским scope
+            name –имя события, args–дополнительный объект с данными
+        $on(name, handler)–установка обработчика на событие
+            name –имя события, handler –функция обрабатывающая полученное событие
+
+        -->
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <script>
+        var app = angular.module("sampleApp", []);
+
+        app.controller("senderCtrl", function ($scope, $rootScope) {
+
+            $scope.send = function () {
+                // $broadcast - отправка события всем scope от rootScope
+                $rootScope.$broadcast("messageEvent", {
+                    message: $scope.messageInput
+                });
+            }
+
+        });
+
+        app.controller("receiverCtrl", function ($scope) {
+
+            // обработка события messageEvent на текущем scope
+            $scope.$on("messageEvent", function (event, args) {
+                $scope.info = args.message;
+            })
+
+        });
+
+    </script>
+</head>
+<body>
+    <div ng-controller="senderCtrl">
+        <p>Sender</p>
+        <input ng-model="messageInput" />
+        <button ng-click="send()">Send</button>
+    </div>
+
+    <div ng-controller="receiverCtrl">
+        <p>Receiver 1</p>
+        <p>Received message - {{info}}</p>
+    </div>
+
+    <div ng-controller="receiverCtrl">
+        <p>Receiver 2</p>
+        <p>Received message - {{info}}</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Links in alerts</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .box {
+            margin: 100px auto;
+            width: 500px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="box">
+
+        <!--Создание модального окна с ссылками-->
+
+        <div class="alert alert-success" role="alert">
+            Well done! You successfully read <a href="#" class="alert-link">this important alert message.</a>
+        </div>
+        <div class="alert alert-info" role="alert">
+            Heads up! This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+        </div>
+        <div class="alert alert-warning" role="alert">
+            Warning! Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
+        </div>
+        <div class="alert alert-danger" role="alert">
+            Oh snap! <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+        </div>
+
+    </div>
+
+</body>
+</html>

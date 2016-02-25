@@ -1,0 +1,47 @@
+﻿<!<!DOCTYPE html>
+<html>
+<head>
+    <title>Встроенная форма</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        body {
+        
+            padding: 20px;
+        
+        }
+
+        .form-inline {
+        
+            margin-top: 30px;
+            padding: 10px;
+            border: 1px solid black;
+        
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!--Для того, чтобы форма была встроенной (все элементы обтекаемы по левому краю), нужно добавить к ней класс "form-inline". Это сработает только для области просмотра не меньшей 768px.-->
+    <!-- Теги <input>, <textarea> и <select> по умолчанию занимают 100% ширины. Используя встроенные формы Вам нужно будет самостоятельно задавать ширину каждого этого элемента (при уменьшении размера окна браузера). -->
+
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="exampleInputEmail">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Sign in</button>
+    </form>
+
+</body>
+</html>

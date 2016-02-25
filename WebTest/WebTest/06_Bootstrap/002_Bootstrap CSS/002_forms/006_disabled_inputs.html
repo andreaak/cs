@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Неактивные элементы</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        form {
+       
+            width: 300px;
+            margin: 50px auto;
+            border: 1px solid grey;
+            padding: 20px;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!--Атрибут "disabled"-->
+
+    <form>
+        <div class="form-group">
+            <label for="Login">Login</label>
+            <input type="text" class="form-control" id="Login" placeholder="Enter your login" disabled>
+        </div>
+    </form>
+
+    <br />
+
+    <!--Атрибут "disabled" для тега <fieldset>-->
+
+    <form>
+        <fieldset disabled>
+            <legend>Область формы</legend>
+            <div class="form-group">
+                <label for="disabledTextInput">Disabled input</label>
+                <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+            </div>
+            <div class="form-group">
+                <label for="disabledSelect">Disabled select menu</label>
+                <select id="disabledSelect" class="form-control">
+                    <option>Disabled select</option>
+                </select>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">
+                    Can't check this
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+
+</body>
+</html>

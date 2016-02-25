@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Поля с кнопками</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        .box {
+            margin: 200px auto;
+            width: 300px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- "input-group-btn" - контейнер для хранения кнопки -->
+
+    <div class="box">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+            <input type="text" class="form-control">
+        </div>
+        <br />
+        <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div>
+    </div>
+
+</body>
+</html>

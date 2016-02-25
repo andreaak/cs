@@ -1,0 +1,27 @@
+﻿<!doctype html>
+<html ng-app>
+<!--ng-app обозначает корень AngularJS-приложения и обычно располагается в корне страницы.-->
+<head>
+    <title>Hello World!</title>
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <style>
+
+        .box {
+            margin:50px;
+            width: 300px
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" class="form-control" ng-model="name" placeholder="Type something">
+        <!--ng-model связывает форму с моделью. Это значит, что любые изменения в форме обновят данные модели,
+        а при изменении модели - обновится форма (в нашем случае поле ввода).-->
+        <h1 class="h1">Hello {{name}}!</h1>
+        <!--Конструкция <tag>{{ }}</tag> указывает на место связывания данных в HTML. AngularJS будет автоматически обновлять это место при любом изменении свойства name в модели.-->
+    </div>
+</body>
+</html>

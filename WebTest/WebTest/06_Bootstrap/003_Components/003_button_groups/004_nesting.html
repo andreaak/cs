@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Вертикальная группа кнопок с выпадающим списком</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+    <script src="/06_Bootstrap/00_Bootstrap/js/jquery-1.11.1.min.js"></script>    <!--Подключение библиотеки jQuery-->
+    <script src="/06_Bootstrap/00_Bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+
+        .btn-group-vertical {
+            margin: 250px auto;
+            display: block;
+            width: 100px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Класс "btn-group-vertical" выравнивает группу кнопок по вертикали  -->
+
+    <div class="btn-group-vertical">
+        <button type="button" class="btn btn-default">1</button>
+        <button type="button" class="btn btn-default">2</button>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                Dropdown
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Dropdown link</a></li>
+                <li><a href="#">Dropdown link</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabs</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+    <script src="/06_Bootstrap/00_Bootstrap/js/jquery-1.11.1.min.js"></script>
+    <script src="/06_Bootstrap/00_Bootstrap/js/bootstrap.min.js"></script>
+
+    <style>
+
+        .container {
+            
+            margin-top: 40px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Контейнер с закладками -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+            <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+            <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+            <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+        </ul>
+
+        <!-- Контейнер с панелями -->
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="home">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pulvinar sapien vel libero mollis varius. Sed quis elit leo. Maecenas libero sem, pellentesque ut mauris sagittis, tempus sodales lectus. Proin ornare dictum sagittis. Aliquam erat volutpat. Mauris varius sollicitudin diam, et vehicula urna lobortis sed. Quisque non ante mauris. Nunc consequat laoreet posuere.</p>
+            </div>
+            <div class="tab-pane fade" id="profile">
+                <p>Ut vehicula mauris suscipit feugiat cursus. Pellentesque lobortis mollis metus sit amet condimentum. Nunc egestas, justo non pretium sollicitudin, leo sem porttitor velit, tincidunt feugiat elit nisi vitae augue. Pellentesque lobortis et lacus eu tempus. Nulla aliquam scelerisque risus a aliquet. Duis sit amet lectus molestie massa scelerisque consectetur vel nec leo. Aliquam urna purus, aliquet dapibus aliquam nec, mollis in sem. In eleifend convallis lorem, non imperdiet dui pretium ac. Duis interdum pharetra augue, ut vehicula quam imperdiet eu.</p>
+            </div>
+            <div class="tab-pane fade" id="messages">
+                <p>Suspendisse suscipit mollis massa, eget accumsan massa suscipit at. Donec at nisl interdum, posuere quam a, hendrerit risus. Mauris maximus nunc eu congue condimentum. Suspendisse lacus nisl, facilisis ut vehicula efficitur, scelerisque et nulla. Mauris molestie mauris turpis, interdum sollicitudin dolor varius non. Integer facilisis egestas velit, vitae mollis nisl molestie vitae. Pellentesque viverra justo faucibus ante faucibus, id tempor neque condimentum. In aliquet ex et auctor tristique. Morbi nec egestas urna. Sed lacinia nunc est, eget sodales magna tincidunt vel. Ut justo dui, vehicula at ligula at, luctus semper purus.</p>
+            </div>
+            <div class="tab-pane fade" id="settings">
+                <p>Vivamus eget sodales urna. Ut sed sem lorem. Quisque in egestas sapien, eget aliquam libero. Aliquam sollicitudin vehicula nibh at mollis. In hac habitasse platea dictumst. Donec tellus odio, faucibus sed molestie et, luctus nec ante. Maecenas non malesuada ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

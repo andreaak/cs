@@ -1,0 +1,25 @@
+﻿<!doctype html>
+<html ng-app="customModule">
+<!--ng-app активирует модуль customModule для этой части страницы. -->
+<head>
+    <title></title>
+    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="app.js"></script>
+    <style>
+        .box {
+            margin: 50px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" ng-controller="petCtrl">
+        <div ng-repeat="pet in pets">
+            <h1 class="h1">Имя: {{pet.name}}</h1>
+            <p>Животное: {{pet.animal}}</p>
+        </div>
+    </div>
+</body>
+</html>

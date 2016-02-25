@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Подсказка</title>
+
+    <!--Подключение необходимых файлов-->
+
+    <link href="/06_Bootstrap/00_Bootstrap/styles/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+
+        form {
+       
+            width: 300px;
+            margin: 100px auto;
+            border: 1px solid grey;
+            padding: 20px;
+            
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!--
+        Для создания подсказки к элементу формы нужно:
+        1) разместить тек <span> с текстом подсказки под нужным элементом;
+        2) добавить класс "help-block"
+    -->
+
+    <form>
+        <div class="form-group">
+            <label for="Login">Login</label>
+            <input class="form-control" id="Login" type="text">
+            <span class="help-block">Enter your login</span>
+        </div>
+    </form>
+
+</body>
+</html>
