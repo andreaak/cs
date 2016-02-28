@@ -1,65 +1,65 @@
 ﻿<!--
-    Мультиклассы 
-    Если необходимо создать стиль для элемента, который привязан к нескольким селекторам, 
+    Мультиклассы
+    Если необходимо создать стиль для элемента, который привязан к нескольким селекторам,
     то необходимо использовать следующую конструкцию.
-    селектор.селектор 
+    селектор.селектор
     {
     }
     Все селекторы, которым обязан соответствовать элемент, перечисляются без пробелов по очереди.
 -->
 
 <html>
-    <head>
-        <title>Тег Table</title>
-        <style type="text/css">
-        
-            .class1
-            {
-                color:Green;
-                font-size:32px;
-                background-color:Black;
-            }
+<head>
+    <title>Тег Table</title>
+    <style type="text/css">
+        .class1 {
+            color: Green;
+            font-size: 20px;
+            background-color: Black;
+        }
 
-            p.class2
-            {
-                color:Red;
-                font-size: 50px;
-            }
-        
-            .class1.class3
-            {
-                 color:Blue;
-                 background-color:red;
-            }
-        
-            p
-            {
-                font-weight:bold;
-            }
+        p.class2 {
+            color: Red;
+            font-size: 50px;
+        }
 
-            .class4
-            {
-                color:#b6ff00;
-            }
+        .class3 {
+            color: blueviolet;
+            font-size: 40px;
+            background-color: aqua;
+        }
 
-            .class5
-            {
-                background-color:brown;
-            }
+        .class1.class3 {
+            color: Blue;
+            background-color: red;
+        }
 
-        </style>
-    </head>
-    <body>
-        <p class="class1">Содержимое простого параграфа с установленным классом class1</p>
-            
-        <span class="class1">Простой строковой элемент class1</span><br />
-            
-        <p class="class1">Содержимое простого параграфа с установленным классом class2</p>
-            
-        <span class="class2">Простой строковой элемент class2</span><br />
-            
-        <p class="class1 class3">Содержимое простого параграфа с установленным классом class1 class3</p>
+        p {
+            font-weight: bold;
+        }
 
-        <span class="class4 class5">Простой строковой элемент class4 class5</span><br />
-    </body>
+        .class4 {
+            color: #b6ff00;
+        }
+
+        .class5 {
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <p class="class1">Содержимое простого параграфа с установленным классом class1</p>
+
+    <span class="class1">Простой строковой элемент class1</span><br />
+
+    <p class="class1">Содержимое простого параграфа с установленным классом class2</p>
+
+    <span class="class2">Простой строковой элемент class2</span><br />
+
+    <p class="class3">Содержимое простого параграфа с установленным классом class3</p>
+
+    <p class="class1 class3">Содержимое простого параграфа с установленным классом class1 class3</p>
+
+    <span class="class4 class5">Простой строковой элемент class4 class5</span><br />
+</body>
 </html>
