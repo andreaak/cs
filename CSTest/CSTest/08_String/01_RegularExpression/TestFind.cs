@@ -142,6 +142,165 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
+        [TestMethod]
+        public void TestRegExpIsMatch2()
+        {
+            //string pattern = @"^[\w\s]*$";
+            string pattern = @"^[\P{Cc}\s]*$";
+            Regex regex = new Regex(pattern);
+            
+            string text = "\u0000";
+            bool isMatch = regex.IsMatch(text);
+            Assert.IsFalse(isMatch);
+
+            text = "\u0000" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsFalse(isMatch);
+            
+            text = 5 + "\u0000";
+            isMatch = regex.IsMatch(text);
+            Assert.IsFalse(isMatch);
+           
+            text = 5 + "\u0000" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsFalse(isMatch);
+            
+            text = "\u0005";
+            isMatch = regex.IsMatch(text);
+            Assert.IsFalse(isMatch);
+            
+            text = "\u0005" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsFalse(isMatch);
+            
+            text = 5 + "\u0005";
+            isMatch = regex.IsMatch(text);
+            Assert.IsFalse(isMatch);
+           
+            text = 5 + "\u0005" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsFalse(isMatch);
+            
+            text = "\n";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = "\n" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = 5 + "\n";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = 5 + "\n" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = "\t";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = "\t" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = 5 + "\t";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = 5 + "\t" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = "";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = " ";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = " " + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + " ";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + " " + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = "Z";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = "Z" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + "Z";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + "Z" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = "!";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+            
+            text = "!" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + "!";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + "!" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = "ê";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = "ê" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + "ê";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + "sêh" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = "{";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = "{" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + "{";
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            text = 5 + "}" + 5;
+            isMatch = regex.IsMatch(text);
+            Assert.IsTrue(isMatch);
+
+            /*
+            */
+        }
+
         private static void WriteMatches(string text, MatchCollection matches)
         {
             Debug.WriteLine("Original text was: \n\n" + text + "\n");

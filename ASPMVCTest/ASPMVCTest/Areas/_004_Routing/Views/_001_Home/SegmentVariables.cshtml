@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SegmentVariables</title>
+</head>
+<body>
+    <div>
+        @* @ViewBag.Variable вывод значение свойства из динамической коллекции*@
+        <h2>Variable: @ViewBag.Message</h2>
+
+        <a href="@Url.RouteUrl("_004_Routing_default", new { action = "SegmentVariables1", controller = "_001_Home", x = "123", y = "456"})">/SegmentVariables1/123/456</a><br />
+        <a href="@Url.RouteUrl("_004_Routing_default", new { action = "SegmentVariables2", controller = "_001_Home", x = "789", y = "BBB"})">/SegmentVariables2/789/BBB</a><br />
+
+        <a href="~/_004_Routing/_001_Home/SegmentVariables1">/_001_Home/SegmentVariables1</a><br />
+        <a href="~/_004_Routing/_001_Home/SegmentVariables1/123">/_001_Home/SegmentVariables1/123</a><br />
+        <a href="~/_004_Routing/_001_Home/SegmentVariables1/123/456">/_001_Home/SegmentVariables1/123/456</a><br />
+
+        <a href="~/_004_Routing/_001_Home/SegmentVariables2">/_001_Home/SegmentVariables2</a><br />
+        <a href="~/_004_Routing/_001_Home/SegmentVariables2/123">/_001_Home/SegmentVariables2/123</a><br />
+        <a href="~/_004_Routing/_001_Home/SegmentVariables2/123/BBB">/_001_Home/SegmentVariables2/123/BBB</a><br />
+
+
+    </div>
+</body>
+</html>

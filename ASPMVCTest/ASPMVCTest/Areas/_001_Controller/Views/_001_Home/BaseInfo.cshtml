@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BaseInfo</title>
+</head>
+<body>
+    <div>
+        <hi>BaseInfo View</hi>
+        <p>
+            Для запуска метода контроллера следует сделать запрос по адресу <b>'http://localhost:port/ControllerName/ActionName'</b>  или <b>'http://localhost:port/ControllerName/'</b>
+        </p>
+        <p>
+            Также данный метод может быть запущен при выполнении запроса <b>'http://localhost:port/'</b>, если путь <b>/ControllerName/ActionName</b> настроен как путь по умолчанию в файле /App_Start/RouteConfig.cs
+        </p>
+
+        @using (Html.BeginForm("BaseInfo/1", "_001_Home", FormMethod.Post))
+        { 
+           <input type="submit" value= "Submit"/> 
+        }
+        <p>Variable id = @ViewBag.Message </p>
+
+    </div>
+</body>
+</html>

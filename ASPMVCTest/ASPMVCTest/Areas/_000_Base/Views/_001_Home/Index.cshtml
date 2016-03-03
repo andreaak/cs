@@ -1,0 +1,404 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MVC Basic Info</title>
+    <style type="text/css">
+        .cs78569A20
+        {
+            text-align: justify;
+            text-indent: 14pt;
+            margin: 0pt 0pt 0pt 4pt;
+            width: 80%;
+        }
+
+        .cs566403DE
+        {
+            color: #000000;
+            background-color: transparent;
+            font-family: Times New Roman;
+            font-size: 12pt;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .cs2654AE3A
+        {
+            text-align: left;
+            text-indent: 0pt;
+            margin: 0pt 0pt 0pt 0pt;
+        }
+
+        .csA1E23476
+        {
+            color: #000000;
+            background-color: transparent;
+            font-family: Times New Roman;
+            font-size: 12pt;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .csDD6E1DC5
+        {
+            text-align: justify;
+            margin: 0pt 0pt 0pt 0pt;
+            list-style-type: disc;
+            color: #000000;
+            background-color: transparent;
+            font-family: Arial;
+            font-size: 12pt;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .cs37063928
+        {
+            text-align: left;
+            margin: 0pt 0pt 0pt 0pt;
+            list-style-type: disc;
+            color: #000000;
+            background-color: transparent;
+            font-family: Arial;
+            font-size: 12pt;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        ol>li
+        {
+            text-align: left;
+            margin: 0pt 0pt 0pt 0pt;
+            list-style-type: decimal;
+            color: #000000;
+            background-color: transparent;
+            font-family: Times New Roman;
+            font-size: 12pt;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        ul>li
+        {
+            text-align: left;
+            margin: 0pt 0pt 0pt 0pt;
+            color: #000000;
+            background-color: transparent;
+            font-family: Times New Roman;
+            font-size: 12pt;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .cs990D08B1
+        {
+            text-align: justify;
+            margin: 0pt 0pt 0pt 0pt;
+            list-style-type: decimal;
+            color: #000000;
+            background-color: transparent;
+            font-family: Times New Roman;
+            font-size: 12pt;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .csDEEE268F
+        {
+            color: #000000;
+            background-color: transparent;
+            font-family: Times New Roman;
+            font-size: 12pt;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .csB750BCE3
+        {
+            text-align: left;
+            text-indent: 0pt;
+            margin: 0pt 0pt 0pt 14pt;
+        }
+
+        .cs6997DC15
+        {
+            text-align: left;
+            text-indent: 0pt;
+            margin: 0pt 0pt 0pt 29pt;
+        }
+    </style>
+</head>
+<body>
+    <span>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">ASP.NET
+            MVC &ndash;платформа для разработки веб-приложений созданная корпорацией Microsoft,
+                включающая в себе эффективность архитектуры &laquo; модель - представление - контроллер
+                &raquo;</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span>
+                <img src="~/Content/Images/ASPPlatform.png" width="431" height="293" alt="" style="border-width: 0px;" /></span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Model-View-Controller
+            - (MVC, &laquo;Модель-представление-контроллер&raquo;) - шаблон проектирования,
+            с помощью которого модель данных приложения, пользовательский интерфейс и взаимодействие
+                с пользователем разделены на три отдельных компонента так, что модификация одного
+                из компонентов оказывает минимальное воздействие на остальные. Данная схема проектирования
+                часто используется для построения архитектурного </span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span>
+                <img src="~/Content/Images/MVCInteraction.png" width="385" height="347" alt="" style="border-width: 0px;" /></span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="csA1E23476">Модель(model)</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Содержит
+            или представляет данные и бизнес правила.</span>
+        </p>
+        <ul start="1" style="margin-top: 0; margin-bottom: 0;">
+            <li class="csDD6E1DC5"><span class="cs566403DE">Модель представлений &ndash;объекты
+                представляющие данные, которые передаются между представлением и контроллером.</span>
+            </li>
+            <li class="csDD6E1DC5"><span class="cs566403DE">Модель предметной области -объекты представляющие
+                данные, а также операции, преобразования и правила манипуляции данными.</span>
+            </li>
+        </ul>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="csA1E23476">Представление
+            (view)</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Отвечает
+            за визуализацию некоторой части модели в виде пользовательского интерфейса. В MVC
+            приложении представлено *.cshtml файлами</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="csA1E23476">Контроллер
+            (controller)</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Обработка
+            поступающих запросов, выполнение операции с моделью и выбор представления для визуализации
+                интерфейса.</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span>
+                <img src="~/Content/Images/MVCRequestLifeCycle.jpg" width="538" height="324" alt=""
+                    style="border-width: 0px;" /></span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="csA1E23476">Преимущества
+            WebForms:</span>
+        </p>
+        <ul start="1" style="margin-top: 0; margin-bottom: 0;">
+            <li class="cs37063928"><span class="cs566403DE">Большое количество серверных элементов
+                управления</span></li>
+            <li class="cs37063928"><span class="cs566403DE">Хранения состояния между обращениями
+                на сервер</span></li>
+            <li class="cs37063928"><span class="cs566403DE">События элементов управления</span>
+            </li>
+            <li class="cs37063928"><span class="cs566403DE">Поддержка графической и декларативной
+                разработки</span></li>
+        </ul>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="csA1E23476">Недостатки
+            WebForms:</span>
+        </p>
+        <ul start="1" style="margin-top: 0; margin-bottom: 0;">
+            <li class="cs37063928"><span class="cs566403DE">Ресурсоемкость ViewState</span></li>
+            <li class="cs37063928"><span class="cs566403DE">Сложный жизненный цикл страницы</span>
+            </li>
+            <li class="cs37063928"><span class="cs566403DE">Ограниченность контроля над HTML разметкой</span>
+            </li>
+            <li class="cs37063928"><span class="cs566403DE">Нарушенная абстракция. (скрытый HTTP
+                и HTML)</span></li>
+            <li class="cs37063928"><span class="cs566403DE">Низкая тестируемость</span></li>
+        </ul>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="csA1E23476">Преимущества
+            MVC</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <ol start="1" style="margin-top: 0; margin-bottom: 0;">
+            <li><span class="cs566403DE">Расширяемость</span>
+                <div>
+                    <span class="cs566403DE">Для каждого компонента MVC Framework
+                    разработчику представляют три возможности:</span>
+                    <ul style="margin-top: 0; margin-bottom: 0;">
+                        <li><span class="cs566403DE">Использование стандартного компонента</span>
+                        </li>
+                        <li><span class="cs566403DE">Порождение подкласса от стандартной
+                            реализации</span></li>
+                        <li><span class="cs566403DE">Полная замена компонента новой реализацией
+                            интерфейса</span></li>
+                    </ul>
+                </div>
+            </li>
+            <li><span class="cs566403DE">Жесткий контроль над HTML и HTTP</span>
+                <div class="cs566403DE">
+                    <ul style="margin-top: 0; margin-bottom: 0;">
+                        <li><span class="cs566403DE">Генерация разметки которая соответствует
+                            стандартам</span></li>
+                        <li><span class="cs566403DE">Отсутствие ViewState</span></li>
+                        <li><span class="cs566403DE">Полный контроль над запросами</span>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li><span class="cs566403DE">Тестируемость</span>
+                <div class="cs566403DE">
+                    Разнесение различных задач приложения
+                    по разным, независимым друг от друга частям программного обеспечения, позволяет
+                    строить легко тестируемые приложения.
+                </div>
+            </li>
+            <li><span class="cs566403DE">Мощная система маршрутизации</span>
+                <div class="cs566403DE">
+                    /products/Page.aspx?prod_id=19833&amp;category=services&amp;lang=ru
+                    --&gt; /ru/products/services/19833
+                </div>
+            </li>
+        </ol>
+        &nbsp;
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Структура
+            проекта:</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="csDEEE268F">App_Data</span><span
+                class="cs566403DE"> директория для баз данных и других источников данных (доступ
+                открыт только приложению).В этот каталог помещаются приватные данные такие как XML
+                документы или базы данных. Веб-сервер IIS не будет обслуживать содержимое этой директории.</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="csDEEE268F">Content
+            </span><span class="cs566403DE">&ndash; директория для статического контента &ndash;картинок,
+                стилей и т.д. Это не обязательное соглашения. Хранить статический контент можно
+                в любой другой директории. </span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="csDEEE268F">Controllers
+            </span><span class="cs566403DE">&ndash; директория для контроллеров приложения.</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="csDEEE268F">Models
+            </span><span class="cs566403DE">&ndash; директория для моделей приложения</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="csDEEE268F">Scripts</span><span
+                class="cs566403DE"> &ndash; Каталог для хранения JavaScript файлов. По умолчанию
+                Visual Studio добавляет файлы JQuery и Microsoft AJAX. </span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="csDEEE268F">Views</span><span
+                class="cs566403DE"> &ndash; В этом каталоге хранятся представления или частичные
+                представления, обычно сгруппированные вместе в папках с именем контроллера, с которым
+                они связаны. </span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="csDEEE268F">/Views/Shared</span><span
+                class="cs566403DE"> - В этом каталоге находятся представления являющиеся не специфичными
+                для какого-либо контроллера.</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="csDEEE268F">Global.asax</span><span
+                class="cs566403DE"> &ndash; Глобальный класс приложения. В данном файле находится
+                код конфигурирующий приложение, а также любой код который должен выполнятся при
+                старте или остановке приложения. &nbsp;</span>
+        </p>
+        <p class="cs78569A20" style="tab-stops: left 14.4pt;">
+            <span class="csDEEE268F">RouteConfig.cs</span><span
+                class="cs566403DE"> &ndash; настройка маршрутизации в приложении.</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="csA1E23476">Соглашения
+            первого вида</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Предположения
+            о том, как должна выглядеть структура проекта.</span>
+        </p>
+        <p class="csB750BCE3" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Например:</span>
+        </p>
+        <p class="cs6997DC15" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">В папке
+            Script должны находится JavaScript сценарии</span>
+        </p>
+        <p class="cs6997DC15" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">В папке
+            Content изображения, CSS файлы и т.д.</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">&nbsp;</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="csA1E23476">Соглашения
+            второго вида</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Классы
+            контроллера должны иметь имена, заканчивающиеся словом Controller.</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Например,
+            ProductController, AdminController, HomeController</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Представления
+            должны располагаться в папке /Views/Имя_контроллера</span>
+        </p>
+        <p class="cs2654AE3A" style="tab-stops: left 14.4pt;">
+            <span class="cs566403DE">Например,
+            представления для ProductControllerдолжны находится &nbsp;в каталоге /Views/Product</span>
+        </p>
+    </span>
+</body>
+</html>
