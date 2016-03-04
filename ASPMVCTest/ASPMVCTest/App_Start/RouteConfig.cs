@@ -11,29 +11,16 @@ namespace _01_ASPMVCTest
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            // Не маршрутизировать любые запросы направленные к файлам с расширением axd и любой строкой параметров.
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // В данном проекте включена трассировка. Для того что бы получить информацию трассировки необходимо выполнить запрос
+            // к виртуальному файлу trace.axd который находиться в корне приложения.
+            // trace.axd - является точкой входа, зарегистрированной для HTTP обработчика.
+            // Для включения трассировки используется элемент <trace enabled="true" /> в файле web.config
 
-           /* routes.MapRoute(
-                name: "001_Controllers", // Route name
-                url: "001_Controllers/{controller}/{action}/{id}",
-                defaults: new
-                {
-                    controller = "_001_Controllers/_001_TestController",
-                    action = "Index"
-                },
-                namespaces: new[] { "_01_ASPMVCTest.Controllers._001_Controllers" });*/
-            
-            //routes.MapRoute(
-            //    name: "PublicRoute",
-            //    url: "public/{controller}/{action}",
-            //    defaults: new
-            //    {
-            //        controller = "_000_Index",
-            //        action = "Index"
-            //    }
-            //);
-
+            // Регистрация маршрута с именем Default. Который будет соответствовать URL состоящему из трех сегментов.
+            // Например, запрос к ресурсу Home/Index/10 будет обработан данным приложением.
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

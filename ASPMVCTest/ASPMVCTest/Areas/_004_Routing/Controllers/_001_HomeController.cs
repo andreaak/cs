@@ -36,18 +36,36 @@ namespace _01_ASPMVCTest.Areas._004_Routing.Controllers
             // RouteData.Values - коллекция значений сегментов, доступных в момент обработки текущего запроса
             // ViewBag - динамический словарь, который позволяет передавать данные в представление
             ViewBag.Title = "SegmentVariables1";
-            ViewBag.Message = string.Format("X = {0} Y = {1}", RouteData.Values["x"], RouteData.Values["y"]);
+            if (RouteData.Values["id"] != null)
+            {
+                ViewBag.Message = string.Format("ID = {0}", RouteData.Values["id"]);
+            }
+            else
+            {
+                ViewBag.Message = string.Format("X = {0} Y = {1}", RouteData.Values["x"], RouteData.Values["y"]);
+            }
             return View("SegmentVariables");
         }
 
-        // MVC Framework будет пытаться преобразовать значение, полученное из запроса, в тип указанный в параметрах.
-        // Значения сегментов с именами x и y автоматически будут присвоены параметрам метода SegmentVariables2 с теми же именами.
-        // В случае, если значения, которые были получены из сегментов, не могут быть приведены к типу int, параметрам будет присвоено значение null, так как тип параметров int?,
-        // в случае использования типа int произойдёт ошибка этапа выполнения.
-        public ActionResult SegmentVariables2(int? x, int? y)
+        /*
+        MVC Framework будет пытаться преобразовать значение, полученное из запроса, в тип указанный в параметрах.
+        Значения сегментов с именами x и y автоматически будут присвоены параметрам метода SegmentVariables2 с теми же именами.
+        В случае, если значения, которые были получены из сегментов, не могут быть приведены к типу int, 
+        параметрам будет присвоено значение null, так как тип параметров int?,
+        в случае использования типа int произойдёт ошибка этапа выполнения.
+        */
+        public ActionResult SegmentVariables2(int? x, int? y, int? id)
         {
             ViewBag.Title = "SegmentVariables2";
-            ViewBag.Message = string.Format("X = {0} Y = {1}", x, y);
+            if (id.HasValue)
+            {
+                ViewBag.Message = string.Format("ID = {0}", id);
+            }
+            else
+            {
+                ViewBag.Message = string.Format("X = {0} Y = {1}", x, y);
+            }
+            
             return View("SegmentVariables");
         }
 
@@ -61,11 +79,14 @@ namespace _01_ASPMVCTest.Areas._004_Routing.Controllers
 
         public ActionResult CatchAllSegments()
         {
+            ViewBag.Id = RouteData.Values["Id"];
+            ViewBag.All = RouteData.Values["catchall"];
             return View();
         }
         
         public ActionResult SegmentsRestrictions()
         {
+            ViewBag.Title = "SegmentsRestrictions";
             return View();
         }
 
@@ -76,6 +97,17 @@ namespace _01_ASPMVCTest.Areas._004_Routing.Controllers
         
         public ActionResult GenerateLink()
         {
+            return View();
+        }
+
+        public ActionResult Customer()
+        {
+            return View();
+        }
+
+        public ActionResult CreateCustomer(string id)
+        {
+            ViewBag.Id = id;
             return View();
         }
 

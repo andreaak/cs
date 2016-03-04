@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GenerateLink</title>
+</head>
+<body>
+    <div>
+        <h2>Представление Index контроллера Home</h2>
+
+        @*Генерация ссылки на действие в другом контроллере.
+        Результат работы метода ActionLink зависит от текущей схемы маршрутизации
+        результат: <a href="/_001_Home/Customer">Работа с клиентами</a>*@
+        
+        @Html.ActionLink("ActionLink Работа с клиентами", "Customer", "_001_Home")
+
+        <br />
+
+        @Html.RouteLink("RouteLink Работа с клиентами", new { controller = "_001_Home", action = "Customer" })
+
+        <br />
+
+        @*Передача дополнительных параметров действию*@
+        @Html.ActionLink("ActionLink Создать запись о клиенте", "CreateCustomer", "_001_Home", new { id = "Ivanov-Ivan" }, null)
+
+        <br />
+
+        @*Добавление HTML атрибутов*@
+        @Html.ActionLink("ActionLink Создать запись о клиенте", "CreateCustomer", "_001_Home", new { id = "Ivanov-Ivan" }, new { style = "font-size:25px;" })
+        <br />
+
+        @*Генерация URL без окружающей HTML разметки*@
+        Генерация URL без окружающей HTML разметки
+        <br />
+        Адрес действия "Создать запись о клиенте" - @Url.Action("CreateCusomer", "_001_Home", new { id = "customer-name" })
+
+    </div>
+</body>
+</html>

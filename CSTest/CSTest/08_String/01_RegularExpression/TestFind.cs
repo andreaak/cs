@@ -146,7 +146,8 @@ namespace CSTest._08_String._01_RegularExpression
         public void TestRegExpIsMatch2()
         {
             //string pattern = @"^[\w\s]*$";
-            string pattern = @"^[\P{Cc}\s]*$";
+            //string pattern = @"^[\P{Cc}\s]*$";
+            string pattern = @"^(\P{Cc}|\s){0,78}$";
             Regex regex = new Regex(pattern);
             
             string text = "\u0000";
@@ -161,7 +162,7 @@ namespace CSTest._08_String._01_RegularExpression
             isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
            
-            text = 5 + "\u0000" + 5;
+            text = 5 + "\u0005" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
             

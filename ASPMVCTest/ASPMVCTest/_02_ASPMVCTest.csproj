@@ -227,6 +227,13 @@
     <Content Include="Areas\_004_Routing\Views\_001_Home\Common.cshtml" />
     <Content Include="Areas\_004_Routing\Views\_001_Home\SegmentVariables.cshtml" />
     <Content Include="Areas\_004_Routing\Views\_001_Home\OptionalSegments.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_001_Home\CatchAllSegments.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_001_Home\SegmentsRestrictions.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_001_Home\IgnoreRote.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_001_Home\GenerateLink.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_001_Home\Customer.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_001_Home\CreateCustomer.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_001_Home\GenerateUrl.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
