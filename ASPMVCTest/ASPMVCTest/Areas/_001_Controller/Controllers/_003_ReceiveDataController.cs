@@ -21,13 +21,17 @@ namespace _01_ASPMVCTest.Areas._001_Controller.Controllers
 
         public ActionResult GetDataFromContextObjects()
         {
-            // Свойства контроллера для доступа к информации о запросе.
-            // Request - данные о текущем HTTP запросе.
-            // Response - данные о текущем HTTP ответе.
-            // RouteData - данные маршрутизации для текущего запроса.
-            // HttpContext - получение специфической информации о текущем HTTP запросе.
-            // Server - объект с методами для обработки HTTP запроса.
-
+            /*
+            Свойства контроллера для доступа к информации о запросе.
+            •Request–данные связанные с текущим запросом (QueryString, Form, Cookies …)
+                · Request.Form – чтение данных полученных через POST запрос, например, данные передаваемые через html форму. 
+                · Reuqest.QueryString – чтение данных, которые были переданы через адресную строку после знака ? 
+                · Request.Cookies – чтение данных переданных на сервер с помощью cookies 
+            •RouteData–данные связанные с маршрутизацией
+                · RouteData.Values – получение значений сегментов текущего запроса. 
+            •HttpContext–все данные связанные с обработкой текущего запроса
+            •User–Аутентификационнаяинформация о пользователе.
+            */
             string userName = User.Identity.Name;
             string machineName = Server.MachineName;
             string clientIp = Request.UserHostAddress;

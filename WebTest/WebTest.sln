@@ -24,7 +24,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebTest", "http://localhost
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AJAX_Basics_JavaScript", "WebTest\04_jQuery\09 Ajax in jQuery\AJAX_Basics_JavaScript\AJAX_Basics_JavaScript.csproj", "{C3794F90-BAC2-4B6F-B307-F9F8D329A938}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AJAX_Basics_JavaScript", "09 Ajax in jQuery\AJAX_Basics_JavaScript\AJAX_Basics_JavaScript.csproj", "{C3794F90-BAC2-4B6F-B307-F9F8D329A938}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_01_ASPWebFormsTest", "..\ASPWebFormsTest\ASPWebFormsTest\_01_ASPWebFormsTest.csproj", "{99677612-619D-4DC8-AB44-D269854900C6}"
 EndProject

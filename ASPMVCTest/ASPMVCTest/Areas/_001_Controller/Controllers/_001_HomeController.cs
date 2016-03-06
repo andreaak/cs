@@ -13,10 +13,14 @@ namespace _01_ASPMVCTest.Areas._001_Controller.Controllers
         //
         // GET: /_001_Controller/_001_Home/
 
-        // Для запуска данного метода следует сделать запрос по адресу 
-        // 'http://localhost:port/_001_Controller/_001_HomeController/Index' или 'http://localhost:port/_001_Controller/_001_HomeController/'
-        // Также данный метод может быть запущен при выполнении запроса 'http://localhost:port/_001_Controller', если путь /_001_Controller/_001_HomeController/Index
-        // настроен как путь по умолчанию в файле /App_Start/RouteConfig.cs
+        /*
+        Для запуска данного метода следует сделать запрос по адресу 
+        'http://localhost:port/_001_Controller/_001_HomeController/Index' 
+        или 'http://localhost:port/_001_Controller/_001_HomeController/'
+        Также данный метод может быть запущен при выполнении запроса 'http://localhost:port/_001_Controller', 
+        если путь /_001_Controller/_001_HomeController/Index
+        настроен как путь по умолчанию в файле /App_Start/RouteConfig.cs
+        */
         public ActionResult Index()
         {
             return View();

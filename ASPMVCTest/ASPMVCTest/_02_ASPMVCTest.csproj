@@ -136,6 +136,8 @@
     <Compile Include="Areas\_001_Controller\Controllers\_002_LowLevelController.cs" />
     <Compile Include="Areas\_001_Controller\Controllers\_003_ReceiveDataController.cs" />
     <Compile Include="Areas\_001_Controller\Controllers\_004_ReceiveSimpleTypesController.cs" />
+    <Compile Include="Areas\_001_Controller\Controllers\_005_FromControllerToViewController.cs" />
+    <Compile Include="Areas\_001_Controller\Controllers\_006_ActionResultController.cs" />
     <Compile Include="Areas\_001_Controller\_001_ControllerAreaRegistration.cs" />
     <Compile Include="Areas\_002_View\Controllers\_001_HomeController.cs" />
     <Compile Include="Areas\_002_View\_002_ViewAreaRegistration.cs" />
@@ -234,6 +236,9 @@
     <Content Include="Areas\_004_Routing\Views\_001_Home\Customer.cshtml" />
     <Content Include="Areas\_004_Routing\Views\_001_Home\CreateCustomer.cshtml" />
     <Content Include="Areas\_004_Routing\Views\_001_Home\GenerateUrl.cshtml" />
+    <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\Index.cshtml" />
+    <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\UseViewBag.cshtml" />
+    <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\UseTempData.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

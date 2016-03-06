@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace _01_ASPMVCTest.Areas._001_Controller.Controllers
 {
     // В MVC классы контроллеров должны наследоваться от интерфейса IController
-    // Для получения доступа к данному контроллеру нужно выполнить запрос /Basic/имя_действия
+    // Для получения доступа к данному контроллеру нужно выполнить запрос /_002_LowLevel/имя_действия
     public class _002_LowLevelController : IController
     {
         // Метод Execute вызывается, когда запрос направляется этому контроллеру.
