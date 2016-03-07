@@ -1,14 +1,4 @@
-﻿@*Все операторы Razor начинаются с символа '@'
-Данное представление строго типизированное. Строка №5 указывает на тип объекта модели.
-Модель, переданная в контроллере в качестве параметра метода View, может быть использована по ссылке @Model*@
-
-@model IEnumerable<_01_ASPMVCTest.Areas._002_View.Models.Product>
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -17,32 +7,17 @@
     <link type="text/css" rel="stylesheet" href="~/Content/Site.css" />
 </head>
 <body>
-    <pre>
-        Все операторы Razor начинаются с символа '@@'
-        Данное представление строго типизированное. Строка @@model IEnumerable&lt;_01_ASPMVCTest.Models.View.Product&gt; указывает на тип объекта модели.
-        Модель, переданная в контроллере в качестве параметра метода View, может быть использована по ссылке @@Model
-        Префикс строки @@: указывает что строку нужно обработать так, как если она будет HTML разметкой
-    </pre>
-    
-    
-    @foreach (var item in Model)
-    {
-        @*Чтение свойства элемента модели*@
-        <h3>Имя продукта: @item.Name</h3>
+    <div>
+        <ul>
+            <li>@Html.ActionLink("Base info", "BaseInfo")</li>
+            <li>@Html.ActionLink("Layouts", "Layouts")</li>
+            <li>@Html.ActionLink("Layout Without Section", "LayoutWithoutSection")</li>
+            <li>@Html.ActionLink("Bundling", "Bundling")</li>
+            <li>@Html.ActionLink("Partial Views", "PartialViews")</li>
+            <li>@Html.ActionLink("Strongly Typed Partial Views", "StronglyTypedPartialViews")</li>
+            <li>@Html.ActionLink("Child Action", "ChildAction")</li>
+        </ul>
 
-        if (item.Category == "Канцтовары")
-        {
-            @*Razor понимает, что оператор в теле if начинается с HTML дескриптора, 
-            и поэтому относится к нему как к разметке, которую нужно генерировать*@
-            <p>На канцтовары действует <b>скидка 10%</b></p>
-        }
-
-        if (item.Price < 5)
-        {
-            @* Префикс строки @: указывает что строку нужно обработать так, как если она будет HTML разметкой*@
-            @:стоимость доставки 10 грн.
-        }
-        <hr />
-    }
+    </div>
 </body>
 </html>

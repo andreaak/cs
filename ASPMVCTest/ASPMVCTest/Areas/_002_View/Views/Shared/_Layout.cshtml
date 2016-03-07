@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @*
+        Бандл - набор CSS или JavaScript файлов, которые на этапе выполнения будут минимизированы и объеденены в один файл.
+        Минификация и бандлинг будут работать только если запустить веб приложение с настройкой
+        <compilation debug="false" targetFramework="4.5" /> в файле web.config
+
+        Настройка бандлов происходит в файле App_Start/BundleConfig.cs
+    *@
+
+    @*
+        Бандл, который содержит все стили.
+        На этапе выполнения преобразовывается в <link herf="...." />
+    *@
+    @Styles.Render("~/Content/css")
+
+    @*
+        Бандл ссылается на JavaScrip библиотеку modernizr для определения поддержки HTML5 и CSS3 возможностей в браузере
+        На этапе выполнения преобразовывается в <script src="...."></script>
+    *@
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    @*Визуализация содержимого секции с именем Header*@
+    @RenderSection("Header")
+    <br />
+
+    @*Визуализация представления, которое использует данную компоновку*@
+    @*Визуализация контента представления, который не пренадлежит секциям*@
+    @RenderBody()
+    <br />
+
+    @*Визуализация содержимого секции с именем Footer*@
+    @RenderSection("Footer")
+    <br />
+
+    @*
+        При создании компоновки, вместо метода RenderBody можно использовать только методы RenderSection 
+        это поможет создать более строгую структуру представления состоящую только из секций.
+
+        @RenderSection("Header")
+        @RenderSection("Body")
+        @RenderSection("Footer")
+    *@
+    @RenderSection("Body")
+    <br /> 
+
+    @*Проверка наличия секции Footer в текущем представлении*@
+    @if (IsSectionDefined("DefinedSection"))
+    {
+        @RenderSection("DefinedSection");
+    }
+    else
+    {
+        <h4>Default footer</h4>
+    }
+    <br />
+
+    @*Визуализация необязательной секции DefinedSection*@
+    @RenderSection(name: "DefinedSection2", required: false)
+
+    @*Бандл с JavaScrip библиотекой jQuery*@
+    @Scripts.Render("~/bundles/jquery")
+
+    @*Не обязательная секция для сценариев отдельных представлений*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

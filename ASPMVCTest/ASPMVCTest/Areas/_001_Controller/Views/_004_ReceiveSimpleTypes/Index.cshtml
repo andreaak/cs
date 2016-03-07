@@ -13,5 +13,27 @@
     <div>
         Message: @ViewBag.Message
     </div>
+    <div>
+            <!--Данные отправляются с помощью POST запроса-->
+        <form action="@Url.Action("PostInformation", "_004_ReceiveSimpleTypes")" method="post">
+            <input type="text" name="message" />
+            <input type="submit" value="Отправить на сервер" />
+        </form>
+
+        <!--Данные отправляются с помощью GET запроса, как данные в маршруте-->
+        <a href="@Url.Action("RouteInformation", "_004_ReceiveSimpleTypes", new { id = "hello-world-routedata"})">Route Data</a>
+
+        <br />
+        <!--Данные отправляются с помощью GET запроса, как данные адресной строки-->
+        <a href="~/_001_Controller/_004_ReceiveSimpleTypes/QueryInformation?message=hello-world-querystring">QueryString Data</a>
+
+        <ul>
+            <li>@Html.ActionLink("Simple type with route's parameter", "SimpleType/5", "_004_ReceiveSimpleTypes")</li>
+            <li><a href="@Url.Action("SimpleType", "_004_ReceiveSimpleTypes", new { id = 5})">Simple type with route's parameter</a></li>
+            <li><a href="~/_001_Controller/_004_ReceiveSimpleTypes/SimpleType?id=5">Simple type with id parameter</a></li>
+            <li><a href="~/_001_Controller/_004_ReceiveSimpleTypes/SimpleType2?ff=5">Simple type with ff parameter</a></li>
+            <li>@Html.ActionLink("Simple form", "SimpleForm", "_004_ReceiveSimpleTypes")</li>
+        </ul>
+    </div>
 </body>
 </html>

@@ -16,6 +16,37 @@ namespace _01_ASPMVCTest.Areas._001_Controller.Controllers
             return View();
         }
 
+        //
+        // POST: /Data/PostInformation
+
+        public ActionResult PostInformation(string message)
+        {
+            //ViewBag.Message = Request.Form["message"];
+            ViewBag.Message = message;
+            return View("Index");
+        }
+
+        //
+        // GET: /Data/RouteInformation
+
+        public ActionResult RouteInformation(string id)
+        {
+            //ViewBag.Message = RouteData.Values["id"];
+            ViewBag.Message = id;
+            return View("Index");
+        }
+
+        //
+        // GET: /Data/QueryInformation
+
+        public ActionResult QueryInformation(string message)
+        {
+            //ViewBag.Message = Request.QueryString["message"];
+            ViewBag.Message = message;
+            return View("Index");
+        }
+
+
         /*
         Платформа предоставит значения для параметров, проверив соответствующие объекты контекста,
         включая:
