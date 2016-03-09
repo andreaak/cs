@@ -148,8 +148,9 @@ namespace CSTest._08_String._01_RegularExpression
             //string pattern = @"^[\w\s]*$";
             //string pattern = @"^[\P{Cc}\s]*$";
             string pattern = @"^(\P{Cc}|\s){0,78}$";
+
             Regex regex = new Regex(pattern);
-            
+
             string text = "\u0000";
             bool isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
@@ -157,31 +158,31 @@ namespace CSTest._08_String._01_RegularExpression
             text = "\u0000" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
-            
+
             text = 5 + "\u0000";
             isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
-           
+
             text = 5 + "\u0005" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
-            
+
             text = "\u0005";
             isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
-            
+
             text = "\u0005" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
-            
+
             text = 5 + "\u0005";
             isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
-           
+
             text = 5 + "\u0005" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsFalse(isMatch);
-            
+
             text = "\n";
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
@@ -189,15 +190,15 @@ namespace CSTest._08_String._01_RegularExpression
             text = "\n" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = 5 + "\n";
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = 5 + "\n" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = "\t";
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
@@ -205,11 +206,11 @@ namespace CSTest._08_String._01_RegularExpression
             text = "\t" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = 5 + "\t";
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = 5 + "\t" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
@@ -217,11 +218,11 @@ namespace CSTest._08_String._01_RegularExpression
             text = "";
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = " ";
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = " " + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
@@ -233,11 +234,11 @@ namespace CSTest._08_String._01_RegularExpression
             text = 5 + " " + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = "Z";
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = "Z" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
@@ -249,11 +250,11 @@ namespace CSTest._08_String._01_RegularExpression
             text = 5 + "Z" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = "!";
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
-            
+
             text = "!" + 5;
             isMatch = regex.IsMatch(text);
             Assert.IsTrue(isMatch);
@@ -300,6 +301,95 @@ namespace CSTest._08_String._01_RegularExpression
 
             /*
             */
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch3()
+        {
+            string pattern = @"^(\s)$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch4()
+        {
+            string pattern = @"^(\w)$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch5()
+        {
+            string pattern = @"^(\d)$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch6()
+        {
+            string pattern = @"^(\p{Cc})$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch7()
+        {
+            string pattern = @"^\p{P}$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch8()
+        {
+            string pattern = @"^\p{L}$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch9()
+        {
+            string pattern = @"^\p{M}$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch10()
+        {
+            string pattern = @"^\p{Z}$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch11()
+        {
+            string pattern = @"^\p{S}$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch12()
+        {
+            string pattern = @"^\p{N}$";
+            WriteMatches(pattern);
+        }
+
+        [TestMethod]
+        public void TestRegExpIsMatch13()
+        {
+            string pattern = @"^\p{C}$";
+            WriteMatches(pattern);
+        }
+
+        private static void WriteMatches(string pattern)
+        {
+            Regex regex = new Regex(pattern);
+            for (int i = 0; i < 65536; i++)
+            {
+                if (regex.IsMatch(((char)i).ToString()))
+                {
+                    Debug.WriteLine(string.Format("Number: {0} Code: {1}", i, ((char)i).ToString()));
+                }
+            }
         }
 
         private static void WriteMatches(string text, MatchCollection matches)

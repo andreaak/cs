@@ -146,7 +146,13 @@
     <Compile Include="Areas\_001_Controller\Controllers\_011_HttpCodesResultController.cs" />
     <Compile Include="Areas\_001_Controller\_001_ControllerAreaRegistration.cs" />
     <Compile Include="Areas\_002_View\Controllers\_001_HomeController.cs" />
+    <Compile Include="Areas\_002_View\Controllers\_002_HtmlHelperController.cs" />
+    <Compile Include="Areas\_002_View\Controllers\_003_HtmlFormsController.cs" />
+    <Compile Include="Areas\_002_View\Controllers\_003_HtmlFormsElementsController.cs" />
+    <Compile Include="Areas\_002_View\Controllers\_003_WebGridController.cs" />
+    <Compile Include="Areas\_002_View\Models\BrowsersDatabase.cs" />
     <Compile Include="Areas\_002_View\Models\ProductCollection.cs" />
+    <Compile Include="Areas\_002_View\Models\TaskModel.cs" />
     <Compile Include="Areas\_002_View\_002_ViewAreaRegistration.cs" />
     <Compile Include="Areas\_004_Routing\Controllers\_001_HomeController.cs" />
     <Compile Include="Areas\_004_Routing\_004_RoutingAreaRegistration.cs" />
@@ -155,14 +161,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\_002_View\Models\Product.cs" />
+    <Compile Include="Infrastructure\CustomHelperMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\GridStyles.css" />
+    <Content Include="Content\Images\chrome.png" />
+    <Content Include="Content\Images\internet_explorer.png" />
+    <Content Include="Content\Images\mozilla.png" />
+    <Content Include="Content\Images\opera.png" />
     <Content Include="Content\Images\RenderSection.png" />
     <Content Include="Content\Images\RenderBody.png" />
     <Content Include="Content\Images\MVCRequestLifeCycle.jpg" />
     <Content Include="Content\Images\ASPPlatform.png" />
     <Content Include="Content\Images\MVCInteraction.png" />
+    <Content Include="Content\Images\safari.png" />
     <Content Include="Content\Images\ViewBag.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -274,6 +287,21 @@
     <Content Include="Content\File.pdf" />
     <Content Include="Areas\_001_Controller\Views\_010_JsonResult\Index.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_011_HttpCodesResult\Index.cshtml" />
+    <Content Include="Areas\_002_View\Views\_002_HtmlHelper\Index.cshtml" />
+    <Content Include="Areas\_002_View\Views\_002_HtmlHelper\HtmlHelperMethod.cshtml" />
+    <Content Include="Areas\_002_View\Views\_002_HtmlHelper\ExstensionHelperMethod.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlFormsElements\Create.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlFormsElements\Success.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlFormsElements\StronglyTypedCreate.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlForms\Index.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlFormsElements\Select.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlFormsElements\SampleSelect.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlFormsElements\Selected.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlFormsElements\Index.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_WebGrid\Index.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_WebGrid\BaseFunctionality.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_WebGrid\WebGridStyles.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_WebGrid\WebGridColumns.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
