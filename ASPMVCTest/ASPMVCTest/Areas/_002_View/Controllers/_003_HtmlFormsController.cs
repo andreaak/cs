@@ -17,5 +17,10 @@ namespace _01_ASPMVCTest.Areas._002_View.Controllers
         {
             return View();
         }
+
+        public ActionResult FormCreation()
+        {
+            return View();
+        }
     }
 }

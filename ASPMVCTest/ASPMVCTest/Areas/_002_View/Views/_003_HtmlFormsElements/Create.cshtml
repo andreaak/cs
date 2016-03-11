@@ -3,14 +3,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*
-    При использовании перегрузки @Html.TextBox(string) создается input с типом text и атрибутом name и id указанном в параметре.
+<div>
+    При использовании перегрузки @@Html.TextBox(string) создается input с типом text и атрибутом name и id указанном в параметре.
     Важная особенность данного метода - поиск данных для атрибута value элемента при вызове.
-    При следующем вызове @Html.TextBox("Name") поиск будет происходить в такой последовательности:
+    При следующем вызове @@Html.TextBox("Name") поиск будет происходить в такой последовательности:
     1) ViewBag.Name
     2) ViewData["Name"]
-    3) @Model.Name
-*@
+    3) @@Model.Name
+</div>
 
 @using (Html.BeginForm())
 {

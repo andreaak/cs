@@ -18,6 +18,11 @@ namespace _01_ASPMVCTest.Areas._002_View.Controllers
             return View();
         }
 
+        public ActionResult HtmlElements()
+        {
+            return View();
+        }
+
         // Возвращает форму для создания новой задачи
         // GET: /_002_View/_003_HtmlForms/Create
 

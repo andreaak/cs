@@ -5,9 +5,9 @@ using System.Web;
 
 namespace _01_ASPMVCTest.Areas._002_View.Models
 {
-    public class Product
+    public class Person
     {
-        public int ProductId
+        public int PersonId
         {
             get;
             set;
@@ -19,28 +19,17 @@ namespace _01_ASPMVCTest.Areas._002_View.Models
             set;
         }
 
-        public string Description
+        public Role Role
         {
             get;
             set;
         }
+    }
 
-        public decimal Price
-        {
-            get;
-            set;
-        }
-
-        public string Category
-        {
-            get;
-            set;
-        }
-
-        public bool IsTangible
-        {
-            get;
-            set;
-        }
+    public enum Role
+    {
+        Guest,
+        User,
+        Admin
     }
 }

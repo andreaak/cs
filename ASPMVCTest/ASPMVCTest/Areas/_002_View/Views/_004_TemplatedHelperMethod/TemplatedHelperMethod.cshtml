@@ -1,0 +1,38 @@
+﻿@model _01_ASPMVCTest.Areas._002_View.Models.Product
+@{
+    ViewBag.Title = "TemplatedHelperMethod";
+}
+
+<h2>Шаблонизированные вспомогательные методы</h2>
+
+@*
+    LabelFor - визуализирует элемент label соотвествующий определенному свойству модели.
+    EditorFor - визуализирует редактор для изменения определенного свойства модели.
+    DisplayFor - визуализирует представление только для чтения, определенного свойства модели.
+*@
+
+@Html.LabelFor(x => x.ProductId)
+@Html.EditorFor(x => x.ProductId)
+<br />
+
+@Html.LabelFor(x => x.Name)
+@Html.EditorFor(x => x.Name)
+<br />
+
+@Html.LabelFor(x => x.IsTangible)
+@Html.EditorFor(x => x.IsTangible)
+<br />
+
+<h2>Шаблонизированные вспомогательные методы (разметка только на чтение)</h2>
+
+@Html.LabelFor(x => x.ProductId)
+@Html.DisplayFor(x => x.ProductId)
+<br />
+
+@Html.LabelFor(x => x.Name)
+@Html.DisplayFor(x => x.Name)
+<br />
+
+@Html.LabelFor(x => x.IsTangible)
+@Html.DisplayFor(x => x.IsTangible)
+<br />

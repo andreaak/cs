@@ -387,7 +387,7 @@ namespace CSTest._08_String._01_RegularExpression
             {
                 if (regex.IsMatch(((char)i).ToString()))
                 {
-                    Debug.WriteLine(string.Format("Number: {0} Code: {1}", i, ((char)i).ToString()));
+                    Debug.WriteLine(string.Format("Dec: {0} Hex: {0:x}  Code: {1}", i, ((char)i).ToString()));
                 }
             }
         }

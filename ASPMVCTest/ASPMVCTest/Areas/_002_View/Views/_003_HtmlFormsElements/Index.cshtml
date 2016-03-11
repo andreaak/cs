@@ -3,42 +3,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<h2>элементы HTML форм</h2>
-
-@using (Html.BeginForm("Home", "index"))
-{
-    @:Флажок
-    @Html.CheckBox("myCheckBox", false)
-    <br />
-
-    @:Скрытое поле
-    @Html.Hidden("myHiddenField", "val")
-    <br />
-
-    @:Переключатель
-    @Html.RadioButton("myRadioButton", "val", true)
-    <br />
-
-    @:Поле для ввода пароля
-    @Html.Password("myPassword", "val")
-    <br />
-
-    @:Текстовая область
-    @Html.TextArea("myTextArea1", "val", 5, 20, null);
-    <br />
-
-    @:Текстовое поле
-    @Html.TextBox("myTextArea2", "val")
-    <br />
-}
-
+@Html.ActionLink("Html Elements", "HtmlElements")
 <br />
 @Html.ActionLink("Sample Form", "Create")
 <br />
-@Html.ActionLink("Select Element", "Select")
+@Html.ActionLink("Strongly Typed Html Elements", "StronglyTypedCreate")
+<br />
+@Html.ActionLink("Select Elements", "Select")
 <br />
 @Html.ActionLink("Select Sample", "SampleSelect")
-<br />
-@Html.ActionLink("Strongly Typed Sample Form", "StronglyTypedCreate")
 <br />

@@ -3,29 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Способы создания HTML форм</h2>
-
-@*
-    Html.BeginForm - создание формы с установкой значения атрибута action. Значение устанавливается с учетом механизма маршрутизации. 
-*@
-
-@{
-    Html.BeginForm("Index", "Home");
-}
-
-    <p>Первая форма</p>
-    <input type="submit" />
-
-@{
-    Html.EndForm();
-}
-
-@using (Html.BeginForm("Index", "Home"))
-{
-    <p>Вторая форма</p>
-    <input type="submit" />
-}
-
+@Html.ActionLink("FormCreation", "FormCreation")
 <br />
 @Html.ActionLink("Html Elements", "Index", "_003_HtmlFormsElements")
 <br />

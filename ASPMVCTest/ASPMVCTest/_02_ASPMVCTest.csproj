@@ -150,7 +150,10 @@
     <Compile Include="Areas\_002_View\Controllers\_003_HtmlFormsController.cs" />
     <Compile Include="Areas\_002_View\Controllers\_003_HtmlFormsElementsController.cs" />
     <Compile Include="Areas\_002_View\Controllers\_003_WebGridController.cs" />
+    <Compile Include="Areas\_002_View\Controllers\_004_TemplatedHelperMethodController.cs" />
     <Compile Include="Areas\_002_View\Models\BrowsersDatabase.cs" />
+    <Compile Include="Areas\_002_View\Models\Customer.cs" />
+    <Compile Include="Areas\_002_View\Models\Person.cs" />
     <Compile Include="Areas\_002_View\Models\ProductCollection.cs" />
     <Compile Include="Areas\_002_View\Models\TaskModel.cs" />
     <Compile Include="Areas\_002_View\_002_ViewAreaRegistration.cs" />
@@ -302,6 +305,15 @@
     <Content Include="Areas\_002_View\Views\_003_WebGrid\BaseFunctionality.cshtml" />
     <Content Include="Areas\_002_View\Views\_003_WebGrid\WebGridStyles.cshtml" />
     <Content Include="Areas\_002_View\Views\_003_WebGrid\WebGridColumns.cshtml" />
+    <Content Include="Areas\_002_View\Views\_004_TemplatedHelperMethod\TemplatedHelperMethod.cshtml" />
+    <Content Include="Areas\_002_View\Views\_004_TemplatedHelperMethod\Index.cshtml" />
+    <Content Include="Areas\_002_View\Views\_004_TemplatedHelperMethod\EditorForModel.cshtml" />
+    <Content Include="Areas\_002_View\Views\_004_TemplatedHelperMethod\ModelMetadata.cshtml" />
+    <Content Include="Areas\_002_View\Views\_004_TemplatedHelperMethod\SpecialTemplate.cshtml" />
+    <Content Include="Areas\_002_View\Views\Shared\DisplayTemplates\RoleTemplate.cshtml" />
+    <Content Include="Areas\_002_View\Views\Shared\EditorTemplates\RoleTemplate.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlForms\FormCreation.cshtml" />
+    <Content Include="Areas\_002_View\Views\_003_HtmlFormsElements\HtmlElements.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
