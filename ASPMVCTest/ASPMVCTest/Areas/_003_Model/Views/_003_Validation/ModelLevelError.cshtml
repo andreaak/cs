@@ -1,0 +1,38 @@
+﻿@model _01_ASPMVCTest.Areas._003_Model.Models.AccountModel
+@{
+    ViewBag.Title = "ModelLevelError";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ModelLevelError</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(x => x.Login)
+        @Html.EditorFor(x => x.Login)
+        @Html.ValidationMessageFor(x => x.Login)
+    </p>
+
+    <p>
+        @Html.LabelFor(x => x.Password)
+        @Html.EditorFor(x => x.Password)
+        @Html.ValidationMessageFor(x => x.Password)
+    </p>
+
+    <p>
+        @Html.LabelFor(x => x.PasswordConfirm)
+        @Html.EditorFor(x => x.PasswordConfirm)
+        @Html.ValidationMessageFor(x => x.PasswordConfirm)
+    </p>
+
+    <p>
+        @Html.LabelFor(x => x.Email)
+        @Html.EditorFor(x => x.Email)
+        @Html.ValidationMessageFor(x => x.Email)
+    </p>
+
+    @Html.ValidationSummary();
+
+    <input type="submit" value="Register" />
+}

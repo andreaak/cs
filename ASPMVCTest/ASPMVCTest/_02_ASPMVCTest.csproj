@@ -157,6 +157,16 @@
     <Compile Include="Areas\_002_View\Models\ProductCollection.cs" />
     <Compile Include="Areas\_002_View\Models\TaskModel.cs" />
     <Compile Include="Areas\_002_View\_002_ViewAreaRegistration.cs" />
+    <Compile Include="Areas\_003_Model\Controllers\_001_HomeController.cs" />
+    <Compile Include="Areas\_003_Model\Controllers\_002_ModelBindingController.cs" />
+    <Compile Include="Areas\_003_Model\Controllers\_003_ValidationController.cs" />
+    <Compile Include="Areas\_003_Model\Models\AccountModel.cs" />
+    <Compile Include="Areas\_003_Model\Models\AccountModelMetadata.cs" />
+    <Compile Include="Areas\_003_Model\Models\MustBeTrueAttribute.cs" />
+    <Compile Include="Providers\CookiesValueProvider.cs" />
+    <Compile Include="Areas\_003_Model\Models\MyModel.cs" />
+    <Compile Include="ModelBinder\MyModelBinder.cs" />
+    <Compile Include="Areas\_003_Model\_003_ModelAreaRegistration.cs" />
     <Compile Include="Areas\_004_Routing\Controllers\_001_HomeController.cs" />
     <Compile Include="Areas\_004_Routing\_004_RoutingAreaRegistration.cs" />
     <Compile Include="Controllers\_000_HomeController.cs" />
@@ -314,6 +324,26 @@
     <Content Include="Areas\_002_View\Views\Shared\EditorTemplates\RoleTemplate.cshtml" />
     <Content Include="Areas\_002_View\Views\_003_HtmlForms\FormCreation.cshtml" />
     <Content Include="Areas\_002_View\Views\_003_HtmlFormsElements\HtmlElements.cshtml" />
+    <Content Include="Areas\_003_Model\Views\Web.config" />
+    <Content Include="Areas\_003_Model\Views\_001_Home\Index.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\Index.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\SimpleTypeBinding.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\ActionView.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\ComplexTypeBinding.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\BindingWithPrefix.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\ArrayBinding.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\ManualBinding.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\FileUpload.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\AdvancedBindingSettings.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\Result.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_002_ModelBinding\CustomModelBinder.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_003_Validation\Index.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_003_Validation\ExplicitDataValidation.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_003_Validation\ModelLevelError.cshtml" />
+    <Content Include="Areas\_003_Model\Views\Shared\Success.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_003_Validation\MetadataValidation.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_003_Validation\CustomValidationAttribute.cshtml" />
+    <Content Include="Areas\_003_Model\Views\_003_Validation\ClientSideValidation.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -355,6 +385,7 @@
     <Folder Include="Areas\_004_Routing\Models\" />
     <Folder Include="Areas\_004_Routing\Views\Shared\" />
     <Folder Include="Models\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

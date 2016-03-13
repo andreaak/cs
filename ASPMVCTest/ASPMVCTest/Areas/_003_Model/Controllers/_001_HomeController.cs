@@ -15,6 +15,5 @@ namespace _01_ASPMVCTest.Areas._003_Model.Controllers
         {
             return View();
         }
-
     }
 }
