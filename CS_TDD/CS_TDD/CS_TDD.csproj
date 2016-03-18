@@ -45,6 +45,10 @@
       <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
     </Reference>
@@ -191,6 +195,21 @@
     <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Program.cs" />
     <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Test\TestClass.cs" />
     <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Test\TestView.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Application\EmpPersonalDetails.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Application\EmpPfDetails.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Application\Employee.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Application\EmployeesDetails.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Application\IFoo.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Application\Logger.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Bar.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_004_Properties.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_002_Arguments.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_001_Base.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_003_ReturnValue.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_005_ThrowException.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_006_TimesMethodCalled.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_007_Callbacks.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_008_MockRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +221,7 @@
     <Content Include="004_StubsAndMocks\RhinoMocks.png" />
     <Content Include="004_StubsAndMocks\stub.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

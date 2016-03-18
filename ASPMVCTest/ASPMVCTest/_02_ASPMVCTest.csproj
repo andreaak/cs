@@ -163,6 +163,10 @@
     <Compile Include="Areas\_003_Model\Models\AccountModel.cs" />
     <Compile Include="Areas\_003_Model\Models\AccountModelMetadata.cs" />
     <Compile Include="Areas\_003_Model\Models\MustBeTrueAttribute.cs" />
+    <Compile Include="Areas\_005_Filters\Controllers\_001_HomeController.cs" />
+    <Compile Include="Areas\_005_Filters\_005_FiltersAreaRegistration.cs" />
+    <Compile Include="Areas\_006_Security\Controllers\_001_HomeController.cs" />
+    <Compile Include="Areas\_006_Security\_006_SecurityAreaRegistration.cs" />
     <Compile Include="Providers\CookiesValueProvider.cs" />
     <Compile Include="Areas\_003_Model\Models\MyModel.cs" />
     <Compile Include="ModelBinder\MyModelBinder.cs" />
@@ -178,6 +182,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\GridStyles.css" />
     <Content Include="Content\Images\chrome.png" />
     <Content Include="Content\Images\internet_explorer.png" />
@@ -344,6 +352,8 @@
     <Content Include="Areas\_003_Model\Views\_003_Validation\MetadataValidation.cshtml" />
     <Content Include="Areas\_003_Model\Views\_003_Validation\CustomValidationAttribute.cshtml" />
     <Content Include="Areas\_003_Model\Views\_003_Validation\ClientSideValidation.cshtml" />
+    <Content Include="Areas\_005_Filters\Views\Web.config" />
+    <Content Include="Areas\_006_Security\Views\Web.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -377,13 +387,16 @@
     <Content Include="Web.config.install.xdt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\_000_Base\Models\" />
     <Folder Include="Areas\_000_Base\Views\Shared\" />
     <Folder Include="Areas\_001_Controller\Models\" />
     <Folder Include="Areas\_001_Controller\Views\Shared\" />
     <Folder Include="Areas\_004_Routing\Models\" />
     <Folder Include="Areas\_004_Routing\Views\Shared\" />
+    <Folder Include="Areas\_005_Filters\Models\" />
+    <Folder Include="Areas\_005_Filters\Views\Shared\" />
+    <Folder Include="Areas\_006_Security\Models\" />
+    <Folder Include="Areas\_006_Security\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
