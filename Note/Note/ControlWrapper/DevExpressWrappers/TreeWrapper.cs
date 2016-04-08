@@ -358,7 +358,10 @@ namespace Note.ControlWrapper.DevExpressWrappers
             TreeListNode node = null;
             if (control.Nodes.Count != 0 && TryGetNodeById(id, control.Nodes, ref node))
             {
-                node.ParentNode.Expanded = true;
+                if (node.ParentNode != null)
+                {
+                    node.ParentNode.Expanded = true;
+                }
                 control.FocusedNode = node;
             }
         }

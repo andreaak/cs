@@ -11,7 +11,7 @@ namespace _01_ASPMVCTest
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class ButtonFactory : System.Web.HttpApplication
     {
         // Обработчик события старта приложения.
         protected void Application_Start()
@@ -37,5 +37,69 @@ namespace _01_ASPMVCTest
             // Регистрация bundle для оптимизации загрузки CSS и JavaScript файлов.
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        public Button CreateButton()
+        {
+            Button button;
+            switch (UserSettings.UserSkinType)
+            {
+                case UserSkinTypes.Normal:
+                    button = new Button();
+                    break;
+                case UserSkinTypes.Fancy:
+                    button = new FancyButton();
+                    break;
+                case UserSkinTypes.Gothic:
+                    button = new VampireButton();
+            }
+            return button;
+        }
+
+        private class Button
+        {
+            Button button = ButtonFactory.CreateButton();
+        }
+
+        private class FancyButton : Button
+        {
+
+        }
+
+        private class VampireButton : Button
+        {
+
+        }
+
+        private class ICreditCard
+        {
+
+        }
+
+        private class MasterCard : ICreditCard
+        {
+            private void Test()
+            {
+        ICreditCard creditCard = new MasterCard();
+        Shopper shopper = new Shopper();
+        shopper.CreditCard = creditCard;
+            }
+        }
+
+        
+        public class Shopper
+        {
+            public ICreditCard CreditCard
+            {
+                get;
+                set;
+            }
+
+            private ICreditCard creditCard;
+            public void Inject(ICreditCard creditCard)
+            {
+                this.creditCard = creditCard;
+            }
+        }
+
     }
 }
