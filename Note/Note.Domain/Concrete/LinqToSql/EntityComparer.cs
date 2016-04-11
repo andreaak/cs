@@ -17,31 +17,4 @@ namespace Note.Domain.Concrete.LinqToSql
             return obj.ID.GetHashCode();
         }
     }
-    
-    
-    //class EntityComparer : IEqualityComparer<DescriptionWithStatus>
-    //{
-    //    public bool Equals(DescriptionWithStatus x, DescriptionWithStatus y)
-    //    {
-    //        return x.ID == y.ID;
-    //    }
-
-    //    public int GetHashCode(DescriptionWithStatus obj)
-    //    {
-    //        return obj.ID.GetHashCode();
-    //    }
-    //}
-
-    //class SimpleEntityComparer : IEqualityComparer<DescriptionWithText>
-    //{
-    //    public bool Equals(DescriptionWithText x, DescriptionWithText y)
-    //    {
-    //        return x.ID == y.ID;
-    //    }
-
-    //    public int GetHashCode(DescriptionWithText obj)
-    //    {
-    //        return obj.ID.GetHashCode();
-    //    }
-    //}
 }

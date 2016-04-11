@@ -1,4 +1,4 @@
-﻿using CS_TDD._003_DI._007_AbstractTestClassPattern.Test;
+﻿using CS_TDD._003_DI._000_Base.Test;
 using NUnit.Framework;
 
 namespace CS_TDD._003_DI._007_AbstractTestClassPattern.Test2

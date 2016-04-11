@@ -1,5 +1,6 @@
 ﻿using CS_TDD._003_DI._000_Base;
 using CS_TDD._003_DI._000_Base.Test;
+using CS_TDD._003_DI._002_ConstructorInjection;
 using Ninject.Modules;
 
 namespace CS_TDD._003_DI._010_Ninject.Test
@@ -8,6 +9,7 @@ namespace CS_TDD._003_DI._010_Ninject.Test
     {
         public override void Load()
         {
+            // Bind dependencies
             //this.Bind<IDataAccessObject>().To<FileDataObject>();
             this.Bind<IDataAccessObject>().To<StubFileDataObject>();
             this.Bind<FileManager>().ToSelf();

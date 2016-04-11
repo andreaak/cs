@@ -68,9 +68,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="000_Base\Calculator.cs" />
-    <Compile Include="000_Base\Program.cs" />
-    <Compile Include="000_Base\UahConverter.cs" />
+    <Compile Include="000_Base\001_Calculator.cs" />
+    <Compile Include="000_Base\002_Program.cs" />
+    <Compile Include="000_Base\003_UahConverter.cs" />
     <Compile Include="001_MSUnit\001_Test.cs" />
     <Compile Include="002_NUnit\001_EqualTest.cs" />
     <Compile Include="002_NUnit\002_ReferenceTest.cs" />
@@ -117,18 +117,20 @@
     <Compile Include="003_DI\008_AbsFactoryInjection\Test\FileManagerTest.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\IFileManager.cs" />
     <Compile Include="003_DI\008_AbsFactoryInjection\Program.cs" />
-    <Compile Include="003_DI\009_Unity\FileManager.cs" />
+    <Compile Include="003_DI\009_Unity\Application\FileManager.cs" />
     <Compile Include="003_DI\009_Unity\Test\FileManagerTest.cs" />
-    <Compile Include="003_DI\009_Unity\Program.cs" />
+    <Compile Include="003_DI\009_Unity\Application\Program.cs" />
     <Compile Include="003_DI\010_Ninject\Test\ConfigFileObjectData.cs" />
-    <Compile Include="003_DI\010_Ninject\FileManager.cs" />
     <Compile Include="003_DI\010_Ninject\Test\FileManagerTest.cs" />
-    <Compile Include="003_DI\010_Ninject\Program.cs" />
+    <Compile Include="003_DI\010_Ninject\Application\Program.cs" />
     <Compile Include="003_DI\011_Encapsulation\FileManager.cs" />
     <Compile Include="003_DI\011_Encapsulation\Program.cs" />
     <Compile Include="003_DI\012_Encapsulation\FileManager.cs" />
     <Compile Include="003_DI\012_Encapsulation\FileManagerTest.cs" />
     <Compile Include="003_DI\012_Encapsulation\Program.cs" />
+    <Compile Include="003_DI\013_IoCContainer\001_Base.cs" />
+    <Compile Include="003_DI\013_IoCContainer\002_IoCContainer.cs" />
+    <Compile Include="003_DI\013_IoCContainer\Application\Classes.cs" />
     <Compile Include="004_StubsAndMocks\001_Mocks\IWebService.cs" />
     <Compile Include="004_StubsAndMocks\001_Mocks\LogAnalyzer.cs" />
     <Compile Include="004_StubsAndMocks\001_Mocks\Program.cs" />
@@ -201,7 +203,7 @@
     <Compile Include="004_StubsAndMocks\018_Moq\Application\EmployeesDetails.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\Application\IFoo.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\Application\Logger.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\Bar.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Application\Bar.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_004_Properties.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_002_Arguments.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_001_Base.cs" />
@@ -213,6 +215,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="000_Base\base.docx" />
+    <None Include="003_DI\013_IoCContainer\IoC Conteiner.docx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -221,7 +225,9 @@
     <Content Include="004_StubsAndMocks\RhinoMocks.png" />
     <Content Include="004_StubsAndMocks\stub.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

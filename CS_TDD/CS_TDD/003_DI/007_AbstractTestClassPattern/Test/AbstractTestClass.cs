@@ -1,4 +1,5 @@
 ﻿using CS_TDD._003_DI._000_Base;
+using CS_TDD._003_DI._000_Base.Test;
 using CS_TDD._003_DI._006_FactoryInjection;
 using NUnit.Framework;
 
@@ -9,7 +10,7 @@ namespace CS_TDD._003_DI._007_AbstractTestClassPattern.Test
         [SetUp]
         public virtual void SetUp()
         {
-            FactoryClass.SetDataAccessObject(new FileDataObject()); 
+            FactoryClass.SetDataAccessObject(new StubFileDataObject()); 
         }
 
         [Test]

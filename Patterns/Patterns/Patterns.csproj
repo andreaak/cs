@@ -57,814 +57,821 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="03_Behavioral\Command\Example1\Commands\ICommand.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\Commands\LightsCommand.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\Commands\MacroCommand.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\Commands\MusicCommand.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\Commands\TeapotCommand.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\Commands\TvCommand.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\ControlledSystems\Light.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\ControlledSystems\Music.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\ControlledSystems\Teapot.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\ControlledSystems\Tv.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\RemoteControl.cs" />
-    <Compile Include="03_Behavioral\Command\Example1\Test.cs" />
-    <Compile Include="03_Behavioral\Observer\Example1\News\ISubject.cs" />
-    <Compile Include="03_Behavioral\Observer\Example1\News\NewsAggregator.cs" />
-    <Compile Include="03_Behavioral\Observer\Example1\Test.cs" />
-    <Compile Include="03_Behavioral\Observer\Example1\Widgets\IObserver.cs" />
-    <Compile Include="03_Behavioral\Observer\Example1\Widgets\IWidget.cs" />
-    <Compile Include="03_Behavioral\Observer\Example1\Widgets\LentaWidget.cs" />
-    <Compile Include="03_Behavioral\Observer\Example1\Widgets\TvWidget.cs" />
-    <Compile Include="03_Behavioral\Observer\Example1\Widgets\TwitterWidget.cs" />
-    <Compile Include="03_Behavioral\State\Example1\Car.cs" />
-    <Compile Include="03_Behavioral\State\Example1\States\DrivingState.cs" />
-    <Compile Include="03_Behavioral\State\Example1\States\EmptyTankState.cs" />
-    <Compile Include="03_Behavioral\State\Example1\States\EngineStartedState.cs" />
-    <Compile Include="03_Behavioral\State\Example1\States\FullTankState.cs" />
-    <Compile Include="03_Behavioral\State\Example1\States\IState.cs" />
-    <Compile Include="03_Behavioral\State\Example1\Test.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Ducks\DuckBase.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Ducks\ExoticDuck.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Ducks\RubberDuck.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Ducks\SimpleDuck.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Ducks\UpgradableDuck.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Ducks\WoodenDuck.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Fly\FlyWithWings.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Fly\IFlyable.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Fly\NoFly.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Quack\ExoticQuack.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Quack\IQuackable.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Quack\NoQuack.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Quack\SimpleQuack.cs" />
-    <Compile Include="03_Behavioral\Strategy\Example1\Test.cs" />
-    <Compile Include="03_Behavioral\TemplateMethod\Example1\Food\FastFood.cs" />
-    <Compile Include="03_Behavioral\TemplateMethod\Example1\Food\Hamburger.cs" />
-    <Compile Include="03_Behavioral\TemplateMethod\Example1\Food\HotDog.cs" />
-    <Compile Include="03_Behavioral\TemplateMethod\Example1\Test.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Cars\Car.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Cars\CarBefore.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Cars\Golf.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Cars\Passat.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Cars\Tiguan.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Cars\Touareg.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Facilities\DeutschVolkswagenFacility.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Facilities\RussianVolkswagenFacility.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Facilities\VolkswagenFacility.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\PartsFactory\CarPartsFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\PartsFactory\DeutschCarPartsFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\PartsFactory\RussianCarPartsFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Parts\BigWheels.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Parts\BlackPaint.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Parts\DieselEngine.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Parts\Engine.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Parts\GasolineEngine.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Parts\MediumWheels.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Parts\Paint.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Parts\Wheels.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Parts\WhitePaint.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example1\Test.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\AbstractBottle\AbstractBottle.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\AbstractBottle\CocaColaBottle.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\AbstractBottle\PepsiBottle.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\AbstractFactory\AbstractFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\AbstractFactory\CocaColaFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\AbstractFactory\PepsiFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\AbstractWater\AbstractWater.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\AbstractWater\CocaColaWater.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\AbstractWater\PepsiWater.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\Client.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example2\Test.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\AbstractFactory\AbstractFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\AbstractFactory\ConcreteFactory1.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\AbstractFactory\ConcreteFactory2.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\AbstractProductA\AbstractProductA.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\AbstractProductA\ProductA1.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\AbstractProductA\ProductA2.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\AbstractProductB\AbstractProductB.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\AbstractProductB\ProductB1.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\AbstractProductB\ProductB2.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\Client.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example3\Test.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example4\Buttons\AbstractButton.cs">
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\ICommand.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\LightsCommand.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\MacroCommand.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\MusicCommand.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\TeapotCommand.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\TvCommand.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\ControlledSystems\Light.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\ControlledSystems\Music.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\ControlledSystems\Teapot.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\ControlledSystems\Tv.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\RemoteControl.cs" />
+    <Compile Include="03_Behavioral\Command\001_RemoteControl\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\001_News\News\ISubject.cs" />
+    <Compile Include="03_Behavioral\Observer\001_News\News\NewsAggregator.cs" />
+    <Compile Include="03_Behavioral\Observer\001_News\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\001_News\Widgets\IObserver.cs" />
+    <Compile Include="03_Behavioral\Observer\001_News\Widgets\IWidget.cs" />
+    <Compile Include="03_Behavioral\Observer\001_News\Widgets\LentaWidget.cs" />
+    <Compile Include="03_Behavioral\Observer\001_News\Widgets\TvWidget.cs" />
+    <Compile Include="03_Behavioral\Observer\001_News\Widgets\TwitterWidget.cs" />
+    <Compile Include="03_Behavioral\State\001_Car\Car.cs" />
+    <Compile Include="03_Behavioral\State\001_Car\States\DrivingState.cs" />
+    <Compile Include="03_Behavioral\State\001_Car\States\EmptyTankState.cs" />
+    <Compile Include="03_Behavioral\State\001_Car\States\EngineStartedState.cs" />
+    <Compile Include="03_Behavioral\State\001_Car\States\FullTankState.cs" />
+    <Compile Include="03_Behavioral\State\001_Car\States\IState.cs" />
+    <Compile Include="03_Behavioral\State\001_Car\Test.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Ducks\DuckBase.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Ducks\ExoticDuck.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Ducks\RubberDuck.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Ducks\SimpleDuck.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Ducks\UpgradableDuck.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Ducks\WoodenDuck.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Fly\FlyWithWings.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Fly\IFlyable.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Fly\NoFly.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Quack\ExoticQuack.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Quack\IQuackable.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Quack\NoQuack.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Quack\SimpleQuack.cs" />
+    <Compile Include="03_Behavioral\Strategy\001_Ducks\Test.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\001_Food\Food\FastFood.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\001_Food\Food\Hamburger.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\001_Food\Food\HotDog.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\001_Food\Test.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Cars\Car.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Cars\CarBefore.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Cars\Golf.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Cars\Passat.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Cars\Tiguan.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Cars\Touareg.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Facilities\DeutschVolkswagenFacility.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Facilities\RussianVolkswagenFacility.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Facilities\VolkswagenFacility.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\PartsFactory\CarPartsFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\PartsFactory\DeutschCarPartsFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\PartsFactory\RussianCarPartsFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Parts\BigWheels.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Parts\BlackPaint.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Parts\DieselEngine.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Parts\Engine.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Parts\GasolineEngine.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Parts\MediumWheels.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Parts\Paint.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Parts\Wheels.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Parts\WhitePaint.cs" />
+    <Compile Include="01_Creational\AbstractFactory\003_Cars\Test.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\AbstractBottle\AbstractBottle.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\AbstractBottle\CocaColaBottle.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\AbstractBottle\PepsiBottle.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\AbstractFactory\AbstractFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\AbstractFactory\CocaColaFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\AbstractFactory\PepsiFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\AbstractWater\AbstractWater.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\AbstractWater\CocaColaWater.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\AbstractWater\PepsiWater.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\Client.cs" />
+    <Compile Include="01_Creational\AbstractFactory\004_Water\Test.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\AbstractFactory\AbstractFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\AbstractFactory\ConcreteFactory1.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\AbstractFactory\ConcreteFactory2.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\AbstractProductA\AbstractProductA.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\AbstractProductA\ProductA1.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\AbstractProductA\ProductA2.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\AbstractProductB\AbstractProductB.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\AbstractProductB\ProductB1.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\AbstractProductB\ProductB2.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\Client.cs" />
+    <Compile Include="01_Creational\AbstractFactory\002_Base\Test.cs" />
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Buttons\AbstractButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\AbstractFactory\Example4\Buttons\LeopardButton.cs">
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Buttons\LeopardButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\AbstractFactory\Example4\Buttons\LinuxButton.cs">
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Buttons\LinuxButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\AbstractFactory\Example4\Buttons\WindowsButton.cs">
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Buttons\WindowsButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\AbstractFactory\Example4\Client.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example4\Factories\AbstractWidgetFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example4\Factories\LeopardFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example4\Factories\LinuxFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example4\Factories\WindowsFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example4\Test.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example4\Windows\AbstractWindow.cs">
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Client.cs" />
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Factories\AbstractWidgetFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Factories\LeopardFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Factories\LinuxFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Factories\WindowsFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Test.cs" />
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Windows\AbstractWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\AbstractFactory\Example4\Windows\LeopardForm.cs">
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Windows\LeopardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\AbstractFactory\Example4\Windows\LinuxForm.cs">
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Windows\LinuxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\AbstractFactory\Example4\Windows\WindowsForm.cs">
+    <Compile Include="01_Creational\AbstractFactory\005_Buttons\Windows\WindowsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\AbstractFactory\Example5\AbstractFactory\AbstractFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\AbstractFactory\ConcreteFactory1.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\AbstractFactory\ConcreteFactory2.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\AbstractProductA\AbstractProductA.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\AbstractProductA\ProductA1.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\AbstractProductA\ProductA2.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\AbstractProductB\AbstractProductB.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\AbstractProductB\ProductB1.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\AbstractProductB\ProductB2.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\Client.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\Factory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\Product.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example5\Test.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Door\Door.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Door\DoorNeedingSpell.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Enum\Direction.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Factory\BombedMazeFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Factory\EnchantedMazeFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Factory\MazeFactory.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\MapSite.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Maze.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\MazeGame.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Room\EnchandedRoom.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Room\Room.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Room\RoomWithBomb.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Spell.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Test.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Wall\BombedWall.cs" />
-    <Compile Include="01_Creational\AbstractFactory\Example6Labirint\Wall\Wall.cs" />
-    <Compile Include="01_Creational\Buider\Example2\Test.cs" />
-    <Compile Include="01_Creational\Buider\Example2\Builder\AudiBuilder.cs" />
-    <Compile Include="01_Creational\Buider\Example2\Builder\CarBuilderBase.cs" />
-    <Compile Include="01_Creational\Buider\Example2\Builder\VolkswagenBuilder.cs" />
-    <Compile Include="01_Creational\Buider\Example2\Cars\Car.cs" />
-    <Compile Include="01_Creational\Buider\Example2\Factory\CarFactoryBase.cs" />
-    <Compile Include="01_Creational\Buider\Example2\Factory\CheapCarFactory.cs" />
-    <Compile Include="01_Creational\Buider\Example2\Factory\LuxuryCarFactory.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Builder\CountingMazeBuilder.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Builder\MazeBuilder.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Builder\StandardMazeBuilder.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Door\Door.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Door\DoorNeedingSpell.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Enum\Direction.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Factory\BombedMazeFactory.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Factory\EnchantedMazeFactory.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Factory\MazeFactory.cs" />
-    <Compile Include="01_Creational\Buider\Example1\MapSite.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Maze.cs" />
-    <Compile Include="01_Creational\Buider\Example1\MazeGame.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Room\EnchandedRoom.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Room\Room.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Room\RoomWithBomb.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Spell.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Test.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Wall\BombedWall.cs" />
-    <Compile Include="01_Creational\Buider\Example1\Wall\Wall.cs" />
-    <Compile Include="01_Creational\Buider\Example3\Builder\Builder.cs" />
-    <Compile Include="01_Creational\Buider\Example3\Builder\ConcreteBuilder.cs" />
-    <Compile Include="01_Creational\Buider\Example3\Foreman.cs" />
-    <Compile Include="01_Creational\Buider\Example3\House\Basement.cs" />
-    <Compile Include="01_Creational\Buider\Example3\House\House.cs" />
-    <Compile Include="01_Creational\Buider\Example3\House\Roof.cs" />
-    <Compile Include="01_Creational\Buider\Example3\House\Storey.cs" />
-    <Compile Include="01_Creational\Buider\Example3\Test.cs" />
-    <Compile Include="01_Creational\Buider\Example4\Builder\Builder.cs" />
-    <Compile Include="01_Creational\Buider\Example4\Builder\ConcreteBuilder.cs" />
-    <Compile Include="01_Creational\Buider\Example4\Director.cs" />
-    <Compile Include="01_Creational\Buider\Example4\Product.cs" />
-    <Compile Include="01_Creational\Buider\Example4\Test.cs" />
-    <Compile Include="01_Creational\Buider\Example5\Builder\ConcreteBuilders\ASCIIConverter.cs" />
-    <Compile Include="01_Creational\Buider\Example5\Builder\ConcreteBuilders\PDFConverter.cs" />
-    <Compile Include="01_Creational\Buider\Example5\Builder\ConcreteBuilders\TextWidgetConverter.cs" />
-    <Compile Include="01_Creational\Buider\Example5\Builder\TextConverter.cs" />
-    <Compile Include="01_Creational\Buider\Example5\Director\RTFReader.cs" />
-    <Compile Include="01_Creational\Buider\Example5\Form1.cs">
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\AbstractFactory\AbstractFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\AbstractFactory\ConcreteFactory1.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\AbstractFactory\ConcreteFactory2.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\AbstractProductA\AbstractProductA.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\AbstractProductA\ProductA1.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\AbstractProductA\ProductA2.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\AbstractProductB\AbstractProductB.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\AbstractProductB\ProductB1.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\AbstractProductB\ProductB2.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\Client.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\Factory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\Product.cs" />
+    <Compile Include="01_Creational\AbstractFactory\006_BaseModified\Test.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Door\Door.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Door\DoorNeedingSpell.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Enum\Direction.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Factory\BombedMazeFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Factory\MazeFactory.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\MapSite.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Maze.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\MazeGame.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Room\EnchandedRoom.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Room\Room.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Room\RoomWithBomb.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Spell.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Test.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Wall\BombedWall.cs" />
+    <Compile Include="01_Creational\AbstractFactory\001_Game\Wall\Wall.cs" />
+    <Compile Include="01_Creational\Buider\003_Cars\Test.cs" />
+    <Compile Include="01_Creational\Buider\003_Cars\Builder\AudiBuilder.cs" />
+    <Compile Include="01_Creational\Buider\003_Cars\Builder\CarBuilderBase.cs" />
+    <Compile Include="01_Creational\Buider\003_Cars\Builder\VolkswagenBuilder.cs" />
+    <Compile Include="01_Creational\Buider\003_Cars\Cars\Car.cs" />
+    <Compile Include="01_Creational\Buider\003_Cars\Factory\CarFactoryBase.cs" />
+    <Compile Include="01_Creational\Buider\003_Cars\Factory\CheapCarFactory.cs" />
+    <Compile Include="01_Creational\Buider\003_Cars\Factory\LuxuryCarFactory.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Builder\CountingMazeBuilder.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Builder\MazeBuilder.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Builder\StandardMazeBuilder.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Door\Door.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Door\DoorNeedingSpell.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Enum\Direction.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Factory\BombedMazeFactory.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Factory\MazeFactory.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\MapSite.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Maze.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\MazeGame.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Room\EnchandedRoom.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Room\Room.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Room\RoomWithBomb.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Spell.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Test.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Wall\BombedWall.cs" />
+    <Compile Include="01_Creational\Buider\001_Game\Wall\Wall.cs" />
+    <Compile Include="01_Creational\Buider\004_House\Builder\Builder.cs" />
+    <Compile Include="01_Creational\Buider\004_House\Builder\ConcreteBuilder.cs" />
+    <Compile Include="01_Creational\Buider\004_House\Foreman.cs" />
+    <Compile Include="01_Creational\Buider\004_House\House\Basement.cs" />
+    <Compile Include="01_Creational\Buider\004_House\House\House.cs" />
+    <Compile Include="01_Creational\Buider\004_House\House\Roof.cs" />
+    <Compile Include="01_Creational\Buider\004_House\House\Storey.cs" />
+    <Compile Include="01_Creational\Buider\004_House\Test.cs" />
+    <Compile Include="01_Creational\Buider\002_Base\Builder\Builder.cs" />
+    <Compile Include="01_Creational\Buider\002_Base\Builder\ConcreteBuilder.cs" />
+    <Compile Include="01_Creational\Buider\002_Base\Director.cs" />
+    <Compile Include="01_Creational\Buider\002_Base\Product.cs" />
+    <Compile Include="01_Creational\Buider\002_Base\Test.cs" />
+    <Compile Include="01_Creational\Buider\005_TextConverter\Builder\ConcreteBuilders\ASCIIConverter.cs" />
+    <Compile Include="01_Creational\Buider\005_TextConverter\Builder\ConcreteBuilders\PDFConverter.cs" />
+    <Compile Include="01_Creational\Buider\005_TextConverter\Builder\ConcreteBuilders\TextWidgetConverter.cs" />
+    <Compile Include="01_Creational\Buider\005_TextConverter\Builder\TextConverter.cs" />
+    <Compile Include="01_Creational\Buider\005_TextConverter\Director\RTFReader.cs" />
+    <Compile Include="01_Creational\Buider\005_TextConverter\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\Buider\Example5\Form1.designer.cs">
+    <Compile Include="01_Creational\Buider\005_TextConverter\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\Buider\Example5\Products\ASCIIText.cs" />
-    <Compile Include="01_Creational\Buider\Example5\Products\PDFText.cs" />
-    <Compile Include="01_Creational\Buider\Example5\Products\TextWidget.cs">
+    <Compile Include="01_Creational\Buider\005_TextConverter\Products\ASCIIText.cs" />
+    <Compile Include="01_Creational\Buider\005_TextConverter\Products\PDFText.cs" />
+    <Compile Include="01_Creational\Buider\005_TextConverter\Products\TextWidget.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\Buider\Example5\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Builder\CountingMazeBuilder.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Builder\MazeBuilder.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Builder\StandardMazeBuilder.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Door\Door.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Door\DoorNeedingSpell.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\EnchantedMazeGame.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Enum\Direction.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Factory\BombedMazeFactory.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Factory\EnchantedMazeFactory.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Factory\MazeFactory.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\MapSite.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Maze.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\MazeGame\BombedMazeGame.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\MazeGame\MazeGame.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Room\EnchandedRoom.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Room\Room.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Room\RoomWithBomb.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Spell.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Wall\BombedWall.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Exampe01\Wall\Wall.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example02\Creator\ConcreteCreator.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example02\Creator\Creator.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example02\Product\ConcreteProduct.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example02\Product\Product.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example02\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\BaseForm.cs">
+    <Compile Include="01_Creational\Buider\005_TextConverter\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Builder\CountingMazeBuilder.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Builder\MazeBuilder.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Builder\StandardMazeBuilder.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Door\Door.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Door\DoorNeedingSpell.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\EnchantedMazeGame.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Enum\Direction.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Factory\BombedMazeFactory.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Factory\MazeFactory.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\MapSite.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Maze.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\MazeGame\BombedMazeGame.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\MazeGame\MazeGame.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Room\EnchandedRoom.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Room\Room.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Room\RoomWithBomb.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Spell.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Wall\BombedWall.cs" />
+    <Compile Include="01_Creational\FactoryMethod\001_Game\Wall\Wall.cs" />
+    <Compile Include="01_Creational\FactoryMethod\002_Base\Creator\ConcreteCreator.cs" />
+    <Compile Include="01_Creational\FactoryMethod\002_Base\Creator\Creator.cs" />
+    <Compile Include="01_Creational\FactoryMethod\002_Base\Product\ConcreteProduct.cs" />
+    <Compile Include="01_Creational\FactoryMethod\002_Base\Product\Product.cs" />
+    <Compile Include="01_Creational\FactoryMethod\002_Base\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example03\BaseForm.designer.cs">
+    <Compile Include="01_Creational\FactoryMethod\003_Application\BaseForm.designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example03\Creator\Application.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\Creator\ConcreteCreator\PngApplication.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\Creator\ConcreteCreator\TextApplication.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\EnumAction.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\EnumDocType.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\PngDocForm.cs">
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Creator\Application.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Creator\ConcreteCreator\PngApplication.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Creator\ConcreteCreator\TextApplication.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\EnumAction.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\EnumDocType.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\PngDocForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example03\PngDocForm.designer.cs">
+    <Compile Include="01_Creational\FactoryMethod\003_Application\PngDocForm.designer.cs">
       <DependentUpon>PngDocForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example03\Product\ConcreteProduct\PngDocument.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\Product\ConcreteProduct\TextDocument.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\Product\Document.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\Properties\Resources.Designer.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\Properties\Settings.Designer.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\Properties\Settings1.Designer.cs">
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Product\ConcreteProduct\PngDocument.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Product\ConcreteProduct\TextDocument.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Product\Document.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Properties\Resources.Designer.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Properties\Settings.Designer.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Properties\Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example03\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example03\TextDocForm.cs">
+    <Compile Include="01_Creational\FactoryMethod\003_Application\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\003_Application\TextDocForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example03\TextDocForm.designer.cs">
+    <Compile Include="01_Creational\FactoryMethod\003_Application\TextDocForm.designer.cs">
       <DependentUpon>TextDocForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example04_Subclassing Hooks\Form1.cs">
+    <Compile Include="01_Creational\FactoryMethod\004_SubclassingHooks\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example04_Subclassing Hooks\Form1.designer.cs">
+    <Compile Include="01_Creational\FactoryMethod\004_SubclassingHooks\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example04_Subclassing Hooks\SCTextBox.cs">
+    <Compile Include="01_Creational\FactoryMethod\004_SubclassingHooks\TextBoxWrapper.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example04_Subclassing Hooks\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example05\Figures\Figure.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example05\Figures\LineFigure.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example05\Figures\TextFigure.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example05\Form1.cs">
+    <Compile Include="01_Creational\FactoryMethod\004_SubclassingHooks\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Figures\Figure.cs" />
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Figures\LineFigure.cs" />
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Figures\TextFigure.cs" />
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example05\Form1.designer.cs">
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example05\Manipulators\LineManipulator.cs">
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Manipulators\LineManipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example05\Manipulators\Manipulator.cs">
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Manipulators\Manipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example05\Manipulators\TextManipulator.cs">
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Manipulators\TextManipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example05\Properties\Resources.Designer.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example05\Properties\Settings.Designer.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example05\RectangleFigure.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example05\RectangleManipulator.cs">
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Properties\Resources.Designer.cs" />
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Properties\Settings.Designer.cs" />
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\RectangleFigure.cs" />
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\RectangleManipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\Example05\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example06FM_With_Argument\Creators\Creator.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example06FM_With_Argument\Creators\MyCreator.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example06FM_With_Argument\Products\MyProduct.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example06FM_With_Argument\Products\Product.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example06FM_With_Argument\Products\ProductTypeEnum.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example06FM_With_Argument\Products\TheirProduct.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example06FM_With_Argument\Products\YourProduct.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example06FM_With_Argument\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example07FM_in_Constructor\Program2.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example07FM_in_Constructor\Program1.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example07FM_in_Constructor\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example08LazyInitialization\BigObject3.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example08LazyInitialization\BigObject2.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example08LazyInitialization\BigObject1.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example08LazyInitialization\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example09ServiceLocator\Locator\IServiceLocator.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example09ServiceLocator\Locator\ServiceLocator.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example09ServiceLocator\Services\IServices\IServiceA.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example09ServiceLocator\Services\IServices\IServiceB.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example09ServiceLocator\Services\IServices\IServiceC.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example09ServiceLocator\Services\ServiceA.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example09ServiceLocator\Services\ServiceB.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example09ServiceLocator\Services\ServiceC.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example09ServiceLocator\Test.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example10Generic\Creators\ICreator.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example10Generic\Creators\StandardCreator.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example10Generic\Products\IProduct\IProduct.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example10Generic\Products\ProductA.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example10Generic\Products\ProductB.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example10Generic\Products\ProductC.cs" />
-    <Compile Include="01_Creational\FactoryMethod\Example10Generic\Test.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Builder\CountingMazeBuilder.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Builder\MazeBuilder.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Builder\StandardMazeBuilder.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Door\Door.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Door\DoorNeedingSpell.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Enum\Direction.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Factory\BombedMazeFactory.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Factory\EnchantedMazeFactory.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Factory\MazeFactory.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Factory\MazePrototypeFactory.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\MapSite.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Maze.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\MazeGame\MazeGame.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Room\EnchantedRoom.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Room\Room.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Room\RoomWithBomb.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Spell.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Test.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Wall\BombedWall.cs" />
-    <Compile Include="01_Creational\Prototype\Example1\Wall\Wall.cs" />
-    <Compile Include="01_Creational\Prototype\Example2\ConcretePrototype1.cs" />
-    <Compile Include="01_Creational\Prototype\Example2\ConcretePrototype2.cs" />
-    <Compile Include="01_Creational\Prototype\Example2\Prototype.cs" />
-    <Compile Include="01_Creational\Prototype\Example2\Test.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Classes\NoteLength.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Classes\NotesCollections.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Classes\NotesSerializer.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Classes\Position.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Classes\RegisteredMusicalObjects.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Classes\RelocationTool.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Classes\Rotate.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Controls\NoteTranspControl.cs">
+    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\006_FactoryMethodWithArgument\Creators\Creator.cs" />
+    <Compile Include="01_Creational\FactoryMethod\006_FactoryMethodWithArgument\Creators\MyCreator.cs" />
+    <Compile Include="01_Creational\FactoryMethod\006_FactoryMethodWithArgument\Products\MyProduct.cs" />
+    <Compile Include="01_Creational\FactoryMethod\006_FactoryMethodWithArgument\Products\Product.cs" />
+    <Compile Include="01_Creational\FactoryMethod\006_FactoryMethodWithArgument\Products\ProductTypeEnum.cs" />
+    <Compile Include="01_Creational\FactoryMethod\006_FactoryMethodWithArgument\Products\TheirProduct.cs" />
+    <Compile Include="01_Creational\FactoryMethod\006_FactoryMethodWithArgument\Products\YourProduct.cs" />
+    <Compile Include="01_Creational\FactoryMethod\006_FactoryMethodWithArgument\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\007_FactoryMethodInConstructor\Creator2.cs" />
+    <Compile Include="01_Creational\FactoryMethod\007_FactoryMethodInConstructor\Creator1.cs" />
+    <Compile Include="01_Creational\FactoryMethod\007_FactoryMethodInConstructor\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\008_LazyInitialization\BigObject3.cs" />
+    <Compile Include="01_Creational\FactoryMethod\008_LazyInitialization\BigObject2.cs" />
+    <Compile Include="01_Creational\FactoryMethod\008_LazyInitialization\BigObject1.cs" />
+    <Compile Include="01_Creational\FactoryMethod\008_LazyInitialization\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\009_ServiceLocator\Locator\IServiceLocator.cs" />
+    <Compile Include="01_Creational\FactoryMethod\009_ServiceLocator\Locator\ServiceLocator.cs" />
+    <Compile Include="01_Creational\FactoryMethod\009_ServiceLocator\Services\IServices\IServiceA.cs" />
+    <Compile Include="01_Creational\FactoryMethod\009_ServiceLocator\Services\IServices\IServiceB.cs" />
+    <Compile Include="01_Creational\FactoryMethod\009_ServiceLocator\Services\IServices\IServiceC.cs" />
+    <Compile Include="01_Creational\FactoryMethod\009_ServiceLocator\Services\ServiceA.cs" />
+    <Compile Include="01_Creational\FactoryMethod\009_ServiceLocator\Services\ServiceB.cs" />
+    <Compile Include="01_Creational\FactoryMethod\009_ServiceLocator\Services\ServiceC.cs" />
+    <Compile Include="01_Creational\FactoryMethod\009_ServiceLocator\Test.cs" />
+    <Compile Include="01_Creational\FactoryMethod\010_Generic\Creators\ICreator.cs" />
+    <Compile Include="01_Creational\FactoryMethod\010_Generic\Creators\StandardCreator.cs" />
+    <Compile Include="01_Creational\FactoryMethod\010_Generic\Products\IProduct\IProduct.cs" />
+    <Compile Include="01_Creational\FactoryMethod\010_Generic\Products\ProductA.cs" />
+    <Compile Include="01_Creational\FactoryMethod\010_Generic\Products\ProductB.cs" />
+    <Compile Include="01_Creational\FactoryMethod\010_Generic\Products\ProductC.cs" />
+    <Compile Include="01_Creational\FactoryMethod\010_Generic\Test.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Builder\CountingMazeBuilder.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Builder\MazeBuilder.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Builder\StandardMazeBuilder.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Door\Door.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Door\DoorNeedingSpell.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Enum\Direction.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Factory\BombedMazeFactory.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Factory\MazeFactory.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Factory\MazePrototypeFactory.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\MapSite.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Maze.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\MazeGame\MazeGame.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Room\EnchantedRoom.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Room\Room.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Room\RoomWithBomb.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Spell.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Test.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Wall\BombedWall.cs" />
+    <Compile Include="01_Creational\Prototype\001_Game\Wall\Wall.cs" />
+    <Compile Include="01_Creational\Prototype\002_Base\ConcretePrototype1.cs" />
+    <Compile Include="01_Creational\Prototype\002_Base\ConcretePrototype2.cs" />
+    <Compile Include="01_Creational\Prototype\002_Base\Prototype.cs" />
+    <Compile Include="01_Creational\Prototype\002_Base\Test.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Classes\NoteLength.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Classes\NotesCollections.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Classes\NotesSerializer.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Classes\Position.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Classes\RegisteredMusicalObjects.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Classes\RelocationTool.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Classes\Rotate.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Controls\NoteTranspControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\Prototype\Example3\Controls\NoteTranspControl.Designer.cs">
+    <Compile Include="01_Creational\Prototype\003_Control\Controls\NoteTranspControl.Designer.cs">
       <DependentUpon>NoteTranspControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\Prototype\Example3\Controls\StaffTranspControl.cs">
+    <Compile Include="01_Creational\Prototype\003_Control\Controls\StaffTranspControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\Prototype\Example3\Controls\StaffTranspControl.Designer.cs">
+    <Compile Include="01_Creational\Prototype\003_Control\Controls\StaffTranspControl.Designer.cs">
       <DependentUpon>StaffTranspControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\Prototype\Example3\Controls\TranspControl.cs">
+    <Compile Include="01_Creational\Prototype\003_Control\Controls\TranspControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\Prototype\Example3\Form1.cs">
+    <Compile Include="01_Creational\Prototype\003_Control\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01_Creational\Prototype\Example3\Form1.designer.cs">
+    <Compile Include="01_Creational\Prototype\003_Control\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\Prototype\Example3\Properties\Resources.Designer.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Properties\Settings.Designer.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Prototype\Graphic.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Prototype\GraphicTool.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Prototype\MusicalNote.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Prototype\RotateTool.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Prototype\Staff.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Prototype\Tool.cs" />
-    <Compile Include="01_Creational\Prototype\Example3\Test.cs" />
-    <Compile Include="01_Creational\Prototype\Example4Perf\MyClass2.cs" />
-    <Compile Include="01_Creational\Prototype\Example4Perf\MyClass1.cs" />
-    <Compile Include="01_Creational\Prototype\Example4Perf\Test.cs" />
-    <Compile Include="01_Creational\Prototype\Example5\Prototype.cs" />
-    <Compile Include="01_Creational\Prototype\Example5\Test.cs" />
-    <Compile Include="01_Creational\Prototype\Example6\Program5.cs" />
-    <Compile Include="01_Creational\Prototype\Example6\Program4.cs" />
-    <Compile Include="01_Creational\Prototype\Example6\Prototype3.cs" />
-    <Compile Include="01_Creational\Prototype\Example6\Prototype2.cs" />
-    <Compile Include="01_Creational\Prototype\Example6\Prototype1.cs" />
-    <Compile Include="01_Creational\Prototype\Example6\Test.cs" />
-    <Compile Include="01_Creational\SimpleFactory\Example1\Cars\CarBefore.cs" />
-    <Compile Include="01_Creational\SimpleFactory\Example1\Cars\Golf.cs" />
-    <Compile Include="01_Creational\SimpleFactory\Example1\Cars\Passat.cs" />
-    <Compile Include="01_Creational\SimpleFactory\Example1\Cars\Tiguan.cs" />
-    <Compile Include="01_Creational\SimpleFactory\Example1\Cars\Touareg.cs" />
-    <Compile Include="01_Creational\SimpleFactory\Example1\Facilities\VolkswagenFacility.cs" />
-    <Compile Include="01_Creational\SimpleFactory\Example1\Factory\SimpleFactory.cs" />
-    <Compile Include="01_Creational\SimpleFactory\Example1\Test.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Builder\CountingMazeBuilder.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Builder\MazeBuilder.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Builder\StandardMazeBuilder.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Door\Door.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Door\DoorNeedingSpell.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\EnchantedMazeGame.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Enum\Direction.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Factory\BombedMazeFactory.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Factory\EnchantedMazeFactory.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Factory\MazeFactory.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Factory\MazePrototypeFactory.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\MapSite.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Maze.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\MazeGame\BombedMazeGame.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\MazeGame\MazeGame.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Properties.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Room\EnchandedRoom.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Room\Room.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Room\RoomWithBomb.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Spell.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Test.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Wall\BombedWall.cs" />
-    <Compile Include="01_Creational\Singleton\Example1\Wall\Wall.cs" />
-    <Compile Include="01_Creational\Singleton\Example2\Singleton.cs" />
-    <Compile Include="01_Creational\Singleton\Example2\Test.cs" />
-    <Compile Include="01_Creational\Singleton\Example2\ThreadSafe\Singleton.cs" />
-    <Compile Include="01_Creational\Singleton\Example3\Singleton.cs" />
-    <Compile Include="01_Creational\Singleton\Example3\Test.cs" />
-    <Compile Include="01_Creational\Singleton\Example4MultiSingleton\Singleton2.cs" />
-    <Compile Include="01_Creational\Singleton\Example4MultiSingleton\Singleton.cs" />
-    <Compile Include="01_Creational\Singleton\Example4MultiSingleton\Test.cs" />
-    <Compile Include="01_Creational\Singleton\Example5Inheritance\Program.cs" />
-    <Compile Include="01_Creational\Singleton\Example5Inheritance\Test.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\RegistSingletonGen\Program.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\RegistSingletonGen\Singleton.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\RegistSingletonGen\SingletonBig.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\RegistSingletonGen\SingletonSmall.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\RegistSingleton\Program.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\RegistSingleton\Singleton.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\RegistSingleton\SingletonBig.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\RegistSingleton\SingletonNameEnum.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\RegistSingleton\SingletonSmall.cs" />
-    <Compile Include="01_Creational\Singleton\Example6Regist\Test.cs" />
-    <Compile Include="01_Creational\Singleton\Example7MultithreadedSingleton\Singleton1.cs" />
-    <Compile Include="01_Creational\Singleton\Example7MultithreadedSingleton\Singleton2.cs" />
-    <Compile Include="01_Creational\Singleton\Example7MultithreadedSingleton\Test.cs" />
-    <Compile Include="01_Creational\Singleton\Example8\Singleton.cs" />
-    <Compile Include="01_Creational\Singleton\Example8\Test.cs" />
-    <Compile Include="01_Creational\Singleton\Example9Lazy\Singleton.cs" />
-    <Compile Include="01_Creational\Singleton\Example9Lazy\Test.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Properties\Resources.Designer.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Properties\Settings.Designer.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Prototype\Graphic.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Prototype\GraphicTool.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Prototype\MusicalNote.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Prototype\RotateTool.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Prototype\Staff.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Prototype\Tool.cs" />
+    <Compile Include="01_Creational\Prototype\003_Control\Test.cs" />
+    <Compile Include="01_Creational\Prototype\004_Performance\MyClass2.cs" />
+    <Compile Include="01_Creational\Prototype\004_Performance\MyClass1.cs" />
+    <Compile Include="01_Creational\Prototype\004_Performance\Test.cs" />
+    <Compile Include="01_Creational\Prototype\005_\Prototype.cs" />
+    <Compile Include="01_Creational\Prototype\005_\Test.cs" />
+    <Compile Include="01_Creational\Prototype\006_Clone\Program5.cs" />
+    <Compile Include="01_Creational\Prototype\006_Clone\Program4.cs" />
+    <Compile Include="01_Creational\Prototype\006_Clone\Prototype3.cs" />
+    <Compile Include="01_Creational\Prototype\006_Clone\Prototype2.cs" />
+    <Compile Include="01_Creational\Prototype\006_Clone\Prototype1.cs" />
+    <Compile Include="01_Creational\Prototype\006_Clone\Test.cs" />
+    <Compile Include="01_Creational\SimpleFactory\001_Base\Cars\Car.cs" />
+    <Compile Include="01_Creational\SimpleFactory\001_Base\Cars\Golf.cs" />
+    <Compile Include="01_Creational\SimpleFactory\001_Base\Cars\Passat.cs" />
+    <Compile Include="01_Creational\SimpleFactory\001_Base\Cars\Tiguan.cs" />
+    <Compile Include="01_Creational\SimpleFactory\001_Base\Cars\Touareg.cs" />
+    <Compile Include="01_Creational\SimpleFactory\001_Base\Facilities\VolkswagenFacility.cs" />
+    <Compile Include="01_Creational\SimpleFactory\001_Base\Factory\SimpleFactory.cs" />
+    <Compile Include="01_Creational\SimpleFactory\001_Base\Test.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Builder\CountingMazeBuilder.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Builder\MazeBuilder.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Builder\StandardMazeBuilder.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Door\Door.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Door\DoorNeedingSpell.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\EnchantedMazeGame.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Enum\Direction.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Factory\BombedMazeFactory.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Factory\EnchantedMazeFactory.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Factory\MazeFactory.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Factory\MazePrototypeFactory.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\MapSite.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Maze.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\MazeGame\BombedMazeGame.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\MazeGame\MazeGame.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Properties.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Room\EnchandedRoom.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Room\Room.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Room\RoomWithBomb.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Spell.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Test.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Wall\BombedWall.cs" />
+    <Compile Include="01_Creational\Singleton\001_Game\Wall\Wall.cs" />
+    <Compile Include="01_Creational\Singleton\003_ThreadSafe\Singleton.cs" />
+    <Compile Include="01_Creational\Singleton\003_ThreadSafe\Test.cs" />
+    <Compile Include="01_Creational\Singleton\003_ThreadSafe\ThreadSafe\Singleton.cs" />
+    <Compile Include="01_Creational\Singleton\002_Base\Singleton.cs" />
+    <Compile Include="01_Creational\Singleton\002_Base\Test.cs" />
+    <Compile Include="01_Creational\Singleton\004_MultiSingleton\Singleton2.cs" />
+    <Compile Include="01_Creational\Singleton\004_MultiSingleton\Singleton.cs" />
+    <Compile Include="01_Creational\Singleton\004_MultiSingleton\Test.cs" />
+    <Compile Include="01_Creational\Singleton\005_Inheritance\Program.cs" />
+    <Compile Include="01_Creational\Singleton\005_Inheritance\Test.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\RegistSingletonGen\Program.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\RegistSingletonGen\Singleton.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\RegistSingletonGen\SingletonBig.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\RegistSingletonGen\SingletonSmall.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\RegistSingleton\Program.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\RegistSingleton\Singleton.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\RegistSingleton\SingletonBig.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\RegistSingleton\SingletonNameEnum.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\RegistSingleton\SingletonSmall.cs" />
+    <Compile Include="01_Creational\Singleton\006_Regist\Test.cs" />
+    <Compile Include="01_Creational\Singleton\007_MultithreadedSingleton\Singleton1.cs" />
+    <Compile Include="01_Creational\Singleton\007_MultithreadedSingleton\Singleton2.cs" />
+    <Compile Include="01_Creational\Singleton\007_MultithreadedSingleton\Test.cs" />
+    <Compile Include="01_Creational\Singleton\008_Serialization\Singleton.cs" />
+    <Compile Include="01_Creational\Singleton\008_Serialization\Test.cs" />
+    <Compile Include="01_Creational\Singleton\009_Lazy\Singleton.cs" />
+    <Compile Include="01_Creational\Singleton\009_Lazy\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structural\Adapter\Example1\Adapters\HomeCatAdapter.cs" />
-    <Compile Include="Structural\Adapter\Example1\CatInfoPrinter.cs" />
-    <Compile Include="Structural\Adapter\Example1\HomeCats\IHomeCat.cs" />
-    <Compile Include="Structural\Adapter\Example1\HomeCats\PedigreedCat.cs" />
-    <Compile Include="Structural\Adapter\Example1\HomeCats\YardCat.cs" />
-    <Compile Include="Structural\Adapter\Example1\Superheroes\IFly.cs" />
-    <Compile Include="Structural\Adapter\Example1\Superheroes\IShoot.cs" />
-    <Compile Include="Structural\Adapter\Example1\Superheroes\ISuperhero.cs" />
-    <Compile Include="Structural\Adapter\Example1\Superheroes\IWalls.cs" />
-    <Compile Include="Structural\Adapter\Example1\Superheroes\SuperheroAdapter.cs" />
-    <Compile Include="Structural\Adapter\Example1\Test.cs" />
-    <Compile Include="Structural\Adapter\Example1\WildCats\IWildCat.cs" />
-    <Compile Include="Structural\Adapter\Example1\WildCats\Tiger.cs" />
-    <Compile Include="Structural\Adapter\Example2\Adaptee.cs" />
-    <Compile Include="Structural\Adapter\Example2\Adapter.cs" />
-    <Compile Include="Structural\Adapter\Example2\ITarget.cs" />
-    <Compile Include="Structural\Adapter\Example2\Program.cs" />
-    <Compile Include="Structural\Adapter\Example2\Test.cs" />
-    <Compile Include="Structural\Adapter\Example3\Adaptee.cs" />
-    <Compile Include="Structural\Adapter\Example3\Adapter.cs" />
-    <Compile Include="Structural\Adapter\Example3\Target.cs" />
-    <Compile Include="Structural\Adapter\Example3\Test.cs" />
-    <Compile Include="Structural\Adapter\Example4\DrawingEditor.cs" />
-    <Compile Include="Structural\Adapter\Example4\Form1.cs">
+    <Compile Include="02_Structural\Adapter\001_Cats\Adapters\HomeCatAdapter.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\CatInfoPrinter.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\HomeCats\IHomeCat.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\HomeCats\PedigreedCat.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\HomeCats\YardCat.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\Superheroes\IFly.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\Superheroes\IShoot.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\Superheroes\ISuperhero.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\Superheroes\IWalls.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\Superheroes\SuperheroAdapter.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\Test.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\WildCats\IWildCat.cs" />
+    <Compile Include="02_Structural\Adapter\001_Cats\WildCats\Tiger.cs" />
+    <Compile Include="02_Structural\Adapter\002_Class\Adaptee.cs" />
+    <Compile Include="02_Structural\Adapter\002_Class\Adapter.cs" />
+    <Compile Include="02_Structural\Adapter\002_Class\ITarget.cs" />
+    <Compile Include="02_Structural\Adapter\002_Class\Test.cs" />
+    <Compile Include="02_Structural\Adapter\003_Object\Adaptee.cs" />
+    <Compile Include="02_Structural\Adapter\003_Object\Adapter.cs" />
+    <Compile Include="02_Structural\Adapter\003_Object\Target.cs" />
+    <Compile Include="02_Structural\Adapter\003_Object\Test.cs" />
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\DrawingEditor.cs" />
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example4\Form1.designer.cs">
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Structural\Adapter\Example4\Line.cs" />
-    <Compile Include="Structural\Adapter\Example4\LineManipulator.cs">
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Line.cs" />
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\LineManipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example4\Manipulator.cs">
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Manipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example4\Properties\Resources.Designer.cs" />
-    <Compile Include="Structural\Adapter\Example4\Properties\Settings.Designer.cs" />
-    <Compile Include="Structural\Adapter\Example4\RectangleFigure.cs" />
-    <Compile Include="Structural\Adapter\Example4\RectangleManipulator.cs">
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Properties\Resources.Designer.cs" />
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Properties\Settings.Designer.cs" />
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\RectangleFigure.cs" />
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\RectangleManipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example4\Shape.cs" />
-    <Compile Include="Structural\Adapter\Example4\Test.cs" />
-    <Compile Include="Structural\Adapter\Example4\TextManipulator.cs">
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Shape.cs" />
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Test.cs" />
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\TextManipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example4\TextShape.cs" />
-    <Compile Include="Structural\Adapter\Example4\TextView.cs" />
-    <Compile Include="Structural\Adapter\Example5\PluggableAdapter.cs" />
-    <Compile Include="Structural\Adapter\Example5\Test.cs" />
-    <Compile Include="Structural\Adapter\Example6\Form1.cs">
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\TextShape.cs" />
+    <Compile Include="02_Structural\Adapter\004_DrawingEditor\TextView.cs" />
+    <Compile Include="02_Structural\Adapter\005_PluggableAdapter\PluggableAdapter.cs" />
+    <Compile Include="02_Structural\Adapter\005_PluggableAdapter\Test.cs" />
+    <Compile Include="02_Structural\Adapter\006_TreeDisplay\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example6\Form1.designer.cs">
+    <Compile Include="02_Structural\Adapter\006_TreeDisplay\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Structural\Adapter\Example6\Properties\Resources.Designer.cs" />
-    <Compile Include="Structural\Adapter\Example6\Properties\Settings.Designer.cs" />
-    <Compile Include="Structural\Adapter\Example6\Test.cs" />
-    <Compile Include="Structural\Adapter\Example6\TreeDisplayAdapter.cs">
+    <Compile Include="02_Structural\Adapter\006_TreeDisplay\Properties\Resources.Designer.cs" />
+    <Compile Include="02_Structural\Adapter\006_TreeDisplay\Properties\Settings.Designer.cs" />
+    <Compile Include="02_Structural\Adapter\006_TreeDisplay\Test.cs" />
+    <Compile Include="02_Structural\Adapter\006_TreeDisplay\TreeDisplayAdapter.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example7\New_Subsystem\AdapteeNew.cs" />
-    <Compile Include="Structural\Adapter\Example7\New_Subsystem\ITargetNew.cs" />
-    <Compile Include="Structural\Adapter\Example7\Old_Subsystem\AdapteeOld.cs" />
-    <Compile Include="Structural\Adapter\Example7\Old_Subsystem\ITargetOld.cs" />
-    <Compile Include="Structural\Adapter\Example7\Test.cs" />
-    <Compile Include="Structural\Adapter\Example7\TwoWayAdapter.cs" />
-    <Compile Include="Structural\Adapter\Example8\AssemblyTreeDisplay.cs">
+    <Compile Include="02_Structural\Adapter\007_TwoWayAdapter\New_Subsystem\AdapteeNew.cs" />
+    <Compile Include="02_Structural\Adapter\007_TwoWayAdapter\New_Subsystem\ITargetNew.cs" />
+    <Compile Include="02_Structural\Adapter\007_TwoWayAdapter\Old_Subsystem\AdapteeOld.cs" />
+    <Compile Include="02_Structural\Adapter\007_TwoWayAdapter\Old_Subsystem\ITargetOld.cs" />
+    <Compile Include="02_Structural\Adapter\007_TwoWayAdapter\Test.cs" />
+    <Compile Include="02_Structural\Adapter\007_TwoWayAdapter\TwoWayAdapter.cs" />
+    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\AssemblyTreeDisplay.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example8\DirectoryTreeDisplay.cs">
+    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\DirectoryTreeDisplay.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example8\Form1.cs">
+    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Structural\Adapter\Example8\Form1.designer.cs">
+    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Structural\Adapter\Example8\Properties\Resources.Designer.cs" />
-    <Compile Include="Structural\Adapter\Example8\Properties\Settings.Designer.cs" />
-    <Compile Include="Structural\Adapter\Example8\Test.cs" />
-    <Compile Include="Structural\Adapter\Example8\TreeDisplayAdapter.cs">
+    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\Resources.Designer.cs" />
+    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\Settings.Designer.cs" />
+    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Test.cs" />
+    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\TreeDisplayAdapter.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Structural\Bridge\Example1\Abstraction\Abstraction.cs" />
-    <Compile Include="Structural\Bridge\Example1\Abstraction\RefinedAbstraction.cs" />
-    <Compile Include="Structural\Bridge\Example1\Implementor\ConcreteImplementorA.cs" />
-    <Compile Include="Structural\Bridge\Example1\Implementor\ConcreteImplementorB.cs" />
-    <Compile Include="Structural\Bridge\Example1\Implementor\Implementor.cs" />
-    <Compile Include="Structural\Bridge\Example1\Test.cs" />
-    <Compile Include="Structural\Bridge\Example2\Abstraction\MacWindow.cs" />
-    <Compile Include="Structural\Bridge\Example2\Abstraction\MSWindow.cs" />
-    <Compile Include="Structural\Bridge\Example2\Abstraction\Window.cs" />
-    <Compile Include="Structural\Bridge\Example2\Implementors\LinuxFactory.cs" />
-    <Compile Include="Structural\Bridge\Example2\Implementors\MacWindowImp.cs" />
-    <Compile Include="Structural\Bridge\Example2\Implementors\MSWindowImp.cs" />
-    <Compile Include="Structural\Bridge\Example2\Implementors\WindowImp.cs" />
-    <Compile Include="Structural\Bridge\Example2\Test.cs" />
-    <Compile Include="Structural\Bridge\Example3\Abstraction\Abstraction.cs" />
-    <Compile Include="Structural\Bridge\Example3\Abstraction\RefinedAbstraction.cs" />
-    <Compile Include="Structural\Bridge\Example3\Test.cs" />
-    <Compile Include="Structural\Bridge\Example4\Abstraction\Pentagon.cs" />
-    <Compile Include="Structural\Bridge\Example4\Abstraction\Shape.cs" />
-    <Compile Include="Structural\Bridge\Example4\Abstraction\Square.cs" />
-    <Compile Include="Structural\Bridge\Example4\Abstraction\Triangle.cs" />
-    <Compile Include="Structural\Bridge\Example4\Figure.cs" />
-    <Compile Include="Structural\Bridge\Example4\Form1.cs">
+    <Compile Include="02_Structural\Bridge\001_Base\Abstraction\Abstraction.cs" />
+    <Compile Include="02_Structural\Bridge\001_Base\Abstraction\RefinedAbstraction.cs" />
+    <Compile Include="02_Structural\Bridge\001_Base\Implementor\ConcreteImplementorA.cs" />
+    <Compile Include="02_Structural\Bridge\001_Base\Implementor\ConcreteImplementorB.cs" />
+    <Compile Include="02_Structural\Bridge\001_Base\Implementor\Implementor.cs" />
+    <Compile Include="02_Structural\Bridge\001_Base\Test.cs" />
+    <Compile Include="02_Structural\Bridge\002_Motivation\Abstraction\MacWindow.cs" />
+    <Compile Include="02_Structural\Bridge\002_Motivation\Abstraction\MSWindow.cs" />
+    <Compile Include="02_Structural\Bridge\002_Motivation\Abstraction\Window.cs" />
+    <Compile Include="02_Structural\Bridge\002_Motivation\Implementors\LinuxFactory.cs" />
+    <Compile Include="02_Structural\Bridge\002_Motivation\Implementors\MacWindowImp.cs" />
+    <Compile Include="02_Structural\Bridge\002_Motivation\Implementors\MSWindowImp.cs" />
+    <Compile Include="02_Structural\Bridge\002_Motivation\Implementors\WindowImp.cs" />
+    <Compile Include="02_Structural\Bridge\002_Motivation\Test.cs" />
+    <Compile Include="02_Structural\Bridge\003_Collections\Abstraction\Abstraction.cs" />
+    <Compile Include="02_Structural\Bridge\003_Collections\Abstraction\RefinedAbstraction.cs" />
+    <Compile Include="02_Structural\Bridge\003_Collections\Test.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Abstraction\Pentagon.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Abstraction\Shape.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Abstraction\Square.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Abstraction\Triangle.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Figure.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Structural\Bridge\Example4\Implementation\DashDotLine.cs" />
-    <Compile Include="Structural\Bridge\Example4\Implementation\DotLine.cs" />
-    <Compile Include="Structural\Bridge\Example4\Implementation\LineStyle.cs" />
-    <Compile Include="Structural\Bridge\Example4\Properties\Resources.Designer.cs" />
-    <Compile Include="Structural\Bridge\Example4\Properties\Settings.Designer.cs" />
-    <Compile Include="Structural\Bridge\Example4\Test.cs" />
-    <Compile Include="Structural\Composite\Example1\Component.cs" />
-    <Compile Include="Structural\Composite\Example1\Composite.cs" />
-    <Compile Include="Structural\Composite\Example1\Leaf.cs" />
-    <Compile Include="Structural\Composite\Example1\Test.cs" />
-    <Compile Include="Structural\Composite\Example2\Form1.cs">
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Implementation\DashDotLine.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Implementation\DotLine.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Implementation\LineStyle.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Properties\Resources.Designer.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Properties\Settings.Designer.cs" />
+    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Test.cs" />
+    <Compile Include="02_Structural\Composite\001_Base\Component.cs" />
+    <Compile Include="02_Structural\Composite\001_Base\Composite.cs" />
+    <Compile Include="02_Structural\Composite\001_Base\Leaf.cs" />
+    <Compile Include="02_Structural\Composite\001_Base\Test.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Structural\Composite\Example2\IGraphic.cs" />
-    <Compile Include="Structural\Composite\Example2\Lists\Line.cs" />
-    <Compile Include="Structural\Composite\Example2\Lists\Rectangle.cs" />
-    <Compile Include="Structural\Composite\Example2\Lists\Text.cs" />
-    <Compile Include="Structural\Composite\Example2\Picture.cs" />
-    <Compile Include="Structural\Composite\Example2\Program.cs" />
-    <Compile Include="Structural\Composite\Example2\Properties\Resources.Designer.cs" />
-    <Compile Include="Structural\Composite\Example2\Properties\Settings.Designer.cs" />
-    <Compile Include="Structural\Composite\Example2\Test.cs" />
-    <Compile Include="Structural\Composite\Example3\Component.cs" />
-    <Compile Include="Structural\Composite\Example3\Composite.cs" />
-    <Compile Include="Structural\Composite\Example3\Leaf.cs" />
-    <Compile Include="Structural\Composite\Example3\Test.cs" />
-    <Compile Include="Structural\Decorator\Example1\Beverage\BeverageBase.cs" />
-    <Compile Include="Structural\Decorator\Example1\Beverage\BlackTea.cs" />
-    <Compile Include="Structural\Decorator\Example1\Beverage\Espresso.cs" />
-    <Compile Include="Structural\Decorator\Example1\Beverage\GreenTea.cs" />
-    <Compile Include="Structural\Decorator\Example1\Decorators\ChocolateCondiment.cs" />
-    <Compile Include="Structural\Decorator\Example1\Decorators\CondimentsDecoratorBase.cs" />
-    <Compile Include="Structural\Decorator\Example1\Decorators\MilkCondiment.cs" />
-    <Compile Include="Structural\Decorator\Example1\Decorators\SugarCondiment.cs" />
-    <Compile Include="Structural\Decorator\Example1\Test.cs" />
-    <Compile Include="Structural\Facade\Example1\Test.cs" />
-    <Compile Include="Structural\Facade\Example1\WashingMachine\Dryer.cs" />
-    <Compile Include="Structural\Facade\Example1\WashingMachine\Engine.cs" />
-    <Compile Include="Structural\Facade\Example1\WashingMachine\Thermo.cs" />
-    <Compile Include="Structural\Facade\Example1\WashingMachine\WashingMachine.cs" />
-    <Compile Include="Structural\Facade\Example1\WashingMachine\WaterManagingSubsystem.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\IGraphic.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Lists\Line.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Lists\Rectangle.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Lists\Text.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Picture.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Program.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Properties\Resources.Designer.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Properties\Settings.Designer.cs" />
+    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Test.cs" />
+    <Compile Include="02_Structural\Composite\003_RecursionComposition\Component.cs" />
+    <Compile Include="02_Structural\Composite\003_RecursionComposition\Composite.cs" />
+    <Compile Include="02_Structural\Composite\003_RecursionComposition\Leaf.cs" />
+    <Compile Include="02_Structural\Composite\003_RecursionComposition\Test.cs" />
+    <Compile Include="02_Structural\Decorator\001_Beverage\Beverage\BeverageBase.cs" />
+    <Compile Include="02_Structural\Decorator\001_Beverage\Beverage\BlackTea.cs" />
+    <Compile Include="02_Structural\Decorator\001_Beverage\Beverage\Espresso.cs" />
+    <Compile Include="02_Structural\Decorator\001_Beverage\Beverage\GreenTea.cs" />
+    <Compile Include="02_Structural\Decorator\001_Beverage\Decorators\ChocolateCondiment.cs" />
+    <Compile Include="02_Structural\Decorator\001_Beverage\Decorators\CondimentsDecoratorBase.cs" />
+    <Compile Include="02_Structural\Decorator\001_Beverage\Decorators\MilkCondiment.cs" />
+    <Compile Include="02_Structural\Decorator\001_Beverage\Decorators\SugarCondiment.cs" />
+    <Compile Include="02_Structural\Decorator\001_Beverage\Test.cs" />
+    <Compile Include="02_Structural\Facade\001_WashingMachine\Test.cs" />
+    <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\Dryer.cs" />
+    <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\Engine.cs" />
+    <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\Thermo.cs" />
+    <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\WashingMachine.cs" />
+    <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\WaterManagingSubsystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="01_Creational\AbstractFactory\Example2\ClassDiagram.cd" />
-    <None Include="01_Creational\AbstractFactory\Example2\Program_Main.sequencediagram" />
-    <None Include="01_Creational\AbstractFactory\Example3\ClassDiagram.cd" />
-    <None Include="01_Creational\AbstractFactory\Example3\Program_Main.sequencediagram" />
-    <None Include="01_Creational\Buider\Example3\Program_Main.sequencediagram" />
-    <None Include="01_Creational\Buider\Example4\ClassDiagram.cd" />
-    <None Include="01_Creational\Buider\Example4\Program_Main.sequencediagram" />
-    <None Include="01_Creational\FactoryMethod\Example03\ClassDiagram1.cd" />
-    <None Include="01_Creational\FactoryMethod\Example03\Properties\Settings.settings">
+    <None Include="01_Creational\AbstractFactory\004_Water\ClassDiagram.cd" />
+    <None Include="01_Creational\AbstractFactory\004_Water\Program_Main.sequencediagram" />
+    <None Include="01_Creational\AbstractFactory\002_Base\ClassDiagram.cd" />
+    <None Include="01_Creational\AbstractFactory\002_Base\Program_Main.sequencediagram" />
+    <None Include="01_Creational\Buider\004_House\Program_Main.sequencediagram" />
+    <None Include="01_Creational\Buider\002_Base\ClassDiagram.cd" />
+    <None Include="01_Creational\Buider\002_Base\Program_Main.sequencediagram" />
+    <None Include="01_Creational\FactoryMethod\003_Application\ClassDiagram1.cd" />
+    <None Include="01_Creational\FactoryMethod\003_Application\Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
-    <None Include="01_Creational\FactoryMethod\Example05\Properties\Settings.settings" />
-    <None Include="01_Creational\Prototype\Example2\ClassDiagram1.cd" />
-    <None Include="01_Creational\Prototype\Example3\ClassDiagram.cd" />
-    <None Include="01_Creational\Prototype\Example3\Properties\Settings.settings" />
-    <None Include="Structural\Adapter\Example3\ClassDiagram1.cd" />
-    <None Include="Structural\Adapter\Example4\Properties\Settings.settings" />
-    <None Include="Structural\Adapter\Example6\Properties\app.manifest" />
-    <None Include="Structural\Adapter\Example6\Properties\Settings.settings" />
-    <None Include="Structural\Adapter\Example8\Properties\app.manifest" />
-    <None Include="Structural\Adapter\Example8\Properties\Settings.settings" />
-    <None Include="Structural\Bridge\Example1\ClassDiagram.cd" />
-    <None Include="Structural\Bridge\Example2\ClassDiagram1.cd" />
-    <None Include="Structural\Bridge\Example4\Properties\Settings.settings" />
-    <None Include="Structural\Composite\Example1\ClassDiagram.cd" />
-    <None Include="Structural\Composite\Example2\Properties\Settings.settings" />
+    <None Include="01_Creational\FactoryMethod\005_FigureManipulator\Properties\Settings.settings" />
+    <None Include="01_Creational\Prototype\002_Base\ClassDiagram1.cd" />
+    <None Include="01_Creational\Prototype\003_Control\ClassDiagram.cd" />
+    <None Include="01_Creational\Prototype\003_Control\Properties\Settings.settings" />
+    <None Include="02_Structural\Adapter\003_Object\ClassDiagram1.cd" />
+    <None Include="02_Structural\Adapter\004_DrawingEditor\Properties\Settings.settings" />
+    <None Include="02_Structural\Adapter\006_TreeDisplay\Properties\app.manifest" />
+    <None Include="02_Structural\Adapter\006_TreeDisplay\Properties\Settings.settings" />
+    <None Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\app.manifest" />
+    <None Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\Settings.settings" />
+    <None Include="02_Structural\Bridge\001_Base\ClassDiagram.cd" />
+    <None Include="02_Structural\Bridge\002_Motivation\ClassDiagram1.cd" />
+    <None Include="02_Structural\Bridge\004_WinFormShapesAndLines\Properties\Settings.settings" />
+    <None Include="02_Structural\Composite\001_Base\ClassDiagram.cd" />
+    <None Include="02_Structural\Composite\002_GraphicDesigner\Properties\Settings.settings" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="01_Creational\AbstractFactory\004_Water\abstractFactoryWater.png" />
     <Content Include="01_Creational\AbstractFactory\Abstract Factory.png" />
     <Content Include="01_Creational\AbstractFactory\AF_SD.png" />
-    <Content Include="01_Creational\AbstractFactory\Example1\abstractfactory.png" />
-    <Content Include="01_Creational\AbstractFactory\Example2\abstractFactory.png" />
-    <Content Include="01_Creational\AbstractFactory\Example2\abstractFactory1.png" />
-    <Content Include="01_Creational\AbstractFactory\Example3\abstractFactory.png" />
-    <Content Include="01_Creational\AbstractFactory\Example4\abstractFactory.png" />
-    <Content Include="01_Creational\AbstractFactory\Example5\abstractFactory.png" />
-    <Content Include="01_Creational\AbstractFactory\Example6Labirint\abstractFactory.png" />
+    <Content Include="01_Creational\AbstractFactory\003_Cars\abstractfactory.png" />
+    <Content Include="01_Creational\AbstractFactory\004_Water\abstractFactory.png" />
+    <Content Include="01_Creational\AbstractFactory\004_Water\abstractFactory1.png" />
+    <Content Include="01_Creational\AbstractFactory\002_Base\abstractFactory.png" />
+    <Content Include="01_Creational\AbstractFactory\005_Buttons\abstractFactory.png" />
+    <Content Include="01_Creational\AbstractFactory\006_BaseModified\abstractFactory.png" />
+    <Content Include="01_Creational\AbstractFactory\001_Game\abstractFactory.png" />
+    <Content Include="01_Creational\Buider\004_House\builder_.png" />
     <Content Include="01_Creational\Buider\builder.png" />
-    <Content Include="01_Creational\Buider\Example1\builder.png" />
-    <Content Include="01_Creational\Buider\Example3\builder.png" />
-    <Content Include="01_Creational\Buider\Example4\builder.png" />
-    <Content Include="01_Creational\Buider\Example5\builder.png" />
-    <Content Include="01_Creational\FactoryMethod\Exampe01\FactoryMethod.png" />
-    <Content Include="01_Creational\FactoryMethod\Example03\FactoryMethod.png" />
-    <Content Include="01_Creational\FactoryMethod\Example03\Resources\clear.png" />
-    <Content Include="01_Creational\FactoryMethod\Example03\Resources\close.png" />
-    <Content Include="01_Creational\FactoryMethod\Example03\Resources\images.jpg" />
-    <Content Include="01_Creational\FactoryMethod\Example03\Resources\open.png" />
-    <Content Include="01_Creational\FactoryMethod\Example03\Resources\revert.png" />
-    <Content Include="01_Creational\FactoryMethod\Example03\Resources\save.png" />
-    <Content Include="01_Creational\FactoryMethod\Example03\Resources\saveAs.png" />
-    <Content Include="01_Creational\FactoryMethod\Example05\FactoryMethod.png" />
-    <Content Include="01_Creational\FactoryMethod\Example05\line.png" />
-    <Content Include="01_Creational\FactoryMethod\Example05\text.png" />
+    <Content Include="01_Creational\Buider\001_Game\builder.png" />
+    <Content Include="01_Creational\Buider\004_House\builder.png" />
+    <Content Include="01_Creational\Buider\002_Base\builder.png" />
+    <Content Include="01_Creational\Buider\005_TextConverter\builder.png" />
+    <Content Include="01_Creational\FactoryMethod\001_Game\FactoryMethod.png" />
+    <Content Include="01_Creational\FactoryMethod\003_Application\FactoryMethod.png" />
+    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\clear.png" />
+    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\close.png" />
+    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\images.jpg" />
+    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\open.png" />
+    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\revert.png" />
+    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\save.png" />
+    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\saveAs.png" />
+    <Content Include="01_Creational\FactoryMethod\005_FigureManipulator\FactoryMethod.png" />
+    <Content Include="01_Creational\FactoryMethod\005_FigureManipulator\line.png" />
+    <Content Include="01_Creational\FactoryMethod\005_FigureManipulator\text.png" />
     <Content Include="01_Creational\FactoryMethod\FactoryMethod.png" />
-    <Content Include="01_Creational\Prototype\Example1\prototype.png" />
-    <Content Include="01_Creational\Prototype\Example2\prototype.png" />
-    <Content Include="01_Creational\Prototype\Example3\prototype.png" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\EighthNoteSelected2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\EighthNoteSmall2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\HalfNoteSelected2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\HalfNoteSmall2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\QuarterNoteSelected2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\QuarterNoteSmall2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\SixteenthNoteSelected2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\SixteenthNoteSmall2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\WholeNoteSelected2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\2323\WholeNoteSmall2323.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\Clear.png" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\deselect-16.png" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\EighthNote.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\EighthNoteSelected.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\EighthNoteSmall.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\erase.png" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\HalfNote.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\HalfNoteSelected.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\HalfNoteSmall.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\key.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\key.png" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\Play.png" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\QuarterNote.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\QuarterNoteSelected.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\QuarterNoteSmall.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\Rotate.PNG" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\SixteenthNote.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\SixteenthNoteSmall.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\Staff.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\staff.png" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\Staff_new.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\Staff_new.png" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\Up.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\WholeNote.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\WholeNoteSelected.gif" />
-    <Content Include="01_Creational\Prototype\Example3\Resources\WholeNoteSmall.gif" />
-    <Content Include="01_Creational\SimpleFactory\Example1\simplefactory.png" />
-    <Content Include="01_Creational\Singleton\Example1\singleton.png" />
-    <Content Include="01_Creational\Singleton\Example3\singleton.png" />
-    <Content Include="Structural\Adapter\Adapter.png" />
-    <Content Include="Structural\Adapter\Example2\adapter.png" />
-    <Content Include="Structural\Adapter\Example3\adapter.png" />
-    <Content Include="Structural\Adapter\Example4\adapter.png" />
-    <Content Include="Structural\Adapter\Example4\Resources\line.jpg" />
-    <Content Include="Structural\Adapter\Example5\adapter.png" />
-    <Content Include="Structural\Adapter\Example6\adapter.png" />
-    <Content Include="Structural\Adapter\Example7\adapter.png" />
-    <Content Include="Structural\Adapter\Example8\adapter.png" />
-    <Content Include="Structural\Bridge\Bridge.png" />
-    <Content Include="Structural\Bridge\Example1\bridge.png" />
-    <Content Include="Structural\Bridge\Example2\bridge.png" />
-    <Content Include="Structural\Bridge\Example3\bridge.png" />
-    <Content Include="Structural\Bridge\Example4\bridge.png" />
-    <Content Include="Structural\Composite\Composite.png" />
-    <Content Include="Structural\Composite\Example1\composite.png" />
-    <Content Include="Structural\Composite\Example2\composite.png" />
-    <Content Include="Structural\Composite\Example3\composite.png" />
-    <Content Include="Structural\Decorator\Decorator.png" />
-    <Content Include="Structural\Facade\Facade.png" />
-    <Content Include="Structural\Flyweight\Flyweight.png" />
-    <Content Include="Structural\Proxy\Proxy.png" />
+    <Content Include="01_Creational\Prototype\001_Game\prototype.png" />
+    <Content Include="01_Creational\Prototype\002_Base\prototype.png" />
+    <Content Include="01_Creational\Prototype\003_Control\prototype.png" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\EighthNoteSelected2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\EighthNoteSmall2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\HalfNoteSelected2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\HalfNoteSmall2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\QuarterNoteSelected2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\QuarterNoteSmall2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\SixteenthNoteSelected2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\SixteenthNoteSmall2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\WholeNoteSelected2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\2323\WholeNoteSmall2323.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\Clear.png" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\deselect-16.png" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\EighthNote.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\EighthNoteSelected.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\EighthNoteSmall.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\erase.png" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\HalfNote.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\HalfNoteSelected.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\HalfNoteSmall.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\key.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\key.png" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\Play.png" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\QuarterNote.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\QuarterNoteSelected.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\QuarterNoteSmall.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\Rotate.PNG" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\SixteenthNote.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\SixteenthNoteSmall.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\Staff.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\staff.png" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\Staff_new.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\Staff_new.png" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\Up.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\WholeNote.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\WholeNoteSelected.gif" />
+    <Content Include="01_Creational\Prototype\003_Control\Resources\WholeNoteSmall.gif" />
+    <Content Include="01_Creational\SimpleFactory\001_Base\simplefactory.png" />
+    <Content Include="01_Creational\Singleton\001_Game\singleton.png" />
+    <Content Include="01_Creational\Singleton\002_Base\singleton.png" />
+    <Content Include="02_Structural\Adapter\Adapter.png" />
+    <Content Include="02_Structural\Adapter\002_Class\adapter.png" />
+    <Content Include="02_Structural\Adapter\003_Object\adapter.png" />
+    <Content Include="02_Structural\Adapter\004_DrawingEditor\adapter.png" />
+    <Content Include="02_Structural\Adapter\004_DrawingEditor\Resources\line.jpg" />
+    <Content Include="02_Structural\Adapter\005_PluggableAdapter\adapter.png" />
+    <Content Include="02_Structural\Adapter\006_TreeDisplay\adapter.png" />
+    <Content Include="02_Structural\Adapter\007_TwoWayAdapter\adapter.png" />
+    <Content Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\adapter.png" />
+    <Content Include="02_Structural\Bridge\Bridge.png" />
+    <Content Include="02_Structural\Bridge\001_Base\bridge.png" />
+    <Content Include="02_Structural\Bridge\002_Motivation\bridge.png" />
+    <Content Include="02_Structural\Bridge\003_Collections\bridge.png" />
+    <Content Include="02_Structural\Bridge\004_WinFormShapesAndLines\bridge.png" />
+    <Content Include="02_Structural\Composite\Composite.png" />
+    <Content Include="02_Structural\Composite\001_Base\composite.png" />
+    <Content Include="02_Structural\Composite\002_GraphicDesigner\composite.png" />
+    <Content Include="02_Structural\Composite\003_RecursionComposition\composite.png" />
+    <Content Include="02_Structural\Decorator\Decorator.png" />
+    <Content Include="02_Structural\Facade\Facade.png" />
+    <Content Include="02_Structural\Flyweight\Flyweight.png" />
+    <Content Include="02_Structural\Proxy\Proxy.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="01_Creational\AbstractFactory\Example2\Program_Main.sequencediagram.layout">
+    <EmbeddedResource Include="01_Creational\AbstractFactory\004_Water\Program_Main.sequencediagram.layout">
       <DependentUpon>Program_Main.sequencediagram</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\AbstractFactory\Example3\Program_Main.sequencediagram.layout">
+    <EmbeddedResource Include="01_Creational\AbstractFactory\002_Base\Program_Main.sequencediagram.layout">
       <DependentUpon>Program_Main.sequencediagram</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\Buider\Example3\Program_Main.sequencediagram.layout">
+    <EmbeddedResource Include="01_Creational\Buider\004_House\Program_Main.sequencediagram.layout">
       <DependentUpon>Program_Main.sequencediagram</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\Buider\Example4\Program_Main.sequencediagram.layout">
+    <EmbeddedResource Include="01_Creational\Buider\002_Base\Program_Main.sequencediagram.layout">
       <DependentUpon>Program_Main.sequencediagram</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\Buider\Example5\Form1.resx">
+    <EmbeddedResource Include="01_Creational\Buider\005_TextConverter\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\FactoryMethod\Example03\BaseForm.resx">
+    <EmbeddedResource Include="01_Creational\FactoryMethod\003_Application\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\FactoryMethod\Example03\PngDocForm.resx">
+    <EmbeddedResource Include="01_Creational\FactoryMethod\003_Application\PngDocForm.resx">
       <DependentUpon>PngDocForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\FactoryMethod\Example03\Properties\Resources.resx">
+    <EmbeddedResource Include="01_Creational\FactoryMethod\003_Application\Properties\Resources.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\FactoryMethod\Example03\TextDocForm.resx">
+    <EmbeddedResource Include="01_Creational\FactoryMethod\003_Application\TextDocForm.resx">
       <DependentUpon>TextDocForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\FactoryMethod\Example04_Subclassing Hooks\Form1.resx">
+    <EmbeddedResource Include="01_Creational\FactoryMethod\004_SubclassingHooks\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\FactoryMethod\Example05\Form1.resx">
+    <EmbeddedResource Include="01_Creational\FactoryMethod\005_FigureManipulator\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\FactoryMethod\Example05\Properties\Resources.resx" />
-    <EmbeddedResource Include="01_Creational\Prototype\Example3\Form1.resx">
+    <EmbeddedResource Include="01_Creational\FactoryMethod\005_FigureManipulator\Properties\Resources.resx" />
+    <EmbeddedResource Include="01_Creational\Prototype\003_Control\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\Prototype\Example3\Properties\Resources.resx" />
-    <EmbeddedResource Include="Structural\Adapter\Example4\Form1.resx">
+    <EmbeddedResource Include="01_Creational\Prototype\003_Control\Properties\Resources.resx" />
+    <EmbeddedResource Include="02_Structural\Adapter\004_DrawingEditor\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Structural\Adapter\Example4\Properties\Resources.resx" />
-    <EmbeddedResource Include="Structural\Adapter\Example6\Form1.resx">
+    <EmbeddedResource Include="02_Structural\Adapter\004_DrawingEditor\Properties\Resources.resx" />
+    <EmbeddedResource Include="02_Structural\Adapter\006_TreeDisplay\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Structural\Adapter\Example6\Properties\Resources.resx" />
-    <EmbeddedResource Include="Structural\Adapter\Example8\Form1.resx">
+    <EmbeddedResource Include="02_Structural\Adapter\006_TreeDisplay\Properties\Resources.resx" />
+    <EmbeddedResource Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Structural\Adapter\Example8\Properties\Resources.resx" />
-    <EmbeddedResource Include="Structural\Bridge\Example4\Properties\Resources.resx" />
-    <EmbeddedResource Include="Structural\Composite\Example2\Form1.resx">
+    <EmbeddedResource Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\Resources.resx" />
+    <EmbeddedResource Include="02_Structural\Bridge\004_WinFormShapesAndLines\Properties\Resources.resx" />
+    <EmbeddedResource Include="02_Structural\Composite\002_GraphicDesigner\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Structural\Composite\Example2\Properties\Resources.resx" />
+    <EmbeddedResource Include="02_Structural\Composite\002_GraphicDesigner\Properties\Resources.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Structural\Decorator\Example2\" />
-    <Folder Include="Structural\Decorator\Example3\" />
-    <Folder Include="Structural\Decorator\Example4\" />
-    <Folder Include="Structural\Flyweight\Example1\" />
-    <Folder Include="Structural\Flyweight\Example2\" />
-    <Folder Include="Structural\Flyweight\Example3\" />
-    <Folder Include="Structural\Proxy\Example1\" />
-    <Folder Include="Structural\Proxy\Example2\" />
-    <Folder Include="Structural\Proxy\Example3\" />
-    <Folder Include="Structural\Proxy\Example4\" />
-    <Folder Include="Structural\Proxy\Example5\" />
+    <Folder Include="02_Structural\Decorator\002_Base\" />
+    <Folder Include="02_Structural\Decorator\003_TextView\" />
+    <Folder Include="02_Structural\Decorator\004_ConcreteDecorator\" />
+    <Folder Include="02_Structural\Flyweight\001_Base\" />
+    <Folder Include="02_Structural\Flyweight\002_DocumentEditor\" />
+    <Folder Include="02_Structural\Flyweight\003_ComedyFilm\" />
+    <Folder Include="02_Structural\Proxy\001_Base\" />
+    <Folder Include="02_Structural\Proxy\002_ImageProxy\" />
+    <Folder Include="02_Structural\Proxy\003_ProxyCRUD\" />
+    <Folder Include="02_Structural\Proxy\004_Surrogates\" />
+    <Folder Include="02_Structural\Proxy\005_Ambassador\" />
+    <Folder Include="03_Behavioral\ChainOfResponsibility\" />
+    <Folder Include="03_Behavioral\Interpreter\" />
+    <Folder Include="03_Behavioral\Iterator\" />
+    <Folder Include="03_Behavioral\Mediator\" />
+    <Folder Include="03_Behavioral\Memento\" />
+    <Folder Include="03_Behavioral\Visitor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

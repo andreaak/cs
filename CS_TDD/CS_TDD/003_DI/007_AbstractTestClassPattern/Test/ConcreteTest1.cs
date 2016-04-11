@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using CS_TDD._003_DI._006_FactoryInjection;
 
 namespace CS_TDD._003_DI._007_AbstractTestClassPattern.Test
 {
@@ -16,7 +17,7 @@ namespace CS_TDD._003_DI._007_AbstractTestClassPattern.Test
         // Inherited member:
 
         //[Test]
-        //public void FindLogFileTest1()
+        //public void AbstractTestClassPatternTest()
         //{
         //    FileManager mgr = new FileManager();
 
