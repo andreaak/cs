@@ -511,8 +511,8 @@
     <Compile Include="01_Creational\Singleton\006_Regist\RegistSingleton\SingletonNameEnum.cs" />
     <Compile Include="01_Creational\Singleton\006_Regist\RegistSingleton\SingletonSmall.cs" />
     <Compile Include="01_Creational\Singleton\006_Regist\Test.cs" />
-    <Compile Include="01_Creational\Singleton\007_MultithreadedSingleton\Singleton1.cs" />
-    <Compile Include="01_Creational\Singleton\007_MultithreadedSingleton\Singleton2.cs" />
+    <Compile Include="01_Creational\Singleton\007_MultithreadedSingleton\MultithreadedSingleton.cs" />
+    <Compile Include="01_Creational\Singleton\007_MultithreadedSingleton\MutexSingleton.cs" />
     <Compile Include="01_Creational\Singleton\007_MultithreadedSingleton\Test.cs" />
     <Compile Include="01_Creational\Singleton\008_Serialization\Singleton.cs" />
     <Compile Include="01_Creational\Singleton\008_Serialization\Test.cs" />
@@ -872,6 +872,9 @@
     <Folder Include="03_Behavioral\Mediator\" />
     <Folder Include="03_Behavioral\Memento\" />
     <Folder Include="03_Behavioral\Visitor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
