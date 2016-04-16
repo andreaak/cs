@@ -49,6 +49,20 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         }
 
         [Test]
+        public void MoqTestBase03Abstract()
+        {
+            //Arrange
+            var mock = new Mock<Logger2>();
+            mock.Setup(x => x.WriteLinePublic(It.IsAny<string>()));
+            mock.Setup(x => x.WriteLineVirtPublic(It.IsAny<string>()));
+            //Act
+            mock.Object.WriteLinePublic("Test1");
+            mock.Object.WriteLineVirtPublic("Test2");
+            //Assert
+            mock.Verify();
+        }
+
+        [Test]
         /*
             Moq поддерживает две модели проверки поведения: строгую (strict) и свободную (loose). 
             По умолчанию используется свободная модель проверок, которая заключается в том, 

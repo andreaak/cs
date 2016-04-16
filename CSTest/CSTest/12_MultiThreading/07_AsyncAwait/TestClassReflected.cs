@@ -17,6 +17,13 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("End");
         }
 
+        //public async void OperationAsync()
+        //{
+        //    Task task = new Task(Operation);
+        //    task.Start();
+        //    await task;
+        //}
+
         public void OperationAsync()
         {
             TestClassReflected.AsyncStateMachine stateMachine;
@@ -85,6 +92,13 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             #endregion
         }
 
+        //public async void OperationAsync2()
+        //{
+        //    Task task = new Task(Operation);
+        //    task.Start();
+        //    await task;
+        //}
+
         public void OperationAsync2()
         {
             TestClassReflected.AsyncStateMachine2 stateMachine;
@@ -116,6 +130,23 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
             #endregion
         }
+
+        //public async void OperationAsync3()
+        //{
+        //    /*
+        //    Id потока совпадает с Id первичного потока. Это значит, что
+        //    данный метод начинает выполняться в контексте первичного потока.
+        //    */
+        //    Debug.WriteLine("OperationAsync (Part I) ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+        //    Task task = new Task(Operation);
+        //    task.Start();
+        //    await task;
+        //    /*
+        //    Id потока совпадает с Id вторичного потока. Это значит, что
+        //    данный метод начинает выполняться в контексте вторичного потока.
+        //    */
+        //    Debug.WriteLine("OperationAsync (Part II) ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+        //}
 
         public void OperationAsync3()
         {
@@ -180,6 +211,16 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return 2 + 2;
         }
 
+        //public async void OperationAsync5()
+        //{
+        //    Task<int> task = Task<int>.Factory.StartNew(Operation4);
+        //    // TaskAwaiter<int> awaiter = task.GetAwaiter();
+        //    // Action continuation = () => Debug.WriteLine("\nРезультат: {0}\n", awaiter.GetResult());
+        //    // awaiter.OnCompleted(continuation);
+        //    // меняем на:
+        //    Debug.WriteLine("\nРезультат: {0}\n", await task);
+        //}
+
         public void OperationAsync5()
         {
             TestClassReflected.AsyncStateMachine5 stateMachine;
@@ -228,6 +269,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             #endregion
         }
 
+        //public async Task OperationAsync6()
+        //{
+        //    await Task.Factory.StartNew(Operation);
+        //}
+
         public Task OperationAsync6()
         {
             TestClassReflected.AsyncStateMachine6 stateMachine;
@@ -275,6 +321,13 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
             #endregion
         }
+
+        //public async Task<int> OperationAsync7()
+        //{
+        //    //int result = await Task<int>.Factory.StartNew(Operation4);
+        //    //return result;
+        //    return await Task<int>.Factory.StartNew(Operation4);
+        //}
 
         public Task<int> OperationAsync7()
         {
@@ -326,6 +379,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
             #endregion
         }
+
+        //public async Task<double> OperationAsync8(double argument)
+        //{
+        //    return await Task<double>.Factory.StartNew(Operation8, argument);
+        //}
 
         public double Operation8(object argument)
         {
