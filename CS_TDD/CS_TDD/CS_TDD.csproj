@@ -216,7 +216,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="000_Base\base.docx" />
+    <None Include="002_NUnit\nunit.docx" />
     <None Include="003_DI\013_IoCContainer\IoC Conteiner.docx" />
+    <None Include="003_DI\di.docx" />
+    <None Include="004_StubsAndMocks\mock.docx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

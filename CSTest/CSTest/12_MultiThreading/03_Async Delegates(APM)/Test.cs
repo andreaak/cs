@@ -65,7 +65,7 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
         }
 
         [TestMethod]
-        public void TestAsyncDelegates2()
+        public void TestAsyncDelegates2EndInvoke()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
 
@@ -95,7 +95,7 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
         }
 
         [TestMethod]
-        public void TestAsyncDelegates3()
+        public void TestAsyncDelegates3EndInvokeWithResult()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
             var myDelegate = new Func<int, int, int>(_01_Base.Add);
@@ -198,10 +198,10 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
             // AsyncWaitHandle типа WaitHandle, переходит в сигнальное состояние при завершении асинхронной операции.
             while (true)
             {
-                Console.Write(".");
+                Debug.Write(".");
                 if (asyncResult.AsyncWaitHandle.WaitOne(50, false))
                 {
-                    Console.WriteLine("\nМожно извлечь результат сейчас");
+                    Debug.WriteLine("\nМожно извлечь результат сейчас");
                     break;
                 }
             }
@@ -218,10 +218,12 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
             /*
             Первичный поток: Id 10
             Асинхронный метод запущен. Метод Main продолжает работать.
-            Поток: Id 9
             Метод Main ожидает завершения асинхронной задачи.
+            Поток: Id 8
             System.Runtime.Remoting.Messaging.AsyncResult
             System.Threading.ManualResetEvent
+            .................................
+            Можно извлечь результат сейчас
             Асинхронный метод завершен.
             Результат = 3
             */
@@ -232,10 +234,10 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
 
-            var myDelegate = new Action(_01_Base.Method);
+            Action myDelegate = new Action(_01_Base.Method);
 
             // Делегат, метод которого будет запущен по завершению асинхронной операции.
-            var callback = new AsyncCallback(_01_Base.CallBack);
+            AsyncCallback callback = new AsyncCallback(_01_Base.CallBack);
 
             // Первый параметр: 
             // Принимает метод обратного вызова, который должен сработать по завершению асинхронной операции.
@@ -262,11 +264,11 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
         }
 
         [TestMethod]
-        public void TestAsyncDelegates8CallBack()
+        public void TestAsyncDelegates8CallBackWithResult()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
 
-            var myDelegate = new Func<int, int, int>(_01_Base.Add);
+            Func<int, int, int> myDelegate = new Func<int, int, int>(_01_Base.Add);
 
             myDelegate.BeginInvoke(1, 2, _01_Base.CallBackWithResult, "a + b = {0}");
 
@@ -293,7 +295,7 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
             Debug.WriteLine("Первичный поток начал работу.");
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
 
-            var work = new Action(_01_Base.MethodWithChangeBackground);
+            Action work = new Action(_01_Base.MethodWithChangeBackground);
             work.BeginInvoke(new AsyncCallback(_01_Base.CallBack2), (object)work);
 
             Debug.WriteLine("\nПервичный поток завершил работу.\n");

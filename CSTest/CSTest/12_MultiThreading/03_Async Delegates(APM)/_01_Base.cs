@@ -92,4 +92,14 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
             Debug.WriteLine("Callback метод завершил работу.");
         }
     }
+
+    internal enum Color
+    {
+        White, // Присваивается значение 0
+        Red, // Присваивается значение 1
+        Green, // Присваивается значение 2
+        Blue, // Присваивается значение 3
+        Orange // Присваивается значение 4
+    }
+
 }

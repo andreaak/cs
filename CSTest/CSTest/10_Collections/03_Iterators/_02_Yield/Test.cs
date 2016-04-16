@@ -118,6 +118,12 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             }
             Debug.WriteLine("");
 
+            //foreach (int x in mc.IterateEnumerator())//не компилится
+            //{
+            //    Debug.Write(x + " ");
+            //}
+            //Debug.WriteLine("");
+
             bool[] bVals = { true, true, false, true };
             _04_YieldGeneric<bool> mc2 = new _04_YieldGeneric<bool>(bVals);
             foreach (bool b in mc2)
