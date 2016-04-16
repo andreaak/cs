@@ -1,8 +1,7 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
 
-namespace Creational.FactoryMethod._008_LazyInitialization
+namespace Patterns._01_Creational.FactoryMethod._008_LazyInitialization
 {
     public class BigObject2
     {

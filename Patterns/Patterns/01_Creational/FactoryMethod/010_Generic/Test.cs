@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using Patterns._01_Creational.FactoryMethod._010_Generic.Creators;
+using Patterns._01_Creational.FactoryMethod._010_Generic.Products;
+using Patterns._01_Creational.FactoryMethod._010_Generic.Products.IProduct;
 
-namespace Creational.FactoryMethod._010_Generic
+namespace Patterns._01_Creational.FactoryMethod._010_Generic
 {
     [TestClass]
     public class Test

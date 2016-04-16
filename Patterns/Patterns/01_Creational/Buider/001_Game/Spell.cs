@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 
-namespace Creational.Builder._001_Game
+namespace Patterns._01_Creational.Buider._001_Game
 {
     class Spell
     {

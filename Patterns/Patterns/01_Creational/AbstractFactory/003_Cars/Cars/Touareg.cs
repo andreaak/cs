@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Patterns.Creational.AbstractFactory._003_Cars.PartsFactory;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Patterns._01_Creational.AbstractFactory._003_Cars.PartsFactory;
 
-namespace Patterns.Creational.AbstractFactory._003_Cars.Cars
+namespace Patterns._01_Creational.AbstractFactory._003_Cars.Cars
 {
     public class Touareg : Car
     {

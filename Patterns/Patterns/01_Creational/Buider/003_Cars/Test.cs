@@ -1,10 +1,9 @@
-﻿using System;
+﻿using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Creational.Builder._003_Cars.Factory;
-using Creational.Builder._003_Cars.Builder;
-using System.Diagnostics;
+using Patterns._01_Creational.Buider._003_Cars.Builder;
+using Patterns._01_Creational.Buider._003_Cars.Factory;
 
-namespace Creational.Builder._003_Cars
+namespace Patterns._01_Creational.Buider._003_Cars
 {
     [TestClass]
     public class Test

@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Creational.Prototype._001_Game
+﻿namespace Patterns._01_Creational.Prototype._001_Game.Room
 {
     // Класс комнаты с бомбой.
     class RoomWithBomb : Room

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 
-namespace Patterns.Structural.Facade._001_WashingMachine.WashingMachine
+namespace Patterns._02_Structural.Facade._001_WashingMachine.WashingMachine
 {
     class WaterManagingSubsystem
     {

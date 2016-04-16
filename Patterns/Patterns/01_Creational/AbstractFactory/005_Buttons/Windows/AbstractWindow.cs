@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using System.ComponentModel;
+using Patterns._01_Creational.AbstractFactory._005_Buttons.Buttons;
 
-namespace Patterns.Creational.AbstractFactory._005_Buttons
+namespace Patterns._01_Creational.AbstractFactory._005_Buttons.Windows
 {
     // AbstractProductB
     abstract class AbstractWindow : Form

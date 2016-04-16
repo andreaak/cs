@@ -1,7 +1,7 @@
-using System;
 using System.Diagnostics;
+using Patterns._01_Creational.AbstractFactory._006_BaseModified.AbstractProductA;
 
-namespace Patterns.Creational.AbstractFactory._006_BaseModified
+namespace Patterns._01_Creational.AbstractFactory._006_BaseModified.AbstractProductB
 {
     class ProductB2 : IAbstractProductB
     {

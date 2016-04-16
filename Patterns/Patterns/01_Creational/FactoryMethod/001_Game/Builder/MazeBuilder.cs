@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Creational.FactoryMethod._001_Game
+﻿namespace Patterns._01_Creational.FactoryMethod._001_Game.Builder
 {
     // MazeBuilder - не создает лабиринты самостоятельно, его основная цель - просто определить интерфейс для создания лабиринтов.
     // Пустые реализации в этом интерфейсе определены для удобства.

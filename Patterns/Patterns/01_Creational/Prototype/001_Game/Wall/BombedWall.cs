@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Creational.Prototype._001_Game
+﻿namespace Patterns._01_Creational.Prototype._001_Game.Wall
 {
     // Класс взорванной стены.
     class BombedWall : Wall

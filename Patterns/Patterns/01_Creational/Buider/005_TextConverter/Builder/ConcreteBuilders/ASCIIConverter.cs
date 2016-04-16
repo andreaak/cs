@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Drawing;
+using Patterns._01_Creational.Buider._005_TextConverter.Products;
 
-namespace Creational.Builder._005_TextConverter
+namespace Patterns._01_Creational.Buider._005_TextConverter.Builder.ConcreteBuilders
 {
     // ConcreteBuilder
     class ASCIIConverter : TextConverter

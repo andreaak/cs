@@ -1,4 +1,4 @@
-﻿namespace Creational.FactoryMethod._003_Application
+﻿namespace Patterns._01_Creational.FactoryMethod._003_Application
 {
     partial class BaseForm
     {

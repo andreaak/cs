@@ -1,5 +1,5 @@
 ﻿
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Classes
 {
     public enum NoteLength
     {

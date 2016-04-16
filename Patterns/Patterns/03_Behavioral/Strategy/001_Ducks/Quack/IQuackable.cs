@@ -1,4 +1,4 @@
-﻿namespace Patterns.Behavioral.Strategy._001_Ducks.Quack
+﻿namespace Patterns._03_Behavioral.Strategy._001_Ducks.Quack
 {
     public interface IQuackable
     {

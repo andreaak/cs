@@ -1,6 +1,4 @@
-using System;
-
-namespace Patterns.Creational.Singleton._005_Inheritance
+namespace Patterns._01_Creational.Singleton._005_Inheritance
 {
     class BaseSingleton
     {

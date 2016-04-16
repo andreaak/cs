@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Creational.Builder._003_Cars.Builder
+﻿namespace Patterns._01_Creational.Buider._003_Cars.Builder
 {
     public class VolkswagenBuilder : CarBuilderBase
     {

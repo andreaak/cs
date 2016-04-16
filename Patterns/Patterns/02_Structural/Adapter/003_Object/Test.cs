@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Structural.Adapter._003_Object
+namespace Patterns._02_Structural.Adapter._003_Object
 {
     [TestClass]
     public class Test

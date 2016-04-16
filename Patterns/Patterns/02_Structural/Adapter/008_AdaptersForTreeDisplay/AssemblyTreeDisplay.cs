@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Patterns.Structural.Adapter._008_AdaptersForTreeDisplay
+namespace Patterns._02_Structural.Adapter._008_AdaptersForTreeDisplay
 {
     class AssemblyTreeDisplay : TreeDisplay
     {

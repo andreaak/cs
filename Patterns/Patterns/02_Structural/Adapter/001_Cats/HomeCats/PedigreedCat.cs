@@ -1,7 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace Patterns.Structural.Adapter._001_Cats.HomeCats
+namespace Patterns._02_Structural.Adapter._001_Cats.HomeCats
 {
     class PedigreedCat : IHomeCat
     {

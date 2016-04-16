@@ -1,8 +1,9 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Patterns._01_Creational.Prototype._003_Control.Classes;
+using Patterns._01_Creational.Prototype._003_Control.Controls;
 
-
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Prototype
 {
     public class RotateTool : Tool
     {

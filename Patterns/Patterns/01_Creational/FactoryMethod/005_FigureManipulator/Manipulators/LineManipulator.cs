@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Creational.FactoryMethod._005_FigureManipulator
+namespace Patterns._01_Creational.FactoryMethod._005_FigureManipulator.Manipulators
 {
     class LineManipulator : Manipulator
     {

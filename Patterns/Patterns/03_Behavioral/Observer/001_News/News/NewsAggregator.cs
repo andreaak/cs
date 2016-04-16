@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Patterns.Behavioral.Observer._001_News.Widgets;
 
-namespace Patterns.Behavioral.Observer._001_News.News
+namespace Patterns._03_Behavioral.Observer._001_News.News
 {
     public class NewsEventArgs
     {

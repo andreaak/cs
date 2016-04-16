@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Patterns._01_Creational.AbstractFactory._005_Buttons.Buttons;
+using Patterns._01_Creational.AbstractFactory._005_Buttons.Windows;
 
-namespace Patterns.Creational.AbstractFactory._005_Buttons
+namespace Patterns._01_Creational.AbstractFactory._005_Buttons.Factories
 {
     // ConcreteFactory1
     class WindowsFactory : WidgetFactory

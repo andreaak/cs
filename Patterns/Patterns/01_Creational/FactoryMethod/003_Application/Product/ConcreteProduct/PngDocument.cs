@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Creational.FactoryMethod._003_Application.Pattern
+namespace Patterns._01_Creational.FactoryMethod._003_Application.Product.ConcreteProduct
 {
     // ConcreteProductB
     public class PngDocument : Document

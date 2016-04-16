@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Structural.Adapter._006_TreeDisplay
+namespace Patterns._02_Structural.Adapter._006_TreeDisplay
 {
     [TestClass]
     public class Test

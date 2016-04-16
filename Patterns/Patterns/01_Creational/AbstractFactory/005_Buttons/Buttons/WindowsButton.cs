@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Patterns.Creational.AbstractFactory._005_Buttons
+namespace Patterns._01_Creational.AbstractFactory._005_Buttons.Buttons
 {
     // ConcreteProductA1
     class WindowsButton : AbstractButton

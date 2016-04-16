@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 
-namespace Creational.FactoryMethod._003_Application.Pattern
+namespace Patterns._01_Creational.FactoryMethod._003_Application.Product.ConcreteProduct
 {
     // ConcreteProductA
     public class TextDocument : Document

@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Creational.FactoryMethod._008_LazyInitialization
+namespace Patterns._01_Creational.FactoryMethod._008_LazyInitialization
 {
     [TestClass]
     public class Test

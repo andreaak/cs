@@ -1,6 +1,6 @@
-﻿using Patterns.Behavioral.Command._001_RemoteControl.ControlledSystems;
+﻿using Patterns._03_Behavioral.Command._001_RemoteControl.ControlledSystems;
 
-namespace Patterns.Behavioral.Command._001_RemoteControl.Commands
+namespace Patterns._03_Behavioral.Command._001_RemoteControl.Commands
 {
     public class TvCommand : ICommand
     {

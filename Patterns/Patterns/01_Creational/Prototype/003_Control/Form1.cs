@@ -1,9 +1,12 @@
 ﻿using System;
-using System.Windows.Forms;
-using PianoSoundLibrary.Library;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using Patterns._01_Creational.Prototype._003_Control.Classes;
+using Patterns._01_Creational.Prototype._003_Control.Controls;
+using Patterns._01_Creational.Prototype._003_Control.Prototype;
+using PianoSoundLibrary.Library;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control
 {
     public partial class Form1 : Form
     {

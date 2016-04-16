@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Patterns._01_Creational.Singleton._001_Game.Enum;
 
-
-namespace Patterns.Creational.Singleton._001_Game
+namespace Patterns._01_Creational.Singleton._001_Game.Builder
 {
     // Подкласс StandardMazeBuilder - содержит реализацию построения простых лабиринтов.
     class StandardMazeBuilder : MazeBuilder
@@ -25,22 +24,22 @@ namespace Patterns.Creational.Singleton._001_Game
         {
             //if (currentMaze.RoomNo(roomNo) == null)
             {
-                Room room = new Room(roomNo);
+                Room.Room room = new Room.Room(roomNo);
                 currentMaze.AddRoom(room);
 
-                room.SetSide(Direction.North, new Wall());
-                room.SetSide(Direction.South, new Wall());
-                room.SetSide(Direction.East, new Wall());
-                room.SetSide(Direction.West, new Wall());
+                room.SetSide(Direction.North, new Wall.Wall());
+                room.SetSide(Direction.South, new Wall.Wall());
+                room.SetSide(Direction.East, new Wall.Wall());
+                room.SetSide(Direction.West, new Wall.Wall());
             }
         }
 
         // Чтобы построить дверь между двумя комнатами, требуется найти обе комнаты в лабиринте и их общую стену.
         public override void BuildDoor(int roomFrom, int roomTo)
         {
-            Room room1 = currentMaze.RoomNo(roomFrom);
-            Room room2 = currentMaze.RoomNo(roomTo);
-            Door door = new Door(room1, room2);
+            Room.Room room1 = currentMaze.RoomNo(roomFrom);
+            Room.Room room2 = currentMaze.RoomNo(roomTo);
+            Door.Door door = new Door.Door(room1, room2);
 
             room1.SetSide(CommonWall(room1, room2), door);
             room2.SetSide(CommonWall(room2, room1), door);
@@ -54,16 +53,16 @@ namespace Patterns.Creational.Singleton._001_Game
 
         // CommonWall - Общая стена.
         // Это вспомогательная операция, которая определяет направление общей для двух комнат стены. 
-        private Direction CommonWall(Room room1, Room room2)
+        private Direction CommonWall(Room.Room room1, Room.Room room2)
         {
-            if (room1.GetSide(Direction.North) is Wall &&
-                room1.GetSide(Direction.South) is Wall &&
-                room1.GetSide(Direction.East) is Wall &&
-                room1.GetSide(Direction.West) is Wall &&
-                room1.GetSide(Direction.North) is Wall &&
-                room1.GetSide(Direction.South) is Wall &&
-                room1.GetSide(Direction.East) is Wall &&
-                room1.GetSide(Direction.West) is Wall)
+            if (room1.GetSide(Direction.North) is Wall.Wall &&
+                room1.GetSide(Direction.South) is Wall.Wall &&
+                room1.GetSide(Direction.East) is Wall.Wall &&
+                room1.GetSide(Direction.West) is Wall.Wall &&
+                room1.GetSide(Direction.North) is Wall.Wall &&
+                room1.GetSide(Direction.South) is Wall.Wall &&
+                room1.GetSide(Direction.East) is Wall.Wall &&
+                room1.GetSide(Direction.West) is Wall.Wall)
             {
                 return Direction.East;
             }

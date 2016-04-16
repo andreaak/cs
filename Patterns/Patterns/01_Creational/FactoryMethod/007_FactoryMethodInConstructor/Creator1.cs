@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Creational.FactoryMethod._007_FactoryMethodInConstructor
+namespace Patterns._01_Creational.FactoryMethod._007_FactoryMethodInConstructor
 {
     // Продукты ---------------------------------------------------------
 

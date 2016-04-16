@@ -1,10 +1,8 @@
-using System;
-
-namespace Patterns.Creational.AbstractFactory._002_Base
+namespace Patterns._01_Creational.AbstractFactory._002_Base.AbstractFactory
 {
     abstract class AbstractFactory
     {
-        public abstract AbstractProductA CreateProductA();
-        public abstract AbstractProductB CreateProductB();
+        public abstract AbstractProductA.AbstractProductA CreateProductA();
+        public abstract AbstractProductB.AbstractProductB CreateProductB();
     }
 }

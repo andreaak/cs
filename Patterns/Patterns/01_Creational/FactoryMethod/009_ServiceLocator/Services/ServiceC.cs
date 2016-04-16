@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Patterns._01_Creational.FactoryMethod._009_ServiceLocator.Services.IServices;
 
-
-namespace Creational.FactoryMethod._009_ServiceLocator
+namespace Patterns._01_Creational.FactoryMethod._009_ServiceLocator.Services
 {
     class ServiceC : IServiceC
     {

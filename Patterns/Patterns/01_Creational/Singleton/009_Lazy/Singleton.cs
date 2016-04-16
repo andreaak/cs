@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Patterns.Creational.Singleton._009_Lazy
+namespace Patterns._01_Creational.Singleton._009_Lazy
 {
     class Singleton
     {

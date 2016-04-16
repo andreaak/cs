@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using Patterns._01_Creational.Singleton._001_Game.Enum;
 
-namespace Patterns.Creational.Singleton._001_Game
+namespace Patterns._01_Creational.Singleton._001_Game.Room
 {
     class Room : MapSite
     {

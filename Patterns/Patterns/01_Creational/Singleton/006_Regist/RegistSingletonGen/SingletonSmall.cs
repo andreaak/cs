@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Patterns.Creational.Singleton._006_Regist.RegistSingletonGen
+namespace Patterns._01_Creational.Singleton._006_Regist.RegistSingletonGen
 {
     class SingletonSmall : Singleton
     {

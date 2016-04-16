@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Patterns.Structural.Adapter._002_Class
+﻿namespace Patterns._02_Structural.Adapter._002_Class
 {
     class Adapter : Adaptee, ITarget
     {

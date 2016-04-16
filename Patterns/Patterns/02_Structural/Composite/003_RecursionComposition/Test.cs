@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Windows.Forms;
 
-namespace Patterns.Structural.Composite._003_RecursionComposition
+namespace Patterns._02_Structural.Composite._003_RecursionComposition
 {
     [TestClass]
     public class Test

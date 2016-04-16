@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Patterns.Structural.Adapter._001_Cats.Adapters;
-using Patterns.Structural.Adapter._001_Cats.HomeCats;
-using Patterns.Structural.Adapter._001_Cats.WildCats;
+using Patterns._02_Structural.Adapter._001_Cats.Adapters;
+using Patterns._02_Structural.Adapter._001_Cats.HomeCats;
+using Patterns._02_Structural.Adapter._001_Cats.WildCats;
 
-namespace Patterns.Structural.Adapter._001_Cats
+namespace Patterns._02_Structural.Adapter._001_Cats
 {
     [TestClass]
     public class Test

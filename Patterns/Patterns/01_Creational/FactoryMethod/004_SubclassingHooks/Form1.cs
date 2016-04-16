@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Creational.FactoryMethod._004_SubclassingHooks
+namespace Patterns._01_Creational.FactoryMethod._004_SubclassingHooks
 {
     public partial class Form1 : Form
     {

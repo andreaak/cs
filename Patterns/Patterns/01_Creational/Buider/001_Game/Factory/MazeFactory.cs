@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Creational.Builder._001_Game
+﻿namespace Patterns._01_Creational.Buider._001_Game.Factory
 {
     // Класс MazeFactory создает компоненты лабиринта.
     class MazeFactory
@@ -18,21 +15,21 @@ namespace Creational.Builder._001_Game
         }
 
         // Создание стенв.
-        public virtual Wall MakeWall()
+        public virtual Wall.Wall MakeWall()
         {
-            return new Wall();
+            return new Wall.Wall();
         }
 
         // Создание комнаты.
-        public virtual Room MakeRoom(int number)
+        public virtual Room.Room MakeRoom(int number)
         {
-            return new Room(number);
+            return new Room.Room(number);
         }
 
         // Создание двери.
-        public virtual Door MakeDoor(Room room1, Room room2)
+        public virtual Door.Door MakeDoor(Room.Room room1, Room.Room room2)
         {
-            return new Door(room1, room2);
+            return new Door.Door(room1, room2);
         }
     }
 }

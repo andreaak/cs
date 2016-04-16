@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Creational.Prototype._001_Game
+﻿namespace Patterns._01_Creational.Prototype._001_Game.Door
 {
     // Класс двери, для которой требуется заклинание.
     class DoorNeedingSpell : Door
@@ -10,7 +7,7 @@ namespace Creational.Prototype._001_Game
         bool isOpen;
 
         // Конструкторы.       
-        public DoorNeedingSpell(Room room1, Room room2)
+        public DoorNeedingSpell(Room.Room room1, Room.Room room2)
             : base(room1, room2)
         {
         }
@@ -39,7 +36,7 @@ namespace Creational.Prototype._001_Game
             return new DoorNeedingSpell(this);
         }
         // Переопределение базовой операции инициализации.
-        public override void Initialize(Room room1, Room room2)
+        public override void Initialize(Room.Room room1, Room.Room room2)
         {
             base.Initialize(room1, room2);
             this.isOpen = default(bool);

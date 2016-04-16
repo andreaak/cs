@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Creational.Prototype.Example5
+namespace Patterns._01_Creational.Prototype._005_
 {
     [TestClass]
     public class Test

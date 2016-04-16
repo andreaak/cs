@@ -1,7 +1,6 @@
-﻿using System;
-using Patterns.Behavioral.State._001_Car.States;
+﻿using Patterns._03_Behavioral.State._001_Car.States;
 
-namespace Patterns.Behavioral.State._001_Car
+namespace Patterns._03_Behavioral.State._001_Car
 {
     class Car
     {

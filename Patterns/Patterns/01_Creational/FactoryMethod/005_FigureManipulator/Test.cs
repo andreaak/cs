@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Creational.FactoryMethod._005_FigureManipulator
+namespace Patterns._01_Creational.FactoryMethod._005_FigureManipulator
 {
     [TestClass]
     public class Test

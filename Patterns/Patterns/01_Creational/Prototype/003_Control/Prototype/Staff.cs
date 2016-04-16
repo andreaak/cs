@@ -1,7 +1,9 @@
 ﻿using System.Windows.Forms;
-using Creational.Prototype._003_Control.Properties;
+using Patterns.Properties;
+using Patterns._01_Creational.Prototype._003_Control.Classes;
+using Patterns._01_Creational.Prototype._003_Control.Controls;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Prototype
 {
     /// <summary>
     /// ConcretePrototype:Класс Staff (нотный стан) конкретный прототип-реализует операцию клонирования себя

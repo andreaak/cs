@@ -1,8 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._02_Structural.Adapter._007_TwoWayAdapter.New_Subsystem;
+using Patterns._02_Structural.Adapter._007_TwoWayAdapter.Old_Subsystem;
 
-namespace Patterns.Structural.Adapter._007_TwoWayAdapter
+namespace Patterns._02_Structural.Adapter._007_TwoWayAdapter
 {
     [TestClass]
     public class Test

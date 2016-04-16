@@ -1,6 +1,6 @@
-﻿using Patterns.Creational.SimpleFactory._001_Base.Cars;
+﻿using Patterns._01_Creational.SimpleFactory._001_Base.Cars;
 
-namespace Patterns.Creational.SimpleFactory._001_Base.Facilities
+namespace Patterns._01_Creational.SimpleFactory._001_Base.Facilities
 {
     class VolkswagenFacility
     {

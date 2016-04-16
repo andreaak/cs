@@ -1,6 +1,4 @@
-using System;
-
-namespace Patterns.Structural.Composite._003_RecursionComposition
+namespace Patterns._02_Structural.Composite._003_RecursionComposition
 {
     abstract class Component
     {

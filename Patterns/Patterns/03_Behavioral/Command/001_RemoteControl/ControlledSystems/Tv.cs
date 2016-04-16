@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 
-namespace Patterns.Behavioral.Command._001_RemoteControl.ControlledSystems
+namespace Patterns._03_Behavioral.Command._001_RemoteControl.ControlledSystems
 {
     public class Tv
     {

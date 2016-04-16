@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Patterns.Behavioral.Strategy._001_Ducks.Fly;
-using Patterns.Behavioral.Strategy._001_Ducks.Quack;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Patterns._03_Behavioral.Strategy._001_Ducks.Fly;
+using Patterns._03_Behavioral.Strategy._001_Ducks.Quack;
 
-namespace Patterns.Behavioral.Strategy._001_Ducks.Ducks
+namespace Patterns._03_Behavioral.Strategy._001_Ducks.Ducks
 {
     public class UpgradableDuck : DuckBase
     {

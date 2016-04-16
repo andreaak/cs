@@ -21,7 +21,21 @@ namespace CSTest._01_Elements_CS._02_Variables
             // var a; 
 
             // Константа не может быть неявно типизированная.
-            // const var myVar = 3.14; 
+            // const var a = 3.14; 
+
+            bool res = true;
+            //Type of conditional expression cannot be determined because there is no implicit conversion between
+            //var a = res ? new A() : new B();
+            var b = res ? new A() : new C();
         }
+
+        public class A
+        { }
+
+        public class B
+        { }
+
+        public class C : A
+        { }
     }
 }

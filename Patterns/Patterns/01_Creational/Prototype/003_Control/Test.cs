@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control
 {
     [TestClass]
     public class Test

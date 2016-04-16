@@ -1,12 +1,10 @@
-using System;
-
-namespace Creational.Builder._004_House
+namespace Patterns._01_Creational.Buider._004_House
 {
     class Foreman
     {
-        Builder builder;
+        Builder.Builder builder;
 
-        public Foreman(Builder builder)
+        public Foreman(Builder.Builder builder)
         {
             this.builder = builder;
         }

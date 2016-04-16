@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Patterns.Creational.SimpleFactory._001_Base.Cars
+namespace Patterns._01_Creational.SimpleFactory._001_Base.Cars
 {
     public class Car
     {

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Patterns._01_Creational.AbstractFactory._005_Buttons.Buttons;
+using Patterns._01_Creational.AbstractFactory._005_Buttons.Windows;
 
-namespace Patterns.Creational.AbstractFactory._005_Buttons
+namespace Patterns._01_Creational.AbstractFactory._005_Buttons.Factories
 {
     class LinuxFactory : WidgetFactory
     {

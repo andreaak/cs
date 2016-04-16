@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
-namespace Patterns.Creational.Singleton._001_Game
+namespace Patterns._01_Creational.Singleton._001_Game
 {
     [XmlRoot("LabirintProperties")] 
     public class Properties

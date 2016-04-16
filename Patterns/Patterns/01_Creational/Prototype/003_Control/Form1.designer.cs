@@ -1,4 +1,4 @@
-﻿namespace Creational.Prototype._003_Control
+﻿namespace Patterns._01_Creational.Prototype._003_Control
 {
     public  partial class Form1
     {
@@ -60,7 +60,7 @@
             // btnWholeNote
             // 
             this.btnWholeNote.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnWholeNote.Image = global::Creational.Prototype._003_Control.Properties.Resources.WholeNote;
+            this.btnWholeNote.Image = global::Patterns.Properties.Resources.WholeNote;
             this.btnWholeNote.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnWholeNote.Name = "btnWholeNote";
             this.btnWholeNote.Size = new System.Drawing.Size(23, 22);
@@ -70,7 +70,7 @@
             // btnHalfNote
             // 
             this.btnHalfNote.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnHalfNote.Image = global::Creational.Prototype._003_Control.Properties.Resources.HalfNote;
+            this.btnHalfNote.Image = global::Patterns.Properties.Resources.HalfNote;
             this.btnHalfNote.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnHalfNote.Name = "btnHalfNote";
             this.btnHalfNote.Size = new System.Drawing.Size(23, 22);
@@ -80,7 +80,7 @@
             // btnQuarterNote
             // 
             this.btnQuarterNote.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnQuarterNote.Image = global::Creational.Prototype._003_Control.Properties.Resources.QuarterNote;
+            this.btnQuarterNote.Image = global::Patterns.Properties.Resources.QuarterNote;
             this.btnQuarterNote.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnQuarterNote.Name = "btnQuarterNote";
             this.btnQuarterNote.Size = new System.Drawing.Size(23, 22);
@@ -90,7 +90,7 @@
             // btnEighthNote
             // 
             this.btnEighthNote.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEighthNote.Image = global::Creational.Prototype._003_Control.Properties.Resources.EighthNote;
+            this.btnEighthNote.Image = global::Patterns.Properties.Resources.EighthNote;
             this.btnEighthNote.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEighthNote.Name = "btnEighthNote";
             this.btnEighthNote.Size = new System.Drawing.Size(23, 22);
@@ -100,7 +100,7 @@
             // btnSixteenthNote
             // 
             this.btnSixteenthNote.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSixteenthNote.Image = global::Creational.Prototype._003_Control.Properties.Resources.SixteenthNote;
+            this.btnSixteenthNote.Image = global::Patterns.Properties.Resources.SixteenthNote;
             this.btnSixteenthNote.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSixteenthNote.Name = "btnSixteenthNote";
             this.btnSixteenthNote.Size = new System.Drawing.Size(23, 22);
@@ -115,7 +115,7 @@
             // btnAbove
             // 
             this.btnAbove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAbove.Image = global::Creational.Prototype._003_Control.Properties.Resources.Up;
+            this.btnAbove.Image = global::Patterns.Properties.Resources.Up;
             this.btnAbove.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAbove.Name = "btnAbove";
             this.btnAbove.Size = new System.Drawing.Size(23, 22);
@@ -130,7 +130,7 @@
             // btnRotate
             // 
             this.btnRotate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRotate.Image = global::Creational.Prototype._003_Control.Properties.Resources.Rotate;
+            this.btnRotate.Image = global::Patterns.Properties.Resources.Rotate;
             this.btnRotate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRotate.Name = "btnRotate";
             this.btnRotate.Size = new System.Drawing.Size(23, 22);
@@ -141,7 +141,7 @@
             // 
             this.btnPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnPlay.Enabled = false;
-            this.btnPlay.Image = global::Creational.Prototype._003_Control.Properties.Resources.Play;
+            this.btnPlay.Image = global::Patterns.Properties.Resources.Play;
             this.btnPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(23, 22);
@@ -237,7 +237,7 @@
             // 
             this.btnDelNote.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnDelNote.Enabled = false;
-            this.btnDelNote.Image = global::Creational.Prototype._003_Control.Properties.Resources.erase;
+            this.btnDelNote.Image = global::Patterns.Properties.Resources.erase;
             this.btnDelNote.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelNote.Name = "btnDelNote";
             this.btnDelNote.Size = new System.Drawing.Size(23, 22);
@@ -247,7 +247,7 @@
             // btnUnMark
             // 
             this.btnUnMark.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUnMark.Image = global::Creational.Prototype._003_Control.Properties.Resources.deselect_16;
+            this.btnUnMark.Image = global::Patterns.Properties.Resources.deselect_16;
             this.btnUnMark.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUnMark.Name = "btnUnMark";
             this.btnUnMark.Size = new System.Drawing.Size(23, 22);
@@ -257,7 +257,7 @@
             // btnClear
             // 
             this.btnClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnClear.Image = global::Creational.Prototype._003_Control.Properties.Resources.Clear;
+            this.btnClear.Image = global::Patterns.Properties.Resources.Clear_;
             this.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(23, 22);

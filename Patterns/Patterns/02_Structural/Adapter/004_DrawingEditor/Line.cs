@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Patterns.Structural.Adapter._004_DrawingEditor
+namespace Patterns._02_Structural.Adapter._004_DrawingEditor
 {
     class Line : Shape
     {

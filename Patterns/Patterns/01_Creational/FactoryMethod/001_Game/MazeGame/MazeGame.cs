@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Patterns._01_Creational.FactoryMethod._001_Game.Builder;
+using Patterns._01_Creational.FactoryMethod._001_Game.Enum;
+using Patterns._01_Creational.FactoryMethod._001_Game.Factory;
 
-
-namespace Creational.FactoryMethod._001_Game
+namespace Patterns._01_Creational.FactoryMethod._001_Game.MazeGame
 {
     class MazeGame
     {
@@ -15,9 +16,9 @@ namespace Creational.FactoryMethod._001_Game
         {
             Maze aMaze = this.MakeMaze();
 
-            Room r1 = MakeRoom(1);
-            Room r2 = MakeRoom(2);
-            Door theDoor = MakeDoor(r1, r2);
+            Room.Room r1 = MakeRoom(1);
+            Room.Room r2 = MakeRoom(2);
+            Door.Door theDoor = MakeDoor(r1, r2);
 
             aMaze.AddRoom(r1);
             aMaze.AddRoom(r2);
@@ -43,11 +44,11 @@ namespace Creational.FactoryMethod._001_Game
             // Лабиринт.
             Maze aMaze = this.factory.MakeMaze();
 
-            Room r1 = this.factory.MakeRoom(1);
-            Room r2 = this.factory.MakeRoom(2);
+            Room.Room r1 = this.factory.MakeRoom(1);
+            Room.Room r2 = this.factory.MakeRoom(2);
 
             // Дверь - данный экземпляр содержит ссылки на две комнаты. (Является общим для двух комнат.)
-            Door aDoor = this.factory.MakeDoor(r1, r2);
+            Door.Door aDoor = this.factory.MakeDoor(r1, r2);
 
             aMaze.AddRoom(r1);
             aMaze.AddRoom(r2);
@@ -94,19 +95,19 @@ namespace Creational.FactoryMethod._001_Game
             return new Maze();
         }
 
-        public virtual Room MakeRoom(int number)
+        public virtual Room.Room MakeRoom(int number)
         {
-            return new Room(number);
+            return new Room.Room(number);
         }
 
-        public virtual Wall MakeWall()
+        public virtual Wall.Wall MakeWall()
         {
-            return new Wall();
+            return new Wall.Wall();
         }
 
-        public virtual Door MakeDoor(Room r1, Room r2)
+        public virtual Door.Door MakeDoor(Room.Room r1, Room.Room r2)
         {
-            return new Door(r1, r2);
+            return new Door.Door(r1, r2);
         }
     }
 }

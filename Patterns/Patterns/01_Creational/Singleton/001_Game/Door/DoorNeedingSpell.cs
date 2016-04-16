@@ -1,13 +1,10 @@
-﻿using System;
-
-
-namespace Patterns.Creational.Singleton._001_Game
+﻿namespace Patterns._01_Creational.Singleton._001_Game.Door
 {
     // Класс двери для которой требуется заклинание.
     class DoorNeedingSpell : Door
     {
         // Конструктор.       
-        public DoorNeedingSpell(Room room1, Room room2)
+        public DoorNeedingSpell(Room.Room room1, Room.Room room2)
             : base(room1, room2)
         {
         }

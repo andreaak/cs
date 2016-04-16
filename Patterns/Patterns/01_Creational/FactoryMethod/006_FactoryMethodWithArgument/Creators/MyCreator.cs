@@ -1,5 +1,7 @@
 ﻿
-namespace Creational.FactoryMethod._006_FactoryMethodWithArgument
+using Patterns._01_Creational.FactoryMethod._006_FactoryMethodWithArgument.Products;
+
+namespace Patterns._01_Creational.FactoryMethod._006_FactoryMethodWithArgument.Creators
 {
     class MyCreator : Creator
     {

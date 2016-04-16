@@ -1,6 +1,4 @@
-using System;
-
-namespace Creational.Builder._002_Base
+namespace Patterns._01_Creational.Buider._002_Base.Builder
 {
     abstract class Builder
     {

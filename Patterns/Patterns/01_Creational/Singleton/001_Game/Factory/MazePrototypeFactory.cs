@@ -1,19 +1,16 @@
-﻿using System;
-
-
-namespace Patterns.Creational.Singleton._001_Game
+﻿namespace Patterns._01_Creational.Singleton._001_Game.Factory
 {
     class MazePrototypeFactory : MazeFactory
     {
         // Поля.
         Maze prototypeMaze = null;
-        Room prototypeRoom1 = null;
-        Room prototypeRoom2 = null;
-        Wall prototypeWall = null;
-        Door prototypeDoor = null;
+        Room.Room prototypeRoom1 = null;
+        Room.Room prototypeRoom2 = null;
+        Wall.Wall prototypeWall = null;
+        Door.Door prototypeDoor = null;
 
         // Конструктор.
-        public MazePrototypeFactory(Maze maze, Wall wall, Room room1, Room room2, Door door)
+        public MazePrototypeFactory(Maze maze, Wall.Wall wall, Room.Room room1, Room.Room room2, Door.Door door)
         {
             this.prototypeMaze = maze;
             this.prototypeWall = wall;
@@ -29,7 +26,7 @@ namespace Patterns.Creational.Singleton._001_Game
             return prototypeMaze.Clone();
         }
 
-        public override Room MakeRoom(int number)
+        public override Room.Room MakeRoom(int number)
         {
             if (number == 1)
                 return prototypeRoom1.Clone();
@@ -37,15 +34,15 @@ namespace Patterns.Creational.Singleton._001_Game
                 return prototypeRoom2.Clone();
         }
 
-        public override Wall MakeWall()
+        public override Wall.Wall MakeWall()
         {
             // Клонирование.
             return prototypeWall.Clone();
         }
 
-        public override Door MakeDoor(Room room1, Room room2)
+        public override Door.Door MakeDoor(Room.Room room1, Room.Room room2)
         {
-            Door door = prototypeDoor.Clone();
+            Door.Door door = prototypeDoor.Clone();
             door.Initialize(room1, room2);
 
             return door;

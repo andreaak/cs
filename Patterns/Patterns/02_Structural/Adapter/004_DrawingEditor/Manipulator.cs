@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms; 
+﻿using System.Drawing;
+using System.Windows.Forms;
 
-namespace Patterns.Structural.Adapter._004_DrawingEditor
+namespace Patterns._02_Structural.Adapter._004_DrawingEditor
 {
     /// <summary>
     /// Aбстрактний класс Manipulator который реализует взаимодесйствие и контролирует состояние

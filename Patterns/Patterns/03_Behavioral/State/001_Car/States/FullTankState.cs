@@ -1,7 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace Patterns.Behavioral.State._001_Car.States
+namespace Patterns._03_Behavioral.State._001_Car.States
 {
     class FullTankState : IState
     {

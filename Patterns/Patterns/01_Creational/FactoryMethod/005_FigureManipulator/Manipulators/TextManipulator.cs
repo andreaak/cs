@@ -1,7 +1,7 @@
-﻿using System.Windows.Forms;
-using System.Drawing;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
-namespace Creational.FactoryMethod._005_FigureManipulator
+namespace Patterns._01_Creational.FactoryMethod._005_FigureManipulator.Manipulators
 {
     class TextManipulator : Manipulator
     {

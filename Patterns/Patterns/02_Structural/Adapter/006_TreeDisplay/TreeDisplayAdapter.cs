@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using System.IO;
 
-namespace Patterns.Structural.Adapter._006_TreeDisplay
+namespace Patterns._02_Structural.Adapter._006_TreeDisplay
 {
     // TreeDisplay - (Adapter) : TreeView - (Target)
     class TreeDisplay : TreeView

@@ -1,9 +1,12 @@
 ﻿using System;
-using System.IO;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
+using Patterns._01_Creational.Buider._005_TextConverter.Builder.ConcreteBuilders;
+using Patterns._01_Creational.Buider._005_TextConverter.Director;
+using Patterns._01_Creational.Buider._005_TextConverter.Products;
 
-namespace Creational.Builder._005_TextConverter
+namespace Patterns._01_Creational.Buider._005_TextConverter
 {
     public partial class Form1 : Form
     {

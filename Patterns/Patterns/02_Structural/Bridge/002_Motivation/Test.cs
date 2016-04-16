@@ -1,7 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._02_Structural.Bridge._002_Motivation.Abstraction;
 
-namespace Patterns.Structural.Bridge._002_Motivation
+namespace Patterns._02_Structural.Bridge._002_Motivation
 {
     [TestClass]
     public class Test

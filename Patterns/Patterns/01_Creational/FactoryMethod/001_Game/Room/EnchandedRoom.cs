@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Creational.FactoryMethod._001_Game
+﻿namespace Patterns._01_Creational.FactoryMethod._001_Game.Room
 {
     // Класс волшебная комната.
     class EnchantedRoom : Room

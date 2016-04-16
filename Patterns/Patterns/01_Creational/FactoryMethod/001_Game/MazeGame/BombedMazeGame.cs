@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Patterns._01_Creational.FactoryMethod._001_Game.Room;
+using Patterns._01_Creational.FactoryMethod._001_Game.Wall;
 
-
-namespace Creational.FactoryMethod._001_Game
+namespace Patterns._01_Creational.FactoryMethod._001_Game.MazeGame
 {
     class BombedMazeGame : MazeGame
     {
@@ -12,12 +12,12 @@ namespace Creational.FactoryMethod._001_Game
 
         // Методы.
 
-        public override Wall MakeWall()
+        public override Wall.Wall MakeWall()
         {
             return new BombedWall();
         }
 
-        public override Room MakeRoom(int number)
+        public override Room.Room MakeRoom(int number)
         {
             return new RoomWithBomb(number);
         }

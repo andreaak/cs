@@ -1,4 +1,4 @@
-﻿namespace Creational.FactoryMethod._003_Application
+﻿namespace Patterns._01_Creational.FactoryMethod._003_Application
 {
     partial class TextDocForm
     {
@@ -112,7 +112,7 @@
             // saveAsToolStripButton
             // 
             this.saveAsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveAsToolStripButton.Image = global::Creational.FactoryMethod._003_Application.Properties.Resources.saveAs1;
+            this.saveAsToolStripButton.Image = global::Patterns.Properties.Resources.saveAs1;
             this.saveAsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveAsToolStripButton.Name = "saveAsToolStripButton";
             this.saveAsToolStripButton.Size = new System.Drawing.Size(23, 22);
@@ -122,7 +122,7 @@
             // revertToolStripButton
             // 
             this.revertToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.revertToolStripButton.Image = global::Creational.FactoryMethod._003_Application.Properties.Resources.revert1;
+            this.revertToolStripButton.Image = global::Patterns.Properties.Resources.revert1;
             this.revertToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.revertToolStripButton.Name = "revertToolStripButton";
             this.revertToolStripButton.Size = new System.Drawing.Size(23, 22);
@@ -132,7 +132,7 @@
             // closeToolStripButton
             // 
             this.closeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.closeToolStripButton.Image = global::Creational.FactoryMethod._003_Application.Properties.Resources.close;
+            this.closeToolStripButton.Image = global::Patterns.Properties.Resources.close;
             this.closeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.closeToolStripButton.Name = "closeToolStripButton";
             this.closeToolStripButton.Size = new System.Drawing.Size(23, 22);

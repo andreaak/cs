@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Patterns.Creational.AbstractFactory._003_Cars.Cars;
+﻿using Patterns._01_Creational.AbstractFactory._003_Cars.Cars;
 
-namespace Patterns.Creational.AbstractFactory._003_Cars.Facilities
+namespace Patterns._01_Creational.AbstractFactory._003_Cars.Facilities
 {
     abstract class VolkswagenFacility
     {

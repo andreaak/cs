@@ -1,10 +1,8 @@
-using System;
-
-namespace Patterns.Structural.Bridge._001_Base
+namespace Patterns._02_Structural.Bridge._001_Base.Abstraction
 {
     class RefinedAbstraction : Abstraction
     {
-        public RefinedAbstraction(Implementor implementor)
+        public RefinedAbstraction(Implementor.Implementor implementor)
             : base(implementor)
         {
         }

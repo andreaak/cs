@@ -1,4 +1,4 @@
-﻿namespace Creational.Prototype._003_Control
+﻿namespace Patterns._01_Creational.Prototype._003_Control.Controls
 {
     partial class StaffTranspControl:TranspControl
     {

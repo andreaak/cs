@@ -1,15 +1,15 @@
 ﻿using System.Diagnostics;
 
-namespace Patterns.Creational.AbstractFactory._001_Game
+namespace Patterns._01_Creational.AbstractFactory._001_Game.Door
 {
     class Door : MapSite
     {
         // Поля.
-        Room room1 = null;
-        Room room2 = null;
+        Room.Room room1 = null;
+        Room.Room room2 = null;
 
         //Конструктор.       
-        public Door(Room room1, Room room2)
+        public Door(Room.Room room1, Room.Room room2)
         {
             this.room1 = room1;
             this.room2 = room2;
@@ -24,7 +24,7 @@ namespace Patterns.Creational.AbstractFactory._001_Game
         }
 
         // Метод возвращает ссылку на другую комнату.
-        public Room OtherSideFrom(Room room)
+        public Room.Room OtherSideFrom(Room.Room room)
         {
             if (room == room1)  // Если идем из r1 в r2, то возвращаем ссылку на r2.
                 return room2;

@@ -1,7 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using Patterns._01_Creational.FactoryMethod._009_ServiceLocator.Locator;
+using Patterns._01_Creational.FactoryMethod._009_ServiceLocator.Services.IServices;
 
-namespace Creational.FactoryMethod._009_ServiceLocator
+namespace Patterns._01_Creational.FactoryMethod._009_ServiceLocator
 {
     [TestClass]
     public class Test

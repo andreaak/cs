@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Patterns.Creational.Singleton._001_Game
+﻿namespace Patterns._01_Creational.Singleton._001_Game.Room
 {
     // Класс волшебная комната.
     class EnchantedRoom : Room

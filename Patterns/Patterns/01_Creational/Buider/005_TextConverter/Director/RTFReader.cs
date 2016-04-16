@@ -1,8 +1,10 @@
 ﻿using System;
-using System.Text;
 using System.IO;
+using System.Text;
+using Patterns._01_Creational.Buider._005_TextConverter.Builder;
+using Patterns._01_Creational.Buider._005_TextConverter.Builder.ConcreteBuilders;
 
-namespace Creational.Builder._005_TextConverter
+namespace Patterns._01_Creational.Buider._005_TextConverter.Director
 {
     // Спецификация описывающая формат RTF:
     // http://msdn.microsoft.com/en-us/library/office/aa140277(v=office.10).aspx

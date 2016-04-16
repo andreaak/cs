@@ -1,4 +1,4 @@
-﻿namespace Creational.FactoryMethod._005_FigureManipulator
+﻿namespace Patterns._01_Creational.FactoryMethod._005_FigureManipulator
 {
     partial class Form1
     {
@@ -63,7 +63,7 @@
             // 
             this.add_Line_btn.BackColor = System.Drawing.Color.DarkRed;
             this.add_Line_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.add_Line_btn.Image = global::Creational.FactoryMethod._005_FigureManipulator.Properties.Resources.line;
+            this.add_Line_btn.Image = global::Patterns.Properties.Resources.line;
             this.add_Line_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.add_Line_btn.Name = "add_Line_btn";
             this.add_Line_btn.Size = new System.Drawing.Size(29, 29);

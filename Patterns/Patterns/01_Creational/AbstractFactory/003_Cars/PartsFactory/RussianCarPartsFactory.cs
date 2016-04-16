@@ -1,6 +1,6 @@
-﻿using Patterns.Creational.AbstractFactory._003_Cars.Parts;
+﻿using Patterns._01_Creational.AbstractFactory._003_Cars.Parts;
 
-namespace Patterns.Creational.AbstractFactory._003_Cars.PartsFactory
+namespace Patterns._01_Creational.AbstractFactory._003_Cars.PartsFactory
 {
     public class RussianCarPartsFactory : CarPartsFactory
     {

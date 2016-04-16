@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
 
-namespace Patterns.Structural.Bridge._003_Collections
+namespace Patterns._02_Structural.Bridge._003_Collections.Abstraction
 {
     abstract class Abstraction
     {

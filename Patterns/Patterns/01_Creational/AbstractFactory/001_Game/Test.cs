@@ -1,8 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._01_Creational.AbstractFactory._001_Game.Enum;
+using Patterns._01_Creational.AbstractFactory._001_Game.Factory;
 
-namespace Patterns.Creational.AbstractFactory._001_Game
+namespace Patterns._01_Creational.AbstractFactory._001_Game
 {
     [TestClass]
     public class Test
@@ -23,7 +25,7 @@ namespace Patterns.Creational.AbstractFactory._001_Game
             Random random = new Random();
 
             // Попадаем в лабиринт, выбирая комнату случайным образом.
-            Room room = maze.RoomNo(random.Next(1, 3));
+            Room.Room room = maze.RoomNo(random.Next(1, 3));
 
             // Выбранная сторона.
             MapSite site = null;
@@ -59,9 +61,9 @@ namespace Patterns.Creational.AbstractFactory._001_Game
                 // Делаем шаг в выбранную сторону. (Визуальное отображение стороны на экране)
                 site.Enter();
 
-                if (site is Door) // Если дверь, то перейти в другую комнату.
+                if (site is Door.Door) // Если дверь, то перейти в другую комнату.
                 {
-                    Door door = (Door)site;
+                    Door.Door door = (Door.Door)site;
                     // Переход в другую комнату (Получение ссылки на новую комнату).
                     room = door.OtherSideFrom(room);
                 }

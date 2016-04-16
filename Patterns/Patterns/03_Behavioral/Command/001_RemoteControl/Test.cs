@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Patterns.Behavioral.Command._001_RemoteControl.Commands;
-using Patterns.Behavioral.Command._001_RemoteControl.ControlledSystems;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._03_Behavioral.Command._001_RemoteControl.Commands;
+using Patterns._03_Behavioral.Command._001_RemoteControl.ControlledSystems;
 
-namespace Patterns.Behavioral.Command._001_RemoteControl
+namespace Patterns._03_Behavioral.Command._001_RemoteControl
 {
     [TestClass]
     public class Test

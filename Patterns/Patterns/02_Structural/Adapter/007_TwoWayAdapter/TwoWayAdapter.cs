@@ -1,5 +1,8 @@
 ﻿
-namespace Patterns.Structural.Adapter._007_TwoWayAdapter
+using Patterns._02_Structural.Adapter._007_TwoWayAdapter.New_Subsystem;
+using Patterns._02_Structural.Adapter._007_TwoWayAdapter.Old_Subsystem;
+
+namespace Patterns._02_Structural.Adapter._007_TwoWayAdapter
 {
     class TwoWayAdapter : ITargetOld, ITargetNew
     {

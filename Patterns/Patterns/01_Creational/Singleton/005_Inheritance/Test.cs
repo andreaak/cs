@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Creational.Singleton._005_Inheritance
+namespace Patterns._01_Creational.Singleton._005_Inheritance
 {
     [TestClass]
     public class Test

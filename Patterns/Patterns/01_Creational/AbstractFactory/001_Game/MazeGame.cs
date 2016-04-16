@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Patterns._01_Creational.AbstractFactory._001_Game.Enum;
+using Patterns._01_Creational.AbstractFactory._001_Game.Factory;
 
-
-namespace Patterns.Creational.AbstractFactory._001_Game
+namespace Patterns._01_Creational.AbstractFactory._001_Game
 {
     class MazeGame
     {
@@ -17,11 +17,11 @@ namespace Patterns.Creational.AbstractFactory._001_Game
             // Лабиринт.
             Maze aMaze = this.factory.MakeMaze();
 
-            Room r1 = this.factory.MakeRoom(1);
-            Room r2 = this.factory.MakeRoom(2);
+            Room.Room r1 = this.factory.MakeRoom(1);
+            Room.Room r2 = this.factory.MakeRoom(2);
 
             // Дверь - данный экземпляр содержит ссылки на две комнаты. (Является общим для двух комнат.)
-            Door aDoor = this.factory.MakeDoor(r1, r2); 
+            Door.Door aDoor = this.factory.MakeDoor(r1, r2); 
 
             aMaze.AddRoom(r1);
             aMaze.AddRoom(r2);

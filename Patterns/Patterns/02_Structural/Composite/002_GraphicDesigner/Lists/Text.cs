@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Patterns.Structural.Composite._002_GraphicDesigner
+namespace Patterns._02_Structural.Composite._002_GraphicDesigner.Lists
 {
     class Text : IGraphic
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.IO;
 
-namespace Patterns.Structural.Adapter._008_AdaptersForTreeDisplay
+namespace Patterns._02_Structural.Adapter._008_AdaptersForTreeDisplay
 {
     class DirectoryTreeDisplay : TreeDisplay
     {

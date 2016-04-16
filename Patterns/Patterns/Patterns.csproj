@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A3A1EAB3-457B-4DBC-8273-74E863DD61FE}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Patterns</RootNamespace>
     <AssemblyName>Patterns</AssemblyName>
@@ -57,6 +57,100 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="02_Structural\Decorator\002_Base\Component.cs" />
+    <Compile Include="02_Structural\Decorator\002_Base\ConcreteComponent.cs" />
+    <Compile Include="02_Structural\Decorator\002_Base\ConcreteDecoratorA.cs" />
+    <Compile Include="02_Structural\Decorator\002_Base\ConcreteDecoratorB.cs" />
+    <Compile Include="02_Structural\Decorator\002_Base\Decorator.cs" />
+    <Compile Include="02_Structural\Decorator\002_Base\Test.cs" />
+    <Compile Include="02_Structural\Decorator\003_TextView\BorderDecorator.cs" />
+    <Compile Include="02_Structural\Decorator\003_TextView\Decorator.cs" />
+    <Compile Include="02_Structural\Decorator\003_TextView\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="02_Structural\Decorator\003_TextView\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02_Structural\Decorator\003_TextView\Test.cs" />
+    <Compile Include="02_Structural\Decorator\003_TextView\ScrollDecorator.cs" />
+    <Compile Include="02_Structural\Decorator\003_TextView\TextView.cs" />
+    <Compile Include="02_Structural\Decorator\003_TextView\VisualComponent.cs" />
+    <Compile Include="02_Structural\Facade\002_Base\Facade.cs" />
+    <Compile Include="02_Structural\Facade\002_Base\Test.cs" />
+    <Compile Include="02_Structural\Facade\002_Base\SubSystemA.cs" />
+    <Compile Include="02_Structural\Facade\002_Base\SubSystemB.cs" />
+    <Compile Include="02_Structural\Facade\002_Base\SubSystemC.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler2\Compiler\Compiler.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler2\Compiler\Parser.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler2\Compiler\ProgramNodeBuilder.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler2\Compiler\Scanner.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler2\Compiler\SharedTypes.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler2\Test.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\Compiler\Compiler.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\Compiler\CodeGenerator.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\Compiler\Parser.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\Compiler\ProgramNodeBuilder.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\Compiler\Scanner.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\Exceptions\ParserException.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\Exceptions\ProgramNodeBuilderExeption.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\Exceptions\ScannerExeption.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\SubSystems\CodeGeneration\ByteCode.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\SubSystems\CodeGeneration\ByteCodeStream.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\SubSystems\CodeGeneration\CISCCodeGenerator.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\SubSystems\CodeGeneration\SharedTypes.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\SubSystems\Nodes\ExpressionNode.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\SubSystems\Nodes\ProgramNode.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\SubSystems\Nodes\StatementNode.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\SubSystems\Nodes\Token.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\SubSystems\Nodes\VariableNode.cs" />
+    <Compile Include="02_Structural\Facade\003_AssemblerCompiler\Test.cs" />
+    <Compile Include="02_Structural\Facade\004_OpenAndCloseClasses\FacadeAndSubsystems.cs" />
+    <Compile Include="02_Structural\Facade\004_OpenAndCloseClasses\Test.cs" />
+    <Compile Include="02_Structural\Flyweight\001_Base\ConcreteFlyweight.cs" />
+    <Compile Include="02_Structural\Flyweight\001_Base\Flyweight.cs" />
+    <Compile Include="02_Structural\Flyweight\001_Base\FlyweightFactory.cs" />
+    <Compile Include="02_Structural\Flyweight\001_Base\Test.cs" />
+    <Compile Include="02_Structural\Flyweight\001_Base\UnsharedConcreteFlyweight.cs" />
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\BTree.cs" />
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\GlyphContext.cs" />
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\GlyphFactory.cs" />
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\Glyphs\Character.cs" />
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\Glyphs\Column.cs" />
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\Glyphs\Glyph.cs" />
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\Glyphs\Page.cs" />
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\Glyphs\Row.cs" />
+    <Compile Include="02_Structural\Flyweight\002_DocumentEditor\Test.cs" />
+    <Compile Include="02_Structural\Flyweight\003_ComedyFilm\ActorMikeMyers.cs" />
+    <Compile Include="02_Structural\Flyweight\003_ComedyFilm\Flyweight.cs" />
+    <Compile Include="02_Structural\Flyweight\003_ComedyFilm\RoleAustinPowers.cs" />
+    <Compile Include="02_Structural\Flyweight\003_ComedyFilm\RoleDoctorEvil.cs" />
+    <Compile Include="02_Structural\Flyweight\003_ComedyFilm\Test.cs" />
+    <Compile Include="02_Structural\Proxy\001_Base\Proxy.cs" />
+    <Compile Include="02_Structural\Proxy\001_Base\RealSubject.cs" />
+    <Compile Include="02_Structural\Proxy\001_Base\Subject.cs" />
+    <Compile Include="02_Structural\Proxy\001_Base\Test.cs" />
+    <Compile Include="02_Structural\Proxy\002_ImageProxy\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="02_Structural\Proxy\002_ImageProxy\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02_Structural\Proxy\002_ImageProxy\Pattern\Graphic.cs" />
+    <Compile Include="02_Structural\Proxy\002_ImageProxy\Pattern\Picture.cs" />
+    <Compile Include="02_Structural\Proxy\002_ImageProxy\Pattern\PictureProxy.cs" />
+    <Compile Include="02_Structural\Proxy\002_ImageProxy\PictureList.cs" />
+    <Compile Include="02_Structural\Proxy\002_ImageProxy\Test.cs" />
+    <Compile Include="02_Structural\Proxy\003_ProxyCRUD\Proxy.cs" />
+    <Compile Include="02_Structural\Proxy\003_ProxyCRUD\RealSubject.cs" />
+    <Compile Include="02_Structural\Proxy\003_ProxyCRUD\Subject.cs" />
+    <Compile Include="02_Structural\Proxy\003_ProxyCRUD\Test.cs" />
+    <Compile Include="02_Structural\Proxy\004_Surrogates\IHuman.cs" />
+    <Compile Include="02_Structural\Proxy\004_Surrogates\Operator.cs" />
+    <Compile Include="02_Structural\Proxy\004_Surrogates\Surrogate.cs" />
+    <Compile Include="02_Structural\Proxy\004_Surrogates\Test.cs" />
     <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\ICommand.cs" />
     <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\LightsCommand.cs" />
     <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\MacroCommand.cs" />
@@ -308,13 +402,6 @@
     <Compile Include="01_Creational\FactoryMethod\003_Application\Product\ConcreteProduct\PngDocument.cs" />
     <Compile Include="01_Creational\FactoryMethod\003_Application\Product\ConcreteProduct\TextDocument.cs" />
     <Compile Include="01_Creational\FactoryMethod\003_Application\Product\Document.cs" />
-    <Compile Include="01_Creational\FactoryMethod\003_Application\Properties\Resources.Designer.cs" />
-    <Compile Include="01_Creational\FactoryMethod\003_Application\Properties\Settings.Designer.cs" />
-    <Compile Include="01_Creational\FactoryMethod\003_Application\Properties\Settings1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="01_Creational\FactoryMethod\003_Application\Test.cs" />
     <Compile Include="01_Creational\FactoryMethod\003_Application\TextDocForm.cs">
       <SubType>Form</SubType>
@@ -350,8 +437,6 @@
     <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Manipulators\TextManipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Properties\Resources.Designer.cs" />
-    <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\Properties\Settings.Designer.cs" />
     <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\RectangleFigure.cs" />
     <Compile Include="01_Creational\FactoryMethod\005_FigureManipulator\RectangleManipulator.cs">
       <SubType>Component</SubType>
@@ -440,8 +525,6 @@
     <Compile Include="01_Creational\Prototype\003_Control\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="01_Creational\Prototype\003_Control\Properties\Resources.Designer.cs" />
-    <Compile Include="01_Creational\Prototype\003_Control\Properties\Settings.Designer.cs" />
     <Compile Include="01_Creational\Prototype\003_Control\Prototype\Graphic.cs" />
     <Compile Include="01_Creational\Prototype\003_Control\Prototype\GraphicTool.cs" />
     <Compile Include="01_Creational\Prototype\003_Control\Prototype\MusicalNote.cs" />
@@ -554,8 +637,6 @@
     <Compile Include="02_Structural\Adapter\004_DrawingEditor\Manipulator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Properties\Resources.Designer.cs" />
-    <Compile Include="02_Structural\Adapter\004_DrawingEditor\Properties\Settings.Designer.cs" />
     <Compile Include="02_Structural\Adapter\004_DrawingEditor\RectangleFigure.cs" />
     <Compile Include="02_Structural\Adapter\004_DrawingEditor\RectangleManipulator.cs">
       <SubType>Component</SubType>
@@ -575,8 +656,6 @@
     <Compile Include="02_Structural\Adapter\006_TreeDisplay\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="02_Structural\Adapter\006_TreeDisplay\Properties\Resources.Designer.cs" />
-    <Compile Include="02_Structural\Adapter\006_TreeDisplay\Properties\Settings.Designer.cs" />
     <Compile Include="02_Structural\Adapter\006_TreeDisplay\Test.cs" />
     <Compile Include="02_Structural\Adapter\006_TreeDisplay\TreeDisplayAdapter.cs">
       <SubType>Component</SubType>
@@ -599,8 +678,6 @@
     <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\Resources.Designer.cs" />
-    <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\Settings.Designer.cs" />
     <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Test.cs" />
     <Compile Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\TreeDisplayAdapter.cs">
       <SubType>Component</SubType>
@@ -633,8 +710,6 @@
     <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Implementation\DashDotLine.cs" />
     <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Implementation\DotLine.cs" />
     <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Implementation\LineStyle.cs" />
-    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Properties\Resources.Designer.cs" />
-    <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Properties\Settings.Designer.cs" />
     <Compile Include="02_Structural\Bridge\004_WinFormShapesAndLines\Test.cs" />
     <Compile Include="02_Structural\Composite\001_Base\Component.cs" />
     <Compile Include="02_Structural\Composite\001_Base\Composite.cs" />
@@ -648,9 +723,6 @@
     <Compile Include="02_Structural\Composite\002_GraphicDesigner\Lists\Rectangle.cs" />
     <Compile Include="02_Structural\Composite\002_GraphicDesigner\Lists\Text.cs" />
     <Compile Include="02_Structural\Composite\002_GraphicDesigner\Picture.cs" />
-    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Program.cs" />
-    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Properties\Resources.Designer.cs" />
-    <Compile Include="02_Structural\Composite\002_GraphicDesigner\Properties\Settings.Designer.cs" />
     <Compile Include="02_Structural\Composite\002_GraphicDesigner\Test.cs" />
     <Compile Include="02_Structural\Composite\003_RecursionComposition\Component.cs" />
     <Compile Include="02_Structural\Composite\003_RecursionComposition\Composite.cs" />
@@ -671,6 +743,12 @@
     <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\Thermo.cs" />
     <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\WashingMachine.cs" />
     <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\WaterManagingSubsystem.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -681,26 +759,12 @@
     <None Include="01_Creational\Buider\004_House\Program_Main.sequencediagram" />
     <None Include="01_Creational\Buider\002_Base\ClassDiagram.cd" />
     <None Include="01_Creational\Buider\002_Base\Program_Main.sequencediagram" />
-    <None Include="01_Creational\FactoryMethod\003_Application\ClassDiagram1.cd" />
-    <None Include="01_Creational\FactoryMethod\003_Application\Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="01_Creational\FactoryMethod\005_FigureManipulator\Properties\Settings.settings" />
     <None Include="01_Creational\Prototype\002_Base\ClassDiagram1.cd" />
     <None Include="01_Creational\Prototype\003_Control\ClassDiagram.cd" />
-    <None Include="01_Creational\Prototype\003_Control\Properties\Settings.settings" />
     <None Include="02_Structural\Adapter\003_Object\ClassDiagram1.cd" />
-    <None Include="02_Structural\Adapter\004_DrawingEditor\Properties\Settings.settings" />
-    <None Include="02_Structural\Adapter\006_TreeDisplay\Properties\app.manifest" />
-    <None Include="02_Structural\Adapter\006_TreeDisplay\Properties\Settings.settings" />
-    <None Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\app.manifest" />
-    <None Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\Settings.settings" />
     <None Include="02_Structural\Bridge\001_Base\ClassDiagram.cd" />
     <None Include="02_Structural\Bridge\002_Motivation\ClassDiagram1.cd" />
-    <None Include="02_Structural\Bridge\004_WinFormShapesAndLines\Properties\Settings.settings" />
     <None Include="02_Structural\Composite\001_Base\ClassDiagram.cd" />
-    <None Include="02_Structural\Composite\002_GraphicDesigner\Properties\Settings.settings" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="01_Creational\AbstractFactory\004_Water\abstractFactoryWater.png" />
@@ -721,13 +785,34 @@
     <Content Include="01_Creational\Buider\005_TextConverter\builder.png" />
     <Content Include="01_Creational\FactoryMethod\001_Game\FactoryMethod.png" />
     <Content Include="01_Creational\FactoryMethod\003_Application\FactoryMethod.png" />
-    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\clear.png" />
-    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\close.png" />
-    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\images.jpg" />
-    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\open.png" />
-    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\revert.png" />
-    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\save.png" />
-    <Content Include="01_Creational\FactoryMethod\003_Application\Resources\saveAs.png" />
+    <Content Include="01_Creational\patterns.txt" />
+    <Content Include="Resources\clear.png" />
+    <None Include="Resources\Clear_.png" />
+    <Content Include="Resources\close.png" />
+    <None Include="Resources\WholeNoteSmall.gif" />
+    <None Include="Resources\WholeNoteSelected.gif" />
+    <None Include="Resources\WholeNote.gif" />
+    <None Include="Resources\Up.gif" />
+    <None Include="Resources\EighthNote.gif" />
+    <None Include="Resources\EighthNoteSelected.gif" />
+    <None Include="Resources\EighthNoteSmall.gif" />
+    <None Include="Resources\HalfNote.gif" />
+    <None Include="Resources\HalfNoteSelected.gif" />
+    <None Include="Resources\HalfNoteSmall.gif" />
+    <None Include="Resources\deselect-16.png" />
+    <None Include="Resources\erase.png" />
+    <Content Include="Resources\images.jpg" />
+    <None Include="Resources\key.gif" />
+    <None Include="Resources\line.jpg" />
+    <Content Include="Resources\open.png" />
+    <None Include="Resources\QuarterNote.gif" />
+    <None Include="Resources\QuarterNoteSelected.gif" />
+    <None Include="Resources\QuarterNoteSmall.gif" />
+    <None Include="Resources\Play.png" />
+    <Content Include="Resources\revert.png" />
+    <None Include="Resources\Rotate.PNG" />
+    <Content Include="Resources\save.png" />
+    <Content Include="Resources\saveAs.png" />
     <Content Include="01_Creational\FactoryMethod\005_FigureManipulator\FactoryMethod.png" />
     <Content Include="01_Creational\FactoryMethod\005_FigureManipulator\line.png" />
     <Content Include="01_Creational\FactoryMethod\005_FigureManipulator\text.png" />
@@ -792,10 +877,44 @@
     <Content Include="02_Structural\Composite\001_Base\composite.png" />
     <Content Include="02_Structural\Composite\002_GraphicDesigner\composite.png" />
     <Content Include="02_Structural\Composite\003_RecursionComposition\composite.png" />
+    <Content Include="02_Structural\Decorator\002_Base\Decorator.png" />
     <Content Include="02_Structural\Decorator\Decorator.png" />
+    <Content Include="02_Structural\Facade\003_AssemblerCompiler\Compiler.png" />
+    <Content Include="02_Structural\Facade\003_AssemblerCompiler\GoF Original.png" />
     <Content Include="02_Structural\Facade\Facade.png" />
+    <Content Include="02_Structural\Flyweight\001_Base\Flyweight.png" />
+    <Content Include="02_Structural\Flyweight\002_DocumentEditor\DocumentEditor.png" />
+    <Content Include="02_Structural\Flyweight\003_ComedyFilm\ComedyFilm.png" />
     <Content Include="02_Structural\Flyweight\Flyweight.png" />
+    <Content Include="02_Structural\Proxy\001_Base\Proxy.png" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\07.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\09.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\Globophobia1920x1200.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-1144.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-11486.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-12923.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-13395.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-1956.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-20360.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-2657.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-34553.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-3901.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-45228.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-4635.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-49123.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-8015.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\pictures\wallpaper-821.jpg" />
+    <Content Include="02_Structural\Proxy\002_ImageProxy\startImg.bmp" />
+    <Content Include="02_Structural\Proxy\003_ProxyCRUD\ProxyCRUD.png" />
     <Content Include="02_Structural\Proxy\Proxy.png" />
+    <None Include="Resources\SixteenthNote.gif" />
+    <None Include="Resources\SixteenthNoteSmall.gif" />
+    <None Include="Resources\Staff.gif" />
+    <None Include="Resources\staff.png" />
+    <None Include="Resources\Staff_new.gif" />
+    <None Include="Resources\Staff_new.png" />
+    <None Include="Resources\SixteenthNoteSelected.gif" />
+    <Content Include="Resources\startImg.bmp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="01_Creational\AbstractFactory\004_Water\Program_Main.sequencediagram.layout">
@@ -819,8 +938,10 @@
     <EmbeddedResource Include="01_Creational\FactoryMethod\003_Application\PngDocForm.resx">
       <DependentUpon>PngDocForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\FactoryMethod\003_Application\Properties\Resources.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="01_Creational\FactoryMethod\003_Application\TextDocForm.resx">
       <DependentUpon>TextDocForm.cs</DependentUpon>
@@ -831,40 +952,33 @@
     <EmbeddedResource Include="01_Creational\FactoryMethod\005_FigureManipulator\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\FactoryMethod\005_FigureManipulator\Properties\Resources.resx" />
     <EmbeddedResource Include="01_Creational\Prototype\003_Control\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01_Creational\Prototype\003_Control\Properties\Resources.resx" />
     <EmbeddedResource Include="02_Structural\Adapter\004_DrawingEditor\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="02_Structural\Adapter\004_DrawingEditor\Properties\Resources.resx" />
     <EmbeddedResource Include="02_Structural\Adapter\006_TreeDisplay\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="02_Structural\Adapter\006_TreeDisplay\Properties\Resources.resx" />
     <EmbeddedResource Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="02_Structural\Adapter\008_AdaptersForTreeDisplay\Properties\Resources.resx" />
-    <EmbeddedResource Include="02_Structural\Bridge\004_WinFormShapesAndLines\Properties\Resources.resx" />
     <EmbeddedResource Include="02_Structural\Composite\002_GraphicDesigner\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="02_Structural\Composite\002_GraphicDesigner\Properties\Resources.resx" />
+    <EmbeddedResource Include="02_Structural\Decorator\003_TextView\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="02_Structural\Flyweight\002_DocumentEditor\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="02_Structural\Proxy\002_ImageProxy\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="02_Structural\Decorator\002_Base\" />
-    <Folder Include="02_Structural\Decorator\003_TextView\" />
     <Folder Include="02_Structural\Decorator\004_ConcreteDecorator\" />
-    <Folder Include="02_Structural\Flyweight\001_Base\" />
-    <Folder Include="02_Structural\Flyweight\002_DocumentEditor\" />
-    <Folder Include="02_Structural\Flyweight\003_ComedyFilm\" />
-    <Folder Include="02_Structural\Proxy\001_Base\" />
-    <Folder Include="02_Structural\Proxy\002_ImageProxy\" />
-    <Folder Include="02_Structural\Proxy\003_ProxyCRUD\" />
-    <Folder Include="02_Structural\Proxy\004_Surrogates\" />
     <Folder Include="02_Structural\Proxy\005_Ambassador\" />
     <Folder Include="03_Behavioral\ChainOfResponsibility\" />
     <Folder Include="03_Behavioral\Interpreter\" />

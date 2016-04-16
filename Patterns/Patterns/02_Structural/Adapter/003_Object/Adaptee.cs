@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Patterns.Structural.Adapter._003_Object
+namespace Patterns._02_Structural.Adapter._003_Object
 {
     class Adaptee
     {

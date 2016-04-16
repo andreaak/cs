@@ -1,8 +1,8 @@
-﻿using Patterns.Behavioral.Command._001_RemoteControl.Commands;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
+using Patterns._03_Behavioral.Command._001_RemoteControl.Commands;
 
-namespace Patterns.Behavioral.Command._001_RemoteControl
+namespace Patterns._03_Behavioral.Command._001_RemoteControl
 {
     public class RemoteControl
     {

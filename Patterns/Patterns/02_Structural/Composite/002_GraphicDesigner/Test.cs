@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Structural.Composite._002_GraphicDesigner
+namespace Patterns._02_Structural.Composite._002_GraphicDesigner
 {
     [TestClass]
     public class Test

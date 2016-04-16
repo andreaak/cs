@@ -1,7 +1,7 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
+using Patterns._01_Creational.AbstractFactory._005_Buttons.Buttons;
 
-namespace Patterns.Creational.AbstractFactory._005_Buttons
+namespace Patterns._01_Creational.AbstractFactory._005_Buttons.Windows
 {
     // ConcreteProductB1
     class WindowsForm : AbstractWindow

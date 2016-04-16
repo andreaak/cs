@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Creational.Singleton._008_Serialization
+namespace Patterns._01_Creational.Singleton._008_Serialization
 {
     [TestClass]
     public class Test

@@ -1,7 +1,6 @@
-﻿using Patterns.Structural.Decorator._001_Beverage.Beverage;
-using Patterns.Structural.Decorator._001_Beverage.Decorators;
+﻿using Patterns._02_Structural.Decorator._001_Beverage.Beverage;
 
-namespace Patterns.Structural.Decorator.Decorators
+namespace Patterns._02_Structural.Decorator._001_Beverage.Decorators
 {
     class MilkCondiment : CondimentsDecoratorBase
     {

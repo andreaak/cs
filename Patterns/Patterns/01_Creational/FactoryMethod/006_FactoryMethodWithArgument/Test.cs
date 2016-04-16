@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Windows.Forms;
+using Patterns._01_Creational.FactoryMethod._006_FactoryMethodWithArgument.Creators;
+using Patterns._01_Creational.FactoryMethod._006_FactoryMethodWithArgument.Products;
 
-namespace Creational.FactoryMethod._006_FactoryMethodWithArgument
+namespace Patterns._01_Creational.FactoryMethod._006_FactoryMethodWithArgument
 {
     [TestClass]
     public class Test

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Creational.Singleton._003_ThreadSafe
+namespace Patterns._01_Creational.Singleton._003_ThreadSafe
 {
     [TestClass]
     public class Test

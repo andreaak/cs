@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Patterns.Behavioral.Observer._001_News.News;
-using Patterns.Behavioral.Observer._001_News.Widgets;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._03_Behavioral.Observer._001_News.News;
+using Patterns._03_Behavioral.Observer._001_News.Widgets;
 
-namespace Patterns.Behavioral.Observer._001_News
+namespace Patterns._03_Behavioral.Observer._001_News
 {
     [TestClass]
     public class Test

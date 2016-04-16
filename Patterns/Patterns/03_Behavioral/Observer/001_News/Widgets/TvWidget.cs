@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Patterns.Behavioral.Observer._001_News.News;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Patterns._03_Behavioral.Observer._001_News.News;
 
-namespace Patterns.Behavioral.Observer._001_News.Widgets
+namespace Patterns._03_Behavioral.Observer._001_News.Widgets
 {
     class TvWidget : IWidget
     {

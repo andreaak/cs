@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using Patterns._01_Creational.Buider._002_Base.Builder;
 
-namespace Creational.Builder._002_Base
+namespace Patterns._01_Creational.Buider._002_Base
 {
     [TestClass]
     public class Test
@@ -9,7 +9,7 @@ namespace Creational.Builder._002_Base
         [TestMethod]
         public void Test1()
         {
-            Builder builder = new ConcreteBuilder();
+            Builder.Builder builder = new ConcreteBuilder();
             Director director = new Director(builder);
             director.Construct();
 

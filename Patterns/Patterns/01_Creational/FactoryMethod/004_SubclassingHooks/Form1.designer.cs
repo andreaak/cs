@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
 
-namespace Creational.FactoryMethod._004_SubclassingHooks
+namespace Patterns._01_Creational.FactoryMethod._004_SubclassingHooks
 {
     partial class Form1
     {
@@ -11,7 +10,7 @@ namespace Creational.FactoryMethod._004_SubclassingHooks
 
         private void InitializeComponent()
         {
-            this.textBox1 = new Creational.FactoryMethod._004_SubclassingHooks.TextBoxWrapper();
+            this.textBox1 = new TextBoxWrapper();
             this.SuspendLayout();
             // 
             // textBox1

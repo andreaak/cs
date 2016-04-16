@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Creational.Singleton._007_MultithreadedSingleton
+namespace Patterns._01_Creational.Singleton._007_MultithreadedSingleton
 {
     [TestClass]
     public class Test

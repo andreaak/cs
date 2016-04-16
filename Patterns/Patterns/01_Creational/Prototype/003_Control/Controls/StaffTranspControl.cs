@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Creational.Prototype._003_Control
+﻿namespace Patterns._01_Creational.Prototype._003_Control.Controls
 {
     public partial class StaffTranspControl : TranspControl
     {

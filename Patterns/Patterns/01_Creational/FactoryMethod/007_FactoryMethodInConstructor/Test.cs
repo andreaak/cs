@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
-namespace Creational.FactoryMethod._007_FactoryMethodInConstructor
+namespace Patterns._01_Creational.FactoryMethod._007_FactoryMethodInConstructor
 {
     [TestClass]
     public class Test

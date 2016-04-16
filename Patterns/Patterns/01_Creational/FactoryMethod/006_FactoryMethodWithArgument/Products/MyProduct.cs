@@ -1,5 +1,5 @@
 ﻿
-namespace Creational.FactoryMethod._006_FactoryMethodWithArgument
+namespace Patterns._01_Creational.FactoryMethod._006_FactoryMethodWithArgument.Products
 {
     class MyProduct : Product
     {

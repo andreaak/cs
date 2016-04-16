@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-
-namespace Creational.FactoryMethod._001_Game
+namespace Patterns._01_Creational.FactoryMethod._001_Game.Wall
 {
     class Wall : MapSite
     {

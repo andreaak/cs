@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Patterns.Structural.Facade._001_WashingMachine.WashingMachine;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._02_Structural.Facade._001_WashingMachine.WashingMachine;
 
-namespace Patterns.Structural.Facade._001_WashingMachine
+namespace Patterns._02_Structural.Facade._001_WashingMachine
 {
     [TestClass]
     public class Test

@@ -1,7 +1,8 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Patterns._02_Structural.Bridge._004_WinFormShapesAndLines.Implementation;
 
-namespace Patterns.Structural.Bridge._004_WinFormShapesAndLines
+namespace Patterns._02_Structural.Bridge._004_WinFormShapesAndLines.Abstraction
 {
     // "Abstraction"                                                                                     
     abstract class Shape

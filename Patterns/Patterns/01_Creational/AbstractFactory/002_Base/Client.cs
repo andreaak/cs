@@ -1,13 +1,11 @@
-using System;
-
-namespace Patterns.Creational.AbstractFactory._002_Base
+namespace Patterns._01_Creational.AbstractFactory._002_Base
 {
     class Client
     {
-        private AbstractProductA abstractProductA = null;
-        private AbstractProductB abstractProductB = null;
+        private AbstractProductA.AbstractProductA abstractProductA = null;
+        private AbstractProductB.AbstractProductB abstractProductB = null;
 
-        public Client(AbstractFactory factory)
+        public Client(AbstractFactory.AbstractFactory factory)
         {
             this.abstractProductA = factory.CreateProductA();
             this.abstractProductB = factory.CreateProductB();

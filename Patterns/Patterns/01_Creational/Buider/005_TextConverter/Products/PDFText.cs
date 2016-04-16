@@ -1,16 +1,14 @@
 ﻿using System;
 using System.IO;
-
+using sharpPDF;
+using sharpPDF.Elements;
+using sharpPDF.Enumerators;
+using sharpPDF.Fonts;
 // В даном примере была использована библиотека sharpPDF 
 // для генерации документов в PDF формате:
 // http://sharppdf.sourceforge.net/
 
-using sharpPDF;
-using sharpPDF.Fonts;
-using sharpPDF.Elements;
-using sharpPDF.Enumerators;
-
-namespace Creational.Builder._005_TextConverter
+namespace Patterns._01_Creational.Buider._005_TextConverter.Products
 {
     // Product
     class PDFText

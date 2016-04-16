@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Patterns.Behavioral.TemplateMethod._001_Food.Food;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._03_Behavioral.TemplateMethod._001_Food.Food;
 
-namespace Patterns.Behavioral.TemplateMethod._001_Food
+namespace Patterns._03_Behavioral.TemplateMethod._001_Food
 {
     [TestClass]
     public class Test

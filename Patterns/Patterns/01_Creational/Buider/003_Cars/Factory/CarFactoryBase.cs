@@ -1,7 +1,7 @@
-﻿using Creational.Builder._003_Cars.Builder;
-using Creational.Builder._003_Cars.Cars;
+﻿using Patterns._01_Creational.Buider._003_Cars.Builder;
+using Patterns._01_Creational.Buider._003_Cars.Cars;
 
-namespace Creational.Builder._003_Cars.Factory
+namespace Patterns._01_Creational.Buider._003_Cars.Factory
 {
     public abstract class CarFactoryBase
     {

@@ -1,8 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Creational.Prototype._004_Performance
+namespace Patterns._01_Creational.Prototype._004_Performance
 {
     [TestClass]
     public class Test

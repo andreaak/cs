@@ -1,12 +1,10 @@
-using System;
-
-namespace Creational.Builder._002_Base
+namespace Patterns._01_Creational.Buider._002_Base
 {
     class Director
     {
-        Builder builder;
+        Builder.Builder builder;
 
-        public Director(Builder builder)
+        public Director(Builder.Builder builder)
         {
             this.builder = builder;
         }

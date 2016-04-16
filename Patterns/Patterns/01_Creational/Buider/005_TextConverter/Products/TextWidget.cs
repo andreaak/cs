@@ -1,9 +1,9 @@
-﻿using System.Drawing.Drawing2D;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
-namespace Creational.Builder._005_TextConverter
+namespace Patterns._01_Creational.Buider._005_TextConverter.Products
 {
     // Product
     class TextWidget : Control

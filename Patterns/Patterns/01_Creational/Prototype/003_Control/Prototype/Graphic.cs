@@ -1,7 +1,8 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Patterns._01_Creational.Prototype._003_Control.Classes;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Prototype
 {
     /// <summary>
     /// Абстрактный класс Graphic для графических компонентов - нот и нотных станов.

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using Patterns._01_Creational.Prototype._003_Control.Controls;
+using Patterns._01_Creational.Prototype._003_Control.Prototype;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Classes
 {
     [XmlRoot("MyMelody")]
     public class NotesSerializer

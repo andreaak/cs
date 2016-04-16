@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Patterns.Structural.Adapter._004_DrawingEditor
+namespace Patterns._02_Structural.Adapter._004_DrawingEditor
 {
     /// <summary>
     /// Класс TextShape - адаптер, который адаптирует интерфейс TextView к интерфейсу Shape

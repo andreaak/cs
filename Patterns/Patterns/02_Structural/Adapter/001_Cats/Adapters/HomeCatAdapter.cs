@@ -1,7 +1,7 @@
-﻿using Patterns.Structural.Adapter._001_Cats.HomeCats;
-using Patterns.Structural.Adapter._001_Cats.WildCats;
+﻿using Patterns._02_Structural.Adapter._001_Cats.HomeCats;
+using Patterns._02_Structural.Adapter._001_Cats.WildCats;
 
-namespace Patterns.Structural.Adapter._001_Cats.Adapters
+namespace Patterns._02_Structural.Adapter._001_Cats.Adapters
 {
     class HomeCatAdapter : IHomeCat
     {

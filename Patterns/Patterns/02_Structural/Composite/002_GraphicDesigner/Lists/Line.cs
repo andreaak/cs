@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
-using System.Drawing.Drawing2D;
 
-namespace Patterns.Structural.Composite._002_GraphicDesigner
+namespace Patterns._02_Structural.Composite._002_GraphicDesigner.Lists
 {
     class Line : IGraphic
     {

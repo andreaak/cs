@@ -1,9 +1,8 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace Creational.FactoryMethod._010_Generic
+namespace Patterns._01_Creational.FactoryMethod._010_Generic.Products
 {
-    class ProductC : IProduct
+    class ProductC : IProduct.IProduct
     {
         public ProductC()
         {

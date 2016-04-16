@@ -1,7 +1,9 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Patterns._02_Structural.Composite._002_GraphicDesigner.Lists;
+using Rectangle = Patterns._02_Structural.Composite._002_GraphicDesigner.Lists.Rectangle;
 
-namespace Patterns.Structural.Composite._002_GraphicDesigner
+namespace Patterns._02_Structural.Composite._002_GraphicDesigner
 {
     public class Form1 : Form
     {

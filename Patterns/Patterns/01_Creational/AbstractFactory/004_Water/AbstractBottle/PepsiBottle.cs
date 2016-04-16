@@ -1,11 +1,10 @@
-using System;
 using System.Diagnostics;
 
-namespace Patterns.Creational.AbstractFactory._004_Water
+namespace Patterns._01_Creational.AbstractFactory._004_Water.AbstractBottle
 {
     class PepsiBottle : AbstractBottle
     {
-        public override void Interact(AbstractWater water)
+        public override void Interact(AbstractWater.AbstractWater water)
         {
             Debug.WriteLine(this + " interacts with " + water);
         }

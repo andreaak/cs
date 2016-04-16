@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Behavioral.State._001_Car
+namespace Patterns._03_Behavioral.State._001_Car
 {
     [TestClass]
     public class Test

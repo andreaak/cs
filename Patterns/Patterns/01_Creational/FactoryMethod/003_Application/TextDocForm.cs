@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Creational.FactoryMethod._003_Application.Pattern;
+using Patterns._01_Creational.FactoryMethod._003_Application.Product.ConcreteProduct;
 
-namespace Creational.FactoryMethod._003_Application
+namespace Patterns._01_Creational.FactoryMethod._003_Application
 {
     public partial class TextDocForm : Form
     {

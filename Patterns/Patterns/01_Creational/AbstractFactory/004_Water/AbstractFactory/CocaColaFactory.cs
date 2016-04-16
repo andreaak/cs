@@ -1,15 +1,16 @@
-using System;
+using Patterns._01_Creational.AbstractFactory._004_Water.AbstractBottle;
+using Patterns._01_Creational.AbstractFactory._004_Water.AbstractWater;
 
-namespace Patterns.Creational.AbstractFactory._004_Water
+namespace Patterns._01_Creational.AbstractFactory._004_Water.AbstractFactory
 {
     class CocaColaFactory : AbstractFactory
     {
-        public override AbstractWater CreateWater()
+        public override AbstractWater.AbstractWater CreateWater()
         {
             return new CocaColaWater();
         }
 
-        public override AbstractBottle CreateBottle()
+        public override AbstractBottle.AbstractBottle CreateBottle()
         {
             return new CocaColaBottle();
         }

@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Creational.FactoryMethod._009_ServiceLocator
+﻿namespace Patterns._01_Creational.FactoryMethod._009_ServiceLocator.Services.IServices
 {
     interface IServiceA
     {

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
-namespace Patterns.Creational.Singleton._003_ThreadSafe.ThreadSafe
+namespace Patterns._01_Creational.Singleton._003_ThreadSafe.ThreadSafe
 {
     class Singleton
     {

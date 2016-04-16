@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Patterns.Structural.Composite._001_Base
+namespace Patterns._02_Structural.Composite._001_Base
 {
     class Leaf : Component
     {

@@ -1,8 +1,7 @@
-﻿using System;
-using Patterns.Creational.AbstractFactory._003_Cars.Parts;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Patterns._01_Creational.AbstractFactory._003_Cars.Parts;
 
-namespace Patterns.Creational.AbstractFactory._003_Cars.Cars
+namespace Patterns._01_Creational.AbstractFactory._003_Cars.Cars
 {
     public abstract class Car
     {

@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Patterns.Structural.Bridge._004_WinFormShapesAndLines
+namespace Patterns._02_Structural.Bridge._004_WinFormShapesAndLines.Implementation
 {
     // "Implementor"                                                                                         
     abstract class LineStyle

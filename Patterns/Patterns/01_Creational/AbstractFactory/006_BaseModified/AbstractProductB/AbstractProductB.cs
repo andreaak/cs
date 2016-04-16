@@ -1,6 +1,6 @@
-using System;
+using Patterns._01_Creational.AbstractFactory._006_BaseModified.AbstractProductA;
 
-namespace Patterns.Creational.AbstractFactory._006_BaseModified
+namespace Patterns._01_Creational.AbstractFactory._006_BaseModified.AbstractProductB
 {
     interface IAbstractProductB
     {

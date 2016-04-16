@@ -1,9 +1,9 @@
-﻿using Creational.FactoryMethod._003_Application.Pattern;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Patterns._01_Creational.FactoryMethod._003_Application.Product.ConcreteProduct;
 
-namespace Creational.FactoryMethod._003_Application
+namespace Patterns._01_Creational.FactoryMethod._003_Application
 {
     public partial class PngDocForm : Form
     {

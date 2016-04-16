@@ -1,13 +1,11 @@
-using System;
-
-namespace Patterns.Creational.AbstractFactory._004_Water
+namespace Patterns._01_Creational.AbstractFactory._004_Water
 {
     class Client
     {
-        private AbstractWater water;
-        private AbstractBottle bottle;
+        private AbstractWater.AbstractWater water;
+        private AbstractBottle.AbstractBottle bottle;
 
-        public Client(AbstractFactory factory)
+        public Client(AbstractFactory.AbstractFactory factory)
         {
             // Абстрагирование процесса инстанцирования.
             water = factory.CreateWater();

@@ -1,6 +1,4 @@
-using System;
-
-namespace Patterns.Structural.Adapter._003_Object
+namespace Patterns._02_Structural.Adapter._003_Object
 {
     abstract class Target
     {

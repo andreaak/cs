@@ -1,12 +1,10 @@
-using System;
-
-namespace Patterns.Structural.Bridge._001_Base
+namespace Patterns._02_Structural.Bridge._001_Base.Abstraction
 {
     abstract class Abstraction
     {
-        protected Implementor implementor = null;
+        protected Implementor.Implementor implementor = null;
 
-        public Abstraction(Implementor implementor)
+        public Abstraction(Implementor.Implementor implementor)
         {
             this.implementor = implementor;
         }

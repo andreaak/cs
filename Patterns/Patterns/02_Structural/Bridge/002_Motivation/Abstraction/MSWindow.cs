@@ -1,5 +1,7 @@
 ﻿
-namespace Patterns.Structural.Bridge._002_Motivation
+using Patterns._02_Structural.Bridge._002_Motivation.Implementors;
+
+namespace Patterns._02_Structural.Bridge._002_Motivation.Abstraction
 {
     // RefinedAbstraction
     class MSWindow : Window

@@ -1,7 +1,7 @@
 ﻿
 using System.Windows.Forms;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Prototype
 {
     /// <summary>
     /// Абстрактный класс Tool для определения инструментов в палитре

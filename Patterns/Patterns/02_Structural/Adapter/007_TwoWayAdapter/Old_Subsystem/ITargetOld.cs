@@ -1,5 +1,5 @@
 ﻿
-namespace Patterns.Structural.Adapter._007_TwoWayAdapter
+namespace Patterns._02_Structural.Adapter._007_TwoWayAdapter.Old_Subsystem
 {
     interface ITargetOld
     {

@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Specialized;
 
-namespace Patterns.Structural.Bridge._003_Collections
+namespace Patterns._02_Structural.Bridge._003_Collections.Abstraction
 {
     class RefinedAbstraction : Abstraction
     {

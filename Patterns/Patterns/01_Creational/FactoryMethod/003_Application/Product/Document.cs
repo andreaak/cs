@@ -1,5 +1,5 @@
 ﻿
-namespace Creational.FactoryMethod._003_Application.Pattern
+namespace Patterns._01_Creational.FactoryMethod._003_Application.Product
 {
     // Product
     public abstract class Document

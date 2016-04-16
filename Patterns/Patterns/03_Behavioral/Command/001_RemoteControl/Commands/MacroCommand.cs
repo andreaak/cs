@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 
-namespace Patterns.Behavioral.Command._001_RemoteControl.Commands
+namespace Patterns._03_Behavioral.Command._001_RemoteControl.Commands
 {
     public class MacroCommand : ICommand
     {

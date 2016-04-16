@@ -1,10 +1,10 @@
 ﻿using System.IO;
-using System.Windows.Forms;
 using System.Reflection;
+using System.Windows.Forms;
 
 // Пример со встроенной адаптацией интерфейсов.
 
-namespace Patterns.Structural.Adapter._008_AdaptersForTreeDisplay
+namespace Patterns._02_Structural.Adapter._008_AdaptersForTreeDisplay
 {
     public partial class Form1 : Form
     {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Patterns._01_Creational.FactoryMethod._005_FigureManipulator.Figures;
 
-namespace Creational.FactoryMethod._005_FigureManipulator
+namespace Patterns._01_Creational.FactoryMethod._005_FigureManipulator
 {
     public partial class Form1 : Form
     {

@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Structural.Adapter._005_PluggableAdapter
+namespace Patterns._02_Structural.Adapter._005_PluggableAdapter
 {
     [TestClass]
     public class Test

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
-using Creational.Prototype._003_Control.Properties;
-using PianoSoundLibrary.Library;
 using System.Xml.Serialization;
+using Patterns.Properties;
+using Patterns._01_Creational.Prototype._003_Control.Classes;
+using Patterns._01_Creational.Prototype._003_Control.Controls;
+using PianoSoundLibrary.Library;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Prototype
 {
     [XmlRoot("MusicalNote")]
     /// <summary>
@@ -72,23 +74,23 @@ namespace Creational.Prototype._003_Control
             switch (duration)
             {
                 case 62:
-                    image = Resources.SixteenthNoteSmall2323;
+                    image = Resources.SixteenthNoteSmall;
                     NoteType = NoteLength.Sixteenth;
                     break;
                 case 125:
-                    image = Resources.EighthNoteSmall2323;
+                    image = Resources.EighthNoteSmall;
                     NoteType = NoteLength.Eighth;
                     break;
                 case 250:
-                    image = Resources.QuarterNoteSmall2323;
+                    image = Resources.QuarterNoteSmall;
                     NoteType = NoteLength.QuarterNote;
                     break;
                 case 500:
-                    image = Resources.HalfNoteSmall2323;
+                    image = Resources.HalfNoteSmall;
                     NoteType = NoteLength.HalfNote;
                     break;
                 case 1000:
-                    image = Resources.WholeNoteSmall2323;
+                    image = Resources.WholeNoteSmall;
                     NoteType = NoteLength.WholeNote;
                     break;
             }

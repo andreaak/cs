@@ -1,7 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace Creational.Builder._004_House
+namespace Patterns._01_Creational.Buider._004_House.House
 {
     class Storey
     {

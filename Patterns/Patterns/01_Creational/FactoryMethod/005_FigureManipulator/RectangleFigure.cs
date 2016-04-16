@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing;
+﻿using System.Drawing;
+using Patterns._01_Creational.FactoryMethod._005_FigureManipulator.Figures;
+using Patterns._01_Creational.FactoryMethod._005_FigureManipulator.Manipulators;
 
-namespace Creational.FactoryMethod._005_FigureManipulator
+namespace Patterns._01_Creational.FactoryMethod._005_FigureManipulator
 {
     class RectangleFigure : Figure
     {

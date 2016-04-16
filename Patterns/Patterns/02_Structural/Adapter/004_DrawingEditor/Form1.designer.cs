@@ -1,4 +1,4 @@
-﻿namespace Patterns.Structural.Adapter._004_DrawingEditor
+﻿namespace Patterns._02_Structural.Adapter._004_DrawingEditor
 {
     partial class Form1
     {
@@ -94,7 +94,7 @@
             // 
             this.AddLineButton.BackColor = System.Drawing.Color.Transparent;
             this.AddLineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddLineButton.Image = Patterns.Structural.Adapter._004_DrawingEditor.Properties.Resources.line;
+            this.AddLineButton.Image = Patterns.Properties.Resources.line;
             this.AddLineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddLineButton.Name = "AddLineButton";
             this.AddLineButton.Size = new System.Drawing.Size(29, 29);

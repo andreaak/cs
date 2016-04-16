@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Creational.Builder._003_Cars.Builder
+﻿namespace Patterns._01_Creational.Buider._003_Cars.Builder
 {
     public class AudiBuilder : CarBuilderBase
     {

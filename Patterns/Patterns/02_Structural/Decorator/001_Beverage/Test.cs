@@ -1,10 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Patterns.Structural.Decorator._001_Beverage.Beverage;
-using Patterns.Structural.Decorator._001_Beverage.Decorators;
-using Patterns.Structural.Decorator.Decorators;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._02_Structural.Decorator._001_Beverage.Beverage;
+using Patterns._02_Structural.Decorator._001_Beverage.Decorators;
 
-namespace Patterns.Structural.Decorator._001_Beverage
+namespace Patterns._02_Structural.Decorator._001_Beverage
 {
     [TestClass]
     public class Test

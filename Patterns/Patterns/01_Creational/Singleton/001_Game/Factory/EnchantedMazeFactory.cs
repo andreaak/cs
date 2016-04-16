@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Patterns._01_Creational.Singleton._001_Game.Door;
+using Patterns._01_Creational.Singleton._001_Game.Room;
 
-
-namespace Patterns.Creational.Singleton._001_Game
+namespace Patterns._01_Creational.Singleton._001_Game.Factory
 {
     // Класс  EnchantedMazeFactory создает компоненты волшебного лабиринта.
     class EnchantedMazeFactory : MazeFactory
@@ -11,12 +11,12 @@ namespace Patterns.Creational.Singleton._001_Game
         {
         }
 
-        public override Room MakeRoom(int number)
+        public override Room.Room MakeRoom(int number)
         {
             return new EnchantedRoom(number, CastSpell());
         }
 
-        public override Door MakeDoor(Room room1, Room room2)
+        public override Door.Door MakeDoor(Room.Room room1, Room.Room room2)
         {
             return new DoorNeedingSpell(room1, room2);
         }

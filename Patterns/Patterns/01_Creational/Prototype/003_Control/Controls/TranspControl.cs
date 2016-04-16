@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Creational.Prototype._003_Control.Properties;
+using Patterns.Properties;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Controls
 {
     public abstract class TranspControl : Control
     {

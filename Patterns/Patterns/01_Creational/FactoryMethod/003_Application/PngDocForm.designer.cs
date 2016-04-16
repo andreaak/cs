@@ -1,4 +1,4 @@
-﻿namespace Creational.FactoryMethod._003_Application
+﻿namespace Patterns._01_Creational.FactoryMethod._003_Application
 {
     partial class PngDocForm
     {
@@ -60,7 +60,7 @@
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Creational.FactoryMethod._003_Application.Properties.Resources.open;
+            this.toolStripButton1.Image = global::Patterns.Properties.Resources.open;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
@@ -70,7 +70,7 @@
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Creational.FactoryMethod._003_Application.Properties.Resources.save;
+            this.toolStripButton2.Image = global::Patterns.Properties.Resources.save;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
@@ -80,7 +80,7 @@
             // toolStripButton4
             // 
             this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::Creational.FactoryMethod._003_Application.Properties.Resources.clear1;
+            this.toolStripButton4.Image = global::Patterns.Properties.Resources.clear1;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
@@ -131,7 +131,7 @@
             // closeToolStripButton
             // 
             this.closeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.closeToolStripButton.Image = global::Creational.FactoryMethod._003_Application.Properties.Resources.close;
+            this.closeToolStripButton.Image = global::Patterns.Properties.Resources.close;
             this.closeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.closeToolStripButton.Name = "closeToolStripButton";
             this.closeToolStripButton.Size = new System.Drawing.Size(23, 22);

@@ -1,8 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Windows.Forms;
+using Patterns._01_Creational.FactoryMethod._002_Base.Creator;
 
-namespace Creational.FactoryMethod._002_Base
+namespace Patterns._01_Creational.FactoryMethod._002_Base
 {
     [TestClass]
     public class Test
@@ -10,8 +9,8 @@ namespace Creational.FactoryMethod._002_Base
         [TestMethod]
         public void Test1()
         {
-            Creator creator = null;
-            Product product = null;
+            Creator.Creator creator = null;
+            Product.Product product = null;
 
             creator = new ConcreteCreator();
             product = creator.FactoryMethod();

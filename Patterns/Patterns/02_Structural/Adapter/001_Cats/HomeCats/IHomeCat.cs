@@ -1,4 +1,4 @@
-﻿namespace Patterns.Structural.Adapter._001_Cats.HomeCats
+﻿namespace Patterns._02_Structural.Adapter._001_Cats.HomeCats
 {
     interface IHomeCat
     {

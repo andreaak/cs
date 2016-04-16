@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Patterns.Creational.SimpleFactory._001_Base.Facilities;
+using Patterns._01_Creational.SimpleFactory._001_Base.Facilities;
 
-namespace Patterns.Creational.SimpleFactory._001_Base
+namespace Patterns._01_Creational.SimpleFactory._001_Base
 {
     [TestClass]
     public class Test

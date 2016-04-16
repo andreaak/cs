@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-
-namespace Creational.Prototype._001_Game
+namespace Patterns._01_Creational.Prototype._001_Game
 {
     class Maze
     {
         // Поля.
-        Dictionary<int, Room> rooms = null;
+        Dictionary<int, Room.Room> rooms = null;
 
         // Конструктор.
         public Maze()
         {
             // Создание массива комнат в лабиринте.
-            this.rooms = new Dictionary<int, Room>();
+            this.rooms = new Dictionary<int, Room.Room>();
         }
         // Копирующий конструктор.
         protected Maze(Maze other)
@@ -24,13 +22,13 @@ namespace Creational.Prototype._001_Game
         // Методы.
 
         // Добавление комнат в лабиринт.
-        public void AddRoom(Room room)
+        public void AddRoom(Room.Room room)
         {
             rooms.Add(room.RoomNumber, room);
         }
 
         // Возвращает ссылку на комнату.
-        public Room RoomNo(int number)
+        public Room.Room RoomNo(int number)
         {
             return rooms[number];
         }

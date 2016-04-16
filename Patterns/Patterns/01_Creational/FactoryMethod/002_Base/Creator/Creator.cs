@@ -1,12 +1,10 @@
-using System;
-
-namespace Creational.FactoryMethod._002_Base
+namespace Patterns._01_Creational.FactoryMethod._002_Base.Creator
 {   
     abstract class Creator
     {
-        Product product;
+        Product.Product product;
 
-        public abstract Product FactoryMethod();
+        public abstract Product.Product FactoryMethod();
 
         public void AnOperation()
         {

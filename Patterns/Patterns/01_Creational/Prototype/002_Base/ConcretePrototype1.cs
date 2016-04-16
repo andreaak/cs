@@ -1,6 +1,4 @@
-using System;
-
-namespace Creational.Prototype._002_Base
+namespace Patterns._01_Creational.Prototype._002_Base
 {
     class ConcretePrototype1 : Prototype
     {

@@ -1,7 +1,6 @@
-using System;
 using System.Diagnostics;
 
-namespace Creational.FactoryMethod._002_Base
+namespace Patterns._01_Creational.FactoryMethod._002_Base.Product
 {
     class ConcreteProduct : Product
     {

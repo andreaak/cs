@@ -1,4 +1,4 @@
-﻿namespace Patterns.Structural.Adapter._008_AdaptersForTreeDisplay
+﻿namespace Patterns._02_Structural.Adapter._008_AdaptersForTreeDisplay
 {
     partial class Form1
     {

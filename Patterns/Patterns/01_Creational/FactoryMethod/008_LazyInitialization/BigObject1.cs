@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
 
 /*
@@ -15,7 +14,7 @@ using System.Threading;
     Как правило, он используется в сочетании с такими шаблонами как Фабричный метод, Одиночка и Заместитель.
 */
 
-namespace Creational.FactoryMethod._008_LazyInitialization
+namespace Patterns._01_Creational.FactoryMethod._008_LazyInitialization
 {
     public class LazyInitialization1<T> where T : new()
     {

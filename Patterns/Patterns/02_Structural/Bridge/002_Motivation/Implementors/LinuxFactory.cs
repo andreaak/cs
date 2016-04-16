@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Patterns.Structural.Bridge._002_Motivation
+﻿namespace Patterns._02_Structural.Bridge._002_Motivation.Implementors
 {
     //class LinuxFactory : WidgetFactory
     //{

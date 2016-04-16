@@ -1,10 +1,10 @@
-using System;
+using Patterns._01_Creational.FactoryMethod._002_Base.Product;
 
-namespace Creational.FactoryMethod._002_Base
+namespace Patterns._01_Creational.FactoryMethod._002_Base.Creator
 {
     class ConcreteCreator : Creator
     {
-        public override Product FactoryMethod()
+        public override Product.Product FactoryMethod()
         {
             return new ConcreteProduct();
         }

@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Creational.Prototype._006_Clone
+namespace Patterns._01_Creational.Prototype._006_Clone
 {
     [TestClass]
     public class Test

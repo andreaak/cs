@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Patterns.Creational.Singleton._007_MultithreadedSingleton
+namespace Patterns._01_Creational.Singleton._007_MultithreadedSingleton
 {
     class MultithreadedSingleton
     {

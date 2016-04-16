@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using Patterns._01_Creational.Buider._004_House.Builder;
 
-namespace Creational.Builder._004_House
+namespace Patterns._01_Creational.Buider._004_House
 {
     [TestClass]
     public class Test
@@ -9,11 +9,11 @@ namespace Creational.Builder._004_House
         [TestMethod]
         public void Test1()
         {
-            Builder builder = new ConcreteBuilder();
+            Builder.Builder builder = new ConcreteBuilder();
             Foreman foreman = new Foreman(builder);
             foreman.Construct();
 
-            House house = builder.GetResult();
+            House.House house = builder.GetResult();
 
             // Delay.
             //Debug.ReadKey();

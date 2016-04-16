@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Classes
 {
     public static class NotesCollections
     {

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace Patterns.Behavioral.TemplateMethod._001_Food.Food
+namespace Patterns._03_Behavioral.TemplateMethod._001_Food.Food
 {
     class Hamburger : FastFood
     {

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
+using Patterns._01_Creational.FactoryMethod._001_Game.Enum;
 
-
-namespace Creational.FactoryMethod._001_Game
+namespace Patterns._01_Creational.FactoryMethod._001_Game.Room
 {
     class Room : MapSite
     {
@@ -35,7 +34,7 @@ namespace Creational.FactoryMethod._001_Game
         public void SetSide(Direction direction, MapSite mapSide)
         {
             // Если Дверь, то вставить ее на место стены. (логика билдера - значит стены уже построены)
-            if (mapSide is Door)
+            if (mapSide is Door.Door)
             { 
                 this.sides[direction] = mapSide; 
             }

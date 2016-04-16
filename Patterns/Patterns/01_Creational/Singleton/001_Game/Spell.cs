@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Patterns.Creational.Singleton._001_Game
+namespace Patterns._01_Creational.Singleton._001_Game
 {
     class Spell
     {

@@ -2,7 +2,7 @@
 
 // Граф наследования клонируется глубоко.
 
-namespace Creational.Prototype._006_Clone
+namespace Patterns._01_Creational.Prototype._006_Clone
 {
     class A1 { public int a = 1; }
 

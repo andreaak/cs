@@ -1,4 +1,4 @@
-﻿namespace Creational.Builder._005_TextConverter
+﻿namespace Patterns._01_Creational.Buider._005_TextConverter
 {
     partial class Form1
     {

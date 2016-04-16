@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Patterns._01_Creational.Singleton._001_Game.Door;
+using Patterns._01_Creational.Singleton._001_Game.Room;
 
-
-namespace Patterns.Creational.Singleton._001_Game
+namespace Patterns._01_Creational.Singleton._001_Game
 {
-    class EnchantedMazeGame : MazeGame
+    class EnchantedMazeGame : MazeGame.MazeGame
     {
         // Конструктор.
         public EnchantedMazeGame()
@@ -12,12 +12,12 @@ namespace Patterns.Creational.Singleton._001_Game
 
         // Методы.
 
-        public override Room MakeRoom(int number)
+        public override Room.Room MakeRoom(int number)
         {
             return new EnchantedRoom(number, this.CastSpell());
         }
 
-        public override Door MakeDoor(Room r1, Room r2)
+        public override Door.Door MakeDoor(Room.Room r1, Room.Room r2)
         {
             return new DoorNeedingSpell(r1, r2);
         }

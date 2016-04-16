@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using Creational.FactoryMethod._003_Application.Pattern;
-using Application = Creational.FactoryMethod._003_Application.Pattern.Application;
+using Patterns._01_Creational.FactoryMethod._003_Application.Creator.ConcreteCreator;
+using Patterns._01_Creational.FactoryMethod._003_Application.Product;
+using Application = Patterns._01_Creational.FactoryMethod._003_Application.Creator.Application;
 
-namespace Creational.FactoryMethod._003_Application
+namespace Patterns._01_Creational.FactoryMethod._003_Application
 {
     public partial class BaseForm : Form
     {

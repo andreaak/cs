@@ -1,4 +1,4 @@
-﻿namespace Patterns.Structural.Adapter._006_TreeDisplay
+﻿namespace Patterns._02_Structural.Adapter._006_TreeDisplay
 {
     partial class Form1
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeDisplay = new Patterns.Structural.Adapter._006_TreeDisplay.TreeDisplay();
+            this.treeDisplay = new TreeDisplay();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();

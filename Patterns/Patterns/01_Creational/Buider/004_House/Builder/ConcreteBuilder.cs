@@ -1,10 +1,10 @@
-using System;
+using Patterns._01_Creational.Buider._004_House.House;
 
-namespace Creational.Builder._004_House
+namespace Patterns._01_Creational.Buider._004_House.Builder
 {
     class ConcreteBuilder : Builder
     {
-        House house = new House();
+        House.House house = new House.House();
 
         public override void BuildBasement()
         {
@@ -21,7 +21,7 @@ namespace Creational.Builder._004_House
             house.Add(new Roof());
         }
 
-        public override House GetResult()
+        public override House.House GetResult()
         {
             return house;
         }

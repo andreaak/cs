@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 
 // Клонирование с использованием MemberwiseClone().
@@ -8,7 +7,7 @@ using System.Threading;
 // при клонировании не вызывается конструктор, а клонирование происходит через
 // копирование дампа памяти - тела оригинала.
 
-namespace Creational.Prototype._004_Performance
+namespace Patterns._01_Creational.Prototype._004_Performance
 {
     class MyClass1 : ICloneable
     {

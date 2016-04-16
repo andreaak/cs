@@ -147,4 +147,9 @@ namespace CSTest._03_Structure
             return book.ISBN;
         }
     }
+
+    //Структура не может быть объявленная как static
+    //public static struct TestBookStatic
+    //{
+    //}
 }

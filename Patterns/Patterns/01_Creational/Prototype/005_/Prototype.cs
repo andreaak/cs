@@ -1,9 +1,7 @@
-﻿using System;
-
-// Прототипно-ориентированный подход в программировании.
+﻿// Прототипно-ориентированный подход в программировании.
 // ПОП является подмножеством ООП.
 
-namespace Creational.Prototype.Example5
+namespace Patterns._01_Creational.Prototype._005_
 {
     class Prototype
     {

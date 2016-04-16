@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Patterns._01_Creational.FactoryMethod._001_Game.Enum;
 
-
-namespace Creational.FactoryMethod._001_Game
+namespace Patterns._01_Creational.FactoryMethod._001_Game.Builder
 {
     // CountingMazeBuilder - вообще не создает никакого лабиринта, 
     // он лишь подсчитывает число компонентов разного вида, которые могли бы быть созданы.

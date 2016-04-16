@@ -1,6 +1,4 @@
-using System;
-
-namespace Creational.FactoryMethod._002_Base
+namespace Patterns._01_Creational.FactoryMethod._002_Base.Product
 {
     abstract class Product
     {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 
-namespace Patterns.Creational.AbstractFactory._003_Cars.Parts
+namespace Patterns._01_Creational.AbstractFactory._003_Cars.Parts
 {
     public class BlackPaint : Paint
     {

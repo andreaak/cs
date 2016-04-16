@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Patterns.Structural.Composite._003_RecursionComposition
+namespace Patterns._02_Structural.Composite._003_RecursionComposition
 {
     class Leaf : Component
     {

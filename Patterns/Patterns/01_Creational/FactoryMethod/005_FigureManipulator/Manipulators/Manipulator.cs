@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Creational.FactoryMethod._005_FigureManipulator
+namespace Patterns._01_Creational.FactoryMethod._005_FigureManipulator.Manipulators
 {
     // Абстрактний класс Manipulator который реализует взаимодействие и контролирует состояние
     // обьекта-манипулятора. Манипуляторы представлены пользовательскими элементами управления.

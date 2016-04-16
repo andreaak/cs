@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 
-namespace Patterns.Behavioral.Strategy._001_Ducks.Quack
+namespace Patterns._03_Behavioral.Strategy._001_Ducks.Quack
 {
     public class ExoticQuack : IQuackable
     {

@@ -1,10 +1,8 @@
-using System;
-
-namespace Patterns.Creational.AbstractFactory._004_Water
+namespace Patterns._01_Creational.AbstractFactory._004_Water.AbstractFactory
 {
     abstract class AbstractFactory
     {
-        public abstract AbstractWater CreateWater();
-        public abstract AbstractBottle CreateBottle();
+        public abstract AbstractWater.AbstractWater CreateWater();
+        public abstract AbstractBottle.AbstractBottle CreateBottle();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Patterns.Structural.Bridge._004_WinFormShapesAndLines
+namespace Patterns._02_Structural.Bridge._004_WinFormShapesAndLines.Implementation
 {
     class DashDotLine : LineStyle
     {

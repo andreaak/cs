@@ -1,7 +1,7 @@
-﻿using System.Text;
-using System.IO;
+﻿using System.IO;
+using System.Text;
 
-namespace Creational.Builder._005_TextConverter
+namespace Patterns._01_Creational.Buider._005_TextConverter.Products
 {
     // Product
     class ASCIIText

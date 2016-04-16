@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
+using Patterns._01_Creational.FactoryMethod._005_FigureManipulator.Manipulators;
 
-namespace Creational.FactoryMethod._005_FigureManipulator
+namespace Patterns._01_Creational.FactoryMethod._005_FigureManipulator.Figures
 {
     class TextFigure : Figure
     {

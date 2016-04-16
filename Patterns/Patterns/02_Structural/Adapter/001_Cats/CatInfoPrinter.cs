@@ -1,8 +1,7 @@
-﻿using System;
-using Patterns.Structural.Adapter._001_Cats.HomeCats;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Patterns._02_Structural.Adapter._001_Cats.HomeCats;
 
-namespace Patterns.Structural.Adapter._001_Cats
+namespace Patterns._02_Structural.Adapter._001_Cats
 {
     class CatInfoPrinter
     {

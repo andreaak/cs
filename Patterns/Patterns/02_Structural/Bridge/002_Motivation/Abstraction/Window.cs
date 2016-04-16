@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
+using Patterns._02_Structural.Bridge._002_Motivation.Implementors;
 
-namespace Patterns.Structural.Bridge._002_Motivation
+namespace Patterns._02_Structural.Bridge._002_Motivation.Abstraction
 {
     // Abstraction
     abstract class Window

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Patterns.Creational.Singleton._008_Serialization
+namespace Patterns._01_Creational.Singleton._008_Serialization
 {
     // Класс Singleton не должен сериализовываться напрямую и не должен иметь атрибута [Serializable]! 
     public sealed class Singleton

@@ -1,9 +1,7 @@
-using System;
-
-namespace Patterns.Creational.AbstractFactory._002_Base
+namespace Patterns._01_Creational.AbstractFactory._002_Base.AbstractProductB
 {
     abstract class AbstractProductB
     {
-        public abstract void Interact(AbstractProductA a);
+        public abstract void Interact(AbstractProductA.AbstractProductA a);
     }
 }

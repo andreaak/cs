@@ -1,5 +1,8 @@
 ﻿
-namespace Creational.FactoryMethod._003_Application.Pattern
+using Patterns._01_Creational.FactoryMethod._003_Application.Product;
+using Patterns._01_Creational.FactoryMethod._003_Application.Product.ConcreteProduct;
+
+namespace Patterns._01_Creational.FactoryMethod._003_Application.Creator.ConcreteCreator
 {
     class PngApplication : Application
     {

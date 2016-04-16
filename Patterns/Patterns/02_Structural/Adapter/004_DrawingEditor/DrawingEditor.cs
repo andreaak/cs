@@ -1,4 +1,4 @@
-﻿namespace Patterns.Structural.Adapter._004_DrawingEditor
+﻿namespace Patterns._02_Structural.Adapter._004_DrawingEditor
 {
     /// <summary>
     /// Класс DrawingEditor - клиент, вступающий во взаимоотношение с обьектами,

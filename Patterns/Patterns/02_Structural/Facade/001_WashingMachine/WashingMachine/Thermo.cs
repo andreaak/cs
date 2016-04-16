@@ -1,7 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace Patterns.Structural.Facade._001_WashingMachine.WashingMachine
+namespace Patterns._02_Structural.Facade._001_WashingMachine.WashingMachine
 {
     class Thermo
     {

@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Creational.Builder._003_Cars.Cars
+namespace Patterns._01_Creational.Buider._003_Cars.Cars
 {
     public class Car
     {

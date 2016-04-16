@@ -1,9 +1,10 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using Creational.Prototype._003_Control.Properties;
+using Patterns.Properties;
+using Patterns._01_Creational.Prototype._003_Control.Classes;
+using Patterns._01_Creational.Prototype._003_Control.Prototype;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Controls
 {
     public partial class NoteTranspControl : TranspControl
     {
@@ -66,19 +67,19 @@ namespace Creational.Prototype._003_Control
                 switch (ControlNote.NoteType)
                 {
                     case NoteLength.Sixteenth:
-                        this.Image = RotatingImageTool(Resources.SixteenthNoteSelected2323);
+                        this.Image = RotatingImageTool(Resources.SixteenthNoteSelected);
                         break;
                     case NoteLength.Eighth:
-                        this.Image = RotatingImageTool(Resources.EighthNoteSelected2323);
+                        this.Image = RotatingImageTool(Resources.EighthNoteSelected);
                         break;
                     case NoteLength.HalfNote:
-                        this.Image = RotatingImageTool(Resources.HalfNoteSelected2323);
+                        this.Image = RotatingImageTool(Resources.HalfNoteSelected);
                         break;
                     case NoteLength.QuarterNote:
-                        this.Image = RotatingImageTool(Resources.QuarterNoteSelected2323);
+                        this.Image = RotatingImageTool(Resources.QuarterNoteSelected);
                         break;
                     case NoteLength.WholeNote:
-                        this.Image = RotatingImageTool(Resources.WholeNoteSelected2323);
+                        this.Image = RotatingImageTool(Resources.WholeNoteSelected);
                         break;
                 }
             }
@@ -88,19 +89,19 @@ namespace Creational.Prototype._003_Control
                 switch (ControlNote.NoteType)
                 {
                     case NoteLength.Sixteenth:
-                        this.Image = RotatingImageTool(Resources.SixteenthNoteSmall2323);
+                        this.Image = RotatingImageTool(Resources.SixteenthNoteSmall);
                         break;
                     case NoteLength.HalfNote:
-                        this.Image = RotatingImageTool(Resources.HalfNoteSmall2323);
+                        this.Image = RotatingImageTool(Resources.HalfNoteSmall);
                         break;
                     case NoteLength.QuarterNote:
-                        this.Image = RotatingImageTool(Resources.QuarterNoteSmall2323);
+                        this.Image = RotatingImageTool(Resources.QuarterNoteSmall);
                         break;
                     case NoteLength.WholeNote:
-                        this.Image = RotatingImageTool(Resources.WholeNoteSmall2323);
+                        this.Image = RotatingImageTool(Resources.WholeNoteSmall);
                         break;
                     case NoteLength.Eighth:
-                        this.Image = RotatingImageTool(Resources.EighthNoteSmall2323);
+                        this.Image = RotatingImageTool(Resources.EighthNoteSmall);
                         break;
                 }
             }

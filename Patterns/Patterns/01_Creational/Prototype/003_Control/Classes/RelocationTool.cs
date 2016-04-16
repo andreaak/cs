@@ -1,7 +1,9 @@
-﻿using System.Windows.Forms;
-using System.Drawing;
+﻿using System.Drawing;
+using System.Windows.Forms;
+using Patterns._01_Creational.Prototype._003_Control.Controls;
+using Patterns._01_Creational.Prototype._003_Control.Prototype;
 
-namespace Creational.Prototype._003_Control
+namespace Patterns._01_Creational.Prototype._003_Control.Classes
 {
     /// <summary>
     /// Инструмент изменения значения ноты и передвижения вертикально

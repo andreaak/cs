@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 // Сменный адаптер.
 
-namespace Patterns.Structural.Adapter._005_PluggableAdapter
+namespace Patterns._02_Structural.Adapter._005_PluggableAdapter
 {
     // ---------- Существующие в системе типы ----------
 

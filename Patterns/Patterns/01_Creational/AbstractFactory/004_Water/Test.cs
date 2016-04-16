@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._01_Creational.AbstractFactory._004_Water.AbstractFactory;
 
-namespace Patterns.Creational.AbstractFactory._004_Water
+namespace Patterns._01_Creational.AbstractFactory._004_Water
 {
     [TestClass]
     public class Test

@@ -3,7 +3,7 @@
 // Проблемы при клонировани двухсторонней ассоциации 
 // (круговых ссылок - циклических зависимостей).
 
-namespace Creational.Prototype._006_Clone
+namespace Patterns._01_Creational.Prototype._006_Clone
 {
     class A5 : ICloneable
     {

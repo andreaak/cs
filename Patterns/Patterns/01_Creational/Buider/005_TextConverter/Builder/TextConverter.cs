@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Creational.Builder._005_TextConverter
+﻿namespace Patterns._01_Creational.Buider._005_TextConverter.Builder
 {
     // Builder
     abstract class TextConverter

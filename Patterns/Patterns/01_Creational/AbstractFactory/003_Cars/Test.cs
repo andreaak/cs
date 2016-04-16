@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Patterns.Creational.AbstractFactory._003_Cars.Facilities;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._01_Creational.AbstractFactory._003_Cars.Facilities;
 
-namespace Patterns.Creational.AbstractFactory._003_Cars
+namespace Patterns._01_Creational.AbstractFactory._003_Cars
 {
     [TestClass]
     public class Test

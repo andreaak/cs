@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Patterns.Structural.Facade._001_WashingMachine.WashingMachine
+﻿namespace Patterns._02_Structural.Facade._001_WashingMachine.WashingMachine
 {
     class WashingMachine
     {

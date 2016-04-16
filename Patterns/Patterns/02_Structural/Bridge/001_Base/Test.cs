@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._02_Structural.Bridge._001_Base.Abstraction;
+using Patterns._02_Structural.Bridge._001_Base.Implementor;
 
-namespace Patterns.Structural.Bridge._001_Base
+namespace Patterns._02_Structural.Bridge._001_Base
 {
     [TestClass]
     public class Test
@@ -8,8 +10,8 @@ namespace Patterns.Structural.Bridge._001_Base
         [TestMethod]
         public void Test1()
         {
-            Implementor implementor;
-            Abstraction abstraction;
+            Implementor.Implementor implementor;
+            Abstraction.Abstraction abstraction;
 
             implementor = new ConcreteImplementorA();
             abstraction = new RefinedAbstraction(implementor);

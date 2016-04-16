@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Patterns.Behavioral.Strategy._001_Ducks.Ducks;
-using Patterns.Behavioral.Strategy._001_Ducks.Fly;
-using Patterns.Behavioral.Strategy._001_Ducks.Quack;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._03_Behavioral.Strategy._001_Ducks.Ducks;
+using Patterns._03_Behavioral.Strategy._001_Ducks.Fly;
+using Patterns._03_Behavioral.Strategy._001_Ducks.Quack;
 
-namespace Patterns.Behavioral.Strategy._001_Ducks
+namespace Patterns._03_Behavioral.Strategy._001_Ducks
 {
     [TestClass]
     public class Test

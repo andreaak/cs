@@ -1,9 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
-using Sing1 = Patterns.Creational.Singleton._006_Regist.RegistSingleton;
-using Sing2 = Patterns.Creational.Singleton._006_Regist.RegistSingletonGen;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Patterns._01_Creational.Singleton._006_Regist.RegistSingleton;
 
-namespace Patterns.Creational.Singleton._006_Regist
+namespace Patterns._01_Creational.Singleton._006_Regist
 {
     [TestClass]
     public class Test
@@ -11,32 +10,32 @@ namespace Patterns.Creational.Singleton._006_Regist
         [TestMethod]
         public void Test1()
         {
-            Sing1.Singleton simple1 = Sing1.Singleton.Instance();
-            Sing1.Singleton simple2 = Sing1.Singleton.Instance();
+            RegistSingleton.Singleton simple1 = RegistSingleton.Singleton.Instance();
+            RegistSingleton.Singleton simple2 = RegistSingleton.Singleton.Instance();
             Check(simple1, simple2);
 
-            Sing1.SingletonBig big1 = Sing1.SingletonBig.Instance();
-            Sing1.SingletonBig big2 = Sing1.SingletonBig.Instance();
+            SingletonBig big1 = SingletonBig.Instance();
+            SingletonBig big2 = SingletonBig.Instance();
             Check(big1, big2);
 
-            Sing1.SingletonSmall small1 = Sing1.SingletonSmall.Instance();
-            Sing1.SingletonSmall small2 = Sing1.SingletonSmall.Instance();
+            SingletonSmall small1 = SingletonSmall.Instance();
+            SingletonSmall small2 = SingletonSmall.Instance();
             Check(small1, small2);
         }
 
         [TestMethod]
         public void Test2()
         {
-            Sing2.Singleton simple1 = Sing2.Singleton.Instance();
-            Sing2.Singleton simple2 = Sing2.Singleton.Instance();
+            RegistSingletonGen.Singleton simple1 = RegistSingletonGen.Singleton.Instance();
+            RegistSingletonGen.Singleton simple2 = RegistSingletonGen.Singleton.Instance();
             Check(simple1, simple2);
 
-            Sing2.SingletonBig big1 = Sing2.SingletonBig.Instance();
-            Sing2.SingletonBig big2 = Sing2.SingletonBig.Instance();
+            RegistSingletonGen.SingletonBig big1 = RegistSingletonGen.SingletonBig.Instance();
+            RegistSingletonGen.SingletonBig big2 = RegistSingletonGen.SingletonBig.Instance();
             Check(big1, big2);
 
-            Sing2.SingletonSmall small1 = Sing2.SingletonSmall.Instance();
-            Sing2.SingletonSmall small2 = Sing2.SingletonSmall.Instance();
+            RegistSingletonGen.SingletonSmall small1 = RegistSingletonGen.SingletonSmall.Instance();
+            RegistSingletonGen.SingletonSmall small2 = RegistSingletonGen.SingletonSmall.Instance();
             Check(small1, small2);
         }
 

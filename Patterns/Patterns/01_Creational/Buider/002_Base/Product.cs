@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using System.Diagnostics;
 
-namespace Creational.Builder._002_Base
+namespace Patterns._01_Creational.Buider._002_Base
 {
     class Product
     {

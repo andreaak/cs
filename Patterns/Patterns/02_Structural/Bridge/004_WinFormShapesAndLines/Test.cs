@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patterns.Structural.Bridge._004_WinFormShapesAndLines
+namespace Patterns._02_Structural.Bridge._004_WinFormShapesAndLines
 {
     [TestClass]
     public class Test

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Creational.FactoryMethod._010_Generic
+namespace Patterns._01_Creational.FactoryMethod._010_Generic.Creators
 {
     class StandardCreator : ICreator
     {       
