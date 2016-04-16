@@ -264,7 +264,7 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
         }
 
         [TestMethod]
-        public void TestAsyncDelegates8CallBack()
+        public void TestAsyncDelegates8CallBackWithResult()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
 
@@ -295,7 +295,7 @@ namespace CSTest._12_MultiThreading._03_Async_Delegates
             Debug.WriteLine("Первичный поток начал работу.");
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
 
-            var work = new Action(_01_Base.MethodWithChangeBackground);
+            Action work = new Action(_01_Base.MethodWithChangeBackground);
             work.BeginInvoke(new AsyncCallback(_01_Base.CallBack2), (object)work);
 
             Debug.WriteLine("\nПервичный поток завершил работу.\n");
