@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Collections.Generic;
+using CSTest._03_Structure._0_Setup;
 
 namespace CSTest._03_Structure
 {

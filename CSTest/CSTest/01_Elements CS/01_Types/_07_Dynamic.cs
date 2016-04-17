@@ -1,7 +1,7 @@
-﻿using CSTest._01_Elements_CS._01_Types._0_SetUp;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
+using CSTest._01_Elements_CS._01_Types._0_Setup;
 
 namespace CSTest._01_Elements_CS._01_Types
 {

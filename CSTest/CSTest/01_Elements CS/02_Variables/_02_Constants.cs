@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CSTest._01_Elements_CS._05_Constants
+﻿namespace CSTest._01_Elements_CS._02_Variables
 {
     // Константа (Constant) - это область памяти, которая хранит в себе некоторое значение, которое нельзя изменить.
     class _01_Constants

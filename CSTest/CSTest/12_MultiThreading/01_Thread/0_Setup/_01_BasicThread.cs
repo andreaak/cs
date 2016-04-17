@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 
-namespace CSTest._12_MultiThreading._01_Thread
+namespace CSTest._12_MultiThreading._01_Thread._0_Setup
 {
     class _01_BasicThread
     {

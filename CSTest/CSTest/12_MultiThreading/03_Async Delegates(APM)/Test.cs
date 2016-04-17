@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSTest._12_MultiThreading._03_Async_Delegates
+namespace CSTest._12_MultiThreading
 {
     /*
     Вызов асинхронных делегатов позволяет неявно помещать потоки в ThreadPool, 

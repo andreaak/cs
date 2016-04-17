@@ -1,5 +1,4 @@
-﻿using CSTest._04_Class._14_PartialClasses.PartialClasses;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 
 namespace CSTest._04_Class._16_Polymorfizm

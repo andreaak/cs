@@ -1,8 +1,7 @@
-﻿using CSTest._04_Class._14_PartialClasses.PartialClasses;
+﻿using CSTest._04_Class._14_Partial.PartialClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
 
-namespace CSTest._04_Class._14_PartialClasses
+namespace CSTest._04_Class._14_Partial
 {
     [TestClass]
     public class Test
@@ -18,8 +17,8 @@ namespace CSTest._04_Class._14_PartialClasses
         [TestMethod]
         public void TestPartialMethods1()
         {
-            CSTest._04_Class._14_PartialClasses.PartialMethods.PartialClass instance = 
-                new CSTest._04_Class._14_PartialClasses.PartialMethods.PartialClass();
+            PartialMethods.PartialClass instance = 
+                new PartialMethods.PartialClass();
 
             instance.CallPartialMethod();
         }

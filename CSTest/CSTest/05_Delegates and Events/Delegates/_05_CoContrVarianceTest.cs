@@ -7,6 +7,8 @@ namespace CSTest._05_Delegates_and_Events.Delegates
     [TestClass]
     public class _05_CoContrVarianceTest
     {
+        delegate TestClassBase TestDelegate(TestClass inParam);
+        
         [TestMethod]
         public void TestDelegateCoContrVariance1()
         {

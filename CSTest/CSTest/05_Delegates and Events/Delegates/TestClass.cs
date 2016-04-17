@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CSTest._05_Delegates_and_Events.Delegates
 {
-    delegate TestClassBase TestDelegate(TestClass inParam);
-
     class TestClassBase
     {
         public event EventHandler Test;
@@ -20,7 +15,7 @@ namespace CSTest._05_Delegates_and_Events.Delegates
 
         private void TestClassBase_Test1(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         void TestClassBase_Test(object sender, EventArgs e)

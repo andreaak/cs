@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 
-namespace CSTest._12_MultiThreading._03_Async_Delegates
+namespace CSTest._12_MultiThreading
 {
     class _02_BackgroundWorker
     {

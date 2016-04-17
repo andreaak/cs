@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace CSTest.Classes.ExtensionMethods
+﻿namespace CSTest._04_Class._15_ExtensionMethods
 {
     public static class ExtensionClass
     {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 
-namespace CSTest._01_Elements_CS._01_Types._0_SetUp
+namespace CSTest._01_Elements_CS._01_Types._0_Setup
 {
     delegate dynamic DynamicDelegate(dynamic argument);
     delegate R DynamicGenericDelegate<T, R>(T argument);

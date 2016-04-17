@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CSTest._04_Class._14_PartialClasses.PartialMethods
+﻿namespace CSTest._04_Class._14_Partial.PartialMethods
 {
     // Первая часть класса.
     partial class PartialClass

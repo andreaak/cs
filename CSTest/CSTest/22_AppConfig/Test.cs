@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSTest._21_Database._22_AppConfig
+namespace CSTest._22_AppConfig
 {
 
     [TestClass]

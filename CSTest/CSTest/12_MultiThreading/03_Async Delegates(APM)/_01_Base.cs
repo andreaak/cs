@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.Remoting.Messaging;
 using System.Threading;
 
-namespace CSTest._12_MultiThreading._03_Async_Delegates
+namespace CSTest._12_MultiThreading
 {
     class _01_Base
     {

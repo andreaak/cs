@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Threading;
+using CSTest._12_MultiThreading._01_Thread._0_Setup;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSTest._12_MultiThreading._01_Thread

@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSTest._01_Elements_CS._05_Constants
+namespace CSTest._01_Elements_CS._02_Variables
 {
     class _02_ReadOnly
     {

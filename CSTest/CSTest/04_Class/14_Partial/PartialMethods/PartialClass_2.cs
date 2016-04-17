@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace CSTest._04_Class._14_PartialClasses.PartialMethods
+namespace CSTest._04_Class._14_Partial.PartialMethods
 {
     // Вторая часть класса.
     partial class PartialClass

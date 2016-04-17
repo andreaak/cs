@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace CSTest._03_Structure
+namespace CSTest._03_Structure._0_Setup
 {
     struct MyStruct1
     {
