@@ -1,0 +1,19 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace Patterns._03_Behavioral.ChainOfResponsibility._001_Base
+{
+    [TestClass]
+    public class Test
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            Handler h1 = new ConcreteHandler1();
+            Handler h2 = new ConcreteHandler2();
+
+            h1.Successor = h2;
+            h1.HandleRequest(1);
+            h1.HandleRequest(2);
+        }
+    }
+}

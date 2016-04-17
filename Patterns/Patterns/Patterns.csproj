@@ -151,6 +151,10 @@
     <Compile Include="02_Structural\Proxy\004_Surrogates\Operator.cs" />
     <Compile Include="02_Structural\Proxy\004_Surrogates\Surrogate.cs" />
     <Compile Include="02_Structural\Proxy\004_Surrogates\Test.cs" />
+    <Compile Include="03_Behavioral\ChainOfResponsibility\001_Base\ConcreteHandler1.cs" />
+    <Compile Include="03_Behavioral\ChainOfResponsibility\001_Base\ConcreteHandler2.cs" />
+    <Compile Include="03_Behavioral\ChainOfResponsibility\001_Base\Handler.cs" />
+    <Compile Include="03_Behavioral\ChainOfResponsibility\001_Base\Test.cs" />
     <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\ICommand.cs" />
     <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\LightsCommand.cs" />
     <Compile Include="03_Behavioral\Command\001_RemoteControl\Commands\MacroCommand.cs" />
@@ -163,6 +167,118 @@
     <Compile Include="03_Behavioral\Command\001_RemoteControl\ControlledSystems\Tv.cs" />
     <Compile Include="03_Behavioral\Command\001_RemoteControl\RemoteControl.cs" />
     <Compile Include="03_Behavioral\Command\001_RemoteControl\Test.cs" />
+    <Compile Include="03_Behavioral\Command\002_Base\Command.cs" />
+    <Compile Include="03_Behavioral\Command\002_Base\ConcreteCommand.cs" />
+    <Compile Include="03_Behavioral\Command\002_Base\Invoker.cs" />
+    <Compile Include="03_Behavioral\Command\002_Base\Test.cs" />
+    <Compile Include="03_Behavioral\Command\002_Base\Receiver.cs" />
+    <Compile Include="03_Behavioral\Command\003_CalculatorUndoRedo\ArithmeticUnit.cs" />
+    <Compile Include="03_Behavioral\Command\003_CalculatorUndoRedo\Calculator.cs" />
+    <Compile Include="03_Behavioral\Command\003_CalculatorUndoRedo\Commands\Add.cs" />
+    <Compile Include="03_Behavioral\Command\003_CalculatorUndoRedo\Commands\Command.cs" />
+    <Compile Include="03_Behavioral\Command\003_CalculatorUndoRedo\Commands\Div.cs" />
+    <Compile Include="03_Behavioral\Command\003_CalculatorUndoRedo\Commands\Mul.cs" />
+    <Compile Include="03_Behavioral\Command\003_CalculatorUndoRedo\Commands\Sub.cs" />
+    <Compile Include="03_Behavioral\Command\003_CalculatorUndoRedo\ControlUnit.cs" />
+    <Compile Include="03_Behavioral\Command\003_CalculatorUndoRedo\Test.cs" />
+    <Compile Include="03_Behavioral\Command\004_Form\Command\CloseCommand.cs" />
+    <Compile Include="03_Behavioral\Command\004_Form\Command\Command.cs" />
+    <Compile Include="03_Behavioral\Command\004_Form\Command\CopyCommand.cs" />
+    <Compile Include="03_Behavioral\Command\004_Form\Command\CutCommand.cs" />
+    <Compile Include="03_Behavioral\Command\004_Form\Command\MacroCommand.cs" />
+    <Compile Include="03_Behavioral\Command\004_Form\Command\MyMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="03_Behavioral\Command\004_Form\Command\OpenCommand.cs" />
+    <Compile Include="03_Behavioral\Command\004_Form\Command\PasteCommand.cs" />
+    <Compile Include="03_Behavioral\Command\004_Form\Command\SelectAllTextCommand.cs" />
+    <Compile Include="03_Behavioral\Command\004_Form\Document.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03_Behavioral\Command\004_Form\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03_Behavioral\Command\004_Form\MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03_Behavioral\Command\004_Form\Test.cs" />
+    <Compile Include="03_Behavioral\Interpreter\001_Base\AbstractExpression.cs" />
+    <Compile Include="03_Behavioral\Interpreter\001_Base\Context.cs" />
+    <Compile Include="03_Behavioral\Interpreter\001_Base\NonterminalExpression.cs" />
+    <Compile Include="03_Behavioral\Interpreter\001_Base\Test.cs" />
+    <Compile Include="03_Behavioral\Interpreter\001_Base\TerminalExpression.cs" />
+    <Compile Include="03_Behavioral\Iterator\001_Base\Aggregate.cs" />
+    <Compile Include="03_Behavioral\Iterator\001_Base\ConcreteAggregate.cs" />
+    <Compile Include="03_Behavioral\Iterator\001_Base\ConcreteIterator.cs" />
+    <Compile Include="03_Behavioral\Iterator\001_Base\Iterator.cs" />
+    <Compile Include="03_Behavioral\Iterator\001_Base\Test.cs" />
+    <Compile Include="03_Behavioral\Iterator\002_Bank\Aggregate.cs" />
+    <Compile Include="03_Behavioral\Iterator\002_Bank\Bank.cs" />
+    <Compile Include="03_Behavioral\Iterator\002_Bank\Banknote.cs" />
+    <Compile Include="03_Behavioral\Iterator\002_Bank\Cashier.cs" />
+    <Compile Include="03_Behavioral\Iterator\002_Bank\Iterator.cs" />
+    <Compile Include="03_Behavioral\Iterator\002_Bank\Test.cs" />
+    <Compile Include="03_Behavioral\Iterator\003_Containers\Component.cs" />
+    <Compile Include="03_Behavioral\Iterator\003_Containers\Container.cs" />
+    <Compile Include="03_Behavioral\Iterator\003_Containers\Test.cs" />
+    <Compile Include="03_Behavioral\Iterator\003_Containers\Site.cs" />
+    <Compile Include="03_Behavioral\Iterator\004_Enumerator\Aggregate.cs" />
+    <Compile Include="03_Behavioral\Iterator\004_Enumerator\ConcreteAggregate.cs" />
+    <Compile Include="03_Behavioral\Iterator\004_Enumerator\ConcreteIterator.cs" />
+    <Compile Include="03_Behavioral\Iterator\004_Enumerator\Iterator.cs" />
+    <Compile Include="03_Behavioral\Iterator\004_Enumerator\Test.cs" />
+    <Compile Include="03_Behavioral\Iterator\005_InteralIterator\Enumerable.cs" />
+    <Compile Include="03_Behavioral\Iterator\005_InteralIterator\Test.cs" />
+    <Compile Include="03_Behavioral\Iterator\006_Collection\Collection.cs" />
+    <Compile Include="03_Behavioral\Iterator\006_Collection\Test.cs" />
+    <Compile Include="03_Behavioral\Iterator\007_List\List.cs" />
+    <Compile Include="03_Behavioral\Iterator\007_List\Test.cs" />
+    <Compile Include="03_Behavioral\Iterator\008_Yield\Enumerable.cs" />
+    <Compile Include="03_Behavioral\Iterator\008_Yield\Test.cs" />
+    <Compile Include="03_Behavioral\Mediator\001_Base\Colleague.cs" />
+    <Compile Include="03_Behavioral\Mediator\001_Base\ConcreteColleague1.cs" />
+    <Compile Include="03_Behavioral\Mediator\001_Base\ConcreteColleague2.cs" />
+    <Compile Include="03_Behavioral\Mediator\001_Base\ConcreteMediator.cs" />
+    <Compile Include="03_Behavioral\Mediator\001_Base\Mediator.cs" />
+    <Compile Include="03_Behavioral\Mediator\001_Base\Test.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\DialogDirector.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\FontDialogDirector.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\FormFontChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\FormFontChooser.designer.cs">
+      <DependentUpon>FormFontChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\Test.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\Widgets\EntryText.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\Widgets\FontBoldSwitch.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\Widgets\FontBox.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\Widgets\FontCondensedIndicator.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\Widgets\FontItalicSwitch.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\Widgets\FontSizeSelector.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\Widgets\MyListBox.cs" />
+    <Compile Include="03_Behavioral\Mediator\002_MotivationMediator\Widgets\Widget.cs" />
+    <Compile Include="03_Behavioral\Mediator\003_Shop\Colleagues\Cannery.cs" />
+    <Compile Include="03_Behavioral\Mediator\003_Shop\Colleagues\Colleague.cs" />
+    <Compile Include="03_Behavioral\Mediator\003_Shop\Colleagues\Farmer.cs" />
+    <Compile Include="03_Behavioral\Mediator\003_Shop\Colleagues\Shop.cs" />
+    <Compile Include="03_Behavioral\Mediator\003_Shop\ConcreteMediator.cs" />
+    <Compile Include="03_Behavioral\Mediator\003_Shop\Mediator.cs" />
+    <Compile Include="03_Behavioral\Mediator\003_Shop\Test.cs" />
+    <Compile Include="03_Behavioral\Memento\001_Base\Caretaker.cs" />
+    <Compile Include="03_Behavioral\Memento\001_Base\Memento.cs" />
+    <Compile Include="03_Behavioral\Memento\001_Base\Originator.cs" />
+    <Compile Include="03_Behavioral\Memento\001_Base\Test.cs" />
+    <Compile Include="03_Behavioral\Memento\002_Robot\Backpack.cs" />
+    <Compile Include="03_Behavioral\Memento\002_Robot\Man.cs" />
+    <Compile Include="03_Behavioral\Memento\002_Robot\Test.cs" />
+    <Compile Include="03_Behavioral\Memento\002_Robot\Robot.cs" />
+    <Compile Include="03_Behavioral\Memento\003_NarrowAndWideInterfaces\Caretaker.cs" />
+    <Compile Include="03_Behavioral\Memento\003_NarrowAndWideInterfaces\INarrowInterface.cs" />
+    <Compile Include="03_Behavioral\Memento\003_NarrowAndWideInterfaces\IWideInterface.cs" />
+    <Compile Include="03_Behavioral\Memento\003_NarrowAndWideInterfaces\Memento.cs" />
+    <Compile Include="03_Behavioral\Memento\003_NarrowAndWideInterfaces\Originator.cs" />
+    <Compile Include="03_Behavioral\Memento\003_NarrowAndWideInterfaces\Test.cs" />
     <Compile Include="03_Behavioral\Observer\001_News\News\ISubject.cs" />
     <Compile Include="03_Behavioral\Observer\001_News\News\NewsAggregator.cs" />
     <Compile Include="03_Behavioral\Observer\001_News\Test.cs" />
@@ -171,6 +287,50 @@
     <Compile Include="03_Behavioral\Observer\001_News\Widgets\LentaWidget.cs" />
     <Compile Include="03_Behavioral\Observer\001_News\Widgets\TvWidget.cs" />
     <Compile Include="03_Behavioral\Observer\001_News\Widgets\TwitterWidget.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPull\Observer\ConcreteObserver.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPull\Observer\Observer.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPull\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPull\Subject\ConcreteSubject.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPull\Subject\Subject.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPush\Observer\ConcreteObserver.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPush\Observer\Observer.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPush\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPush\Subject\ConcreteSubject.cs" />
+    <Compile Include="03_Behavioral\Observer\002_ObserverPush\Subject\Subject.cs" />
+    <Compile Include="03_Behavioral\Observer\003_Observer Event\Observer\Observer.cs" />
+    <Compile Include="03_Behavioral\Observer\003_Observer Event\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\003_Observer Event\Subject\ConcreteSubject.cs" />
+    <Compile Include="03_Behavioral\Observer\003_Observer Event\Subject\Subject.cs" />
+    <Compile Include="03_Behavioral\Observer\004_IObserver\Observer\ConcreteObserver.cs" />
+    <Compile Include="03_Behavioral\Observer\004_IObserver\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\004_IObserver\Subject\ConcreteSubject.cs" />
+    <Compile Include="03_Behavioral\Observer\005_MSDNMagazine\Magazine.cs" />
+    <Compile Include="03_Behavioral\Observer\005_MSDNMagazine\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\005_MSDNMagazine\Publisher.cs" />
+    <Compile Include="03_Behavioral\Observer\005_MSDNMagazine\Subscriber.cs" />
+    <Compile Include="03_Behavioral\Observer\006_Base\Observer\ConcreteObserver.cs" />
+    <Compile Include="03_Behavioral\Observer\006_Base\Observer\Observer.cs" />
+    <Compile Include="03_Behavioral\Observer\006_Base\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\006_Base\Subject\ConcreteSubject.cs" />
+    <Compile Include="03_Behavioral\Observer\006_Base\Subject\Subject.cs" />
+    <Compile Include="03_Behavioral\Observer\007_ObserverChangeManager\Manager\ChangeManager.cs" />
+    <Compile Include="03_Behavioral\Observer\007_ObserverChangeManager\Manager\DAGChangeManager.cs" />
+    <Compile Include="03_Behavioral\Observer\007_ObserverChangeManager\Manager\SimpleChangeManager.cs" />
+    <Compile Include="03_Behavioral\Observer\007_ObserverChangeManager\Observer\Observer.cs" />
+    <Compile Include="03_Behavioral\Observer\007_ObserverChangeManager\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\007_ObserverChangeManager\Subject\Subject.cs" />
+    <Compile Include="03_Behavioral\Observer\008_ObserverClocks\AnalogClock.cs" />
+    <Compile Include="03_Behavioral\Observer\008_ObserverClocks\ClockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03_Behavioral\Observer\008_ObserverClocks\ClockForm.designer.cs">
+      <DependentUpon>ClockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03_Behavioral\Observer\008_ObserverClocks\ClockTimer.cs" />
+    <Compile Include="03_Behavioral\Observer\008_ObserverClocks\DigitalClock.cs" />
+    <Compile Include="03_Behavioral\Observer\008_ObserverClocks\Observer.cs" />
+    <Compile Include="03_Behavioral\Observer\008_ObserverClocks\Test.cs" />
+    <Compile Include="03_Behavioral\Observer\008_ObserverClocks\Subject.cs" />
     <Compile Include="03_Behavioral\State\001_Car\Car.cs" />
     <Compile Include="03_Behavioral\State\001_Car\States\DrivingState.cs" />
     <Compile Include="03_Behavioral\State\001_Car\States\EmptyTankState.cs" />
@@ -178,6 +338,21 @@
     <Compile Include="03_Behavioral\State\001_Car\States\FullTankState.cs" />
     <Compile Include="03_Behavioral\State\001_Car\States\IState.cs" />
     <Compile Include="03_Behavioral\State\001_Car\Test.cs" />
+    <Compile Include="03_Behavioral\State\002_Base\ConcreteStateA.cs" />
+    <Compile Include="03_Behavioral\State\002_Base\ConcreteStateB.cs" />
+    <Compile Include="03_Behavioral\State\002_Base\Context.cs" />
+    <Compile Include="03_Behavioral\State\002_Base\Test.cs" />
+    <Compile Include="03_Behavioral\State\002_Base\State.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\Context\Father.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\Mark.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\Test.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\State\AngerState.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\State\JoyState.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\State\NeutralState.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\State\PityState.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\State\State.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\State\StrongAngerState.cs" />
+    <Compile Include="03_Behavioral\State\005_StateMotivation\State\StrongJoyState.cs" />
     <Compile Include="03_Behavioral\Strategy\001_Ducks\Ducks\DuckBase.cs" />
     <Compile Include="03_Behavioral\Strategy\001_Ducks\Ducks\ExoticDuck.cs" />
     <Compile Include="03_Behavioral\Strategy\001_Ducks\Ducks\RubberDuck.cs" />
@@ -192,6 +367,18 @@
     <Compile Include="03_Behavioral\Strategy\001_Ducks\Quack\NoQuack.cs" />
     <Compile Include="03_Behavioral\Strategy\001_Ducks\Quack\SimpleQuack.cs" />
     <Compile Include="03_Behavioral\Strategy\001_Ducks\Test.cs" />
+    <Compile Include="03_Behavioral\Strategy\002_Base\Context.cs" />
+    <Compile Include="03_Behavioral\Strategy\002_Base\Test.cs" />
+    <Compile Include="03_Behavioral\Strategy\002_Base\Strategy\ConcreteStrategyA.cs" />
+    <Compile Include="03_Behavioral\Strategy\002_Base\Strategy\ConcreteStrategyB.cs" />
+    <Compile Include="03_Behavioral\Strategy\002_Base\Strategy\ConcreteStrategyC.cs" />
+    <Compile Include="03_Behavioral\Strategy\002_Base\Strategy\Strategy.cs" />
+    <Compile Include="03_Behavioral\Strategy\003_StrategySort\Context.cs" />
+    <Compile Include="03_Behavioral\Strategy\003_StrategySort\Test.cs" />
+    <Compile Include="03_Behavioral\Strategy\003_StrategySort\Strategy\BubbleSort.cs" />
+    <Compile Include="03_Behavioral\Strategy\003_StrategySort\Strategy\InsertionSort.cs" />
+    <Compile Include="03_Behavioral\Strategy\003_StrategySort\Strategy\SelectionSort.cs" />
+    <Compile Include="03_Behavioral\Strategy\003_StrategySort\Strategy\Strategy.cs" />
     <Compile Include="03_Behavioral\TemplateMethod\001_Food\Food\FastFood.cs" />
     <Compile Include="03_Behavioral\TemplateMethod\001_Food\Food\Hamburger.cs" />
     <Compile Include="03_Behavioral\TemplateMethod\001_Food\Food\HotDog.cs" />
@@ -601,6 +788,36 @@
     <Compile Include="01_Creational\Singleton\008_Serialization\Test.cs" />
     <Compile Include="01_Creational\Singleton\009_Lazy\Singleton.cs" />
     <Compile Include="01_Creational\Singleton\009_Lazy\Test.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\002_Base\AbstractClass.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\002_Base\ConcreteClass.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\002_Base\Test.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\003_TemplateMethod\AbstractTwoColorFlag.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\003_TemplateMethod\PolandFlag.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\003_TemplateMethod\Test.cs" />
+    <Compile Include="03_Behavioral\TemplateMethod\003_TemplateMethod\UkraineFlag.cs" />
+    <Compile Include="03_Behavioral\Visitor\001_Base\ConcreteElementA.cs" />
+    <Compile Include="03_Behavioral\Visitor\001_Base\ConcreteElementB.cs" />
+    <Compile Include="03_Behavioral\Visitor\001_Base\ConcreteVisitor1.cs" />
+    <Compile Include="03_Behavioral\Visitor\001_Base\ConcreteVisitor2.cs" />
+    <Compile Include="03_Behavioral\Visitor\001_Base\Element.cs" />
+    <Compile Include="03_Behavioral\Visitor\001_Base\ObjectStructure.cs" />
+    <Compile Include="03_Behavioral\Visitor\001_Base\Test.cs" />
+    <Compile Include="03_Behavioral\Visitor\001_Base\Visitor.cs" />
+    <Compile Include="03_Behavioral\Visitor\002_NewYear\BoysHouse.cs" />
+    <Compile Include="03_Behavioral\Visitor\002_NewYear\Element.cs" />
+    <Compile Include="03_Behavioral\Visitor\002_NewYear\GirlsHouse.cs" />
+    <Compile Include="03_Behavioral\Visitor\002_NewYear\Test.cs" />
+    <Compile Include="03_Behavioral\Visitor\002_NewYear\Santa.cs" />
+    <Compile Include="03_Behavioral\Visitor\002_NewYear\Village.cs" />
+    <Compile Include="03_Behavioral\Visitor\002_NewYear\Visitor.cs" />
+    <Compile Include="03_Behavioral\Visitor\003_Visitor\ConcreteElementA.cs" />
+    <Compile Include="03_Behavioral\Visitor\003_Visitor\ConcreteElementB.cs" />
+    <Compile Include="03_Behavioral\Visitor\003_Visitor\ConcreteVisitor.cs" />
+    <Compile Include="03_Behavioral\Visitor\003_Visitor\Element.cs" />
+    <Compile Include="03_Behavioral\Visitor\003_Visitor\ObjectStructure.cs" />
+    <Compile Include="03_Behavioral\Visitor\003_Visitor\Test.cs" />
+    <Compile Include="03_Behavioral\Visitor\003_Visitor\Visitor.cs" />
+    <Compile Include="03_Behavioral\Visitor\004_VisitorExtMethod\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\Adapters\HomeCatAdapter.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\CatInfoPrinter.cs" />
@@ -786,6 +1003,30 @@
     <Content Include="01_Creational\FactoryMethod\001_Game\FactoryMethod.png" />
     <Content Include="01_Creational\FactoryMethod\003_Application\FactoryMethod.png" />
     <Content Include="01_Creational\patterns.txt" />
+    <Content Include="03_Behavioral\ChainOfResponsibility\ChainOfResponsibility.png" />
+    <Content Include="03_Behavioral\Command\002_Base\Command.png" />
+    <Content Include="03_Behavioral\Command\002_Base\CommandSD.png" />
+    <Content Include="03_Behavioral\Command\003_CalculatorUndoRedo\Calculator.png" />
+    <Content Include="03_Behavioral\Command\Command.png" />
+    <Content Include="03_Behavioral\Interpreter\Interpreter.png" />
+    <Content Include="03_Behavioral\Iterator\004_Enumerator\2016-04-17_225528.png" />
+    <Content Include="03_Behavioral\Iterator\Iterator.png" />
+    <Content Include="03_Behavioral\Mediator\Mediator.png" />
+    <Content Include="03_Behavioral\Memento\001_Base\MementoSD.png" />
+    <Content Include="03_Behavioral\Memento\003_NarrowAndWideInterfaces\NarrowAndWideInterfaces.png" />
+    <Content Include="03_Behavioral\Memento\Memento.png" />
+    <Content Include="03_Behavioral\Observer\002_ObserverPull\ObserverPull.png" />
+    <Content Include="03_Behavioral\Observer\002_ObserverPush\ObserverPush.png" />
+    <Content Include="03_Behavioral\Observer\006_Base\ObserverSD.png" />
+    <Content Include="03_Behavioral\Observer\007_ObserverChangeManager\ObserverChangeManager.png" />
+    <Content Include="03_Behavioral\State\002_Base\2016-04-18_004427.png" />
+    <Content Include="03_Behavioral\State\State.png" />
+    <Content Include="03_Behavioral\Strategy\002_Base\StrategySD.png" />
+    <Content Include="03_Behavioral\Strategy\Strategy.png" />
+    <Content Include="03_Behavioral\TemplateMethod\TemplateMethod.png" />
+    <Content Include="03_Behavioral\Visitor\001_Base\Visitor.png" />
+    <Content Include="03_Behavioral\Visitor\001_Base\VisitorSD.png" />
+    <Content Include="03_Behavioral\Visitor\Visitor.png" />
     <Content Include="Resources\clear.png" />
     <None Include="Resources\Clear_.png" />
     <Content Include="Resources\close.png" />
@@ -938,6 +1179,15 @@
     <EmbeddedResource Include="01_Creational\FactoryMethod\003_Application\PngDocForm.resx">
       <DependentUpon>PngDocForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="03_Behavioral\Command\004_Form\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03_Behavioral\Mediator\002_MotivationMediator\FormFontChooser.resx">
+      <DependentUpon>FormFontChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03_Behavioral\Observer\008_ObserverClocks\ClockForm.resx">
+      <DependentUpon>ClockForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -980,12 +1230,8 @@
   <ItemGroup>
     <Folder Include="02_Structural\Decorator\004_ConcreteDecorator\" />
     <Folder Include="02_Structural\Proxy\005_Ambassador\" />
-    <Folder Include="03_Behavioral\ChainOfResponsibility\" />
-    <Folder Include="03_Behavioral\Interpreter\" />
-    <Folder Include="03_Behavioral\Iterator\" />
-    <Folder Include="03_Behavioral\Mediator\" />
-    <Folder Include="03_Behavioral\Memento\" />
-    <Folder Include="03_Behavioral\Visitor\" />
+    <Folder Include="03_Behavioral\State\003_MealyStateMachine\" />
+    <Folder Include="03_Behavioral\State\004_MooreStateMachine\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
