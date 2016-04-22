@@ -88,11 +88,18 @@
     <Compile Include="11AVLTree\AVLTreeTest.cs" />
     <Compile Include="11AVLTree\AVLTree.cs" />
     <Compile Include="11AVLTree\TreeNode.cs" />
+    <Compile Include="12String\Conversion.cs" />
     <Compile Include="Algorithms\01BubbleSort\Test.cs" />
     <Compile Include="Algorithms\02InsertionSort\Test.cs" />
     <Compile Include="Algorithms\03SelectionSort\Test.cs" />
     <Compile Include="Algorithms\04MergeSort\Test.cs" />
     <Compile Include="Algorithms\05QuickSort\Test.cs" />
+    <Compile Include="Algorithms\BinarySearch.cs" />
+    <Compile Include="Algorithms\Factorial.cs" />
+    <Compile Include="Algorithms\Fibonachi.cs" />
+    <Compile Include="Algorithms\NOD.cs" />
+    <Compile Include="Algorithms\SimpleNumber.cs" />
+    <Compile Include="Algorithms\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

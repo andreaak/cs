@@ -310,7 +310,6 @@
     <Folder Include="11_Input Output\" />
     <Folder Include="12_MultiThreading\04_Problems\" />
     <Folder Include="12_MultiThreading\06_ThreadPool\" />
-    <Folder Include="20_Algorithms\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="01_Elements CS\04_TypeConversion\Conversions.jpg" />

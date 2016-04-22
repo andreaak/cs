@@ -176,5 +176,23 @@ namespace DataStructuresAndAlgorithms.BinaryTree
             instance.PreOrderTraversal(act);
             Debug.WriteLine("");
         }
+        
+        [TestMethod]
+        public void TestHeight()
+        {
+            BinaryTree<int> instance = new BinaryTree<int>();
+
+            instance.Add(4);    //                        4
+            instance.Add(2);    //                      /   \
+            instance.Add(1);    //                     2     6 
+            instance.Add(3);    //                    / \   /  
+            instance.Add(6);    //                   1   3 5   
+            instance.Add(5);
+
+            Debug.WriteLine("Height = " + instance.Height);
+            /*
+            Height = 3
+            */
+        }
     }
 }

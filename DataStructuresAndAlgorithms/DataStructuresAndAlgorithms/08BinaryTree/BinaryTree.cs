@@ -589,5 +589,43 @@ namespace DataStructuresAndAlgorithms.BinaryTree
         //}
         
         #endregion
+
+        public int Height
+        {
+            get
+            {
+                return GetHeight(_head);
+            }
+        }
+        
+        private int GetHeight(BinaryTreeNode<T> n)
+        {
+            if( n == null )
+            {
+                return 0;
+            }
+            return 1 + Math.Max(GetHeight(n.Left), GetHeight(n.Right));
+        }
+
+        BinaryTreeNode<T> FindLowestCommonAncestor(BinaryTreeNode<T> root, BinaryTreeNode<T> node1, BinaryTreeNode<T> node2)
+        {
+            while (root != null)
+            {
+                T value = root.Value;
+                if (value.CompareTo(node1.Value) > 0 && value.CompareTo(node2.Value) > 0)
+                {
+                    root = root.Left;
+                }
+                else if (value.CompareTo(node1.Value) < 0 && value.CompareTo(node2.Value) < 0)
+                {
+                    root = root.Right;
+                }
+                else
+                {
+                    return root;
+                }
+            }
+            return null; // только в случае пустого дерева
+        }
     }
 }
