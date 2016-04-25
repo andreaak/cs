@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utils.ActionWindow;
 
 namespace Utils
 {
@@ -16,7 +17,6 @@ namespace Utils
         private bool isExternalIncrement;
         private int count;
         private int currentValue;
-        Task task;
         CancellationTokenSource cts;
 
         public CancelFormTask()
@@ -24,31 +24,52 @@ namespace Utils
             InitializeComponent();
         }
 
-        public CancelFormTask(string text, Task task, CancellationTokenSource cts)
-            :this()
+        public CancelFormTask(string text)
+            : this()
         {
             this.Text = text;
-            this.task = task;
-            this.cts = cts;
-            this.task.ContinueWith(t => 
-            {
-                if (!cts.IsCancellationRequested)
-                {
-                    Close();
-                }
-                else
-                {
-                    Exception ex = t.Exception;
-                }
-            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        public CancelFormTask(string text, int count, Task task, CancellationTokenSource cts)
-            : this(text, task, cts)
+        public Task StarActionAsync(Action action)
         {
-            this.isExternalIncrement = true;
-            this.count = count;
-            currentValue = 0;
+            cts = new CancellationTokenSource();
+            Task task = Task.Factory.StartNew(action, cts.Token);
+
+            task.ContinueWith(t =>
+            {
+                Close();
+            }, cts.Token, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext());
+            task.ContinueWith(t =>
+            {
+                AggregateException ex = t.Exception;
+                DisplayMessage.ShowError(ex.InnerException.Message);
+                Close();
+            }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
+            task.ContinueWith(t =>
+            {
+            }, CancellationToken.None, TaskContinuationOptions.OnlyOnCanceled, TaskScheduler.FromCurrentSynchronizationContext());
+            return task;
+        }
+
+        public Task<T> StarFuncAsync<T>(Func<T> func)
+        {
+            cts = new CancellationTokenSource();
+            Task<T> task = Task.Factory.StartNew<T>(func, cts.Token);
+
+            task.ContinueWith(t =>
+            {
+                Close();
+            }, cts.Token, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext());
+            task.ContinueWith(t =>
+            {
+                AggregateException ex = t.Exception;
+                DisplayMessage.ShowError(ex.InnerException.Message);
+                Close();
+            }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
+            task.ContinueWith(t =>
+            {
+            }, CancellationToken.None, TaskContinuationOptions.OnlyOnCanceled, TaskScheduler.FromCurrentSynchronizationContext());
+            return task;
         }
 
         private void CancelForm_Shown(object sender, EventArgs e)
@@ -133,21 +154,28 @@ namespace Utils
                 progressBar1.Value = percent;
             }
         }
-
-
-
-        //public void CloseForm()
-        //{
-        //    if (this.InvokeRequired)
-        //    {
-        //        this.Invoke(new Action(CloseForm));
-        //    }
-        //    else
-        //    {
-        //        this.DialogResult = DialogResult.OK;
-        //        this.Close();
-        //    }
-        //}
     }
 
+    public static class CancelFormEx
+    {
+        public static bool ShowProgressWindow(Action action, string headerText)
+        {
+            CancelFormTask form = new CancelFormTask(headerText);
+            Task task = form.StarActionAsync(action);
+            form.ShowDialog();
+            return task.Status == TaskStatus.RanToCompletion;
+        }
+
+        public static T ShowProgressWindow<T>(Func<T> func, string headerText)
+        {
+            CancelFormTask form = new CancelFormTask(headerText);
+            Task<T> task = form.StarFuncAsync(func);
+            form.ShowDialog();
+            if (task.Status == TaskStatus.RanToCompletion)
+            {
+                return task.Result;
+            }
+            return default(T);
+        }
+    }
 }

@@ -17,4 +17,17 @@ namespace CSTest._14_Garbage_Collection._0_Setup
         
         }
     }
+
+    struct ResourceGobblerStruct : IDisposable
+    {
+        public void Dispose()
+        {
+
+        }
+
+        public void Test()
+        {
+
+        }
+    }
 }

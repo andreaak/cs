@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.XtraSpellChecker;
@@ -51,7 +53,8 @@ namespace Note
         private void barButtonConnect_ItemClick(object sender, EventArgs e)
         {
             OptionsUtils.ClearDbData();
-            Init(presenter.Connect());
+            bool res = presenter.Connect();
+            Init(res);
         }
 
         private void barButtonItemAddDir_ItemClick(object sender, EventArgs e)
@@ -139,7 +142,9 @@ namespace Note
 
         private void barButtonItemVacuum_ItemClick(object sender, EventArgs e)
         {
-            presenter.VacuumDb(false);
+            string headerText = "Vacuum database";
+            Action action = () => presenter.VacuumDb();
+            CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         private void barButtonItemLevelUp_ItemClick(object sender, ItemClickEventArgs e)

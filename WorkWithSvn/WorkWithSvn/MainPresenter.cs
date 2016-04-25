@@ -80,7 +80,8 @@ namespace WorkWithSvn
             string headerText = rm.GetString("CATALOGS_SCAN_HEADER", culture);
             string infoText = rm.GetString("CATALOGS_SCAN_TEXT", culture);
             Action action = () => repositoryProvider.ReadDirectories(fullName);
-            if (RunTask(action, headerText))
+
+            if (CancelFormEx.ShowProgressWindow(action, headerText))
             {
                 InitWatcher();
                 return true;
@@ -93,7 +94,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("WORKING_COPY_SCAN_HEADER", culture);
             string infoText = rm.GetString("WORKING_COPY_SCAN_TEXT", culture);
             Action action = () => repositoryProvider.ScanDirectory(fullName, ctrlData);
-            return RunTask(action, headerText);
+            return CancelFormEx.ShowProgressWindow(action, headerText);
         }
         //COUNT
         public bool RefreshFilesStatus(List<string> fullNames, ControlsData ctrlData)
@@ -101,7 +102,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("FILE_INFO_UPDATE_HEADER", culture);
             string infoText = rm.GetString("FILE_INFO_UPDATE_TEXT", culture);
             Action action = () => repositoryProvider.RefreshFilesStatus(fullNames, ctrlData);
-            return RunTask(action, headerText);
+            return CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         public void ShowDiff(List<string> fullNames, ControlsData ctrlData)
@@ -109,7 +110,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("GET_FILE_HEADER", culture);
             string infoText = rm.GetString("GET_FILE_TEXT", culture);
             Action action = () => repositoryProvider.ShowDiff(fullNames, ctrlData);
-            RunTask(action, headerText);
+            CancelFormEx.ShowProgressWindow(action, headerText);
         }
         //COUNT
         public bool Resolved(List<string> fullNames, ControlsData ctrlData)
@@ -117,7 +118,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("RESOLVE_CONFLICT_HEADER", culture);
             string infoText = rm.GetString("RESOLVE_CONFLICT_TEXT", culture);
             Action action = () => repositoryProvider.Resolved(fullNames, ctrlData);
-            return RunTask(action, headerText);
+            return CancelFormEx.ShowProgressWindow(action, headerText);
         }
         //COUNT
         public bool Switch(List<string> fullNames, ControlsData ctrlData)
@@ -136,7 +137,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("SWITCH_FILE_HEADER", culture);
             string infoText = rm.GetString("SWITCH_FILE_TEXT", culture);
             Action action = () => repositoryProvider.Switch(fullNames, ctrlData, backup, restore, targetLocation);
-            return RunTask(action, headerText);
+            return CancelFormEx.ShowProgressWindow(action, headerText);
         }
         //COUNT
         public bool AddItems(List<string> fullNames, ControlsData ctrlData)
@@ -144,7 +145,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("ADD_ITEMS_HEADER", culture);
             string infoText = rm.GetString("ADD_ITEMS_TEXT", culture);
             Action action = () => repositoryProvider.AddItems(fullNames, ctrlData);
-            return RunTask(action, headerText);
+            return CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         public bool DeleteItems(List<string> fullNames, ControlsData ctrlData)
@@ -152,7 +153,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("DELETE_ITEMS_HEADER", culture);
             string infoText = rm.GetString("DELETE_ITEMS_TEXT", culture);
             Action action = () => repositoryProvider.DeleteItems(fullNames, ctrlData);
-            return RunTask(action, headerText);
+            return CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         public void DeleteFromDisk(List<string> fullNames)
@@ -175,7 +176,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("UPDATE_FILES_HEADER", culture);
             string infoText = rm.GetString("UPDATE_FILES_TEXT", culture);
             Action action = () => repositoryProvider.Update(fullNames, ctrlData);
-            return RunTask(action, headerText);
+            return CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         public bool Commit(List<string> fullNames)
@@ -191,7 +192,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("COMMIT_FILES_HEADER", culture);
             string infoText = rm.GetString("COMMIT_FILES_TEXT", culture);
             Action action = () => repositoryProvider.Commit(files, form.Message);
-            if (RunTask(action, headerText))
+            if (CancelFormEx.ShowProgressWindow(action, headerText))
             {
                 OpenLog(selCollection);
                 return true;
@@ -204,7 +205,7 @@ namespace WorkWithSvn
             string headerText = rm.GetString("REVERT_FILES_HEADER", culture);
             string infoText = rm.GetString("REVERT_FILES_TEXT", culture);
             Action action = () => repositoryProvider.Revert(fullNames);
-            return RunTask(action, headerText);
+            return CancelFormEx.ShowProgressWindow(action, headerText);
         }
         //COUNT
         public void CreatePatch(List<string> fullNames)
@@ -225,21 +226,21 @@ namespace WorkWithSvn
                     File.WriteAllText(filePath, all.ToString());
                 }
             };
-            RunTask(action, headerText);
+            CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         public void MoveToChangeList(string changeListName, List<string> fullNames)
         {
             string headerText = rm.GetString("MOVE_TO_CHANGELIST_HEADER", culture);
             Action action = () => repositoryProvider.MoveToChangeList(changeListName, fullNames);
-            RunTask(action, headerText);
+            CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         public bool RemoveFromChangeList(List<string> fullNames)
         {
             string headerText = rm.GetString("REMOVE_FROM_CHANGELIST_HEADER", culture);
             Action action = () => repositoryProvider.RemoveFromChangeList(fullNames);
-            return RunTask(action, headerText);
+            return CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         public ISet<String> GetChangeList()
@@ -291,7 +292,7 @@ namespace WorkWithSvn
                 }
                 UTILS.AddFilesToZipArchive(filePath, folder);
             };
-            RunTask(action, headerText);
+            CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         public bool FilterFiles(ISet<string> selectedExtensions)
@@ -317,7 +318,7 @@ namespace WorkWithSvn
             {
                 logs = repositoryProvider.LogByAuthor(author);
             };
-            if (RunTask(action, headerText))
+            if (CancelFormEx.ShowProgressWindow(action, headerText))
             {
                 GridForm logForm = new GridForm(logs);
                 logForm.Show();
@@ -386,26 +387,6 @@ namespace WorkWithSvn
         #endregion
 
         #region PRIVATE
-
-        private bool RunTask(Action act, string headerText)
-        {
-            CancellationTokenSource cts = new CancellationTokenSource();
-
-            Task task = Task.Factory.StartNew(act, cts.Token);
-
-            new CancelFormTask(headerText, task, cts).ShowDialog();
-            return HandleTask(cts, task);
-        }
-
-        private bool HandleTask(CancellationTokenSource cts, Task task)
-        {
-            if (cts.IsCancellationRequested)
-            {
-                return false;
-            }
-            task.Wait();
-            return true;
-        }
 
         private bool GetSwitchData(string fullPath, ref string targetLocation, ref bool restore, ref bool backup)
         {

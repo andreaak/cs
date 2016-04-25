@@ -7,6 +7,7 @@ using Note.Domain.Common;
 using Note.Domain.Concrete;
 using Note.Domain.Entities;
 using Note.Properties;
+using Utils;
 using Utils.ActionWindow;
 using Utils.WorkWithDB;
 
@@ -190,22 +191,16 @@ namespace Note
             }
         }
 
-        public void VacuumDb(bool isSilent)
+        public void VacuumDb()
         {
-            try
-            {
-                DataManager.VacuumDb();
-                DisplayMessage.ShowInfo(DisplayMessage.INFO_DONE_CONST);
-            }
-            catch (Exception ex)
-            {
-                DisplayMessage.ShowError(ex.Message);
-            }
+            DataManager.VacuumDb();
         }
 
         public object GetDataSource()
         {
-            try
+
+            string headerText = "Read Data";
+            Func<object> func = () =>
             {
                 BindingDataset.DescriptionDataTable table = new BindingDataset.DescriptionDataTable();
                 foreach (var item in Descriptions)
@@ -220,12 +215,8 @@ namespace Note
                 }
                 table.AcceptChanges();
                 return table;
-            }
-            catch (Exception ex)
-            {
-                DisplayMessage.ShowError(ex.Message);
-                return null;
-            }
+            };
+            return CancelFormEx.ShowProgressWindow(func, headerText);
         }
 
         public bool IsCanChangeLevel(int position, long parentId, Direction direction)
@@ -285,16 +276,14 @@ namespace Note
             DatabaseManager dataManagerLocal;
             if (TryGetDataManager(out dataManagerLocal))
             {
-                try
+                string headerText = "Find changed items";
+                Func<IEnumerable<DescriptionWithStatus>> func = () => GetModifiedDescriptions(dataManagerLocal);
+                IEnumerable<DescriptionWithStatus> res = CancelFormEx.ShowProgressWindow(func, headerText);
+                if (res != null)
                 {
-                    IEnumerable<DescriptionWithStatus> descriptions = GetModifiedDescriptions(dataManagerLocal);
                     ItemsList form = new ItemsList();
-                    form.LoadData(descriptions);
+                    form.LoadData(res);
                     form.Show();
-                }
-                catch (Exception ex)
-                {
-                    DisplayMessage.ShowError(ex.Message);
                 }
             }
         }

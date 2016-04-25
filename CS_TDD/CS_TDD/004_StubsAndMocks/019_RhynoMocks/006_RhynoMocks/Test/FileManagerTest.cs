@@ -1,14 +1,34 @@
-﻿using NUnit.Framework;
+﻿using CS_TDD._004_StubsAndMocks._004_Mocks;
+using NUnit.Framework;
 using Rhino.Mocks;
-using CS_TDD._004_StubsAndMocks._004_Mocks;
 
-namespace CS_TDD._004_StubsAndMocks._007_RhynoMocks.Test
+namespace CS_TDD._004_StubsAndMocks._006_RhynoMocks.Test
 {
     [TestFixture]
     class FileManagerTest
     {
         [Test]
-        public static void RhinoMocksTest_2()
+        public static void RhinoMocksTest1()
+        {
+            MockRepository rhinoEngine = new MockRepository();
+
+            // Создание динамического Mock-объекта
+            ILogService logService = rhinoEngine.DynamicMock<ILogService>();
+            
+            // Создание сценария
+            using (rhinoEngine.Record())
+            {
+                logService.LogError("TestErrorMessage");
+            }
+
+            logService.LogError("TestErrorMessage");
+
+            // Проверка сценария
+            rhinoEngine.Verify(logService);
+        }
+
+        [Test]
+        public static void RhinoMocksTest2()
         {
             string fileName = "TestFileName.exe";
 

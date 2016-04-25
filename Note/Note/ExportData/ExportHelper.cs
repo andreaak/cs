@@ -58,33 +58,8 @@ namespace Note.ExportData
                 Exporter.Exporter exp = GetExporter(form.Type);
                 SaveNodesData(path, treeWrapper.Nodes, exp);
             };
-            RunTask(action, headerText);
-        }
 
-        private void RunTask(Action act, string headerText)
-        {
-            CancellationTokenSource cts = new CancellationTokenSource();
-
-            Task task = Task.Factory.StartNew(act, cts.Token);
-
-            new CancelFormTask(headerText, task, cts).ShowDialog();
-            HandleTask(cts, task);
-        }
-
-        private void HandleTask(CancellationTokenSource cts, Task task)
-        {
-            if (cts.IsCancellationRequested)
-            {
-                return;
-            }
-            try
-            {
-                task.Wait();
-            }
-            catch (AggregateException ex)
-            {
-                DisplayMessage.ShowError(ex.InnerException.Message);
-            }
+            CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         private void SetPrefixAlgoritmth(ExportOptions form, IList<Node> nodes)
