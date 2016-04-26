@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace CS_TDD._004_StubsAndMocks._008_RhynoMocksDynamicVersusStrictMocks
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._008_RhynoMocksDynamicVersusStrictMocks
 {
 
     class FileManager

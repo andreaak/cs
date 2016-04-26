@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace CS_TDD._004_StubsAndMocks._009_RhynoMocksReturnsValue.Test
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._009_RhynoMocksReturnsValue.Test
 {
     [TestFixture]
     class MockReturnsValueTest

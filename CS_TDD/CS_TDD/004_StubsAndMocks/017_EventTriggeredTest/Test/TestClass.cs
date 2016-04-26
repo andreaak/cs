@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
-using TeamAgile.NUnitExtensions.EventsTesting;
+﻿using CS_TDD._004_StubsAndMocks._017_EventTriggeredTest.Dll_;
+using NUnit.Framework;
 
 namespace CS_TDD._004_StubsAndMocks._017_EventTriggeredTest.Test
 {

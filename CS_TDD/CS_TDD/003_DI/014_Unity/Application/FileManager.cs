@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CS_TDD._003_DI._000_Base;
 using Microsoft.Practices.Unity;
 
-namespace CS_TDD._003_DI._009_Unity
+namespace CS_TDD._003_DI._014_Unity.Application
 {
     class FileManager
     {

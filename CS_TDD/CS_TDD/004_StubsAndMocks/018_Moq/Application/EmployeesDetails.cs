@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace CS_TDD._004_StubsAndMocks._018_Moq
+namespace CS_TDD._004_StubsAndMocks._018_Moq.Application
 {
     public interface IEmployeesDetails
     {

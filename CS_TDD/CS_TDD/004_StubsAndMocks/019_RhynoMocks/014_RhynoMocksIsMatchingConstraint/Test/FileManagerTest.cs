@@ -1,12 +1,12 @@
 ﻿using System;
 using CS_TDD._004_StubsAndMocks._004_Mocks;
-using CS_TDD._004_StubsAndMocks._013_RhynoMocksPropertyConstraints;
+using CS_TDD._004_StubsAndMocks._019_RhynoMocks._013_RhynoMocksPropertyConstraints;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Rhino.Mocks.Constraints;
-using FileManager = CS_TDD._004_StubsAndMocks._013_RhynoMocksPropertyConstraints.FileManager;
+using FileManager = CS_TDD._004_StubsAndMocks._019_RhynoMocks._013_RhynoMocksPropertyConstraints.FileManager;
 
-namespace CS_TDD._004_StubsAndMocks._014_RhynoMocksIsMatchingConstraint.Test
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._014_RhynoMocksIsMatchingConstraint.Test
 {
     [TestFixture]
     class FileManagerTest

@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace CS_TDD._004_StubsAndMocks._006_RhynoMocks.Test
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._006_RhynoMocks.Test
 {
     [TestFixture]
     class FileManagerTest

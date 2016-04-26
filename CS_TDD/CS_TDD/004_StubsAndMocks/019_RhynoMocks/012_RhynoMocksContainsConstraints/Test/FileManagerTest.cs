@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace CS_TDD._004_StubsAndMocks._012_RhynoMocksConstraintsContains.Test
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._012_RhynoMocksContainsConstraints.Test
 {
     [TestFixture]
     class FileManagerTest

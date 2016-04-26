@@ -1,8 +1,8 @@
-﻿using CS_TDD._003_DI._000_Base;
+﻿using System;
+using CS_TDD._003_DI._000_Base;
 using CS_TDD._003_DI._002_ConstructorInjection;
-using System;
 
-namespace CS_TDD._003_DI._010_Ninject.Application
+namespace CS_TDD._003_DI._015_Ninject.Application
 {
     class Program
     {

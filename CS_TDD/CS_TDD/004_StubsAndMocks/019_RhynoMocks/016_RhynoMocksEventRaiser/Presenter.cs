@@ -1,7 +1,7 @@
 ﻿using System;
-using CS_TDD._004_StubsAndMocks._015_RhynoMocksEventRelatedTests;
+using CS_TDD._004_StubsAndMocks._019_RhynoMocks._015_RhynoMocksEventRelatedTests;
 
-namespace CS_TDD._004_StubsAndMocks._016_RhynoMocksEventRaiser
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._016_RhynoMocksEventRaiser
 {
     class Presenter
     {

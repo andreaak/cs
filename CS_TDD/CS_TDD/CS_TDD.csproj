@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{16ADA690-EF1E-4146-A357-1B4DB9C2E856}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CS_TDD</RootNamespace>
     <AssemblyName>CS_TDD</AssemblyName>
@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CS_TDD._004_StubsAndMocks._003_RhynoMocks.Program</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -210,6 +211,7 @@
     <Compile Include="004_StubsAndMocks\018_Moq\_006_TimesMethodCalled.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_007_Callbacks.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_008_MockRepository.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

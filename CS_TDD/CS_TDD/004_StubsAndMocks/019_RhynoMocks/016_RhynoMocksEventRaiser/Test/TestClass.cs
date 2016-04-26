@@ -1,10 +1,10 @@
-﻿using CS_TDD._004_StubsAndMocks._015_RhynoMocksEventRelatedTests;
+﻿using CS_TDD._004_StubsAndMocks._019_RhynoMocks._015_RhynoMocksEventRelatedTests;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Rhino.Mocks.Impl;
 using Rhino.Mocks.Interfaces;
 
-namespace CS_TDD._004_StubsAndMocks._016_RhynoMocksEventRaiser.Test
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._016_RhynoMocksEventRaiser.Test
 {
     [TestFixture]
     class EventRelatedTests

@@ -2,7 +2,7 @@
 using Rhino.Mocks;
 using Rhino.Mocks.Constraints;
 
-namespace CS_TDD._004_StubsAndMocks._015_RhynoMocksEventRelatedTests.Test
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._015_RhynoMocksEventRelatedTests.Test
 {
     [TestFixture]
     class EventRelatedTests

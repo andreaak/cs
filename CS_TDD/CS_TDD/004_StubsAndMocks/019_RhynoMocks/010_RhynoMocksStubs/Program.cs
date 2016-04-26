@@ -1,4 +1,4 @@
-﻿namespace CS_TDD._004_StubsAndMocks._010_RhynoMocksStubs
+﻿namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._010_RhynoMocksStubs
 {
     class Program
     {

@@ -4,7 +4,7 @@ using CS_TDD._004_StubsAndMocks._005_MockAndStub;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace CS_TDD._004_StubsAndMocks._011_RhynoMocksConstraints.Test
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._011_RhynoMocksConstraints.Test
 {
     [TestFixture]
     class FileManagerTest

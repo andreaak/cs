@@ -2,7 +2,7 @@
 using System.IO;
 using CS_TDD._004_StubsAndMocks._004_Mocks;
 
-namespace CS_TDD._004_StubsAndMocks._013_RhynoMocksPropertyConstraints
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._013_RhynoMocksPropertyConstraints
 {
 
     class FileManager

@@ -6,10 +6,12 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using TeamAgile.NUnitExtensions.EventsTesting.CommonEventHandler;
+using System.Reflection.Emit;
+using System.Threading;
+using CS_TDD._004_StubsAndMocks._017_EventTriggeredTest.Dll_.CommonEventHandler;
 using NUnit.Framework;
 
-namespace TeamAgile.NUnitExtensions.EventsTesting
+namespace CS_TDD._004_StubsAndMocks._017_EventTriggeredTest.Dll_
 {
     public class EventsVerifier : IDisposable
     {
@@ -162,14 +164,7 @@ namespace TeamAgile.NUnitExtensions.EventsTesting
         //This class was adapted based on code from the following URL:
         // http://codeproject.com/csharp/ComonEventHandler.asp
         // "A Universal Event Handler Factory" by Ulrich Proeller
-
-
-        using System;
-        using System.Collections;
-        using System.Reflection;
-        using System.Reflection.Emit;
-        using System.Threading;
-
+        
         /// <summary>
         /// This delegate describes the signature of the event, which is emited by the generated helper classes.
         /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace CS_TDD._004_StubsAndMocks._012_RhynoMocksConstraintsContains
+﻿namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._012_RhynoMocksContainsConstraints
 {
     class Program
     {

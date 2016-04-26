@@ -1,4 +1,4 @@
-﻿namespace CS_TDD._004_StubsAndMocks._009_RhynoMocksReturnsValue
+﻿namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._009_RhynoMocksReturnsValue
 {
     class Program
     {

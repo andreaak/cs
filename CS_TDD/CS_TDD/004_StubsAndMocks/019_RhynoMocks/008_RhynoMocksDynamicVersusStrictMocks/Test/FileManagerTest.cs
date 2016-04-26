@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace CS_TDD._004_StubsAndMocks._008_RhynoMocksDynamicVersusStrictMocks.Test
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._008_RhynoMocksDynamicVersusStrictMocks.Test
 {
     [TestFixture]
     class FileManagerTest

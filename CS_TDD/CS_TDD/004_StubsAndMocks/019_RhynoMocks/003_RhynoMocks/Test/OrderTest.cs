@@ -1,8 +1,7 @@
-﻿using CS_TDD._004_StubsAndMocks._019_RhynoMocks._003_RhynoMocks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace CS_TDD._004_StubsAndMocks._003_RhynoMocks.Test
+namespace CS_TDD._004_StubsAndMocks._019_RhynoMocks._003_RhynoMocks.Test
 {
     [TestFixture]
     class OrderTest
