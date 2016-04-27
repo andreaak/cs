@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace CS_TDD._004_StubsAndMocks._018_Moq
 {
     [TestFixture]
-    public class _007_Callbacks
+    public class _008_Callbacks
     {
         [Test]
         public void MoqTestCallbacks()

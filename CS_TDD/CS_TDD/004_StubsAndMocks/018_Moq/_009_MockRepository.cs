@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace CS_TDD._004_StubsAndMocks._018_Moq
 {
     [TestFixture]
-    public class _008_MockRepository
+    public class _009_MockRepository
     {
         /*
         Класс MockRepository предоставляет еще один синтаксис для создания стабов и, что самое главное, 

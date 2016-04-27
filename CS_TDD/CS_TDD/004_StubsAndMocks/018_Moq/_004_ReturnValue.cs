@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace CS_TDD._004_StubsAndMocks._018_Moq
 {
     [TestFixture]
-    public class _003_ReturnValue
+    public class _004_ReturnValue
     {
         [Test]
         public void MoqTestReturnValue1()

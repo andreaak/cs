@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace CS_TDD._004_StubsAndMocks._018_Moq
 {
     [TestFixture]
-    public class _005_ThrowException
+    public class _006_ThrowException
     {
         [Test]
         public void MoqTest5()

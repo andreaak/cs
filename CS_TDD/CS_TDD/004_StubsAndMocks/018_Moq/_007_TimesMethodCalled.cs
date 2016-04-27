@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace CS_TDD._004_StubsAndMocks._018_Moq
 {
-    class _006_TimesMethodCalled
+    class _007_TimesMethodCalled
     {
         [Test]
         public void MoqTestTimesMethodCalled1()

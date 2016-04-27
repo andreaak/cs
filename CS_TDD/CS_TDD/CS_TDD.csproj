@@ -144,6 +144,7 @@
     <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Test\LogAnalyzerTest.cs" />
     <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Test\MockEmailService.cs" />
     <Compile Include="004_StubsAndMocks\002_MocksAndStubs\Test\StubLogService.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_002_Verify.cs" />
     <Compile Include="004_StubsAndMocks\019_RhynoMocks\003_RhynoMocks\DataAccess.cs" />
     <Compile Include="004_StubsAndMocks\019_RhynoMocks\003_RhynoMocks\IWarehouse.cs" />
     <Compile Include="004_StubsAndMocks\019_RhynoMocks\003_RhynoMocks\Order.cs" />
@@ -203,14 +204,14 @@
     <Compile Include="004_StubsAndMocks\018_Moq\Application\IFoo.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\Application\Logger.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\Application\Bar.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\_004_Properties.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\_002_Arguments.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_005_Properties.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_003_Arguments.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_001_Base.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\_003_ReturnValue.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\_005_ThrowException.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\_006_TimesMethodCalled.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\_007_Callbacks.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\_008_MockRepository.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_004_ReturnValue.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_006_ThrowException.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_007_TimesMethodCalled.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_008_Callbacks.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\_009_MockRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

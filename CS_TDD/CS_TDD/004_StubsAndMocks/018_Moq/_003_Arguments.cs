@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using CS_TDD._004_StubsAndMocks._018_Moq.Application;
 using Moq;
@@ -7,7 +8,7 @@ using NUnit.Framework;
 namespace CS_TDD._004_StubsAndMocks._018_Moq
 {
     [TestFixture]
-    public class _002_Arguments
+    public class _003_Arguments
     {
         [Test]
         public void MoqTestMatchingArguments1()
@@ -30,7 +31,7 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
             empDetails.GetEmployeeValidEmailAddress(employee);
             //Assert
             moqPersonalDetail.Verify(x => x.IsValidEmail(
-                It.Is<string>(fu => fu.Equals(employee.Email))));
+                It.Is<string>(arg => arg.Equals(employee.Email))));
         }
         
         [Test]
@@ -38,7 +39,6 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             var mock = new Mock<IFoo>();
             mock.Setup(foo => foo.DoSomething("ping")).Returns(true);
-
 
             // out arguments
             string outString = "ack";
@@ -49,6 +49,20 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
             Bar instance = new Bar();
             // Only matches if the ref argument to the invocation is the same instance
             mock.Setup(foo => foo.Submit(ref instance)).Returns(true);
+
+            IFoo objFoo = mock.Object;
+            string temp;
+            Debug.WriteLine("Result {0}, Value {1}", objFoo.TryParse("ping", out temp), temp);
+
+            Debug.WriteLine("Result {0}, Value {1}", objFoo.Submit(ref instance), instance);
+            Bar bar = new Bar();
+            Debug.WriteLine("Result {0}, Value {1}", objFoo.Submit(ref bar), bar);
+
+            /*
+            Result True, Value ack
+            Result True, Value CS_TDD._004_StubsAndMocks._018_Moq.Application.Bar
+            Result False, Value CS_TDD._004_StubsAndMocks._018_Moq.Application.Bar
+            */
         }
         
         [Test]

@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace CS_TDD._004_StubsAndMocks._018_Moq
 {
     [TestFixture]
-    public class _004_Properties
+    public class _005_Properties
     {
         [Test]
         public void MoqTestProperty1()

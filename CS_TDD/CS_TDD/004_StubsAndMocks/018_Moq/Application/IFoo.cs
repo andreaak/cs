@@ -22,13 +22,11 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq.Application
 
         string DoSomething();
 
-        bool DoSomething(int p1, string p2);
+        bool DoSomething(int arg1, string arg2);
 
         bool TryParse(string arg, out string res);
 
         bool Submit(ref Bar instance);
-
-        int GetCount();
 
         int GetCountThing();
 

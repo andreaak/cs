@@ -1,10 +1,9 @@
-﻿
-using System.Diagnostics;
+﻿using System.Diagnostics;
+
 namespace CS_TDD._004_StubsAndMocks._018_Moq.Application
 {
     public interface ILogWriter
     {
-        string GetLogger();
         void SetLogger(string logger);
         void Write(string message);
     }
@@ -18,44 +17,112 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq.Application
             _logWriter = logWriter;
         }
 
+        public void SetLogger(string logger)
+        {
+            _logWriter.SetLogger(logger);
+        }
+
         public void WriteLine(string message)
         {
             _logWriter.Write(message);
         }
     }
 
-    public abstract class Logger2
+    public interface ILogger
     {
-        public virtual void WriteLineVirtPublic(string message)
+        bool WriteLinePublic(string message);
+        bool WriteLinePublicVirt(string message);
+        void WriteLinePublicAbstract(string message);
+    }
+
+    public abstract class LoggerAbstract
+    {
+        public virtual bool WriteLinePublicVirt(string message)
         {
             Debug.WriteLine(message);
+            return false;
         }
 
-        protected virtual void WriteLineVirtProtected(string message)
+        public abstract void WriteLinePublicAbstract(string message);
+
+        //Не мокаются
+        public bool WriteLinePublic(string message)
         {
             Debug.WriteLine(message);
+            return false;
         }
 
-        private void WriteLinePrivate(string message)
+        //public static void WriteLinePublicStatic(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
+
+        //protected virtual void WriteLineVirtProtected(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
+
+        //protected static void WriteLineProtectedStatic(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
+
+        //protected void WriteLineProtected(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
+
+        //private void WriteLinePrivate(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
+
+
+    }
+
+    public class Logger2 : LoggerAbstract
+    {
+        public override bool WriteLinePublicVirt(string message)
         {
-            Debug.WriteLine(message);
+            Debug.WriteLine("WriteLinePublicVirt - " + message);
+            return false;
         }
 
-        public abstract void WriteLinePublic(string message);
-
-        protected void WriteLineProtected(string message)
+        public override void WriteLinePublicAbstract(string message)
         {
-            Debug.WriteLine(message);
+            Debug.WriteLine("WriteLinePublicAbstract - " + message);
         }
 
-        public static void WriteLinePublicStatic(string message)
-        {
-            Debug.WriteLine(message);
-        }
+        //Не мокаются
+        //public new bool WriteLinePublic(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //    return false;
+        //}
 
-        protected static void WriteLineProtectedStatic(string message)
-        {
-            Debug.WriteLine(message);
-        }
+        //public static void WriteLinePublicStatic(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
+
+        //protected virtual void WriteLineVirtProtected(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
+
+        //protected static void WriteLineProtectedStatic(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
+
+        //protected void WriteLineProtected(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
+
+        //private void WriteLinePrivate(string message)
+        //{
+        //    Debug.WriteLine(message);
+        //}
     }
 }
