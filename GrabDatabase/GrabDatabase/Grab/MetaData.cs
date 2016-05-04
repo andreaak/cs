@@ -16,7 +16,7 @@ namespace GrabDatabase
         DataSet items;
         DataSet dataset;
         DBService dbService;
-        
+
         public MetaData(DBService dbService)
         {
             InitializeComponent();
@@ -58,7 +58,7 @@ namespace GrabDatabase
                     if (sel != null && sel.Length > 0)
                     {
                         SaveTablesData(sel);
-                    }                    
+                    }
                     break;
                 case "Functions":
                 case "Procedures":
@@ -68,14 +68,14 @@ namespace GrabDatabase
                     {
                         SaveGridData(sel, itemName);
                         SaveFunctionText(sel, itemName);
-                    }                    
+                    }
                     break;
                 default:
                     sel = gridView1.GetSelectedRows();
                     if (sel != null && sel.Length > 0)
                     {
                         SaveGridData(sel, itemName);
-                    } 
+                    }
                     break;
             }
             DisplayMessage.ShowInfo(DisplayMessage.INFO_DONE_CONST);
@@ -87,18 +87,18 @@ namespace GrabDatabase
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
-            } 
+            }
             foreach (int i in sel)
             {
                 DataRow tempRow = gridView1.GetDataRow(i);
                 string name = string.Empty;
                 switch (itemName)
-                { 
+                {
                     default:
                         name = tempRow["OBJECT_NAME"].ToString();
-                    break;
+                        break;
                 }
-                
+
                 string file = string.Format("{1}{0}{2}", Path.DirectorySeparatorChar, dir, name + ".txt");
                 string tmp = string.Empty;
                 try
@@ -121,36 +121,36 @@ namespace GrabDatabase
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
-            }            
+            }
             foreach (int i in sel)
             {
                 DataRow tempRow = gridView1.GetDataRow(i);
                 string name = tempRow["TABLE_NAME"].ToString();
                 string file = string.Empty;
                 string tmp = string.Empty;
-                try 
-	            {
+                try
+                {
                     file = string.Format("{1}{0}{2}", Path.DirectorySeparatorChar, dir, name + "_scheme.xml");
                     tmp = dbService.GetTableSheme(name);
                     DataSet tempDs = new DataSet();
                     DBUtils.GetDatasetFromXML(tmp, tempDs);
                     tempDs.WriteXml(file, XmlWriteMode.WriteSchema);
-                    
+
                     if (checkBoxGetScheme.Checked)
                     {
                         continue;
                     }
-                    
+
                     file = string.Format("{1}{0}{2}", Path.DirectorySeparatorChar, dir, name + "_data.xml");
                     tmp = dbService.GetTableData(name);
                     tempDs = new DataSet();
                     DBUtils.GetDatasetFromXML(tmp, tempDs);
-                    tempDs.WriteXml(file, XmlWriteMode.WriteSchema);	            
+                    tempDs.WriteXml(file, XmlWriteMode.WriteSchema);
                 }
-	            catch (Exception)
+                catch (Exception)
                 {
-                        File.Create(file);
-                        continue;
+                    File.Create(file);
+                    continue;
                 }
             }
         }
@@ -187,24 +187,15 @@ namespace GrabDatabase
                 restrictions = new string[] { textEditOwner.Text };
             }
 
-            string response = null;
-            string xml = null;
-
             string headerText = "Processing...";
-            Thread workThread = new Thread(new ThreadStart(delegate
+            Func<string> func = () =>
             {
-                response = GetDbScheme(schemeName, restrictions, ref xml);
-            }));
-            CancelForm form = new CancelForm(headerText);
-            ThreadVisualization.ProcessEnded += form.CloseForm;
-            if (!ThreadVisualization.StartWorkThread(form, workThread))
+                return dbService.GetDBScheme(schemeName, restrictions);
+            };
+
+            string xml = CancelFormEx.ShowProgressWindow(func, headerText);
+            if (string.IsNullOrEmpty(xml))
             {
-                return;
-            }
-            
-            if (!string.IsNullOrEmpty(response))
-            {
-                DisplayMessage.ShowError(response, owner: this);
                 return;
             }
 
@@ -223,26 +214,5 @@ namespace GrabDatabase
                 checkBoxGetScheme.Visible = false;
             }
         }
-
-        private string GetDbScheme(string schemeName, string[] restrictions, ref string xml)
-        {
-            try
-            {
-                xml = dbService.GetDBScheme(schemeName, restrictions);
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-            finally
-            {
-                ThreadVisualization.OnProcessEnded();
-            }
-        }
-        
     }
-
-
-
 }

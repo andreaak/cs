@@ -104,51 +104,19 @@ namespace GrabDatabase
 
         public static DbStructureDataset ReadDbStructure(DBService dbService)
         {
-            string response = null;
             string headerText = "Processing...";
-            DbStructureDataset dbStructure = null;
-            Thread workThread = new Thread(new ThreadStart(delegate
+            Func<DbStructureDataset> func = () =>
             {
-                try
+                DbStructureReader reader = new DbStructureReader(dbService);
+                string error = reader.ReadData();
+                if (!string.IsNullOrEmpty(error))
                 {
-                    DbStructureReader reader = new DbStructureReader(dbService);
-                    string error = reader.ReadData();
-                    bool boundData = true;
-                    if (!string.IsNullOrEmpty(error))
-                    {
-                        if (DisplayMessage.ShowWarningYesNO(error, additionalMessage: " Continue?") != DialogResult.Yes)
-                        { 
-                            boundData = false; 
-                        }
-                    }
-                    if (boundData)
-                    {
-                        dbStructure = reader.DbStructure;
-                    }
+                    throw new Exception(error);
                 }
-                catch (Exception ex)
-                {
-                    response = ex.Message;
-                }
-                finally
-                {
-                    ThreadVisualization.OnProcessEnded();
-                }
-            }));
+                return reader.DbStructure;
+            };
 
-            CancelForm form = new CancelForm(headerText);
-            ThreadVisualization.ProcessEnded += form.CloseForm;
-            if (!ThreadVisualization.StartWorkThread(form, workThread))
-            {
-                return dbStructure;
-            }
-
-            if (!string.IsNullOrEmpty(response))
-            {
-                DisplayMessage.ShowError(response);
-            }
-            return dbStructure;
-        
+            return CancelFormEx.ShowProgressWindow(func, headerText);
         }
     }
 }
