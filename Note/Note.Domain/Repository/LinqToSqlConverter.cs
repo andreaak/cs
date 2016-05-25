@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Note.Domain.Common;
+﻿using Note.Domain.Common;
 using Note.Domain.Concrete.LinqToSql;
 using Note.Domain.Entities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Note.Domain.Repository
 {
@@ -33,7 +32,7 @@ namespace Note.Domain.Repository
                 ID = item.ID,
                 EditValue = item.Data,
                 PlainText = item.TextData,
-                ModDate = string.IsNullOrEmpty(item.ModDate) ? DateTime.MinValue : DateTime.Parse(item.ModDate),
+                ModDate = DateConverter.Convert(item.ModDate),
             };
         }
 
@@ -59,7 +58,7 @@ namespace Note.Domain.Repository
             item.OrderPosition = (int)entity.OrderPosition;
             item.Type = (DataTypes)entity.Type;
             item.EditValue = entity.Description;
-            item.ModDate = string.IsNullOrEmpty(entity.ModDate) ? DateTime.MinValue : DateTime.Parse(entity.ModDate);
+            item.ModDate = DateConverter.Convert(entity.ModDate);
         }
 
         public static void Convert(Description item, Description entity)

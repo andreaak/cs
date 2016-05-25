@@ -73,7 +73,7 @@ namespace Note.Domain.Repository
                 Description = description,
                 OrderPosition = maxPos.HasValue ? maxPos + 1 : DBConstants.START_POSITION,
                 Type = (byte)type,
-                ModDate = DateTime.Now.ToString()
+                ModDate = DateConverter.GetCurrentDate()
             };
             dataContext.Entity.InsertOnSubmit(item);
             dataContext.SubmitChanges();
@@ -83,7 +83,7 @@ namespace Note.Domain.Repository
                 EntityData itemData = new EntityData
                 {
                     ID = item.ID,
-                    ModDate = DateTime.Now.ToString()
+                    ModDate = DateConverter.GetCurrentDate()
                 };
                 dataContext.EntityData.InsertOnSubmit(itemData);
                 dataContext.SubmitChanges();
@@ -109,7 +109,7 @@ namespace Note.Domain.Repository
             {
                 entityData.Data = editValue;
                 entityData.TextData = plainText;
-                entityData.ModDate = DateTime.Now.ToString();
+                entityData.ModDate = DateConverter.GetCurrentDate();
                 dataContext.SubmitChanges();
                 return true;
             }
@@ -122,7 +122,7 @@ namespace Note.Domain.Repository
             if (entity != null && entity.Description != description)
             {
                 entity.Description = description;
-                entity.ModDate = DateTime.Now.ToString();
+                entity.ModDate = DateConverter.GetCurrentDate();
                 dataContext.SubmitChanges();
                 return true;
             }
@@ -207,7 +207,7 @@ namespace Note.Domain.Repository
             {
                 currentitem.ParentID = destItemId;
                 currentitem.OrderPosition = destPosition;
-                currentitem.ModDate = DateTime.Now.ToString();
+                currentitem.ModDate = DateConverter.GetCurrentDate();
                 dataContext.SubmitChanges();
                 return true;
             }
@@ -255,9 +255,9 @@ namespace Note.Domain.Repository
             if (switchItem != null)
             {
                 currentitem.OrderPosition = destPosition;
-                currentitem.ModDate = DateTime.Now.ToString();
+                currentitem.ModDate = DateConverter.GetCurrentDate();
                 switchItem.OrderPosition = position;
-                switchItem.ModDate = DateTime.Now.ToString();
+                switchItem.ModDate = DateConverter.GetCurrentDate();
                 dataContext.SubmitChanges();
                 return true;
             }
@@ -296,7 +296,7 @@ namespace Note.Domain.Repository
                     && item.Description == comparedItem.EditValue);
                 if (baseItem != null
                     && IsCanCompare(baseItem.ModDate, comparedItem.ModDate)
-                    && (string.IsNullOrEmpty(baseItem.ModDate) || comparedItem.ModDate > DateTime.Parse(baseItem.ModDate)))
+                    && (string.IsNullOrEmpty(baseItem.ModDate) || comparedItem.ModDate > DateConverter.Convert(baseItem.ModDate)))
                 {
 
                     AddDescription(comparedItem, DataStatus.Modified, list);
@@ -310,7 +310,7 @@ namespace Note.Domain.Repository
                     && item.Description == comparedItem.EditValue);
                 if (baseItem != null
                     && !string.IsNullOrEmpty(baseItem.ModDate)
-                    && comparedItem.ModDate < DateTime.Parse(baseItem.ModDate))
+                    && comparedItem.ModDate < DateConverter.Convert(baseItem.ModDate))
                 {
 
                     AddDescription(comparedItem, DataStatus.Obsolete, list);
@@ -323,7 +323,7 @@ namespace Note.Domain.Repository
                 var baseData = dataContext.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
                 if (baseData != null
                     && IsCanCompare(baseData.ModDate, comparedData.ModDate)
-                    && (string.IsNullOrEmpty(baseData.ModDate) || comparedData.ModDate > DateTime.Parse(baseData.ModDate)))
+                    && (string.IsNullOrEmpty(baseData.ModDate) || comparedData.ModDate > DateConverter.Convert(baseData.ModDate)))
                 {
                     var comparedItem = comparedRepository.Descriptions.FirstOrDefault(item => item.ID == comparedData.ID);
                     if (comparedItem != null)
@@ -339,7 +339,7 @@ namespace Note.Domain.Repository
                 var baseData = dataContext.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
                 if (baseData != null
                     && !string.IsNullOrEmpty(baseData.ModDate)
-                    && comparedData.ModDate < DateTime.Parse(baseData.ModDate))
+                    && comparedData.ModDate < DateConverter.Convert(baseData.ModDate))
                 {
                     var comparedItem = comparedRepository.Descriptions.FirstOrDefault(item => item.ID == comparedData.ID);
                     if (comparedItem != null)

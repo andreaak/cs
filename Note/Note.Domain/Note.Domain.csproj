@@ -85,6 +85,7 @@
     <Compile Include="Common\Enums.cs" />
     <Compile Include="Entities\TextData.cs" />
     <Compile Include="Entities\Description.cs" />
+    <Compile Include="Repository\DateConverter.cs" />
     <Compile Include="Repository\DLRepository.cs" />
     <Compile Include="Repository\IDataRepository.cs" />
     <Compile Include="Repository\LinqToSqlConverter.cs" />
