@@ -316,13 +316,6 @@
     <Content Include="01_Elements CS\04_TypeConversion\ImplicitNumericConversions.jpg" />
     <Content Include="12_MultiThreading\01_Thread\ThreadStates.png" />
     <Content Include="21_Database\DBScript.sql" />
-    <Content Include="ShopDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ShopDB_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DependentUpon>ShopDB.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

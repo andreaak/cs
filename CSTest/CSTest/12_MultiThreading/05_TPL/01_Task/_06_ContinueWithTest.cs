@@ -32,6 +32,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             /*
             Основной поток запущен.
             MyTask() запущен
+            Thread: 7
             В методе MyTask() подсчет равен 0
             В методе MyTask() подсчет равен 1
             В методе MyTask() подсчет равен 2
@@ -39,6 +40,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             В методе MyTask() подсчет равен 4
             MyTask завершен
             Продолжение запущено
+            Thread: 8
             В продолжении подсчет равен 0
             В продолжении подсчет равен 1
             В продолжении подсчет равен 2
@@ -65,30 +67,40 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             }, cts.Token, cts.Token);
             task.ContinueWith((t) =>
             {
-                Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 Debug.WriteLine("Обработка при отмене задачи");
+                Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 DisposeCancellationTokenSource();
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnCanceled,
                 UIContext.Current);
             task.ContinueWith((t) =>
             {
-                Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 Debug.WriteLine("Обработка при исключении в задаче");
+                Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 DisposeCancellationTokenSource();
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnFaulted,
                 UIContext.Current);
             task.ContinueWith((t) =>
             {
-                Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 Debug.WriteLine("Обработка при нормальном завершении задачи");
+                Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 DisposeCancellationTokenSource();
             }, cts.Token,
                 TaskContinuationOptions.OnlyOnRanToCompletion,
                 UIContext.Current);
             Thread.Sleep(10000);
             Debug.WriteLine("Основной поток завершен.");
+            /*
+            Основной поток запущен.
+            Первичный поток: Id 6
+            Рабочий поток: Id 7
+            Начало работы
+            Окончание работы
+            Обработка при нормальном завершении задачи
+            Поток продолжения: Id 8
+            Основной поток завершен. 
+            */
         }
 
         [TestMethod]
@@ -100,12 +112,14 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             cts = new CancellationTokenSource();
             var task = Task.Factory.StartNew((object tc) =>
             {
+                Debug.WriteLine("Рабочий поток: Id {0} ", Thread.CurrentThread.ManagedThreadId);
                 LongMethod();
                 ((CancellationToken)tc).ThrowIfCancellationRequested();
             }, cts.Token, cts.Token);
             task.ContinueWith((t) =>
             {
                 Debug.WriteLine("Обработка при отмене задачи");
+                Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 DisposeCancellationTokenSource();
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnCanceled,
@@ -113,6 +127,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             task.ContinueWith((t) =>
             {
                 Debug.WriteLine("Обработка при исключении в задаче");
+                Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 DisposeCancellationTokenSource();
             }, CancellationToken.None,
                 TaskContinuationOptions.OnlyOnFaulted,
@@ -120,6 +135,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             task.ContinueWith((t) =>
             {
                 Debug.WriteLine("Обработка при нормальном завершении задачи");
+                Debug.WriteLine("Поток продолжения: Id {0}", Thread.CurrentThread.ManagedThreadId);
                 DisposeCancellationTokenSource();
             }, cts.Token,
                 TaskContinuationOptions.OnlyOnRanToCompletion,
@@ -128,6 +144,17 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             CancelTask();
             Thread.Sleep(10000);
             Debug.WriteLine("Основной поток завершен.");
+            /*
+            Основной поток запущен.
+            Рабочий поток: Id 7 
+            Начало работы
+            Отмена задачи
+            Окончание работы
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Обработка при отмене задачи
+            Поток продолжения: Id 8
+            Основной поток завершен.
+            */
         }
 
         [TestMethod]
@@ -172,14 +199,14 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Debug.WriteLine("Основной поток завершен.");
             /*
             Основной поток запущен.
-            Первичный поток: Id 8 
-            Основной поток завершен.
-            Рабочий поток: Id 9 
+            Первичный поток: Id 6
+            Рабочий поток: Id 7 
             Начало работы
-            Окончание работы
+            Возникновение исключения
+            Exception thrown: 'System.Exception' in CSTest.dll
             Поток продолжения: Id 8
-
-            Обработка при нормальном завершении задачи
+            Обработка при исключении в задаче
+            Основной поток завершен.
             */
         }
 
@@ -187,6 +214,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
         static void TestTask()
         {
             Debug.WriteLine("MyTask() запущен");
+            Debug.WriteLine("Thread: " + Thread.CurrentThread.ManagedThreadId);
             for (int count = 0; count < 5; count++)
             {
                 Thread.Sleep(500);
@@ -199,6 +227,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
         static void ContinuationTask(Task t)
         {
             Debug.WriteLine("Продолжение запущено");
+            Debug.WriteLine("Thread: " + Thread.CurrentThread.ManagedThreadId);
             for (int count = 0; count < 5; count++)
             {
                 Thread.Sleep(500);
