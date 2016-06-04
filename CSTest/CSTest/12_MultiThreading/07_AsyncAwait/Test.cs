@@ -59,7 +59,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             TestClassReflected mc = new TestClassReflected();
-            mc.OperationAsync2();
+            mc.OperationAsync2Clean();
             Thread.Sleep(3000);
             /*
             Main ThreadID 10
@@ -149,7 +149,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             TestClassReflected mc = new TestClassReflected();
-            mc.OperationAsync5();
+            mc.OperationAsync5ReturnValue();
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
             /*
@@ -186,7 +186,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             TestClassReflected mc = new TestClassReflected();
-            Task task = mc.OperationAsync6();
+            Task task = mc.OperationAsync6Continuation();
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи"));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
@@ -224,7 +224,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             TestClassReflected mc = new TestClassReflected();
-            Task<int> task = mc.OperationAsync7();
+            Task<int> task = mc.OperationAsync7ReturnValue();
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
@@ -262,7 +262,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             TestClassReflected mc = new TestClassReflected();
             double argument = 8.0;
-            Task<double> task = mc.OperationAsync8(argument);
+            Task<double> task = mc.OperationAsync8ReturnAndArgument(argument);
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
