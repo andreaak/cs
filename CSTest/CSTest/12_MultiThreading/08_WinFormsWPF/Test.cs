@@ -25,7 +25,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
                 {
                     var resp = (HttpWebResponse)req.EndGetResponse(asyncResult);
                     string headersText = resp.Headers.ToString();
-                    sync.Post(
+                    sync.Post(//Для избежания исключения при обновлении UI из другого потока
                         state => /*dataTextBox.Text += headersText*/ Debug.WriteLine(headersText),
                         null);
                 },
@@ -51,8 +51,8 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
         }
 
         [TestMethod]
-        // Продемонстрировать продолжение задачи при исключении.
-        public void TestWinFormsWPFTaskContinue2()
+        // Продемонстрировать продолжение задачи при нормальной работе.
+        public void TestWinFormsWPFTaskContinue()
         {
             Debug.WriteLine("Основной поток запущен.");
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
@@ -94,7 +94,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
 
         [TestMethod]
         // Продемонстрировать продолжение задачи при отмене.
-        public void TestWinFormsWPFTaskCancel()
+        public void TestWinFormsWPFTaskContinueCancel()
         {
             Debug.WriteLine("Основной поток запущен.");
             UIContext.Initialize();
@@ -133,7 +133,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
 
         [TestMethod]
         // Продемонстрировать продолжение задачи при исключении.
-        public void TestWinFormsWPFTaskException()
+        public void TestWinFormsWPFTaskContinueException()
         {
             Debug.WriteLine("Основной поток запущен.");
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
@@ -184,27 +184,13 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
             */
         }
 
-        async Task DoDownloadAsync()
-        {
-            var req = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
-            req.Method = "GET";
-            var resp = (HttpWebResponse)await req.GetResponseAsync();
-            // или
-            // Task<WebResponse> getResponseTask = Task.Factory.FromAsync<WebResponse>(
-            // req.BeginGetResponse, req.EndGetResponse, null);
-            // var resp = (HttpWebResponse) await getResponseTask;
 
-            //dataTextBox.Text += resp.Headers.ToString();
-            //dataTextBox.Text += "Async download completed";
-            Debug.WriteLine(resp.Headers.ToString());
-            Debug.WriteLine("Async download completed");
-        }
 
         [TestMethod]
-        public void TestWinFormsWPF2()
+        public void TestWinFormsWPFAsyncAwait1()
         {
             Debug.WriteLine("Staring async download\n");
-            DoDownloadAsync();
+            DoDownloadAsync("http://www.microsoft.com");
             Debug.WriteLine("Async download started\n");
 
             Thread.Sleep(5000);
@@ -228,6 +214,51 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
 
             Async download completed
             */
+        }
+
+        [TestMethod]
+        public void TestWinFormsWPFAsyncAwait2Exception()
+        {
+            NewMethod();
+        }
+
+        private async void NewMethod()
+        {
+            Debug.WriteLine("Staring async download\n");
+            try
+            {
+                await DoDownloadAsync("http://www.microsoft55.com");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception: " + ex.Message);
+            }
+            Debug.WriteLine("Async download started\n");
+
+            Thread.Sleep(5000);
+            /*
+            Staring async download
+
+            Async download started
+
+            Exception thrown: 'System.Net.WebException' in mscorlib.dll
+            */
+        }
+
+        async Task DoDownloadAsync(string url)
+        {
+            var req = (HttpWebRequest)WebRequest.Create(url);
+            req.Method = "GET";
+            var resp = (HttpWebResponse)await req.GetResponseAsync();
+            // или
+            // Task<WebResponse> getResponseTask = Task.Factory.FromAsync<WebResponse>(
+            // req.BeginGetResponse, req.EndGetResponse, null);
+            // var resp = (HttpWebResponse) await getResponseTask;
+
+            //dataTextBox.Text += resp.Headers.ToString();
+            //dataTextBox.Text += "Async download completed";
+            Debug.WriteLine(resp.Headers.ToString());
+            Debug.WriteLine("Async download completed");
         }
     }
 }
