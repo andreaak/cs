@@ -173,6 +173,7 @@
     <Compile Include="08_String\Test.cs" />
     <Compile Include="09_Array\0_Setup\TestClass.cs" />
     <Compile Include="09_Array\Test.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\_10_ReadOnlyCollection.cs" />
     <Compile Include="10_Collections\03_Iterators\01_Foreach.cs" />
     <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\Test.cs" />
     <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\_02_IEnumerable.cs" />

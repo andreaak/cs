@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using CSTest._06_Interface._0_Setup;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CSTest._06_Interface
 {
@@ -209,6 +211,17 @@ namespace CSTest._06_Interface
             DerivedClass.Method2()
             DerivedClass.Method3()
              */
+        }
+
+        [TestMethod]
+        public void TestInterface12()
+        {
+            IList<int> lst = new int[0];
+            IList<int> lst2 = new List<int>();
+            //lst.Add(0);//An exception of type 'System.NotSupportedException' occurred in mscorlib.dll but was not handled in user code
+            lst2.Add(0);
+            /*
+            */
         }
     }
 }
