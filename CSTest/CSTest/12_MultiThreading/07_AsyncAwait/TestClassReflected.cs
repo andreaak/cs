@@ -99,7 +99,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         //    await task;
         //}
 
-        public void OperationAsync2()
+        public void OperationAsync2Clean()
         {
             TestClassReflected.AsyncStateMachine2 stateMachine;
             stateMachine.outer = this;
@@ -221,16 +221,16 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         //    Debug.WriteLine("\nРезультат: {0}\n", await task);
         //}
 
-        public void OperationAsync5()
+        public void OperationAsync5ReturnValue()
         {
-            TestClassReflected.AsyncStateMachine5 stateMachine;
+            TestClassReflected.AsyncStateMachine5ReturnValue stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncVoidMethodBuilder.Create();
             stateMachine.state = -1;
             stateMachine.builder.Start(ref stateMachine);//builder вызывает MoveNext()
         }
 
-        private struct AsyncStateMachine5 : IAsyncStateMachine
+        private struct AsyncStateMachine5ReturnValue : IAsyncStateMachine
         {
             public int state;
             public AsyncVoidMethodBuilder builder;//для void OperationAsync() {...}
@@ -274,9 +274,9 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         //    await Task.Factory.StartNew(Operation);
         //}
 
-        public Task OperationAsync6()
+        public Task OperationAsync6Continuation()
         {
-            TestClassReflected.AsyncStateMachine6 stateMachine;
+            TestClassReflected.AsyncStateMachine6Continuation stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncTaskMethodBuilder.Create();
             stateMachine.state = -1;
@@ -284,7 +284,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return stateMachine.builder.Task;
         }
 
-        private struct AsyncStateMachine6 : IAsyncStateMachine
+        private struct AsyncStateMachine6Continuation : IAsyncStateMachine
         {
             public int state;
             public AsyncTaskMethodBuilder builder;//для Task OperationAsync() {...}
@@ -329,9 +329,9 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         //    return await Task<int>.Factory.StartNew(Operation4);
         //}
 
-        public Task<int> OperationAsync7()
+        public Task<int> OperationAsync7ReturnValue()
         {
-            TestClassReflected.AsyncStateMachine7 stateMachine;
+            TestClassReflected.AsyncStateMachine7ReturnValue stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncTaskMethodBuilder<int>.Create();
             stateMachine.state = -1;
@@ -339,7 +339,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return stateMachine.builder.Task;
         }
 
-        private struct AsyncStateMachine7 : IAsyncStateMachine
+        private struct AsyncStateMachine7ReturnValue : IAsyncStateMachine
         {
             public int state;
             public AsyncTaskMethodBuilder<int> builder;//для Task OperationAsync() {...}
@@ -392,9 +392,9 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return (double)argument * (double)argument;
         }
 
-        public Task<double> OperationAsync8(double argument)
+        public Task<double> OperationAsync8ReturnAndArgument(double argument)
         {
-            TestClassReflected.AsyncStateMachine8 stateMachine;
+            TestClassReflected.AsyncStateMachine8ReturnAndArgument stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncTaskMethodBuilder<double>.Create();
             stateMachine.state = -1;
@@ -403,7 +403,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return stateMachine.builder.Task;
         }
 
-        private struct AsyncStateMachine8 : IAsyncStateMachine
+        private struct AsyncStateMachine8ReturnAndArgument : IAsyncStateMachine
         {
             public int state;
             public AsyncTaskMethodBuilder<double> builder;//для Task OperationAsync() {...}
