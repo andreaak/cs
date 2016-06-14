@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
 
 namespace CSTest._08_String
 {
@@ -138,6 +140,52 @@ namespace CSTest._08_String
             public string First;
             public string Second;
             public string Third;
+        }
+
+        [TestMethod]
+        public void TestStringBuider1()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("123456789012345");
+            Debug.WriteLine("Length = " + sb.Length);
+            Debug.WriteLine("Capacity = " + sb.Capacity);
+            sb.Append("12345678901234567890");
+            Debug.WriteLine("Length = " + sb.Length);
+            Debug.WriteLine("Capacity = " + sb.Capacity);
+            sb.Append("12345678901234567890");
+            Debug.WriteLine("Length = " + sb.Length);
+            Debug.WriteLine("Capacity = " + sb.Capacity);
+            /*
+            Length = 15
+            Capacity = 16
+            Length = 35
+            Capacity = 35
+            Length = 55
+            Capacity = 70
+            */
+        }
+
+        [TestMethod]
+        public void TestStringBuider2()
+        {
+            StringBuilder2 sb = new StringBuilder2();
+            sb.Append("123456789012345");
+            Debug.WriteLine("Length = " + sb.Length);
+            Debug.WriteLine("Capacity = " + sb.Capacity);
+            sb.Append("12345678901234567890");
+            Debug.WriteLine("Length = " + sb.Length);
+            Debug.WriteLine("Capacity = " + sb.Capacity);
+            sb.Append("12345678901234567890");
+            Debug.WriteLine("Length = " + sb.Length);
+            Debug.WriteLine("Capacity = " + sb.Capacity);
+            /*
+            Length = 15
+            Capacity = 16
+            Length = 35
+            Capacity = 35
+            Length = 55
+            Capacity = 70
+            */
         }
     }
 }

@@ -170,6 +170,7 @@
     <Compile Include="08_String\01_RegularExpression\TestCookBook.cs" />
     <Compile Include="08_String\01_RegularExpression\TestReplace.cs" />
     <Compile Include="08_String\01_RegularExpression\TestFind.cs" />
+    <Compile Include="08_String\StringBuilder2.cs" />
     <Compile Include="08_String\Test.cs" />
     <Compile Include="09_Array\0_Setup\TestClass.cs" />
     <Compile Include="09_Array\Test.cs" />

@@ -25,7 +25,7 @@ namespace CSTest._10_Collections._02_GenericCollections
         const int Iterations = 1000;
 
         [TestMethod]
-        public void TestCollection1GrowList()
+        public void TestList1GrowList()
         {
             List<int> lst = new List<int>();
             for (int i = 0; i < Iterations; i++)
@@ -76,6 +76,27 @@ namespace CSTest._10_Collections._02_GenericCollections
             Capacity 1024 Count 2
             Capacity 1024 Count 1
             Capacity 1024 Count 0
+            */
+        }
+
+        [TestMethod]
+        public void TestList2GrowList()
+        {
+            List<int> lst = new List<int>();
+            Debug.WriteLine("Initial - Capacity {0} Count {1}", lst.Capacity, lst.Count);
+            for (int i = 0; i < 35; i++)
+            {
+                lst.Add(i);
+            }
+            Debug.WriteLine("Base List - Capacity {0} Count {1}", lst.Capacity, lst.Count);
+            List<int> lst2 = new List<int>();
+            lst2.AddRange(lst);
+            Debug.WriteLine("Capacity {0} Count {1}", lst2.Capacity, lst2.Count);
+
+            /*
+            Initial - Capacity 0 Count 0
+            Base List - Capacity 64 Count 35
+            Capacity 35 Count 35
             */
         }
     }
