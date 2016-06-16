@@ -212,16 +212,5 @@ namespace CSTest._06_Interface
             DerivedClass.Method3()
              */
         }
-
-        [TestMethod]
-        public void TestInterface12()
-        {
-            IList<int> lst = new int[0];
-            IList<int> lst2 = new List<int>();
-            //lst.Add(0);//An exception of type 'System.NotSupportedException' occurred in mscorlib.dll but was not handled in user code
-            lst2.Add(0);
-            /*
-            */
-        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
@@ -72,6 +71,10 @@ namespace CSTest._08_String
             Debug.WriteLine("E format: {0:E}", 9999);      // Вывод в экспоненциальном формате.
             Debug.WriteLine("G format: {0:G}", 99.9);      // Вывод в общем формате.
             Debug.WriteLine("P format: {0:P}", 99.9);      // Вывод в процентном формате.
+
+            string temp1 = "One, Two";
+            string temp2 = $"@{temp1}";
+            Debug.WriteLine("Temp1 {0} Temp2 {1}", temp1, temp2);      // Вывод в процентном формате.
             /*
             C format: ¤99.90
             F format: 100
@@ -81,6 +84,7 @@ namespace CSTest._08_String
             E format: 9.999000E+003
             G format: 99.9
             P format: 9,990.00 %
+            Temp1 One, Two Temp2 @One, Two
             */
         }
         private bool StringEquals(string s1, string s2)
@@ -135,6 +139,27 @@ namespace CSTest._08_String
             */
         }
 
+        [TestMethod]
+        public void TestString4StringConcat()
+        {
+            string temp = "";
+            string temp2 = "FFFFF";
+            string temp3 = temp2.Substring(1, 3);
+            string res = temp + temp3;
+            Debug.WriteLine("ReferenceEquals(temp3, res): " + StringEquals(temp3, res));
+
+            string res2 = string.Concat(temp, temp3);
+            Debug.WriteLine("ReferenceEquals(temp3, res2): " + StringEquals(temp3, res));
+
+            string ddd = string.IsInterned(temp3);
+            Debug.WriteLine("IsInterbed temp3: " + (ddd != null ? "Yes" : "Not"));
+            /*
+            ReferenceEquals(temp3, res): True
+            ReferenceEquals(temp3, res2): True
+            IsInterbed temp3: Not
+            */
+        }
+
         struct StringTest
         {
             public string First;
@@ -154,7 +179,8 @@ namespace CSTest._08_String
             Debug.WriteLine("Capacity = " + sb.Capacity);
             sb.Append("12345678901234567890");
             Debug.WriteLine("Length = " + sb.Length);
-            Debug.WriteLine("Capacity = " + sb.Capacity);
+            Debug.WriteLine(sb.ToString());
+
             /*
             Length = 15
             Capacity = 16
@@ -162,13 +188,14 @@ namespace CSTest._08_String
             Capacity = 35
             Length = 55
             Capacity = 70
+            1234567890123451234567890123456789012345678901234567890
             */
         }
 
         [TestMethod]
         public void TestStringBuider2()
         {
-            StringBuilder2 sb = new StringBuilder2();
+            StringBuilderNET sb = new StringBuilderNET();
             sb.Append("123456789012345");
             Debug.WriteLine("Length = " + sb.Length);
             Debug.WriteLine("Capacity = " + sb.Capacity);
@@ -177,7 +204,8 @@ namespace CSTest._08_String
             Debug.WriteLine("Capacity = " + sb.Capacity);
             sb.Append("12345678901234567890");
             Debug.WriteLine("Length = " + sb.Length);
-            Debug.WriteLine("Capacity = " + sb.Capacity);
+            Debug.WriteLine(sb.ToString());
+
             /*
             Length = 15
             Capacity = 16
@@ -185,6 +213,28 @@ namespace CSTest._08_String
             Capacity = 35
             Length = 55
             Capacity = 70
+            1234567890123451234567890123456789012345678901234567890
+            */
+        }
+
+
+        [TestMethod]
+        public void TestStringBuider3()
+        {
+            StringBuilderNET sb = new StringBuilderNET();
+            sb.Append("ABCDEFGHIJKLMNO");
+            Debug.WriteLine("Length = " + sb.Length);
+            Debug.WriteLine("Capacity = " + sb.Capacity);
+            sb.Append("PQRSTUVWXYZ");
+            Debug.WriteLine("Length = " + sb.Length);
+            Debug.WriteLine("Capacity = " + sb.Capacity);
+            Debug.WriteLine(sb.ToString());
+            /*
+            Length = 15
+            Capacity = 16
+            Length = 26
+            Capacity = 32
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ
             */
         }
     }

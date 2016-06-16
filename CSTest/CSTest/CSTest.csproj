@@ -170,10 +170,11 @@
     <Compile Include="08_String\01_RegularExpression\TestCookBook.cs" />
     <Compile Include="08_String\01_RegularExpression\TestReplace.cs" />
     <Compile Include="08_String\01_RegularExpression\TestFind.cs" />
-    <Compile Include="08_String\StringBuilder2.cs" />
+    <Compile Include="08_String\StringBuilderNET.cs" />
     <Compile Include="08_String\Test.cs" />
     <Compile Include="09_Array\0_Setup\TestClass.cs" />
     <Compile Include="09_Array\Test.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\Setup\ListNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\_10_ReadOnlyCollection.cs" />
     <Compile Include="10_Collections\03_Iterators\01_Foreach.cs" />
     <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\Test.cs" />
@@ -299,6 +300,10 @@
     </Compile>
     <Compile Include="21_Database\03_LinqToSql\Test.cs" />
     <Compile Include="22_AppConfig\Test.cs" />
+    <Compile Include="30 NET Code\BinaryCompatibility.cs" />
+    <Compile Include="30 NET Code\CompatibilitySwitches.cs" />
+    <Compile Include="30 NET Code\Environment.cs" />
+    <Compile Include="30 NET Code\ThrowHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

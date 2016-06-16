@@ -1,6 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CSTest._10_Collections._02_GenericCollections
 {
@@ -97,6 +99,81 @@ namespace CSTest._10_Collections._02_GenericCollections
             Initial - Capacity 0 Count 0
             Base List - Capacity 64 Count 35
             Capacity 35 Count 35
+            */
+        }
+
+        [TestMethod]
+        public void TestList3ToList()
+        {
+            IList<string> lst = new string[] {"One", "Two", "Three"};
+            IList<string> lst2 = lst.ToList();
+            Debug.WriteLine("Ref Equals lst lst2 : " + ReferenceEquals(lst, lst2));
+
+            List<string> lst3 = new List<string> {"One", "Two", "Three"};
+            List<string> lst4 = lst.ToList();
+            Debug.WriteLine("Ref Equals lst3 lst4 : " + ReferenceEquals(lst3, lst4));
+
+            List<string> lst5 = lst4.ToList();
+            Debug.WriteLine("Ref Equals lst3 lst5 : " + ReferenceEquals(lst3, lst5));
+            Debug.WriteLine("Ref Equals lst4 lst5 : " + ReferenceEquals(lst4, lst5));
+
+
+            IEnumerable<string> empty = Enumerable.Empty<string>();
+            IEnumerable<string> empty2 = Enumerable.Empty<string>();
+            Debug.WriteLine("Ref Equals empty empty2 : " + ReferenceEquals(empty, empty2));
+
+            /*
+            Ref Equals lst lst2 : False
+            Ref Equals lst3 lst4 : False
+            Ref Equals lst3 lst5 : False
+            Ref Equals lst4 lst5 : False
+            Ref Equals empty empty2 : True
+            */
+        }
+
+        [TestMethod]
+        public void TestList4Cast()
+        {
+
+            List<string> lst3 = new List<string> { "One", "Two", "Three" };
+            Debug.WriteLine("lst3 Count : " + lst3.Count);
+            IEnumerable<string> lst4 = lst3;
+            List<string> lst5 = lst4 as List<string>;
+            if(lst5 != null)
+            {
+                lst5.Add("Four");
+            }
+
+            Debug.WriteLine("lst3 Count : " + lst3.Count);
+
+            List<int> lst6 = new List<int> { 1, 2, 3 };
+            IEnumerable<int> lst7 = lst6;
+            //IEnumerable<object> lst8 = lst6;//Error CS0266  Cannot implicitly convert type 'System.Collections.Generic.List<int>' to 'System.Collections.Generic.IEnumerable<object>'.
+                                            //An explicit conversion exists (are you missing a cast?)  CSTest D:\My\cs\CSTest\CSTest\10_Collections\02_GenericCollections\_01_List.cs	148	Active
+
+
+        /*
+        lst3 Count : 3
+        lst3 Count : 4
+        */
+    }
+
+    [TestMethod]
+        public void TestList5Add()
+        {
+
+            IList<string> lst3 = new List<string> { "One", "Two", "Three" };
+            Debug.WriteLine("lst3 Count : " + lst3.Count);
+            lst3.Add("Four");
+            Debug.WriteLine("lst3 Count : " + lst3.Count);
+
+            IList<string> lst4 = new List<string> { "One", "Two", "Three" }.ToArray();
+            lst4.First();
+            //lst4.Add("Four");//An exception of type 'System.NotSupportedException' occurred in mscorlib.dll but was not handled in user code
+            //Debug.WriteLine("lst3 Count : " + lst3.Count);
+            /*
+            lst3 Count : 3
+            lst3 Count : 4
             */
         }
     }
