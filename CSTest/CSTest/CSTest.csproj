@@ -170,11 +170,12 @@
     <Compile Include="08_String\01_RegularExpression\TestCookBook.cs" />
     <Compile Include="08_String\01_RegularExpression\TestReplace.cs" />
     <Compile Include="08_String\01_RegularExpression\TestFind.cs" />
-    <Compile Include="08_String\StringBuilderNET.cs" />
+    <Compile Include="08_String\02_StringBuilder\StringBuilderNET.cs" />
+    <Compile Include="08_String\02_StringBuilder\Test.cs" />
     <Compile Include="08_String\Test.cs" />
     <Compile Include="09_Array\0_Setup\TestClass.cs" />
     <Compile Include="09_Array\Test.cs" />
-    <Compile Include="10_Collections\02_GenericCollections\Setup\ListNET.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\01_List\ListNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\_10_ReadOnlyCollection.cs" />
     <Compile Include="10_Collections\03_Iterators\01_Foreach.cs" />
     <Compile Include="10_Collections\03_Iterators\_01_IEnumerable\Test.cs" />
@@ -186,7 +187,7 @@
     <Compile Include="10_Collections\03_Iterators\_02_Yield\_02_YieldBreak.cs" />
     <Compile Include="10_Collections\03_Iterators\_02_Yield\_03_YieldMulti.cs" />
     <Compile Include="10_Collections\03_Iterators\_02_Yield\_04_YieldGeneric.cs" />
-    <Compile Include="10_Collections\02_GenericCollections\_01_List.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\01_List\Test.cs" />
     <Compile Include="10_Collections\03_Iterators\_02_Yield\_05_YieldStateMachine.cs" />
     <Compile Include="12_MultiThreading\01_Thread\0_Setup\_04_AbortThread.cs" />
     <Compile Include="12_MultiThreading\01_Thread\0_Setup\_03_PriorityThread.cs" />

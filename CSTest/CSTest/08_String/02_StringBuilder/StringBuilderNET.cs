@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Security;
-using System.Globalization;
 using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Linq;
+using System.Security;
 using Environment = CSTest._30_NET_Code.Environment;
 
-namespace CSTest._08_String
+namespace CSTest._08_String._02_StringBuilder
 {
     [Serializable]
     public sealed class StringBuilderNET

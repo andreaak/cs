@@ -10,7 +10,7 @@ using System.Runtime.Serialization;
 using CSTest._30_NET_Code;
 
 
-namespace CSTest._10_Collections._02_GenericCollections.Setup
+namespace CSTest._10_Collections._02_GenericCollections._01_List
 {
     /*============================================================
     **

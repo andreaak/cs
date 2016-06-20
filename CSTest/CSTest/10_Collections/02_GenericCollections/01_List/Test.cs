@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace CSTest._10_Collections._02_GenericCollections
+namespace CSTest._10_Collections._02_GenericCollections._01_List
 {
     /*
     Коллекция представляет собой набор объектов схожих типов, сгруппированных вместе.  
