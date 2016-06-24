@@ -2076,6 +2076,16 @@ namespace CSTest._08_String._02_StringBuilder
         //    }
         //}
 
+        private static void ThreadSafeCopy(string source, char[] destination, int destinationIndex, int count)
+        {
+            ThreadSafeCopy(source, 0, destination, destinationIndex, count);
+        }
+
+        private static void ThreadSafeCopy(string source, char[] destination, int destinationIndex)
+        {
+            ThreadSafeCopy(source, 0, destination, destinationIndex, source.Length);
+        }
+
         private static void ThreadSafeCopy(string source, int sourceIndex, char[] destination, int destinationIndex, int count)
         {
             if (count > 0)
@@ -2092,16 +2102,6 @@ namespace CSTest._08_String._02_StringBuilder
                     throw new ArgumentOutOfRangeException("destinationIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
                 }
             }
-        }
-
-        private static void ThreadSafeCopy(string source, char[] destination, int destinationIndex, int count)
-        {
-            ThreadSafeCopy(source, 0, destination, destinationIndex, count);
-        }
-
-        private static void ThreadSafeCopy(string source, char[] destination, int destinationIndex)
-        {
-            ThreadSafeCopy(source, 0, destination, destinationIndex, source.Length);
         }
 
         [SecurityCritical]

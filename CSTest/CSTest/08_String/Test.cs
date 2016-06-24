@@ -149,7 +149,7 @@ namespace CSTest._08_String
             Debug.WriteLine("ReferenceEquals(temp3, res): " + StringEquals(temp3, res));
 
             string res2 = string.Concat(temp, temp3);
-            Debug.WriteLine("ReferenceEquals(temp3, res2): " + StringEquals(temp3, res));
+            Debug.WriteLine("ReferenceEquals(temp3, res2): " + StringEquals(temp3, res2));
 
             string ddd = string.IsInterned(temp3);
             Debug.WriteLine("IsInterbed temp3: " + (ddd != null ? "Yes" : "Not"));
