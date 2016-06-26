@@ -184,7 +184,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
             */
         }
 
-
+        #if C5
 
         [TestMethod]
         public void TestWinFormsWPFAsyncAwait1()
@@ -260,5 +260,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
             Debug.WriteLine(resp.Headers.ToString());
             Debug.WriteLine("Async download completed");
         }
+
+#endif
     }
 }

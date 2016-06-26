@@ -6,6 +6,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {
+    #if C5
+
     [TestClass]
     public class Test
     {
@@ -461,4 +463,5 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
     }
+#endif
 }

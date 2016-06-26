@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Linq;
+#if C5
 using System.Net.Http;
+#endif
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -21,6 +23,8 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Thread.Sleep(2000);
             Debug.WriteLine("End");
         }
+
+#if C5
 
         /*
         Ключевое слово async указывает компилятору, что метод, является асинхронным.
@@ -262,6 +266,6 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
             return urlContents.Length;
         }
-
+#endif
     }
 }

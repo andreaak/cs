@@ -32,7 +32,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
     //[DebuggerTypeProxy(typeof(Mscorlib_CollectionDebugView<>))]
     [DebuggerDisplay("Count = {Count}")]
     [Serializable]
-    public class List2<T> : IList<T>, System.Collections.IList, IReadOnlyList<T>
+    public class List2<T> : IList<T>, System.Collections.IList//, IReadOnlyList<T>
     {
         private const int _defaultCapacity = 4;
 

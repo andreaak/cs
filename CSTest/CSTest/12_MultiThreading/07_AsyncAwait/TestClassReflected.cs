@@ -24,6 +24,8 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         //    await task;
         //}
 
+#if C5
+
         public void OperationAsync()
         {
             TestClassReflected.AsyncStateMachine stateMachine;
@@ -42,7 +44,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             public TestClassReflected outer;
             private TaskAwaiter awaiter;
 
-            #region IAsyncStateMachine Members
+#region IAsyncStateMachine Members
 
             void IAsyncStateMachine.MoveNext()
             {
@@ -89,7 +91,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 this.builder.SetStateMachine(stateMachine);
             }
 
-            #endregion
+#endregion
         }
 
         //public async void OperationAsync2()
@@ -114,7 +116,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             public AsyncVoidMethodBuilder builder;//для void OperationAsync() {...}
             public TestClassReflected outer;
 
-            #region IAsyncStateMachine Members
+#region IAsyncStateMachine Members
 
             void IAsyncStateMachine.MoveNext()
             {
@@ -128,7 +130,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 //this.builder.SetStateMachine(stateMachine);
             }
 
-            #endregion
+#endregion
         }
 
         //public async void OperationAsync3()
@@ -165,7 +167,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
             static int counterCallMoveNext;
 
-            #region IAsyncStateMachine Members
+#region IAsyncStateMachine Members
 
             /*
             builder.Start() первый раз вызывает метод MoveNext - Синхронно,
@@ -201,7 +203,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 this.builder.SetStateMachine(stateMachine);
             }
 
-            #endregion
+#endregion
         }
 
         public int Operation4()
@@ -237,7 +239,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             public TestClassReflected outer;
             TaskAwaiter<int> awaiter;
 
-            #region IAsyncStateMachine Members
+#region IAsyncStateMachine Members
 
             void IAsyncStateMachine.MoveNext()
             {
@@ -266,7 +268,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 this.builder.SetStateMachine(stateMachine);
             }
 
-            #endregion
+#endregion
         }
 
         //public async Task OperationAsync6()
@@ -291,7 +293,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             public TestClassReflected outer;
             TaskAwaiter awaiter;
 
-            #region IAsyncStateMachine Members
+#region IAsyncStateMachine Members
 
             void IAsyncStateMachine.MoveNext()
             {
@@ -319,7 +321,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 this.builder.SetStateMachine(stateMachine);
             }
 
-            #endregion
+#endregion
         }
 
         //public async Task<int> OperationAsync7()
@@ -346,7 +348,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             public TestClassReflected outer;
             TaskAwaiter<int> awaiter;
 
-            #region IAsyncStateMachine Members
+#region IAsyncStateMachine Members
 
             void IAsyncStateMachine.MoveNext()
             {
@@ -377,7 +379,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 this.builder.SetStateMachine(stateMachine);
             }
 
-            #endregion
+#endregion
         }
 
         //public async Task<double> OperationAsync8(double argument)
@@ -411,7 +413,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             TaskAwaiter<double> awaiter;
             public double argument;
 
-            #region IAsyncStateMachine Members
+#region IAsyncStateMachine Members
 
             void IAsyncStateMachine.MoveNext()
             {
@@ -442,7 +444,9 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 this.builder.SetStateMachine(stateMachine);
             }
 
-            #endregion
+#endregion
         }
+
+#endif
     }
 }
