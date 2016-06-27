@@ -75,6 +75,14 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=3.47.8.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.47.8\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.Xunit, Version=3.47.8.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.Xunit.3.47.8\lib\net40\Ploeh.AutoFixture.Xunit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
       <Private>True</Private>
@@ -106,21 +114,26 @@
       <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="xunit.extensions, Version=1.8.0.1549, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensions.1.8.0.1549\lib\xunit.extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="000_Base\001_Calculator.cs" />
     <Compile Include="000_Base\002_Program.cs" />
     <Compile Include="000_Base\003_UahConverter.cs" />
     <Compile Include="001_MSUnit\001_Test.cs" />
-    <Compile Include="002_NUnit\001_EqualTest.cs" />
-    <Compile Include="002_NUnit\002_ReferenceTest.cs" />
-    <Compile Include="002_NUnit\003_ContainsTest.cs" />
-    <Compile Include="002_NUnit\004_ComparisonsTest.cs" />
-    <Compile Include="002_NUnit\005_TypeAssertsTest.cs" />
-    <Compile Include="002_NUnit\006_ConditionTest.cs" />
-    <Compile Include="002_NUnit\007_UtilityMethodsTest.cs" />
-    <Compile Include="002_NUnit\008_ExceptionTest.cs" />
-    <Compile Include="002_NUnit\009_StringTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\001_EqualTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\002_ReferenceTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\003_ContainsTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\004_ComparisonsTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\005_TypeAssertsTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\006_ConditionTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\007_UtilityMethodsTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\008_ExceptionTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\009_StringTest.cs" />
+    <Compile Include="002_NUnit\01_LifeCycle\Test.cs" />
     <Compile Include="003_DI\000_Base\FileDataObject.cs" />
     <Compile Include="003_DI\000_Base\IDataAccessObject.cs" />
     <Compile Include="003_DI\000_Base\Test\StubFileDataObject.cs" />
@@ -242,7 +255,6 @@
     <Compile Include="004_StubsAndMocks\018_Moq\Application\EmployeesDetails.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\Application\IFoo.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\Application\Logger.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\Application\Bar.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_005_Properties.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_003_Arguments.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_001_Base.cs" />
@@ -251,25 +263,40 @@
     <Compile Include="004_StubsAndMocks\018_Moq\_007_TimesMethodCalled.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_008_Callbacks.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_009_MockRepository.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\BossEnemy.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\Enemy.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\EnemyFactory.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\MainViewModel.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\NameJoiner.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\NormalEnemy.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\PlayerCharacter.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\SpecialDates.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\SpecialDateStore.cs" />
-    <Compile Include="005_xUnit\01_Asserting\_05_AssertingCollections.cs" />
-    <Compile Include="005_xUnit\01_Asserting\_07_AssertingExceptions.cs" />
-    <Compile Include="005_xUnit\01_Asserting\_02_AssertingBools.cs" />
-    <Compile Include="005_xUnit\01_Asserting\_03_AssertingNulls.cs" />
-    <Compile Include="005_xUnit\01_Asserting\_08_AssertingObjectTypes.cs" />
-    <Compile Include="005_xUnit\01_Asserting\_06_AssertingRanges.cs" />
-    <Compile Include="005_xUnit\01_Asserting\_04_AssertingStringResults.cs" />
-    <Compile Include="005_xUnit\01_Asserting\_09_AssertingPropertyChangedEvents.cs" />
-    <Compile Include="005_xUnit\01_Asserting\Setup\Calculator.cs" />
-    <Compile Include="005_xUnit\01_Asserting\_01_AssertingNumericResults.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\Setup\MemoryCalculator.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\_01_SetupCleanUpOncePerTestClass.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\_02_SetupCleanUpOncePerTest.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\_03_OutputDiagnosticMessage.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\_04_GroupingTestsIntoCategories.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\_05_SharingFixtureInstancesAcrossMultipleTestClasses.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\_06_ConfiguringParallelTestExecution.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\_07_CustomCollectionOrdering.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\BossEnemy.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\Enemy.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\EnemyFactory.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\MainViewModel.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\NameJoiner.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\NormalEnemy.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\PlayerCharacter.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\SpecialDates.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\SpecialDateStore.cs" />
+    <Compile Include="005_xUnit\02_Asserting\_05_AssertingCollections.cs" />
+    <Compile Include="005_xUnit\02_Asserting\_07_AssertingExceptions.cs" />
+    <Compile Include="005_xUnit\02_Asserting\_02_AssertingBools.cs" />
+    <Compile Include="005_xUnit\02_Asserting\_03_AssertingNulls.cs" />
+    <Compile Include="005_xUnit\02_Asserting\_08_AssertingObjectTypes.cs" />
+    <Compile Include="005_xUnit\02_Asserting\_06_AssertingRanges.cs" />
+    <Compile Include="005_xUnit\02_Asserting\_04_AssertingStringResults.cs" />
+    <Compile Include="005_xUnit\02_Asserting\_09_AssertingPropertyChangedEvents.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\Calculator.cs" />
+    <Compile Include="005_xUnit\02_Asserting\_01_AssertingNumericResults.cs" />
+    <Compile Include="005_xUnit\03_DataDrivenTests\Setup\Person.cs" />
+    <Compile Include="005_xUnit\03_DataDrivenTests\Setup\StringUtils.cs" />
+    <Compile Include="005_xUnit\03_DataDrivenTests\_01_InlineTestData.cs" />
+    <Compile Include="005_xUnit\03_DataDrivenTests\_02_SharingTestDataAcrossTestMethodsAndClasses.cs" />
+    <Compile Include="005_xUnit\03_DataDrivenTests\_03_ExternalData.cs" />
+    <Compile Include="005_xUnit\03_DataDrivenTests\_04_CreatingCustomDataSourceAttributes.cs" />
+    <Compile Include="005_xUnit\03_DataDrivenTests\_05_ AutoData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -281,6 +308,9 @@
     <None Include="003_DI\013_IoCContainer\IoC Container.docx" />
     <None Include="003_DI\di.docx" />
     <None Include="004_StubsAndMocks\mock.docx" />
+    <None Include="005_xUnit\03_DataDrivenTests\TestData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -293,7 +323,9 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="002_NUnit\03_DataDrivenTests\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

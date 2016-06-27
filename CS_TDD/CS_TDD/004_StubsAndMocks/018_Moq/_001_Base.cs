@@ -94,7 +94,7 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         public void MoqTestBase03Class()
         {
             //Arrange
-            Mock<Logger2> mock = new Mock<Logger2>();
+            Mock<Logger> mock = new Mock<Logger>();
             //mock.Setup(x => x.WriteLinePublic(It.IsAny<string>()));//не мокается
             mock.Setup(x => x.WriteLinePublicVirt(It.IsAny<string>())).Returns((string arg) => arg == "Test3");
             mock.Setup(x => x.WriteLinePublicAbstract(It.IsAny<string>()));

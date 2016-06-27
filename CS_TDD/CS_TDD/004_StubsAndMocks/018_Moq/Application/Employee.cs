@@ -1,6 +1,6 @@
 ﻿namespace CS_TDD._004_StubsAndMocks._018_Moq.Application
 {
-    class Employee
+    public class Employee
     {
         public int EmpId
         {

@@ -46,17 +46,19 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
             mock.Setup(foo => foo.TryParse("ping", out outString)).Returns(true);
 
             // ref arguments
-            Bar instance = new Bar();
+            Employee instance = new Employee();
+            
             // Only matches if the ref argument to the invocation is the same instance
             mock.Setup(foo => foo.Submit(ref instance)).Returns(true);
-
             IFoo objFoo = mock.Object;
+
             string temp;
             Debug.WriteLine("Result {0}, Value {1}", objFoo.TryParse("ping", out temp), temp);
 
             Debug.WriteLine("Result {0}, Value {1}", objFoo.Submit(ref instance), instance);
-            Bar bar = new Bar();
-            Debug.WriteLine("Result {0}, Value {1}", objFoo.Submit(ref bar), bar);
+
+            Employee employee = new Employee();
+            Debug.WriteLine("Result {0}, Value {1}", objFoo.Submit(ref employee), employee);
 
             /*
             Result True, Value ack

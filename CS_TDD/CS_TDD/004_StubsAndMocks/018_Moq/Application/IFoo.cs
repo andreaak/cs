@@ -26,7 +26,7 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq.Application
 
         bool TryParse(string arg, out string res);
 
-        bool Submit(ref Bar instance);
+        bool Submit(ref Employee instance);
 
         int GetCountThing();
 
