@@ -134,6 +134,7 @@
     <Compile Include="002_NUnit\02_Asserting\008_ExceptionTest.cs" />
     <Compile Include="002_NUnit\02_Asserting\009_StringTest.cs" />
     <Compile Include="002_NUnit\01_LifeCycle\Test.cs" />
+    <Compile Include="002_NUnit\03_DataDrivenTests\Test.cs" />
     <Compile Include="003_DI\000_Base\FileDataObject.cs" />
     <Compile Include="003_DI\000_Base\IDataAccessObject.cs" />
     <Compile Include="003_DI\000_Base\Test\StubFileDataObject.cs" />
@@ -323,9 +324,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="002_NUnit\03_DataDrivenTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
