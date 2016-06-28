@@ -8,12 +8,12 @@ namespace CS_TDD._002_NUnit._02_Asserting
     [TestFixture]
     class ConditionTest
     {
-        Calculator calc;
+        MemoryCalculator calc;
 
         [SetUp]
         public void Init()
         {
-            calc = new Calculator();
+            calc = new MemoryCalculator();
         }
 
         [Test]

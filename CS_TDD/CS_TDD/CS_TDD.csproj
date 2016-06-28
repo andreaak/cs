@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -120,20 +119,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="000_Base\001_Calculator.cs" />
-    <Compile Include="000_Base\002_Program.cs" />
-    <Compile Include="000_Base\003_UahConverter.cs" />
+    <Compile Include="000_Base\02_Program.cs" />
+    <Compile Include="000_Base\03_UahConverter.cs" />
     <Compile Include="001_MSUnit\001_Test.cs" />
+    <Compile Include="002_NUnit\01_LifeCycle\_02_SkipTest.cs" />
     <Compile Include="002_NUnit\02_Asserting\001_EqualTest.cs" />
     <Compile Include="002_NUnit\02_Asserting\002_ReferenceTest.cs" />
-    <Compile Include="002_NUnit\02_Asserting\003_ContainsTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\003_AssertingCollections.cs" />
     <Compile Include="002_NUnit\02_Asserting\004_ComparisonsTest.cs" />
-    <Compile Include="002_NUnit\02_Asserting\005_TypeAssertsTest.cs" />
+    <Compile Include="002_NUnit\02_Asserting\005_AssertingObjectTypes.cs" />
     <Compile Include="002_NUnit\02_Asserting\006_ConditionTest.cs" />
     <Compile Include="002_NUnit\02_Asserting\007_UtilityMethodsTest.cs" />
-    <Compile Include="002_NUnit\02_Asserting\008_ExceptionTest.cs" />
-    <Compile Include="002_NUnit\02_Asserting\009_StringTest.cs" />
-    <Compile Include="002_NUnit\01_LifeCycle\Test.cs" />
+    <Compile Include="002_NUnit\02_Asserting\008_AssertingException.cs" />
+    <Compile Include="002_NUnit\02_Asserting\009_AssertingString.cs" />
+    <Compile Include="002_NUnit\01_LifeCycle\_01_Test.cs" />
     <Compile Include="002_NUnit\03_DataDrivenTests\Test.cs" />
     <Compile Include="003_DI\000_Base\FileDataObject.cs" />
     <Compile Include="003_DI\000_Base\IDataAccessObject.cs" />
@@ -264,20 +263,23 @@
     <Compile Include="004_StubsAndMocks\018_Moq\_007_TimesMethodCalled.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_008_Callbacks.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_009_MockRepository.cs" />
-    <Compile Include="005_xUnit\01_LifeCycle\Setup\MemoryCalculator.cs" />
+    <Compile Include="000_Base\01_MemoryCalculator.cs" />
     <Compile Include="005_xUnit\01_LifeCycle\_01_SetupCleanUpOncePerTestClass.cs" />
     <Compile Include="005_xUnit\01_LifeCycle\_02_SetupCleanUpOncePerTest.cs" />
     <Compile Include="005_xUnit\01_LifeCycle\_03_OutputDiagnosticMessage.cs" />
     <Compile Include="005_xUnit\01_LifeCycle\_04_GroupingTestsIntoCategories.cs" />
     <Compile Include="005_xUnit\01_LifeCycle\_05_SharingFixtureInstancesAcrossMultipleTestClasses.cs" />
     <Compile Include="005_xUnit\01_LifeCycle\_06_ConfiguringParallelTestExecution.cs" />
-    <Compile Include="005_xUnit\01_LifeCycle\_07_CustomCollectionOrdering.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\_07_CustomTestOrdering.cs" />
+    <Compile Include="005_xUnit\01_LifeCycle\_08_SkipTest.cs" />
     <Compile Include="005_xUnit\02_Asserting\Setup\BossEnemy.cs" />
     <Compile Include="005_xUnit\02_Asserting\Setup\Enemy.cs" />
     <Compile Include="005_xUnit\02_Asserting\Setup\EnemyFactory.cs" />
+    <Compile Include="005_xUnit\02_Asserting\Setup\FirstLetterEqualityComparer.cs" />
     <Compile Include="005_xUnit\02_Asserting\Setup\MainViewModel.cs" />
     <Compile Include="005_xUnit\02_Asserting\Setup\NameJoiner.cs" />
     <Compile Include="005_xUnit\02_Asserting\Setup\NormalEnemy.cs" />
+    <Compile Include="000_Base\PersonWithEquals.cs" />
     <Compile Include="005_xUnit\02_Asserting\Setup\PlayerCharacter.cs" />
     <Compile Include="005_xUnit\02_Asserting\Setup\SpecialDates.cs" />
     <Compile Include="005_xUnit\02_Asserting\Setup\SpecialDateStore.cs" />
@@ -289,15 +291,15 @@
     <Compile Include="005_xUnit\02_Asserting\_06_AssertingRanges.cs" />
     <Compile Include="005_xUnit\02_Asserting\_04_AssertingStringResults.cs" />
     <Compile Include="005_xUnit\02_Asserting\_09_AssertingPropertyChangedEvents.cs" />
-    <Compile Include="005_xUnit\02_Asserting\Setup\Calculator.cs" />
     <Compile Include="005_xUnit\02_Asserting\_01_AssertingNumericResults.cs" />
-    <Compile Include="005_xUnit\03_DataDrivenTests\Setup\Person.cs" />
-    <Compile Include="005_xUnit\03_DataDrivenTests\Setup\StringUtils.cs" />
+    <Compile Include="000_Base\Person.cs" />
+    <Compile Include="000_Base\StringUtils.cs" />
+    <Compile Include="005_xUnit\03_DataDrivenTests\Setup\NumberChecker.cs" />
     <Compile Include="005_xUnit\03_DataDrivenTests\_01_InlineTestData.cs" />
     <Compile Include="005_xUnit\03_DataDrivenTests\_02_SharingTestDataAcrossTestMethodsAndClasses.cs" />
     <Compile Include="005_xUnit\03_DataDrivenTests\_03_ExternalData.cs" />
     <Compile Include="005_xUnit\03_DataDrivenTests\_04_CreatingCustomDataSourceAttributes.cs" />
-    <Compile Include="005_xUnit\03_DataDrivenTests\_05_ AutoData.cs" />
+    <Compile Include="005_xUnit\03_DataDrivenTests\_05_AutoData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -309,7 +311,10 @@
     <None Include="003_DI\013_IoCContainer\IoC Container.docx" />
     <None Include="003_DI\di.docx" />
     <None Include="004_StubsAndMocks\mock.docx" />
-    <None Include="005_xUnit\03_DataDrivenTests\TestData.csv">
+    <None Include="TestData.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestData.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="app.config" />
@@ -326,12 +331,6 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

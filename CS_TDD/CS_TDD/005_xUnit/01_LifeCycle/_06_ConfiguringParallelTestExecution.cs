@@ -1,4 +1,4 @@
-﻿using CS_TDD._005_xUnit._01_LifeCycle.Setup;
+﻿using CS_TDD._000_Base;
 using Xunit;
 
 namespace CS_TDD._005_xUnit._01_LifeCycle
@@ -31,7 +31,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
         {
             var sut = new MemoryCalculator();
 
-            sut.Subtract(5);
+            sut.Sub(5);
 
             Assert.Equal(-5, sut.CurrentValue);
         }

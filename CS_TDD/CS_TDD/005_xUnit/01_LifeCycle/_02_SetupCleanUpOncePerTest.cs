@@ -1,5 +1,5 @@
-﻿using CS_TDD._005_xUnit._01_LifeCycle.Setup;
-using System;
+﻿using System;
+using CS_TDD._000_Base;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -39,7 +39,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
         {
             _testOutput.WriteLine("Executing ShouldSubtract");
 
-            _sut.Subtract(5);
+            _sut.Sub(5);
 
             Assert.Equal(-5, _sut.CurrentValue);
         }
@@ -50,7 +50,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
             _testOutput.WriteLine("Executing ShouldDivide");
 
             _sut.Add(10);
-            _sut.Divide(2);
+            _sut.Div(2);
 
             Assert.Equal(5, _sut.CurrentValue);
         }

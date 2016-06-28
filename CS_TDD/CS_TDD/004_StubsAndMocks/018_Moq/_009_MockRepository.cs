@@ -29,12 +29,12 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
             IFoo mock = repository.Of<IFoo>()
                 .Where(ld => ld.Name == "DefaultLogger")
                 .Where(ld => ld.DoSomething() == "D:\\Temp")
-                .Where(ld => ld.DoSomething2(It.IsAny<string>()) == "C:\\Temp")
+                .Where(ld => ld.DoSomethingWithReturnString(It.IsAny<string>()) == "C:\\Temp")
                 .First();
 
             Assert.That(mock.DoSomething(), Is.EqualTo("D:\\Temp"));
             Assert.That(mock.Name, Is.EqualTo("DefaultLogger"));
-            Assert.That(mock.DoSomething2("CustomLogger"), Is.EqualTo("C:\\Temp"));
+            Assert.That(mock.DoSomethingWithReturnString("CustomLogger"), Is.EqualTo("C:\\Temp"));
         }
 
         [Test]

@@ -1,6 +1,6 @@
-﻿using CS_TDD._005_xUnit._01_LifeCycle.Setup;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using CS_TDD._000_Base;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,7 +10,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
     Default random collection order
     Implement ITestCollectionOrderer
     Run collections in alphabetical order
-    Configure in assembly info
+    Configure in assembly info [assembly: TestCollectionOrderer("CS_TDD._005_xUnit._01_LifeCycle.AlphabeticCollectionOrderer", "CS_TDD._005")]
     */
 
     public class AlphabeticCollectionOrderer : ITestCollectionOrderer
@@ -46,7 +46,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
             var sut = new MemoryCalculator();
 
             sut.Add(10);
-            sut.Divide(2);
+            sut.Div(2);
 
             Assert.Equal(5, sut.CurrentValue);
         }
@@ -59,7 +59,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
         {
             var sut = new MemoryCalculator();
 
-            sut.Subtract(5);
+            sut.Sub(5);
 
             Assert.Equal(-5, sut.CurrentValue);
         }

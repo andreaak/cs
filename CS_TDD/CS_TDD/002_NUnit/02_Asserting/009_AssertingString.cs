@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace CS_TDD._002_NUnit._02_Asserting
 {
     [TestFixture]
-    class StringTest
+    class _009_AssertingString
     {
         // Этот тест проходит только в том случае, если исключительная ситуация ArgumentOutOfRangeException была сгенерированна при
         // передаче конструктору неправильных параметров

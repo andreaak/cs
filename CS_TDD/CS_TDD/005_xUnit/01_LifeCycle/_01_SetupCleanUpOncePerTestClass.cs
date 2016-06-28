@@ -1,5 +1,5 @@
-﻿using CS_TDD._005_xUnit._01_LifeCycle.Setup;
-using System;
+﻿using System;
+using CS_TDD._000_Base;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -37,6 +37,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
         {
             _testOutput = helper;
             _fixture = fixture;
+            _fixture.Sut.Clear();
         }
 
         [Fact]
@@ -55,7 +56,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
         {
             _testOutput.WriteLine("Executing ShouldSubtract");
 
-            _fixture.Sut.Subtract(5);
+            _fixture.Sut.Sub(5);
 
             Assert.Equal(-5, _fixture.Sut.CurrentValue);
         }
@@ -66,7 +67,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
             _testOutput.WriteLine("Executing ShouldDivide");
 
             _fixture.Sut.Add(10);
-            _fixture.Sut.Divide(2);
+            _fixture.Sut.Div(2);
 
             Assert.Equal(5, _fixture.Sut.CurrentValue);
         }

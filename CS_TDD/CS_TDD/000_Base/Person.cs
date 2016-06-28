@@ -1,4 +1,4 @@
-﻿namespace CS_TDD._005_xUnit._03_DataDrivenTests.Setup
+﻿namespace CS_TDD._000_Base
 {
     public class Person
     {

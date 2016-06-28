@@ -27,10 +27,10 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         public void MoqTestReturnValue2()
         {
             var mock = new Mock<IFoo>();
-            mock.Setup(foo => foo.DoSomething("ping")).Returns(true);
+            mock.Setup(foo => foo.DoSomethingWithReturn("ping")).Returns(true);
 
             // access invocation arguments when returning a value
-            mock.Setup(x => x.DoSomething2(It.IsAny<string>()))
+            mock.Setup(x => x.DoSomethingWithReturnString(It.IsAny<string>()))
                     .Returns((string s) => s.ToLower());
         }
 
@@ -63,9 +63,9 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             // Для любого аргумента метода DoSomething2 вернуть "C:\\Foo".
             IFoo loggerDependency = Mock.Of<IFoo>(
-                ld => ld.DoSomething2(It.IsAny<string>()) == "C:\\Foo");
+                ld => ld.DoSomethingWithReturnString(It.IsAny<string>()) == "C:\\Foo");
 
-            string directory = loggerDependency.DoSomething2("anything");
+            string directory = loggerDependency.DoSomethingWithReturnString("anything");
 
             Assert.That(directory, Is.EqualTo("C:\\Foo"));
         }
@@ -79,12 +79,12 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
             // public string DoSomething2(string s) { return "C:\\" + s; }
             Mock<IFoo> stub = new Mock<IFoo>();
 
-            stub.Setup(ld => ld.DoSomething2(It.IsAny<string>()))
+            stub.Setup(ld => ld.DoSomethingWithReturnString(It.IsAny<string>()))
                 .Returns<string>(name => "C:\\" + name);
 
             string loggerName = "SomeLogger";
             IFoo logger = stub.Object;
-            string directory = logger.DoSomething2(loggerName);
+            string directory = logger.DoSomethingWithReturnString(loggerName);
             Assert.That(directory, Is.EqualTo("C:\\" + loggerName));
         }
     }

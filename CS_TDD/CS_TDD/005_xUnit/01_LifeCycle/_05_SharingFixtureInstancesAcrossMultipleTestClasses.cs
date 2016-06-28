@@ -61,7 +61,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
         [Fact]
         public void ShouldSubtractPositiveNumbers()
         {
-            _fixture.Sut.Subtract(5);
+            _fixture.Sut.Sub(5);
 
             Assert.Equal(-5, _fixture.Sut.CurrentValue);
         }
@@ -69,7 +69,7 @@ namespace CS_TDD._005_xUnit._01_LifeCycle
         [Fact]
         public void ShouldSubtractNegativeNumbers()
         {
-            _fixture.Sut.Subtract(-5);
+            _fixture.Sut.Sub(-5);
 
             Assert.Equal(5, _fixture.Sut.CurrentValue);
         }

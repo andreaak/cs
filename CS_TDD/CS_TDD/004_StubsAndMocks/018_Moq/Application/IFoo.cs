@@ -9,16 +9,17 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq.Application
             set;
         }
 
-
         int Value
         {
             get;
             set;
         }
-        
-        bool DoSomething(string arg);
 
-        string DoSomething2(string arg);
+        bool DoSomethingWithReturn(string arg);
+
+        string DoSomethingWithReturnString(string arg);
+
+        void DoSomethingWithoutReturn(string arg);
 
         string DoSomething();
 

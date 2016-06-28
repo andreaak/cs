@@ -12,17 +12,17 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             Mock<IFoo> mock = new Mock<IFoo>();
 
-            mock.Object.DoSomething("Test");
+            mock.Object.DoSomethingWithReturn("Test");
             // Method should never be called
-            mock.Verify(foo => foo.DoSomething("ping"), Times.Never());
+            mock.Verify(foo => foo.DoSomethingWithReturn("ping"), Times.Never());
 
-            mock.Object.DoSomething("ping");
+            mock.Object.DoSomethingWithReturn("ping");
            
             // Проверка того, что метод ILogWriter.Write вызвался в точности один раз (ни больше, ни меньше)
-            mock.Verify(foo => foo.DoSomething("ping"), Times.Once());
+            mock.Verify(foo => foo.DoSomethingWithReturn("ping"), Times.Once());
             
             // Проверка того, что метод DoSomething вызвался по крайней мере один раз
-            mock.Verify(foo => foo.DoSomething("ping"), Times.AtLeastOnce());
+            mock.Verify(foo => foo.DoSomethingWithReturn("ping"), Times.AtLeastOnce());
         }
 
         [Test]

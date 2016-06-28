@@ -1,6 +1,6 @@
 ﻿namespace CS_TDD._005_xUnit._02_Asserting.Setup
 {
-    public abstract class Enemy
+    public class Enemy
     {
         private string _name = "Default Name";
 

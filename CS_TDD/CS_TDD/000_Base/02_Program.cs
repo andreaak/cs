@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CS_TDD._000_Base
 {
@@ -9,7 +6,7 @@ namespace CS_TDD._000_Base
     {
         static void Main()
         {
-            Calculator c = new Calculator();
+            MemoryCalculator c = new MemoryCalculator();
 
             Console.WriteLine("3 + 5 = 8", c.Add(3, 5));
             Console.WriteLine("6 - 2 = 4", c.Sub(6, 2));

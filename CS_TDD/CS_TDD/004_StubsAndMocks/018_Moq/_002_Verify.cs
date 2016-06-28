@@ -47,8 +47,8 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         public void MoqTestVerify02VerifyCallWithArgument()
         {
             Mock<IFoo> mock = new Mock<IFoo>();
-            mock.Object.DoSomething("ping");
-            mock.Verify(foo => foo.DoSomething("ping"));
+            mock.Object.DoSomethingWithReturn("ping");
+            mock.Verify(foo => foo.DoSomethingWithReturn("ping"));
 
             //--------------
 
@@ -65,8 +65,8 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             Mock<IFoo> mock = new Mock<IFoo>();
             // Verify with custom error message for failure
-            mock.Object.DoSomething("ping2");
-            mock.Verify(foo => foo.DoSomething("ping3"), "When doing operation X, the service should be pinged always");
+            mock.Object.DoSomethingWithReturn("ping2");
+            mock.Verify(foo => foo.DoSomethingWithReturn("ping3"), "When doing operation X, the service should be pinged always");
         }
 
         [Test]

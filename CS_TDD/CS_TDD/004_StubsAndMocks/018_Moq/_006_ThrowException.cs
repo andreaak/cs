@@ -14,8 +14,8 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
             var mock = new Mock<IFoo>();
             // Multiple parameters overloads available
             // throwing when invoked
-            mock.Setup(foo => foo.DoSomething("reset")).Throws<InvalidOperationException>();
-            mock.Setup(foo => foo.DoSomething("")).Throws(new ArgumentException("command"));
+            mock.Setup(foo => foo.DoSomethingWithReturn("reset")).Throws<InvalidOperationException>();
+            mock.Setup(foo => foo.DoSomethingWithReturn("")).Throws(new ArgumentException("command"));
         }
     }
 }

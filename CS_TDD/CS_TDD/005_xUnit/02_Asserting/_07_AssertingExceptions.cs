@@ -1,5 +1,5 @@
 ﻿using System;
-using CS_TDD._005_xUnit._02_Asserting.Setup;
+using CS_TDD._000_Base;
 using Xunit;
 
 namespace CS_TDD._005_xUnit._02_Asserting
@@ -9,21 +9,20 @@ namespace CS_TDD._005_xUnit._02_Asserting
         [Fact]
         public void ShouldErrorWhenDivideByZero()
         {
-            var sut = new Calculator();
+            var sut = new MemoryCalculator();
 
-            Assert.Throws<DivideByZeroException>(() => sut.Divide(10, 0));
+            Assert.Throws<DivideByZeroException>(() => sut.Div(10, 0));
         }
 
         [Fact]
         public void ShouldErrorWhenNumberTooBig()
         {
-            var sut = new Calculator();
+            var sut = new MemoryCalculator();
 
             ArgumentOutOfRangeException thrownException =
-                Assert.Throws<ArgumentOutOfRangeException>(() => sut.Divide(201, 1));
+                Assert.Throws<ArgumentOutOfRangeException>(() => sut.Div(201, 1));
 
             Assert.Equal("value", thrownException.ParamName);
-
         }
     }
 }

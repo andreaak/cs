@@ -15,7 +15,6 @@ namespace CS_TDD._005_xUnit._02_Asserting
             Assert.Equal("Sarah Smith", fullName);
         }
 
-
         [Fact]
         public void ShouldJoinNames_CaseInsensitiveAssertDemo()
         {
@@ -25,7 +24,6 @@ namespace CS_TDD._005_xUnit._02_Asserting
 
             Assert.Equal("SARAH SMITH", fullName, true);
         }
-
 
         [Fact]
         public void ShouldJoinNames_SubstringContents()
@@ -37,7 +35,6 @@ namespace CS_TDD._005_xUnit._02_Asserting
             Assert.Contains("Sarah", fullName);
         }
 
-
         [Fact]
         public void ShouldJoinNames_StartsWith()
         {
@@ -48,7 +45,6 @@ namespace CS_TDD._005_xUnit._02_Asserting
             Assert.StartsWith("Sarah", fullName);
         }
 
-
         [Fact]
         public void ShouldJoinNames_EndsWith()
         {
@@ -58,7 +54,6 @@ namespace CS_TDD._005_xUnit._02_Asserting
 
             Assert.EndsWith("ith", fullName);
         }
-
 
         [Fact]
         public void ShouldJoinNames_Regex()

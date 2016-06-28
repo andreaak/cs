@@ -1,4 +1,4 @@
-﻿using CS_TDD._005_xUnit._01_LifeCycle.Setup;
+﻿using CS_TDD._000_Base;
 using Xunit;
 
 namespace CS_TDD._005_xUnit._03_DataDrivenTests
@@ -24,8 +24,8 @@ namespace CS_TDD._005_xUnit._03_DataDrivenTests
         {
             var sut = new MemoryCalculator();
 
-            sut.Subtract(firstNumber);
-            sut.Subtract(secondNumber);
+            sut.Sub(firstNumber);
+            sut.Sub(secondNumber);
 
             Assert.Equal(expectedResult, sut.CurrentValue);
         }

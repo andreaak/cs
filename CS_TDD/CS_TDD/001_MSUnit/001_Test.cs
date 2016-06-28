@@ -14,7 +14,7 @@ namespace CS_TDD._001_MSUnit
         [TestMethod]   // TestMethod -  указывает, что метод содержит тестовый код.
         public static void MSTestOperations()
         {
-            Calculator c = new Calculator();
+            MemoryCalculator c = new MemoryCalculator();
 
             Assert.AreEqual(8, c.Add(3, 5));    // 3 + 5 = 8.
             Assert.AreEqual(4, c.Sub(6, 2));    // 6 - 2 = 4.

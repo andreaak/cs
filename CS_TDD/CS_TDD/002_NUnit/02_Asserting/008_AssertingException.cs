@@ -14,7 +14,7 @@ namespace CS_TDD._002_NUnit._02_Asserting
         public static void TestCalculatorDivideByZeroException()
         {
             //throw new Exception();
-            new Calculator().Div(1, 0);
+            new MemoryCalculator().Div(1, 0);
         }
 
         // Класс UahConverter может сгенерировать исключительную ситуацию типа ArgumentOutOfRangeException в двух случаях,

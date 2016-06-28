@@ -1,8 +1,10 @@
-﻿using CS_TDD._005_xUnit._01_LifeCycle.Setup;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using CS_TDD._000_Base;
+using CS_TDD._005_xUnit._03_DataDrivenTests.Setup;
 using Xunit;
+using Xunit.Extensions;
 
 namespace CS_TDD._005_xUnit._03_DataDrivenTests
 {
@@ -32,16 +34,27 @@ namespace CS_TDD._005_xUnit._03_DataDrivenTests
 
     public class _03_ExternalData
     {
-        [Theory]
+        [Xunit.Theory]
         [MemberData("TestData", MemberType = typeof(MemoryCalculatorTestDataFile))]
-        public void ShouldSubtractTwoNumbers(int firstNumber, int secondNumber, int expectedResult)
+        public void DataFromCsv(int firstNumber, int secondNumber, int expectedResult)
         {
             var sut = new MemoryCalculator();
 
-            sut.Subtract(firstNumber);
-            sut.Subtract(secondNumber);
+            sut.Sub(firstNumber);
+            sut.Sub(secondNumber);
 
             Assert.Equal(expectedResult, sut.CurrentValue);
+        }
+
+        [Xunit.Theory]
+        [ExcelData("TestData.xls", "Select * from TestData")]
+        public void DataFromExcel(int number, bool expectedResult)
+        {
+            var sut = new NumberChecker();
+
+            var result = sut.IsLessThanTen(number);
+
+            Assert.Equal(expectedResult, result);
         }
     }
 }

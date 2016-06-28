@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace CS_TDD._002_NUnit._01_LifeCycle
 {
     [TestFixture]   // TestFixture -  указывает, что класс содержит тестовый код.
-    public class Test : AssertionHelper
+    public class _01_Test : AssertionHelper
     {
         // Метод помеченый атрибутом TestFixtureSetUp будет выполняться один раз при инициализации класса
         [TestFixtureSetUp]

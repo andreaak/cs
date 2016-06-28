@@ -1,8 +1,8 @@
-﻿using CS_TDD._005_xUnit._01_LifeCycle.Setup;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using CS_TDD._000_Base;
 using Xunit;
 using Xunit.Sdk;
 
@@ -13,6 +13,29 @@ namespace CS_TDD._005_xUnit._03_DataDrivenTests
     Implement GetDatamethod
     Use custom attribute in test method
     */
+    public class _04_CreatingCustomDataSourceAttributes
+    {
+        [Theory]
+        [CsvTestData("TestData.csv")]
+        public void ShouldSubtractTwoNumbers(int firstNumber, int secondNumber, int expectedResult)
+        {
+            var sut = new MemoryCalculator();
+
+            sut.Sub(firstNumber);
+            sut.Sub(secondNumber);
+
+            Assert.Equal(expectedResult, sut.CurrentValue);
+        }
+
+        [Theory]
+        [RangeData(1, 10)]
+        public void OneToTen(int number)
+        {
+            Assert.True(true);
+        }
+
+    }
+
     public class CsvTestDataAttribute : DataAttribute
     {
         private readonly string _csvFileName;
@@ -41,18 +64,21 @@ namespace CS_TDD._005_xUnit._03_DataDrivenTests
         }
     }
 
-    public class _04_CreatingCustomDataSourceAttributes
+    public class RangeDataAttribute : DataAttribute
     {
-        [Theory]
-        [CsvTestData("TestData.csv")]
-        public void ShouldSubtractTwoNumbers(int firstNumber, int secondNumber, int expectedResult)
+        private readonly int _count;
+        private readonly int _start;
+
+        public RangeDataAttribute(int start, int count)
         {
-            var sut = new MemoryCalculator();
+            _start = start;
+            _count = count;
+        }
 
-            sut.Subtract(firstNumber);
-            sut.Subtract(secondNumber);
-
-            Assert.Equal(expectedResult, sut.CurrentValue);
+        public override IEnumerable<object[]> GetData(MethodInfo methodUnderTest)
+        {
+            return Enumerable.Range(_start, _count)
+                .Select(i => new object[] { i });
         }
     }
 }
