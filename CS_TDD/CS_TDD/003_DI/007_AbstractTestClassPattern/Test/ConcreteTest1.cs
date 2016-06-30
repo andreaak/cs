@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using CS_TDD._003_DI._006_FactoryInjection;
 
 namespace CS_TDD._003_DI._007_AbstractTestClassPattern.Test
 {

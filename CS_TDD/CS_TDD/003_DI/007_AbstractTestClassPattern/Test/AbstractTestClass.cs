@@ -1,5 +1,4 @@
-﻿using CS_TDD._003_DI._000_Base;
-using CS_TDD._003_DI._000_Base.Test;
+﻿using CS_TDD._003_DI._000_Base.Test;
 using CS_TDD._003_DI._006_FactoryInjection;
 using NUnit.Framework;
 

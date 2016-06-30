@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CS_TDD._004_StubsAndMocks._018_Moq.Application;
+using CS_TDD._004_StubsAndMocks._018_Moq.Setup;
 using Moq;
 using NUnit.Framework;
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace CS_TDD._003_DI._013_IoCContainer.Application
 {

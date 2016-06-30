@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CS_TDD._004_StubsAndMocks._018_Moq.Application;
+using CS_TDD._004_StubsAndMocks._018_Moq.Setup;
 using Moq;
 using NUnit.Framework;
 
@@ -12,17 +12,17 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             Mock<IFoo> mock = new Mock<IFoo>();
 
-            mock.Object.DoSomethingWithReturn("Test");
+            mock.Object.DoSomethingWithReturnBool("Test");
             // Method should never be called
-            mock.Verify(foo => foo.DoSomethingWithReturn("ping"), Times.Never());
+            mock.Verify(foo => foo.DoSomethingWithReturnBool("ping"), Times.Never());
 
-            mock.Object.DoSomethingWithReturn("ping");
+            mock.Object.DoSomethingWithReturnBool("ping");
            
             // Проверка того, что метод ILogWriter.Write вызвался в точности один раз (ни больше, ни меньше)
-            mock.Verify(foo => foo.DoSomethingWithReturn("ping"), Times.Once());
+            mock.Verify(foo => foo.DoSomethingWithReturnBool("ping"), Times.Once());
             
             // Проверка того, что метод DoSomething вызвался по крайней мере один раз
-            mock.Verify(foo => foo.DoSomethingWithReturn("ping"), Times.AtLeastOnce());
+            mock.Verify(foo => foo.DoSomethingWithReturnBool("ping"), Times.AtLeastOnce());
         }
 
         [Test]

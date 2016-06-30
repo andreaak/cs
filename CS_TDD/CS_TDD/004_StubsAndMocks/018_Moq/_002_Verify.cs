@@ -1,4 +1,4 @@
-﻿using CS_TDD._004_StubsAndMocks._018_Moq.Application;
+﻿using CS_TDD._004_StubsAndMocks._018_Moq.Setup;
 using Moq;
 using NUnit.Framework;
 
@@ -47,8 +47,8 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         public void MoqTestVerify02VerifyCallWithArgument()
         {
             Mock<IFoo> mock = new Mock<IFoo>();
-            mock.Object.DoSomethingWithReturn("ping");
-            mock.Verify(foo => foo.DoSomethingWithReturn("ping"));
+            mock.Object.DoSomethingWithReturnBool("ping");
+            mock.Verify(foo => foo.DoSomethingWithReturnBool("ping"));
 
             //--------------
 
@@ -65,8 +65,8 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             Mock<IFoo> mock = new Mock<IFoo>();
             // Verify with custom error message for failure
-            mock.Object.DoSomethingWithReturn("ping2");
-            mock.Verify(foo => foo.DoSomethingWithReturn("ping3"), "When doing operation X, the service should be pinged always");
+            mock.Object.DoSomethingWithReturnBool("ping2");
+            mock.Verify(foo => foo.DoSomethingWithReturnBool("ping3"), "When doing operation X, the service should be pinged always");
         }
 
         [Test]

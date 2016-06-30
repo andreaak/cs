@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CS_TDD._004_StubsAndMocks._018_Moq.Application;
+﻿using System.Linq;
+using CS_TDD._004_StubsAndMocks._018_Moq.Setup;
 using Moq;
 using NUnit.Framework;
 
@@ -28,11 +25,11 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
             var repository = new MockRepository(MockBehavior.Default);
             IFoo mock = repository.Of<IFoo>()
                 .Where(ld => ld.Name == "DefaultLogger")
-                .Where(ld => ld.DoSomething() == "D:\\Temp")
+                .Where(ld => ld.DoSomethingWithReturnString() == "D:\\Temp")
                 .Where(ld => ld.DoSomethingWithReturnString(It.IsAny<string>()) == "C:\\Temp")
                 .First();
 
-            Assert.That(mock.DoSomething(), Is.EqualTo("D:\\Temp"));
+            Assert.That(mock.DoSomethingWithReturnString(), Is.EqualTo("D:\\Temp"));
             Assert.That(mock.Name, Is.EqualTo("DefaultLogger"));
             Assert.That(mock.DoSomethingWithReturnString("CustomLogger"), Is.EqualTo("C:\\Temp"));
         }

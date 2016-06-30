@@ -1,9 +1,5 @@
 ﻿using CS_TDD._000_Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CS_TDD._001_MSUnit
 {

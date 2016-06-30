@@ -71,8 +71,28 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.core.interfaces, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.util.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NUnit.VisualStudio.TestAdapter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=4cb40d35494691ac, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Ploeh.AutoFixture, Version=3.47.8.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoFixture.3.47.8\lib\net40\Ploeh.AutoFixture.dll</HintPath>
@@ -249,12 +269,12 @@
     <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Program.cs" />
     <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Test\TestClass.cs" />
     <Compile Include="004_StubsAndMocks\017_EventTriggeredTest\Test\TestView.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\Application\EmpPersonalDetails.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\Application\EmpPfDetails.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\Application\Employee.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\Application\EmployeesDetails.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\Application\IFoo.cs" />
-    <Compile Include="004_StubsAndMocks\018_Moq\Application\Logger.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Setup\EmpPersonalDetails.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Setup\EmpPfDetails.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Setup\Employee.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Setup\EmployeesDetails.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Setup\IFoo.cs" />
+    <Compile Include="004_StubsAndMocks\018_Moq\Setup\Logger.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_005_Properties.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_003_Arguments.cs" />
     <Compile Include="004_StubsAndMocks\018_Moq\_001_Base.cs" />
@@ -300,6 +320,23 @@
     <Compile Include="005_xUnit\03_DataDrivenTests\_03_ExternalData.cs" />
     <Compile Include="005_xUnit\03_DataDrivenTests\_04_CreatingCustomDataSourceAttributes.cs" />
     <Compile Include="005_xUnit\03_DataDrivenTests\_05_AutoData.cs" />
+    <Compile Include="006_NSubstitute\01_CreatingSubstitute.cs" />
+    <Compile Include="006_NSubstitute\02_SettingReturnValue.cs" />
+    <Compile Include="006_NSubstitute\03_CheckingReceivedCalls.cs" />
+    <Compile Include="006_NSubstitute\04_ArgumentMatchers.cs" />
+    <Compile Include="006_NSubstitute\05_Callbacks.cs" />
+    <Compile Include="006_NSubstitute\06_ThrowingExceptions.cs" />
+    <Compile Include="006_NSubstitute\07_Events.cs" />
+    <Compile Include="006_NSubstitute\08_CheckingReceivedCalls.cs" />
+    <Compile Include="006_NSubstitute\09_CallOrder.cs" />
+    <Compile Include="006_NSubstitute\Setup\CommandRunner.cs" />
+    <Compile Include="006_NSubstitute\Setup\Controller.cs" />
+    <Compile Include="006_NSubstitute\Setup\ICalculator.cs" />
+    <Compile Include="006_NSubstitute\Setup\ICommand.cs" />
+    <Compile Include="006_NSubstitute\Setup\IConnection.cs" />
+    <Compile Include="006_NSubstitute\Setup\IEngine.cs" />
+    <Compile Include="006_NSubstitute\Setup\IFormatter.cs" />
+    <Compile Include="006_NSubstitute\Setup\IOrderProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -329,7 +366,9 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="002_NUnit\00_App\NUnit-2.6.4\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

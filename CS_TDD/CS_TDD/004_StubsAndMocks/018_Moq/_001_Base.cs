@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using CS_TDD._004_StubsAndMocks._018_Moq.Application;
+using CS_TDD._004_StubsAndMocks._018_Moq.Setup;
 using Moq;
 using NUnit.Framework;
 
@@ -55,11 +55,11 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             //Arrange
             Mock<IFoo> mock = new Mock<IFoo>();
-            mock.Setup(x => x.DoSomethingWithReturn(It.IsAny<string>())).Returns((string arg) => arg == "Test2");
-            mock.Setup(x => x.DoSomethingWithoutReturn(It.IsAny<string>()));
+            mock.Setup(x => x.DoSomethingWithReturnBool(It.IsAny<string>())).Returns((string arg) => arg == "Test2");
+            mock.Setup(x => x.DoSomething(It.IsAny<string>()));
             //Act
-            Debug.WriteLine(mock.Object.DoSomethingWithReturn("Test2"));
-            mock.Object.DoSomethingWithoutReturn("Test1");
+            Debug.WriteLine(mock.Object.DoSomethingWithReturnBool("Test2"));
+            mock.Object.DoSomething("Test1");
             //Assert
             mock.Verify();
             /*
@@ -151,7 +151,7 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         */
         public void MoqTestVerify06WithInterface()
         {
-            IFoo logger = Mock.Of<IFoo>(ld => ld.DoSomething() == "D:\\Temp"
+            IFoo logger = Mock.Of<IFoo>(ld => ld.DoSomethingWithReturnString() == "D:\\Temp"
                                         && ld.Name == "DefaultLogger");
 
             // Задаем более сложное поведение метода GetDirectoryByLoggerName
@@ -160,7 +160,7 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
                 .Setup(ld => ld.DoSomethingWithReturnString(It.IsAny<string>()))
                 .Returns<string>(loggerName => "C:\\" + loggerName);
 
-            Assert.That(logger.DoSomething(), Is.EqualTo("D:\\Temp"));
+            Assert.That(logger.DoSomethingWithReturnString(), Is.EqualTo("D:\\Temp"));
             Assert.That(logger.Name, Is.EqualTo("DefaultLogger"));
             Assert.That(logger.DoSomethingWithReturnString("Foo"), Is.EqualTo("C:\\Foo"));
             Assert.That(logger.DoSomethingWithReturnString("Boo"), Is.EqualTo("C:\\Boo"));
@@ -172,11 +172,11 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             // Объединяем заглушки разных методов с помощью логического «И»
             IFoo logger = Mock.Of<IFoo>(
-                            d => d.DoSomething() == "D:\\Temp" &&
+                            d => d.DoSomethingWithReturnString() == "D:\\Temp" &&
                             d.Name == "DefaultLogger" &&
                             d.DoSomethingWithReturnString(It.IsAny<string>()) == "C:\\Temp");
  
-            Assert.That(logger.DoSomething(), Is.EqualTo("D:\\Temp"));
+            Assert.That(logger.DoSomethingWithReturnString(), Is.EqualTo("D:\\Temp"));
             Assert.That(logger.Name, Is.EqualTo("DefaultLogger"));
             Assert.That(logger.DoSomethingWithReturnString("CustomLogger"), Is.EqualTo("C:\\Temp"));
         }
@@ -186,13 +186,13 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         public void MoqTestBase08CoupleMethods()
         {
             var stub = new Mock<IFoo>();
-            stub.Setup(ld => ld.DoSomething()).Returns("D:\\Temp");
+            stub.Setup(ld => ld.DoSomethingWithReturnString()).Returns("D:\\Temp");
             stub.Setup(ld => ld.DoSomethingWithReturnString(It.IsAny<string>())).Returns("C:\\Temp");
             stub.SetupGet(ld => ld.Name).Returns("DefaultLogger");
 
             IFoo logger = stub.Object;
 
-            Assert.That(logger.DoSomething(), Is.EqualTo("D:\\Temp"));
+            Assert.That(logger.DoSomethingWithReturnString(), Is.EqualTo("D:\\Temp"));
             Assert.That(logger.Name, Is.EqualTo("DefaultLogger"));
             Assert.That(logger.DoSomethingWithReturnString("CustomLogger"), Is.EqualTo("C:\\Temp"));
         }

@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using CS_TDD._004_StubsAndMocks._018_Moq.Application;
+using CS_TDD._004_StubsAndMocks._018_Moq.Setup;
 using Moq;
 using NUnit.Framework;
 
@@ -27,7 +27,7 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         public void MoqTestReturnValue2()
         {
             var mock = new Mock<IFoo>();
-            mock.Setup(foo => foo.DoSomethingWithReturn("ping")).Returns(true);
+            mock.Setup(foo => foo.DoSomethingWithReturnBool("ping")).Returns(true);
 
             // access invocation arguments when returning a value
             mock.Setup(x => x.DoSomethingWithReturnString(It.IsAny<string>()))
@@ -52,8 +52,8 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             // Mock.Of возвращает саму зависимость (прокси-объект), а не мок-объект.
             // Следующий код означает, что при вызове DoSomething() мы получим "D:\\Temp"
-            IFoo mock = Mock.Of<IFoo>(d => d.DoSomething() == "D:\\Temp");
-            string currentDirectory = mock.DoSomething();
+            IFoo mock = Mock.Of<IFoo>(d => d.DoSomethingWithReturnString() == "D:\\Temp");
+            string currentDirectory = mock.DoSomethingWithReturnString();
 
             Assert.That(currentDirectory, Is.EqualTo("D:\\Temp"));
         }

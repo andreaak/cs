@@ -1,5 +1,5 @@
 ﻿using System;
-using CS_TDD._004_StubsAndMocks._018_Moq.Application;
+using CS_TDD._004_StubsAndMocks._018_Moq.Setup;
 using Moq;
 using NUnit.Framework;
 
@@ -14,8 +14,8 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
             var mock = new Mock<IFoo>();
             // Multiple parameters overloads available
             // throwing when invoked
-            mock.Setup(foo => foo.DoSomethingWithReturn("reset")).Throws<InvalidOperationException>();
-            mock.Setup(foo => foo.DoSomethingWithReturn("")).Throws(new ArgumentException("command"));
+            mock.Setup(foo => foo.DoSomethingWithReturnBool("reset")).Throws<InvalidOperationException>();
+            mock.Setup(foo => foo.DoSomethingWithReturnBool("")).Throws(new ArgumentException("command"));
         }
     }
 }

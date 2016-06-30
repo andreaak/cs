@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
-using CS_TDD._004_StubsAndMocks._018_Moq.Application;
+using CS_TDD._004_StubsAndMocks._018_Moq.Setup;
 using Moq;
 using NUnit.Framework;
 
@@ -38,7 +37,7 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         public void MoqTestMatchingArguments2()
         {
             var mock = new Mock<IFoo>();
-            mock.Setup(foo => foo.DoSomethingWithReturn("ping")).Returns(true);
+            mock.Setup(foo => foo.DoSomethingWithReturnBool("ping")).Returns(true);
 
             // out arguments
             string outString = "ack";
@@ -72,7 +71,7 @@ namespace CS_TDD._004_StubsAndMocks._018_Moq
         {
             var mock = new Mock<IFoo>();
             // any value
-            mock.Setup(foo => foo.DoSomethingWithReturn(It.IsAny<string>())).Returns(true);
+            mock.Setup(foo => foo.DoSomethingWithReturnBool(It.IsAny<string>())).Returns(true);
 
 
             // matching Func<int>, lazy evaluated

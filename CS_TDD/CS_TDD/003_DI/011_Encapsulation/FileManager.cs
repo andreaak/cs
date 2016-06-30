@@ -1,9 +1,6 @@
 ﻿using CS_TDD._003_DI._000_Base;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 //Делает internal типы видимыми для заданной сборки
 [assembly: InternalsVisibleTo("011_EncapsulationTest")]
