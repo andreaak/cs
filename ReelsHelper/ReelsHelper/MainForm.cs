@@ -24,5 +24,12 @@ namespace ReelsHelper
             Form form = new HorizontalReelsForm(reels);
             form.Show();
         }
+
+        private void buttonRemoveIndex_Click(object sender, EventArgs e)
+        {
+            IList<Reel> reels = JSonParser.ParseReels(textBox1.Text);
+            Form form = new RemoveIndexForm(reels);
+            form.Show();
+        }
     }
 }

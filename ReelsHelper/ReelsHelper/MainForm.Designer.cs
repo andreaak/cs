@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonVerticalReel = new System.Windows.Forms.Button();
             this.buttonGorizontalReel = new System.Windows.Forms.Button();
+            this.buttonRemoveIndex = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -71,17 +72,29 @@
             this.buttonGorizontalReel.UseVisualStyleBackColor = true;
             this.buttonGorizontalReel.Click += new System.EventHandler(this.buttonGorizontalReel_Click);
             // 
+            // buttonRemoveIndex
+            // 
+            this.buttonRemoveIndex.Location = new System.Drawing.Point(794, 84);
+            this.buttonRemoveIndex.Name = "buttonRemoveIndex";
+            this.buttonRemoveIndex.Size = new System.Drawing.Size(89, 23);
+            this.buttonRemoveIndex.TabIndex = 2;
+            this.buttonRemoveIndex.Text = "Remove Index";
+            this.buttonRemoveIndex.UseVisualStyleBackColor = true;
+            this.buttonRemoveIndex.Click += new System.EventHandler(this.buttonRemoveIndex_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 581);
+            this.Controls.Add(this.buttonRemoveIndex);
             this.Controls.Add(this.buttonGorizontalReel);
             this.Controls.Add(this.buttonVerticalReel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Main";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,6 +106,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonVerticalReel;
         private System.Windows.Forms.Button buttonGorizontalReel;
+        private System.Windows.Forms.Button buttonRemoveIndex;
     }
 }
 

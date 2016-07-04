@@ -37,6 +37,11 @@ namespace ReelsHelper
             }
             return reels;
         }
+
+        public static string CreateJson(object reels)
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(reels);
+        }
     }
 
     public static class JsonExtensions
