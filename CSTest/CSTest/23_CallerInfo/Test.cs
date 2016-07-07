@@ -8,7 +8,7 @@ namespace CSTest._23_CallerInfo
     [TestClass]
     public class Test
     {
-        #if C5
+        #if CS5
         
         [TestMethod]
         public void TestCallerInfo()

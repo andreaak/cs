@@ -24,7 +24,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         //    await task;
         //}
 
-#if C5
+#if CS5
 
         public void OperationAsync()
         {

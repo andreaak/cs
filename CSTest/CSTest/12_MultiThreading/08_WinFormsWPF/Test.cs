@@ -184,7 +184,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
             */
         }
 
-        #if C5
+        #if CS5
 
         [TestMethod]
         public void TestWinFormsWPFAsyncAwait1()
