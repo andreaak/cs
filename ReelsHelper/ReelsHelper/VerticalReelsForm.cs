@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace ReelsHelper
@@ -23,8 +19,7 @@ namespace ReelsHelper
             DataTable table = new DataTable();
             for (int i = 0; i < reels.Count; i++)
             {
-                DataColumn column;
-                column = new DataColumn();
+                DataColumn column = new DataColumn();
                 column.DataType = typeof(int);
                 column.ColumnName = "Reel " + i;
                 table.Columns.Add(column);

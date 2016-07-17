@@ -790,12 +790,11 @@ namespace CSTest._08_String._02_StringBuilder
                 throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
-            //ThreadSafeCopy(value, chunkChars, chunkLength);
-            Append2(value, startIndex, count);
             //unsafe
             //{
             //    fixed (char* valueChars = value)
             //        Append(valueChars + startIndex, count);
+                    Append2(value, startIndex, count);
             //}
             return this;
         }
