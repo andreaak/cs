@@ -86,5 +86,21 @@ namespace CSTest._01_Elements_CS._01_Types
             else
                 Debug.WriteLine("У переменной count отсутствует значение");
         }
+
+        private static void DisplayValue2(int? count)
+        {
+            if (count != null)
+                Debug.WriteLine("Переменная count имеет следующее значение: " + count.Value);
+            else
+                Debug.WriteLine("У переменной count отсутствует значение");
+        }
+
+        private static void DisplayValue3(int? count)
+        {
+            if (count == null)
+                Debug.WriteLine("Переменная count имеет следующее значение: " + count.Value);
+            else
+                Debug.WriteLine("У переменной count отсутствует значение");
+        }
     }
 }
