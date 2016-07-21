@@ -18,8 +18,7 @@ namespace ReelsHelper
             DataTable table = new DataTable();
             for (int i = 0; i < reels.Max(reel => reel.Indexes.Count); i++)
             {
-                DataColumn column;
-                column = new DataColumn();
+                DataColumn column = new DataColumn();
                 column.DataType = typeof(int);
                 column.ColumnName = "Index " + i;
                 table.Columns.Add(column);

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.textBoxReplace = new System.Windows.Forms.TextBox();
-            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonReplace = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxWith = new System.Windows.Forms.TextBox();
@@ -43,15 +43,15 @@
             this.textBoxReplace.Size = new System.Drawing.Size(129, 20);
             this.textBoxReplace.TabIndex = 1;
             // 
-            // buttonRemove
+            // buttonReplace
             // 
-            this.buttonRemove.Location = new System.Drawing.Point(610, 10);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(75, 23);
-            this.buttonRemove.TabIndex = 3;
-            this.buttonRemove.Text = "Remove";
-            this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            this.buttonReplace.Location = new System.Drawing.Point(610, 10);
+            this.buttonReplace.Name = "buttonReplace";
+            this.buttonReplace.Size = new System.Drawing.Size(75, 23);
+            this.buttonReplace.TabIndex = 3;
+            this.buttonReplace.Text = "Replace";
+            this.buttonReplace.UseVisualStyleBackColor = true;
+            this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click);
             // 
             // label1
             // 
@@ -93,7 +93,7 @@
             this.ClientSize = new System.Drawing.Size(697, 554);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonRemove);
+            this.Controls.Add(this.buttonReplace);
             this.Controls.Add(this.textBoxWith);
             this.Controls.Add(this.textBoxResult);
             this.Controls.Add(this.textBoxReplace);
@@ -108,7 +108,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBoxReplace;
-        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonReplace;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxWith;

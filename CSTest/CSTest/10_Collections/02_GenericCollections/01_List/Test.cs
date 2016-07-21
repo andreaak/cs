@@ -152,6 +152,16 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
                                             //An explicit conversion exists (are you missing a cast?)  CSTest D:\My\cs\CSTest\CSTest\10_Collections\02_GenericCollections\_01_List.cs	148	Active
 
 
+            if (lst3.Count != 0)
+            {
+                Debug.WriteLine(lst3.Count);
+            }
+
+            if (lst3.Count == 0)
+            {
+                Debug.WriteLine(lst3.Count);
+            }
+
             /*
             lst3 Count : 3
             lst3 Count : 4

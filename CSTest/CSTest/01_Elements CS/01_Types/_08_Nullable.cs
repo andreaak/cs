@@ -41,6 +41,9 @@ namespace CSTest._01_Elements_CS._01_Types
             count = 100;
             result = count + incr;
             DisplayValue(result);
+            bool? op1 = true;
+            bool op2 = true;
+            var res = op1 & op2;
             /*
             У переменной result отсутствует значение
             Переменная result имеет следующее значение: 110

@@ -15,7 +15,7 @@ namespace ReelsHelper
             this.reels = reels;
         }
 
-        private void buttonRemove_Click(object sender, System.EventArgs e)
+        private void buttonReplace_Click(object sender, EventArgs e)
         {
             IList<int> replace = ParseReplaceSymbols(textBoxReplace.Text);
             IList<int> with = ParseReplaceSymbols(textBoxWith.Text);

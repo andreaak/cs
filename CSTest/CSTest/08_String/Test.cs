@@ -1,6 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace CSTest._08_String
@@ -10,7 +13,7 @@ namespace CSTest._08_String
     {
         const string consts1 = "Hello1";
         const string consts2 = "Hello1";
-        
+
         [TestMethod]
         public void TestString1()
         {
@@ -35,10 +38,10 @@ namespace CSTest._08_String
             // Конкатенация трех литеральных строк образует одну литеральную строку
             string sc1 = "Hi" + " " + "there.";
             string sc2 = "Hi there.";
-            Debug.WriteLine("sc1 ReferenceEquals sc2 : " + object.ReferenceEquals(sc1, sc2)); //True Зависит от аттрибута NoStringInterning
-            
+            Debug.WriteLine("sc1 ReferenceEquals sc2 : " + object.ReferenceEquals(sc1, sc2)); //True Зависит от аттрибута NoStringInterning
+
             string sc3 = " ";
-            string sc4 = "Hi" + sc3 +  "there.";
+            string sc4 = "Hi" + sc3 + "there.";
             Debug.WriteLine("sc1 ReferenceEquals sc3 : " + object.ReferenceEquals(sc1, sc3)); // 'False'
 
             Debug.WriteLine("consts1 ReferenceEquals consts2 : " + object.ReferenceEquals(consts1, consts2)); //True Зависит от аттрибута NoStringInterning
@@ -160,11 +163,118 @@ namespace CSTest._08_String
             */
         }
 
+        [TestMethod]
+        public void TestString5Shit()
+        {
+            string test = null;
+            Assert.IsFalse(IsNotEmptyString(test));
+
+            test = "";
+            Assert.IsFalse(IsNotEmptyString(test));
+
+            test = "Test";
+            Assert.IsTrue(IsNotEmptyString(test));
+
+            test = null;
+            Assert.IsTrue(IsEmptyString(test));
+
+            test = "";
+            Assert.IsTrue(IsEmptyString(test));
+
+            test = "Test";
+            Assert.IsFalse(IsEmptyString(test));
+
+            /*
+            */
+        }
+
+        [TestMethod]
+        public void TestString6Shit()
+        {
+            string test = null;
+            Assert.IsFalse(IsNotEmptyString2(test));
+
+            test = "";
+            Assert.IsFalse(IsNotEmptyString2(test));
+
+            test = "Test";
+            Assert.IsTrue(IsNotEmptyString2(test));
+
+            test = null;
+            Assert.IsTrue(IsEmptyString2(test));
+
+            test = "";
+            Assert.IsTrue(IsEmptyString2(test));
+
+            test = "Test";
+            Assert.IsFalse(IsEmptyString2(test));
+
+            /*
+            */
+        }
+
+        public bool IsNotEmptyString(string str)
+        {
+            return (str?.Any()).GetValueOrDefault();
+        }
+
+        public bool IsEmptyString(string str)
+        {
+            return !(str?.Any()).GetValueOrDefault();
+        }
+
+        public bool IsEmptyString2(string str)
+        {
+            return (str?.Length).GetValueOrDefault() == 0;
+        }
+
+        public bool IsNotEmptyString2(string str)
+        {
+            return (str?.Length).GetValueOrDefault() != 0;
+        }
+
         struct StringTest
         {
             public string First;
             public string Second;
             public string Third;
+        }
+
+        class StringTestClass
+        {
+            public string First;
+        }
+
+        [TestMethod]
+        public void TestString7Shit()
+        {
+            var list = new List<StringTestClass>
+            {
+                new StringTestClass(),
+                new StringTestClass(),
+                new StringTestClass(),
+            };
+
+            SetButtonsText(list, "Prize");
+
+            /*
+            */
+        }
+
+        private void SetButtonsText(List<StringTestClass> listPercents, string rewardValue)
+        {
+            foreach (var text in listPercents)
+            {
+                text.First = rewardValue + "%";
+            }
+            Debug.WriteLine(ReferenceEquals(listPercents[0], listPercents[1]));
+            Debug.WriteLine(ReferenceEquals(listPercents[0], listPercents[2]));
+            Debug.WriteLine(ReferenceEquals(listPercents[1], listPercents[2]));
+            /*
+            False
+            False
+            False
+            */
         }
     }
 }

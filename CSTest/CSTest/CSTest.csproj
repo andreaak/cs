@@ -179,6 +179,7 @@
     <Compile Include="09_Array\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\01_List\ListNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\DictionaryNET.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\05_Linq\Test.cs" />
     <Compile Include="25_CS6\02_PrimaryCtorTests.cs" />
     <Compile Include="25_CS6\06_EventInitializerTests.cs" />
     <Compile Include="25_CS6\07_ExceptionFiltersTests.cs" />
