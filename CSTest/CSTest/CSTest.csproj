@@ -179,7 +179,9 @@
     <Compile Include="09_Array\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\01_List\ListNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\DictionaryNET.cs" />
-    <Compile Include="10_Collections\02_GenericCollections\05_Linq\Test.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\09_Linq\Test.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\CollectionExtensions.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\Test.cs" />
     <Compile Include="25_CS6\02_PrimaryCtorTests.cs" />
     <Compile Include="25_CS6\06_EventInitializerTests.cs" />
     <Compile Include="25_CS6\07_ExceptionFiltersTests.cs" />
@@ -335,6 +337,9 @@
   <ItemGroup>
     <Folder Include="05_Delegates and Events\Events\" />
     <Folder Include="10_Collections\01_BaseCollections\" />
+    <Folder Include="10_Collections\02_GenericCollections\03_HashSet\" />
+    <Folder Include="10_Collections\02_GenericCollections\04_Queue\" />
+    <Folder Include="10_Collections\02_GenericCollections\05_Stack\" />
     <Folder Include="11_Input Output\" />
     <Folder Include="12_MultiThreading\04_Problems\" />
     <Folder Include="12_MultiThreading\06_ThreadPool\" />
