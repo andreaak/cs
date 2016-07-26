@@ -243,6 +243,11 @@ namespace CSTest._08_String
         class StringTestClass
         {
             public string First;
+
+            internal void SetName(string v)
+            {
+                First = v;
+            }
         }
 
         [TestMethod]
@@ -271,6 +276,52 @@ namespace CSTest._08_String
             Debug.WriteLine(ReferenceEquals(listPercents[0], listPercents[2]));
             Debug.WriteLine(ReferenceEquals(listPercents[1], listPercents[2]));
             /*
+            False
+            False
+            False
+            */
+        }
+
+        private const string StateOpen = "open";
+        private const string StateClose = "close";
+        private const string StateLose = "lose_";
+        private const string StateWin = "win_";
+
+
+        [TestMethod]
+        public void TestString8Shit()
+        {
+            var list = new List<StringTestClass>
+            {
+                new StringTestClass(),
+                new StringTestClass(),
+                new StringTestClass(),
+            };
+
+            SetButtonsText(list, true);
+
+            /*
+            */
+        }
+
+        private void SetButtonsText(List<StringTestClass> listPercents, bool open)
+        {
+            string openValue = open ? StateOpen : StateClose;
+
+            foreach (var button in listPercents)
+            {
+                string res = StateLose + openValue;
+                Debug.WriteLine(res.GetHashCode());
+                button.SetName(res);
+            }
+
+            Debug.WriteLine(ReferenceEquals(listPercents[0], listPercents[1]));
+            Debug.WriteLine(ReferenceEquals(listPercents[0], listPercents[2]));
+            Debug.WriteLine(ReferenceEquals(listPercents[1], listPercents[2]));
+            /*
+            313926663
+            313926663
+            313926663
             False
             False
             False

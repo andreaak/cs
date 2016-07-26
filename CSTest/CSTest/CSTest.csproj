@@ -94,6 +94,8 @@
     <Compile Include="01_Elements CS\02_Variables\_02_Constants.cs" />
     <Compile Include="01_Elements CS\04_TypeConversion\_01_Casting.cs" />
     <Compile Include="01_Elements CS\02_Variables\_04_sizeof.cs" />
+    <Compile Include="02_Object\01_Lazy\LazyNET.cs" />
+    <Compile Include="02_Object\01_Lazy\Test.cs" />
     <Compile Include="02_Object\Test.cs" />
     <Compile Include="02_Object\TestClass.cs" />
     <Compile Include="03_Structure\02_Enums\Test.cs" />
