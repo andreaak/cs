@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace _01_ASPMVCTest.Areas._002_View.Models
+﻿namespace _01_ASPMVCTest.Areas._002_View.Models
 {
     public class Product
     {

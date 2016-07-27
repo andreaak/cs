@@ -35,6 +35,11 @@ namespace CSTest._25_CS6
             NameId = 5;
             Name = "TestStr";
         }
+
+        public void SetName()
+        {
+            //Name = "Test2"; can be set only in ctor
+        }
     }
 }
 #endif

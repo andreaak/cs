@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using _01_ASPMVCTest.Areas._002_View.Models;
+﻿using System.Web.Mvc;
 
 namespace _01_ASPMVCTest.Areas._002_View.Controllers
 {
