@@ -1,17 +1,17 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
-    [TestClass]
+    [TestFixture]
     public class _11_ManualResetEventSlimTest
     {
         // ManualResetEventSlim - изначально используется SpinWait блокировка на 1000 итераций, 
         // после чего происходит синхронизация с помощью объекта ядра.
         static ManualResetEventSlim slim = new ManualResetEventSlim(false, 1000);
         
-        [TestMethod]
+        [Test]
         public void TestManualResetEventSlim1()
         {
             Thread[] threads = { new Thread(Function), new Thread(Function), new Thread(Function) };
@@ -30,7 +30,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Thread.Sleep(15000);
         }
 
-        [TestMethod]
+        [Test]
         //ManualresetEventSlimPerformance
         public void TestManualResetEventSlim2()
         {

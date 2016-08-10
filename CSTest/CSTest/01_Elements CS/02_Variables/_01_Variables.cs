@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._02_Variables
 {
-    [TestClass]
+    [TestFixture]
     public class _01_Variables
     {
-        [TestMethod]
+        [Test]
         public void TestVariables1()
         {
             // Переменная (Variable) - это область памяти, которая хранит в себе некоторое значение, которое можно изменить.
@@ -41,7 +41,7 @@ namespace CSTest._01_Elements_CS._02_Variables
         }
 
         // Использование локальных областей и локальных переменных.
-        [TestMethod]
+        [Test]
         public void TestVariables2()
         {
             // ПРАВИЛО:

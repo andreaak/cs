@@ -1,13 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._03_Operations
 {
-    [TestClass]
+    [TestFixture]
     public class _03_Comparison
     {
         // Операции сравнения и проверки на равенство (<, <=, >, >=, ==, !=)
-        [TestMethod]
+        [Test]
         public void TestComparison1()
         {
             byte value1 = 0, value2 = 1;
@@ -39,7 +39,7 @@ namespace CSTest._01_Elements_CS._03_Operations
         }
 
         // Сравнение значений разных типов.
-        [TestMethod]
+        [Test]
         public void TestComparison2()
         {
             bool result = false;

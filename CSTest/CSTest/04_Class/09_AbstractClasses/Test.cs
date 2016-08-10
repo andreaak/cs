@@ -1,19 +1,19 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._04_Class._09_AbstractClasses
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestAbstract1()
         {
             AbstractClass instance = new ConcreteClass();
             instance.Method();
         }
 
-        [TestMethod]
+        [Test]
         public void TestAbstract2()
         {
             AbstractClass2 instance = new ConcreteClassB();
@@ -22,7 +22,7 @@ namespace CSTest._04_Class._09_AbstractClasses
             instance.Operation();
         }
 
-        [TestMethod]
+        [Test]
         public void TestAbstract3()
         {
             AbstractClassA instance = new ConcreteClass2();
@@ -32,7 +32,7 @@ namespace CSTest._04_Class._09_AbstractClasses
             //instance.OperationB();  // Вопрос: почему недоступен данный метод?
         }
 
-        [TestMethod]
+        [Test]
         public void TestAbstract4()
         {
             ConcreteClass instance = new ConcreteClass();
@@ -42,7 +42,7 @@ namespace CSTest._04_Class._09_AbstractClasses
             instance.AbstractMethod();
         }
 
-        [TestMethod]
+        [Test]
         public void TestAbstract5()
         {
             AbstractClass instance = new ConcreteClass();

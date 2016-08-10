@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._01_Types
 {
-    [TestClass]
+    [TestFixture]
     public class _06_Char
     {
-        [TestMethod]
+        [Test]
         public void TestChar1()
         {
             #region СИМВОЛЬНЫЙ ТИП

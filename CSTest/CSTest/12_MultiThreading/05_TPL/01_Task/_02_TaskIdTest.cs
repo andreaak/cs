@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
     // Id - Получает уникальный идентификатор данного экземпляра Task.
     // CurrentId - Возвращает уникальный идентификатор выполняющейся в настоящее время задачи Task.
-    [TestClass]
+    [TestFixture]
     public class _02_TaskIdTest
     {
         // Метод, исполняемый как задача,
@@ -22,7 +22,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Debug.WriteLine("MyTask №" + Task.CurrentId + " завершен");
         }
 
-        [TestMethod]
+        [Test]
         // Возвратить значение из задачи.
         public void TestTaskId()
         {

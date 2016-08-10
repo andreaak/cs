@@ -5,11 +5,9 @@
 // Assembly location: C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll
 // Compiler-generated code is shown
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security;
-using CSTest._30_NET_Code;
 
 namespace CSTest._30_NET_Code
 {

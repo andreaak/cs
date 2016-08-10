@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading
 {
@@ -33,10 +33,10 @@ namespace CSTest._12_MultiThreading
     AsyncResult имеет свойство AsyncDelegate, содержащее объект делегата, к которому был направлен асинхронный вызов. 
     */
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates1()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
@@ -64,7 +64,7 @@ namespace CSTest._12_MultiThreading
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates2EndInvoke()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
@@ -94,7 +94,7 @@ namespace CSTest._12_MultiThreading
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates3EndInvokeWithResult()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
@@ -115,7 +115,7 @@ namespace CSTest._12_MultiThreading
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates4Polling()
         {
             var myDelegate = new Func<int, int, int>(_01_Base.Add);
@@ -143,7 +143,7 @@ namespace CSTest._12_MultiThreading
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates5WaitHandle()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
@@ -180,7 +180,7 @@ namespace CSTest._12_MultiThreading
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates6WaitHandle()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
@@ -229,7 +229,7 @@ namespace CSTest._12_MultiThreading
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates7CallBack()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
@@ -263,7 +263,7 @@ namespace CSTest._12_MultiThreading
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates8CallBackWithResult()
         {
             Debug.WriteLine("Первичный поток: Id {0}", Thread.CurrentThread.ManagedThreadId);
@@ -289,7 +289,7 @@ namespace CSTest._12_MultiThreading
 
         // По умолчанию в Асинхронном шаблоне, IsBackground = true (С завершением первичного потока завершается вторичный).
         // IsBackground = false (Первичный поток ожидает окончания работы вторичного потока).
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates9CallBack()
         {
             Debug.WriteLine("Первичный поток начал работу.");
@@ -314,7 +314,7 @@ namespace CSTest._12_MultiThreading
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates10BackgroundWorker()
         {
             _02_BackgroundWorker bg = new _02_BackgroundWorker();
@@ -328,7 +328,7 @@ namespace CSTest._12_MultiThreading
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncDelegates11BackgroundWorker()
         {
             _02_BackgroundWorker bg = new _02_BackgroundWorker();

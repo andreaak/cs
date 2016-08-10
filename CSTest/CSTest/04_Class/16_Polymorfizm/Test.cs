@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._04_Class._16_Polymorfizm
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestPolymorfizm1()
         {
             BaseClass instance = new DerivedClass();
@@ -17,7 +17,7 @@ namespace CSTest._04_Class._16_Polymorfizm
         }
 
         
-        [TestMethod]
+        [Test]
         public void TestPolymorfizm2NVI()
         {
             BaseClass instance = new DerivedClass();
@@ -28,7 +28,7 @@ namespace CSTest._04_Class._16_Polymorfizm
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestPolymorfizm3()
         {
             BaseClass instance = new DerivedClass();
@@ -42,7 +42,7 @@ namespace CSTest._04_Class._16_Polymorfizm
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestPolymorfizm4()
         {
             BaseClass instance = new DerivedClass();
@@ -55,7 +55,7 @@ namespace CSTest._04_Class._16_Polymorfizm
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestPolymorfizm5()
         {
             BaseClass instance = new DerivedClass();
@@ -73,7 +73,7 @@ namespace CSTest._04_Class._16_Polymorfizm
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestPolymorfizm6()
         {
             DerivedClass instance = new DerivedClass();
@@ -86,7 +86,7 @@ namespace CSTest._04_Class._16_Polymorfizm
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestPolymorfizm7()
         {
             DerivedFromDerivedClass c3 = new DerivedFromDerivedClass();
@@ -98,7 +98,7 @@ namespace CSTest._04_Class._16_Polymorfizm
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestPolymorfizm8()
         {
             BaseClass baseClass = new BaseClass();

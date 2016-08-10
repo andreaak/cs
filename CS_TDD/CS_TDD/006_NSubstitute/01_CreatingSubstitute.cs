@@ -39,6 +39,7 @@ namespace CS_TDD._006_NSubstitute
             If possible, stick to substituting interfaces.
              */
             var someClass = Substitute.For<Controller>(5, "hello world");
+            var someClass2 = Substitute.For<Controller>(new object[] { new string[] { "A", "B" } });
         }
 
         [Test]

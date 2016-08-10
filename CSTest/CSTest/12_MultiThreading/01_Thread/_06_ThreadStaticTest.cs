@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._01_Thread
 {
-    [TestClass]
+    [TestFixture]
     public class _06_ThreadStaticTest
     {
-        [TestMethod]
+        [Test]
         public void TestThreadStatic()
         {
             // Запуск вторичного потока.

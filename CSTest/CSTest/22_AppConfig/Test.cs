@@ -1,15 +1,15 @@
 ﻿using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._22_AppConfig
 {
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestReadAll()
         {
             foreach (var key in ConfigurationManager.AppSettings.AllKeys)
@@ -26,7 +26,7 @@ namespace CSTest._22_AppConfig
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestReadNotExisting()
         {
             string key = "dbFile_";
@@ -36,7 +36,7 @@ namespace CSTest._22_AppConfig
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestDeleteKey()
         {
             string key = "dbFile_";
@@ -70,7 +70,7 @@ namespace CSTest._22_AppConfig
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAddKey()
         {
             string key = "dbFile_";
@@ -91,7 +91,7 @@ namespace CSTest._22_AppConfig
             */
         }
         
-        [TestMethod]
+        [Test]
         public void TestSetKey()
         {
             string key = "dbFile_";
@@ -107,7 +107,7 @@ namespace CSTest._22_AppConfig
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestReadApplicationSettings()
         {
             Debug.WriteLine(string.Format("Key: {0} Value: {1}", "TestString", Properties.Settings.Default.TestString));

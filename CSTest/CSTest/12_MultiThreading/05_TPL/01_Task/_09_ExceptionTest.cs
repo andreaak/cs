@@ -2,14 +2,14 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
-    [TestClass]
+    [TestFixture]
     public class _09_ExceptionTest
     {
-        [TestMethod]
+        [Test]
         //Задача с необработанным исключением может приводить к генерированию исключения в GC
         public void TestTaskException1()
         {
@@ -24,7 +24,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Debug.WriteLine("Основной поток завершен.");
         }
 
-        [TestMethod]
+        [Test]
         //Обработка исключения через Wait
         public void TestTaskException2()
         {
@@ -54,7 +54,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Debug.WriteLine("Основной поток завершен.");
         }
 
-        [TestMethod]
+        [Test]
         //Обработка исключения через свойство Exception
         public void TestTaskException3()
         {
@@ -73,7 +73,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Debug.WriteLine("Основной поток завершен.");
         }
 
-        [TestMethod]
+        [Test]
         //Обработка исключения через свойство Exception
         public void TestTaskException4()
         {

@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Diagnostics;
 
@@ -14,10 +14,10 @@ namespace CSTest._04_Class._13_AnonymousTypes
     В анонимных типах можно использовать анонимные типы 
     */
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestClassAnonymous1()
         {
             var instance = new { Name = "Alex", Age = 27 };
@@ -36,7 +36,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
         /*
         В анонимных типах можно использовать анонимные типы 
         */
-        [TestMethod]
+        [Test]
         public void TestClassAnonymous2()
         {
             var instance = new { Name = "Alex", Age = 27, Id = new { Number = 123 } };
@@ -47,7 +47,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
         }
 
         // Анонимные типы. (Сильная ссылка)
-        [TestMethod]
+        [Test]
         public void TestClassAnonymous3()
         {
             var instance = new { My = new MyClass() };
@@ -57,7 +57,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
         }
 
         // Анонимные типы. (Слабая ссылка)
-        [TestMethod]
+        [Test]
         public void TestClassAnonymous4()
         {
             new
@@ -68,7 +68,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
             }.My.Method();
         }
 
-        [TestMethod]
+        [Test]
         public void TestClassAnonymous5()
         {
             var instance = new

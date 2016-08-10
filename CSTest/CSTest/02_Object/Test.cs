@@ -1,20 +1,20 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Diagnostics;
 
 namespace CSTest._02_Object
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestObject1()
         {
             TestClass instance = new TestClass(1, 2);
             Debug.WriteLine(instance.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject2()
         {
             TestClass instance = new TestClass(1, 2);
@@ -23,7 +23,7 @@ namespace CSTest._02_Object
 
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject3()
         {
             object obj1 = new object();
@@ -36,7 +36,7 @@ namespace CSTest._02_Object
             Debug.WriteLine(obj1.Equals(obj2)); 
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject4()
         {
             TestClass a = new TestClass(1, 2);
@@ -47,7 +47,7 @@ namespace CSTest._02_Object
             Debug.WriteLine("a == c : {0}", a.Equals(c));
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject5()
         {
             object obj1 = new object();
@@ -60,7 +60,7 @@ namespace CSTest._02_Object
             Debug.WriteLine(ReferenceEquals(obj1, obj2));
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject6()
         {
             object obj1 = new object();
@@ -73,7 +73,7 @@ namespace CSTest._02_Object
             Debug.WriteLine(Equals(obj1, obj2));
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject7()
         {
             TestClass a = new TestClass(1, 2);
@@ -87,7 +87,7 @@ namespace CSTest._02_Object
             Debug.WriteLine("a == c : {0}", Equals(a, c));
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject8()
         {
             object obj = new object();
@@ -95,7 +95,7 @@ namespace CSTest._02_Object
             Debug.WriteLine(type.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject9Clone()
         {
             MyDerivedClass original = new MyDerivedClass();
@@ -131,7 +131,7 @@ namespace CSTest._02_Object
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject10Clone()
         {
             Z original = new Z();
@@ -154,7 +154,7 @@ namespace CSTest._02_Object
              */
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject11Clone()
         {
             Z2 original = new Z2();
@@ -178,7 +178,7 @@ namespace CSTest._02_Object
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestObject12()
         {
 

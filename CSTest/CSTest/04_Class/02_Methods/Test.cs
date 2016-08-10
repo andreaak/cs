@@ -1,12 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
+﻿using NUnit.Framework;
 
 namespace CSTest._04_Class._02_Methods
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestClassParameters1()
         {
             _02_Parameters param = new _02_Parameters();

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._01_Thread
 {
@@ -15,10 +15,10 @@ namespace CSTest._12_MultiThreading._01_Thread
     А логическое значение false указывает на то, что поток является приоритетным.
     */
 
-    [TestClass]
+    [TestFixture]
     public class _05_BackgroundTest
     {
-        [TestMethod]
+        [Test]
         public void TestThreadIsBackground()
         {
             Thread thread = new Thread(Function);

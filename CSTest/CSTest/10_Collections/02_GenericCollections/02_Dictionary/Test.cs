@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+﻿using NUnit.Framework;
 using System.Diagnostics;
-using System.Linq;
 
 namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
         const int Iterations = 1000;
 
-        [TestMethod]
+        [Test]
         public void TestLDictionary1Grow()
         {
             DictionaryNET<int, int> dict = new DictionaryNET<int, int>();

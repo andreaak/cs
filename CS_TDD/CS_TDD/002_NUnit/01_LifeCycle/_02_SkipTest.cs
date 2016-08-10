@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace CS_TDD._002_NUnit._02_Asserting
+namespace CS_TDD._002_NUnit._01_LifeCycle
 {
     [TestFixture]
     class _02_SkipTest

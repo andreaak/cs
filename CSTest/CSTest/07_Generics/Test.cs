@@ -1,13 +1,13 @@
 ﻿using CSTest._07_Generics._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._07_Generics
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestGeneric1()
         {
             // Создаем экземпляр класса MyClass и в качестве параметра типа (тип MyClass) передаем тип int.
@@ -24,7 +24,7 @@ namespace CSTest._07_Generics
             instance3.Method();
         }
 
-        [TestMethod]
+        [Test]
         public void TestGeneric2()
         {
             GenericClass<int> instance1 = new GenericClass<int>(1);
@@ -34,7 +34,7 @@ namespace CSTest._07_Generics
             Debug.WriteLine(instance2.Field);
         }
 
-        [TestMethod]
+        [Test]
         public void TestGeneric3Method()
         {
             _02_GenericMethod instance = new _02_GenericMethod();
@@ -45,7 +45,7 @@ namespace CSTest._07_Generics
 
         }
 
-        [TestMethod]
+        [Test]
         public void TestGeneric4Delegate()
         {
             GenericDelegate<int, int> myDelegate1 =
@@ -59,7 +59,7 @@ namespace CSTest._07_Generics
             Debug.WriteLine(s);
         }
         
-        [TestMethod]
+        [Test]
         public void TestGeneric5Interface()
         {
             Circle circle = new Circle();
@@ -71,7 +71,7 @@ namespace CSTest._07_Generics
             Debug.WriteLine(container.Figure.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestGeneric6CovarianceInterface()
         {
             Circle circle = new Circle();
@@ -79,7 +79,7 @@ namespace CSTest._07_Generics
             Debug.WriteLine(container.Figure.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestGeneric7ContrvarianceInterface()
         {
             Shape shape = new Circle();
@@ -87,7 +87,7 @@ namespace CSTest._07_Generics
             Debug.WriteLine(container.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void TestGeneric8CovarianceDelegate()
         {
             CovarianceDelegate<Cat> delegateCat = new CovarianceDelegate<Cat>(_07_DelegateCovariance.CatCreator);
@@ -97,7 +97,7 @@ namespace CSTest._07_Generics
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestGeneric9ContrvarianceDelegate()
         {
             ContrvarianceDelegate<Animal> delegateAnimal = new ContrvarianceDelegate<Animal>(_08_DelegateContrvariance.CatUser);
@@ -109,7 +109,7 @@ namespace CSTest._07_Generics
             //delegateCat(new Animal()); // Невозможно.
         }
 
-        [TestMethod]
+        [Test]
         public void TestGeneric10Constraints()
         {
             GenericClassWithConstraint<string> instance1 = new GenericClassWithConstraint<string>();
@@ -123,7 +123,7 @@ namespace CSTest._07_Generics
             //GenericClassWithBaseConstraint<string> mc3 = new GenericClassWithBaseConstraint<string>();     // Ошибка.
         }
 
-        [TestMethod]
+        [Test]
         public void TestGeneric11Constraints()
         {
             // В качестве аргумента типа подходит Derived, т.к., он наследуется от обоих интерфейсов.
@@ -171,7 +171,7 @@ namespace CSTest._07_Generics
             //MyClass<string, Object, int> my2 = new MyClass<string, Object, int>();  // ОШИБКА!  
         }
 
-        [TestMethod]
+        [Test]
         public void TestGeneric12Constraints()
         {
             GenericWithConstraintNew<_11_ThirdLevelConstraints> foo = new GenericWithConstraintNew<_11_ThirdLevelConstraints>();

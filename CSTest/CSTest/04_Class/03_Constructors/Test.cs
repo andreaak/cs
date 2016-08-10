@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._04_Class._03_Constructors
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestConstructors1()
         {
             // Применяем конструктор по умолчанию.
@@ -20,7 +20,7 @@ namespace CSTest._04_Class._03_Constructors
             Debug.WriteLine("pointB.X = {0} pointB.Y = {1}", pointB.X, pointB.Y);
         }
 
-        [TestMethod]
+        [Test]
         public void TestConstructors2()
         {
             Point point = new Point("A");

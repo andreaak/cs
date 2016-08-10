@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using CSTest._12_MultiThreading._01_Thread._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._01_Thread
 {
-    [TestClass]
+    [TestFixture]
     /*
     Для определения момента окончания потока можно воспользоваться значением свойства IsAlive. 
     Оно вернет false, когда поток завершится. 
@@ -15,7 +15,7 @@ namespace CSTest._12_MultiThreading._01_Thread
     */
     public class _02_JoinThreadTest
     {
-        [TestMethod]
+        [Test]
         // Использовать свойство IsAlive для отслеживания момента окончания потоков
         public void TestThreadJoin1()
         {
@@ -97,7 +97,7 @@ namespace CSTest._12_MultiThreading._01_Thread
 
         }
 
-        [TestMethod]
+        [Test]
         // Использовать метод Join(). 
         public void TestThreadJoin2()
         {

@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using CSTest._12_MultiThreading._02_Synchronization._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
-    [TestClass]
+    [TestFixture]
     /* Критическая секция (critical section).
     Ключевое слово lock не позволит одному потоку войти в важный раздел кода в тот момент, когда в нем находится другой поток. 
     lock - блокирует блок кода так, что в каждый отдельный момент времени, этот блок кода
@@ -14,7 +14,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     */
     public class _02_LockTest
     {
-        [TestMethod]
+        [Test]
         // Использовать блокировку для синхронизации доступа к объекту.
         public void TestLock1()
         {
@@ -45,7 +45,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             */
         }
 
-        [TestMethod]
+        [Test]
         // Другой способ блокировки для синхронизации доступа к объекту. 
         public void TestLock2()
         {
@@ -76,7 +76,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestLock3()
         {
             new Thread(_02_LockThreadUtils.Function2).Start();
@@ -102,7 +102,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             */
         }
 
-        [TestMethod]
+        [Test]
         // Lock - не принимает типов значений, а только ссылочные.
         public void TestLock4()
         {

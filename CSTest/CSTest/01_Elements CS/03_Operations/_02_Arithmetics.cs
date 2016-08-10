@@ -1,16 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
+﻿using NUnit.Framework;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace CSTest._01_Elements_CS._03_Operations
 {
-    [TestClass]
+    [TestFixture]
     public class _02_Arithmetics
     {
-        [TestMethod]
+        [Test]
         public void TestArithmetics1()
         {
             // Addition (+) 
@@ -47,7 +43,7 @@ namespace CSTest._01_Elements_CS._03_Operations
             Debug.WriteLine(remainder);
         }
 
-        [TestMethod]
+        [Test]
         public void TestArithmetics1IncDec()
         {
             Debug.WriteLine("----- Постфиксный инкремент"); // Post-increment

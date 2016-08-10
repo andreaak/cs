@@ -1,15 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._05_Delegates_and_Events.Delegates
 {
-    [TestClass]
+    [TestFixture]
     public class _05_CoContrVarianceTest
     {
         delegate TestClassBase TestDelegate(TestClass inParam);
         
-        [TestMethod]
+        [Test]
         public void TestDelegateCoContrVariance1()
         {
             TestDelegate first = FirstMethod;

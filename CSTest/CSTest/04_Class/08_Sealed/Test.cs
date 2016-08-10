@@ -1,14 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._04_Class._08_Sealed
 {
 
     
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestSealed1()
         {
             SealedClass instance = new SealedClass();
@@ -18,7 +18,7 @@ namespace CSTest._04_Class._08_Sealed
             Debug.WriteLine("x = {0}, y = {1}", instance.x, instance.y);
         }
 
-        [TestMethod]
+        [Test]
         public void TestSealed2()
         {
             ClassA instanceA = new ClassA();

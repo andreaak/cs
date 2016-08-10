@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 
 namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
 {

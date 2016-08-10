@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace CSTest._25_CS6
 {
-    [TestClass]
+    [TestFixture]
     public class _05_NullabilityTests
     {
 #if CS6
-        [TestMethod]
+        [Test]
         public void Test1()
         {
 

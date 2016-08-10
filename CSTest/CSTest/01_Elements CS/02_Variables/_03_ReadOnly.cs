@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._01_Elements_CS._02_Variables
 {
@@ -26,10 +26,10 @@ namespace CSTest._01_Elements_CS._02_Variables
         }
     }
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestReadOnly1()
         {
             _02_ReadOnly program = new _02_ReadOnly();

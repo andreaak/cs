@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace CSTest._01_Elements_CS._03_Operations
 {
     
-    [TestClass]
+    [TestFixture]
     public class _01_Assignment
     {
-        [TestMethod]
+        [Test]
         public void TestOperations1()
         {
 

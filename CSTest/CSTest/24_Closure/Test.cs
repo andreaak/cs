@@ -1,17 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace CSTest._24_Closure
 {
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestClosureBefore()//C#4.0
         {
             var actions = new List<Action>();
@@ -38,7 +37,7 @@ namespace CSTest._24_Closure
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestClosureAfter()//C#5.0
         {
             var actions = new List<Action>();
@@ -65,7 +64,7 @@ namespace CSTest._24_Closure
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestClosureAfter2()//C#5.0
         {
             var actions = new List<Action>();
@@ -84,7 +83,7 @@ namespace CSTest._24_Closure
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestClosure4()//C#4.0
         {
             var actions = new List<Action>();

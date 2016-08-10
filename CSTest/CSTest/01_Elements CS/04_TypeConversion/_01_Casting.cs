@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._04_TypeConversion
@@ -6,10 +6,10 @@ namespace CSTest._01_Elements_CS._04_TypeConversion
     // Преобразование типа (Casting или Type conversion) - это преобразование значения 
     // переменной одного типа в значение другого типа.
     // Выделяют явное (explicit) и неявное (implicit) преобразование типов.
-    [TestClass]
+    [TestFixture]
     public class IsAs
     {
-        [TestMethod]
+        [Test]
         public void TestCasting1Implicit()
         {
             #region Неявное (безопасное) преобразование типа:
@@ -31,7 +31,7 @@ namespace CSTest._01_Elements_CS._04_TypeConversion
             #endregion
         }
 
-        [TestMethod]
+        [Test]
         public void TestCasting2Explicit()
         {
             #region Явное (опасное) преобразование типа:
@@ -59,7 +59,7 @@ namespace CSTest._01_Elements_CS._04_TypeConversion
             #endregion
         }
 
-        [TestMethod]
+        [Test]
         public void TestCasting3Constants()
         {
             //   ----------------------------------  Константы  ----------------------------------------------

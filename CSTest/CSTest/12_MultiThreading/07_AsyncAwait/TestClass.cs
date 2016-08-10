@@ -7,7 +7,6 @@ using System.Linq;
 using System.Net.Http;
 #endif
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
@@ -265,6 +264,21 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             byte[] urlContents = await task;
 
             return urlContents.Length;
+        }
+
+        private string Bonus { get; set; }
+
+        public async Task<string> TestBonus()
+        {
+            if (Bonus == null)
+                return null;
+            await Task.Run(() => { });
+            return "AsyncTest";
+        }
+
+        public Task TestBonus2()
+        {
+            return null;
         }
 #endif
     }

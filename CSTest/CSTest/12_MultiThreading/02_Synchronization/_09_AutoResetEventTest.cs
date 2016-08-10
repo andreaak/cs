@@ -1,16 +1,16 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
-    [TestClass]
+    [TestFixture]
     public class _09_AutoResetEventTest
     {
         // AutoResetEvent - Уведомляет ожидающий поток о том, что произошло событие. 
         static readonly AutoResetEvent auto = new AutoResetEvent(false);
         
-        [TestMethod]
+        [Test]
         public void TestAutoResetEvent1()
         {
 
@@ -47,7 +47,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Debug.WriteLine("Зеленый");
         }
 
-        [TestMethod]
+        [Test]
         public void TestAutoResetEvent2()
         {
             var thread = new Thread(Function3);

@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using CSTest._12_MultiThreading._01_Thread._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._01_Thread
 {
-    [TestClass]
+    [TestFixture]
     /*
     У каждого потока имеется свой приоритет, который отчасти определяет, насколько часто поток получает доступ к ЦП. 
     Вообще говоря, низкоприоритетные потоки  получают доступ к ЦП реже, чем высокоприоритетные. 
@@ -26,7 +26,7 @@ namespace CSTest._12_MultiThreading._01_Thread
     */
     public class _03_PriorityTest
     {
-        [TestMethod]
+        [Test]
         // Продемонстрировать влияние приоритетов потоков.
         public void TestThreadPriority1()
         {
@@ -45,7 +45,7 @@ namespace CSTest._12_MultiThreading._01_Thread
             Debug.WriteLine("Поток " + mt2.Thread.Name + " досчитал до " + mt2.Count);
         }
 
-        [TestMethod]
+        [Test]
         // Продемонстрировать влияние приоритетов потоков.
         public void TestThreadPriority2()
         {

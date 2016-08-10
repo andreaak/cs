@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -21,12 +20,12 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         потребитель ожидает наличия типа коллекции.
     */
 
-    [TestClass]
+    [TestFixture]
     public class _01_List
     {
         const int Iterations = 1000;
 
-        [TestMethod]
+        [Test]
         public void TestList1GrowList()
         {
             List<int> lst = new List<int>();
@@ -81,7 +80,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestList2GrowList()
         {
             List<int> lst = new List<int>();
@@ -102,7 +101,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestList3ToList()
         {
             IList<string> lst = new string[] {"One", "Two", "Three"};
@@ -131,7 +130,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestList4Cast()
         {
 
@@ -168,7 +167,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestList5Add()
         {
 

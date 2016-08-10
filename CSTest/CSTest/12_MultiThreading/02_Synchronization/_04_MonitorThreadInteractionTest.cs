@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
-    [TestClass]
+    [TestFixture]
     public class _04_MonitorThreadInteractionTest
     {
-        [TestMethod]
+        [Test]
         // Использовать методы Wait() и Pulse() для имитации тиканья часов
         public void TestThreadInteraction1()
         {
@@ -20,7 +19,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Debug.WriteLine("Часы остановлены");
         }
 
-        [TestMethod]
+        [Test]
         // Нерабочий вариант класса TickTock.
         public void TestThreadInteraction2()
         {

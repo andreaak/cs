@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._04_Class._00_Base
@@ -31,10 +31,10 @@ namespace CSTest._04_Class._00_Base
     }
     
     
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestClassBase1()
         {
             // 1. Создаем экземпляр класса MyClass (по сильной ссылке).

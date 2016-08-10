@@ -1,14 +1,13 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
     // WaitAll() - Ожидает завершения выполнения всех указанных объектов Task.
     // WaitAny() - Ожидает завершения выполнения любого из указанных объектов Task.
-    [TestClass]
+    [TestFixture]
     public class _03_WaitTest
     {
         // Метод, исполняемый как задача, 
@@ -24,7 +23,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Debug.WriteLine("MyTask №" + Task.CurrentId + " завершен");
         }
 
-        [TestMethod]
+        [Test]
         // Применить метод Wait()
         public void TestTaskWait1()
         {
@@ -90,7 +89,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestTaskWait2Any()
         {
             Debug.WriteLine("Основной поток запущен.");
@@ -136,7 +135,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestTaskWait2All()
         {
             Debug.WriteLine("Основной поток запущен.");

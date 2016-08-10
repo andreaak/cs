@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._01_Types
 {
-    [TestClass]
+    [TestFixture]
     public class _08_Nullable
     {
-        [TestMethod]
+        [Test]
         public void TestNullable1()
         {
             int? j = 0;//call instance void valuetype [mscorlib]System.Nullable`1<int32>::.ctor(!0)
@@ -17,7 +17,7 @@ namespace CSTest._01_Elements_CS._01_Types
             int? k = 5;//call instance void valuetype [mscorlib]System.Nullable`1<int32>::.ctor(!0
         }
 
-        [TestMethod]
+        [Test]
         public void TestNullable2()
         {
             int? count = null;
@@ -26,7 +26,7 @@ namespace CSTest._01_Elements_CS._01_Types
             DisplayValue(count);
         }
 
-        [TestMethod]
+        [Test]
         public void TestNullable3()
         {
             int? count = null;
@@ -55,7 +55,7 @@ namespace CSTest._01_Elements_CS._01_Types
         то их результат будет ложным, если любой из обнуляемых объектов оказывается пустым, 
         т.е. содержит значение null
         */
-        [TestMethod]
+        [Test]
         public void TestNullable4()
         {
             int? count = null;
@@ -72,12 +72,12 @@ namespace CSTest._01_Elements_CS._01_Types
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestNullable5()
         {
         }
 
-        [TestMethod]
+        [Test]
         public void TestNullable6()
         {
         }

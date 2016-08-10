@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 using System.Linq;
 
 namespace CSTest._10_Collections._03_Iterators._02_Yield
 {
-    [TestClass]
+    [TestFixture]
     public partial class Test
     {
-        [TestMethod]
+        [Test]
         public void TestYield1()
         {
             _01_Yield mc = new _01_Yield();
@@ -58,7 +57,7 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestYield2()
         {
             _02_YieldBreak mc = new _02_YieldBreak();
@@ -82,7 +81,7 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestYield3()
         {
             _03_YieldMulti mc = new _03_YieldMulti();
@@ -101,7 +100,7 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestYield4()
         {
             int[] nums = { 4, 3, 6, 4, 7, 9 };
@@ -138,7 +137,7 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestYield5()
         {
             _01_Yield mc = new _01_Yield();
@@ -188,7 +187,7 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestYield6()
         {
 

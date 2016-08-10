@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
@@ -15,10 +15,10 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     Локальные переменные не могут быть объявлены как volatile.
     */
 
-    [TestClass]
+    [TestFixture]
     public class _06_VolatileTest
     {
-        [TestMethod]
+        [Test]
         public void TestVolatile1()
         {
             Debug.WriteLine("Main: запускается поток на 2 секунды.");
@@ -79,7 +79,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Debug.WriteLine("Worker: остановлен при x = {0}.", x);
         }
 
-        [TestMethod]
+        [Test]
         // Альтернативные операции VolatileWrite() и VolatileRead() ключевому слову volatile.
         public void TestVolatile2()
         {

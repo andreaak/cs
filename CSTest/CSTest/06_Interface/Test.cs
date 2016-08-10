@@ -1,16 +1,13 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using CSTest._06_Interface._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Linq;
+using NUnit.Framework;
 
 namespace CSTest._06_Interface
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestInterface1()
         {
             _01_Base my = new _01_Base();
@@ -19,7 +16,7 @@ namespace CSTest._06_Interface
         }
 
         // Вызов реализации.
-        [TestMethod]
+        [Test]
         public void TestInterface1VirtualMethod()
         {
 
@@ -63,7 +60,7 @@ namespace CSTest._06_Interface
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterface2()
         {
             Interface1 instance1 = new _02_DerivedClass();
@@ -76,7 +73,7 @@ namespace CSTest._06_Interface
             // instance2.Method1();
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterface3()
         {
             // Явное указание имени интерфейса в имени метода.
@@ -94,7 +91,7 @@ namespace CSTest._06_Interface
         }
 
         // Множественное наследование от одного класса и нескольких интерфейсов.
-        [TestMethod]
+        [Test]
         public void TestInterface4()
         {
             _02_DerivedClass instance = new _02_DerivedClass();
@@ -114,7 +111,7 @@ namespace CSTest._06_Interface
             instance2.Method2();
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterface5()
         {
             _03_InterfaceInheritance instance = new _03_InterfaceInheritance();
@@ -129,7 +126,7 @@ namespace CSTest._06_Interface
             instance2.Method2();
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterface6()
         {
             _04_InterfaceInheritance instance = new _04_InterfaceInheritance();
@@ -148,7 +145,7 @@ namespace CSTest._06_Interface
              */
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterface7()
         {
             _05_InterfaceUnion instance = new _05_InterfaceUnion();
@@ -161,7 +158,7 @@ namespace CSTest._06_Interface
             instance2.Method();
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterface8()
         {
             _06_AbstractClass instance = new _06_AbstractClass();
@@ -169,7 +166,7 @@ namespace CSTest._06_Interface
             instance.Method2();
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterface9()
         {
             _07_InterfaceWithBaseClass instance = new _07_InterfaceWithBaseClass();
@@ -179,7 +176,7 @@ namespace CSTest._06_Interface
             instance1.Method();
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterface10()
         {
             _07_InterfaceWithBaseClass instance = new _07_InterfaceWithBaseClass();
@@ -196,7 +193,7 @@ namespace CSTest._06_Interface
              */
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterface11()
         {
             _08_InterfaceWithBaseClass instance = new _08_InterfaceWithBaseClass();

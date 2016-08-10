@@ -5,14 +5,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using CSTest._12_MultiThreading._05_TPL._01_Task;
 using CSTest._12_MultiThreading._08_WinFormsWPF._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._08_WinFormsWPF
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestWinFormsWPF1()
         {
             //dataTextBox.Text += "Beginning download\n";
@@ -50,7 +50,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
             */
         }
 
-        [TestMethod]
+        [Test]
         // Продемонстрировать продолжение задачи при нормальной работе.
         public void TestWinFormsWPFTaskContinue()
         {
@@ -92,7 +92,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
             Debug.WriteLine("Основной поток завершен.");
         }
 
-        [TestMethod]
+        [Test]
         // Продемонстрировать продолжение задачи при отмене.
         public void TestWinFormsWPFTaskContinueCancel()
         {
@@ -131,7 +131,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
             Debug.WriteLine("Основной поток завершен.");
         }
 
-        [TestMethod]
+        [Test]
         // Продемонстрировать продолжение задачи при исключении.
         public void TestWinFormsWPFTaskContinueException()
         {
@@ -186,7 +186,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
 
         #if CS5
 
-        [TestMethod]
+        [Test]
         public void TestWinFormsWPFAsyncAwait1()
         {
             Debug.WriteLine("Staring async download\n");
@@ -216,7 +216,7 @@ namespace CSTest._12_MultiThreading._08_WinFormsWPF
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestWinFormsWPFAsyncAwait2Exception()
         {
             NewMethod();

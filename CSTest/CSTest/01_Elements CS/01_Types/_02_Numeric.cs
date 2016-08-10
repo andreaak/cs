@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace CSTest._01_Elements_CS._01_Types
 {
-    [TestClass]
+    [TestFixture]
     public class _02_Numeric
     {
-        [TestMethod]
+        [Test]
         public void TestNumeric1()
         {
             #region ЦЕЛЫЕ ТИПЫ

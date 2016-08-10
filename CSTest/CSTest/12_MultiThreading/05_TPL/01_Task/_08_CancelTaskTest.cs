@@ -2,11 +2,11 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
-    [TestClass]
+    [TestFixture]
     public class _08_CancelTaskTest
     {
         // Метод, исполняемый как задача, 
@@ -30,7 +30,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Debug.WriteLine("TestTask завершен");
         }
 
-        [TestMethod]
+        [Test]
         // Простой пример отмены задачи с использованием опроса.
         public void TestTaskCancel()
         {

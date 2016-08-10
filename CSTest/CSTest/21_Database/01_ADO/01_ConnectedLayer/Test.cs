@@ -2,18 +2,18 @@
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
 {
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
         string providerName = System.Configuration.ConfigurationManager.ConnectionStrings["CSTest.Properties.Settings.ShopDBConnectionString"].ProviderName;
         string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CSTest.Properties.Settings.ShopDBConnectionString"].ConnectionString;
 
-        [TestMethod]
+        [Test]
         public void TestDataReader()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -60,7 +60,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestDataReaderBatch()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -122,7 +122,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestDataReaderWithParam()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -168,7 +168,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         //ALTER VIEW View1 
         //AS  SELECT  Field1,  Field2  FROM Table1
         //DROP  PROCEDURE  StoredProcedura1
-        [TestMethod]
+        [Test]
         public void TestExecuteNonQuery()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -206,7 +206,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         //Выполнение запроса, возвращающего одно значение Предположим, вы хотите выполнить запрос и получить одну ячейку (одну запись, одно поле) данных.
-        [TestMethod]
+        [Test]
         public void TestExecuteScalar()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -230,7 +230,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestProcedureWithParam()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -266,7 +266,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestProcedureWithParam2()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -310,7 +310,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestProcedureWithOutParam()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -366,7 +366,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestProcedureWithOutParam2()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -416,7 +416,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestFunction()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -454,7 +454,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestFunction2()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
@@ -489,7 +489,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestTransaction1()
         {
             /*
@@ -575,7 +575,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestTransaction2()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);

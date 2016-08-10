@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._02_Variables
 {
-    [TestClass]
+    [TestFixture]
     public class _05_var
     {
-        [TestMethod]
+        [Test]
         public void TestVar1()
         {
             // Неявно типизированная локальная переменная.

@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
     // Использование Mutex для синхронизации доступа к защищенным ресурсам.
     // Mutex - Примитив синхронизации, который также может использоваться в межпроцессной и междоменной синхронизации.
     // MutEx - Mutual Exclusion (Взаимное Исключение).
-    [TestClass]
+    [TestFixture]
     public class _07_MutexTest
     {
-        [TestMethod]
+        [Test]
         public void TestMutex1()
         {
             var threads = new Thread[5];
@@ -45,7 +45,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Mutex1.ReleaseMutex();
         }
 
-        [TestMethod]
+        [Test]
         public void TestMutex2()
         {
             for (int i = 0; i < 5; i++)
@@ -86,7 +86,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Thread.Sleep(1000); // Выполнение некоторой работы...
         }
 
-        [TestMethod]
+        [Test]
         // Рекурсивное запирание.
         public void TestMutex3()
         {

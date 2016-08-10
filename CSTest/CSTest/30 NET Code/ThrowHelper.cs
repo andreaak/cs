@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Runtime;
-using System.Runtime.Versioning;
-using System.Diagnostics;
 using System.Diagnostics.Contracts;
-using System.Collections.ObjectModel;
-using System.Security.Permissions;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace CSTest._30_NET_Code

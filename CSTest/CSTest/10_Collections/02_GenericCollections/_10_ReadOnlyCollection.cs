@@ -1,14 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace CSTest._10_Collections._02_GenericCollections
 {
-    [TestClass]
+    [TestFixture]
     public partial class _10_ReadOnlyCollection
     {
-        [TestMethod]
+        [Test]
         public void Test()
         {
             List<string> dinosaurs = new List<string>();

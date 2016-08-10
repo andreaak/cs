@@ -1,12 +1,11 @@
-﻿using System.Diagnostics;
-using System.Threading;
+﻿using System.Threading;
 using CSTest._12_MultiThreading._02_Synchronization._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
     // Критическая секция (critical section).
-    [TestClass]
+    [TestFixture]
     /*
     В случае использования нескольких потоков  приходится координировать  их действия такой процесс, называется синхронизацией. 
     Основная причина применения синхронизации  - необходимость разделять среди двух или более потоков общий ресурс 
@@ -37,7 +36,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     */
     public class _01_MonitorTest
     {
-        [TestMethod]
+        [Test]
         public void TestMonitor1()
         {
             Thread[] threads = new Thread[5];
@@ -69,7 +68,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestMonitor2()
         {
             var reporter = new Thread(_01_MonitorThread.Report1)
@@ -109,7 +108,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             */
         }
 
-        [TestMethod]
+        [Test]
         //Блокировка в разных методах
         public void TestMonitor3()
         {
@@ -135,7 +134,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             */
         }
 
-        [TestMethod]
+        [Test]
         // Lock - не принимает типов значений, а только ссылочные.
         public void TestMonitor4()
         {

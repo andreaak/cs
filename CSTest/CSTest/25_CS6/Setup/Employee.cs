@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CSTest._25_CS6.Setup
+﻿namespace CSTest._25_CS6.Setup
 {
     public class Employee
     {

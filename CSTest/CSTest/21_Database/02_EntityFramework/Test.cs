@@ -1,5 +1,5 @@
 ﻿using CSTest._21_Database._02_EntityFramework._01_DatabaseFirst;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System.Data.Objects;
 using System.Diagnostics;
 using System.Linq;
@@ -7,10 +7,10 @@ using System.Linq;
 namespace CSTest._21_Database._02_EntityFramework
 {
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestEFRead()
         {
             ShopDBEntities context = new ShopDBEntities();
@@ -45,7 +45,7 @@ namespace CSTest._21_Database._02_EntityFramework
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestEFAddRemoveItem()
         {
             ShopDBEntities context = new ShopDBEntities();
@@ -89,7 +89,7 @@ namespace CSTest._21_Database._02_EntityFramework
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestEFProcedure1()
         {
             ShopDBEntities context = new ShopDBEntities();
@@ -103,7 +103,7 @@ namespace CSTest._21_Database._02_EntityFramework
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestEFProcedure2()
         {
             ShopDBEntities context = new ShopDBEntities();
@@ -118,7 +118,7 @@ namespace CSTest._21_Database._02_EntityFramework
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestEFProcedure3()
         {
             ShopDBEntities context = new ShopDBEntities();
@@ -132,7 +132,7 @@ namespace CSTest._21_Database._02_EntityFramework
             */
         }
 
-        //[TestMethod]
+        //[Test]
         //public void TestEFFunction4()
         //{
         //    ShopDBEntities context = new ShopDBEntities();
@@ -143,7 +143,7 @@ namespace CSTest._21_Database._02_EntityFramework
         //    */
         //}
 
-        [TestMethod]
+        [Test]
         public void TestEFFunction1()
         {
             ShopDBEntities context = new ShopDBEntities();

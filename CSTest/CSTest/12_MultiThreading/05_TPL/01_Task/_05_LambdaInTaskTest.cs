@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
-    [TestClass]
+    [TestFixture]
     public class _05_LambdaInTaskTest
     {
-        [TestMethod]
+        [Test]
         // Применить лямбда-выражение в качестве задачи.
         public void TestTaskLambda()
         {

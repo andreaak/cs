@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._21_Database._03_LinqToSql
 {
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestLTSRead()
         {
             ShopDBDataContext context = new ShopDBDataContext();
@@ -42,7 +42,7 @@ namespace CSTest._21_Database._03_LinqToSql
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestLTSProcedure1()
         {
             ShopDBDataContext context = new ShopDBDataContext();
@@ -56,7 +56,7 @@ namespace CSTest._21_Database._03_LinqToSql
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestLTSProcedure2()
         {
             ShopDBDataContext context = new ShopDBDataContext();
@@ -70,7 +70,7 @@ namespace CSTest._21_Database._03_LinqToSql
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestLTSProcedure3()
         {
             ShopDBDataContext context = new ShopDBDataContext();
@@ -84,7 +84,7 @@ namespace CSTest._21_Database._03_LinqToSql
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestLTSFunction1()
         {
             ShopDBDataContext context = new ShopDBDataContext();
@@ -95,7 +95,7 @@ namespace CSTest._21_Database._03_LinqToSql
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestLTSFunction2()
         {
             ShopDBDataContext context = new ShopDBDataContext();

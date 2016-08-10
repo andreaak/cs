@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
     /*
     задача в основном использует потоки из пула потоков которые являются BackGround
     */
-    [TestClass]
+    [TestFixture]
     public class _01_CreateTaskTest
     {
         static string temp = new string(' ', 10);
@@ -47,7 +47,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
         }
 
 
-        [TestMethod]
+        [Test]
         // Создать и запустить задачу на исполнение. 
         public void TestTaskStart1()
         {
@@ -93,7 +93,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             */
         }
 
-        [TestMethod]
+        [Test]
         // Использовать метод экземпляра в качестве задачи. 
         public void TestTaskStart2()
         {
@@ -142,7 +142,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             */
         }
 
-        [TestMethod]
+        [Test]
         // Использовать метод экземпляра в качестве задачи. 
         public void TestTaskStart3()
         {
@@ -184,7 +184,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestTaskStart4Parameter()
         {
             Debug.WriteLine("Основной поток запущен.");

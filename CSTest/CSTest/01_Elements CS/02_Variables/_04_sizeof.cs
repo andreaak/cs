@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._02_Variables
@@ -8,10 +8,10 @@ namespace CSTest._01_Elements_CS._02_Variables
     // byte, sbyte, short, ushort, int, uint, long, ulong, float, double, decimal, char, bool.
     // Возвращаемые оператором sizeof значения имеют тип int.
     
-    [TestClass]
+    [TestFixture]
     public class _03_sizeof
     {
-        [TestMethod]
+        [Test]
         public void TestSizeof()
         {
             int doubleSize = sizeof(double);

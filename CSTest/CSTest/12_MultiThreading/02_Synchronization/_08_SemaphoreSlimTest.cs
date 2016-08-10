@@ -1,13 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 using System.Threading;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
-    [TestClass]
+    [TestFixture]
     class _08_SemaphoreSlimTest
     {
-        [TestMethod]
+        [Test]
         // SemaphoreSlim  - легковесный класс-семафор, который не использует объекты синхронизации ядра.
         public void TestSemaphore2()
         {

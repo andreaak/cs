@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-// Контрвариантность обобщений.
+﻿// Контрвариантность обобщений.
 // Контрвариантность обобщений в C# 4.0 ограничена интерфейсами и делегатами.
 namespace CSTest._07_Generics
 {

@@ -1,13 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestArrayIsEmpty()
         {
             int[] testInt = null;
@@ -24,7 +24,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
 
         }
 
-        [TestMethod]
+        [Test]
         public void TestListIsEmpty()
         {
             List<int> testInt = null;
@@ -40,7 +40,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             Assert.IsFalse(testStr.IsEmpty());
         }
 
-        [TestMethod]
+        [Test]
         public void TestListIsEmpty_()
         {
             List<int> testInt = null;
@@ -59,7 +59,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             return testInt?.Any() != true;
         }
 
-        [TestMethod]
+        [Test]
         public void TestListIsEmpty_NotEmpty()
         {
             List<int> testInt = null;
@@ -77,7 +77,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             return testInt?.Any() != false;
         }
 
-        [TestMethod]
+        [Test]
         public void TestListIsEmpty_NotEmpty2()
         {
             List<int> testInt = null;
@@ -90,7 +90,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             Assert.IsTrue(IsNotEmpty(testInt3));
         }
 
-        [TestMethod]
+        [Test]
         public void TestListIsEmpty_NotEmpty3()
         {
             List<int> testInt = null;
@@ -103,7 +103,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             Assert.IsTrue(IsNotEmpty2(testInt3));
         }
 
-        [TestMethod]
+        [Test]
         public void TestListIsEmpty_Empty()
         {
             List<int> testInt = null;
@@ -132,7 +132,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             return testInt?.Count == 0;
         }
 
-        [TestMethod]
+        [Test]
         public void TestHashSetIsEmpty()
         {
             HashSet<int> testInt = null;
@@ -148,7 +148,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             Assert.IsFalse(testStr.IsEmpty());
         }
 
-        [TestMethod]
+        [Test]
         public void TestSortedSetIsEmpty()
         {
             SortedSet<int> testInt = null;
@@ -164,7 +164,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             Assert.IsFalse(testStr.IsEmpty());
         }
 
-        [TestMethod]
+        [Test]
         public void TestDictionaryIsEmpty()
         {
             Dictionary<int, int> testInt = null;
@@ -181,7 +181,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestSortedDictionaryIsEmpty()
         {
             SortedDictionary<int, int> testInt = null;
@@ -197,7 +197,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             Assert.IsFalse(testStr.IsEmpty());
         }
 
-        [TestMethod]
+        [Test]
         public void TestStackIsEmpty()
         {
             Stack<int> testInt = null;
@@ -215,7 +215,7 @@ namespace CSTest._10_Collections._02_GenericCollections._10_CollectionExtensions
             Assert.IsFalse(testStr.IsEmpty());
         }
 
-        [TestMethod]
+        [Test]
         public void TestQueueIsEmpty()
         {
             Queue<int> testInt = null;

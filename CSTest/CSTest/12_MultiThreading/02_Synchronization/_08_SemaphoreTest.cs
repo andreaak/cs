@@ -1,17 +1,17 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
     // Класс Semaphore - используется для управления доступом к пулу ресурсов. 
     // Потоки занимают слот семафора, вызывая метод WaitOne(), и освобождают занятый слот вызовом метода Release().
-    [TestClass]
+    [TestFixture]
     public class _08_SemaphoreTest
     {
         private static Semaphore pool;
 
-        [TestMethod]
+        [Test]
         public void TestSemaphore1()
         {
             // Первый аргумент:

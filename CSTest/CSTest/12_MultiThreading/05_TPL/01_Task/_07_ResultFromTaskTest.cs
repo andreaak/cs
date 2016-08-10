@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
-    [TestClass]
+    [TestFixture]
     public class _07_ResultFromTaskTest
     {
         // Простейший метод, возвращающий результат и не принимающий аргументов, 
@@ -25,7 +25,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             return sum;
         }
 
-        [TestMethod]
+        [Test]
         // Возвратить значение из задачи.
         public void TestTaskResult()
         {

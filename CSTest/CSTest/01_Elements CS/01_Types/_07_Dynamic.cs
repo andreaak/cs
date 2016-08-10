@@ -1,6 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
-using System.Diagnostics;
 using CSTest._01_Elements_CS._01_Types._0_Setup;
 
 namespace CSTest._01_Elements_CS._01_Types
@@ -18,11 +17,11 @@ namespace CSTest._01_Elements_CS._01_Types
     Это отличается от приведения объекта от одного типа к другому. 
     При приведении объекта создается новый объект с другим, но совместимым типом. 
     */
-    [TestClass]
+    [TestFixture]
     public class _07_Dynamic
     {
         // Динамические типы данных. (Локальные переменные)
-        [TestMethod]
+        [Test]
         public void TestDynamic1()
         {
             dynamic variable = 1;
@@ -47,7 +46,7 @@ namespace CSTest._01_Elements_CS._01_Types
 
         // Динамические типы данных. (Статические поля)
         static dynamic field = 1;
-        [TestMethod]
+        [Test]
         public void TestDynamic2()
         {
             Console.WriteLine(field);
@@ -63,7 +62,7 @@ namespace CSTest._01_Elements_CS._01_Types
 
         // Динамические типы данных. (Нестатические поля)
         dynamic field1 = 1, field2 = "Hello", field3 = true;
-        [TestMethod]
+        [Test]
         public void TestDynamic3()
         {
             dynamic instance = new _07_Dynamic();
@@ -80,7 +79,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         // Динамические типы данных. (Динамические типы аргументов и возвращаемых значений методов.)
-        [TestMethod]
+        [Test]
         public void TestDynamic4()
         {
             string @string = DynamicClass.StaticMethod("friend");
@@ -89,7 +88,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         //DynamicClass
-        [TestMethod]
+        [Test]
         public void TestDynamic5()
         {
             dynamic my = new DynamicClass("Hello");
@@ -111,7 +110,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         // Динамические типы данных. (Динамические типы в делегатах)
-        [TestMethod]
+        [Test]
         public void TestDynamic6()
         {
             dynamic myDelegate = new DynamicDelegate(DynamicClass.StaticMethod);
@@ -122,7 +121,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         // Динамические типы данных. (Динамические типы в параметризированных делегатах)
-        [TestMethod]
+        [Test]
         public void TestDynamic7()
         {
             dynamic myDelegate = new DynamicGenericDelegate<dynamic, dynamic>(DynamicClass.StaticMethod);
@@ -133,7 +132,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         // Динамические типы данных. (События) 
-        [TestMethod]
+        [Test]
         public void TestDynamic8()
         {
             dynamic my = new DynamicClass();
@@ -143,7 +142,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         // Динамические типы данных. (Наследование)
-        [TestMethod]
+        [Test]
         public void TestDynamic10()
         {
             dynamic instance = new Derived();
@@ -154,7 +153,7 @@ namespace CSTest._01_Elements_CS._01_Types
             Console.WriteLine(instance.Method());
         }
 
-        [TestMethod]
+        [Test]
         public void TestDynamic11()
         {
             dynamic instance = DynamicClass.FactoryMethod() as dynamic;
@@ -170,7 +169,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         // Динамические типы данных. (Анонимные типы)
-        [TestMethod]
+        [Test]
         public void TestDynamic12()
         {
             dynamic instance = new { Name = "Alex", Age = 18 };
@@ -180,7 +179,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         // Динамические типы данных. (Динамические типы аргументов и возвращаемых значений методов.)
-        [TestMethod]
+        [Test]
         public void TestDynamic13()
         {
             dynamic variable1 = 0, variable2;
@@ -192,7 +191,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         //Перегрузка операторов
-        [TestMethod]
+        [Test]
         public void TestDynamic14()
         {
             dynamic a = new DynamicClass(1), b = new DynamicClass(2), c = a + b;
@@ -201,7 +200,7 @@ namespace CSTest._01_Elements_CS._01_Types
         }
 
         // Динамические типы данных. (Анонимные типы)
-        [TestMethod]
+        [Test]
         public void TestDynamic15()
         {
             foreach (dynamic item in DynamicClass.Generator())

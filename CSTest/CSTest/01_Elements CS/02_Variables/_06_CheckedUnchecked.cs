@@ -1,14 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._02_Variables
 {
     // Проверка переполнения - (checked)
     
-    [TestClass]
+    [TestFixture]
     public class _06_CheckedUnchecked
     {
-        [TestMethod]
+        [Test]
         public void TestCheckedUnchecked1()
         {
             sbyte a = 127;
@@ -24,7 +24,7 @@ namespace CSTest._01_Elements_CS._02_Variables
         }
 
         // Комбинация проверки и запрета проверки переполнения.
-        [TestMethod]
+        [Test]
         public void TestCheckedUnchecked2()
         {
             sbyte a = 126;

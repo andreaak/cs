@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Diagnostics;
 
 namespace CSTest._25_CS6
 {
-    [TestClass]
+    [TestFixture]
     public class _06_EventInitializerTests
     {
         public class User
@@ -24,7 +24,7 @@ namespace CSTest._25_CS6
 
 
 #if CS6
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             EventHandler<EventArgs> log = (o, e) => Debug.WriteLine("hit");

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._10_Collections._03_Iterators
 {
-    [TestClass]
+    [TestFixture]
     class _01_Foreach
     {
-        [TestMethod]
+        [Test]
         public void TestForeach()
         {
             char[] chrs = { 'А', 'В', 'C', 'D' };

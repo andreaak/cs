@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._08_String._01_RegularExpression
 {
-    [TestClass]
+    [TestFixture]
     public class TestCookBook
     {
         /*
         Номер социальной страховки
         Проверка корректности этого номера не составляет труда. Номер состоит из де вяти цифр, возможно, разделенных дефисами
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpSSN()
         {
             Regex regex = new Regex(@"^\d{3}\-?\d{2}\-?\d{4}$");
@@ -62,7 +62,7 @@ namespace CSTest._08_String._01_RegularExpression
         Телефонные номера тоже часто подвергаются проверке на корректность. 
         В следующем примере проверяется стандартный 10-значный телефонный номер в США
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpPhone()
         {
             Regex regex = new Regex(
@@ -112,7 +112,7 @@ namespace CSTest._08_String._01_RegularExpression
         Почтовый индекс
         Почтовый индекс содержит 5 или 9 цифр, возможно, разделенных дефисами   
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpPostIndex()
         {
             Regex regex = new Regex(@"^\d{5}(-?\d{4})?$");
@@ -161,7 +161,7 @@ namespace CSTest._08_String._01_RegularExpression
         Извлечение пар "имя = значение" (по одной в строке)
         Обратите внимание на применение в начале директивы (?m);
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpParseKeyValue()
         {
             string r = @"(?m)^\s*(?'name'\w+)\s*=\s*(?'value'.*)\s*(?=\r?$)";
@@ -181,7 +181,7 @@ namespace CSTest._08_String._01_RegularExpression
         Следующий код проверяет, что пароль состоит, по меньшей мере, 
         из шести символов и включает цифру, символ или знак пунктуации
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpPassword()
         {
             string r = @"(?x)^(?=.*(\d|\p{P}|\p{S})).{6,}";
@@ -193,7 +193,7 @@ namespace CSTest._08_String._01_RegularExpression
         }
 
         //Строки, содержащие, по крайней мере, 80 символов
-        [TestMethod]
+        [Test]
         public void TestRegExpSinbolsMore()
         {
             string r = @"(?m)^.{80,}(?=\r?$)";
@@ -211,7 +211,7 @@ namespace CSTest._08_String._01_RegularExpression
         Проведенное здесь регулярное выражение служит для проверки корректности даты, 
         записанной в формате ММ/ДД/ГГГГ, который принят в США
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpDate()
         {
             Regex regex = new Regex(@"(0[1—9]|1[012])/([1-9]|0[1-9]|[12][0-9]|3[01])/\d{4}");
@@ -255,7 +255,7 @@ namespace CSTest._08_String._01_RegularExpression
         директива (?i) отключает чувствительность к регистру символов (для необязательного указателя АМ/РМ). 
         Затем к компонентам совпадения можно обращаться через коллекцию Groups
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpDateTime()
         {
             string r = @"(?x)(?i)
@@ -282,7 +282,7 @@ namespace CSTest._08_String._01_RegularExpression
         }
 
         //Соответствие  римским  числам
-        [TestMethod]
+        [Test]
         public void TestRegExpRoman()
         {
             string r = @"(?i)\bm*" +
@@ -300,7 +300,7 @@ namespace CSTest._08_String._01_RegularExpression
         Удаление  повторяющихся  слов.
         Здесь мы захватываем именованную группу dupe:
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpDuplicatedWords()
         {
             string r = @"(?'dupe'\w+)\W\k'dupe'";
@@ -314,7 +314,7 @@ namespace CSTest._08_String._01_RegularExpression
         /*
         Подсчет  слов
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpWordsCount()
         {
             string r = @"\b(\w|[-'])+\b";
@@ -327,7 +327,7 @@ namespace CSTest._08_String._01_RegularExpression
         /*
         Соответствие GUID
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpGuid()
         {
             string r = @"(?i)\b" +
@@ -348,7 +348,7 @@ namespace CSTest._08_String._01_RegularExpression
         Класс Regex удобен при разборе фрагментов HTML-разметки - особенно, 
         когда документ может быть сформирован некорректно:
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpXML_HTML()
         {
             string r = @"<(?'tag'\w+?).*>" +   // соответствует первому дескриптору; назовем группу 'tag'
@@ -367,7 +367,7 @@ namespace CSTest._08_String._01_RegularExpression
         Это требует положительного просмотра вперед,
         чтобы включить разделители в верхнем регистре
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpCamelCase()
         {
             string r = @"(?=[A-Z])";
@@ -383,7 +383,7 @@ namespace CSTest._08_String._01_RegularExpression
         /*
         Получение допустимого имени файла
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpFileName()
         {
             string input = "My \"good\" <recipes>.txt";
@@ -399,7 +399,7 @@ namespace CSTest._08_String._01_RegularExpression
         /*
         Преобразование символов в строке запроса HTTP
         */
-        [TestMethod]
+        [Test]
         public void TestRegExHTTP()
         {
             string sample = "C%23 rocks";
@@ -419,7 +419,7 @@ namespace CSTest._08_String._01_RegularExpression
         Разбор поисковых терминов Google из журнала веб-статистики
         Это должно использоваться в сочетании с предыдущим примером преобразования символов в строке запроса
         */
-        [TestMethod]
+        [Test]
         public void TestRegExpGoogle()
         {
             string sample = "http://google.com/search?hl=en&q=greedy+quantifiers+regex&btnG=Search";

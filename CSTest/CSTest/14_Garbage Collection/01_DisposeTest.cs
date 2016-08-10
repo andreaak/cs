@@ -1,16 +1,15 @@
 ﻿using CSTest._14_Garbage_Collection._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
-using System.IO;
 
 namespace CSTest._14_Garbage_Collection
 {
-    [TestClass]
+    [TestFixture]
     public class _01_Dispose
     {
         /*
         */
-        [TestMethod]
+        [Test]
         public void TestDispose1()
         {
             using (ResourceGobbler theInstance = new ResourceGobbler())
@@ -32,7 +31,7 @@ namespace CSTest._14_Garbage_Collection
             //theInstance.Test(); //The name 'theInstance' does not exist in the current context
         }
 
-        [TestMethod]
+        [Test]
         public void TestDispose2Struct()
         {
             using (ResourceGobblerStruct theInstance = new ResourceGobblerStruct())
@@ -41,7 +40,7 @@ namespace CSTest._14_Garbage_Collection
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestDispose3Dynamic()
         {
             using (dynamic theInstance = new object())
@@ -50,7 +49,7 @@ namespace CSTest._14_Garbage_Collection
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestDispose4Compiled()
         {
             ResourceGobbler theInstance = new ResourceGobbler();
@@ -75,7 +74,7 @@ namespace CSTest._14_Garbage_Collection
             }
         }
         
-        [TestMethod]
+        [Test]
         public void TestDispose5NotRecomended()
         {
             ResourceGobbler theInstance = new ResourceGobbler();

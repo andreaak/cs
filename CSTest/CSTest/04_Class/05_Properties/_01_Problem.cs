@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
-
-namespace CSTest._04_Class._05_Properties
+﻿namespace CSTest._04_Class._05_Properties
 {
     class _01_Problem
     {

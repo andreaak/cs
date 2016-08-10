@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 
 namespace CSTest._25_CS6
 {
-    [TestClass]
+    [TestFixture]
     public class _06_CollectionInitializersTests
     {
 #if CS6
@@ -16,7 +16,7 @@ namespace CSTest._25_CS6
             ["guest"] = "guest",
         };
 
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();

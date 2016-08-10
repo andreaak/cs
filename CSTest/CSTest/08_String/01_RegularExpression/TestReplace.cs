@@ -1,16 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace CSTest._08_String._01_RegularExpression
 {
-    [TestClass]
+    [TestFixture]
     public class TestReplace
     {
         string translatePattern = @"^[\W\d]*(?<OtherWord>{0})[\W\d]*$";
 
-        [TestMethod]
+        [Test]
         public void TestRegExpReplace1()
         {
             string text = "Text For {0} Translate >>>";
@@ -37,7 +37,7 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpReplace2()
         {
             string text = "<<<Text For {0} Translate >>>";

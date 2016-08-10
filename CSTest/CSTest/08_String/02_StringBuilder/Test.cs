@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 using System.Text;
 
 namespace CSTest._08_String._02_StringBuilder
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestStringBuider1()
         {
             StringBuilder sb = new StringBuilder();
@@ -38,7 +37,7 @@ namespace CSTest._08_String._02_StringBuilder
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestStringBuider2()
         {
             StringBuilderNET sb = new StringBuilderNET();
@@ -64,7 +63,7 @@ namespace CSTest._08_String._02_StringBuilder
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestStringBuider3()
         {
             StringBuilderNET sb = new StringBuilderNET();

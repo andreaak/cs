@@ -1,5 +1,5 @@
 ﻿using CSTest._13_Exceptions._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Diagnostics;
@@ -22,7 +22,7 @@ namespace CSTest._13_Exceptions
     каждом вызове метода. Это не только трудоемкий, но и чреватый ошибками процесс. 
     */
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
         /*
@@ -42,7 +42,7 @@ namespace CSTest._13_Exceptions
 
         */
 
-        [TestMethod]
+        [Test]
         public void TestExceptions1()
         {
             int a = 1, n = 2;
@@ -61,7 +61,7 @@ namespace CSTest._13_Exceptions
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestExceptions2()
         {
             Exception ex = new Exception("Мое Исключение");
@@ -78,7 +78,7 @@ namespace CSTest._13_Exceptions
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestExceptions3()
         {
             try
@@ -103,7 +103,7 @@ namespace CSTest._13_Exceptions
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestExceptions4()
         {
             try
@@ -117,7 +117,7 @@ namespace CSTest._13_Exceptions
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestExceptions5Finally()
         {
             int a = 1, n = 2;
@@ -142,7 +142,7 @@ namespace CSTest._13_Exceptions
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestExceptions6Inner()
         {
             ClassWithException instance = new ClassWithException();
@@ -158,7 +158,7 @@ namespace CSTest._13_Exceptions
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestExceptions7StackOverflowException()
         {
             try
@@ -183,7 +183,7 @@ namespace CSTest._13_Exceptions
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestExceptions8FailFast()
         {
             try
@@ -204,7 +204,7 @@ namespace CSTest._13_Exceptions
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestExceptions8NestedExceptions()
         {
             try
@@ -246,7 +246,7 @@ namespace CSTest._13_Exceptions
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestExceptions10Null()
         {
             try
@@ -264,7 +264,7 @@ namespace CSTest._13_Exceptions
         Но при этом выполняется только один блок catch, в котором тип исключения 
         совпадает с типом генерируемого исключения. А все остальные блоки catch пропускаются.
         */
-        [TestMethod]
+        [Test]
         public void TestExceptions11()
         {
             try

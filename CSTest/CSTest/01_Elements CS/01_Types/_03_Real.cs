@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._01_Types
 {
-    [TestClass]
+    [TestFixture]
     public class _03_Real
     {
-        [TestMethod]
+        [Test]
         public void TestReal1()
         {
             #region ВЕЩЕСТВЕННЫЕ ТИПЫ
@@ -29,7 +29,7 @@ namespace CSTest._01_Elements_CS._01_Types
             #endregion
         }
 
-        [TestMethod]
+        [Test]
         public void TestReal2()
         {
             float variable1 = 0.12345678901234567890f;

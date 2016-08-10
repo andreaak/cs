@@ -1,5 +1,5 @@
 ﻿using CSTest._04_Class._07_Inheritance;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._01_Elements_CS._05_RTTI
 {
@@ -7,10 +7,10 @@ namespace CSTest._01_Elements_CS._05_RTTI
 
     class ClassB : ClassA { /* ... */ }
 
-    [TestClass]
+    [TestFixture]
     public class _01_IsAs
     {
-        [TestMethod]
+        [Test]
         public void TestCasting1Is()
         {
             ClassB b = new ClassB();
@@ -43,7 +43,7 @@ namespace CSTest._01_Elements_CS._05_RTTI
             a = b as ClassA;
         }
 
-        [TestMethod]
+        [Test]
         public void TestCasting2As()
         {
             DerivedClass instance = new DerivedClass();

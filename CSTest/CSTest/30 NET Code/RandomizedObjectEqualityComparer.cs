@@ -4,9 +4,7 @@
 // MVID: B85DA6F1-FFD3-4C95-AF10-155C235A661D
 // Assembly location: C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll
 
-using System;
 using System.Collections;
-using System.Security;
 
 namespace CSTest._30_NET_Code
 {

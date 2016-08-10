@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
     // Применение класса TaskFactory для создания и запуска задачи.
 
-    [TestClass]
+    [TestFixture]
     public class _04_TaskFactoryTest
     {
         public static void TestStaticTask()
@@ -21,7 +21,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Debug.WriteLine("MyStaticTask завершен");
         }
 
-        [TestMethod]
+        [Test]
         // Создать и запустить задачу на исполнение. 
         public void TestTaskFactory()
         {

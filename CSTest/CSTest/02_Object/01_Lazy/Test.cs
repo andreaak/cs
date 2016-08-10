@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
-using CSTest._02_Object._01_Lazy;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-
-
+using NUnit.Framework;
 
 namespace CSTest._02_Object._01_Lazy
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestLazy1()
         {
             Debug.WriteLine("Before init");

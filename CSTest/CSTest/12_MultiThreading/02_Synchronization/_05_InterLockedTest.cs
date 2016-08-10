@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using CSTest._12_MultiThreading._02_Synchronization._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
-    [TestClass]
+    [TestFixture]
     /*
     Класс Interlocked предоставляет доступ к атомарным операциям, доступным в нескольких потоках.
     Операции, выполняемые при помощи методов класса Interlocked гарантировано блокируются для остальных потоков, 
@@ -12,7 +12,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     */ 
     public class _05_InterlockedTest
     {
-        [TestMethod]
+        [Test]
         public void TestInterlocked1()
         {
             var reporter = new Thread(_05_InterlockedUtils.Report)
@@ -51,7 +51,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestInterlocked2()
         {
             var threads = new Thread[5];

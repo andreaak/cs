@@ -2,18 +2,18 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task
 {
     // Продолжение - автоматический запуск новой задачи, после завершения первой задачи.
 
-    [TestClass]
+    [TestFixture]
     public class _06_ContinueWithTest
     {
         CancellationTokenSource cts;
 
-        [TestMethod]
+        [Test]
         // Продемонстрировать продолжение задачи.
         public void TestTaskContinue1()
         {
@@ -51,7 +51,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             */
         }
 
-        [TestMethod]
+        [Test]
         // Продемонстрировать продолжение задачи при исключении.
         public void TestTaskContinue2()
         {
@@ -103,7 +103,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             */
         }
 
-        [TestMethod]
+        [Test]
         // Продемонстрировать продолжение задачи при отмене.
         public void TestTaskCancel()
         {
@@ -157,7 +157,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             */
         }
 
-        [TestMethod]
+        [Test]
         // Продемонстрировать продолжение задачи при исключении.
         public void TestTaskException()
         {

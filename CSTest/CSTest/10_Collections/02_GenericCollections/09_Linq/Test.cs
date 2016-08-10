@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
+﻿using System.Linq;
+using NUnit.Framework;
 
-namespace CSTest._10_Collections._02_GenericCollections._05_Linq
+namespace CSTest._10_Collections._02_GenericCollections._09_Linq
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestDeferedExecution()
         {
             int[] a = { 1, 4, 3, 7, 8, 2, 9, 5, 6 };
@@ -21,7 +21,7 @@ namespace CSTest._10_Collections._02_GenericCollections._05_Linq
             int c = b.First();
         }
 
-        [TestMethod]
+        [Test]
         public void TestNotDeferedExecution()
         {
             int[] a = { 1, 4, 3, 7, 8, 2, 9, 5, 6 };

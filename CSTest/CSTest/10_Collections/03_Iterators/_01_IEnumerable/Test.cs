@@ -1,13 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CSTest._10_Collections._03_Iterators._01_IEnumerable
 {
-    [TestClass]
+    [TestFixture]
     public partial class Test
     {
-        [TestMethod]
+        [Test]
         public void TestEnumerator1()
         {
             _01_IEnumerable mc = new _01_IEnumerable();
@@ -43,7 +43,7 @@ namespace CSTest._10_Collections._03_Iterators._01_IEnumerable
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestEnumerator2()
         {
             _02_IEnumerable mc = new _02_IEnumerable();
@@ -79,7 +79,7 @@ namespace CSTest._10_Collections._03_Iterators._01_IEnumerable
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestEnumerator3Generic()
         {
             _03_IEnumerableGeneric mc = new _03_IEnumerableGeneric();
@@ -117,7 +117,7 @@ namespace CSTest._10_Collections._03_Iterators._01_IEnumerable
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestEnumerator4()
         {
             List<int> lst = new List<int> { 1, 2 };

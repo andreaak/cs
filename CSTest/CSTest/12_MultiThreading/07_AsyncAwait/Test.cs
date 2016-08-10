@@ -2,16 +2,16 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {
-    #if CS5
+#if CS5
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait1_1()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -26,7 +26,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait1_2()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -41,7 +41,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait2_1()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -56,7 +56,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait2_2()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -71,7 +71,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait3_1()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -88,7 +88,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait3_2()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -112,7 +112,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait4_1ReturnValue()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -129,7 +129,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait5_1ReturnValue()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -146,7 +146,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait5_2ReturnValue()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -163,7 +163,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait6_1Continue()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -183,7 +183,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait6_2Continue()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -203,7 +203,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait7_1ContinueWithReturn()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -221,7 +221,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait7_2ContinueWithReturn()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -239,7 +239,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait8_1ContinueWithArgument()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -258,7 +258,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait8_2ContinueWithArgument()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -277,7 +277,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait9()
         {
             Debug.WriteLine("Staring async download\n");
@@ -307,7 +307,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait10OldModel()
         {
             Debug.WriteLine("Staring async download\n");
@@ -338,7 +338,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait11Exception()
         {
             Debug.WriteLine("Staring async download\n");
@@ -357,7 +357,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait12Exception()
         {
             Debug.WriteLine("Staring async download\n");
@@ -378,8 +378,8 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
             */
         }
-        
-        [TestMethod]
+
+        [Test]
         public void TestAsyncAwait13Cancel()
         {
             Debug.WriteLine("Staring async download\n");
@@ -409,7 +409,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestAsyncAwait14WaitAll()
         {
             Debug.WriteLine("Staring async download\n");
@@ -462,6 +462,23 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Downloads complete.
             */
         }
+
+        [Test]
+        public async void TestAsyncAwait15tWithResult()
+        {
+            TestClass test = new TestClass();
+            string res = await test.TestBonus();
+            Debug.WriteLine(res);
+        }
+
+        [Test]
+        [ExpectedException(typeof(NullReferenceException))]
+        public async void TestAsyncAwait16tWithoutResult()
+        {
+            TestClass test = new TestClass();
+            await test.TestBonus2();
+        }
     }
-#endif
+
+    #endif
 }

@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._03_Structure._02_Enums
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestFlagEnum1()
         {
             TestFlagsEnum en = TestFlagsEnum.Pending;
@@ -29,7 +29,7 @@ namespace CSTest._03_Structure._02_Enums
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestFlagEnum()
         {
             TestFlagsEnum en = TestFlagsEnum.None;
@@ -56,7 +56,7 @@ namespace CSTest._03_Structure._02_Enums
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestFlagEnum2()
         {
             TestFlagsEnum en = TestFlagsEnum.None;

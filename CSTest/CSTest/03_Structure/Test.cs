@@ -1,15 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Diagnostics;
-using System.Collections.Generic;
 using CSTest._03_Structure._0_Setup;
 
 namespace CSTest._03_Structure
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestStructure1()
         {
             _01_StructureBook book;// конструктор не вызывается
@@ -43,7 +42,7 @@ namespace CSTest._03_Structure
             Debug.WriteLine(book5.GetISBN());
         }
 
-        [TestMethod]
+        [Test]
         public void TestStructure2()
         {
             _01_StructureBook book6 = new _01_StructureBook();
@@ -65,7 +64,7 @@ namespace CSTest._03_Structure
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestStructure3()
         {
             MyStruct1 mstr;
@@ -73,14 +72,14 @@ namespace CSTest._03_Structure
             Debug.WriteLine(mstr.field);
         }
 
-        [TestMethod]
+        [Test]
         public void TestStructure4()
         {
             MyStruct1 mstr = new MyStruct1();
             Debug.WriteLine(mstr.field);
         }
 
-        [TestMethod]
+        [Test]
         public void TestStructure5()
         {
             MyStruct mstr = new MyStruct();
@@ -90,7 +89,7 @@ namespace CSTest._03_Structure
 
         }
 
-        [TestMethod]
+        [Test]
         public void TestStructure6()
         {
             var p = new Point(); p.x = 5; p.y = 9;
@@ -110,7 +109,7 @@ namespace CSTest._03_Structure
              а обращение именно к нужному элементу.*/
         }
 
-        [TestMethod]
+        [Test]
         public void TestStructure7()
         {
 

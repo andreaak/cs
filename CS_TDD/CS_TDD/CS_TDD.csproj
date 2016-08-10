@@ -143,6 +143,7 @@
     <Compile Include="000_Base\03_UahConverter.cs" />
     <Compile Include="001_MSUnit\001_Test.cs" />
     <Compile Include="002_NUnit\01_LifeCycle\_02_SkipTest.cs" />
+    <Compile Include="002_NUnit\01_LifeCycle\_03_SuccessorTest.cs" />
     <Compile Include="002_NUnit\02_Asserting\001_EqualTest.cs" />
     <Compile Include="002_NUnit\02_Asserting\002_ReferenceTest.cs" />
     <Compile Include="002_NUnit\02_Asserting\003_AssertingCollections.cs" />

@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
 {
-    [TestClass]
+    [TestFixture]
 
     public class _10_ManualResetEventTest
     {
@@ -23,7 +23,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
         // ManualResetEvent - Уведомляет один или более ожидающих потоков о том, что произошло событие.
         private static ManualResetEvent manual = new ManualResetEvent(false);
 
-        [TestMethod]
+        [Test]
         public void TestManualResetEvent1()
         {
 
@@ -68,7 +68,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             Debug.WriteLine("Поток 2 завершается.");
         }
 
-        [TestMethod]
+        [Test]
         public void TestManualResetEvent2()
         {
             // false - установка несигнального состояния.

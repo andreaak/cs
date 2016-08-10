@@ -1,20 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace CSTest._08_String
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
         const string consts1 = "Hello1";
         const string consts2 = "Hello1";
 
-        [TestMethod]
+        [Test]
         public void TestString1()
         {
             // Задание пути к приложению
@@ -32,7 +30,7 @@ namespace CSTest._08_String
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestString2Intern()
         {
             // Конкатенация трех литеральных строк образует одну литеральную строку
@@ -63,7 +61,7 @@ namespace CSTest._08_String
             Debug.WriteLine("s1 String ReferenceEquals s2 : " + StringEquals("Hello", "Hello")); //True Зависит от аттрибута NoStringInterning
         }
 
-        [TestMethod]
+        [Test]
         public void TestString3Format()
         {
             Debug.WriteLine("C format: {0:C}", 99.9);      // Вывод в денежном формате.
@@ -95,7 +93,7 @@ namespace CSTest._08_String
             return object.ReferenceEquals(s1, s2);
         }
 
-        [TestMethod]
+        [Test]
         public void TestString3Clone()
         {
             string first = "First";
@@ -142,7 +140,7 @@ namespace CSTest._08_String
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestString4StringConcat()
         {
             string temp = "";
@@ -163,7 +161,7 @@ namespace CSTest._08_String
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestString5Shit()
         {
             string test = null;
@@ -188,7 +186,7 @@ namespace CSTest._08_String
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestString6Shit()
         {
             string test = null;
@@ -250,7 +248,7 @@ namespace CSTest._08_String
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestString7Shit()
         {
             var list = new List<StringTestClass>
@@ -288,7 +286,7 @@ namespace CSTest._08_String
         private const string StateWin = "win_";
 
 
-        [TestMethod]
+        [Test]
         public void TestString8Shit()
         {
             var list = new List<StringTestClass>

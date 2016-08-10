@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._04_Class._05_Properties
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestProperties1()
         {
             _01_Problem instance = new _01_Problem();
@@ -18,7 +18,7 @@ namespace CSTest._04_Class._05_Properties
             Debug.WriteLine(@string);
         }
 
-        [TestMethod]
+        [Test]
         public void TestProperties2()
         {
             _02_Properties instance = new _02_Properties();
@@ -28,7 +28,7 @@ namespace CSTest._04_Class._05_Properties
             Debug.WriteLine(instance.Field);  // Метод-аксессор
         } 
         
-        [TestMethod]
+        [Test]
         public void TestProperties3()
         {
             _02_Properties instance = new _02_Properties();
@@ -42,7 +42,7 @@ namespace CSTest._04_Class._05_Properties
             Debug.WriteLine(instance.Field);
         }
 
-        [TestMethod]
+        [Test]
         public void TestProperties4()
         {
             _02_Properties constants = new _02_Properties();
@@ -54,7 +54,7 @@ namespace CSTest._04_Class._05_Properties
             Debug.WriteLine("e = {0}", constants.E);
         }
         
-        [TestMethod]
+        [Test]
         public void TestProperties5()
         {
             _03_AutoProperties author1 = new _03_AutoProperties()

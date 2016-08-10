@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait._0_Setup
 {

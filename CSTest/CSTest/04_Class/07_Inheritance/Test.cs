@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._04_Class._07_Inheritance
@@ -14,10 +14,10 @@ namespace CSTest._04_Class._07_Inheritance
     //        Родительский класс        -                Дочерний класс
     //        Родитель                  -                Потомок
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestInheritance1()
         {
             DerivedClass instance = new DerivedClass();
@@ -25,7 +25,7 @@ namespace CSTest._04_Class._07_Inheritance
             Debug.WriteLine(instance.publicField);
         }
 
-        [TestMethod]
+        [Test]
         public void TestInheritance2()
         {
             DerivedClass instance = new DerivedClass();
@@ -35,7 +35,7 @@ namespace CSTest._04_Class._07_Inheritance
             instance.Show();
         }
 
-        [TestMethod]
+        [Test]
         public void TestInheritance3()
         {
             DerivedClass instance = new DerivedClass(1, 2);
@@ -44,7 +44,7 @@ namespace CSTest._04_Class._07_Inheritance
             Debug.WriteLine(instance.derivedField);
         }
 
-        [TestMethod]
+        [Test]
         public void TestInheritance4()
         {
             DerivedClass instance = new DerivedClass(1, 2, "");
@@ -53,7 +53,7 @@ namespace CSTest._04_Class._07_Inheritance
             Debug.WriteLine(instance.derivedField);
         }
         
-        [TestMethod]
+        [Test]
         public void TestInheritance5()
         {
             DerivedClass instance = new DerivedClass();
@@ -89,7 +89,7 @@ namespace CSTest._04_Class._07_Inheritance
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestInheritance6()
         {
             DerivedClass instance = new DerivedClass();
@@ -109,7 +109,7 @@ namespace CSTest._04_Class._07_Inheritance
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestInheritance7()
         {
             DerivedClass instance = new DerivedClass();
@@ -129,7 +129,7 @@ namespace CSTest._04_Class._07_Inheritance
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestInheritance8()
         {
             DerivedClass instance = new DerivedClass();
@@ -140,7 +140,7 @@ namespace CSTest._04_Class._07_Inheritance
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestInheritance9()
         {
             _01_ConstructorsDerived instance = new _01_ConstructorsDerived();

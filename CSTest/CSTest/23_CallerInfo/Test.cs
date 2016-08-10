@@ -1,16 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace CSTest._23_CallerInfo
 {
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
         #if CS5
         
-        [TestMethod]
+        [Test]
         public void TestCallerInfo()
         {
             TraceMessage("Test message");

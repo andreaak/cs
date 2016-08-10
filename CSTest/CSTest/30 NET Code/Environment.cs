@@ -29,7 +29,7 @@ namespace CSTest._30_NET_Code
 }
 
 //using System;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using NUnit.Framework;
 
 //namespace CSTest._30_NET_Code
 //{

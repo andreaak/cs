@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using CSTest._06_Interface._0_Setup;
 
 namespace CSTest._06_Interface

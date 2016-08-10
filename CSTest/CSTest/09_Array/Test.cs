@@ -1,14 +1,14 @@
 ﻿using CSTest._09_Array._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Diagnostics;
 
 namespace CSTest._09_Array
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestArray1()
         {
             int[] array = { 1, 2, 3, 4, 5 };
@@ -27,7 +27,7 @@ namespace CSTest._09_Array
         }
 
         // Массивы (двумерный массив).
-        [TestMethod]
+        [Test]
         public void TestArray2TwoDimensional()
         {
             Random random = new Random();
@@ -55,7 +55,7 @@ namespace CSTest._09_Array
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestArray3ArrayMultiDim()
         {
             int[, ,] threeDim = { 
@@ -79,7 +79,7 @@ namespace CSTest._09_Array
             Debug.WriteLine(threeDim.Length);
         }
 
-        [TestMethod]
+        [Test]
         public void TestArray3Jagged()
         {
             int[][] jagged = new int[3][];
@@ -101,7 +101,7 @@ namespace CSTest._09_Array
             }
         }
 
-        [TestMethod]
+        [Test]
 
         public void TestArray4()
         {
@@ -115,7 +115,7 @@ namespace CSTest._09_Array
                 Debug.WriteLine(vector[i]);
             }
         }
-        [TestMethod]
+        [Test]
         public void TestArray5()
         {
             // Массив Int32.
@@ -131,7 +131,7 @@ namespace CSTest._09_Array
             // Не компилируется. (Несовместимые типы)
             // var array3 = new [] { 1, "string" };
         }
-        [TestMethod]
+        [Test]
         public void TestArray6Covariance()
         {
             Dog[] dogs = { new Dog(), new Dog(), new Dog() };

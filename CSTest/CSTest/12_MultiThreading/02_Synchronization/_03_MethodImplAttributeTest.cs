@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Runtime.CompilerServices;
 
 namespace CSTest._12_MultiThreading._02_Synchronization
@@ -13,7 +12,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     Поэтому использовать данный атрибут не рекомендуется. 
     */
 
-    [TestClass]
+    [TestFixture]
     public class _03_MethodImplAttributeTest
     {
         [MethodImplAttribute(MethodImplOptions.Synchronized)]

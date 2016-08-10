@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using CSTest._12_MultiThreading._01_Thread._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._01_Thread
 {
@@ -38,11 +38,11 @@ namespace CSTest._12_MultiThreading._01_Thread
     Состояние гонки – это попытки потоков получить доступ к одному ресурсу без должной его блокировки. 
     */
 
-    [TestClass]
+    [TestFixture]
     public class _01_BasicTest
     {
 
-        [TestMethod]
+        [Test]
         // Создать поток исполнения.
         public void TestThreadStart1Instance()
         {
@@ -99,7 +99,7 @@ namespace CSTest._12_MultiThreading._01_Thread
             */
         }
 
-        [TestMethod]
+        [Test]
         // CLR назначает каждому потоку свой стек и методы имеют свои собственные локальные переменные.
         // При работе с потоками можно представить, что строится копия статического метода
         // На самом деле происходит работа по сохранению текущего значения потока
@@ -148,7 +148,7 @@ namespace CSTest._12_MultiThreading._01_Thread
         }
 
 
-        [TestMethod]
+        [Test]
         // Другой способ запуска потока.
         public void TestThreadStart2Autostart()
         {
@@ -198,7 +198,7 @@ namespace CSTest._12_MultiThreading._01_Thread
         }
 
 
-        [TestMethod]
+        [Test]
         // Создать несколько потоков исполнения.
         public void TestThreadStart3MultiThreads()
         {
@@ -251,7 +251,7 @@ namespace CSTest._12_MultiThreading._01_Thread
             */
         }
 
-        [TestMethod]
+        [Test]
         // Пример передачи аргумента методу потока.
         public void TestThreadStart4WithArgument()
         {
@@ -298,7 +298,7 @@ namespace CSTest._12_MultiThreading._01_Thread
             */
         }
 
-        [TestMethod]
+        [Test]
         // Пример передачи аргумента методу потока.
         public void TestThreadStart5WithArgument()
         {
@@ -340,7 +340,7 @@ namespace CSTest._12_MultiThreading._01_Thread
             */
         }
 
-        [TestMethod]
+        [Test]
         // Пример передачи аргумента методу потока.
         public void TestThreadStart6Closure()
         {
@@ -381,7 +381,7 @@ namespace CSTest._12_MultiThreading._01_Thread
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestThreadStart6StaticVariable()
         {
             // Запуск вторичного потока.

@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._01_Types
 {
-    [TestClass]
+    [TestFixture]
     public class _04_Decimal
     {
-        [TestMethod]
+        [Test]
         public void TestDecimal1()
         {
             #region ДЕСЯТИЧНЫЙ ТИП

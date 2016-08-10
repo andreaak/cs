@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 using CSTest._12_MultiThreading._01_Thread._0_Setup;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._01_Thread
 {
-    [TestClass]
+    [TestFixture]
     public class _04_AbortThreadTest
     {
-        [TestMethod]
+        [Test]
         // Прервать поток с помощью метода Abort().
         public void TestThreadAbort1()
         {
@@ -33,7 +33,7 @@ namespace CSTest._12_MultiThreading._01_Thread
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestThreadAbort2()
         {
             _04_AbortThread2 mtl = new _04_AbortThread2("Поток");
@@ -60,7 +60,7 @@ namespace CSTest._12_MultiThreading._01_Thread
             */
         }
 
-        [TestMethod]
+        [Test]
         // Использовать форму метода Abort(object stateInfo).
         public void TestThreadAbort3()
         {
@@ -100,7 +100,7 @@ namespace CSTest._12_MultiThreading._01_Thread
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestThreadAbort4()
         {
             Thread thread = new Thread(new ThreadStart(Setup.Function));

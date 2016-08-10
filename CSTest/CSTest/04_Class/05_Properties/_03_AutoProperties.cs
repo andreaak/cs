@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CSTest._04_Class._05_Properties
+﻿namespace CSTest._04_Class._05_Properties
 {
 
     /*

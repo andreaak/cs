@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CSTest._04_Class._02_Methods
+﻿namespace CSTest._04_Class._02_Methods
 {
     class _01_Methods
     {

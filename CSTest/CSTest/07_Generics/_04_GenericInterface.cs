@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CSTest._07_Generics
+﻿namespace CSTest._07_Generics
 {
     public interface IContainer<T>
     {

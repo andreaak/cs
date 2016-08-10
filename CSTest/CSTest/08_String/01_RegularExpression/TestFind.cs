@@ -1,11 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace CSTest._08_String._01_RegularExpression
 {
-    [TestClass]
+    [TestFixture]
     public class TestFind
     {
         private const string myText =
@@ -23,7 +22,7 @@ namespace CSTest._08_String._01_RegularExpression
         at breakneck speed, to enable validation, navigation, transformation, 
         linking, querying, description, and messaging of data.";
 
-        [TestMethod]
+        [Test]
         public void TestRegExp1()
         {
             const string pattern = "ion";
@@ -44,7 +43,7 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExp2()
         {
             const string pattern = @"\bn";
@@ -60,7 +59,7 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExp3()
         {
             const string pattern = @"ion\b";
@@ -75,7 +74,7 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExp4()
         {
             const string pattern = @"\ba\S*ion\b";
@@ -88,7 +87,7 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExp5()
         {
             const string pattern = @"\bn\S*ion\b";
@@ -103,7 +102,7 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExp6()
         {
             string text = "Text For {0} Translate >>>";
@@ -127,7 +126,7 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch1()
         {
             string text = "<<<Text For {0} Translate >>>";
@@ -142,7 +141,7 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch2()
         {
             //string pattern = @"^[\w\s]*$";
@@ -303,77 +302,77 @@ namespace CSTest._08_String._01_RegularExpression
             */
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch3()
         {
             string pattern = @"^(\s)$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch4()
         {
             string pattern = @"^(\w)$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch5()
         {
             string pattern = @"^(\d)$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch6()
         {
             string pattern = @"^(\p{Cc})$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch7()
         {
             string pattern = @"^\p{P}$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch8()
         {
             string pattern = @"^\p{L}$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch9()
         {
             string pattern = @"^\p{M}$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch10()
         {
             string pattern = @"^\p{Z}$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch11()
         {
             string pattern = @"^\p{S}$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch12()
         {
             string pattern = @"^\p{N}$";
             WriteMatches(pattern);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRegExpIsMatch13()
         {
             string pattern = @"^\p{C}$";

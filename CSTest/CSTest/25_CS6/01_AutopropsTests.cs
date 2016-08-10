@@ -1,15 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
 using System.Diagnostics;
-using System.Linq;
 
 #if CS6
 namespace CSTest._25_CS6
 {
-    [TestClass]
+    [TestFixture]
     public class _01_AutopropsTests
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             TestClass cut = new TestClass();

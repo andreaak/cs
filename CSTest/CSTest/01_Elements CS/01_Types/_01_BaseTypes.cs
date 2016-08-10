@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._01_Types
 {
-    [TestClass]
+    [TestFixture]
     public class _01_BaseTypes
     {
-        [TestMethod]
+        [Test]
         public void TestBaseTypes1()
         {
             #region ЦЕЛЫЕ ТИПЫ
@@ -119,7 +119,7 @@ namespace CSTest._01_Elements_CS._01_Types
             #endregion
         }
 
-        [TestMethod]
+        [Test]
         public void TestBaseTypes2()
         {
             float fl = 1999999.123456789123456789123456789f;
