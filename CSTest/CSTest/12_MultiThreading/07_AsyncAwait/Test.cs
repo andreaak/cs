@@ -464,7 +464,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public async void TestAsyncAwait15tWithResult()
+        public async void TestAsyncAwait15_WithNullResult()
         {
             TestClass test = new TestClass();
             string res = await test.TestBonus();
@@ -473,10 +473,18 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         [Test]
         [ExpectedException(typeof(NullReferenceException))]
-        public async void TestAsyncAwait16tWithoutResult()
+        public async void TestAsyncAwait16_WithoutResult_Exception()
         {
             TestClass test = new TestClass();
             await test.TestBonus2();
+        }
+
+        [Test]
+        public void TestAsyncAwait17_WithoutResult_Exception()
+        {
+            TestClass test = new TestClass();
+
+            Assert.That(async () => await test.TestBonus2(), Throws.TypeOf<NullReferenceException>());
         }
     }
 
