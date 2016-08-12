@@ -203,6 +203,7 @@
     <Compile Include="10_Collections\02_GenericCollections\09_Linq\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\CollectionExtensions.cs" />
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\Test.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\02_TaskCompletionSource.cs" />
     <Compile Include="25_CS6\02_PrimaryCtorTests.cs" />
     <Compile Include="25_CS6\06_EventInitializerTests.cs" />
     <Compile Include="25_CS6\07_ExceptionFiltersTests.cs" />
