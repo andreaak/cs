@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._03_Behavioral.Observer._001_News.News;
 using Patterns._03_Behavioral.Observer._001_News.Widgets;
 
 namespace Patterns._03_Behavioral.Observer._001_News
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             var newsAggregator = new NewsAggregator();

@@ -1,12 +1,12 @@
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._02_Structural.Flyweight._001_Base
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Flyweight [] flyweight = new Flyweight[100];

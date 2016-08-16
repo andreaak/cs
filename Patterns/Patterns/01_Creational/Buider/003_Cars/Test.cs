@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._01_Creational.Buider._003_Cars.Builder;
 using Patterns._01_Creational.Buider._003_Cars.Factory;
 
 namespace Patterns._01_Creational.Buider._003_Cars
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Debug.WriteLine("Cheap Volkswagen:");

@@ -6,7 +6,7 @@ obj
 *.bak
 *.sln.cache
 _ReSharper*
-*.dll
+#*.dll
 !Microsoft.VisualStudio.Shell.dll
 *.exe
 *.rar

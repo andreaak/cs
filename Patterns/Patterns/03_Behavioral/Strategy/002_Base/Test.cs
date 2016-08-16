@@ -1,12 +1,12 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._03_Behavioral.Strategy._002_Base.Strategy;
 
 namespace Patterns._03_Behavioral.Strategy._002_Base
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Context context;

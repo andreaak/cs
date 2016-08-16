@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._02_Structural.Decorator._001_Beverage.Beverage;
 using Patterns._02_Structural.Decorator._001_Beverage.Decorators;
 
 namespace Patterns._02_Structural.Decorator._001_Beverage
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             BeverageBase espresso = new Espresso();

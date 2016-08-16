@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._03_Behavioral.Iterator._008_Yield
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Enumerable enumerable = new Enumerable();
@@ -17,7 +17,7 @@ namespace Patterns._03_Behavioral.Iterator._008_Yield
             }
         }
 
-        [TestMethod]
+        [Test]
         public void Test2()
         {
             Enumerable2 enumerable = new Enumerable2();

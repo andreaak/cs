@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using Patterns._03_Behavioral.Mediator._003_Shop.Colleagues;
 
 namespace Patterns._03_Behavioral.Mediator._003_Shop
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             var mediator = new ConcreteMediator();

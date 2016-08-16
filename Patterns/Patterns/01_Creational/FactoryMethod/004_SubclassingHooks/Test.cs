@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._01_Creational.FactoryMethod._004_SubclassingHooks
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         [STAThread]
         public void Test1()
         {

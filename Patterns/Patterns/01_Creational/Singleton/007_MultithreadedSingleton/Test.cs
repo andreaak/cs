@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._01_Creational.Singleton._007_MultithreadedSingleton
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Thread[] threads = { 
@@ -24,7 +24,7 @@ namespace Patterns._01_Creational.Singleton._007_MultithreadedSingleton
             //Debug.ReadKey();
         }
 
-        [TestMethod]
+        [Test]
         public void Test2()
         {
             Thread[] threads = { 

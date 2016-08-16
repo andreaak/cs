@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._01_Creational.AbstractFactory._003_Cars.Facilities;
 
 namespace Patterns._01_Creational.AbstractFactory._003_Cars
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void TestBefore()
         {
             VolkswagenFacility facility = new RussianVolkswagenFacility();
@@ -16,7 +16,7 @@ namespace Patterns._01_Creational.AbstractFactory._003_Cars
             Debug.WriteLine("");
         }
         
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             VolkswagenFacility facility = new RussianVolkswagenFacility();

@@ -1,12 +1,12 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._01_Creational.AbstractFactory._004_Water.AbstractFactory;
 
 namespace Patterns._01_Creational.AbstractFactory._004_Water
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Client client = null;

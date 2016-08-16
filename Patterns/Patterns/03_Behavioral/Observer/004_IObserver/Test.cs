@@ -1,15 +1,15 @@
 using System;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._03_Behavioral.Observer._004_IObserver.Observer;
 using Patterns._03_Behavioral.Observer._004_IObserver.Subject;
 
 namespace Patterns._03_Behavioral.Observer._004_IObserver
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             // Создание издателя.

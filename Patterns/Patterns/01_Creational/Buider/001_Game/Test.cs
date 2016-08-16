@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._01_Creational.Buider._001_Game.Builder;
 using Patterns._01_Creational.Buider._001_Game.Enum;
 
 namespace Patterns._01_Creational.Buider._001_Game
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             // Создаем генератор лабиринта.

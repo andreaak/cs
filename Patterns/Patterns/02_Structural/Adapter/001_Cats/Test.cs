@@ -1,14 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using Patterns._02_Structural.Adapter._001_Cats.Adapters;
 using Patterns._02_Structural.Adapter._001_Cats.HomeCats;
 using Patterns._02_Structural.Adapter._001_Cats.WildCats;
 
 namespace Patterns._02_Structural.Adapter._001_Cats
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             IHomeCat vaska = new YardCat();

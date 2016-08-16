@@ -1,13 +1,13 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._02_Structural.Bridge._002_Motivation.Abstraction;
 
 namespace Patterns._02_Structural.Bridge._002_Motivation
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         [STAThread]
         public void Test1()
         {

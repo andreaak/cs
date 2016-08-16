@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._01_Creational.Prototype._004_Performance
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Stopwatch timer = new Stopwatch();
@@ -32,7 +32,7 @@ namespace Patterns._01_Creational.Prototype._004_Performance
         }
 
 
-        [TestMethod]
+        [Test]
         public void Test2()
         {
             Stopwatch timer = new Stopwatch();

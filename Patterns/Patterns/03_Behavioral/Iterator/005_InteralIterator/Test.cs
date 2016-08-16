@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._03_Behavioral.Iterator._005_InteralIterator
 {
     delegate double Function(double arg);
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Enumerable enumerable = new Enumerable();

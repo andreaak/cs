@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._01_Creational.FactoryMethod._008_LazyInitialization
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Debug.WriteLine("Первое обращение к экземпляру BigObject...");
@@ -21,7 +21,7 @@ namespace Patterns._01_Creational.FactoryMethod._008_LazyInitialization
             //Debug.ReadKey();
         }
 
-        [TestMethod]
+        [Test]
         public void Test2()
         {
             Debug.WriteLine("Первое обращение к экземпляру BigObject...");
@@ -35,7 +35,7 @@ namespace Patterns._01_Creational.FactoryMethod._008_LazyInitialization
             //Debug.ReadKey();
         }
 
-        [TestMethod]
+        [Test]
         public void Test3()
         {
             System.Lazy<BigObject3> lazy = new Lazy<BigObject3>();

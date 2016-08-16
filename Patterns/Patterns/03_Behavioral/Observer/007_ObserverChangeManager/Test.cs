@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using Patterns._03_Behavioral.Observer._007_ObserverChangeManager.Manager;
 
 namespace Patterns._03_Behavioral.Observer._007_ObserverChangeManager
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             ChangeManager manager = SimpleChangeManager.Singleton;

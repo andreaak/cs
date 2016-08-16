@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._02_Structural.Adapter._007_TwoWayAdapter.New_Subsystem;
 using Patterns._02_Structural.Adapter._007_TwoWayAdapter.Old_Subsystem;
 
 namespace Patterns._02_Structural.Adapter._007_TwoWayAdapter
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             // Работа с элементами старой подсистемы...

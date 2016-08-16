@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._03_Behavioral.Command._001_RemoteControl.Commands;
 using Patterns._03_Behavioral.Command._001_RemoteControl.ControlledSystems;
 
 namespace Patterns._03_Behavioral.Command._001_RemoteControl
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             var remote = new RemoteControl();

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._01_Creational.Singleton._006_Regist.RegistSingleton
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         [STAThread]
         public void Test1()
         {

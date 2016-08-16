@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._01_Creational.Prototype._006_Clone
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Prototype1 original = new Prototype1();
@@ -26,7 +26,7 @@ namespace Patterns._01_Creational.Prototype._006_Clone
             //Debug.ReadKey();
         }
 
-        [TestMethod]
+        [Test]
         public void Test2()
         {
             Prototype2 original = new Prototype2();
@@ -46,7 +46,7 @@ namespace Patterns._01_Creational.Prototype._006_Clone
             //Debug.ReadKey();
         }
 
-        [TestMethod]
+        [Test]
         public void Test3()
         {
             Prototype3 original = new Prototype3();
@@ -66,7 +66,7 @@ namespace Patterns._01_Creational.Prototype._006_Clone
             //Debug.ReadKey();
         }
 
-        [TestMethod]
+        [Test]
         public void Test4()
         {
             B4 original = new B4();
@@ -87,7 +87,7 @@ namespace Patterns._01_Creational.Prototype._006_Clone
             //Debug.ReadKey();
         }
 
-        [TestMethod]
+        [Test]
         public void Test5()
         {
             B5 original = new B5();

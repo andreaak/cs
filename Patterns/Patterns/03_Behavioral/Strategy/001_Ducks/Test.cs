@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._03_Behavioral.Strategy._001_Ducks.Ducks;
 using Patterns._03_Behavioral.Strategy._001_Ducks.Fly;
 using Patterns._03_Behavioral.Strategy._001_Ducks.Quack;
 
 namespace Patterns._03_Behavioral.Strategy._001_Ducks
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             List<DuckBase> ducks = new List<DuckBase>();

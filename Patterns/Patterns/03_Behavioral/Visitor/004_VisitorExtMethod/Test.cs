@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._03_Behavioral.Visitor._004_VisitorExtMethod
 {
@@ -32,10 +32,10 @@ namespace Patterns._03_Behavioral.Visitor._004_VisitorExtMethod
         }
     }
 
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             ElementA elementA = new ElementA();

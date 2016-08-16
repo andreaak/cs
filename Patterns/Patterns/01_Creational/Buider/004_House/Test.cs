@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using Patterns._01_Creational.Buider._004_House.Builder;
 
 namespace Patterns._01_Creational.Buider._004_House
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Builder.Builder builder = new ConcreteBuilder();

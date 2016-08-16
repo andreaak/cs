@@ -1,13 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using Patterns._01_Creational.FactoryMethod._009_ServiceLocator.Locator;
 using Patterns._01_Creational.FactoryMethod._009_ServiceLocator.Services.IServices;
 
 namespace Patterns._01_Creational.FactoryMethod._009_ServiceLocator
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             IServiceLocator serviceLocator = new ServiceLocator();

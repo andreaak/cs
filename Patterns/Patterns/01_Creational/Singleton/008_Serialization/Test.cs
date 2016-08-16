@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._01_Creational.Singleton._008_Serialization
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -26,7 +26,7 @@ namespace Patterns._01_Creational.Singleton._008_Serialization
             Debug.WriteLine("Serialization succeeded");
         }
 
-        [TestMethod]
+        [Test]
         public void Test2()
         {
             BinaryFormatter formatter = new BinaryFormatter();

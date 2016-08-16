@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
 using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._02_Structural.Facade._003_AssemblerCompiler2
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test2()
         {
             string program = "var1 db 1000; var2 db 500;" +

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._02_Structural.Bridge._004_WinFormShapesAndLines
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
         [STAThread]
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Application.EnableVisualStyles();

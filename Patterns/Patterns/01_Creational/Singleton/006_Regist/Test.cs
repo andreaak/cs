@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._01_Creational.Singleton._006_Regist.RegistSingleton;
 
 namespace Patterns._01_Creational.Singleton._006_Regist
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             RegistSingleton.Singleton simple1 = RegistSingleton.Singleton.Instance();
@@ -23,7 +23,7 @@ namespace Patterns._01_Creational.Singleton._006_Regist
             Check(small1, small2);
         }
 
-        [TestMethod]
+        [Test]
         public void Test2()
         {
             RegistSingletonGen.Singleton simple1 = RegistSingletonGen.Singleton.Instance();

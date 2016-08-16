@@ -1,16 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 // В данном примере используются пользовательские классы Container, Component и Site.
 
 namespace Patterns._03_Behavioral.Iterator._003_Containers
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Container container = new Container();

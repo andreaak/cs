@@ -1,12 +1,12 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._03_Behavioral.Strategy._003_StrategySort.Strategy;
 
 namespace Patterns._03_Behavioral.Strategy._003_StrategySort
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             var sort = new SelectionSort();

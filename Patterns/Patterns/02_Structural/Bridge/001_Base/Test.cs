@@ -1,13 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using Patterns._02_Structural.Bridge._001_Base.Abstraction;
 using Patterns._02_Structural.Bridge._001_Base.Implementor;
 
 namespace Patterns._02_Structural.Bridge._001_Base
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Implementor.Implementor implementor;

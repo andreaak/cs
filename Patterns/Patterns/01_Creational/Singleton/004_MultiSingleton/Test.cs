@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Patterns._01_Creational.Singleton._004_MultiSingleton
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Singleton[] singletons = new Singleton[10];
@@ -21,7 +21,7 @@ namespace Patterns._01_Creational.Singleton._004_MultiSingleton
 
         }
 
-        [TestMethod]
+        [Test]
         public void Test2()
         {
             Singleton2[] singletons = new Singleton2[10];

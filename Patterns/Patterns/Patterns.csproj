@@ -38,13 +38,16 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PianoSoundLibrary">
       <HintPath>..\Dll\PianoSoundLibrary.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="sharpPDF">
-      <HintPath>..\Dll\sharpPDF.dll</HintPath>
+      <HintPath>3dParty\sharpPDF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -818,6 +821,7 @@
     <Compile Include="03_Behavioral\Visitor\003_Visitor\Test.cs" />
     <Compile Include="03_Behavioral\Visitor\003_Visitor\Visitor.cs" />
     <Compile Include="03_Behavioral\Visitor\004_VisitorExtMethod\Test.cs" />
+    <Compile Include="Other\Null_object\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\Adapters\HomeCatAdapter.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\CatInfoPrinter.cs" />
@@ -1028,6 +1032,7 @@
     <Content Include="03_Behavioral\Visitor\001_Base\VisitorSD.png" />
     <Content Include="03_Behavioral\Visitor\Visitor.png" />
     <Content Include="Resources\clear.png" />
+    <None Include="packages.config" />
     <None Include="Resources\Clear_.png" />
     <Content Include="Resources\close.png" />
     <None Include="Resources\WholeNoteSmall.gif" />

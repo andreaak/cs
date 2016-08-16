@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Patterns._02_Structural.Bridge._003_Collections.Abstraction;
 
 namespace Patterns._02_Structural.Bridge._003_Collections
 {
-    [TestClass]
+    [TestFixture]
     public class Test
     {
-        [TestMethod]
+        [Test]
         public void Test1()
         {
             Abstraction.Abstraction abstraction;
