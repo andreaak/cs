@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<MyMelody xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MusicalNotes>
+    <Note Duration="250" Value="67" />
+    <Note Duration="250" Value="64" />
+    <Note Duration="500" Value="69" />
+    <Note Duration="500" Value="67" />
+    <Note Duration="250" Value="62" />
+    <Note Duration="250" Value="65" />
+    <Note Duration="250" Value="64" />
+    <Note Duration="250" Value="62" />
+    <Note Duration="1000" Value="60" />
+    <Note Duration="250" Value="60" />
+    <Note Duration="250" Value="64" />
+    <Note Duration="250" Value="67" />
+    <Note Duration="250" Value="69" />
+    <Note Duration="250" Value="69" />
+    <Note Duration="250" Value="69" />
+    <Note Duration="250" Value="71" />
+    <Note Duration="250" Value="74" />
+    <Note Duration="250" Value="72" />
+    <Note Duration="250" Value="71" />
+    <Note Duration="250" Value="69" />
+    <Note Duration="500" Value="71" />
+    <Note Duration="500" Value="65" />
+  </MusicalNotes>
+</MyMelody>

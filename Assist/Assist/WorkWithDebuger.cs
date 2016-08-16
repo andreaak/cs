@@ -94,18 +94,7 @@ namespace Assist
                 String headerText = "Работа отладчика";
                 //String infoText = "Идет работа отладчика...";
 
-                System.Threading.Thread workThread = new System.Threading.Thread(GetItems);
-                CancelForm form = new CancelForm(headerText);
-                ProcessEnded += form.CloseForm;
-                if (!StartWorkThread(form, workThread))
-                {
-                    return;
-                }
-                if (!saved)
-                {
-                    saved = true;
-                    SaveData(methods);
-                }
+
             }
             catch (System.Exception ex)
             {
@@ -117,91 +106,91 @@ namespace Assist
         
         public event Action ProcessEnded;
 
-        private bool StartWorkThread(CancelForm form, System.Threading.Thread thread)
-        {
-            thread.IsBackground = true;
-            thread.Name = "WorkThread";
-            thread.Start();
-            if (form.ShowDialog() == DialogResult.Cancel)
-            {
-                AbortThread(thread);
-                MessageBox.Show("USER_CANCEL", "USER_CANCEL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
+        //private bool StartWorkThread(CancelForm form, System.Threading.Thread thread)
+        //{
+        //    thread.IsBackground = true;
+        //    thread.Name = "WorkThread";
+        //    thread.Start();
+        //    if (form.ShowDialog() == DialogResult.Cancel)
+        //    {
+        //        AbortThread(thread);
+        //        MessageBox.Show("USER_CANCEL", "USER_CANCEL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return false;
+        //    }
+        //    return true;
+        //}
 
-        private static void AbortThread(System.Threading.Thread thread)
-        {
-            if (thread.IsAlive)
-            {
-                thread.Abort();
-                thread.Join();
-            }
-        }
+        //private static void AbortThread(System.Threading.Thread thread)
+        //{
+        //    if (thread.IsAlive)
+        //    {
+        //        thread.Abort();
+        //        thread.Join();
+        //    }
+        //}
 
-        private void OnProcessEnded()
-        {
-            if (ProcessEnded != null)
-            {
-                ProcessEnded();
-            }
-        }
+        //private void OnProcessEnded()
+        //{
+        //    if (ProcessEnded != null)
+        //    {
+        //        ProcessEnded();
+        //    }
+        //}
 
         #endregion
 
-        private void GetItems()
-        {
-            try
-            {
-                stk = new Stack<BaseItem>();
-                stk.Push(startItem);
-                Logger.WriteLine(string.Format("Push: {0}", startItem.GetDescription()));
-                GetBreakPoints();
-                bool circle = true;
-                bool popPeek = false;
-                while (circle)
-                {
-                    dbr.StepInto(true);
-                    BaseItem parentItem = GetParentItem();
-                    BaseItem currentitem = wi.GetItem(parentItem);
-                    if (currentitem == null)
-                    {
-                        continue;
-                    }
-                    if (IsBreakInBreakPoint(currentitem))
-                    {
-                        break;
-                    }
+        //private void GetItems()
+        //{
+        //    try
+        //    {
+        //        stk = new Stack<BaseItem>();
+        //        stk.Push(startItem);
+        //        Logger.WriteLine(string.Format("Push: {0}", startItem.GetDescription()));
+        //        GetBreakPoints();
+        //        bool circle = true;
+        //        bool popPeek = false;
+        //        while (circle)
+        //        {
+        //            dbr.StepInto(true);
+        //            BaseItem parentItem = GetParentItem();
+        //            BaseItem currentitem = wi.GetItem(parentItem);
+        //            if (currentitem == null)
+        //            {
+        //                continue;
+        //            }
+        //            if (IsBreakInBreakPoint(currentitem))
+        //            {
+        //                break;
+        //            }
 
-                    if (IsItemChanged(parentItem, currentitem))
-                    {
-                        CheckItem(currentitem, parentItem, popPeek);
-                    }
-                    else
-                    {
-                        Logger.WriteLine(stk.Count, string.Format("Item: {0} Line: {1}", currentitem.GetDescription(), currentitem.CurrentLine));
-                        popPeek = IsPop(currentitem);
-                        if (popPeek)
-                        {
-                            if (IsStartItem(currentitem))
-                            {
-                                circle = false;
-                                Logger.WriteLine(stk.Count, string.Format("End: {0} Line: {1}", currentitem.GetDescription(), currentitem.CurrentLine));
-                            }
-                        }
-                    }
-                }
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-            }
-            finally
-            {
-                OnProcessEnded();
-            }
-        }
+        //            if (IsItemChanged(parentItem, currentitem))
+        //            {
+        //                CheckItem(currentitem, parentItem, popPeek);
+        //            }
+        //            else
+        //            {
+        //                Logger.WriteLine(stk.Count, string.Format("Item: {0} Line: {1}", currentitem.GetDescription(), currentitem.CurrentLine));
+        //                popPeek = IsPop(currentitem);
+        //                if (popPeek)
+        //                {
+        //                    if (IsStartItem(currentitem))
+        //                    {
+        //                        circle = false;
+        //                        Logger.WriteLine(stk.Count, string.Format("End: {0} Line: {1}", currentitem.GetDescription(), currentitem.CurrentLine));
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Error");
+        //    }
+        //    finally
+        //    {
+        //        OnProcessEnded();
+        //    }
+        //}
 
         private BaseItem GetParentItem()
         {
