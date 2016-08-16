@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.Text;
 using EnvDTE80;
@@ -91,8 +91,8 @@ namespace Assist
             try
             {
                 //Visualization
-                String headerText = "Работа отладчика";
-                //String infoText = "Идет работа отладчика...";
+                String headerText = "Р Р°Р±РѕС‚Р° РѕС‚Р»Р°РґС‡РёРєР°";
+                //String infoText = "РРґРµС‚ СЂР°Р±РѕС‚Р° РѕС‚Р»Р°РґС‡РёРєР°...";
 
 
             }
