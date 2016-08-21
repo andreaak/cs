@@ -9,7 +9,7 @@ namespace TextConverter
 {
     public class ViewModelConvert
     {
-        public static string[] extensions = { ".txt", ".htm", ".html", ".css", ".js", "*.cs", "*.java" };
+        public static string[] extensions = { ".txt", ".htm", ".html", ".css", ".js", ".cs", ".java" };
         public event PropertyChangedEventHandler PropertyChanged;
 
         public EncodingInfo[] Encodings
@@ -70,7 +70,7 @@ namespace TextConverter
 
                 if (string.IsNullOrEmpty(encName) 
                     || encName.Equals(DstEncodingName, StringComparison.OrdinalIgnoreCase)
-                    || encName != SrcEncodingName)
+                    || !encName.Equals(SrcEncodingName, StringComparison.OrdinalIgnoreCase))
                 {
                     continue;
                 }
