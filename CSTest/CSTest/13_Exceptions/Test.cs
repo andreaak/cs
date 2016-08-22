@@ -197,7 +197,7 @@ namespace CSTest._13_Exceptions
             finally
             {
                 // finally - не сработает при FailFast.
-                while (true)
+                //while (true)
                 {
                     Debug.WriteLine("Finally");
                 }
@@ -257,6 +257,10 @@ namespace CSTest._13_Exceptions
             {
                 Debug.WriteLine(ex.Message);
             }
+            /*
+            Exception thrown: 'System.NullReferenceException' in CSTest.dll
+            Object reference not set to an instance of an object.
+            */
         }
 
         /*

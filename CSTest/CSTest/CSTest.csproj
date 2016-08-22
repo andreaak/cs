@@ -270,9 +270,9 @@
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_08_CancelTaskTest.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_09_ExceptionTest.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\0_Setup\Setup.cs" />
-    <Compile Include="12_MultiThreading\07_AsyncAwait\TestClass.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\ClassUnderTest.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\Test.cs" />
-    <Compile Include="12_MultiThreading\07_AsyncAwait\TestClassReflected.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\ClassUnderTestReflected.cs" />
     <Compile Include="12_MultiThreading\08_WinFormsWPF\0_Setup\Setup.cs" />
     <Compile Include="12_MultiThreading\08_WinFormsWPF\Test.cs" />
     <Compile Include="13_Exceptions\0_Setup\ClassWithException.cs" />
@@ -349,6 +349,7 @@
     <Compile Include="30 NET Code\Environment.cs" />
     <Compile Include="30 NET Code\RandomizedObjectEqualityComparer.cs" />
     <Compile Include="30 NET Code\ThrowHelper.cs" />
+    <Compile Include="31_Tricks\001_CallVirtualMethodsInConstructor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
