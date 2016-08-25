@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using NUnit.Framework;
 
 namespace CSTest._02_Object._01_Lazy

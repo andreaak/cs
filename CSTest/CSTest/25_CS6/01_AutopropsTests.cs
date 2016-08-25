@@ -23,9 +23,10 @@ namespace CSTest._25_CS6
     class TestClass
     {
         //auto property initializing
-        public Guid Id { get; } = Guid.NewGuid();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        public int NameId { get; }
+        //auto property with getter only - can set only in ctor
+        public int NameId { get; } = 3;
 
         public string Name { get; }
 
