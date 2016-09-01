@@ -13,16 +13,18 @@ namespace CSTest._25_CS6
         }
 #endif
     }
-
+    //                  Primary ctor
     //public struct Money(decimal amount, string currency)
     //{
+    //    Explicit ctor
     //    public Money(int amount) : this(amount, "eur")
     //    {
 
     //    }
 
-    //    public string Currency { get; } = Check.ArgNotNull("currency", currency);
+    //    public string Currency { get; } = currency;
     //    public decimal Amount { get; } = amount;
+    //    string currency = currency;
     //}
 
 

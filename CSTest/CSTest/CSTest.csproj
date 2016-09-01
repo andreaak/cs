@@ -208,11 +208,13 @@
     <Compile Include="25_CS6\06_EventInitializerTests.cs" />
     <Compile Include="25_CS6\07_ExceptionFiltersTests.cs" />
     <Compile Include="25_CS6\06_CollectionInitializersTests.cs" />
-    <Compile Include="25_CS6\05_NullabilityTests.cs" />
-    <Compile Include="25_CS6\04_StringsTests.cs" />
+    <Compile Include="25_CS6\05_NullConditionalOperatorTests.cs" />
+    <Compile Include="25_CS6\04_StringsInterpolationTests.cs" />
     <Compile Include="25_CS6\03_NameofTests.cs" />
     <Compile Include="25_CS6\02_ExpressionBodiedMembersTests.cs" />
-    <Compile Include="25_CS6\01_AutopropsTests.cs" />
+    <Compile Include="25_CS6\01_AutoPropertyInitializersTests.cs" />
+    <Compile Include="25_CS6\08_AwaitInCatchAndFinally.cs" />
+    <Compile Include="25_CS6\09_Other.cs" />
     <Compile Include="25_CS6\Setup\Employee.cs" />
     <Compile Include="30 NET Code\HashHelpers.cs" />
     <Compile Include="30 NET Code\RandomizedStringEqualityComparer.cs" />

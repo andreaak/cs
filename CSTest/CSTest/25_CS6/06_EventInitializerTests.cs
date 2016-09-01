@@ -7,28 +7,12 @@ namespace CSTest._25_CS6
     [TestFixture]
     public class _06_EventInitializerTests
     {
-        public class User
-        {
-            public string Name { get; set;}
-            public event EventHandler<EventArgs> Speaking;
-
-            public void Speak()
-            {
-                if(Speaking != null)
-                {
-                    Speaking(this, EventArgs.Empty);
-                }
-            }
-
-        }
-
-
 #if CS6
         [Test]
         public void Test1()
         {
             EventHandler<EventArgs> log = (o, e) => Debug.WriteLine("hit");
-            var user = new User
+            var user = new User2
             {
                 Name = "test",
                 //Speaking += log,
@@ -36,5 +20,19 @@ namespace CSTest._25_CS6
             user.Speaking += log;
         }
 #endif
+    }
+
+    public class User2
+    {
+        public string Name { get; set; }
+        public event EventHandler<EventArgs> Speaking;
+
+        public void Speak()
+        {
+            if (Speaking != null)
+            {
+                Speaking(this, EventArgs.Empty);
+            }
+        }
     }
 }

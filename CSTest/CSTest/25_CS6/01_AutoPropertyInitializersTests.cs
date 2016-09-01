@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace CSTest._25_CS6
 {
     [TestFixture]
-    public class _01_AutopropsTests
+    public class _01_AutoPropertyInitializersTests
     {
         [Test]
         public void Test1()
@@ -22,13 +22,20 @@ namespace CSTest._25_CS6
 
     class TestClass
     {
+        //public Guid Id { get; protected set; }
+
+        //public TestClass()
+        //{
+        //    Id = Guid.NewGuid();
+        //}
+        
         //auto property initializing
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; } = Guid.NewGuid();
 
         //auto property with getter only - can set only in ctor
         public int NameId { get; } = 3;
 
-        public string Name { get; }
+        public string Name { get; set; } = "Test";
 
         public TestClass()
         {
