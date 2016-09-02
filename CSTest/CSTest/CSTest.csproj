@@ -204,6 +204,9 @@
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\CollectionExtensions.cs" />
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\Test.cs" />
     <Compile Include="12_MultiThreading\05_TPL\02_TaskCompletionSource.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\ClassWithAwaiter.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\TestAwaiter.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\TestReflected.cs" />
     <Compile Include="25_CS6\02_PrimaryCtorTests.cs" />
     <Compile Include="25_CS6\06_EventInitializerTests.cs" />
     <Compile Include="25_CS6\07_ExceptionFiltersTests.cs" />
@@ -373,6 +376,7 @@
     <Content Include="01_Elements CS\04_TypeConversion\Conversions.jpg" />
     <Content Include="01_Elements CS\04_TypeConversion\ImplicitNumericConversions.jpg" />
     <Content Include="12_MultiThreading\01_Thread\ThreadStates.png" />
+    <Content Include="12_MultiThreading\07_AsyncAwait\awaiter.png" />
     <Content Include="21_Database\DBScript.sql" />
   </ItemGroup>
   <ItemGroup>

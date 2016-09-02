@@ -31,21 +31,14 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         (при этом управление возвращается вызвавшему методу).
         Ассинхронный метод может иметь 3 типа возращаемого значения: void, Task, Task<T>
         */
-        public async void OperationAsync()
+        public async void OperationAsync_ReturnVoid_WithoutActionAfterAwait()
         {
             Task task = new Task(Operation);
             task.Start();
             await task;
         }
 
-        public async void OperationAsync2()
-        {
-            Task task = new Task(Operation);
-            task.Start();
-            await task;
-        }
-
-        public async void OperationAsync3()
+        public async void OperationAsync_ReturnVoid_ActionAfterAwait()
         {
             /*
             Id потока совпадает с Id первичного потока. Это значит, что
@@ -62,24 +55,16 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("OperationAsync (Part II) ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
         }
 
-        public int Operation4()
+        public int OperationWithResult()
         {
             Debug.WriteLine("Operation4 ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(2000);
             return 2 + 2;
         }
 
-        public void OperationAsync4()
+        public async void OperationAsync5_ReturnVoid_ActionWithResultAfterAwait()
         {
-            Task<int> task = Task<int>.Factory.StartNew(Operation4);
-            TaskAwaiter<int> awaiter = task.GetAwaiter();
-            Action continuation = () => Debug.WriteLine("\nРезультат: {0}\n", awaiter.GetResult());
-            awaiter.OnCompleted(continuation);
-        }
-
-        public async void OperationAsync5()
-        {
-            Task<int> task = Task<int>.Factory.StartNew(Operation4);
+            Task<int> task = Task<int>.Factory.StartNew(OperationWithResult);
             // TaskAwaiter<int> awaiter = task.GetAwaiter();
             // Action continuation = () => Debug.WriteLine("\nРезультат: {0}\n", awaiter.GetResult());
             // awaiter.OnCompleted(continuation);
@@ -87,16 +72,16 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("\nРезультат: {0}\n", await task);
         }
 
-        public async Task OperationAsync6()
+        public async Task OperationAsync6_ReturnTask()
         {
             await Task.Factory.StartNew(Operation);
         }
 
-        public async Task<int> OperationAsync7()
+        public async Task<int> OperationAsync7_ReturnTaskWithResult()
         {
             //int result = await Task<int>.Factory.StartNew(Operation4);
             //return result;
-            return await Task<int>.Factory.StartNew(Operation4);
+            return await Task<int>.Factory.StartNew(OperationWithResult);
         }
 
         public double Operation8(object argument)
@@ -106,14 +91,14 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return (double)argument * (double)argument;
         }
 
-        public async Task<double> OperationAsync8(double argument)
+        public async Task<double> OperationAsync8_ReturnTaskWithResult(double argument)
         {
             //int result = await Task<int>.Factory.StartNew(Operation4);
             //return result;
             return await Task<double>.Factory.StartNew(Operation8, argument);
         }
 
-        public async Task DoDownloadAsync9()// or DoDownloadTaskAsync1
+        public async Task DoDownloadAsync9_ReturnTask_ActionAfterAwait()// or DoDownloadTaskAsync1
         {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
             req.Method = "GET";
@@ -125,7 +110,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("Async download completed");
         }
 
-        public async Task DoDownloadAsync10OldModel()
+        public async Task DoDownloadAsync10_UseAPMItems()
         {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
             req.Method = "GET";
@@ -139,7 +124,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         //Исключения «выбрасываются» в месте вызова асинхронной операции, а не Callback-метода!
-        public async void DoDownloadAsync11InnerException()
+        public async void DoDownloadAsync11_InnerException()
         {
             using (var w = new WebClient())
             {
@@ -155,7 +140,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             }
         }
 
-        public async void DoDownloadAsync12OuterException()
+        public async void DoDownloadAsync12_OuterException()
         {
             using (var w = new WebClient())
             {
@@ -164,7 +149,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             }
         }
 
-        public async void DoDownloadAsync13Cancel(CancellationTokenSource cts)
+        public async void DoDownloadAsync13_Cancel(CancellationTokenSource cts)
         {
             //CancellationTokenSource cts = new CancellationTokenSource();
             cts.CancelAfter(5000);
@@ -192,7 +177,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("\r\n DoDownloadAsync4Cancel ended\r\n");
         }
 
-        async Task SumPageSizesAsync(CancellationToken ct)
+        private async Task SumPageSizesAsync(CancellationToken ct)
         {
             HttpClient client = new HttpClient();
 
@@ -213,7 +198,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine(string.Format("\r\n\r\nTotal bytes returned:  {0}\r\n", total));
         }
 
-        public async void DoDownloadAsync14WaitAll(CancellationTokenSource cts)
+        public async void DoDownloadAsync14_WaitAll(CancellationTokenSource cts)
         {
             try
             {
@@ -230,7 +215,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             }
         }
 
-        async Task AccessTheWebAsync(CancellationToken ct)
+        private async Task AccessTheWebAsync(CancellationToken ct)
         {
             var client = new HttpClient();
 
@@ -253,7 +238,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             }
         }
 
-        async Task<int> ProcessURL(string url, HttpClient client, CancellationToken ct)
+        private async Task<int> ProcessURL(string url, HttpClient client, CancellationToken ct)
         {
             HttpResponseMessage response = await client.GetAsync(url, ct);
 
@@ -279,6 +264,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public Task TestBonus2()
         {
             return null;
+        }
+
+        public Task TestBonus3()
+        {
+            return Task.FromResult(new object());
         }
 #endif
     }
