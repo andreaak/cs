@@ -31,14 +31,14 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return (double)argument * (double)argument;
         }
 
-        //public async void OperationAsync()
+#if CS5
+
+        //public async void OperationAsync2_ReturnVoid_WithoutActionAfterAwait()
         //{
         //    Task task = new Task(Operation);
         //    task.Start();
         //    await task;
         //}
-
-#if CS5
 
         public void OperationAsync_ReturnVoid_WithoutActionAfterAwait()
         {
@@ -108,14 +108,14 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             #endregion
         }
 
-        //public async void OperationAsync2()
+        //public async void OperationAsync2_ReturnVoid_WithoutActionAfterAwait()
         //{
         //    Task task = new Task(Operation);
         //    task.Start();
         //    await task;
         //}
 
-        public void OperationAsync_ReturnVoid_WithoutActionAfterAwaitClean()
+        public void OperationAsync2_ReturnVoid_WithoutActionAfterAwaitClean()
         {
             ClassUnderTestReflected.AsyncStateMachine2 stateMachine;
             stateMachine.outer = this;
@@ -147,7 +147,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             #endregion
         }
 
-        //public async void OperationAsync3()
+        //public async void OperationAsync3_ReturnVoid_ActionAfterAwait()
         //{
         //    /*
         //    Id потока совпадает с Id первичного потока. Это значит, что
@@ -164,7 +164,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         //    Debug.WriteLine("OperationAsync (Part II) ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
         //}
 
-        public void OperationAsync_ReturnVoid_ActionAfterAwait()
+        public void OperationAsync3_ReturnVoid_ActionAfterAwait()
         {
             ClassUnderTestReflected.AsyncStateMachine3 stateMachine;
             stateMachine.outer = this;
@@ -220,9 +220,9 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             #endregion
         }
 
-        //public async void OperationAsync5()
+        //public async void OperationAsync5_ReturnVoid_ActionWithResultAfterAwait()
         //{
-        //    Task<int> task = Task<int>.Factory.StartNew(Operation4);
+        //    Task<int> task = Task<int>.Factory.StartNew(OperationWithResult);
         //    // TaskAwaiter<int> awaiter = task.GetAwaiter();
         //    // Action continuation = () => Debug.WriteLine("\nРезультат: {0}\n", awaiter.GetResult());
         //    // awaiter.OnCompleted(continuation);
@@ -278,7 +278,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             #endregion
         }
 
-        //public async Task OperationAsync6()
+        //public async Task OperationAsync6_ReturnTask()
         //{
         //    await Task.Factory.StartNew(Operation);
         //}
@@ -331,16 +331,16 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             #endregion
         }
 
-        //public async Task<int> OperationAsync7()
+        //public async Task<int> OperationAsync8_ReturnTaskWithResult()
         //{
         //    //int result = await Task<int>.Factory.StartNew(Operation4);
         //    //return result;
-        //    return await Task<int>.Factory.StartNew(Operation4);
+        //    return await Task<int>.Factory.StartNew(OperationWithResult);
         //}
 
         public Task<int> OperationAsync8_ReturnTaskWithResult()
         {
-            ClassUnderTestReflected.AsyncStateMachine7ReturnValue stateMachine;
+            ClassUnderTestReflected.AsyncStateMachine8ReturnValue stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncTaskMethodBuilder<int>.Create();
             stateMachine.state = -1;
@@ -348,7 +348,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return stateMachine.builder.Task;
         }
 
-        private struct AsyncStateMachine7ReturnValue : IAsyncStateMachine
+        private struct AsyncStateMachine8ReturnValue : IAsyncStateMachine
         {
             public int state;
             public AsyncTaskMethodBuilder<int> builder;//для Task OperationAsync() {...}
@@ -389,14 +389,16 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             #endregion
         }
 
-        //public async Task<double> OperationAsync8(double argument)
+        //public async Task<double> OperationAsync9_ReturnTaskWithResult_Argument(double argument)
         //{
-        //    return await Task<double>.Factory.StartNew(Operation8, argument);
+        //    //int result = await Task<int>.Factory.StartNew(Operation4);
+        //    //return result;
+        //    return await Task<double>.Factory.StartNew(OperationWithArgumentAndResult, argument);
         //}
 
         public Task<double> OperationAsync9_ReturnTaskWithResult_Argument(double argument)
         {
-            ClassUnderTestReflected.AsyncStateMachine8ReturnAndArgument stateMachine;
+            ClassUnderTestReflected.AsyncStateMachine9ReturnAndArgument stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncTaskMethodBuilder<double>.Create();
             stateMachine.state = -1;
@@ -405,7 +407,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return stateMachine.builder.Task;
         }
 
-        private struct AsyncStateMachine8ReturnAndArgument : IAsyncStateMachine
+        private struct AsyncStateMachine9ReturnAndArgument : IAsyncStateMachine
         {
             public int state;
             public AsyncTaskMethodBuilder<double> builder;//для Task OperationAsync() {...}

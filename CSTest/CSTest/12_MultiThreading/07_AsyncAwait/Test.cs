@@ -16,7 +16,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTest mc = new ClassUnderTest();
-            mc.OperationAsync_ReturnVoid_WithoutActionAfterAwait();
+            mc.OperationAsync2_ReturnVoid_WithoutActionAfterAwait();
             Thread.Sleep(3000);
             /*
             Main ThreadID 10
@@ -31,7 +31,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTest mc = new ClassUnderTest();
-            mc.OperationAsync_ReturnVoid_ActionAfterAwait();
+            mc.OperationAsync3_ReturnVoid_ActionAfterAwait();
             Thread.Sleep(3000);
             /*
             Main ThreadID 10
@@ -144,6 +144,28 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Main thread ended. ThreadID 10
 
             Продолжение задачи Результат : 64
+            */
+        }
+
+        [Test]
+        public async void TestAsyncAwait9_WithActionAfterAwait()
+        {
+            Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+            ClassUnderTest mc = new ClassUnderTest();
+            await mc.OperationAsync9_ReturnTask_WithActionAfterAwait();
+            Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+
+            /*
+            Main ThreadID 8
+            Operation ThreadID 9
+            Begin
+            End
+            AfterFirst 2027
+            Operation ThreadID 9
+            Begin
+            End
+            AfterSecond 4038
+            Main thread ended. ThreadID 8
             */
         }
 

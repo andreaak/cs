@@ -30,7 +30,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTestReflected mc = new ClassUnderTestReflected();
-            mc.OperationAsync_ReturnVoid_WithoutActionAfterAwaitClean();
+            mc.OperationAsync2_ReturnVoid_WithoutActionAfterAwaitClean();
             Thread.Sleep(3000);
             /*
             Main ThreadID 10

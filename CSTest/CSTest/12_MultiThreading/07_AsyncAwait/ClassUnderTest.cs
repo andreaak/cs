@@ -22,6 +22,14 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("End");
         }
 
+        public async Task Operation2()
+        {
+            Debug.WriteLine("Operation ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+            Debug.WriteLine("Begin");
+            await Task.Delay(2000);
+            Debug.WriteLine("End");
+        }
+
         public int OperationWithResult()
         {
             Debug.WriteLine("Operation4 ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -44,14 +52,14 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         (при этом управление возвращается вызвавшему методу).
         Ассинхронный метод может иметь 3 типа возращаемого значения: void, Task, Task<T>
         */
-        public async void OperationAsync_ReturnVoid_WithoutActionAfterAwait()
+        public async void OperationAsync2_ReturnVoid_WithoutActionAfterAwait()
         {
             Task task = new Task(Operation);
             task.Start();
             await task;
         }
 
-        public async void OperationAsync_ReturnVoid_ActionAfterAwait()
+        public async void OperationAsync3_ReturnVoid_ActionAfterAwait()
         {
             /*
             Id потока совпадает с Id первичного потока. Это значит, что
@@ -108,6 +116,18 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             //int result = await Task<int>.Factory.StartNew(Operation4);
             //return result;
             return await Task<double>.Factory.StartNew(OperationWithArgumentAndResult, argument);
+        }
+
+        public async Task OperationAsync9_ReturnTask_WithActionAfterAwait()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            //await Task.Factory.StartNew(Operation);
+            await Task.Run(() => Operation());
+            Debug.WriteLine("AfterFirst " + sw.ElapsedMilliseconds);
+            await Task.Run(() => Operation2());
+            Debug.WriteLine("AfterSecond " + sw.ElapsedMilliseconds);
+            sw.Start();
         }
 
         public async Task DoDownloadAsync10_UseAPMItems()
