@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -12,11 +11,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
     public class TestReflected
     {
         [Test]
-        public void TestAsyncAwait1_2()
+        public void TestAsyncAwait1_ReturnVoid_WithoutActionAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTestReflected mc = new ClassUnderTestReflected();
-            mc.OperationAsync();
+            mc.OperationAsync_ReturnVoid_WithoutActionAfterAwait();
             Thread.Sleep(3000);
             /*
             Main ThreadID 10
@@ -27,11 +26,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait2_2()
+        public void TestAsyncAwait2_ReturnVoid_WithoutActionAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTestReflected mc = new ClassUnderTestReflected();
-            mc.OperationAsync2Clean();
+            mc.OperationAsync_ReturnVoid_WithoutActionAfterAwaitClean();
             Thread.Sleep(3000);
             /*
             Main ThreadID 10
@@ -42,11 +41,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait3_2()
+        public void TestAsyncAwait3_ReturnVoid_ActionAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTestReflected mc = new ClassUnderTestReflected();
-            mc.OperationAsync3();
+            mc.OperationAsync_ReturnVoid_ActionAfterAwait();
             Thread.Sleep(3000);
             /*
             Main ThreadID 10
@@ -66,11 +65,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait5_2ReturnValue()
+        public void TestAsyncAwait5_ActionWithResultAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTestReflected mc = new ClassUnderTestReflected();
-            mc.OperationAsync5ReturnValue();
+            mc.OperationAsync5_ReturnVoid_ActionWithResultAfterAwait();
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
             /*
@@ -83,11 +82,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait6_2Continue()
+        public void TestAsyncAwait6_ContinueTask()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTestReflected mc = new ClassUnderTestReflected();
-            Task task = mc.OperationAsync6Continuation();
+            Task task = mc.OperationAsync6_ReturnTask();
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи"));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
@@ -103,11 +102,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait7_2ContinueWithReturn()
+        public void TestAsyncAwait8_ContinueTaskWithResult()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTestReflected mc = new ClassUnderTestReflected();
-            Task<int> task = mc.OperationAsync7ReturnValue();
+            Task<int> task = mc.OperationAsync8_ReturnTaskWithResult();
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
@@ -121,12 +120,12 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait8_2ContinueWithArgument()
+        public void TestAsyncAwait9_ContinueTaskWithArgumentt()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTestReflected mc = new ClassUnderTestReflected();
             double argument = 8.0;
-            Task<double> task = mc.OperationAsync8ReturnAndArgument(argument);
+            Task<double> task = mc.OperationAsync9_ReturnTaskWithResult_Argument(argument);
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
@@ -140,5 +139,5 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
     }
 
-    #endif
+#endif
 }

@@ -12,11 +12,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
     public class TestAwaiter
     {
         [Test]
-        public void TestAsyncAwait4_ReturnValue()
+        public void TestAsyncAwait_ReturnValue()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassWithAwaiter mc = new ClassWithAwaiter();
-            mc.OperationAsync4_ReturnVoid_UseAwaiter();
+            mc.OperationAsync4_UseAwaiter_WithResult();
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
             /*

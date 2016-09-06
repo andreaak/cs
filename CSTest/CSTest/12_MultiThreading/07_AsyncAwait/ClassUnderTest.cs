@@ -6,7 +6,6 @@ using System.Linq;
 #if CS5
 using System.Net.Http;
 #endif
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
@@ -21,6 +20,20 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("Begin");
             Thread.Sleep(2000);
             Debug.WriteLine("End");
+        }
+
+        public int OperationWithResult()
+        {
+            Debug.WriteLine("Operation4 ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+            Thread.Sleep(2000);
+            return 2 + 2;
+        }
+
+        public double OperationWithArgumentAndResult(object argument)
+        {
+            Debug.WriteLine("Operation8 ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+            Thread.Sleep(2000);
+            return (double)argument * (double)argument;
         }
 
 #if CS5
@@ -55,12 +68,6 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("OperationAsync (Part II) ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
         }
 
-        public int OperationWithResult()
-        {
-            Debug.WriteLine("Operation4 ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            Thread.Sleep(2000);
-            return 2 + 2;
-        }
 
         public async void OperationAsync5_ReturnVoid_ActionWithResultAfterAwait()
         {
@@ -77,37 +84,30 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             await Task.Factory.StartNew(Operation);
         }
 
-        public async Task<int> OperationAsync7_ReturnTaskWithResult()
+        public async Task OperationAsync7_ReturnTask_ActionWithResultAfterAwait()// or DoDownloadTaskAsync1
+        {
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
+            req.Method = "GET";
+
+            var task = req.GetResponseAsync();
+            WebResponse resp = await task;
+
+            Debug.WriteLine(resp.Headers.ToString());
+            Debug.WriteLine("Async download completed");
+        }
+
+        public async Task<int> OperationAsync8_ReturnTaskWithResult()
         {
             //int result = await Task<int>.Factory.StartNew(Operation4);
             //return result;
             return await Task<int>.Factory.StartNew(OperationWithResult);
         }
 
-        public double Operation8(object argument)
-        {
-            Debug.WriteLine("Operation8 ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            Thread.Sleep(2000);
-            return (double)argument * (double)argument;
-        }
-
-        public async Task<double> OperationAsync8_ReturnTaskWithResult(double argument)
+        public async Task<double> OperationAsync9_ReturnTaskWithResult_Argument(double argument)
         {
             //int result = await Task<int>.Factory.StartNew(Operation4);
             //return result;
-            return await Task<double>.Factory.StartNew(Operation8, argument);
-        }
-
-        public async Task DoDownloadAsync9_ReturnTask_ActionAfterAwait()// or DoDownloadTaskAsync1
-        {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
-            req.Method = "GET";
-
-            var task = req.GetResponseAsync();
-            HttpWebResponse resp = (HttpWebResponse)await task;
-
-            Debug.WriteLine(resp.Headers.ToString());
-            Debug.WriteLine("Async download completed");
+            return await Task<double>.Factory.StartNew(OperationWithArgumentAndResult, argument);
         }
 
         public async Task DoDownloadAsync10_UseAPMItems()

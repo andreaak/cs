@@ -15,7 +15,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             return 2 + 2;
         }
 
-        public void OperationAsync4_ReturnVoid_UseAwaiter()
+        public void OperationAsync4_UseAwaiter_WithResult()
         {
             Task<int> task = Task<int>.Factory.StartNew(OperationWithResult);
             TaskAwaiter<int> awaiter = task.GetAwaiter();

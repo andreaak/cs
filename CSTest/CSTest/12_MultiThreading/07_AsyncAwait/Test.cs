@@ -44,7 +44,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait5_1ReturnValue()
+        public void TestAsyncAwait5_ActionWithResultAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTest mc = new ClassUnderTest();
@@ -61,7 +61,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait6_1Continue()
+        public void TestAsyncAwait6_ContinueTask()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             ClassUnderTest mc = new ClassUnderTest();
@@ -81,48 +81,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait7_1ContinueWithReturn()
-        {
-            Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTest mc = new ClassUnderTest();
-            Task<int> task = mc.OperationAsync7_ReturnTaskWithResult();
-            task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
-            Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            Thread.Sleep(3000);
-            /*
-            Main ThreadID 10
-            Operation4 ThreadID 9
-            Main thread ended. ThreadID 10
-
-            Продолжение задачи Результат : 4
-            */
-        }
-
-        [Test]
-        public void TestAsyncAwait8_1ContinueWithArgument()
-        {
-            Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTest mc = new ClassUnderTest();
-            double argument = 8.0;
-            Task<double> task = mc.OperationAsync8_ReturnTaskWithResult(argument);
-            task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
-            Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            Thread.Sleep(3000);
-            /*
-            Main ThreadID 10
-            Operation8 ThreadID 9
-            Main thread ended. ThreadID 10
-
-            Продолжение задачи Результат : 64
-            */
-        }
-
-        [Test]
-        public void TestAsyncAwait9()
+        public void TestAsyncAwait7_()
         {
             Debug.WriteLine("Staring async download\n");
             ClassUnderTest mc = new ClassUnderTest();
-            mc.DoDownloadAsync9_ReturnTask_ActionAfterAwait();
+            mc.OperationAsync7_ReturnTask_ActionWithResultAfterAwait();
             Debug.WriteLine("Async download started\n");
 
             Thread.Sleep(5000);
@@ -144,6 +107,43 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Via: 1.1 proxy-zp.isd.dp.ua (squid/3.5.10)
 
             Async download completed
+            */
+        }
+
+        [Test]
+        public void TestAsyncAwait8_ContinueTaskWithResult()
+        {
+            Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+            ClassUnderTest mc = new ClassUnderTest();
+            Task<int> task = mc.OperationAsync8_ReturnTaskWithResult();
+            task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
+            Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+            Thread.Sleep(3000);
+            /*
+            Main ThreadID 10
+            Operation4 ThreadID 9
+            Main thread ended. ThreadID 10
+
+            Продолжение задачи Результат : 4
+            */
+        }
+
+        [Test]
+        public void TestAsyncAwait9_ContinueTaskWithArgument()
+        {
+            Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+            ClassUnderTest mc = new ClassUnderTest();
+            double argument = 8.0;
+            Task<double> task = mc.OperationAsync9_ReturnTaskWithResult_Argument(argument);
+            task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
+            Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
+            Thread.Sleep(3000);
+            /*
+            Main ThreadID 10
+            Operation8 ThreadID 9
+            Main thread ended. ThreadID 10
+
+            Продолжение задачи Результат : 64
             */
         }
 
