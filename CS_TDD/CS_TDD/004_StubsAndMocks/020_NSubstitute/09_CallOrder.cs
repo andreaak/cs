@@ -1,9 +1,9 @@
-﻿using CS_TDD._006_NSubstitute.Setup;
+﻿using System;
+using CS_TDD._004_StubsAndMocks._020_NSubstitute.Setup;
 using NSubstitute;
 using NUnit.Framework;
-using System;
 
-namespace CS_TDD._006_NSubstitute
+namespace CS_TDD._004_StubsAndMocks._020_NSubstitute
 {
     [TestFixture]
     public class _09_CallOrder

@@ -1,10 +1,10 @@
 ﻿using System;
-using CS_TDD._006_NSubstitute.Setup;
+using System.ComponentModel;
+using CS_TDD._004_StubsAndMocks._020_NSubstitute.Setup;
 using NSubstitute;
 using NUnit.Framework;
-using System.ComponentModel;
 
-namespace CS_TDD._006_NSubstitute
+namespace CS_TDD._004_StubsAndMocks._020_NSubstitute
 {
     [TestFixture]
     public class _07_Events

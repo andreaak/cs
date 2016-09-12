@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using CS_TDD._006_NSubstitute.Setup;
+using System.Linq;
+using CS_TDD._004_StubsAndMocks._020_NSubstitute.Setup;
 using NSubstitute;
 using NUnit.Framework;
-using System.Linq;
 
-namespace CS_TDD._006_NSubstitute
+namespace CS_TDD._004_StubsAndMocks._020_NSubstitute
 {
     [TestFixture]
     public class _04_ArgumentMatchers

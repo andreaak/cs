@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using CS_TDD._004_StubsAndMocks._018_Moq.Setup;
-using CS_TDD._006_NSubstitute.Setup;
+using CS_TDD._004_StubsAndMocks._020_NSubstitute.Setup;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace CS_TDD._006_NSubstitute
+namespace CS_TDD._004_StubsAndMocks._020_NSubstitute
 {
     [TestFixture]
     public class _05_Callbacks

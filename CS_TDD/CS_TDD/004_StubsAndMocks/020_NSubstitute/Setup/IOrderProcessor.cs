@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CS_TDD._006_NSubstitute.Setup
+namespace CS_TDD._004_StubsAndMocks._020_NSubstitute.Setup
 {
     public interface IOrderProcessor
     {

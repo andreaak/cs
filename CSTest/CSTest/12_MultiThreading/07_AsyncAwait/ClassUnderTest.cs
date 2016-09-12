@@ -104,6 +104,18 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("Async download completed");
         }
 
+        public async Task OperationAsync7_ReturnTask_WithActionAfterAwait()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            //await Task.Factory.StartNew(Operation);
+            await Task.Run(() => Operation());
+            Debug.WriteLine("AfterFirst " + sw.ElapsedMilliseconds);
+            await Task.Run(() => Operation2());
+            Debug.WriteLine("AfterSecond " + sw.ElapsedMilliseconds);
+            sw.Start();
+        }
+
         public async Task<int> OperationAsync8_ReturnTaskWithResult()
         {
             //int result = await Task<int>.Factory.StartNew(Operation4);
@@ -116,18 +128,6 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             //int result = await Task<int>.Factory.StartNew(Operation4);
             //return result;
             return await Task<double>.Factory.StartNew(OperationWithArgumentAndResult, argument);
-        }
-
-        public async Task OperationAsync9_ReturnTask_WithActionAfterAwait()
-        {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            //await Task.Factory.StartNew(Operation);
-            await Task.Run(() => Operation());
-            Debug.WriteLine("AfterFirst " + sw.ElapsedMilliseconds);
-            await Task.Run(() => Operation2());
-            Debug.WriteLine("AfterSecond " + sw.ElapsedMilliseconds);
-            sw.Start();
         }
 
         public async Task DoDownloadAsync10_UseAPMItems()
@@ -273,20 +273,24 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         private string Bonus { get; set; }
 
-        public async Task<string> TestBonus()
+        public async Task<string> TestReturnNullResult()
         {
             if (Bonus == null)
                 return null;
             await Task.Run(() => { });
             return "AsyncTest";
         }
+        public Task<string> TestReturnTaskFromResult()
+        {
+            return Task.FromResult("AsyncTest");
+        }
 
-        public Task TestBonus2()
+        public Task TestReturnNull()
         {
             return null;
         }
 
-        public Task TestBonus3()
+        public Task TestReturnEmptyTaskFromResult()
         {
             return Task.FromResult(new object());
         }

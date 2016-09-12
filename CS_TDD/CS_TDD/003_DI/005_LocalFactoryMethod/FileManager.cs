@@ -5,10 +5,6 @@ namespace CS_TDD._003_DI._005_LocalFactoryMethod
 {
     class FileManager
     {
-        public FileManager()
-        {
-        }
-
         protected virtual IDataAccessObject LocalFactoryMethod()
         {
             return new FileDataObject();
