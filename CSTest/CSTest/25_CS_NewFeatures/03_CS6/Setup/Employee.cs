@@ -1,4 +1,4 @@
-﻿namespace CSTest._25_CS6.Setup
+﻿namespace CSTest._25_CS_NewFeatures._03_CS6.Setup
 {
     public class Employee
     {

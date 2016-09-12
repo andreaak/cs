@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using NUnit.Framework;
 
-namespace CSTest._25_CS6
+namespace CSTest._25_CS_NewFeatures._03_CS6
 {
     [TestFixture]
     public class _05_NullConditionalOperatorTests : IDisposable
