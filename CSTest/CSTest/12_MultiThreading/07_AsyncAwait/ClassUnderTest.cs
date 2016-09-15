@@ -144,7 +144,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         //Исключения «выбрасываются» в месте вызова асинхронной операции, а не Callback-метода!
-        public async void DoDownloadAsync11_InnerException()
+        public async void DoDownloadAsync11_CatchedException()
         {
             using (var w = new WebClient())
             {
@@ -160,7 +160,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             }
         }
 
-        public async void DoDownloadAsync12_OuterException()
+        public async void DoDownloadAsync12_NotCatchedException()
         {
             using (var w = new WebClient())
             {

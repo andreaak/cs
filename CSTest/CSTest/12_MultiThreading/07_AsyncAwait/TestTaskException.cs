@@ -10,11 +10,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
     {
 
         [Test]
-        public void TestAsyncAwait11_Exception()
+        public void TestAsyncAwait11_CatchedException()
         {
             Debug.WriteLine("Staring async download\n");
             ClassUnderTest mc = new ClassUnderTest();
-            mc.DoDownloadAsync11_InnerException();
+            mc.DoDownloadAsync11_CatchedException();
             Debug.WriteLine("Async download started\n");
 
             Thread.Sleep(5000);
@@ -29,14 +29,14 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public void TestAsyncAwait12_Exception()
+        public void TestAsyncAwait12_NotCatchedException()
         {
             Debug.WriteLine("Staring async download\n");
             ClassUnderTest mc = new ClassUnderTest();
 
             try
             {
-                mc.DoDownloadAsync12_OuterException();
+                mc.DoDownloadAsync12_NotCatchedException();
             }
             catch (Exception e)
             {
@@ -45,7 +45,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("Async download started\n");
 
             Thread.Sleep(5000);
-            /*
+            /*Staring async download
+
+            Async download started
+
+            Exception thrown: 'System.Net.WebException' in mscorlib.dll
 
             */
         }
