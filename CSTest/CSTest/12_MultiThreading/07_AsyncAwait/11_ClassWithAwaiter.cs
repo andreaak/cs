@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {
-    class ClassWithAwaiter
+    class _11_ClassWithAwaiter
     {
         public int OperationWithResult()
         {

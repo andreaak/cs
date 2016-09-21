@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
@@ -9,13 +7,13 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 #if CS5
 
     [TestFixture]
-    public class TestAwaiter
+    public class _11_TestAwaiter
     {
         [Test]
         public void TestAsyncAwait_ReturnValue()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassWithAwaiter mc = new ClassWithAwaiter();
+            _11_ClassWithAwaiter mc = new _11_ClassWithAwaiter();
             mc.OperationAsync4_UseAwaiter_WithResult();
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
@@ -32,7 +30,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public void TestAsyncAwait5_CustomAwaiter()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassWithAwaiter mc = new ClassWithAwaiter();
+            _11_ClassWithAwaiter mc = new _11_ClassWithAwaiter();
             mc.OperationAsync5_CustomAwaiter();
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(5000);
@@ -47,5 +45,5 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
     }
 
-    #endif
+#endif
 }

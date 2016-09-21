@@ -2,17 +2,20 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using System;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {
+#if CS5
+
     [TestFixture]
-    public class TestTask
+    public class _02_TestTask
     {
         [Test]
         public void TestAsyncAwait6_ContinueTask()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTest mc = new ClassUnderTest();
+            _00_ClassUnderTest mc = new _00_ClassUnderTest();
             Task task = mc.OperationAsync6_ReturnTask();
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи"));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -32,7 +35,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public async void TestAsyncAwait7_ActionWithResultAfterAwait()
         {
             Debug.WriteLine("Staring async download\n");
-            ClassUnderTest mc = new ClassUnderTest();
+            _00_ClassUnderTest mc = new _00_ClassUnderTest();
             /*await*/
             mc.OperationAsync7_ReturnTask_ActionWithResultAfterAwait();
             Debug.WriteLine("Async download started\n");
@@ -63,7 +66,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public async void TestAsyncAwait7_WithActionAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTest mc = new ClassUnderTest();
+            _00_ClassUnderTest mc = new _00_ClassUnderTest();
             await mc.OperationAsync7_ReturnTask_WithActionAfterAwait();
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
 
@@ -80,5 +83,28 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Main thread ended. ThreadID 8
             */
         }
+
+        [Test]
+        [ExpectedException(typeof(NullReferenceException))]
+        public async void TestAsyncAwait16_ReturnTaskAsNull_Exception()
+        {
+            var test = new _02_TestTask();
+            await test.TestReturnNull();
+        }
+
+        [Test]
+        public void TestAsyncAwait17_ReturnTaskAsNull_Exception()
+        {
+            var test = new _02_TestTask();
+
+            Assert.That(async () => await test.TestReturnNull(), Throws.TypeOf<NullReferenceException>());
+        }
+
+        public Task TestReturnNull()
+        {
+            return null;
+        }
     }
+
+#endif
 }

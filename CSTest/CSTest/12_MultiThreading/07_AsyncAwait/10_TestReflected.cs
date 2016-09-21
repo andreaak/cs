@@ -8,13 +8,13 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 #if CS5
 
     [TestFixture]
-    public class TestReflected
+    public class _10_TestReflected
     {
         [Test]
         public void TestAsyncAwait1_ReturnVoid_WithoutActionAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTestReflected mc = new ClassUnderTestReflected();
+            _10_ClassUnderTestReflected mc = new _10_ClassUnderTestReflected();
             mc.OperationAsync_ReturnVoid_WithoutActionAfterAwait();
             Thread.Sleep(3000);
             /*
@@ -29,7 +29,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public void TestAsyncAwait2_ReturnVoid_WithoutActionAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTestReflected mc = new ClassUnderTestReflected();
+            _10_ClassUnderTestReflected mc = new _10_ClassUnderTestReflected();
             mc.OperationAsync2_ReturnVoid_WithoutActionAfterAwaitClean();
             Thread.Sleep(3000);
             /*
@@ -44,7 +44,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public void TestAsyncAwait3_ReturnVoid_ActionAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTestReflected mc = new ClassUnderTestReflected();
+            _10_ClassUnderTestReflected mc = new _10_ClassUnderTestReflected();
             mc.OperationAsync3_ReturnVoid_ActionAfterAwait();
             Thread.Sleep(3000);
             /*
@@ -68,7 +68,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public void TestAsyncAwait5_ActionWithResultAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTestReflected mc = new ClassUnderTestReflected();
+            _10_ClassUnderTestReflected mc = new _10_ClassUnderTestReflected();
             mc.OperationAsync5_ReturnVoid_ActionWithResultAfterAwait();
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(3000);
@@ -85,7 +85,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public void TestAsyncAwait6_ContinueTask()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTestReflected mc = new ClassUnderTestReflected();
+            _10_ClassUnderTestReflected mc = new _10_ClassUnderTestReflected();
             Task task = mc.OperationAsync6_ReturnTask();
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи"));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -105,7 +105,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public void TestAsyncAwait8_ContinueTaskWithResult()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTestReflected mc = new ClassUnderTestReflected();
+            _10_ClassUnderTestReflected mc = new _10_ClassUnderTestReflected();
             Task<int> task = mc.OperationAsync8_ReturnTaskWithResult();
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -123,7 +123,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public void TestAsyncAwait9_ContinueTaskWithArgumentt()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTestReflected mc = new ClassUnderTestReflected();
+            _10_ClassUnderTestReflected mc = new _10_ClassUnderTestReflected();
             double argument = 8.0;
             Task<double> task = mc.OperationAsync9_ReturnTaskWithResult_Argument(argument);
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));

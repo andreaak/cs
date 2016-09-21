@@ -5,14 +5,16 @@ using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {
+#if CS5
+
     [TestFixture]
-    public class TestTaskWithResult
+    public class _03_TestTaskWithResult
     {
         [Test]
         public void TestAsyncAwait8_ContinueTaskWithResult()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTest mc = new ClassUnderTest();
+            _00_ClassUnderTest mc = new _00_ClassUnderTest();
             Task<int> task = mc.OperationAsync8_ReturnTaskWithResult();
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -30,7 +32,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public void TestAsyncAwait9_ContinueTaskWithArgument()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            ClassUnderTest mc = new ClassUnderTest();
+            _00_ClassUnderTest mc = new _00_ClassUnderTest();
             double argument = 8.0;
             Task<double> task = mc.OperationAsync9_ReturnTaskWithResult_Argument(argument);
             task.ContinueWith(t => Debug.WriteLine("\nПродолжение задачи Результат : {0}", t.Result));
@@ -44,5 +46,25 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Продолжение задачи Результат : 64
             */
         }
+
+        [Test]
+        public async void TestAsyncAwait15_WithNullResult()
+        {
+            var test = new _03_TestTaskWithResult();
+            string res = await test.TestReturnNullResult();
+            Debug.WriteLine(res);//res == null
+        }
+
+        private string Bonus { get; set; }
+
+        public async Task<string> TestReturnNullResult()
+        {
+            if (Bonus == null)
+                return null;
+            await Task.Run(() => { });
+            return "AsyncTest";
+        }
     }
+
+#endif
 }

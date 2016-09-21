@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {
-    class ClassUnderTestReflected
+    class _10_ClassUnderTestReflected
     {
         public void Operation()
         {
@@ -42,11 +42,11 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         public void OperationAsync_ReturnVoid_WithoutActionAfterAwait()
         {
-            ClassUnderTestReflected.AsyncStateMachine stateMachine;
+            _10_ClassUnderTestReflected.AsyncStateMachine stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncVoidMethodBuilder.Create();
             stateMachine.state = -1;
-            stateMachine.builder.Start<ClassUnderTestReflected.AsyncStateMachine>(ref stateMachine);//builder вызывает MoveNext()
+            stateMachine.builder.Start<_10_ClassUnderTestReflected.AsyncStateMachine>(ref stateMachine);//builder вызывает MoveNext()
         }
 
         [CompilerGenerated]
@@ -55,7 +55,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             public int state;
             public AsyncVoidMethodBuilder builder;//для void OperationAsync() {...}
-            public ClassUnderTestReflected outer;
+            public _10_ClassUnderTestReflected outer;
             private TaskAwaiter awaiter;
 
             #region IAsyncStateMachine Members
@@ -76,7 +76,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                         {
                             this.state = num2 = 1;
                             this.awaiter = awaiter;
-                            this.builder.AwaitUnsafeOnCompleted<TaskAwaiter, ClassUnderTestReflected.AsyncStateMachine>(ref awaiter, ref this);
+                            this.builder.AwaitUnsafeOnCompleted<TaskAwaiter, _10_ClassUnderTestReflected.AsyncStateMachine>(ref awaiter, ref this);
                             return;
                         }
                         else
@@ -117,7 +117,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         public void OperationAsync2_ReturnVoid_WithoutActionAfterAwaitClean()
         {
-            ClassUnderTestReflected.AsyncStateMachine2 stateMachine;
+            _10_ClassUnderTestReflected.AsyncStateMachine2 stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncVoidMethodBuilder.Create();
             stateMachine.builder.Start(ref stateMachine);//builder вызывает MoveNext()
@@ -128,7 +128,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         private struct AsyncStateMachine2 : IAsyncStateMachine
         {
             public AsyncVoidMethodBuilder builder;//для void OperationAsync() {...}
-            public ClassUnderTestReflected outer;
+            public _10_ClassUnderTestReflected outer;
 
             #region IAsyncStateMachine Members
 
@@ -166,18 +166,18 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         public void OperationAsync3_ReturnVoid_ActionAfterAwait()
         {
-            ClassUnderTestReflected.AsyncStateMachine3 stateMachine;
+            _10_ClassUnderTestReflected.AsyncStateMachine3 stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncVoidMethodBuilder.Create();
             stateMachine.state = -1;
-            stateMachine.builder.Start<ClassUnderTestReflected.AsyncStateMachine3>(ref stateMachine);//builder вызывает MoveNext()
+            stateMachine.builder.Start<_10_ClassUnderTestReflected.AsyncStateMachine3>(ref stateMachine);//builder вызывает MoveNext()
         }
 
         private struct AsyncStateMachine3 : IAsyncStateMachine
         {
             public int state;
             public AsyncVoidMethodBuilder builder;//для void OperationAsync() {...}
-            public ClassUnderTestReflected outer;
+            public _10_ClassUnderTestReflected outer;
 
             static int counterCallMoveNext;
 
@@ -232,7 +232,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         public void OperationAsync5_ReturnVoid_ActionWithResultAfterAwait()
         {
-            ClassUnderTestReflected.AsyncStateMachine5ReturnValue stateMachine;
+            _10_ClassUnderTestReflected.AsyncStateMachine5ReturnValue stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncVoidMethodBuilder.Create();
             stateMachine.state = -1;
@@ -243,7 +243,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             public int state;
             public AsyncVoidMethodBuilder builder;//для void OperationAsync() {...}
-            public ClassUnderTestReflected outer;
+            public _10_ClassUnderTestReflected outer;
             TaskAwaiter<int> awaiter;
 
             #region IAsyncStateMachine Members
@@ -285,7 +285,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         public Task OperationAsync6_ReturnTask()
         {
-            ClassUnderTestReflected.AsyncStateMachine6Continuation stateMachine;
+            _10_ClassUnderTestReflected.AsyncStateMachine6Continuation stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncTaskMethodBuilder.Create();
             stateMachine.state = -1;
@@ -297,7 +297,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             public int state;
             public AsyncTaskMethodBuilder builder;//для Task OperationAsync() {...}
-            public ClassUnderTestReflected outer;
+            public _10_ClassUnderTestReflected outer;
             TaskAwaiter awaiter;
 
             #region IAsyncStateMachine Members
@@ -340,7 +340,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         public Task<int> OperationAsync8_ReturnTaskWithResult()
         {
-            ClassUnderTestReflected.AsyncStateMachine8ReturnValue stateMachine;
+            _10_ClassUnderTestReflected.AsyncStateMachine8ReturnValue stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncTaskMethodBuilder<int>.Create();
             stateMachine.state = -1;
@@ -352,7 +352,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             public int state;
             public AsyncTaskMethodBuilder<int> builder;//для Task OperationAsync() {...}
-            public ClassUnderTestReflected outer;
+            public _10_ClassUnderTestReflected outer;
             TaskAwaiter<int> awaiter;
 
             #region IAsyncStateMachine Members
@@ -398,7 +398,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         public Task<double> OperationAsync9_ReturnTaskWithResult_Argument(double argument)
         {
-            ClassUnderTestReflected.AsyncStateMachine9ReturnAndArgument stateMachine;
+            _10_ClassUnderTestReflected.AsyncStateMachine9ReturnAndArgument stateMachine;
             stateMachine.outer = this;
             stateMachine.builder = AsyncTaskMethodBuilder<double>.Create();
             stateMachine.state = -1;
@@ -411,7 +411,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             public int state;
             public AsyncTaskMethodBuilder<double> builder;//для Task OperationAsync() {...}
-            public ClassUnderTestReflected outer;
+            public _10_ClassUnderTestReflected outer;
             TaskAwaiter<double> awaiter;
             public double argument;
 
