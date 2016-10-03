@@ -16,10 +16,190 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
     public class _05_TestWhen
     {
         [Test]
+        public async void TestAsyncAwait01_Sequential()
+        {
+            var mc = new _05_ClassUnderTest();
+            Debug.WriteLine("Before tasks await");
+            await mc.OperationAsync(0);
+            await mc.OperationAsync(1);
+            await mc.OperationAsync(2);
+            await mc.OperationAsync(3);
+            await mc.OperationAsync(4);
+            Debug.WriteLine("After tasks await");
+
+            /*
+                Before tasks await
+                Task 0 started
+                Task 0 completed
+                Task 1 started
+                Task 1 completed
+                Task 2 started
+                Task 2 completed
+                Task 3 started
+                Task 3 completed
+                Task 4 started
+                Task 4 completed
+                After tasks await
+             */
+        }
+
+        [Test]
+        public async void TestAsyncAwait02_WhenAll()
+        {
+            var mc = new _05_ClassUnderTest();
+            var tasks = new[] { 0, 1, 2, 3, 4, }.Select(item => mc.OperationAsync(item));
+            Debug.WriteLine("Before tasks await");
+            await Task.WhenAll(tasks);
+            Debug.WriteLine("After tasks await");
+
+            /*
+                Before tasks await
+                Task 0 started
+                Task 0 completed
+                Task 1 started
+                Task 2 started
+                Task 3 started
+                Task 4 started
+                Task 1 completed
+                Task 2 completed
+                Task 3 completed
+                Task 4 completed
+                After tasks await
+             */
+        }
+
+        [Test]
+        public async void TestAsyncAwait03_WhenAny()
+        {
+            var mc = new _05_ClassUnderTest();
+            var tasks = new[] { 1, 2, 3, 4, 5 }.Select(item => mc.OperationAsync(item));
+            Debug.WriteLine("Before tasks await");
+            await Task.WhenAny(tasks);
+            Debug.WriteLine("After tasks await");
+
+            /*
+                Before tasks await
+                Task 1 started
+                Task 2 started
+                Task 3 started
+                Task 4 started
+                Task 5 started
+                Task 1 completed
+                After tasks await
+            */
+        }
+
+        [Test]
+        public async void TestAsyncAwait03_WhenAny_Interleaving()
+        {
+            var mc = new _05_ClassUnderTest();
+            List<Task<int>> tasks = new[] { 1, 2, 3, 4, 5 }.Select(item => mc.OperationWithResultAsync(item)).ToList();
+
+            Debug.WriteLine("Before tasks await");
+            while (tasks.Count > 0)
+            {
+                Task<int> task = await Task.WhenAny(tasks);
+                Debug.WriteLine("Task {0} awaited", task.Result);
+                tasks.Remove(task);
+                Debug.WriteLine("Task {0} some process with result", task.Result);
+            }
+            Debug.WriteLine("After tasks await");
+
+            /*
+                Task 1 started
+                Task 2 started
+                Task 3 started
+                Task 4 started
+                Task 5 started
+                Before tasks await
+                Task 1 completed
+                Task 1 awaited
+                Task 1 some process with result
+                Task 2 completed
+                Task 2 awaited
+                Task 2 some process with result
+                Task 3 completed
+                Task 3 awaited
+                Task 3 some process with result
+                Task 4 completed
+                Task 4 awaited
+                Task 4 some process with result
+                Task 5 completed
+                Task 5 awaited
+                Task 5 some process with result
+                After tasks await
+            */
+        }
+
+        [Test]
+        public async void TestAsyncAwait03_WhenAny_Throttling()
+        {
+            const int CONCURRENCY_LEVEL = 3;
+
+            var mc = new _05_ClassUnderTest();
+            var indexes = new[] {1, 2, 3, 4, 5};
+
+            int index = 0;
+            List<Task<int>> tasks = new List<Task<int>>();
+            while (index < CONCURRENCY_LEVEL && index < indexes.Length)
+            {
+                tasks.Add(mc.OperationWithResultAsync(index));
+                Debug.WriteLine("Task {0} added", index);
+                index++;
+            }
+
+            Debug.WriteLine("Before tasks await");
+            while (tasks.Count > 0)
+            {
+                Task<int> task = await Task.WhenAny(tasks);
+                Debug.WriteLine("Task {0} awaited", task.Result);
+                tasks.Remove(task);
+                Debug.WriteLine("Task {0} some process with result", task.Result);
+                if (index < indexes.Length)
+                {
+                    tasks.Add(mc.OperationWithResultAsync(index));
+                    Debug.WriteLine("Task {0} added", index);
+                    index++;
+                }
+            }
+            Debug.WriteLine("After tasks await");
+
+            /*
+            Task 0 started
+            Task 0 completed
+            Task 0 added
+            Task 1 started
+            Task 1 added
+            Task 2 started
+            Task 2 added
+            Before tasks await
+            Task 0 awaited
+            Task 0 some process with result
+            Task 3 started
+            Task 3 added
+            Task 1 completed
+            Task 1 awaited
+            Task 1 some process with result
+            Task 4 started
+            Task 4 added
+            Task 2 completed
+            Task 2 awaited
+            Task 2 some process with result
+            Task 3 completed
+            Task 3 awaited
+            Task 3 some process with result
+            Task 4 completed
+            Task 4 awaited
+            Task 4 some process with result
+            After tasks await
+            */
+        }
+
+        [Test]
         public void TestAsyncAwait14_WaitAll()
         {
             Debug.WriteLine("Staring async download\n");
-            var mc = new _05_TestWhen();
+            var mc = new _05_ClassUnderTest();
             CancellationTokenSource cts = new CancellationTokenSource();
             mc.DoDownloadAsync_WaitAll(cts);
             Debug.WriteLine("Async download started\n");
@@ -68,60 +248,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Downloads complete.
             */
         }
-
-        public async void DoDownloadAsync_WaitAll(CancellationTokenSource cts)
-        {
-            try
-            {
-                await AccessTheWebAsync(cts.Token);
-                Debug.WriteLine("\r\nDownloads complete.");
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.WriteLine("\r\nDownloads canceled.\r\n");
-            }
-            catch (Exception)
-            {
-                Debug.WriteLine("\r\nDownloads failed.\r\n");
-            }
-        }
-
-        private async Task AccessTheWebAsync(CancellationToken ct)
-        {
-            var client = new HttpClient();
-
-            IEnumerable<string> urlList = Setup.SetUpURLList();
-
-            IEnumerable<Task<int>> downloadTasksQuery = urlList
-                                                    .Select(url => ProcessURL(url, client, ct));
-
-            List<Task<int>> downloadTasks = downloadTasksQuery.ToList();
-
-            while (downloadTasks.Count != 0)
-            {
-                Task<int> firstFinishedTask = await Task.WhenAny(downloadTasks);
-
-                downloadTasks.Remove(firstFinishedTask);
-
-                int length = firstFinishedTask.Result;
-
-                Debug.WriteLine(string.Format("\r\nLength of the download:  {0}", length));
-            }
-        }
-
-        private async Task<int> ProcessURL(string url, HttpClient client, CancellationToken ct)
-        {
-            HttpResponseMessage response = await client.GetAsync(url, ct);
-
-
-            var task = response.Content.ReadAsByteArrayAsync();
-            var taskDebug = task.ContinueWith((task1) => Debug.WriteLine("URL:{0}, Thread:{1}", url, Thread.CurrentThread.ManagedThreadId));
-
-            byte[] urlContents = await task;
-
-            return urlContents.Length;
-        }
-}
+    }
 
 #endif
 }

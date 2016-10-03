@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,82 +16,132 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
     public class _07_TestCancel
     {
         [Test]
-        public void TestAsyncAwait13_Cancel()
+        public void TestAsyncAwait_CancelToken1()
         {
-            Debug.WriteLine("Staring async download\n");
-            var mc = new _07_TestCancel();
+            Debug.WriteLine("Staring async download");
+            var mc = new _07_ClassUnderTest();
             CancellationTokenSource cts = new CancellationTokenSource();
-            mc.DoDownloadAsync_Cancel(cts);
-            Debug.WriteLine("Async download started\n");
+            mc.DoAsync_Generic(cts, mc.SumPageSizesAsync);
+            Debug.WriteLine("Async download started");
 
             Thread.Sleep(2000);
-            Debug.WriteLine("Cancel Task\n");
+            Debug.WriteLine("Cancel Task");
             cts.Cancel();
             Thread.Sleep(5000);
             /*
             Staring async download
-
             Async download started
-
             Cancel Task
-
-            A first chance exception of type 'System.Threading.Tasks.TaskCanceledException' occurred in mscorlib.dll
-            A first chance exception of type 'System.Threading.Tasks.TaskCanceledException' occurred in mscorlib.dll
-
-            Download canceled.
-
-
-            DoDownloadAsync4Cancel ended
+            Exception thrown: 'System.Threading.Tasks.TaskCanceledException' in mscorlib.dll
+            Exception thrown: 'System.Threading.Tasks.TaskCanceledException' in mscorlib.dll
+            Operation canceled.
+            DoAsync_Generic ended
             */
         }
 
-        public async void DoDownloadAsync_Cancel(CancellationTokenSource cts)
+
+        [Test]
+        public void TestAsyncAwait_CancelToken2()
         {
-            //CancellationTokenSource cts = new CancellationTokenSource();
-            cts.CancelAfter(5000);
+            Debug.WriteLine("Staring async download");
+            var mc = new _07_ClassUnderTest();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            mc.DoAsync_Generic(cts, mc.DoAsync_CancelToken);
+            Debug.WriteLine("Async download started");
 
-            try
-            {
-                Task sumTask = SumPageSizesAsync(cts.Token);
-
-                //Do some other stuff...
-                //....
-
-                //Wait until sumTask is Finished...
-                await sumTask;
-
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.WriteLine("\r\nDownload canceled.\r\n");
-            }
-            catch (Exception)
-            {
-                Debug.WriteLine("\r\nDownload failed.\r\n");
-            }
-
-            Debug.WriteLine("\r\n DoDownloadAsync4Cancel ended\r\n");
+            Thread.Sleep(2000);
+            Debug.WriteLine("Cancel Task");
+            cts.Cancel();
+            Thread.Sleep(5000);
+            /*
+            Staring async download
+            Task 1 started
+            Async download started
+            Task 1 ended
+            Task 2 started
+            Task 2 ended
+            Task 3 started
+            Task 3 ended
+            Task 4 started
+            Task 4 ended
+            Task 5 started
+            Task 5 ended
+            Task 6 started
+            Cancel Task
+            Exception thrown: 'System.Threading.Tasks.TaskCanceledException' in mscorlib.dll
+            Exception thrown: 'System.Threading.Tasks.TaskCanceledException' in mscorlib.dll
+            Operation canceled.
+            DoAsync_Generic ended
+            */
         }
 
-        private async Task SumPageSizesAsync(CancellationToken ct)
+        [Test]
+        public void TestAsyncAwait_Cancel_ThrowIfCancellationRequested()
         {
-            HttpClient client = new HttpClient();
+            Debug.WriteLine("Staring async download");
+            var mc = new _07_ClassUnderTest();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            mc.DoAsync_Generic(cts, mc.DoAsync_ThrowIfCancellationRequested);
+            Debug.WriteLine("Async download started");
 
-            IEnumerable<string> urlList = Setup.SetUpURLList();
+            Thread.Sleep(2000);
+            Debug.WriteLine("Cancel Task");
+            cts.Cancel();
+            Thread.Sleep(5000);
+            /*
+            Staring async download
+            Task 1 started
+            Async download started
+            Task 1 ended
+            Task 2 started
+            Task 2 ended
+            Task 3 started
+            Task 3 ended
+            Task 4 started
+            Task 4 ended
+            Task 5 started
+            Task 5 ended
+            Task 6 started
+            Cancel Task
+            Task 6 ended
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Operation canceled.
+            DoAsync_Generic ended
+            */
+        }
 
-            var total = 0;
+        [Test]
+        public void TestAsyncAwait_Cancel_IsCancellationRequested()
+        {
+            Debug.WriteLine("Staring async download");
+            var mc = new _07_ClassUnderTest();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            mc.DoAsync_Generic(cts, mc.DoAsync_IsCancellationRequested);
+            Debug.WriteLine("Async download started");
 
-            foreach (var url in urlList)
-            {
-                HttpResponseMessage response = await client.GetAsync(url, ct);
-                byte[] urlContents = await response.Content.ReadAsByteArrayAsync();
-
-                Setup.DisplayResults(url, urlContents);
-
-                total += urlContents.Length;
-            }
-
-            Debug.WriteLine(string.Format("\r\n\r\nTotal bytes returned:  {0}\r\n", total));
+            Thread.Sleep(2000);
+            Debug.WriteLine("Cancel Task");
+            cts.Cancel();
+            Thread.Sleep(5000);
+            /*
+            Staring async download
+            Task 1 started
+            Async download started
+            Task 1 ended
+            Task 2 started
+            Task 2 ended
+            Task 3 started
+            Task 3 ended
+            Task 4 started
+            Task 4 ended
+            Task 5 started
+            Task 5 ended
+            Task 6 started
+            Cancel Task
+            Task 6 ended
+            DoAsync_Generic ended
+            */
         }
     }
 

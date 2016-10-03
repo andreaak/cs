@@ -161,7 +161,7 @@ namespace CSTest._06_Interface
         [Test]
         public void TestInterface8()
         {
-            _06_AbstractClass instance = new _06_AbstractClass();
+            RealClass instance = new RealClass();
             instance.Method();
             instance.Method2();
         }

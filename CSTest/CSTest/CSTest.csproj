@@ -177,6 +177,7 @@
     <Compile Include="06_Interface\_05_InterfaceUnion.cs" />
     <Compile Include="06_Interface\_06_AbstractClass.cs" />
     <Compile Include="06_Interface\_07_InterfaceWithBaseClass.cs" />
+    <Compile Include="06_Interface\_20_INotifyPropertyChangedTests.cs" />
     <Compile Include="07_Generics\0_Setup\Base.cs" />
     <Compile Include="07_Generics\_09_FirstLevelConstraints.cs" />
     <Compile Include="07_Generics\_01_GenericClass.cs" />
@@ -204,6 +205,8 @@
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\CollectionExtensions.cs" />
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\Test.cs" />
     <Compile Include="12_MultiThreading\05_TPL\02_TaskCompletionSource.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\05_ClassUnderTest.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\07_ClassUnderTest.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\07_TestCancel.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\06_TestFromResult.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\05_TestWhen.cs" />

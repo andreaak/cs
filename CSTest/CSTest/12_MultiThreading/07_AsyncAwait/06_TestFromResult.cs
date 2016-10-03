@@ -25,12 +25,12 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             await test.TestReturnEmptyTaskFromResult();
         }
 
-        public Task<string> TestReturnTaskFromResult()
+        private Task<string> TestReturnTaskFromResult()
         {
             return Task.FromResult("AsyncTest");
         }
 
-        public Task TestReturnEmptyTaskFromResult()
+        private Task TestReturnEmptyTaskFromResult()
         {
             return Task.FromResult(new object());
         }

@@ -34,7 +34,7 @@ namespace CSTest._06_Interface
         }
     }
 
-    class _06_AbstractClass : AbstractClass
+    class RealClass : AbstractClass
     {
         // Реализация абстрактного метода из абстрактного класса, в конкретном классе обязательна.
         //virtual
