@@ -37,5 +37,41 @@ namespace ReelsHelper
 
             return table;
         }
+
+        private void buttonGetReels_Click(object sender, System.EventArgs e)
+        {
+            string json = GetReelsJson();
+            var form = new ShowData();
+            form.LoadData(json);
+            form.Show();
+        }
+
+        private string GetReelsJson()
+        {
+            var table = (DataTable)dataGridView1.DataSource;
+
+            int reelCount = table.Columns.Count;
+
+            IList<Reel> newReels = new List<Reel>();
+            for (int i = 0; i < reelCount; i++)
+            {
+                newReels.Add(new Reel());
+            }
+
+            foreach (DataRow row in table.Rows)
+            {
+                for (int i = 0; i < reelCount; i++)
+                {
+                    newReels[i].Add(row.Field<int>(i));
+                }
+            }
+
+            return $"{new string(' ', 8)}\"reels\": " + 
+                JSonParser.CreateJson(newReels.Select(item => item.Indexes.ToArray()).ToArray())
+                .Replace("],[", $"],\r\n{new string(' ', 12)}[")
+                .Replace("[[", $"[\r\n{new string(' ', 12)}[")
+                .Replace("]]", $"]\r\n{new string(' ', 8)}]")
+                .Replace(",", ", ");
+        }
     }
 }

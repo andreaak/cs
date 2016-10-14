@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.Http;
 using System.Threading;
-using System.Threading.Tasks;
-using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
 using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait

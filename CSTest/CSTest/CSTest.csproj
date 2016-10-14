@@ -165,6 +165,7 @@
     <Compile Include="04_Class\16_Polymorfizm\Test.cs" />
     <Compile Include="05_Delegates and Events\Delegates\_05_CoContrVarianceTest.cs" />
     <Compile Include="05_Delegates and Events\Delegates\TestClass.cs" />
+    <Compile Include="05_Delegates and Events\Events\05_ForwardEventWithDefferedSubscriptionTest.cs" />
     <Compile Include="06_Interface\0_Setup\BaseClass.cs" />
     <Compile Include="06_Interface\0_Setup\IDisposablee.cs" />
     <Compile Include="06_Interface\_02_DerivedClass.cs" />
@@ -372,7 +373,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="05_Delegates and Events\Events\" />
     <Folder Include="10_Collections\01_BaseCollections\" />
     <Folder Include="10_Collections\02_GenericCollections\03_HashSet\" />
     <Folder Include="10_Collections\02_GenericCollections\04_Queue\" />

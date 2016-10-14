@@ -20,6 +20,11 @@ namespace ReelsHelper
             }
         }
 
+        public Reel()
+        {
+            Indexes = new List<int>();
+        }
+
         public Reel(IList<int> indexes)
         {
             Indexes = indexes;
@@ -29,6 +34,11 @@ namespace ReelsHelper
         {
             Reel reel = new Reel(Indexes.ToArray());
             return reel;
+        }
+
+        public void Add(int icon)
+        {
+            Indexes.Add(icon);
         }
     }
 }

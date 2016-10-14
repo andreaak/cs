@@ -66,6 +66,12 @@
     <Compile Include="RemoveIndexForm.Designer.cs">
       <DependentUpon>RemoveIndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowData.Designer.cs">
+      <DependentUpon>ShowData.cs</DependentUpon>
+    </Compile>
     <Compile Include="TableCreator.cs" />
     <Compile Include="HorizontalReelsForm.cs">
       <SubType>Form</SubType>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RemoveIndexForm.resx">
       <DependentUpon>RemoveIndexForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowData.resx">
+      <DependentUpon>ShowData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerticalReelsForm.resx">
       <DependentUpon>VerticalReelsForm.cs</DependentUpon>
