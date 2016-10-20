@@ -32,7 +32,7 @@ namespace CSTest._30_NET_Code
 **Arguments: None
 **Exceptions: None
 ==============================================================================*/
-        public static extern int TickCount
+        public static int TickCount
         {
             //[System.Security.SecuritySafeCritical]  // auto-generated
             //[ResourceExposure(ResourceScope.None)]
