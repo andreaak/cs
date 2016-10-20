@@ -25,6 +25,20 @@ namespace CSTest._30_NET_Code
                 return "\r\n";
             }
         }
+
+        /*==================================TickCount===================================
+**Action: Gets the number of ticks since the system was started.
+**Returns: The number of ticks since the system was started.
+**Arguments: None
+**Exceptions: None
+==============================================================================*/
+        public static extern int TickCount
+        {
+            //[System.Security.SecuritySafeCritical]  // auto-generated
+            //[ResourceExposure(ResourceScope.None)]
+            //[MethodImplAttribute(MethodImplOptions.InternalCall)]
+            get;
+        }
     }
 }
 
