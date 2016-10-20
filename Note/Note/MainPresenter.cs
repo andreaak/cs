@@ -63,10 +63,13 @@ namespace Note
             string errorMessage = null;
             try
             {
-                DialogResult res = new DBDataForm().ShowDialog(view.Form);
-                if (res != DialogResult.OK)
+                if (OptionsUtils.ConnectionName == OptionsUtils.Other)
                 {
-                    return false;
+                    DialogResult res = new DBDataForm().ShowDialog(view.Form);
+                    if (res != DialogResult.OK)
+                    {
+                        return false;
+                    }
                 }
                 DataManager = ObjectsFactory.Instance.GetService<DatabaseManager>();
                 if (DataManager.IsDBOnline())

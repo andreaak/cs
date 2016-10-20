@@ -1,24 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
 using System.Resources;
 using System.Globalization;
 using System.Reflection;
 using System.Configuration;
 using System.Threading;
-using System.IO;
 using Utils.WorkWithDB;
 
 namespace Utils
 {
-    class CancelException : Exception
-    {
-    }
-
     public class OptionsUtils
     {
+        public const string Other = "OTHER";
         static OptionsUtils instance;
         private static ResourceManager rm;
         private static CultureInfo culture;
@@ -75,6 +68,65 @@ namespace Utils
             culture = OptionsUtils.Culture;
         }
 
+        private static string connectionName;
+        public static string ConnectionName
+        {
+            get
+            {
+                if (connectionName == null)
+                {
+                    connectionName = GetConnectionName();
+                }
+                return connectionName;
+            }
+            set
+            {
+                connectionName = value;
+            }
+        }
+
+        private static string provider = null;
+        public static string Provider
+        {
+            get
+            {
+                if (provider == null)
+                {
+                    if (!string.IsNullOrEmpty(ConnectionName))
+                    {
+                        provider = ConfigurationManager.ConnectionStrings[connectionName].ProviderName;
+                    }
+                }
+                return provider;
+            }
+            set { provider = value; }
+        }
+
+        private static string connectionString = null;
+        public static string ConnectionString
+        {
+            get
+            {
+                if (connectionString == null)
+                {
+                    if (!string.IsNullOrEmpty(ConnectionName))
+                    {
+                        connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
+                    }
+                }
+                return connectionString;
+            }
+            set { connectionString = value; }
+        }
+
+
+        public static void ClearDbData()
+        {
+            OptionsUtils.Provider = null;
+            OptionsUtils.ConnectionName = null;
+            OptionsUtils.ConnectionString = null;
+        }
+
         private static string GetConnectionName()
         {
             Dictionary<string, ConnectionStringSettings> connectionStrings = new Dictionary<string, ConnectionStringSettings>();
@@ -100,55 +152,6 @@ namespace Utils
                 ConnectionName = string.Empty;
             }
             return ConnectionName;
-        }
-
-        public static string ConnectionName
-        {
-            get;
-            set;
-        }
-
-        private static string provider = null;
-        public static string Provider
-        {
-            get
-            {
-                if (provider == null)
-                {
-                    string connectionName = string.IsNullOrEmpty(ConnectionName) ? GetConnectionName() : ConnectionName;
-                    if (!string.IsNullOrEmpty(connectionName))
-                    {
-                        provider = ConfigurationManager.ConnectionStrings[connectionName].ProviderName;
-                    }
-                }
-                return provider;
-            }
-            set { provider = value; }
-        }
-        private static string connectionString = null;
-        public static string ConnectionString
-        {
-            get
-            {
-                if (connectionString == null)
-                {
-                    string connectionName = ConnectionName == null ? GetConnectionName() : ConnectionName;
-                    if (!string.IsNullOrEmpty(connectionName))
-                    {
-                        connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
-                    }
-                }
-                return connectionString;
-            }
-            set { connectionString = value; }
-        }
-
-
-        public static void ClearDbData()
-        {
-            OptionsUtils.Provider = null;
-            OptionsUtils.ConnectionName = null;
-            OptionsUtils.ConnectionString = null;
         }
     }
 }

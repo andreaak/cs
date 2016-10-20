@@ -1,5 +1,3 @@
-using System;
-using System.ComponentModel;
 using System.Data;
 #if MONO_STRICT
 	using System.Data.Linq;
@@ -14,7 +12,7 @@ using System.Diagnostics;
 namespace Note.Domain.Concrete.LinqToSql
 {
 
-[Table(Name = "main.Entity")]
+    [Table(Name = "main.Entity")]
     public partial class Entity : System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
     {
 

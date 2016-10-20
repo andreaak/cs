@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Note.Domain.Repository;
-using Note.ControlWrapper.Binding;
 using Note.Domain.Common;
 
 namespace Note.ControlWrapper

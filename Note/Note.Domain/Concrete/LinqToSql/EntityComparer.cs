@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Note.Domain.Common;
+﻿using System.Collections.Generic;
 using Note.Domain.Entities;
 
 namespace Note.Domain.Concrete.LinqToSql

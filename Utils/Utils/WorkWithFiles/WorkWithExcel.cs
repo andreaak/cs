@@ -1,12 +1,4 @@
-﻿
-using System;
-
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.IO;
-
-#if OFFICE
+﻿#if OFFICE
 using Excel = Microsoft.Office.Interop.Excel;
 #endif
 
