@@ -8,7 +8,6 @@ using Note.Domain.Properties;
 using Note.Domain.Repository;
 using Note.Domain.Entities;
 using Utils.ActionWindow;
-using Utils.WorkWithDB;
 using Utils.WorkWithDB.Wrappers;
 
 namespace Note.Domain

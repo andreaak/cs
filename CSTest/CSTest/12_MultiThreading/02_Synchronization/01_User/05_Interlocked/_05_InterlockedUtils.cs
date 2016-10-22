@@ -53,8 +53,10 @@ namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
         {
             using (new _05_InterlockedSpinLockManager(block)) // Вызывается block.Enter();
             {
+                Debug.WriteLine("Начало записи. Thread = " + Thread.CurrentThread.GetHashCode());
                 writer.WriteLine("Поток {0} запускается.", Thread.CurrentThread.GetHashCode());
                 writer.Flush(); // Очищает буфер writer и записывает данные в файл.
+                Debug.WriteLine("Окончание записи. Thread = " + Thread.CurrentThread.GetHashCode());
             }   // Вызывается public void Dispose() { block.Exit(); }
 
             int time = random.Next(200, 1000);
@@ -62,8 +64,10 @@ namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
 
             using (new _05_InterlockedSpinLockManager(block)) // Вызывается block.Enter();
             {
+                Debug.WriteLine("Начало записи. Thread = " + Thread.CurrentThread.GetHashCode());
                 writer.WriteLine("Поток [{0}] завершается.", Thread.CurrentThread.GetHashCode());
                 writer.Flush(); // Очищает буфер writer и записывает данные в файл.
+                Debug.WriteLine("Окончание записи. Thread = " + Thread.CurrentThread.GetHashCode());
             }   // Вызывается public void Dispose() { block.Exit(); }
         }
     }

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Ninject;
+﻿using Ninject;
 using Ninject.Activation;
 using Ninject.Modules;
 using Note.Domain.Repository;
-using Utils.WorkWithDB;
 using Utils.WorkWithDB.Wrappers;
 
 namespace Note.Domain.Common

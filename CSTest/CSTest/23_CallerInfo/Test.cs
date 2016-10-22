@@ -41,7 +41,7 @@ namespace CSTest._23_CallerInfo
         [Test]
         public void TestCallerInfo_Attribute()
         {
-            new TeastableCallerAttribute().TraceMessageAttribute("Test message");
+            //new TeastableCallerAttribute().TraceMessageAttribute("Test message");
             /*
             message: Test message
             caller member name: TestCallerInfo_Nested
@@ -80,7 +80,7 @@ namespace CSTest._23_CallerInfo
         }
     }
 
-    public class CallerAttribute : Attribute
+    class CallerAttribute : Attribute
     {
         public CallerAttribute([CallerMemberName] string memberName = "",
                                 [CallerFilePath] string sourceFilePath = "",
@@ -92,14 +92,14 @@ namespace CSTest._23_CallerInfo
         }
     }
 
-    public class TeastableCallerAttribute
-    {
-        [Caller]
-        public void TraceMessageAttribute(string message)
-        {
-            Debug.WriteLine("message: " + message);
-        }
-    }
+    //class TeastableCallerAttribute
+    //{
+    //    [Caller]
+    //    public void TraceMessageAttribute(string message)
+    //    {
+    //        Debug.WriteLine("message: " + message);
+    //    }
+    //}
 
 #endif
 }

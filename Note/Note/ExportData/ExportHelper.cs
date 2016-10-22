@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 using Note.Domain.Concrete;
 using Note.ControlWrapper;
 using Note.ExportData.Exporter;
 using Utils;
-using Utils.ActionWindow;
 using Note.Properties;
-using System.Threading.Tasks;
 
 namespace Note.ExportData
 {

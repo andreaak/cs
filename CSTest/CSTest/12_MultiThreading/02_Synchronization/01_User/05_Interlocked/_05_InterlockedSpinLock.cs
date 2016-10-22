@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Diagnostics;
+using System.Threading;
 
 namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
 {
@@ -26,16 +27,17 @@ namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
             int result = Interlocked.CompareExchange(ref block, 1, 0);
 
             while (result == 1)
-            {
-                // Блокировка занята, ожидать.
+            {                // Блокировка занята, ожидать.
                 Thread.Sleep(wait);
                 result = Interlocked.CompareExchange(ref block, 1, 0);
             }
+            Debug.WriteLine("Блокировка получена. Thread = " + Thread.CurrentThread.GetHashCode());
         }
 
         // Сбросить блокировку.
         public void Exit()
         {
+            Debug.WriteLine("Блокировка снята. Thread = " + Thread.CurrentThread.GetHashCode());
             Interlocked.Exchange(ref block, 0);
         }
     }

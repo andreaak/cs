@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Utils.WorkWithDB
+﻿namespace Utils.WorkWithDB
 {
     public enum DBObjects
     {

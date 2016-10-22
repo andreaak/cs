@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Windows.Forms;
 using Note.Domain.Concrete;
-using Note.Domain.Repository;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using Note.ControlWrapper.Binding;

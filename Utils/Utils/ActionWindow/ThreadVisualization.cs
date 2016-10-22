@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Windows.Forms;
-
-namespace Utils.ActionWindow
+﻿namespace Utils.ActionWindow
 {
     //public class ThreadVisualization
     //{
@@ -37,7 +30,7 @@ namespace Utils.ActionWindow
     //            }
     //        }
     //    }
-        
+
     //    public static event Action ProcessEnded;
     //    public static event Action Increment;
 

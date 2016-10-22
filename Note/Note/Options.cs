@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Configuration;
-using Note.Domain;
 using Utils.ActionWindow;
 using Note.Properties;
-using Note.Domain.Common;
 
 namespace Note
 {

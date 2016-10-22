@@ -148,7 +148,5 @@ namespace CSTest._12_MultiThreading._02_Synchronization
             }
             Thread.Sleep(5000);
         }
-
-
     }
 }

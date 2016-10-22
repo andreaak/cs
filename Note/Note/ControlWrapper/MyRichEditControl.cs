@@ -1,5 +1,4 @@
-﻿using System;
-using DevExpress.XtraRichEdit;
+﻿using DevExpress.XtraRichEdit;
 
 namespace Note.ControlWrapper
 {
