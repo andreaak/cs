@@ -53,5 +53,11 @@ namespace CSTest._04_Class._07_Inheritance
         {
             Debug.WriteLine("MethodVirtual2 from BaseClass");
         }
+
+        protected const int TestConst = 5;
+        public virtual int Test()
+        {
+            return TestConst;
+        }
     }
 }

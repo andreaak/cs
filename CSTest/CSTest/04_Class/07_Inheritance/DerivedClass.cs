@@ -62,5 +62,7 @@ namespace CSTest._04_Class._07_Inheritance
             base.MethodVirtual2();
             Debug.WriteLine("MethodVirtual2 from DerivedClass");
         }
+
+        protected const int TestConst = 7;
     }
 }

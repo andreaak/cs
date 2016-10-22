@@ -23,6 +23,9 @@ namespace CSTest._04_Class._07_Inheritance
             DerivedClass instance = new DerivedClass();
 
             Debug.WriteLine(instance.publicField);
+
+
+            Debug.WriteLine(instance.Test());
         }
 
         [Test]

@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using NUnit.Framework;
 
 namespace CSTest._05_Delegates_and_Events.Events
@@ -13,25 +16,47 @@ namespace CSTest._05_Delegates_and_Events.Events
         {
             TestForm form = new TestForm();
             form.FormClickFault += Form_FormClickFault;
-            form.FormClickFault += Form_FormClickFault;
-            form.FormClick += Form_FormClick;
+            form.FormClickLambda += Form_FormLambda;
             form.FormClickDelegate += Form_FormClickDelegate;
             form.InitiateForTests();
             /*
+            FormClickFaultAction Click Handler
             Button Click Handler
-            Form_FormClick
-            Form_FormClick
-            Form_FormClickDelegate
+            Button Click Static Handler
+            Form_FormLambda
+            Form_FormLambda
+            Form_FormClickDelegat
             */
         }
+
+        /*
+        public _05_ForwardEventWithDefferedSubscriptionTest()
+        {
+            base.\u002Ector();
+        }
+
+        [Test]
+        public void TestEvents()
+        {
+              TestForm testForm = new TestForm();
+              // ISSUE: method pointer
+              testForm.FormClickFault += new Action((object) this, __methodptr(Form_FormClickFault));
+              // ISSUE: method pointer
+              testForm.FormClickLambda += new Action((object) this, __methodptr(Form_FormLambda));
+              // ISSUE: method pointer
+              testForm.FormClickDelegate += new Action((object) this, __methodptr(Form_FormClickDelegate));
+              testForm.InitiateForTests();
+        } 
+        */
+
         private void Form_FormClickFault()
         {
             Debug.WriteLine("Form_FormClickFault");
         }
 
-        private void Form_FormClick()
+        private void Form_FormLambda()
         {
-            Debug.WriteLine("Form_FormClick");
+            Debug.WriteLine("Form_FormLambda");
         }
 
         private void Form_FormClickDelegate()
@@ -52,42 +77,44 @@ namespace CSTest._05_Delegates_and_Events.Events
 
     public class TestForm
     {
-        //public event Action FormClickFault;
+        public event Action FormClickFault;
         //Decompiled
-        private Action FormClickFaultAction;
-        public event Action FormClickFault
-        {
-            add
-            {
-                Action action = this.FormClickFaultAction;
-                Action comparand;
-                do
-                {
-                    comparand = action;
-                    action = Interlocked.CompareExchange<Action>(ref this.FormClickFaultAction, (Action)Delegate.Combine((Delegate)comparand, (Delegate)value), comparand);
-                    /*
-                     location1 - The destination, whose value is compared with comparand and possibly replaced. 
-                     value - The value that replaces the destination value if the comparison results in equality.
-                     comparand - The value that is compared to the value at location1.
-                     Return Value - The original value in location1.
-                    */
-                }
-                while (action != comparand);
-            }
-            remove
-            {
-                Action action = this.FormClickFaultAction;
-                Action comparand;
-                do
-                {
-                    comparand = action;
-                    action = Interlocked.CompareExchange<Action>(ref this.FormClickFaultAction, (Action)Delegate.Remove((Delegate)comparand, (Delegate)value), comparand);
-                }
-                while (action != comparand);
-            }
-        }
+        //private Action FormClickFaultAction;
+        //public event Action FormClickFault
+        //{
+        //    add
+        //    {
+        //        Action action = this.FormClickFaultAction;
+        //        Action comparand;
+        //        do
+        //        {
+        //            comparand = action;
+        //            action = Interlocked.CompareExchange<Action>(ref this.FormClickFaultAction, (Action)Delegate.Combine((Delegate)comparand, (Delegate)value), comparand);
+        //            /*
+        //             public static T CompareExchange<T>(ref T location1, T value, T comparand)
 
-        public event Action FormClick;
+        //             location1 - The destination, whose value is compared with comparand and possibly replaced. 
+        //             value - The value that replaces the destination value if the comparison results in equality.
+        //             comparand - The value that is compared to the value at location1.
+        //             Return Value - The original value in location1.
+        //            */
+        //        }
+        //        while (action != comparand);
+        //    }
+        //    remove
+        //    {
+        //        Action action = this.FormClickFaultAction;
+        //        Action comparand;
+        //        do
+        //        {
+        //            comparand = action;
+        //            action = Interlocked.CompareExchange<Action>(ref this.FormClickFaultAction, (Action)Delegate.Remove((Delegate)comparand, (Delegate)value), comparand);
+        //        }
+        //        while (action != comparand);
+        //    }
+        //}
+
+        public event Action FormClickLambda;
         public event Action FormClickDelegate;
 
         TestButton button;
@@ -97,10 +124,12 @@ namespace CSTest._05_Delegates_and_Events.Events
             button = new TestButton();
 
             //button.Click += FormClickFault;
-            button.Click += this.FormClickFaultAction;
+            FormClickFault += FormClickFaultAction_Click;
+            button.Click += FormClickFault;
             button.Click += Button_Click;
-            button.Click += () => FormClick?.Invoke();
-            button.Click += () => FormClick();
+            button.Click += Button_Click_Static;
+            button.Click += () => FormClickLambda?.Invoke();
+            button.Click += () => FormClickLambda();
             button.Click += delegate { FormClickDelegate?.Invoke(); };
         }
 
@@ -109,9 +138,19 @@ namespace CSTest._05_Delegates_and_Events.Events
             button.OnClick();
         }
 
+        private void FormClickFaultAction_Click()
+        {
+            Debug.WriteLine("FormClickFaultAction Click Handler");
+        }
+
         private void Button_Click()
         {
             Debug.WriteLine("Button Click Handler");
+        }
+
+        private static void Button_Click_Static()
+        {
+            Debug.WriteLine("Button Click Static Handler");
         }
 
         /*
@@ -122,7 +161,7 @@ namespace CSTest._05_Delegates_and_Events.Events
         private Action FormClickFault;
         [CompilerGenerated]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Action FormClick;
+        private Action FormClickLambda;
         [CompilerGenerated]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Action FormClickDelegate;
@@ -154,30 +193,30 @@ namespace CSTest._05_Delegates_and_Events.Events
             }
         }
 
-        public event Action FormClick
+        public event Action FormClickLambda
         {
-            add
+          add
+          {
+            Action action = this.FormClickLambda;
+            Action comparand;
+            do
             {
-                Action action = this.FormClick;
-                Action comparand;
-                do
-                {
-                    comparand = action;
-                    action = Interlocked.CompareExchange<Action>(ref this.FormClick, (Action)Delegate.Combine((Delegate)comparand, (Delegate)value), comparand);
-                }
-                while (action != comparand);
+              comparand = action;
+              action = Interlocked.CompareExchange<Action>(ref this.FormClickLambda, (Action) Delegate.Combine((Delegate) comparand, (Delegate) value), comparand);
             }
-            remove
+            while (action != comparand);
+          }
+          remove
+          {
+            Action action = this.FormClickLambda;
+            Action comparand;
+            do
             {
-                Action action = this.FormClick;
-                Action comparand;
-                do
-                {
-                    comparand = action;
-                    action = Interlocked.CompareExchange<Action>(ref this.FormClick, (Action)Delegate.Remove((Delegate)comparand, (Delegate)value), comparand);
-                }
-                while (action != comparand);
+              comparand = action;
+              action = Interlocked.CompareExchange<Action>(ref this.FormClickLambda, (Action) Delegate.Remove((Delegate) comparand, (Delegate) value), comparand);
             }
+            while (action != comparand);
+          }
         }
 
         public event Action FormClickDelegate
@@ -210,39 +249,43 @@ namespace CSTest._05_Delegates_and_Events.Events
         {
             base.\u002Ector();
             this.button = new TestButton();
+            // ISSUE: method pointer
+            this.FormClickFault += new Action((object) this, __methodptr(FormClickFaultAction_Click));
             this.button.Click += this.FormClickFault;
             // ISSUE: method pointer
-            this.button.Click += new Action((object)this, __methodptr(Button_Click));
+            this.button.Click += new Action((object) this, __methodptr(Button_Click));
             // ISSUE: method pointer
-            this.button.Click += new Action((object)this, __methodptr(\u003C\u002Ector\u003Eb__10_0));
+            this.button.Click += new Action((object) null, __methodptr(Button_Click_Static));
             // ISSUE: method pointer
-            this.button.Click += new Action((object)this, __methodptr(\u003C\u002Ector\u003Eb__10_1));
+            this.button.Click += new Action((object) this, __methodptr(\u003C\u002Ector\u003Eb__10_0));
             // ISSUE: method pointer
-            this.button.Click += new Action((object)this, __methodptr(\u003C\u002Ector\u003Eb__10_2));
+            this.button.Click += new Action((object) this, __methodptr(\u003C\u002Ector\u003Eb__10_1));
+            // ISSUE: method pointer
+            this.button.Click += new Action((object) this, __methodptr(\u003C\u002Ector\u003Eb__10_2));
         }
 
         [CompilerGenerated]
         private void \u003C\u002Ector\u003Eb__10_0()
         {
-            Action action = this.FormClick;
-            if (action == null)
-                return;
-            action();
+          Action action = this.FormClickLambda;
+          if (action == null)
+            return;
+          action();
         }
 
         [CompilerGenerated]
         private void \u003C\u002Ector\u003Eb__10_1()
         {
-            this.FormClick();
+          this.FormClickLambda();
         }
 
         [CompilerGenerated]
         private void \u003C\u002Ector\u003Eb__10_2()
         {
-            Action action = this.FormClickDelegate;
-            if (action == null)
-                return;
-            action();
+          Action action = this.FormClickDelegate;
+          if (action == null)
+            return;
+          action();
         }
         */
     }

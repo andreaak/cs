@@ -86,6 +86,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -166,6 +167,7 @@
     <Compile Include="05_Delegates and Events\Delegates\_05_CoContrVarianceTest.cs" />
     <Compile Include="05_Delegates and Events\Delegates\TestClass.cs" />
     <Compile Include="05_Delegates and Events\Events\05_ForwardEventWithDefferedSubscriptionTest.cs" />
+    <Compile Include="05_Delegates and Events\Events\0_Setup\TestClass.cs" />
     <Compile Include="06_Interface\0_Setup\BaseClass.cs" />
     <Compile Include="06_Interface\0_Setup\IDisposablee.cs" />
     <Compile Include="06_Interface\_02_DerivedClass.cs" />
