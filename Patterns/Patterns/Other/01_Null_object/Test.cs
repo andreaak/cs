@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Patterns.Other.Null_object
+namespace Patterns.Other._01_Null_object
 {
     [TestFixture]
     public class Test

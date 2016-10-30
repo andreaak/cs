@@ -59,10 +59,15 @@ namespace CSTest._13_Exceptions
                 Debug.WriteLine("Обработка исключения.");
                 Debug.WriteLine(e.Message);
             }
+            /*
+            Exception thrown: 'System.DivideByZeroException' in CSTest.dll
+            Обработка исключения.
+            Attempted to divide by zero. 
+            */
         }
 
         [Test]
-        public void TestExceptions2()
+        public void TestExceptions2ThrowException()
         {
             Exception ex = new Exception("Мое Исключение");
 
@@ -76,10 +81,15 @@ namespace CSTest._13_Exceptions
                 Debug.WriteLine("Обработка исключения.");
                 Debug.WriteLine(e.Message);
             }
+            /*
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Обработка исключения.
+            Мое Исключение
+            */
         }
 
         [Test]
-        public void TestExceptions3()
+        public void TestExceptions3ExceptionProperties()
         {
             try
             {
@@ -91,20 +101,34 @@ namespace CSTest._13_Exceptions
                 Debug.WriteLine("Имя члена:               {0}", e.TargetSite);
                 Debug.WriteLine("Класс определяющий член: {0}", e.TargetSite.DeclaringType);
                 Debug.WriteLine("Тип члена:               {0}", e.TargetSite.MemberType);
-                Debug.WriteLine("Message:                 {0}", e.Message);
-                Debug.WriteLine("Source:                  {0}", e.Source);
-                Debug.WriteLine("Help Link:               {0}", e.HelpLink);
-                Debug.WriteLine("Stack:                   {0}", e.StackTrace);
+                Debug.WriteLine("Message:                 " + e.Message);
+                Debug.WriteLine("Source:                  " + e.Source);
+                Debug.WriteLine("Help Link:               " + e.HelpLink);
+                Debug.WriteLine("Stack:                   " + e.StackTrace);
 
                 foreach (DictionaryEntry de in e.Data)
                 {
                     Debug.WriteLine("{0} : {1}", de.Key, de.Value);
                 }
             }
+
+            /*
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Имя члена:               Void MyMethod()
+            Класс определяющий член: CSTest._13_Exceptions._0_Setup.ClassWithException
+            Тип члена:               Method
+            Message:                 Мое исключение
+            Source:                  CSTest
+            Help Link:               http://MyCompany.com/ErrorService
+            Stack:                   at CSTest._13_Exceptions._0_Setup.ClassWithException.MyMethod() in D:\My\cs\CSTest\CSTest\13_Exceptions\0_Setup\ClassWithException.cs:line 16
+                                        at CSTest._13_Exceptions.Test.TestExceptions3() in D:\My\cs\CSTest\CSTest\13_Exceptions\Test.cs:line 97
+            Причина исключения:  : Тестовое исключение
+            Время возникновения исключения:  : 10/27/2016 11:58:40
+            */
         }
 
         [Test]
-        public void TestExceptions4()
+        public void TestExceptions4ThrowException()
         {
             try
             {
@@ -115,6 +139,11 @@ namespace CSTest._13_Exceptions
                 Debug.WriteLine("Обработка исключения.");
                 e.Method();
             }
+            /*
+            Exception thrown: 'CSTest._13_Exceptions._0_Setup.UserException' in CSTest.dll
+            Обработка исключения.
+            Мое Исключение! 
+            */
         }
 
         [Test]
@@ -124,26 +153,22 @@ namespace CSTest._13_Exceptions
 
             try
             {
-                //Console.ForegroundColor = ConsoleColor.Yellow;
                 Debug.WriteLine("Попытка деления на ноль.");
                 Debug.WriteLine("a / (2 - n) = {0}", a / (2 - n));
             }
             catch (Exception e)
             {
-                //Console.ForegroundColor = ConsoleColor.White;
-                //Console.BackgroundColor = ConsoleColor.Red;
                 Debug.WriteLine("Обработка исключения.");
                 Debug.WriteLine(e.Message);
             }
             finally
             {
-                //Console.ForegroundColor = ConsoleColor.Gray;
-                //Console.BackgroundColor = ConsoleColor.Black;
+                Debug.WriteLine("Finally");
             }
         }
 
         [Test]
-        public void TestExceptions6Inner()
+        public void TestExceptions6InnerException()
         {
             ClassWithException instance = new ClassWithException();
             //instance.CatchInner(); // Попробовать вызвать.
@@ -153,9 +178,15 @@ namespace CSTest._13_Exceptions
             }
             catch (Exception exception)
             {
-                Debug.WriteLine("Exception caught: {0}", exception.Message);
-                Debug.WriteLine("Inner Exception : {0}", exception.InnerException.Message);
+                Debug.WriteLine("Exception caught: " + exception.Message);
+                Debug.WriteLine("Inner Exception : " + exception.InnerException.Message);
             }
+            /*
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Exception caught: Это внешнее исключение!
+            Inner Exception : Это внутреннее исключение!
+            */
         }
 
         [Test]
@@ -165,11 +196,11 @@ namespace CSTest._13_Exceptions
             {
                 ClassWithException instance = new ClassWithException();
                 instance.RecurseMethod();
-                
+
                 //Если генерировать StackOverflowException то finally сработает
                 //throw new StackOverflowException();
             }
-            catch (Exception ex)
+            catch (Exception ex)//Не обрабатывает StackOverflowException
             {
                 Debug.WriteLine(ex.Message);
             }
@@ -244,6 +275,18 @@ namespace CSTest._13_Exceptions
             {
                 Debug.WriteLine("Finally 3:");
             }
+            /*
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Catch 1: Exception
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Finally 1:
+            Catch 2: Exception
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Finally 2:
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Catch 3: New Exception
+            Finally 3:
+            */
         }
 
         [Test]
@@ -289,6 +332,10 @@ namespace CSTest._13_Exceptions
             {
                 Debug.WriteLine(e.Message);
             }
+            /*
+            Exception thrown: 'CSTest._13_Exceptions._0_Setup.MyExceptionA' in CSTest.dll
+            MyExceptionA
+            */
         }
     }
 }

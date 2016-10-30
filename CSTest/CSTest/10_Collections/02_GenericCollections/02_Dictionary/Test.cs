@@ -1,5 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
 {
@@ -104,6 +106,24 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             Capacity 1931 Count 1
             Capacity 1931 Count 0
             */
+        }
+
+        [Test]
+        public void TestDictionary2()
+        {
+            var dic = new Dictionary<string, TestDict>();
+            dic = new List<TestDict>
+            {
+                new TestDict {Code = "AD"},
+                new TestDict {Code = "AD"},
+            }.ToDictionary(c => c.Code);
+
+
+        }
+
+        class TestDict
+        {
+            public string Code { get; set; }
         }
     }
 }
