@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CSTest._04_Class._07_Inheritance
 {
@@ -15,6 +16,7 @@ namespace CSTest._04_Class._07_Inheritance
         public _01_ConstructorsBase()
         {
             Debug.WriteLine("Base.Ctor");
+            VirtualMethod();
         }
 
         private static int InitStaticVariable()
@@ -22,10 +24,16 @@ namespace CSTest._04_Class._07_Inheritance
             Debug.WriteLine("Base.InitStaticVariable");
             return 0;
         }
+
         private static int InitInstanceVariable()
         {
             Debug.WriteLine("Base.InitInstanceVariable");
             return 0;
+        }
+
+        public virtual void VirtualMethod()
+        {
+            Debug.WriteLine("Base.VirtualMethod");
         }
     }
 
@@ -33,6 +41,8 @@ namespace CSTest._04_Class._07_Inheritance
     {
         static int c = InitStaticVariable();
         int b = InitInstanceVariable();
+
+        List<int> list = new List<int>();
 
         static _01_ConstructorsDerived()
         {
@@ -49,10 +59,17 @@ namespace CSTest._04_Class._07_Inheritance
             Debug.WriteLine("Derived.InitStaticVariable");
             return 0;
         }
+
         private static int InitInstanceVariable()
         {
             Debug.WriteLine("Derived.InitInstanceVariable");
             return 0;
+        }
+
+        public override void VirtualMethod()
+        {
+            list.Add(1);
+            Debug.WriteLine("Derived.VirtualMethod");
         }
     }
 }

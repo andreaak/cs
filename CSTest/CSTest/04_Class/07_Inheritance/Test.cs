@@ -23,9 +23,12 @@ namespace CSTest._04_Class._07_Inheritance
             DerivedClass instance = new DerivedClass();
 
             Debug.WriteLine(instance.publicField);
-
-
             Debug.WriteLine(instance.Test());
+
+            /*
+            DerivedClass.publicField
+            5        
+            */
         }
 
         [Test]
@@ -34,8 +37,11 @@ namespace CSTest._04_Class._07_Inheritance
             DerivedClass instance = new DerivedClass();
 
             Debug.WriteLine(instance.publicField);
-
             instance.Show();
+            /*
+            DerivedClass.publicField
+            BaseClass.privateField
+            */
         }
 
         [Test]
@@ -45,6 +51,11 @@ namespace CSTest._04_Class._07_Inheritance
 
             Debug.WriteLine(instance.baseNumber);
             Debug.WriteLine(instance.derivedField);
+
+            /*
+            1
+            2
+            */
         }
 
         [Test]
@@ -54,8 +65,12 @@ namespace CSTest._04_Class._07_Inheritance
 
             Debug.WriteLine(instance.baseNumber);
             Debug.WriteLine(instance.derivedField);
+            /*
+            1
+            2
+            */
         }
-        
+
         [Test]
         public void TestInheritance5()
         {
@@ -144,7 +159,7 @@ namespace CSTest._04_Class._07_Inheritance
         }
 
         [Test]
-        public void TestInheritance9()
+        public void TestInheritance9CallingOrder()
         {
             _01_ConstructorsDerived instance = new _01_ConstructorsDerived();
             /*
@@ -155,6 +170,7 @@ namespace CSTest._04_Class._07_Inheritance
             Base.StaticCtor
             Base.InitInstanceVariable
             Base.Ctor
+            Derived.VirtualMethod
             Derived.Ctor
             */
         }
