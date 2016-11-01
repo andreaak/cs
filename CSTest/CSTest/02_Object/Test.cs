@@ -73,8 +73,11 @@ namespace CSTest._02_Object
             obj1 = obj2;
 
             Debug.WriteLine(ReferenceEquals(obj1, obj2));
-
+            Debug.WriteLine(ReferenceEquals(obj1, null));
+            Debug.WriteLine(ReferenceEquals(null, null));
             /*
+            False
+            True
             False
             True
             */

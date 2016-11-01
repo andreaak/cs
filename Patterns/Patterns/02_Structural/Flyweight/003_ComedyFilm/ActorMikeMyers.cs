@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Patterns._02_Structural.Flyweight._003_ComedyFilm
 {

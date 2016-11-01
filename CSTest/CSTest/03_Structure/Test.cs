@@ -42,7 +42,7 @@ namespace CSTest._03_Structure
             TestStructure book2 = new TestStructure("Author2", "Title2", 2);
             Debug.WriteLine(book2.Author);
 
-            TestBook book5 = new TestBook();
+            TestClass book5 = new TestClass();
             Debug.WriteLine(book5.GetISBN());
             /*
             Default ctor test
@@ -80,7 +80,7 @@ namespace CSTest._03_Structure
             book4.ChangeBook(book2);
             Debug.WriteLine(book4.Author);
 
-            TestBook book5 = new TestBook();
+            TestClass book5 = new TestClass();
             Debug.WriteLine(book5.GetISBN());
             /*
             Copy ctor test
@@ -99,21 +99,60 @@ namespace CSTest._03_Structure
         {
             TestStructure book6 = new TestStructure();
             TestStructure book7 = new TestStructure();
-            Debug.WriteLine(book6.Equals(book7));
-            Debug.WriteLine(book6.Equals((ValueType)book7));
+            Debug.WriteLine("book6.Equals(book7) = " + book6.Equals(book7));
+            Debug.WriteLine("book6.Equals((ValueType)book7) = " + book6.Equals((ValueType)book7));
             //Debug.WriteLine(book6 == book7);//можно использовать после переопределния оператора ==
+
             /*
             Static ctor
             Equals TestStructure method
-            True
+            book6.Equals(book7) = True
             Equals object method
             Equals TestStructure method
-            True
+            book6.Equals((ValueType)book7) = True
             */
         }
 
         [Test]
-        public void TestStructure4EqualsStatic()
+        public void TestStructure4EqualsDefault()
+        {
+            /*
+            Microsoft предлагает уже перегруженный метод Equals() в классе System.ValueType, 
+            предназначенный для проверки равенства типов значений. 
+            Когда вызывается pt1.Equals(pt2), то возвращаемое значение будет true или false - в зависимости от того, 
+            содержат ли pt1 и pt2 одинаковые значения во всех своих полях, 
+            если тип значений содержит поля типа ссылок по умолчанию просто сравниваются их адреса.
+            */
+
+            Point pt1;
+            pt1.x = pt1.y = 5;
+            pt1.test = null;
+
+            Point pt2;
+            pt2.x = pt2.y = 8;
+            pt2.test = null;
+
+            Point pt3;
+            pt3.x = pt3.y = 5;
+            pt3.test = null;
+
+            Point pt4;
+            pt4.x = pt4.y = 5;
+            pt4.test = new TestClass();
+
+            Debug.WriteLine("pt1.Equals(pt2) = " + pt1.Equals(pt2));
+            Debug.WriteLine("pt1.Equals(pt3) = " + pt1.Equals(pt3));
+            Debug.WriteLine("pt1.Equals(pt4) = " + pt1.Equals(pt4));
+
+            /*
+            pt1.Equals(pt2) = False
+            pt1.Equals(pt3) = True
+            pt1.Equals(pt4) = False
+            */
+        }
+
+        [Test]
+        public void TestStructure5EqualsStatic()
         {
             TestStructure book6 = new TestStructure();
             TestStructure book7 = new TestStructure();
@@ -127,7 +166,7 @@ namespace CSTest._03_Structure
         }
 
         [Test]
-        public void TestStructure4ReferenceEquals()
+        public void TestStructure6ReferenceEquals()
         {
             TestStructure book6 = new TestStructure();
             TestStructure book7 = new TestStructure();
@@ -138,7 +177,7 @@ namespace CSTest._03_Structure
         }
 
         [Test]
-        public void TestStructure5HashCode()
+        public void TestStructure7HashCode()
         {
             TestStructure book6 = new TestStructure();
             TestStructure book7 = new TestStructure();
@@ -158,7 +197,7 @@ namespace CSTest._03_Structure
         }
 
         [Test]
-        public void TestStructure6()
+        public void TestStructure8()
         {
             var p = new Point();
             p.x = 5;

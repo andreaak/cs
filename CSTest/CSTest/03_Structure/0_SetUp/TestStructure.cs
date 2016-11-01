@@ -27,7 +27,7 @@ namespace CSTest._03_Structure._0_Setup
         public int ISBN;
 
         public static int staticField;
-        
+
         static TestStructure()
         {
             Debug.WriteLine("Static ctor");
@@ -127,7 +127,7 @@ namespace CSTest._03_Structure._0_Setup
         }
     }
 
-    public class TestBook
+    public class TestClass
     {
         //Структура, определенная как поле класса, инициализируется 
         //автоматическим обнулением при инициализации ее включающего объекта
@@ -143,5 +143,6 @@ namespace CSTest._03_Structure._0_Setup
     {
         public int x;
         public int y;
+        public TestClass test;
     }
 }

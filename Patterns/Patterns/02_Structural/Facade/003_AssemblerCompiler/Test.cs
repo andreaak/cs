@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using NUnit.Framework;
 
 namespace Patterns._02_Structural.Facade._003_AssemblerCompiler
