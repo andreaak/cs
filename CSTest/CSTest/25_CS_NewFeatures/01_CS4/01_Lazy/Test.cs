@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using NUnit.Framework;
 
-namespace CSTest._02_Object._01_Lazy
+namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
 {
     [TestFixture]
     public class Test

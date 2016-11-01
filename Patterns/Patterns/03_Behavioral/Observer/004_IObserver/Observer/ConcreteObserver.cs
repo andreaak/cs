@@ -33,7 +33,7 @@ namespace Patterns._03_Behavioral.Observer._004_IObserver.Observer
         public void OnNext(string value)
         {
             observerState = value;
-            Console.WriteLine("Observer {0}, State = {1}", name, observerState);
+            Debug.WriteLine("Observer {0}, State = {1}", name, observerState);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using CSTest._03_Structure._0_Setup;
 
@@ -9,9 +10,9 @@ namespace CSTest._03_Structure
     public class Test
     {
         [Test]
-        public void TestStructure1()
+        public void TestStructure1Creation()
         {
-            _01_StructureBook book;// конструктор не вызывается
+            TestStructure book;// конструктор и статический конструктор не вызывается
             //Use of possibly unassigned field 'Author'
             //член структуры нужно сначала инициализировать 
             //Debug.WriteLine(book.Author);
@@ -21,79 +22,149 @@ namespace CSTest._03_Structure
             Debug.WriteLine(book.Title);
             book.ISBN = 1;
             Debug.WriteLine(book.ISBN);
-            book.field = 1;
-            Debug.WriteLine(book.ISBN);
+            /*
+            Author1
+            Title1
+            1
+           */
+        }
 
+        [Test]
+        public void TestStructure2Ctors()
+        {
             // вызов конструктора по умолчанию 
-            _01_StructureBook book1 = new _01_StructureBook();
-            Debug.WriteLine(book1.Author);
+            Debug.WriteLine("Default ctor test");
+            TestStructure book1 = new TestStructure();//конструктор по умолчанию не вызывает статический конструктор
+            Debug.WriteLine(book1.Author ?? "Null");
+
             // вызов явно заданного конструктора
-            _01_StructureBook book2 = new _01_StructureBook("Author2", "Title2", 2);
+            Debug.WriteLine("Not default ctor test");
+            TestStructure book2 = new TestStructure("Author2", "Title2", 2);
             Debug.WriteLine(book2.Author);
 
-            _01_StructureBook book3 = new _01_StructureBook(book);
+            TestBook book5 = new TestBook();
+            Debug.WriteLine(book5.GetISBN());
+            /*
+            Default ctor test
+            Null
+
+            Not default ctor test
+            Static ctor
+            Ctor with 3 param
+            Author2
+            0
+           */
+        }
+
+        [Test]
+        public void TestStructure3CopyCtors()
+        {
+            Debug.WriteLine("");
+            TestStructure book;
+            book.Author = "Author1";
+            book.Title = "Title1";
+            book.ISBN = 1;
+
+            Debug.WriteLine("");
+            TestStructure book2;
+            book2.Author = "Author2";
+            book2.Title = "Title2";
+            book2.ISBN = 2;
+
+            Debug.WriteLine("Copy ctor test");
+            TestStructure book3 = new TestStructure(book);
             Debug.WriteLine(book3.Author);
 
-            _01_StructureBook book4 = new _01_StructureBook(book);
+            Debug.WriteLine("");
+            TestStructure book4 = new TestStructure(book);
             book4.ChangeBook(book2);
             Debug.WriteLine(book4.Author);
 
             TestBook book5 = new TestBook();
             Debug.WriteLine(book5.GetISBN());
-        }
-
-        [Test]
-        public void TestStructure2()
-        {
-            _01_StructureBook book6 = new _01_StructureBook();
-            _01_StructureBook book7 = new _01_StructureBook();
-            Debug.WriteLine(book6.Equals(book7));
-            Debug.WriteLine(book6.Equals((ValueType)book7));
-
-            Debug.WriteLine(book6.GetHashCode());
-            Debug.WriteLine(book7.GetHashCode());
             /*
-            Equals
-            True
-            Equals object
-            Equals
-            True
+            Copy ctor test
+            Static ctor
+            Copy Ctor
+            Author1
 
-            346948956
-            346948956
+            Copy Ctor
+            Author2
+            0
             */
         }
 
         [Test]
-        public void TestStructure3()
+        public void TestStructure4Equals()
         {
-            MyStruct1 mstr;
-            mstr.field = 1;
-            Debug.WriteLine(mstr.field);
+            TestStructure book6 = new TestStructure();
+            TestStructure book7 = new TestStructure();
+            Debug.WriteLine(book6.Equals(book7));
+            Debug.WriteLine(book6.Equals((ValueType)book7));
+            //Debug.WriteLine(book6 == book7);//можно использовать после переопределния оператора ==
+            /*
+            Static ctor
+            Equals TestStructure method
+            True
+            Equals object method
+            Equals TestStructure method
+            True
+            */
         }
 
         [Test]
-        public void TestStructure4()
+        public void TestStructure4EqualsStatic()
         {
-            MyStruct1 mstr = new MyStruct1();
-            Debug.WriteLine(mstr.field);
+            TestStructure book6 = new TestStructure();
+            TestStructure book7 = new TestStructure();
+            Debug.WriteLine(Equals(book6, book7));
+            /*
+            Static ctor
+            Equals object method
+            Equals TestStructure method
+            True
+            */
         }
 
         [Test]
-        public void TestStructure5()
+        public void TestStructure4ReferenceEquals()
         {
-            MyStruct mstr = new MyStruct();
-            ValueType valueType = mstr;
-            Debug.WriteLine("instance = " + mstr.GetHashCode());
+            TestStructure book6 = new TestStructure();
+            TestStructure book7 = new TestStructure();
+            Debug.WriteLine(ReferenceEquals(book6, book7));//is always false with value type
+            /*
+            False
+            */
+        }
+
+        [Test]
+        public void TestStructure5HashCode()
+        {
+            TestStructure book6 = new TestStructure();
+            TestStructure book7 = new TestStructure();
+
+            Debug.WriteLine(book6.GetHashCode());
+            Debug.WriteLine(book7.GetHashCode());
+
+            ValueType valueType = book6;
             Debug.WriteLine("valueType = " + valueType.GetHashCode());
 
+            /*
+            Static ctor
+            0
+            0
+            valueType = 0
+            */
         }
 
         [Test]
         public void TestStructure6()
         {
-            var p = new Point(); p.x = 5; p.y = 9;
-            var list = new System.Collections.Generic.List<Point>(10);
+            var p = new Point();
+            p.x = 5;
+            p.y = 9;
+
+            var list = new List<Point>(10);
             list.Add(p);
             Point pt = list[0];
             //list[0].x = 90;//ошибка компиляции
@@ -108,17 +179,5 @@ namespace CSTest._03_Structure
              индексация в массивах это не вызов метода, 
              а обращение именно к нужному элементу.*/
         }
-
-        [Test]
-        public void TestStructure7()
-        {
-
-        }
-    }
-
-    struct Point
-    {
-        public int x;
-        public int y;
     }
 }

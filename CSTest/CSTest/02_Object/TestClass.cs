@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace CSTest._02_Object
 {
@@ -45,13 +44,13 @@ namespace CSTest._02_Object
         */
         public override string ToString()
         {
-            return string.Format("TestClass x = {0}; y = ", x, y);
+            return string.Format("TestClass x = {0}; y = {1}", x, y);
         }
 
         /*
         public virtual bool Equals(object obj); - данный метод поддерживает сравнение объектов.
         */
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (obj == null || this.GetType() != obj.GetType())
                 return false;
@@ -92,31 +91,31 @@ namespace CSTest._02_Object
         }
     }
 
-    class MyBaseClass
+    class BaseClass
     {
-        public static string CompanyName = "Microsoft";
         public int age;
         public string name;
-        public static void Test() 
+
+        public BaseClass()
         {
-            Debug.WriteLine("MyBaseClass.Test()");
+            Debug.WriteLine("This is a {0},", GetType());
         }
     }
 
-    class MyDerivedClass : MyBaseClass
+    class DerivedClass : BaseClass
     {
-        public MyDerivedClass Clone()
+        public DerivedClass Clone()
         {
-            return (MyDerivedClass)this.MemberwiseClone();
+            return (DerivedClass)this.MemberwiseClone();
         }
     }
 
 
     class A { public int a = 1; }
     class B : A { public int b = 2; }
-    class C : B 
-    { 
-        public int c = 3; 
+    class C : B
+    {
+        public int c = 3;
         public A aa = new A();
     }
     class X : C { }
@@ -132,7 +131,7 @@ namespace CSTest._02_Object
     // Клонирование ассоциации происходит поверхностно.
 
     class A2 { public int a = 1; }
-    class B2 { public int b = 2;  }
+    class B2 { public int b = 2; }
     class C2 { public B2 B = new B2(); }
 
     class X2

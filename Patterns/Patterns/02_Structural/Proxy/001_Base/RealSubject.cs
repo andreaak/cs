@@ -1,4 +1,4 @@
-using System;
+using System.Diagnostics;
 
 namespace Patterns._02_Structural.Proxy._001_Base
 {
@@ -6,7 +6,7 @@ namespace Patterns._02_Structural.Proxy._001_Base
     {
         public override void Request()
         {
-            Console.WriteLine("RealSubject");
+            Debug.WriteLine("RealSubject");
         }
     }
 }

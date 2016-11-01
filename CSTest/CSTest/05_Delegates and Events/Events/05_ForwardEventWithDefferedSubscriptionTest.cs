@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using NUnit.Framework;
 
 namespace CSTest._05_Delegates_and_Events.Events

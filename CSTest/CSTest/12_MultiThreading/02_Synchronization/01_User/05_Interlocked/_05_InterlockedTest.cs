@@ -1,8 +1,7 @@
 ﻿using System.Threading;
-using CSTest._12_MultiThreading._02_Synchronization._0_Setup;
 using NUnit.Framework;
 
-namespace CSTest._12_MultiThreading._02_Synchronization
+namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
 {
     /*
     Класс Interlocked предоставляет доступ к атомарным операциям, доступным в нескольких потоках.

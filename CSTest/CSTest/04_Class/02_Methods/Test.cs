@@ -6,7 +6,7 @@ namespace CSTest._04_Class._02_Methods
     public class Test
     {
         [Test]
-        public void TestClassParameters1()
+        public void TestParameters1()
         {
             _02_Parameters param = new _02_Parameters();
             param.DefaultParameters(5);

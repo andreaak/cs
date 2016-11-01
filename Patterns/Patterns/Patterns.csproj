@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A3A1EAB3-457B-4DBC-8273-74E863DD61FE}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Patterns</RootNamespace>
     <AssemblyName>Patterns</AssemblyName>
@@ -38,12 +38,28 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.core.interfaces, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="nunit.util, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.util.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NUnit.VisualStudio.TestAdapter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=4cb40d35494691ac, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PianoSoundLibrary">
-      <HintPath>..\Dll\PianoSoundLibrary.dll</HintPath>
+      <HintPath>3dParty\PianoSoundLibrary.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="sharpPDF">
@@ -821,7 +837,11 @@
     <Compile Include="03_Behavioral\Visitor\003_Visitor\Test.cs" />
     <Compile Include="03_Behavioral\Visitor\003_Visitor\Visitor.cs" />
     <Compile Include="03_Behavioral\Visitor\004_VisitorExtMethod\Test.cs" />
-    <Compile Include="Other\Null_object\Test.cs" />
+    <Compile Include="Other\01_Null_object\Test.cs" />
+    <Compile Include="Other\02_ProducerComsumer\Consumer.cs" />
+    <Compile Include="Other\02_ProducerComsumer\Producer.cs" />
+    <Compile Include="Other\02_ProducerComsumer\SyncEvents.cs" />
+    <Compile Include="Other\02_ProducerComsumer\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\Adapters\HomeCatAdapter.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\CatInfoPrinter.cs" />
@@ -964,7 +984,6 @@
     <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\Thermo.cs" />
     <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\WashingMachine.cs" />
     <Compile Include="02_Structural\Facade\001_WashingMachine\WashingMachine\WaterManagingSubsystem.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1007,6 +1026,7 @@
     <Content Include="01_Creational\FactoryMethod\001_Game\FactoryMethod.png" />
     <Content Include="01_Creational\FactoryMethod\003_Application\FactoryMethod.png" />
     <Content Include="01_Creational\patterns.txt" />
+    <Content Include="02_Structural\Decorator\003_TextView\TextView.png" />
     <Content Include="03_Behavioral\ChainOfResponsibility\ChainOfResponsibility.png" />
     <Content Include="03_Behavioral\Command\002_Base\Command.png" />
     <Content Include="03_Behavioral\Command\002_Base\CommandSD.png" />
@@ -1050,6 +1070,7 @@
     <Content Include="Resources\images.jpg" />
     <None Include="Resources\key.gif" />
     <None Include="Resources\line.jpg" />
+    <Content Include="Resources\key.png" />
     <Content Include="Resources\open.png" />
     <None Include="Resources\QuarterNote.gif" />
     <None Include="Resources\QuarterNoteSelected.gif" />
@@ -1123,7 +1144,6 @@
     <Content Include="02_Structural\Composite\001_Base\composite.png" />
     <Content Include="02_Structural\Composite\002_GraphicDesigner\composite.png" />
     <Content Include="02_Structural\Composite\003_RecursionComposition\composite.png" />
-    <Content Include="02_Structural\Decorator\002_Base\Decorator.png" />
     <Content Include="02_Structural\Decorator\Decorator.png" />
     <Content Include="02_Structural\Facade\003_AssemblerCompiler\Compiler.png" />
     <Content Include="02_Structural\Facade\003_AssemblerCompiler\GoF Original.png" />
@@ -1233,7 +1253,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="02_Structural\Decorator\004_ConcreteDecorator\" />
     <Folder Include="02_Structural\Proxy\005_Ambassador\" />
     <Folder Include="03_Behavioral\State\003_MealyStateMachine\" />
     <Folder Include="03_Behavioral\State\004_MooreStateMachine\" />

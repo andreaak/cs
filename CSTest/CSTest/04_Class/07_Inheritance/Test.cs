@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Diagnostics;
+using CSTest._04_Class._07_Inheritance.Setup;
 
 namespace CSTest._04_Class._07_Inheritance
 {
@@ -159,9 +160,9 @@ namespace CSTest._04_Class._07_Inheritance
         }
 
         [Test]
-        public void TestInheritance9CallingOrder()
+        public void TestInheritance9ExecuteOrder()
         {
-            _01_ConstructorsDerived instance = new _01_ConstructorsDerived();
+            DerivedClassExecuteOrder instance = new DerivedClassExecuteOrder();
             /*
             Derived.InitStaticVariable
             Derived.StaticCtor
@@ -170,7 +171,8 @@ namespace CSTest._04_Class._07_Inheritance
             Base.StaticCtor
             Base.InitInstanceVariable
             Base.Ctor
-            Derived.VirtualMethod
+            This is a CSTest._04_Class._07_Inheritance._01_ConstructorsDerived,
+            Derived.VirtualMethod 
             Derived.Ctor
             */
         }

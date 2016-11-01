@@ -9,9 +9,8 @@
 
 namespace CSTest._21_Database._02_EntityFramework._01_DatabaseFirst
 {
-    using System;
     using System.Collections.Generic;
-    
+
     public partial class PRODUCTS
     {
         public PRODUCTS()

@@ -8,23 +8,28 @@ namespace CSTest._02_Object
     public class Test
     {
         [Test]
-        public void TestObject1()
+        public void TestObject1ToString()
         {
             TestClass instance = new TestClass(1, 2);
             Debug.WriteLine(instance.ToString());
+            /*
+            TestClass x = 1; y = 2
+            */
         }
 
         [Test]
-        public void TestObject2()
+        public void TestObject2GetHashCode()
         {
             TestClass instance = new TestClass(1, 2);
 
             Debug.WriteLine(instance.GetHashCode());
-
+            /*
+            3
+            */
         }
 
         [Test]
-        public void TestObject3()
+        public void TestObject3Equals()
         {
             object obj1 = new object();
             object obj2 = new object();
@@ -33,11 +38,16 @@ namespace CSTest._02_Object
 
             obj1 = obj2;
 
-            Debug.WriteLine(obj1.Equals(obj2)); 
+            Debug.WriteLine(obj1.Equals(obj2));
+
+            /*
+            False
+            True
+            */
         }
 
         [Test]
-        public void TestObject4()
+        public void TestObject4Equals()
         {
             TestClass a = new TestClass(1, 2);
             TestClass b = new TestClass(1, 2);
@@ -45,10 +55,15 @@ namespace CSTest._02_Object
 
             Debug.WriteLine("a == b : {0}", a.Equals(b));
             Debug.WriteLine("a == c : {0}", a.Equals(c));
+
+            /*
+            a == b : True
+            a == c : False
+            */
         }
 
         [Test]
-        public void TestObject5()
+        public void TestObject5ReferenceEquals()
         {
             object obj1 = new object();
             object obj2 = new object();
@@ -58,10 +73,15 @@ namespace CSTest._02_Object
             obj1 = obj2;
 
             Debug.WriteLine(ReferenceEquals(obj1, obj2));
+
+            /*
+            False
+            True
+            */
         }
 
         [Test]
-        public void TestObject6()
+        public void TestObject6StaticEquals()
         {
             object obj1 = new object();
             object obj2 = new object();
@@ -71,10 +91,15 @@ namespace CSTest._02_Object
             obj1 = obj2;
 
             Debug.WriteLine(Equals(obj1, obj2));
+
+            /*
+            False
+            True
+            */
         }
 
         [Test]
-        public void TestObject7()
+        public void TestObject7EqualsVsStaticEquals()
         {
             TestClass a = new TestClass(1, 2);
             TestClass b = new TestClass(1, 2);
@@ -85,54 +110,68 @@ namespace CSTest._02_Object
 
             Debug.WriteLine("a == b : {0}", Equals(a, b));
             Debug.WriteLine("a == c : {0}", Equals(a, c));
+
+            /*
+            a == b : True
+            a == c : False
+            a == b : True
+            a == c : False
+            */
         }
 
         [Test]
-        public void TestObject8()
+        public void TestObject8GetType()
         {
             object obj = new object();
             Type type = obj.GetType();
             Debug.WriteLine(type.ToString());
+            /*
+            System.Object
+            */
         }
 
         [Test]
-        public void TestObject9Clone()
+        public void TestObject9GetType()
         {
-            MyDerivedClass original = new MyDerivedClass();
-            original.age = 42;
-            original.name = "Alex";
-
-            //Статические поля и методы наследуются и доступны через имя класса наследника
-            Debug.WriteLine(MyDerivedClass.CompanyName);
-            MyDerivedClass.Test();
-
-            Debug.WriteLine(original.age + " " + original.name + " " + MyDerivedClass.CompanyName);
-
-            // Клонирование.
-            MyDerivedClass clone = original.Clone();
-            Debug.WriteLine(clone.age + " " + clone.name + " " + MyDerivedClass.CompanyName + "\n");
-
-            // Проверка. 
-            clone.age = 23;
-            clone.name = "Konstantin";
-            MyBaseClass.CompanyName = "CyberBionic Systematics";
-
-            Debug.WriteLine(original.age + " " + original.name + " " + MyDerivedClass.CompanyName);
-            Debug.WriteLine(clone.age + " " + clone.name + " " + MyDerivedClass.CompanyName);
-
+            BaseClass baseInstance = new BaseClass();
+            DerivedClass instance = new DerivedClass();
             /*
-            Microsoft
-            MyBaseClass.Test()
-            42 Alex Microsoft
-            42 Alex Microsoft
-
-            42 Alex CyberBionic Systematics
-            23 Konstantin CyberBionic Systematics
+            This is a CSTest._02_Object.MyBaseClass,
+            This is a CSTest._02_Object.MyDerivedClass,
             */
         }
 
         [Test]
         public void TestObject10Clone()
+        {
+            DerivedClass original = new DerivedClass();
+            original.age = 42;
+            original.name = "Alex";
+
+            Debug.WriteLine(original.age + " " + original.name);
+
+            // Клонирование.
+            DerivedClass clone = original.Clone();
+            Debug.WriteLine(clone.age + " " + clone.name);
+
+            // Проверка. 
+            clone.age = 23;
+            clone.name = "Konstantin";
+
+            Debug.WriteLine(original.age + " " + original.name);
+            Debug.WriteLine(clone.age + " " + clone.name);
+
+            /*
+            This is a CSTest._02_Object.DerivedClass,
+            42 Alex
+            42 Alex
+            42 Alex
+            23 Konstantin
+            */
+        }
+
+        [Test]
+        public void TestObject11Clone()
         {
             Z original = new Z();
             Debug.WriteLine("Оригинал : " + original.a + " " + original.b + " " + original.c + " " + original.aa.a);
@@ -151,11 +190,11 @@ namespace CSTest._02_Object
             Клон : 1 2 3 1
             Оригинал : 1 2 3 8
             Клон : 7 7 7 8
-             */
+            */
         }
 
         [Test]
-        public void TestObject11Clone()
+        public void TestObject12Clone()
         {
             Z2 original = new Z2();
             Debug.WriteLine("Оригинал : " + original.A.a + " " + original.C.B.b);
@@ -176,12 +215,6 @@ namespace CSTest._02_Object
             Оригинал : 7 7
             Клон : 7 7
             */
-        }
-
-        [Test]
-        public void TestObject12()
-        {
-
         }
     }
 }

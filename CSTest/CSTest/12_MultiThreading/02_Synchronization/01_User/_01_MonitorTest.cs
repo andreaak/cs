@@ -2,7 +2,7 @@
 using CSTest._12_MultiThreading._02_Synchronization._0_Setup;
 using NUnit.Framework;
 
-namespace CSTest._12_MultiThreading._02_Synchronization
+namespace CSTest._12_MultiThreading._02_Synchronization._01_User
 {
     // Критическая секция (critical section).
     [TestFixture]

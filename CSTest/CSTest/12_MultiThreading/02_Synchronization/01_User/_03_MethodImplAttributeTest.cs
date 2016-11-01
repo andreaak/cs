@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
+using NUnit.Framework;
 
-namespace CSTest._12_MultiThreading._02_Synchronization
+namespace CSTest._12_MultiThreading._02_Synchronization._01_User
 {
     /*
     Применение к методу атрибута [MethodImplAttribute(MethodImplOptions.Synchronized)] 
@@ -15,7 +15,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization
     [TestFixture]
     public class _03_MethodImplAttributeTest
     {
-        [MethodImplAttribute(MethodImplOptions.Synchronized)]
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static string GetCalendarName()
         {
             return "";

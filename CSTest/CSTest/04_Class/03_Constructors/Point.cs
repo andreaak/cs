@@ -4,6 +4,19 @@ namespace CSTest._04_Class._03_Constructors
 {
     class Point
     {
+        public static int staticField = InitStaticField();
+
+        static Point()
+        {
+            Debug.WriteLine("Статический конструктор");
+            staticField = 5;
+        }
+        private static int InitStaticField()
+        {
+            Debug.WriteLine("InitStaticField Метод");
+            return 3;
+        }
+
         // Поля.
         private int x;
         private int y;
@@ -24,11 +37,11 @@ namespace CSTest._04_Class._03_Constructors
         {
             get { return name; }
         }
-        
+
         // Конструктор по умолчанию, инициализирует поля значениями по умолчанию.
         public Point()
         {
-            Debug.WriteLine("Конструктор по умолчанию!");
+            Debug.WriteLine("Конструктор по умолчанию");
         }
 
         // Пользовательский конструктор, инициализирует поля значениями заданными пользователем.
@@ -39,7 +52,7 @@ namespace CSTest._04_Class._03_Constructors
         // приводит к вызову этого конструктора.
         public Point(int x, int y)
         {
-            Debug.WriteLine("Пользовательский конструктор!");
+            Debug.WriteLine("Пользовательский конструктор");
             this.x = x;
             this.y = y;
         }

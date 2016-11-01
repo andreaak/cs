@@ -2,7 +2,7 @@
 using System.Threading;
 using NUnit.Framework;
 
-namespace CSTest._12_MultiThreading._02_Synchronization
+namespace CSTest._12_MultiThreading._02_Synchronization._02_Kernel
 {
     // Класс Semaphore - используется для управления доступом к пулу ресурсов. 
     // Потоки занимают слот семафора, вызывая метод WaitOne(), и освобождают занятый слот вызовом метода Release().

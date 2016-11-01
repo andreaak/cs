@@ -19,16 +19,16 @@
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 using System;
-using System.Runtime.InteropServices;
-using System.Security.Permissions;
 using System.Diagnostics;
-using System.Runtime.Serialization;
-using System.Threading;
 using System.Diagnostics.Contracts;
 using System.Runtime.ExceptionServices;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
+using System.Security.Permissions;
+using System.Threading;
 using Environment = CSTest._30_NET_Code.Environment;
 
-namespace CSTest._02_Object._01_Lazy
+namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
 {
     // Lazy<T> is generic, but not all of its state needs to be generic.  Avoid creating duplicate
     // objects per instantiation by putting them here.

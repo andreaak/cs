@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 using NUnit.Framework;
 using Patterns._03_Behavioral.Observer._003_Observer_Event.Subject;
@@ -17,11 +16,11 @@ namespace Patterns._03_Behavioral.Observer._003_Observer_Event
             Subject.Subject subject = new ConcreteSubject();
 
             // Подписчик, с сообщенным лямбда выражением.
-            Observer.Observer observer = new Observer.Observer((observerState) => Console.WriteLine(observerState + " 1"));
+            Observer.Observer observer = new Observer.Observer((observerState) => Debug.WriteLine(observerState + " 1"));
 
             // Подписка на уведомление о событии.
             subject.Event += observer;
-            subject.Event += (observerState) => Console.WriteLine(observerState + " 2");
+            subject.Event += (observerState) => Debug.WriteLine(observerState + " 2");
 
             subject.State = "State ...";
             subject.Notify();

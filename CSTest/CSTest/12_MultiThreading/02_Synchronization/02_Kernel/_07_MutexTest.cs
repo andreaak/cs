@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using NUnit.Framework;
 
-namespace CSTest._12_MultiThreading._02_Synchronization
+namespace CSTest._12_MultiThreading._02_Synchronization._02_Kernel
 {
     // Использование Mutex для синхронизации доступа к защищенным ресурсам.
     // Mutex - Примитив синхронизации, который также может использоваться в межпроцессной и междоменной синхронизации.

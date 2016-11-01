@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 
-namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
+namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
 {
     class _05_InterlockedUtils
     {

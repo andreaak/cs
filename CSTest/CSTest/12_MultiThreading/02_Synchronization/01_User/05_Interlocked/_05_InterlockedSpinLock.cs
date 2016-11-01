@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Threading;
 
-namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
+namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
 {
     public class _05_InterlockedSpinLock
     {

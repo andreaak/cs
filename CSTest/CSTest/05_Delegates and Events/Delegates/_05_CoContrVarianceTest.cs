@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Diagnostics;
+using CSTest._05_Delegates_and_Events.Delegates._0_Setup;
 
 namespace CSTest._05_Delegates_and_Events.Delegates
 {

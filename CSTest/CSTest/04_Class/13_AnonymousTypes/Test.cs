@@ -18,7 +18,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
     public class Test
     {
         [Test]
-        public void TestClassAnonymous1()
+        public void TestAnonymousType1()
         {
             var instance = new { Name = "Alex", Age = 27 };
             Debug.WriteLine("Name = {0}, Age = {1}", instance.Name, instance.Age);
@@ -37,7 +37,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
         В анонимных типах можно использовать анонимные типы 
         */
         [Test]
-        public void TestClassAnonymous2()
+        public void TestAnonymousType2()
         {
             var instance = new { Name = "Alex", Age = 27, Id = new { Number = 123 } };
             Debug.WriteLine("Name = {0}, Age = {1}, Id = {2}", instance.Name, instance.Age, instance.Id.Number);
@@ -48,7 +48,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
 
         // Анонимные типы. (Сильная ссылка)
         [Test]
-        public void TestClassAnonymous3()
+        public void TestAnonymousType3()
         {
             var instance = new { My = new MyClass() };
 
@@ -58,7 +58,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
 
         // Анонимные типы. (Слабая ссылка)
         [Test]
-        public void TestClassAnonymous4()
+        public void TestAnonymousType4()
         {
             new
             {
@@ -69,7 +69,7 @@ namespace CSTest._04_Class._13_AnonymousTypes
         }
 
         [Test]
-        public void TestClassAnonymous5()
+        public void TestAnonymousType5()
         {
             var instance = new
             {

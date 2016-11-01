@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CSTest._10_Collections._02_GenericCollections
 {
@@ -9,7 +10,7 @@ namespace CSTest._10_Collections._02_GenericCollections
     public partial class _10_ReadOnlyCollection
     {
         [Test]
-        public void Test()
+        public void TestReadOnlyCollection1()
         {
             List<string> dinosaurs = new List<string>();
 
@@ -18,43 +19,42 @@ namespace CSTest._10_Collections._02_GenericCollections
             dinosaurs.Add("Deinonychus");
             dinosaurs.Add("Compsognathus");
 
-            ReadOnlyCollection<string> readOnlyDinosaurs =
-                new ReadOnlyCollection<string>(dinosaurs);
+            ReadOnlyCollection<string> readOnly = new ReadOnlyCollection<string>(dinosaurs);
 
             Debug.WriteLine(string.Empty);
-            foreach (string dinosaur in readOnlyDinosaurs)
+            foreach (string dinosaur in readOnly)
             {
                 Debug.WriteLine(dinosaur);
             }
 
-            Debug.WriteLine(string.Format("\nReadOnlyDinosaurs Count: {0}", readOnlyDinosaurs.Count));
-            Debug.WriteLine(string.Format("\nCount: {0}", readOnlyDinosaurs.Count));
+            Debug.WriteLine(string.Empty);
+            Debug.WriteLine(string.Format("Base Count: {0}", dinosaurs.Count));
+            Debug.WriteLine(string.Format("ReadOnly Count: {0}", readOnly.Count));
 
-            Debug.WriteLine(string.Format("\nContains(\"Deinonychus\"): {0}",
-                readOnlyDinosaurs.Contains("Deinonychus")));
+            Debug.WriteLine(string.Format("ReadOnly Contains(\"Deinonychus\"): {0}",
+                readOnly.Contains("Deinonychus")));
 
-            Debug.WriteLine(string.Format("\nreadOnlyDinosaurs[3]: {0}",
-                readOnlyDinosaurs[3]));
+            Debug.WriteLine(string.Format("ReadOnly[3]: {0}",
+                readOnly[3]));
 
-            Debug.WriteLine(string.Format("\nIndexOf(\"Compsognathus\"): {0}",
-                readOnlyDinosaurs.IndexOf("Compsognathus")));
+            Debug.WriteLine(string.Format("ReadOnly IndexOf(\"Compsognathus\"): {0}",
+                readOnly.IndexOf("Compsognathus")));
 
+            Debug.WriteLine(string.Empty);
             Debug.WriteLine(string.Format("Insert into the wrapped List:"));
             Debug.WriteLine(string.Format("Insert(2, \"Oviraptor\")"));
             dinosaurs.Insert(2, "Oviraptor");
-
-            Debug.WriteLine(string.Empty);
-            Debug.WriteLine(string.Format("\nReadOnlyDinosaurs Count: {0}", readOnlyDinosaurs.Count));
-            foreach (string dinosaur in readOnlyDinosaurs)
+            Debug.WriteLine(string.Format("ReadOnly Count: {0}", readOnly.Count));
+            foreach (string dinosaur in readOnly)
             {
                 Debug.WriteLine(dinosaur);
             }
 
-            string[] dinoArray = new string[readOnlyDinosaurs.Count + 2];
-            readOnlyDinosaurs.CopyTo(dinoArray, 1);
+            Debug.WriteLine(string.Empty);
+            string[] dinoArray = new string[readOnly.Count + 2];
+            readOnly.CopyTo(dinoArray, 1);
 
-            Debug.WriteLine(string.Format("\nCopied array has {0} elements:",
-                dinoArray.Length));
+            Debug.WriteLine(string.Format("Copied array has {0} elements:", dinoArray.Length));
             foreach (string dinosaur in dinoArray)
             {
                 Debug.WriteLine(string.Format("\"{0}\"", dinosaur));
@@ -66,16 +66,15 @@ namespace CSTest._10_Collections._02_GenericCollections
             Deinonychus
             Compsognathus
 
-            Count: 4
+            Base Count: 4
+            ReadOnly Count: 4
+            ReadOnly Contains("Deinonychus"): True
+            ReadOnly[3]: Compsognathus
+            ReadOnly IndexOf("Compsognathus"): 3
 
-            Contains("Deinonychus"): True
-
-            readOnlyDinosaurs[3]: Compsognathus
-
-            IndexOf("Compsognathus"): 3
             Insert into the wrapped List:
             Insert(2, "Oviraptor")
-
+            ReadOnly Count: 5
             Tyrannosaurus
             Amargasaurus
             Oviraptor
@@ -89,9 +88,44 @@ namespace CSTest._10_Collections._02_GenericCollections
             "Oviraptor"
             "Deinonychus"
             "Compsognathus"
-            "" 
-             
+            ""
              */
+        }
+
+        [Test]
+        public void TestReadOnlyCollection2()
+        {
+            List<string> dinosaurs = new List<string>();
+
+            dinosaurs.Add("Tyrannosaurus");
+            dinosaurs.Add("Amargasaurus");
+            dinosaurs.Add("Deinonychus");
+            dinosaurs.Add("Compsognathus");
+
+            ReadOnlyCollection<string> readOnly = new ReadOnlyCollection<string>(dinosaurs);
+
+            Debug.WriteLine("ReadOnly as ICollection: " + (ICollection<string>)readOnly);
+            Debug.WriteLine("ReadOnly as List: " + (IList<string>)readOnly);
+
+            var list = readOnly as IList<string>;
+            //list.Add("Test");//NotSupportedException Additional information: Collection is read-only.
+
+
+            list = readOnly.ToList();
+            list.Add("Test2");
+            foreach (string dinosaur in readOnly)
+            {
+                Debug.WriteLine(dinosaur);
+            }
+
+            /*
+            ReadOnly as ICollection: System.Collections.ObjectModel.ReadOnlyCollection`1[System.String]
+            ReadOnly as List: System.Collections.ObjectModel.ReadOnlyCollection`1[System.String]
+            Tyrannosaurus
+            Amargasaurus
+            Deinonychus
+            Compsognathus
+            */
         }
     }
 }
