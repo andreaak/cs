@@ -45,16 +45,18 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             try
             {
                 // Отменить задачу. 
+                Debug.WriteLine("Отмена задачи");
                 cancelTokSrc.Cancel();
                 // Приостановить выполнение метода Test() до тех пор, 
                 // пока не завершится задача tsk. 
+                Debug.WriteLine("Ожидание выполнения задачи");
                 task.Wait();
             }
             catch (AggregateException /*exc*/)
             {
                 if (task.IsCanceled)
                 {
-                    Debug.WriteLine("\nЗадача task отменена\n");
+                    Debug.WriteLine("Задача отменена");
                 }
                 //Для просмотра исключения снять комментарии со следующей строки кода: 
                 // Debug.WriteLine(exc); 
@@ -65,6 +67,21 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
                 cancelTokSrc.Dispose();
             }
             Debug.WriteLine("Основной поток завершен.");
+
+            /*
+            Основной поток запущен.
+            TestTask() запущен
+            В методе TestTask() подсчет равен 0
+            В методе TestTask() подсчет равен 1
+            В методе TestTask() подсчет равен 2
+            Отмена задачи
+            В методе TestTask() подсчет равен 3
+            Получен запрос на отмену задачи.
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.AggregateException' in mscorlib.dll
+            Задача отменена
+            Основной поток завершен. 
+            */
         }
     }
 }

@@ -4,22 +4,21 @@ using System.Runtime.Serialization;
 
 namespace CSTest._30_NET_Code
 {
-
-    internal static class ThrowHelper
+    internal static class ThrowHelperNET
     {
         internal static void ThrowArgumentOutOfRangeException()
         {
-            ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_Index);
+            ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index, ExceptionResourceNET.ArgumentOutOfRange_Index);
         }
 
         internal static void ThrowWrongKeyTypeArgumentException(object key, Type targetType)
         {
-            throw new ArgumentException(Environment.GetResourceString("Arg_WrongType", key, targetType), "key");
+            throw new ArgumentException(EnvironmentNET.GetResourceString("Arg_WrongType", key, targetType), "key");
         }
 
         internal static void ThrowWrongValueTypeArgumentException(object value, Type targetType)
         {
-            throw new ArgumentException(Environment.GetResourceString("Arg_WrongType", value, targetType), "value");
+            throw new ArgumentException(EnvironmentNET.GetResourceString("Arg_WrongType", value, targetType), "value");
         }
 
         internal static void ThrowKeyNotFoundException()
@@ -27,27 +26,27 @@ namespace CSTest._30_NET_Code
             throw new System.Collections.Generic.KeyNotFoundException();
         }
 
-        internal static void ThrowArgumentException(ExceptionResource resource)
+        internal static void ThrowArgumentException(ExceptionResourceNET resource)
         {
-            throw new ArgumentException(Environment.GetResourceString(GetResourceName(resource)));
+            throw new ArgumentException(EnvironmentNET.GetResourceString(GetResourceName(resource)));
         }
 
-        internal static void ThrowArgumentException(ExceptionResource resource, ExceptionArgument argument)
+        internal static void ThrowArgumentException(ExceptionResourceNET resource, ExceptionArgumentNET argument)
         {
-            throw new ArgumentException(Environment.GetResourceString(GetResourceName(resource)), GetArgumentName(argument));
+            throw new ArgumentException(EnvironmentNET.GetResourceString(GetResourceName(resource)), GetArgumentName(argument));
         }
 
-        internal static void ThrowArgumentNullException(ExceptionArgument argument)
+        internal static void ThrowArgumentNullException(ExceptionArgumentNET argument)
         {
             throw new ArgumentNullException(GetArgumentName(argument));
         }
 
-        internal static void ThrowArgumentOutOfRangeException(ExceptionArgument argument)
+        internal static void ThrowArgumentOutOfRangeException(ExceptionArgumentNET argument)
         {
             throw new ArgumentOutOfRangeException(GetArgumentName(argument));
         }
 
-        internal static void ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+        internal static void ThrowArgumentOutOfRangeException(ExceptionArgumentNET argument, ExceptionResourceNET resource)
         {
 
             if (CompatibilitySwitches.IsAppEarlierThanWindowsPhone8)
@@ -58,150 +57,150 @@ namespace CSTest._30_NET_Code
             else
             {
                 throw new ArgumentOutOfRangeException(GetArgumentName(argument),
-                                                      Environment.GetResourceString(GetResourceName(resource)));
+                                                      EnvironmentNET.GetResourceString(GetResourceName(resource)));
             }
         }
 
-        internal static void ThrowInvalidOperationException(ExceptionResource resource)
+        internal static void ThrowInvalidOperationException(ExceptionResourceNET resource)
         {
-            throw new InvalidOperationException(Environment.GetResourceString(GetResourceName(resource)));
+            throw new InvalidOperationException(EnvironmentNET.GetResourceString(GetResourceName(resource)));
         }
 
-        internal static void ThrowSerializationException(ExceptionResource resource)
+        internal static void ThrowSerializationException(ExceptionResourceNET resource)
         {
-            throw new SerializationException(Environment.GetResourceString(GetResourceName(resource)));
+            throw new SerializationException(EnvironmentNET.GetResourceString(GetResourceName(resource)));
         }
 
-        internal static void ThrowSecurityException(ExceptionResource resource)
+        internal static void ThrowSecurityException(ExceptionResourceNET resource)
         {
-            throw new System.Security.SecurityException(Environment.GetResourceString(GetResourceName(resource)));
+            throw new System.Security.SecurityException(EnvironmentNET.GetResourceString(GetResourceName(resource)));
         }
 
-        internal static void ThrowNotSupportedException(ExceptionResource resource)
+        internal static void ThrowNotSupportedException(ExceptionResourceNET resource)
         {
-            throw new NotSupportedException(Environment.GetResourceString(GetResourceName(resource)));
+            throw new NotSupportedException(EnvironmentNET.GetResourceString(GetResourceName(resource)));
         }
 
-        internal static void ThrowUnauthorizedAccessException(ExceptionResource resource)
+        internal static void ThrowUnauthorizedAccessException(ExceptionResourceNET resource)
         {
-            throw new UnauthorizedAccessException(Environment.GetResourceString(GetResourceName(resource)));
+            throw new UnauthorizedAccessException(EnvironmentNET.GetResourceString(GetResourceName(resource)));
         }
 
-        internal static void ThrowObjectDisposedException(string objectName, ExceptionResource resource)
+        internal static void ThrowObjectDisposedException(string objectName, ExceptionResourceNET resource)
         {
-            throw new ObjectDisposedException(objectName, Environment.GetResourceString(GetResourceName(resource)));
+            throw new ObjectDisposedException(objectName, EnvironmentNET.GetResourceString(GetResourceName(resource)));
         }
 
         // Allow nulls for reference types and Nullable<U>, but not for value types.
-        internal static void IfNullAndNullsAreIllegalThenThrow<T>(object value, ExceptionArgument argName)
+        internal static void IfNullAndNullsAreIllegalThenThrow<T>(object value, ExceptionArgumentNET argName)
         {
             // Note that default(T) is not equal to null for value types except when T is Nullable<U>. 
             if (value == null && !(default(T) == null))
-                ThrowHelper.ThrowArgumentNullException(argName);
+                ThrowHelperNET.ThrowArgumentNullException(argName);
         }
 
         //
         // This function will convert an ExceptionArgument enum value to the argument name string.
         //
-        internal static string GetArgumentName(ExceptionArgument argument)
+        internal static string GetArgumentName(ExceptionArgumentNET argument)
         {
             string argumentName = null;
 
             switch (argument)
             {
-                case ExceptionArgument.array:
+                case ExceptionArgumentNET.array:
                     argumentName = "array";
                     break;
 
-                case ExceptionArgument.arrayIndex:
+                case ExceptionArgumentNET.arrayIndex:
                     argumentName = "arrayIndex";
                     break;
 
-                case ExceptionArgument.capacity:
+                case ExceptionArgumentNET.capacity:
                     argumentName = "capacity";
                     break;
 
-                case ExceptionArgument.collection:
+                case ExceptionArgumentNET.collection:
                     argumentName = "collection";
                     break;
 
-                case ExceptionArgument.list:
+                case ExceptionArgumentNET.list:
                     argumentName = "list";
                     break;
 
-                case ExceptionArgument.converter:
+                case ExceptionArgumentNET.converter:
                     argumentName = "converter";
                     break;
 
-                case ExceptionArgument.count:
+                case ExceptionArgumentNET.count:
                     argumentName = "count";
                     break;
 
-                case ExceptionArgument.dictionary:
+                case ExceptionArgumentNET.dictionary:
                     argumentName = "dictionary";
                     break;
 
-                case ExceptionArgument.dictionaryCreationThreshold:
+                case ExceptionArgumentNET.dictionaryCreationThreshold:
                     argumentName = "dictionaryCreationThreshold";
                     break;
 
-                case ExceptionArgument.index:
+                case ExceptionArgumentNET.index:
                     argumentName = "index";
                     break;
 
-                case ExceptionArgument.info:
+                case ExceptionArgumentNET.info:
                     argumentName = "info";
                     break;
 
-                case ExceptionArgument.key:
+                case ExceptionArgumentNET.key:
                     argumentName = "key";
                     break;
 
-                case ExceptionArgument.match:
+                case ExceptionArgumentNET.match:
                     argumentName = "match";
                     break;
 
-                case ExceptionArgument.obj:
+                case ExceptionArgumentNET.obj:
                     argumentName = "obj";
                     break;
 
-                case ExceptionArgument.queue:
+                case ExceptionArgumentNET.queue:
                     argumentName = "queue";
                     break;
 
-                case ExceptionArgument.stack:
+                case ExceptionArgumentNET.stack:
                     argumentName = "stack";
                     break;
 
-                case ExceptionArgument.startIndex:
+                case ExceptionArgumentNET.startIndex:
                     argumentName = "startIndex";
                     break;
 
-                case ExceptionArgument.value:
+                case ExceptionArgumentNET.value:
                     argumentName = "value";
                     break;
 
-                case ExceptionArgument.name:
+                case ExceptionArgumentNET.name:
                     argumentName = "name";
                     break;
 
-                case ExceptionArgument.mode:
+                case ExceptionArgumentNET.mode:
                     argumentName = "mode";
                     break;
 
-                case ExceptionArgument.item:
+                case ExceptionArgumentNET.item:
                     argumentName = "item";
                     break;
 
-                case ExceptionArgument.options:
+                case ExceptionArgumentNET.options:
                     argumentName = "options";
                     break;
 
-                case ExceptionArgument.view:
+                case ExceptionArgumentNET.view:
                     argumentName = "view";
                     break;
 
-                case ExceptionArgument.sourceBytesToCopy:
+                case ExceptionArgumentNET.sourceBytesToCopy:
                     argumentName = "sourceBytesToCopy";
                     break;
 
@@ -216,195 +215,195 @@ namespace CSTest._30_NET_Code
         //
         // This function will convert an ExceptionResource enum value to the resource string.
         //
-        internal static string GetResourceName(ExceptionResource resource)
+        internal static string GetResourceName(ExceptionResourceNET resource)
         {
             string resourceName = null;
 
             switch (resource)
             {
-                case ExceptionResource.Argument_ImplementIComparable:
+                case ExceptionResourceNET.Argument_ImplementIComparable:
                     resourceName = "Argument_ImplementIComparable";
                     break;
 
-                case ExceptionResource.Argument_AddingDuplicate:
+                case ExceptionResourceNET.Argument_AddingDuplicate:
                     resourceName = "Argument_AddingDuplicate";
                     break;
 
-                case ExceptionResource.ArgumentOutOfRange_BiggerThanCollection:
+                case ExceptionResourceNET.ArgumentOutOfRange_BiggerThanCollection:
                     resourceName = "ArgumentOutOfRange_BiggerThanCollection";
                     break;
 
-                case ExceptionResource.ArgumentOutOfRange_Count:
+                case ExceptionResourceNET.ArgumentOutOfRange_Count:
                     resourceName = "ArgumentOutOfRange_Count";
                     break;
 
-                case ExceptionResource.ArgumentOutOfRange_Index:
+                case ExceptionResourceNET.ArgumentOutOfRange_Index:
                     resourceName = "ArgumentOutOfRange_Index";
                     break;
 
-                case ExceptionResource.ArgumentOutOfRange_InvalidThreshold:
+                case ExceptionResourceNET.ArgumentOutOfRange_InvalidThreshold:
                     resourceName = "ArgumentOutOfRange_InvalidThreshold";
                     break;
 
-                case ExceptionResource.ArgumentOutOfRange_ListInsert:
+                case ExceptionResourceNET.ArgumentOutOfRange_ListInsert:
                     resourceName = "ArgumentOutOfRange_ListInsert";
                     break;
 
-                case ExceptionResource.ArgumentOutOfRange_NeedNonNegNum:
+                case ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum:
                     resourceName = "ArgumentOutOfRange_NeedNonNegNum";
                     break;
 
-                case ExceptionResource.ArgumentOutOfRange_SmallCapacity:
+                case ExceptionResourceNET.ArgumentOutOfRange_SmallCapacity:
                     resourceName = "ArgumentOutOfRange_SmallCapacity";
                     break;
 
-                case ExceptionResource.Arg_ArrayPlusOffTooSmall:
+                case ExceptionResourceNET.Arg_ArrayPlusOffTooSmall:
                     resourceName = "Arg_ArrayPlusOffTooSmall";
                     break;
 
-                case ExceptionResource.Arg_RankMultiDimNotSupported:
+                case ExceptionResourceNET.Arg_RankMultiDimNotSupported:
                     resourceName = "Arg_RankMultiDimNotSupported";
                     break;
 
-                case ExceptionResource.Arg_NonZeroLowerBound:
+                case ExceptionResourceNET.Arg_NonZeroLowerBound:
                     resourceName = "Arg_NonZeroLowerBound";
                     break;
 
-                case ExceptionResource.Argument_InvalidArrayType:
+                case ExceptionResourceNET.Argument_InvalidArrayType:
                     resourceName = "Argument_InvalidArrayType";
                     break;
 
-                case ExceptionResource.Argument_InvalidOffLen:
+                case ExceptionResourceNET.Argument_InvalidOffLen:
                     resourceName = "Argument_InvalidOffLen";
                     break;
 
-                case ExceptionResource.Argument_ItemNotExist:
+                case ExceptionResourceNET.Argument_ItemNotExist:
                     resourceName = "Argument_ItemNotExist";
                     break;
 
-                case ExceptionResource.InvalidOperation_CannotRemoveFromStackOrQueue:
+                case ExceptionResourceNET.InvalidOperation_CannotRemoveFromStackOrQueue:
                     resourceName = "InvalidOperation_CannotRemoveFromStackOrQueue";
                     break;
 
-                case ExceptionResource.InvalidOperation_EmptyQueue:
+                case ExceptionResourceNET.InvalidOperation_EmptyQueue:
                     resourceName = "InvalidOperation_EmptyQueue";
                     break;
 
-                case ExceptionResource.InvalidOperation_EnumOpCantHappen:
+                case ExceptionResourceNET.InvalidOperation_EnumOpCantHappen:
                     resourceName = "InvalidOperation_EnumOpCantHappen";
                     break;
 
-                case ExceptionResource.InvalidOperation_EnumFailedVersion:
+                case ExceptionResourceNET.InvalidOperation_EnumFailedVersion:
                     resourceName = "InvalidOperation_EnumFailedVersion";
                     break;
 
-                case ExceptionResource.InvalidOperation_EmptyStack:
+                case ExceptionResourceNET.InvalidOperation_EmptyStack:
                     resourceName = "InvalidOperation_EmptyStack";
                     break;
 
-                case ExceptionResource.InvalidOperation_EnumNotStarted:
+                case ExceptionResourceNET.InvalidOperation_EnumNotStarted:
                     resourceName = "InvalidOperation_EnumNotStarted";
                     break;
 
-                case ExceptionResource.InvalidOperation_EnumEnded:
+                case ExceptionResourceNET.InvalidOperation_EnumEnded:
                     resourceName = "InvalidOperation_EnumEnded";
                     break;
 
-                case ExceptionResource.NotSupported_KeyCollectionSet:
+                case ExceptionResourceNET.NotSupported_KeyCollectionSet:
                     resourceName = "NotSupported_KeyCollectionSet";
                     break;
 
-                case ExceptionResource.NotSupported_ReadOnlyCollection:
+                case ExceptionResourceNET.NotSupported_ReadOnlyCollection:
                     resourceName = "NotSupported_ReadOnlyCollection";
                     break;
 
-                case ExceptionResource.NotSupported_ValueCollectionSet:
+                case ExceptionResourceNET.NotSupported_ValueCollectionSet:
                     resourceName = "NotSupported_ValueCollectionSet";
                     break;
 
 
-                case ExceptionResource.NotSupported_SortedListNestedWrite:
+                case ExceptionResourceNET.NotSupported_SortedListNestedWrite:
                     resourceName = "NotSupported_SortedListNestedWrite";
                     break;
 
 
-                case ExceptionResource.Serialization_InvalidOnDeser:
+                case ExceptionResourceNET.Serialization_InvalidOnDeser:
                     resourceName = "Serialization_InvalidOnDeser";
                     break;
 
-                case ExceptionResource.Serialization_MissingKeys:
+                case ExceptionResourceNET.Serialization_MissingKeys:
                     resourceName = "Serialization_MissingKeys";
                     break;
 
-                case ExceptionResource.Serialization_NullKey:
+                case ExceptionResourceNET.Serialization_NullKey:
                     resourceName = "Serialization_NullKey";
                     break;
 
-                case ExceptionResource.Argument_InvalidType:
+                case ExceptionResourceNET.Argument_InvalidType:
                     resourceName = "Argument_InvalidType";
                     break;
 
-                case ExceptionResource.Argument_InvalidArgumentForComparison:
+                case ExceptionResourceNET.Argument_InvalidArgumentForComparison:
                     resourceName = "Argument_InvalidArgumentForComparison";
                     break;
 
-                case ExceptionResource.InvalidOperation_NoValue:
+                case ExceptionResourceNET.InvalidOperation_NoValue:
                     resourceName = "InvalidOperation_NoValue";
                     break;
 
-                case ExceptionResource.InvalidOperation_RegRemoveSubKey:
+                case ExceptionResourceNET.InvalidOperation_RegRemoveSubKey:
                     resourceName = "InvalidOperation_RegRemoveSubKey";
                     break;
 
-                case ExceptionResource.Arg_RegSubKeyAbsent:
+                case ExceptionResourceNET.Arg_RegSubKeyAbsent:
                     resourceName = "Arg_RegSubKeyAbsent";
                     break;
 
-                case ExceptionResource.Arg_RegSubKeyValueAbsent:
+                case ExceptionResourceNET.Arg_RegSubKeyValueAbsent:
                     resourceName = "Arg_RegSubKeyValueAbsent";
                     break;
 
-                case ExceptionResource.Arg_RegKeyDelHive:
+                case ExceptionResourceNET.Arg_RegKeyDelHive:
                     resourceName = "Arg_RegKeyDelHive";
                     break;
 
-                case ExceptionResource.Security_RegistryPermission:
+                case ExceptionResourceNET.Security_RegistryPermission:
                     resourceName = "Security_RegistryPermission";
                     break;
 
-                case ExceptionResource.Arg_RegSetStrArrNull:
+                case ExceptionResourceNET.Arg_RegSetStrArrNull:
                     resourceName = "Arg_RegSetStrArrNull";
                     break;
 
-                case ExceptionResource.Arg_RegSetMismatchedKind:
+                case ExceptionResourceNET.Arg_RegSetMismatchedKind:
                     resourceName = "Arg_RegSetMismatchedKind";
                     break;
 
-                case ExceptionResource.UnauthorizedAccess_RegistryNoWrite:
+                case ExceptionResourceNET.UnauthorizedAccess_RegistryNoWrite:
                     resourceName = "UnauthorizedAccess_RegistryNoWrite";
                     break;
 
-                case ExceptionResource.ObjectDisposed_RegKeyClosed:
+                case ExceptionResourceNET.ObjectDisposed_RegKeyClosed:
                     resourceName = "ObjectDisposed_RegKeyClosed";
                     break;
 
-                case ExceptionResource.Arg_RegKeyStrLenBug:
+                case ExceptionResourceNET.Arg_RegKeyStrLenBug:
                     resourceName = "Arg_RegKeyStrLenBug";
                     break;
 
-                case ExceptionResource.Argument_InvalidRegistryKeyPermissionCheck:
+                case ExceptionResourceNET.Argument_InvalidRegistryKeyPermissionCheck:
                     resourceName = "Argument_InvalidRegistryKeyPermissionCheck";
                     break;
 
-                case ExceptionResource.NotSupported_InComparableType:
+                case ExceptionResourceNET.NotSupported_InComparableType:
                     resourceName = "NotSupported_InComparableType";
                     break;
 
-                case ExceptionResource.Argument_InvalidRegistryOptionsCheck:
+                case ExceptionResourceNET.Argument_InvalidRegistryOptionsCheck:
                     resourceName = "Argument_InvalidRegistryOptionsCheck";
                     break;
 
-                case ExceptionResource.Argument_InvalidRegistryViewCheck:
+                case ExceptionResourceNET.Argument_InvalidRegistryViewCheck:
                     resourceName = "Argument_InvalidRegistryViewCheck";
                     break;
 
@@ -421,7 +420,7 @@ namespace CSTest._30_NET_Code
     //
     // The convention for this enum is using the argument name as the enum name
     // 
-    internal enum ExceptionArgument
+    internal enum ExceptionArgumentNET
     {
         obj,
         dictionary,
@@ -452,7 +451,7 @@ namespace CSTest._30_NET_Code
     //
     // The convention for this enum is using the resource name as the enum name
     // 
-    internal enum ExceptionResource
+    internal enum ExceptionResourceNET
     {
         Argument_ImplementIComparable,
         Argument_InvalidType,
@@ -503,5 +502,4 @@ namespace CSTest._30_NET_Code
         Argument_InvalidRegistryOptionsCheck,
         Argument_InvalidRegistryViewCheck
     }
-
 }

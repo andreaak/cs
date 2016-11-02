@@ -171,7 +171,7 @@ namespace CSTest._30_NET_Code
         public static int GetPrime(int min)
         {
             if (min < 0)
-                throw new ArgumentException(CSTest._30_NET_Code.Environment.GetResourceString("Arg_HTCapacityOverflow"));
+                throw new ArgumentException(CSTest._30_NET_Code.EnvironmentNET.GetResourceString("Arg_HTCapacityOverflow"));
             for (int index = 0; index < HashHelpers.primes.Length; ++index)
             {
                 int num = HashHelpers.primes[index];

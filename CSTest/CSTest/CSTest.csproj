@@ -95,7 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="01_Elements CS\01_Types\0_Setup\DynamicClass.cs" />
-    <Compile Include="01_Elements CS\01_Types\_08_Nullable.cs" />
+    <Compile Include="03_Structure\03_Nullable\NullableNET.cs" />
+    <Compile Include="03_Structure\03_Nullable\Test.cs" />
     <Compile Include="01_Elements CS\01_Types\_01_BaseTypes.cs" />
     <Compile Include="01_Elements CS\01_Types\_02_Numeric.cs" />
     <Compile Include="01_Elements CS\01_Types\_03_Real.cs" />
@@ -110,11 +111,15 @@
     <Compile Include="01_Elements CS\03_Operations\_01_Assignment.cs" />
     <Compile Include="01_Elements CS\03_Operations\_03_Comparison.cs" />
     <Compile Include="01_Elements CS\05_RTTI\_01_IsAs.cs" />
-    <Compile Include="01_Elements CS\02_Variables\_03_ReadOnly.cs" />
-    <Compile Include="01_Elements CS\02_Variables\_02_Constants.cs" />
+    <Compile Include="04_Class\01_Fields\03_ReadOnly.cs" />
+    <Compile Include="04_Class\01_Fields\02_Constants.cs" />
     <Compile Include="01_Elements CS\04_TypeConversion\_01_Casting.cs" />
     <Compile Include="01_Elements CS\02_Variables\_04_sizeof.cs" />
     <Compile Include="04_Class\00_Base\0_Setup\TestClass.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\AppContextSwitchesNET.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenNET.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenRegistrationNET.cs" />
+    <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenSourceNET.cs" />
     <Compile Include="25_CS_NewFeatures\01_CS4\01_Lazy\LazyNET.cs" />
     <Compile Include="25_CS_NewFeatures\01_CS4\01_Lazy\Test.cs" />
     <Compile Include="02_Object\Test.cs" />
@@ -235,6 +240,7 @@
     <Compile Include="30 NET Code\HashHelpers.cs" />
     <Compile Include="30 NET Code\InternalTaskOptions.cs" />
     <Compile Include="30 NET Code\IThreadPoolWorkItem.cs" />
+    <Compile Include="30 NET Code\PlatformHelperNET.cs" />
     <Compile Include="30 NET Code\RandomizedStringEqualityComparer.cs" />
     <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\_10_ReadOnlyCollection.cs" />
@@ -366,9 +372,9 @@
     <Compile Include="24_Closure\Test.cs" />
     <Compile Include="30 NET Code\BinaryCompatibility.cs" />
     <Compile Include="30 NET Code\CompatibilitySwitches.cs" />
-    <Compile Include="30 NET Code\Environment.cs" />
+    <Compile Include="30 NET Code\EnvironmentNET.cs" />
     <Compile Include="30 NET Code\RandomizedObjectEqualityComparer.cs" />
-    <Compile Include="30 NET Code\ThrowHelper.cs" />
+    <Compile Include="30 NET Code\ThrowHelperNET.cs" />
     <Compile Include="30 NET Code\TimeoutHelper.cs" />
     <Compile Include="31_Tricks\001_CallVirtualMethodsInConstructor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

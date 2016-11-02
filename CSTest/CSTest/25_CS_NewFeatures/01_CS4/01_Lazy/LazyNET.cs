@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.Threading;
-using Environment = CSTest._30_NET_Code.Environment;
+using CSTest._30_NET_Code;
 
 namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
 {
@@ -213,7 +213,7 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
             else if (mode == LazyThreadSafetyMode.PublicationOnly)
                 return LazyHelpers.PUBLICATION_ONLY_SENTINEL;
             else if (mode != LazyThreadSafetyMode.None)
-                throw new ArgumentOutOfRangeException("mode", Environment.GetResourceString("Lazy_ctor_ModeInvalid"));
+                throw new ArgumentOutOfRangeException("mode", EnvironmentNET.GetResourceString("Lazy_ctor_ModeInvalid"));
 
             return null; // None mode
         }
@@ -235,7 +235,7 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
         /// </exception>
         public override string ToString()
         {
-            return IsValueCreated ? Value.ToString() : Environment.GetResourceString("Lazy_ToString_ValueNotCreated");
+            return IsValueCreated ? Value.ToString() : EnvironmentNET.GetResourceString("Lazy_ToString_ValueNotCreated");
         }
 
         /// <summary>Gets the value of the Lazy&lt;T&gt; for debugging display purposes.</summary>
@@ -424,7 +424,7 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
                 {
                     // check for recursion
                     if (mode != LazyThreadSafetyMode.PublicationOnly && m_valueFactory == ALREADY_INVOKED_SENTINEL)
-                        throw new InvalidOperationException(Environment.GetResourceString("Lazy_Value_RecursiveCallsToValue"));
+                        throw new InvalidOperationException(EnvironmentNET.GetResourceString("Lazy_Value_RecursiveCallsToValue"));
 
                     Func<T> factory = m_valueFactory;
                     if (mode != LazyThreadSafetyMode.PublicationOnly) // only detect recursion on None and ExecutionAndPublication modes
@@ -454,7 +454,7 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
                 }
                 catch (System.MissingMethodException)
                 {
-                    Exception ex = new System.MissingMemberException(Environment.GetResourceString("Lazy_CreateValue_NoParameterlessCtorForT"));
+                    Exception ex = new System.MissingMemberException(EnvironmentNET.GetResourceString("Lazy_CreateValue_NoParameterlessCtorForT"));
                     if (mode != LazyThreadSafetyMode.PublicationOnly) // don't cache the exception for PublicationOnly mode
                         m_boxed = new LazyInternalExceptionHolder(ex);
                     throw ex;

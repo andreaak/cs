@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
 using System.Security;
-using Environment = CSTest._30_NET_Code.Environment;
+using CSTest._30_NET_Code;
 
 namespace CSTest._08_String._02_StringBuilder
 {
@@ -90,15 +90,15 @@ namespace CSTest._08_String._02_StringBuilder
         {
             if (capacity < 0)
             {
-                throw new ArgumentOutOfRangeException("capacity", Environment.GetResourceString("ArgumentOutOfRange_MustBePositive", "capacity"));
+                throw new ArgumentOutOfRangeException("capacity", EnvironmentNET.GetResourceString("ArgumentOutOfRange_MustBePositive", "capacity"));
             }
             if (length < 0)
             {
-                throw new ArgumentOutOfRangeException("length", Environment.GetResourceString("ArgumentOutOfRange_MustBeNonNegNum", "length"));
+                throw new ArgumentOutOfRangeException("length", EnvironmentNET.GetResourceString("ArgumentOutOfRange_MustBeNonNegNum", "length"));
             }
             if (startIndex < 0)
             {
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_StartIndex"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_StartIndex"));
             }
             Contract.EndContractBlock();
 
@@ -108,7 +108,7 @@ namespace CSTest._08_String._02_StringBuilder
             }
             if (startIndex > value.Length - length)
             {
-                throw new ArgumentOutOfRangeException("length", Environment.GetResourceString("ArgumentOutOfRange_IndexLength"));
+                throw new ArgumentOutOfRangeException("length", EnvironmentNET.GetResourceString("ArgumentOutOfRange_IndexLength"));
             }
             m_MaxCapacity = Int32.MaxValue;
             if (capacity == 0)
@@ -136,15 +136,15 @@ namespace CSTest._08_String._02_StringBuilder
         {
             if (capacity > maxCapacity)
             {
-                throw new ArgumentOutOfRangeException("capacity", Environment.GetResourceString("ArgumentOutOfRange_Capacity"));
+                throw new ArgumentOutOfRangeException("capacity", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Capacity"));
             }
             if (maxCapacity < 1)
             {
-                throw new ArgumentOutOfRangeException("maxCapacity", Environment.GetResourceString("ArgumentOutOfRange_SmallMaxCapacity"));
+                throw new ArgumentOutOfRangeException("maxCapacity", EnvironmentNET.GetResourceString("ArgumentOutOfRange_SmallMaxCapacity"));
             }
             if (capacity < 0)
             {
-                throw new ArgumentOutOfRangeException("capacity", Environment.GetResourceString("ArgumentOutOfRange_MustBePositive", "capacity"));
+                throw new ArgumentOutOfRangeException("capacity", EnvironmentNET.GetResourceString("ArgumentOutOfRange_MustBePositive", "capacity"));
             }
             Contract.EndContractBlock();
 
@@ -195,7 +195,7 @@ namespace CSTest._08_String._02_StringBuilder
                 persistedString = String.Empty;
             }
             if (persistedMaxCapacity < 1 || persistedString.Length > persistedMaxCapacity) {
-                throw new SerializationException(Environment.GetResourceString("Serialization_StringBuilderMaxCapacity"));
+                throw new SerializationException(EnvironmentNET.GetResourceString("Serialization_StringBuilderMaxCapacity"));
             }
 
             if (!capacityPresent) {
@@ -209,7 +209,7 @@ namespace CSTest._08_String._02_StringBuilder
                 }
             }
             if (persistedCapacity < 0 || persistedCapacity < persistedString.Length || persistedCapacity > persistedMaxCapacity) {
-                throw new SerializationException(Environment.GetResourceString("Serialization_StringBuilderCapacity"));
+                throw new SerializationException(EnvironmentNET.GetResourceString("Serialization_StringBuilderCapacity"));
             }
 
             // Assign
@@ -273,15 +273,15 @@ namespace CSTest._08_String._02_StringBuilder
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("value", Environment.GetResourceString("ArgumentOutOfRange_NegativeCapacity"));
+                    throw new ArgumentOutOfRangeException("value", EnvironmentNET.GetResourceString("ArgumentOutOfRange_NegativeCapacity"));
                 }
                 if (value > MaxCapacity)
                 {
-                    throw new ArgumentOutOfRangeException("value", Environment.GetResourceString("ArgumentOutOfRange_Capacity"));
+                    throw new ArgumentOutOfRangeException("value", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Capacity"));
                 }
                 if (value < Length)
                 {
-                    throw new ArgumentOutOfRangeException("value", Environment.GetResourceString("ArgumentOutOfRange_SmallCapacity"));
+                    throw new ArgumentOutOfRangeException("value", EnvironmentNET.GetResourceString("ArgumentOutOfRange_SmallCapacity"));
                 }
                 Contract.EndContractBlock();
 
@@ -309,7 +309,7 @@ namespace CSTest._08_String._02_StringBuilder
         {
             if (capacity < 0)
             {
-                //throw new ArgumentOutOfRangeException("capacity", Environment.GetResourceString("ArgumentOutOfRange_NegativeCapacity"));
+                //throw new ArgumentOutOfRangeException("capacity", EnvironmentNET.GetResourceString("ArgumentOutOfRange_NegativeCapacity"));
             }
             Contract.EndContractBlock();
 
@@ -350,7 +350,7 @@ namespace CSTest._08_String._02_StringBuilder
             //                }
             //                else
             //                {
-            //                    throw new ArgumentOutOfRangeException("chunkLength", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+            //                    throw new ArgumentOutOfRangeException("chunkLength", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             //                }
             //            }
             //            chunk = chunk.m_ChunkPrevious;
@@ -378,7 +378,7 @@ namespace CSTest._08_String._02_StringBuilder
                     }
                     else
                     {
-                        throw new ArgumentOutOfRangeException("chunkLength", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                        throw new ArgumentOutOfRangeException("chunkLength", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
                     }
                 }
                 chunk = chunk.m_ChunkPrevious;
@@ -397,19 +397,19 @@ namespace CSTest._08_String._02_StringBuilder
             int currentLength = this.Length;
             if (startIndex < 0)
             {
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_StartIndex"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_StartIndex"));
             }
             if (startIndex > currentLength)
             {
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_StartIndexLargerThanLength"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_StartIndexLargerThanLength"));
             }
             if (length < 0)
             {
-                throw new ArgumentOutOfRangeException("length", Environment.GetResourceString("ArgumentOutOfRange_NegativeLength"));
+                throw new ArgumentOutOfRangeException("length", EnvironmentNET.GetResourceString("ArgumentOutOfRange_NegativeLength"));
             }
             if (startIndex > (currentLength - length))
             {
-                throw new ArgumentOutOfRangeException("length", Environment.GetResourceString("ArgumentOutOfRange_IndexLength"));
+                throw new ArgumentOutOfRangeException("length", EnvironmentNET.GetResourceString("ArgumentOutOfRange_IndexLength"));
             }
 
             VerifyClassInvariant();
@@ -455,7 +455,7 @@ namespace CSTest._08_String._02_StringBuilder
             //                    }
             //                    else
             //                    {
-            //                        throw new ArgumentOutOfRangeException("chunkCount", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+            //                        throw new ArgumentOutOfRangeException("chunkCount", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             //                    }
             //                }
             //            }
@@ -489,12 +489,12 @@ namespace CSTest._08_String._02_StringBuilder
                 //If the new length is less than 0 or greater than our Maximum capacity, bail.
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("value", Environment.GetResourceString("ArgumentOutOfRange_NegativeLength"));
+                    throw new ArgumentOutOfRangeException("value", EnvironmentNET.GetResourceString("ArgumentOutOfRange_NegativeLength"));
                 }
 
                 if (value > MaxCapacity)
                 {
-                    throw new ArgumentOutOfRangeException("value", Environment.GetResourceString("ArgumentOutOfRange_SmallCapacity"));
+                    throw new ArgumentOutOfRangeException("value", EnvironmentNET.GetResourceString("ArgumentOutOfRange_SmallCapacity"));
                 }
                 Contract.EndContractBlock();
 
@@ -571,13 +571,13 @@ namespace CSTest._08_String._02_StringBuilder
                     if (indexInBlock >= 0)
                     {
                         if (indexInBlock >= chunk.m_ChunkLength)
-                            throw new ArgumentOutOfRangeException("index", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                            throw new ArgumentOutOfRangeException("index", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
                         chunk.m_ChunkChars[indexInBlock] = value;
                         return;
                     }
                     chunk = chunk.m_ChunkPrevious;
                     if (chunk == null)
-                        throw new ArgumentOutOfRangeException("index", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                        throw new ArgumentOutOfRangeException("index", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
                 }
             }
         }
@@ -587,7 +587,7 @@ namespace CSTest._08_String._02_StringBuilder
         {
             if (repeatCount < 0)
             {
-                throw new ArgumentOutOfRangeException("repeatCount", Environment.GetResourceString("ArgumentOutOfRange_NegativeCount"));
+                throw new ArgumentOutOfRangeException("repeatCount", EnvironmentNET.GetResourceString("ArgumentOutOfRange_NegativeCount"));
             }
             Contract.Ensures(Contract.Result<StringBuilderNET>() != null);
             Contract.EndContractBlock();
@@ -629,11 +629,11 @@ namespace CSTest._08_String._02_StringBuilder
             if (startIndex < 0)
             {
 #endif //FEATURE_LEGACYNETCF
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_GenericPositive"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_GenericPositive"));
             }
             if (charCount < 0)
             {
-                throw new ArgumentOutOfRangeException("count", Environment.GetResourceString("ArgumentOutOfRange_GenericPositive"));
+                throw new ArgumentOutOfRangeException("count", EnvironmentNET.GetResourceString("ArgumentOutOfRange_GenericPositive"));
             }
 #if !FEATURE_LEGACYNETCF  // Avoid contract problems with compat switch above.
             Contract.Ensures(Contract.Result<StringBuilderNET>() != null);
@@ -656,7 +656,7 @@ namespace CSTest._08_String._02_StringBuilder
             }
             if (charCount > value.Length - startIndex)
             {
-                throw new ArgumentOutOfRangeException("count", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("count", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
             if (charCount == 0)
@@ -751,12 +751,12 @@ namespace CSTest._08_String._02_StringBuilder
             if (startIndex < 0)
             {
 #endif //FEATURE_LEGACYNETCF
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
             if (count < 0)
             {
-                throw new ArgumentOutOfRangeException("count", Environment.GetResourceString("ArgumentOutOfRange_GenericPositive"));
+                throw new ArgumentOutOfRangeException("count", EnvironmentNET.GetResourceString("ArgumentOutOfRange_GenericPositive"));
             }
 #if !FEATURE_LEGACYNETCF  // The use of CompatibilitySwitches above prevents us from marking this as a precondition.
             Contract.Ensures(Contract.Result<StringBuilderNET>() != null);
@@ -787,7 +787,7 @@ namespace CSTest._08_String._02_StringBuilder
 
             if (startIndex > value.Length - count)
             {
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
             //unsafe
@@ -803,7 +803,7 @@ namespace CSTest._08_String._02_StringBuilder
         public StringBuilderNET AppendLine()
         {
             Contract.Ensures(Contract.Result<StringBuilderNET>() != null);
-            return Append(Environment.NewLine);
+            return Append(EnvironmentNET.NewLine);
         }
 
         [System.Runtime.InteropServices.ComVisible(false)]
@@ -811,7 +811,7 @@ namespace CSTest._08_String._02_StringBuilder
         {
             Contract.Ensures(Contract.Result<StringBuilderNET>() != null);
             Append(value);
-            return Append(Environment.NewLine);
+            return Append(EnvironmentNET.NewLine);
         }
 
         [System.Runtime.InteropServices.ComVisible(false)]
@@ -825,28 +825,28 @@ namespace CSTest._08_String._02_StringBuilder
 
             if (count < 0)
             {
-                throw new ArgumentOutOfRangeException("count", Environment.GetResourceString("Arg_NegativeArgCount"));
+                throw new ArgumentOutOfRangeException("count", EnvironmentNET.GetResourceString("Arg_NegativeArgCount"));
             }
 
             if (destinationIndex < 0)
             {
                 throw new ArgumentOutOfRangeException("destinationIndex",
-                    Environment.GetResourceString("ArgumentOutOfRange_MustBeNonNegNum", "destinationIndex"));
+                    EnvironmentNET.GetResourceString("ArgumentOutOfRange_MustBeNonNegNum", "destinationIndex"));
             }
 
             if (destinationIndex > destination.Length - count)
             {
-                throw new ArgumentException(Environment.GetResourceString("ArgumentOutOfRange_OffsetOut"));
+                throw new ArgumentException(EnvironmentNET.GetResourceString("ArgumentOutOfRange_OffsetOut"));
             }
 
             if ((uint)sourceIndex > (uint)Length)
             {
-                throw new ArgumentOutOfRangeException("sourceIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("sourceIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
             if (sourceIndex > Length - count)
             {
-                throw new ArgumentException(Environment.GetResourceString("Arg_LongerThanSrcString"));
+                throw new ArgumentException(EnvironmentNET.GetResourceString("Arg_LongerThanSrcString"));
             }
             Contract.EndContractBlock();
 
@@ -891,7 +891,7 @@ namespace CSTest._08_String._02_StringBuilder
         {
             if (count < 0)
             {
-                throw new ArgumentOutOfRangeException("count", Environment.GetResourceString("ArgumentOutOfRange_NeedNonNegNum"));
+                throw new ArgumentOutOfRangeException("count", EnvironmentNET.GetResourceString("ArgumentOutOfRange_NeedNonNegNum"));
             }
             Contract.Ensures(Contract.Result<StringBuilderNET>() != null);
             Contract.EndContractBlock();
@@ -900,7 +900,7 @@ namespace CSTest._08_String._02_StringBuilder
             int currentLength = Length;
             if ((uint)index > (uint)currentLength)
             {
-                throw new ArgumentOutOfRangeException("index", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("index", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
             //If value is null, empty or count is 0, do nothing. This is ECMA standard.
@@ -943,17 +943,17 @@ namespace CSTest._08_String._02_StringBuilder
         {
             if (length < 0)
             {
-                throw new ArgumentOutOfRangeException("length", Environment.GetResourceString("ArgumentOutOfRange_NegativeLength"));
+                throw new ArgumentOutOfRangeException("length", EnvironmentNET.GetResourceString("ArgumentOutOfRange_NegativeLength"));
             }
 
             if (startIndex < 0)
             {
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_StartIndex"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_StartIndex"));
             }
 
             if (length > Length - startIndex)
             {
-                throw new ArgumentOutOfRangeException("index", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("index", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
             Contract.Ensures(Contract.Result<StringBuilderNET>() != null);
             Contract.EndContractBlock();
@@ -1138,7 +1138,7 @@ namespace CSTest._08_String._02_StringBuilder
         {
             if ((uint)index > (uint)Length)
             {
-                throw new ArgumentOutOfRangeException("index", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("index", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
             Contract.Ensures(Contract.Result<StringBuilderNET>() != null);
             Contract.EndContractBlock();
@@ -1225,7 +1225,7 @@ namespace CSTest._08_String._02_StringBuilder
         {
             if ((uint)index > (uint)Length)
             {
-                throw new ArgumentOutOfRangeException("index", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("index", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
             Contract.Ensures(Contract.Result<StringBuilderNET>() != null);
             Contract.EndContractBlock();
@@ -1247,7 +1247,7 @@ namespace CSTest._08_String._02_StringBuilder
             int currentLength = Length;
             if ((uint)index > (uint)currentLength)
             {
-                throw new ArgumentOutOfRangeException("index", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("index", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
             //If they passed in a null char array, just jump out quickly.
@@ -1257,23 +1257,23 @@ namespace CSTest._08_String._02_StringBuilder
                 {
                     return this;
                 }
-                throw new ArgumentNullException(Environment.GetResourceString("ArgumentNull_String"));
+                throw new ArgumentNullException(EnvironmentNET.GetResourceString("ArgumentNull_String"));
             }
 
             //Range check the array.
             if (startIndex < 0)
             {
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_StartIndex"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_StartIndex"));
             }
 
             if (charCount < 0)
             {
-                throw new ArgumentOutOfRangeException("count", Environment.GetResourceString("ArgumentOutOfRange_GenericPositive"));
+                throw new ArgumentOutOfRangeException("count", EnvironmentNET.GetResourceString("ArgumentOutOfRange_GenericPositive"));
             }
 
             if (startIndex > value.Length - charCount)
             {
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
             if (charCount > 0)
@@ -1454,7 +1454,7 @@ namespace CSTest._08_String._02_StringBuilder
 
         private static void FormatError()
         {
-            throw new FormatException(Environment.GetResourceString("Format_InvalidString"));
+            throw new FormatException(EnvironmentNET.GetResourceString("Format_InvalidString"));
         }
 
         internal StringBuilderNET AppendFormatHelper(IFormatProvider provider, String format, params Object[] args)
@@ -1518,7 +1518,7 @@ namespace CSTest._08_String._02_StringBuilder
                     if (pos == len) FormatError();
                     ch = format[pos];
                 } while (ch >= '0' && ch <= '9' && index < 1000000);
-                if (index >= args.Length) throw new FormatException(Environment.GetResourceString("Format_IndexOutOfRange"));
+                if (index >= args.Length) throw new FormatException(EnvironmentNET.GetResourceString("Format_IndexOutOfRange"));
                 while (pos < len && (ch = format[pos]) == ' ') pos++;
                 bool leftJustify = false;
                 int width = 0;
@@ -1697,11 +1697,11 @@ namespace CSTest._08_String._02_StringBuilder
             int currentLength = Length;
             if ((uint)startIndex > (uint)currentLength)
             {
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
             if (count < 0 || startIndex > currentLength - count)
             {
-                throw new ArgumentOutOfRangeException("count", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("count", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
             if (oldValue == null)
             {
@@ -1709,7 +1709,7 @@ namespace CSTest._08_String._02_StringBuilder
             }
             if (oldValue.Length == 0)
             {
-                throw new ArgumentException(Environment.GetResourceString("Argument_EmptyName"), "oldValue");
+                throw new ArgumentException(EnvironmentNET.GetResourceString("Argument_EmptyName"), "oldValue");
             }
 
             if (newValue == null)
@@ -1786,12 +1786,12 @@ namespace CSTest._08_String._02_StringBuilder
             int currentLength = Length;
             if ((uint)startIndex > (uint)currentLength)
             {
-                throw new ArgumentOutOfRangeException("startIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("startIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
             if (count < 0 || startIndex > currentLength - count)
             {
-                throw new ArgumentOutOfRangeException("count", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                throw new ArgumentOutOfRangeException("count", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
             }
 
             int endIndex = startIndex + count;
@@ -1840,7 +1840,7 @@ namespace CSTest._08_String._02_StringBuilder
             // We don't check null value as this case will throw null reference exception anyway
             if (valueCount < 0)
             {
-                throw new ArgumentOutOfRangeException("valueCount", Environment.GetResourceString("ArgumentOutOfRange_NegativeCount"));
+                throw new ArgumentOutOfRangeException("valueCount", EnvironmentNET.GetResourceString("ArgumentOutOfRange_NegativeCount"));
             }
 
             // This case is so common we want to optimize for it heavily. 
@@ -1878,7 +1878,7 @@ namespace CSTest._08_String._02_StringBuilder
         //    // We don't check null value as this case will throw null reference exception anyway
         //    if (valueCount < 0)
         //    {
-        //        throw new ArgumentOutOfRangeException("valueCount", Environment.GetResourceString("ArgumentOutOfRange_NegativeCount"));
+        //        throw new ArgumentOutOfRangeException("valueCount", EnvironmentNET.GetResourceString("ArgumentOutOfRange_NegativeCount"));
         //    }
 
         //    // This case is so common we want to optimize for it heavily. 
@@ -1919,7 +1919,7 @@ namespace CSTest._08_String._02_StringBuilder
         //{
         //    if ((uint)index > (uint)Length)
         //    {
-        //        throw new ArgumentOutOfRangeException("index", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+        //        throw new ArgumentOutOfRangeException("index", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
         //    }
 
         //    if (valueCount > 0)
@@ -2070,7 +2070,7 @@ namespace CSTest._08_String._02_StringBuilder
         //        }
         //        else
         //        {
-        //            throw new ArgumentOutOfRangeException("destinationIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+        //            throw new ArgumentOutOfRangeException("destinationIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
         //        }
         //    }
         //}
@@ -2098,7 +2098,7 @@ namespace CSTest._08_String._02_StringBuilder
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("destinationIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                    throw new ArgumentOutOfRangeException("destinationIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
                 }
             }
         }
@@ -2120,7 +2120,7 @@ namespace CSTest._08_String._02_StringBuilder
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("sourceIndex", Environment.GetResourceString("ArgumentOutOfRange_Index"));
+                    throw new ArgumentOutOfRangeException("sourceIndex", EnvironmentNET.GetResourceString("ArgumentOutOfRange_Index"));
                 }
             }
         }
@@ -2218,7 +2218,7 @@ namespace CSTest._08_String._02_StringBuilder
             VerifyClassInvariant();
 
             if ((minBlockCharCount + Length) > m_MaxCapacity)
-                throw new ArgumentOutOfRangeException("requiredLength", Environment.GetResourceString("ArgumentOutOfRange_SmallCapacity"));
+                throw new ArgumentOutOfRangeException("requiredLength", EnvironmentNET.GetResourceString("ArgumentOutOfRange_SmallCapacity"));
 
             // Compute the length of the new block we need 
             // We make the new chunk at least big enough for the current need (minBlockCharCount)
@@ -2278,7 +2278,7 @@ namespace CSTest._08_String._02_StringBuilder
             Contract.Assert(count > 0, "Count must be strictly positive");
             Contract.Assert(index >= 0, "Index can't be negative");
             if (count + Length > m_MaxCapacity)
-                throw new ArgumentOutOfRangeException("requiredLength", Environment.GetResourceString("ArgumentOutOfRange_SmallCapacity"));
+                throw new ArgumentOutOfRangeException("requiredLength", EnvironmentNET.GetResourceString("ArgumentOutOfRange_SmallCapacity"));
 
             chunk = this;
             while (chunk.m_ChunkOffset > index)

@@ -1,5 +1,4 @@
-﻿using CSTest._04_Class._07_Inheritance;
-using CSTest._04_Class._07_Inheritance.Setup;
+﻿using CSTest._04_Class._07_Inheritance.Setup;
 using NUnit.Framework;
 
 namespace CSTest._01_Elements_CS._05_RTTI
@@ -64,6 +63,5 @@ namespace CSTest._01_Elements_CS._05_RTTI
                 instanceDown.Method();
             }
         }
-
     }
 }

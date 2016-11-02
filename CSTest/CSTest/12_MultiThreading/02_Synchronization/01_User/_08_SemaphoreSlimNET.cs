@@ -894,7 +894,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
         /// <param name="str">The key string</param>
         private static string GetResourceString(string str)
         {
-            return _30_NET_Code.Environment.GetResourceString(str);
+            return _30_NET_Code.EnvironmentNET.GetResourceString(str);
         }
         #endregion
     }

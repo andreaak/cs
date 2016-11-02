@@ -28,7 +28,7 @@ namespace CSTest._30_NET_Code
                 return false;
             if (x is string && y is string)
                 return this.Equals((string)x, (string)y);
-            ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidArgumentForComparison);
+            ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidArgumentForComparison);
             return false;
         }
 

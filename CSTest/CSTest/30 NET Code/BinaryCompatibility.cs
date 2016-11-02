@@ -364,7 +364,7 @@
 //            }
 //            if (frameworkName.Length == 0)
 //            {
-//                throw new ArgumentException(Environment.GetResourceString("Argument_StringZeroLength"), "frameworkName");
+//                throw new ArgumentException(EnvironmentNET.GetResourceString("Argument_StringZeroLength"), "frameworkName");
 //            }
 //            Contract.EndContractBlock();
 
@@ -374,7 +374,7 @@
 //            // Identifer and Version are required, Profile is optional.
 //            if (components.Length < 2 || components.Length > 3)
 //            {
-//                throw new ArgumentException(Environment.GetResourceString("Argument_FrameworkNameTooShort"), "frameworkName");
+//                throw new ArgumentException(EnvironmentNET.GetResourceString("Argument_FrameworkNameTooShort"), "frameworkName");
 //            }
 
 //            //
@@ -384,7 +384,7 @@
 
 //            if (identifier.Length == 0)
 //            {
-//                throw new ArgumentException(Environment.GetResourceString("Argument_FrameworkNameInvalid"), "frameworkName");
+//                throw new ArgumentException(EnvironmentNET.GetResourceString("Argument_FrameworkNameInvalid"), "frameworkName");
 //            }
 
 //            bool versionFound = false;
@@ -400,7 +400,7 @@
 
 //                if (keyValuePair.Length != 2)
 //                {
-//                    throw new ArgumentException(Environment.GetResourceString("SR.Argument_FrameworkNameInvalid"), "frameworkName");
+//                    throw new ArgumentException(EnvironmentNET.GetResourceString("SR.Argument_FrameworkNameInvalid"), "frameworkName");
 //                }
 
 //                // Get the key and value, trimming any whitespace
@@ -439,13 +439,13 @@
 //                }
 //                else
 //                {
-//                    throw new ArgumentException(Environment.GetResourceString("Argument_FrameworkNameInvalid"), "frameworkName");
+//                    throw new ArgumentException(EnvironmentNET.GetResourceString("Argument_FrameworkNameInvalid"), "frameworkName");
 //                }
 //            }
 
 //            if (!versionFound)
 //            {
-//                throw new ArgumentException(Environment.GetResourceString("Argument_FrameworkNameMissingVersion"), "frameworkName");
+//                throw new ArgumentException(EnvironmentNET.GetResourceString("Argument_FrameworkNameMissingVersion"), "frameworkName");
 //            }
 //        }
 

@@ -6,13 +6,13 @@ namespace CSTest._30_NET_Code
     internal static class TimeoutHelper
     {
         /// <summary>
-        /// Returns the Environment.TickCount as a start time in milliseconds as a uint, TickCount tools over from postive to negative every ~ 25 days
+        /// Returns the EnvironmentNET.TickCount as a start time in milliseconds as a uint, TickCount tools over from postive to negative every ~ 25 days
         /// then ~25 days to back to positive again, uint is sued to ignore the sign and double the range to 50 days
         /// </summary>
         /// <returns></returns>
         public static uint GetTime()
         {
-            return (uint) CSTest._30_NET_Code.Environment.TickCount;
+            return (uint) CSTest._30_NET_Code.EnvironmentNET.TickCount;
         }
 
         /// <summary>

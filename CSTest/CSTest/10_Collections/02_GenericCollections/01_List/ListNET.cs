@@ -54,8 +54,8 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         public List2(int capacity)
         {
             if (capacity < 0)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.capacity,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.capacity,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             Contract.EndContractBlock();
 
             if (capacity == 0)
@@ -71,7 +71,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         public List2(IEnumerable<T> collection)
         {
             if (collection == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.collection);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.collection);
             Contract.EndContractBlock();
 
             ICollection<T> c = collection as ICollection<T>;
@@ -121,8 +121,8 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             {
                 if (value < _size)
                 {
-                    ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.value,
-                        ExceptionResource.ArgumentOutOfRange_SmallCapacity);
+                    ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.value,
+                        ExceptionResourceNET.ArgumentOutOfRange_SmallCapacity);
                 }
                 Contract.EndContractBlock();
 
@@ -200,7 +200,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
                 // Following trick can reduce the range check by one
                 if ((uint) index >= (uint) _size)
                 {
-                    ThrowHelper.ThrowArgumentOutOfRangeException();
+                    ThrowHelperNET.ThrowArgumentOutOfRangeException();
                 }
                 Contract.EndContractBlock();
                 return _items[index];
@@ -210,7 +210,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             {
                 if ((uint) index >= (uint) _size)
                 {
-                    ThrowHelper.ThrowArgumentOutOfRangeException();
+                    ThrowHelperNET.ThrowArgumentOutOfRangeException();
                 }
                 Contract.EndContractBlock();
                 _items[index] = value;
@@ -230,7 +230,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             get { return this[index]; }
             set
             {
-                ThrowHelper.IfNullAndNullsAreIllegalThenThrow<T>(value, ExceptionArgument.value);
+                ThrowHelperNET.IfNullAndNullsAreIllegalThenThrow<T>(value, ExceptionArgumentNET.value);
 
                 try
                 {
@@ -238,7 +238,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
                 }
                 catch (InvalidCastException)
                 {
-                    ThrowHelper.ThrowWrongValueTypeArgumentException(value, typeof(T));
+                    ThrowHelperNET.ThrowWrongValueTypeArgumentException(value, typeof(T));
                 }
             }
         }
@@ -256,7 +256,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
 
         int System.Collections.IList.Add(Object item)
         {
-            ThrowHelper.IfNullAndNullsAreIllegalThenThrow<T>(item, ExceptionArgument.item);
+            ThrowHelperNET.IfNullAndNullsAreIllegalThenThrow<T>(item, ExceptionArgumentNET.item);
 
             try
             {
@@ -264,7 +264,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             }
             catch (InvalidCastException)
             {
-                ThrowHelper.ThrowWrongValueTypeArgumentException(item, typeof(T));
+                ThrowHelperNET.ThrowWrongValueTypeArgumentException(item, typeof(T));
             }
 
             return Count - 1;
@@ -311,13 +311,13 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         public int BinarySearch(int index, int count, T item, IComparer<T> comparer)
         {
             if (index < 0)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             if (count < 0)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             if (_size - index < count)
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidOffLen);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidOffLen);
             Contract.Ensures(Contract.Result<int>() <= index + count);
             Contract.EndContractBlock();
 
@@ -386,7 +386,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (converter == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.converter);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.converter);
             }
             // @
 
@@ -417,7 +417,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if ((array != null) && (array.Rank != 1))
             {
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_RankMultiDimNotSupported);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_RankMultiDimNotSupported);
             }
             Contract.EndContractBlock();
 
@@ -428,7 +428,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             }
             catch (ArrayTypeMismatchException)
             {
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidArrayType);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidArrayType);
             }
         }
 
@@ -440,7 +440,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (_size - index < count)
             {
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidOffLen);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidOffLen);
             }
             Contract.EndContractBlock();
 
@@ -480,7 +480,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (match == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.match);
             }
             Contract.EndContractBlock();
 
@@ -498,7 +498,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (match == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.match);
             }
             Contract.EndContractBlock();
 
@@ -531,19 +531,19 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if ((uint) startIndex > (uint) _size)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.startIndex,
-                    ExceptionResource.ArgumentOutOfRange_Index);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.startIndex,
+                    ExceptionResourceNET.ArgumentOutOfRange_Index);
             }
 
             if (count < 0 || startIndex > _size - count)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_Count);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_Count);
             }
 
             if (match == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.match);
             }
             Contract.Ensures(Contract.Result<int>() >= -1);
             Contract.Ensures(Contract.Result<int>() < startIndex + count);
@@ -561,7 +561,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (match == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.match);
             }
             Contract.EndContractBlock();
 
@@ -593,7 +593,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (match == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.match);
             }
             Contract.Ensures(Contract.Result<int>() >= -1);
             Contract.Ensures(Contract.Result<int>() <= startIndex);
@@ -604,8 +604,8 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
                 // Special case for 0 length List
                 if (startIndex != -1)
                 {
-                    ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.startIndex,
-                        ExceptionResource.ArgumentOutOfRange_Index);
+                    ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.startIndex,
+                        ExceptionResourceNET.ArgumentOutOfRange_Index);
                 }
             }
             else
@@ -613,16 +613,16 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
                 // Make sure we're not out of range            
                 if ((uint) startIndex >= (uint) _size)
                 {
-                    ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.startIndex,
-                        ExceptionResource.ArgumentOutOfRange_Index);
+                    ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.startIndex,
+                        ExceptionResourceNET.ArgumentOutOfRange_Index);
                 }
             }
 
             // 2nd have of this also catches when startIndex == MAXINT, so MAXINT - 0 + 1 == -1, which is < 0.
             if (count < 0 || startIndex - count + 1 < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_Count);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_Count);
             }
 
             int endIndex = startIndex - count;
@@ -640,7 +640,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (action == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.match);
             }
             Contract.EndContractBlock();
 
@@ -656,7 +656,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             }
 
             if (version != _version /*&& BinaryCompatibility.TargetsAtLeast_Desktop_V4_5*/)
-                ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumFailedVersion);
+                ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumFailedVersion);
         }
 
         // Returns an enumerator for this list with the given
@@ -684,19 +684,19 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (index < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
 
             if (count < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
 
             if (_size - index < count)
             {
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidOffLen);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidOffLen);
             }
             Contract.Ensures(Contract.Result<List<T>>() != null);
             Contract.EndContractBlock();
@@ -744,8 +744,8 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         public int IndexOf(T item, int index)
         {
             if (index > _size)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_Index);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_Index);
             Contract.Ensures(Contract.Result<int>() >= -1);
             Contract.Ensures(Contract.Result<int>() < Count);
             Contract.EndContractBlock();
@@ -764,12 +764,12 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         public int IndexOf(T item, int index, int count)
         {
             if (index > _size)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_Index);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_Index);
 
             if (count < 0 || index > _size - count)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_Count);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_Count);
             Contract.Ensures(Contract.Result<int>() >= -1);
             Contract.Ensures(Contract.Result<int>() < Count);
             Contract.EndContractBlock();
@@ -786,8 +786,8 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             // Note that insertions at the end are legal.
             if ((uint) index > (uint) _size)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_ListInsert);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_ListInsert);
             }
             Contract.EndContractBlock();
             if (_size == _items.Length) EnsureCapacity(_size + 1);
@@ -802,7 +802,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
 
         void System.Collections.IList.Insert(int index, Object item)
         {
-            ThrowHelper.IfNullAndNullsAreIllegalThenThrow<T>(item, ExceptionArgument.item);
+            ThrowHelperNET.IfNullAndNullsAreIllegalThenThrow<T>(item, ExceptionArgumentNET.item);
 
             try
             {
@@ -810,7 +810,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             }
             catch (InvalidCastException)
             {
-                ThrowHelper.ThrowWrongValueTypeArgumentException(item, typeof(T));
+                ThrowHelperNET.ThrowWrongValueTypeArgumentException(item, typeof(T));
             }
         }
 
@@ -823,13 +823,13 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (collection == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.collection);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.collection);
             }
 
             if ((uint) index > (uint) _size)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_Index);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_Index);
             }
             Contract.EndContractBlock();
 
@@ -911,8 +911,8 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         public int LastIndexOf(T item, int index)
         {
             if (index >= _size)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_Index);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_Index);
             Contract.Ensures(Contract.Result<int>() >= -1);
             Contract.Ensures(((Count == 0) && (Contract.Result<int>() == -1)) ||
                              ((Count > 0) && (Contract.Result<int>() <= index)));
@@ -933,14 +933,14 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if ((Count != 0) && (index < 0))
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
 
             if ((Count != 0) && (count < 0))
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
             Contract.Ensures(Contract.Result<int>() >= -1);
             Contract.Ensures(((Count == 0) && (Contract.Result<int>() == -1)) ||
@@ -955,14 +955,14 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
 
             if (index >= _size)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_BiggerThanCollection);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_BiggerThanCollection);
             }
 
             if (count > index + 1)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_BiggerThanCollection);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_BiggerThanCollection);
             }
 
             return Array.LastIndexOf(_items, item, index, count);
@@ -997,7 +997,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (match == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.match);
             }
             Contract.Ensures(Contract.Result<int>() >= 0);
             Contract.Ensures(Contract.Result<int>() <= Contract.OldValue(Count));
@@ -1036,7 +1036,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if ((uint) index >= (uint) _size)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException();
+                ThrowHelperNET.ThrowArgumentOutOfRangeException();
             }
             Contract.EndContractBlock();
             _size--;
@@ -1054,18 +1054,18 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (index < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
 
             if (count < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
 
             if (_size - index < count)
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidOffLen);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidOffLen);
             Contract.EndContractBlock();
 
             if (count > 0)
@@ -1099,18 +1099,18 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (index < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
 
             if (count < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
 
             if (_size - index < count)
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidOffLen);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidOffLen);
             Contract.EndContractBlock();
             Array.Reverse(_items, index, count);
             _version++;
@@ -1142,18 +1142,18 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (index < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
 
             if (count < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.count,
-                    ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.count,
+                    ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             }
 
             if (_size - index < count)
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidOffLen);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidOffLen);
             Contract.EndContractBlock();
 
             Array.Sort<T>(_items, index, count, comparer);
@@ -1164,7 +1164,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (comparison == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.match);
             }
             Contract.EndContractBlock();
 
@@ -1209,7 +1209,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         {
             if (match == null)
             {
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.match);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.match);
             }
             Contract.EndContractBlock();
 
@@ -1393,7 +1393,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             {
                 if (version != list._version)
                 {
-                    ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumFailedVersion);
+                    ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumFailedVersion);
                 }
 
                 index = list._size + 1;
@@ -1412,7 +1412,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
                 {
                     if (index == 0 || index == list._size + 1)
                     {
-                        ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumOpCantHappen);
+                        ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumOpCantHappen);
                     }
                     return Current;
                 }
@@ -1422,7 +1422,7 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             {
                 if (version != list._version)
                 {
-                    ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumFailedVersion);
+                    ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumFailedVersion);
                 }
 
                 index = 0;

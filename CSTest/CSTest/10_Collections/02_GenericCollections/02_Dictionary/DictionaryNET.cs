@@ -178,7 +178,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 int entry = this.FindEntry(key);
                 if (entry >= 0)
                     return this.entries[entry].value;
-                ThrowHelper.ThrowKeyNotFoundException();
+                ThrowHelperNET.ThrowKeyNotFoundException();
                 return default(TValue);
             }
             //[__DynamicallyInvokable]
@@ -278,8 +278,8 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             set
             {
                 if (key == null)
-                    ThrowHelper.ThrowArgumentNullException(ExceptionArgument.key);
-                ThrowHelper.IfNullAndNullsAreIllegalThenThrow<TValue>(value, ExceptionArgument.value);
+                    ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.key);
+                ThrowHelperNET.IfNullAndNullsAreIllegalThenThrow<TValue>(value, ExceptionArgumentNET.value);
                 try
                 {
                     TKey index = (TKey)key;
@@ -289,12 +289,12 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                     }
                     catch (InvalidCastException ex)
                     {
-                        ThrowHelper.ThrowWrongValueTypeArgumentException(value, typeof(TValue));
+                        ThrowHelperNET.ThrowWrongValueTypeArgumentException(value, typeof(TValue));
                     }
                 }
                 catch (InvalidCastException ex)
                 {
-                    ThrowHelper.ThrowWrongKeyTypeArgumentException(key, typeof(TKey));
+                    ThrowHelperNET.ThrowWrongKeyTypeArgumentException(key, typeof(TKey));
                 }
             }
         }
@@ -336,7 +336,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         public DictionaryNET(int capacity, IEqualityComparer<TKey> comparer)
         {
             if (capacity < 0)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.capacity);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.capacity);
             if (capacity > 0)
                 this.Initialize(capacity);
             this.comparer = comparer ?? (IEqualityComparer<TKey>)EqualityComparer<TKey>.Default;
@@ -361,7 +361,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
           : this(dictionary != null ? dictionary.Count : 0, comparer)
         {
             if (dictionary == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.dictionary);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.dictionary);
             foreach (KeyValuePair<TKey, TValue> keyValuePair in (IEnumerable<KeyValuePair<TKey, TValue>>)dictionary)
                 this.Add(keyValuePair.Key, keyValuePair.Value);
         }
@@ -473,11 +473,11 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         private void CopyTo(KeyValuePair<TKey, TValue>[] array, int index)
         {
             if (array == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.array);
             if (index < 0 || index > array.Length)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index, ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             if (array.Length - index < this.Count)
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_ArrayPlusOffTooSmall);
             int num = this.count;
             DictionaryNET<TKey, TValue>.Entry[] entryArray = this.entries;
             for (int index1 = 0; index1 < num; ++index1)
@@ -514,7 +514,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             if (info == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.info);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.info);
             info.AddValue("Version", this.version);
             info.AddValue("Comparer", HashHelpers.GetEqualityComparerForSerialization((object)this.comparer), typeof(IEqualityComparer<TKey>));
             info.AddValue("HashSize", this.buckets == null ? 0 : this.buckets.Length);
@@ -528,7 +528,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         private int FindEntry(TKey key)
         {
             if ((object)key == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.key);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.key);
             if (this.buckets != null)
             {
                 int num = this.comparer.GetHashCode(key) & int.MaxValue;
@@ -554,7 +554,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         private void Insert(TKey key, TValue value, bool add)
         {
             if ((object)key == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.key);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.key);
             if (this.buckets == null)
                 this.Initialize(0);
             int num1 = this.comparer.GetHashCode(key) & int.MaxValue;
@@ -565,7 +565,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 if (this.entries[index2].hashCode == num1 && this.comparer.Equals(this.entries[index2].key, key))
                 {
                     if (add)
-                        ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_AddingDuplicate);
+                        ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_AddingDuplicate);
                     this.entries[index2].value = value;
                     this.version = this.version + 1;
                     return;
@@ -623,11 +623,11 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 this.freeList = -1;
                 KeyValuePair<TKey, TValue>[] keyValuePairArray = (KeyValuePair<TKey, TValue>[])serializationInfo.GetValue("KeyValuePairs", typeof(KeyValuePair<TKey, TValue>[]));
                 if (keyValuePairArray == null)
-                    ThrowHelper.ThrowSerializationException(ExceptionResource.Serialization_MissingKeys);
+                    ThrowHelperNET.ThrowSerializationException(ExceptionResourceNET.Serialization_MissingKeys);
                 for (int index = 0; index < keyValuePairArray.Length; ++index)
                 {
                     if ((object)keyValuePairArray[index].Key == null)
-                        ThrowHelper.ThrowSerializationException(ExceptionResource.Serialization_NullKey);
+                        ThrowHelperNET.ThrowSerializationException(ExceptionResourceNET.Serialization_NullKey);
                     this.Insert(keyValuePairArray[index].Key, keyValuePairArray[index].Value, true);
                 }
             }
@@ -682,7 +682,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         public bool Remove(TKey key)
         {
             if ((object)key == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.key);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.key);
             if (this.buckets != null)
             {
                 int num = this.comparer.GetHashCode(key) & int.MaxValue;
@@ -750,15 +750,15 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         void ICollection.CopyTo(Array array, int index)
         {
             if (array == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.array);
             if (array.Rank != 1)
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_RankMultiDimNotSupported);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_RankMultiDimNotSupported);
             if (array.GetLowerBound(0) != 0)
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_NonZeroLowerBound);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_NonZeroLowerBound);
             if (index < 0 || index > array.Length)
-                ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index, ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
             if (array.Length - index < this.Count)
-                ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
+                ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_ArrayPlusOffTooSmall);
             KeyValuePair<TKey, TValue>[] array1 = array as KeyValuePair<TKey, TValue>[];
             if (array1 != null)
                 this.CopyTo(array1, index);
@@ -776,7 +776,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             {
                 object[] objArray = array as object[];
                 if (objArray == null)
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidArrayType);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidArrayType);
                 try
                 {
                     int num = this.count;
@@ -789,7 +789,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 }
                 catch (ArrayTypeMismatchException ex)
                 {
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidArrayType);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidArrayType);
                 }
             }
         }
@@ -803,7 +803,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         private static bool IsCompatibleKey(object key)
         {
             if (key == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.key);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.key);
             return key is TKey;
         }
 
@@ -811,8 +811,8 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         void IDictionary.Add(object key, object value)
         {
             if (key == null)
-                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.key);
-            ThrowHelper.IfNullAndNullsAreIllegalThenThrow<TValue>(value, ExceptionArgument.value);
+                ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.key);
+            ThrowHelperNET.IfNullAndNullsAreIllegalThenThrow<TValue>(value, ExceptionArgumentNET.value);
             try
             {
                 TKey key1 = (TKey)key;
@@ -822,12 +822,12 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 }
                 catch (InvalidCastException ex)
                 {
-                    ThrowHelper.ThrowWrongValueTypeArgumentException(value, typeof(TValue));
+                    ThrowHelperNET.ThrowWrongValueTypeArgumentException(value, typeof(TValue));
                 }
             }
             catch (InvalidCastException ex)
             {
-                ThrowHelper.ThrowWrongKeyTypeArgumentException(key, typeof(TKey));
+                ThrowHelperNET.ThrowWrongKeyTypeArgumentException(key, typeof(TKey));
             }
         }
 
@@ -900,7 +900,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 get
                 {
                     if (this.index == 0 || this.index == this.dictionary.count + 1)
-                        ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumOpCantHappen);
+                        ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumOpCantHappen);
                     if (this.getEnumeratorRetType == 1)
                         return (object)new DictionaryEntry((object)this.current.Key, (object)this.current.Value);
                     return (object)new KeyValuePair<TKey, TValue>(this.current.Key, this.current.Value);
@@ -914,7 +914,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 get
                 {
                     if (this.index == 0 || this.index == this.dictionary.count + 1)
-                        ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumOpCantHappen);
+                        ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumOpCantHappen);
                     return new DictionaryEntry((object)this.current.Key, (object)this.current.Value);
                 }
             }
@@ -926,7 +926,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 get
                 {
                     if (this.index == 0 || this.index == this.dictionary.count + 1)
-                        ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumOpCantHappen);
+                        ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumOpCantHappen);
                     return (object)this.current.Key;
                 }
             }
@@ -938,7 +938,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 get
                 {
                     if (this.index == 0 || this.index == this.dictionary.count + 1)
-                        ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumOpCantHappen);
+                        ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumOpCantHappen);
                     return (object)this.current.Value;
                 }
             }
@@ -964,7 +964,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             public bool MoveNext()
             {
                 if (this.version != this.dictionary.version)
-                    ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumFailedVersion);
+                    ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumFailedVersion);
                 for (; (uint)this.index < (uint)this.dictionary.count; this.index = this.index + 1)
                 {
                     if (this.dictionary.entries[this.index].hashCode >= 0)
@@ -991,7 +991,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             void IEnumerator.Reset()
             {
                 if (this.version != this.dictionary.version)
-                    ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumFailedVersion);
+                    ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumFailedVersion);
                 this.index = 0;
                 this.current = new KeyValuePair<TKey, TValue>();
             }
@@ -1063,7 +1063,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             public KeyCollection(DictionaryNET<TKey, TValue> dictionary)
             {
                 if (dictionary == null)
-                    ThrowHelper.ThrowArgumentNullException(ExceptionArgument.dictionary);
+                    ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.dictionary);
                 this.dictionary = dictionary;
             }
 
@@ -1088,11 +1088,11 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             public void CopyTo(TKey[] array, int index)
             {
                 if (array == null)
-                    ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
+                    ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.array);
                 if (index < 0 || index > array.Length)
-                    ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                    ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index, ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
                 if (array.Length - index < this.dictionary.Count)
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_ArrayPlusOffTooSmall);
                 int num = this.dictionary.count;
                 DictionaryNET<TKey, TValue>.Entry[] entryArray = this.dictionary.entries;
                 for (int index1 = 0; index1 < num; ++index1)
@@ -1105,13 +1105,13 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             //[__DynamicallyInvokable]
             void ICollection<TKey>.Add(TKey item)
             {
-                ThrowHelper.ThrowNotSupportedException(ExceptionResource.NotSupported_KeyCollectionSet);
+                ThrowHelperNET.ThrowNotSupportedException(ExceptionResourceNET.NotSupported_KeyCollectionSet);
             }
 
             //[__DynamicallyInvokable]
             void ICollection<TKey>.Clear()
             {
-                ThrowHelper.ThrowNotSupportedException(ExceptionResource.NotSupported_KeyCollectionSet);
+                ThrowHelperNET.ThrowNotSupportedException(ExceptionResourceNET.NotSupported_KeyCollectionSet);
             }
 
             //[__DynamicallyInvokable]
@@ -1123,7 +1123,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             //[__DynamicallyInvokable]
             bool ICollection<TKey>.Remove(TKey item)
             {
-                ThrowHelper.ThrowNotSupportedException(ExceptionResource.NotSupported_KeyCollectionSet);
+                ThrowHelperNET.ThrowNotSupportedException(ExceptionResourceNET.NotSupported_KeyCollectionSet);
                 return false;
             }
 
@@ -1143,15 +1143,15 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             void ICollection.CopyTo(Array array, int index)
             {
                 if (array == null)
-                    ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
+                    ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.array);
                 if (array.Rank != 1)
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_RankMultiDimNotSupported);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_RankMultiDimNotSupported);
                 if (array.GetLowerBound(0) != 0)
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_NonZeroLowerBound);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_NonZeroLowerBound);
                 if (index < 0 || index > array.Length)
-                    ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                    ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index, ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
                 if (array.Length - index < this.dictionary.Count)
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_ArrayPlusOffTooSmall);
                 TKey[] array1 = array as TKey[];
                 if (array1 != null)
                 {
@@ -1161,7 +1161,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 {
                     object[] objArray = array as object[];
                     if (objArray == null)
-                        ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidArrayType);
+                        ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidArrayType);
                     int num = this.dictionary.count;
                     DictionaryNET<TKey, TValue>.Entry[] entryArray = this.dictionary.entries;
                     try
@@ -1174,7 +1174,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                     }
                     catch (ArrayTypeMismatchException ex)
                     {
-                        ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidArrayType);
+                        ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidArrayType);
                     }
                 }
             }
@@ -1215,7 +1215,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                     get
                     {
                         if (this.index == 0 || this.index == this.dictionary.count + 1)
-                            ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumOpCantHappen);
+                            ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumOpCantHappen);
                         return (object)this.currentKey;
                     }
                 }
@@ -1248,7 +1248,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 public bool MoveNext()
                 {
                     if (this.version != this.dictionary.version)
-                        ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumFailedVersion);
+                        ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumFailedVersion);
                     for (; (uint)this.index < (uint)this.dictionary.count; this.index = this.index + 1)
                     {
                         if (this.dictionary.entries[this.index].hashCode >= 0)
@@ -1267,7 +1267,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 void IEnumerator.Reset()
                 {
                     if (this.version != this.dictionary.version)
-                        ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumFailedVersion);
+                        ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumFailedVersion);
                     this.index = 0;
                     this.currentKey = default(TKey);
                 }
@@ -1340,7 +1340,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             public ValueCollection(DictionaryNET<TKey, TValue> dictionary)
             {
                 if (dictionary == null)
-                    ThrowHelper.ThrowArgumentNullException(ExceptionArgument.dictionary);
+                    ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.dictionary);
                 this.dictionary = dictionary;
             }
 
@@ -1365,11 +1365,11 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             public void CopyTo(TValue[] array, int index)
             {
                 if (array == null)
-                    ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
+                    ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.array);
                 if (index < 0 || index > array.Length)
-                    ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                    ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index, ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
                 if (array.Length - index < this.dictionary.Count)
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_ArrayPlusOffTooSmall);
                 int num = this.dictionary.count;
                 DictionaryNET<TKey, TValue>.Entry[] entryArray = this.dictionary.entries;
                 for (int index1 = 0; index1 < num; ++index1)
@@ -1382,20 +1382,20 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             //[__DynamicallyInvokable]
             void ICollection<TValue>.Add(TValue item)
             {
-                ThrowHelper.ThrowNotSupportedException(ExceptionResource.NotSupported_ValueCollectionSet);
+                ThrowHelperNET.ThrowNotSupportedException(ExceptionResourceNET.NotSupported_ValueCollectionSet);
             }
 
             //[__DynamicallyInvokable]
             bool ICollection<TValue>.Remove(TValue item)
             {
-                ThrowHelper.ThrowNotSupportedException(ExceptionResource.NotSupported_ValueCollectionSet);
+                ThrowHelperNET.ThrowNotSupportedException(ExceptionResourceNET.NotSupported_ValueCollectionSet);
                 return false;
             }
 
             //[__DynamicallyInvokable]
             void ICollection<TValue>.Clear()
             {
-                ThrowHelper.ThrowNotSupportedException(ExceptionResource.NotSupported_ValueCollectionSet);
+                ThrowHelperNET.ThrowNotSupportedException(ExceptionResourceNET.NotSupported_ValueCollectionSet);
             }
 
             //[__DynamicallyInvokable]
@@ -1420,15 +1420,15 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             void ICollection.CopyTo(Array array, int index)
             {
                 if (array == null)
-                    ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
+                    ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.array);
                 if (array.Rank != 1)
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_RankMultiDimNotSupported);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_RankMultiDimNotSupported);
                 if (array.GetLowerBound(0) != 0)
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_NonZeroLowerBound);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_NonZeroLowerBound);
                 if (index < 0 || index > array.Length)
-                    ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.index, ExceptionResource.ArgumentOutOfRange_NeedNonNegNum);
+                    ThrowHelperNET.ThrowArgumentOutOfRangeException(ExceptionArgumentNET.index, ExceptionResourceNET.ArgumentOutOfRange_NeedNonNegNum);
                 if (array.Length - index < this.dictionary.Count)
-                    ThrowHelper.ThrowArgumentException(ExceptionResource.Arg_ArrayPlusOffTooSmall);
+                    ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Arg_ArrayPlusOffTooSmall);
                 TValue[] array1 = array as TValue[];
                 if (array1 != null)
                 {
@@ -1438,7 +1438,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 {
                     object[] objArray = array as object[];
                     if (objArray == null)
-                        ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidArrayType);
+                        ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidArrayType);
                     int num = this.dictionary.count;
                     DictionaryNET<TKey, TValue>.Entry[] entryArray = this.dictionary.entries;
                     try
@@ -1451,7 +1451,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                     }
                     catch (ArrayTypeMismatchException ex)
                     {
-                        ThrowHelper.ThrowArgumentException(ExceptionResource.Argument_InvalidArrayType);
+                        ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_InvalidArrayType);
                     }
                 }
             }
@@ -1492,7 +1492,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                     get
                     {
                         if (this.index == 0 || this.index == this.dictionary.count + 1)
-                            ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumOpCantHappen);
+                            ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumOpCantHappen);
                         return (object)this.currentValue;
                     }
                 }
@@ -1525,7 +1525,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 public bool MoveNext()
                 {
                     if (this.version != this.dictionary.version)
-                        ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumFailedVersion);
+                        ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumFailedVersion);
                     for (; (uint)this.index < (uint)this.dictionary.count; this.index = this.index + 1)
                     {
                         if (this.dictionary.entries[this.index].hashCode >= 0)
@@ -1544,7 +1544,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 void IEnumerator.Reset()
                 {
                     if (this.version != this.dictionary.version)
-                        ThrowHelper.ThrowInvalidOperationException(ExceptionResource.InvalidOperation_EnumFailedVersion);
+                        ThrowHelperNET.ThrowInvalidOperationException(ExceptionResourceNET.InvalidOperation_EnumFailedVersion);
                     this.index = 0;
                     this.currentValue = default(TValue);
                 }
