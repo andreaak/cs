@@ -17,7 +17,7 @@ using System.Threading;
 namespace CSTest._30_NET_Code
 {
     ///[FriendAccessAllowed]
-    internal static class HashHelpers
+    internal static class HashHelpersNET
     {
         public const int HashCollisionThreshold = 100;
         public static bool s_UseRandomizedStringHashing;
@@ -34,12 +34,12 @@ namespace CSTest._30_NET_Code
         {
             get
             {
-                if (HashHelpers.s_SerializationInfoTable == null)
+                if (HashHelpersNET.s_SerializationInfoTable == null)
                 {
                     ConditionalWeakTable<object, SerializationInfo> conditionalWeakTable = new ConditionalWeakTable<object, SerializationInfo>();
-                    Interlocked.CompareExchange<ConditionalWeakTable<object, SerializationInfo>>(ref HashHelpers.s_SerializationInfoTable, conditionalWeakTable, (ConditionalWeakTable<object, SerializationInfo>)null);
+                    Interlocked.CompareExchange<ConditionalWeakTable<object, SerializationInfo>>(ref HashHelpersNET.s_SerializationInfoTable, conditionalWeakTable, (ConditionalWeakTable<object, SerializationInfo>)null);
                 }
-                return HashHelpers.s_SerializationInfoTable;
+                return HashHelpersNET.s_SerializationInfoTable;
             }
         }
 
@@ -69,10 +69,10 @@ namespace CSTest._30_NET_Code
         }
 
 
-        static HashHelpers()
+        static HashHelpersNET()
         {
-            HashHelpers.s_UseRandomizedStringHashing = UseRandomizedHashing();
-            HashHelpers.primes = new int[72]
+            HashHelpersNET.s_UseRandomizedStringHashing = UseRandomizedHashing();
+            HashHelpersNET.primes = new int[72]
             {
         3,
         7,
@@ -147,8 +147,8 @@ namespace CSTest._30_NET_Code
         5999471,
         7199369
             };
-            HashHelpers.currentIndex = 1024;
-            HashHelpers.lockObj = new object();
+            HashHelpersNET.currentIndex = 1024;
+            HashHelpersNET.lockObj = new object();
         }
 
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
@@ -172,16 +172,16 @@ namespace CSTest._30_NET_Code
         {
             if (min < 0)
                 throw new ArgumentException(CSTest._30_NET_Code.EnvironmentNET.GetResourceString("Arg_HTCapacityOverflow"));
-            for (int index = 0; index < HashHelpers.primes.Length; ++index)
+            for (int index = 0; index < HashHelpersNET.primes.Length; ++index)
             {
-                int num = HashHelpers.primes[index];
+                int num = HashHelpersNET.primes[index];
                 if (num >= min)
                     return num;
             }
             int candidate = min | 1;
             while (candidate < int.MaxValue)
             {
-                if (HashHelpers.IsPrime(candidate) && (candidate - 1) % 101 != 0)
+                if (HashHelpersNET.IsPrime(candidate) && (candidate - 1) % 101 != 0)
                     return candidate;
                 candidate += 2;
             }
@@ -190,7 +190,7 @@ namespace CSTest._30_NET_Code
 
         public static int GetMinPrime()
         {
-            return HashHelpers.primes[0];
+            return HashHelpersNET.primes[0];
         }
 
         public static int ExpandPrime(int oldSize)
@@ -198,7 +198,7 @@ namespace CSTest._30_NET_Code
             int min = 2 * oldSize;
             if ((uint)min > 2146435069U && 2146435069 > oldSize)
                 return 2146435069;
-            return HashHelpers.GetPrime(min);
+            return HashHelpersNET.GetPrime(min);
         }
 
         public static bool IsWellKnownEqualityComparer(object comparer)
@@ -232,23 +232,23 @@ namespace CSTest._30_NET_Code
 
         internal static long GetEntropy()
         {
-            object obj = HashHelpers.lockObj;
+            object obj = HashHelpersNET.lockObj;
             bool lockTaken = false;
             try
             {
                 Monitor.Enter(obj, ref lockTaken);
-                if (HashHelpers.currentIndex == 1024)
+                if (HashHelpersNET.currentIndex == 1024)
                 {
-                    if (HashHelpers.rng == null)
+                    if (HashHelpersNET.rng == null)
                     {
-                        HashHelpers.rng = RandomNumberGenerator.Create();
-                        HashHelpers.data = new byte[1024];
+                        HashHelpersNET.rng = RandomNumberGenerator.Create();
+                        HashHelpersNET.data = new byte[1024];
                     }
-                    HashHelpers.rng.GetBytes(HashHelpers.data);
-                    HashHelpers.currentIndex = 0;
+                    HashHelpersNET.rng.GetBytes(HashHelpersNET.data);
+                    HashHelpersNET.currentIndex = 0;
                 }
-                long num = BitConverter.ToInt64(HashHelpers.data, HashHelpers.currentIndex);
-                HashHelpers.currentIndex += 8;
+                long num = BitConverter.ToInt64(HashHelpersNET.data, HashHelpersNET.currentIndex);
+                HashHelpersNET.currentIndex += 8;
                 return num;
             }
             finally

@@ -14,7 +14,7 @@ namespace CSTest._30_NET_Code
 
         public RandomizedObjectEqualityComparer()
         {
-            this._entropy = HashHelpers.GetEntropy();
+            this._entropy = HashHelpersNET.GetEntropy();
         }
 
         public bool Equals(object x, object y)
@@ -39,7 +39,7 @@ namespace CSTest._30_NET_Code
             string s = str;
             int length = s.Length;
             long additionalEntropy = this._entropy;
-            return HashHelpers.InternalMarvin32HashString(s, length, additionalEntropy);
+            return HashHelpersNET.InternalMarvin32HashString(s, length, additionalEntropy);
         }
 
         public override bool Equals(object obj)

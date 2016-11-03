@@ -372,7 +372,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         /// <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> object containing the information required to serialize the <see cref="T:System.Collections.Generic.Dictionary`2"/>.</param><param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"/> structure containing the source and destination of the serialized stream associated with the <see cref="T:System.Collections.Generic.Dictionary`2"/>.</param>
         protected DictionaryNET(SerializationInfo info, StreamingContext context)
         {
-            HashHelpers.SerializationInfoTable.Add((object)this, info);
+            HashHelpersNET.SerializationInfoTable.Add((object)this, info);
         }
 
         /// <summary>
@@ -516,7 +516,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             if (info == null)
                 ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.info);
             info.AddValue("Version", this.version);
-            info.AddValue("Comparer", HashHelpers.GetEqualityComparerForSerialization((object)this.comparer), typeof(IEqualityComparer<TKey>));
+            info.AddValue("Comparer", HashHelpersNET.GetEqualityComparerForSerialization((object)this.comparer), typeof(IEqualityComparer<TKey>));
             info.AddValue("HashSize", this.buckets == null ? 0 : this.buckets.Length);
             if (this.buckets == null)
                 return;
@@ -531,10 +531,10 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.key);
             if (this.buckets != null)
             {
-                int num = this.comparer.GetHashCode(key) & int.MaxValue;
-                for (int index = this.buckets[num % this.buckets.Length]; index >= 0; index = this.entries[index].next)
+                int hashCode = this.comparer.GetHashCode(key) & int.MaxValue;
+                for (int index = this.buckets[hashCode % this.buckets.Length]; index >= 0; index = this.entries[index].next)
                 {
-                    if (this.entries[index].hashCode == num && this.comparer.Equals(this.entries[index].key, key))
+                    if (this.entries[index].hashCode == hashCode && this.comparer.Equals(this.entries[index].key, key))
                         return index;
                 }
             }
@@ -543,7 +543,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
 
         private void Initialize(int capacity)
         {
-            int prime = HashHelpers.GetPrime(capacity);
+            int prime = HashHelpersNET.GetPrime(capacity);
             this.buckets = new int[prime];
             for (int index = 0; index < this.buckets.Length; ++index)
                 this.buckets[index] = -1;
@@ -557,26 +557,26 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.key);
             if (this.buckets == null)
                 this.Initialize(0);
-            int num1 = this.comparer.GetHashCode(key) & int.MaxValue;
-            int index1 = num1 % this.buckets.Length;
+            int hashCode = this.comparer.GetHashCode(key) & int.MaxValue;
+            int bucketIndex = hashCode % this.buckets.Length;
             int num2 = 0;
-            for (int index2 = this.buckets[index1]; index2 >= 0; index2 = this.entries[index2].next)
+            for (int currentIndex = this.buckets[bucketIndex]; currentIndex >= 0; currentIndex = this.entries[currentIndex].next)
             {
-                if (this.entries[index2].hashCode == num1 && this.comparer.Equals(this.entries[index2].key, key))
+                if (this.entries[currentIndex].hashCode == hashCode && this.comparer.Equals(this.entries[currentIndex].key, key))
                 {
                     if (add)
                         ThrowHelperNET.ThrowArgumentException(ExceptionResourceNET.Argument_AddingDuplicate);
-                    this.entries[index2].value = value;
+                    this.entries[currentIndex].value = value;
                     this.version = this.version + 1;
                     return;
                 }
                 ++num2;
             }
-            int index3;
+            int entriesIndex;
             if (this.freeCount > 0)
             {
-                index3 = this.freeList;
-                this.freeList = this.entries[index3].next;
+                entriesIndex = this.freeList;
+                this.freeList = this.entries[entriesIndex].next;
                 this.freeCount = this.freeCount - 1;
             }
             else
@@ -584,20 +584,20 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 if (this.count == this.entries.Length)
                 {
                     this.Resize();
-                    index1 = num1 % this.buckets.Length;
+                    bucketIndex = hashCode % this.buckets.Length;
                 }
-                index3 = this.count;
+                entriesIndex = this.count;
                 this.count = this.count + 1;
             }
-            this.entries[index3].hashCode = num1;
-            this.entries[index3].next = this.buckets[index1];
-            this.entries[index3].key = key;
-            this.entries[index3].value = value;
-            this.buckets[index1] = index3;
+            this.entries[entriesIndex].hashCode = hashCode;
+            this.entries[entriesIndex].next = this.buckets[bucketIndex];
+            this.entries[entriesIndex].key = key;
+            this.entries[entriesIndex].value = value;
+            this.buckets[bucketIndex] = entriesIndex;
             this.version = this.version + 1;
-            if (num2 <= 100 || !HashHelpers.IsWellKnownEqualityComparer((object)this.comparer))
+            if (num2 <= 100 || !HashHelpersNET.IsWellKnownEqualityComparer((object)this.comparer))
                 return;
-            this.comparer = (IEqualityComparer<TKey>)HashHelpers.GetRandomizedEqualityComparer((object)this.comparer);
+            this.comparer = (IEqualityComparer<TKey>)HashHelpersNET.GetRandomizedEqualityComparer((object)this.comparer);
             this.Resize(this.entries.Length, true);
         }
 
@@ -608,7 +608,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         public virtual void OnDeserialization(object sender)
         {
             SerializationInfo serializationInfo;
-            HashHelpers.SerializationInfoTable.TryGetValue((object)this, out serializationInfo);
+            HashHelpersNET.SerializationInfoTable.TryGetValue((object)this, out serializationInfo);
             if (serializationInfo == null)
                 return;
             int int32_1 = serializationInfo.GetInt32("Version");
@@ -634,12 +634,12 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             else
                 this.buckets = (int[])null;
             this.version = int32_1;
-            HashHelpers.SerializationInfoTable.Remove((object)this);
+            HashHelpersNET.SerializationInfoTable.Remove((object)this);
         }
 
         private void Resize()
         {
-            this.Resize(HashHelpers.ExpandPrime(this.count), false);
+            this.Resize(HashHelpersNET.ExpandPrime(this.count), false);
         }
 
         private void Resize(int newSize, bool forceNewHashCodes)
@@ -685,27 +685,27 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 ThrowHelperNET.ThrowArgumentNullException(ExceptionArgumentNET.key);
             if (this.buckets != null)
             {
-                int num = this.comparer.GetHashCode(key) & int.MaxValue;
-                int index1 = num % this.buckets.Length;
-                int index2 = -1;
-                for (int index3 = this.buckets[index1]; index3 >= 0; index3 = this.entries[index3].next)
+                int hashCode = this.comparer.GetHashCode(key) & int.MaxValue;
+                int bucketIndex = hashCode % this.buckets.Length;
+                int previousIndex = -1;
+                for (int currentIndex = this.buckets[bucketIndex]; currentIndex >= 0; currentIndex = this.entries[currentIndex].next)
                 {
-                    if (this.entries[index3].hashCode == num && this.comparer.Equals(this.entries[index3].key, key))
+                    if (this.entries[currentIndex].hashCode == hashCode && this.comparer.Equals(this.entries[currentIndex].key, key))
                     {
-                        if (index2 < 0)
-                            this.buckets[index1] = this.entries[index3].next;
+                        if (previousIndex < 0)
+                            this.buckets[bucketIndex] = this.entries[currentIndex].next;
                         else
-                            this.entries[index2].next = this.entries[index3].next;
-                        this.entries[index3].hashCode = -1;
-                        this.entries[index3].next = this.freeList;
-                        this.entries[index3].key = default(TKey);
-                        this.entries[index3].value = default(TValue);
-                        this.freeList = index3;
+                            this.entries[previousIndex].next = this.entries[currentIndex].next;
+                        this.entries[currentIndex].hashCode = -1;
+                        this.entries[currentIndex].next = this.freeList;
+                        this.entries[currentIndex].key = default(TKey);
+                        this.entries[currentIndex].value = default(TValue);
+                        this.freeList = currentIndex;
                         this.freeCount = this.freeCount + 1;
                         this.version = this.version + 1;
                         return true;
                     }
-                    index2 = index3;
+                    previousIndex = currentIndex;
                 }
             }
             return false;
