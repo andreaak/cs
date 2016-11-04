@@ -116,6 +116,8 @@
     <Compile Include="01_Elements CS\04_TypeConversion\_01_Casting.cs" />
     <Compile Include="01_Elements CS\02_Variables\_04_sizeof.cs" />
     <Compile Include="04_Class\00_Base\0_Setup\TestClass.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\EqualityComparerNET.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\03_HashSet\HashSetNET.cs" />
     <Compile Include="08_String\03_Format\Test.cs" />
     <Compile Include="08_String\03_Format\TestCustomFormatter.cs" />
     <Compile Include="08_String\03_Format\TestFormatProvider.cs" />
@@ -241,9 +243,10 @@
     <Compile Include="25_CS_NewFeatures\03_CS6\08_AwaitInCatchAndFinally.cs" />
     <Compile Include="25_CS_NewFeatures\03_CS6\09_Other.cs" />
     <Compile Include="25_CS_NewFeatures\03_CS6\Setup\Employee.cs" />
-    <Compile Include="30 NET Code\HashHelpers.cs" />
+    <Compile Include="30 NET Code\HashHelpersNET.cs" />
     <Compile Include="30 NET Code\InternalTaskOptions.cs" />
     <Compile Include="30 NET Code\IThreadPoolWorkItem.cs" />
+    <Compile Include="30 NET Code\JitHelpersNET.cs" />
     <Compile Include="30 NET Code\PlatformHelperNET.cs" />
     <Compile Include="30 NET Code\RandomizedStringEqualityComparer.cs" />
     <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\Test.cs" />
@@ -378,6 +381,7 @@
     <Compile Include="30 NET Code\CompatibilitySwitches.cs" />
     <Compile Include="30 NET Code\EnvironmentNET.cs" />
     <Compile Include="30 NET Code\RandomizedObjectEqualityComparer.cs" />
+    <Compile Include="30 NET Code\SRNET.cs" />
     <Compile Include="30 NET Code\ThrowHelperNET.cs" />
     <Compile Include="30 NET Code\TimeoutHelper.cs" />
     <Compile Include="31_Tricks\001_CallVirtualMethodsInConstructor.cs" />
@@ -390,7 +394,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="10_Collections\01_BaseCollections\" />
-    <Folder Include="10_Collections\02_GenericCollections\03_HashSet\" />
     <Folder Include="10_Collections\02_GenericCollections\04_Queue\" />
     <Folder Include="10_Collections\02_GenericCollections\05_Stack\" />
     <Folder Include="11_Input Output\" />
