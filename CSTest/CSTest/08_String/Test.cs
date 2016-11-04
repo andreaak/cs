@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace CSTest._08_String
 {
@@ -159,76 +158,6 @@ namespace CSTest._08_String
             ReferenceEquals(temp3, res2): True
             IsInterbed temp3: Not
             */
-        }
-
-        [Test]
-        public void TestString5Shit()
-        {
-            string test = null;
-            Assert.IsFalse(IsNotEmptyString(test));
-
-            test = "";
-            Assert.IsFalse(IsNotEmptyString(test));
-
-            test = "Test";
-            Assert.IsTrue(IsNotEmptyString(test));
-
-            test = null;
-            Assert.IsTrue(IsEmptyString(test));
-
-            test = "";
-            Assert.IsTrue(IsEmptyString(test));
-
-            test = "Test";
-            Assert.IsFalse(IsEmptyString(test));
-
-            /*
-            */
-        }
-
-        [Test]
-        public void TestString6Shit()
-        {
-            string test = null;
-            Assert.IsFalse(IsNotEmptyString2(test));
-
-            test = "";
-            Assert.IsFalse(IsNotEmptyString2(test));
-
-            test = "Test";
-            Assert.IsTrue(IsNotEmptyString2(test));
-
-            test = null;
-            Assert.IsTrue(IsEmptyString2(test));
-
-            test = "";
-            Assert.IsTrue(IsEmptyString2(test));
-
-            test = "Test";
-            Assert.IsFalse(IsEmptyString2(test));
-
-            /*
-            */
-        }
-
-        public bool IsNotEmptyString(string str)
-        {
-            return (str?.Any()).GetValueOrDefault();
-        }
-
-        public bool IsEmptyString(string str)
-        {
-            return !(str?.Any()).GetValueOrDefault();
-        }
-
-        public bool IsEmptyString2(string str)
-        {
-            return (str?.Length).GetValueOrDefault() == 0;
-        }
-
-        public bool IsNotEmptyString2(string str)
-        {
-            return (str?.Length).GetValueOrDefault() != 0;
         }
 
         struct StringTest

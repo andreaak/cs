@@ -116,6 +116,10 @@
     <Compile Include="01_Elements CS\04_TypeConversion\_01_Casting.cs" />
     <Compile Include="01_Elements CS\02_Variables\_04_sizeof.cs" />
     <Compile Include="04_Class\00_Base\0_Setup\TestClass.cs" />
+    <Compile Include="08_String\03_Format\Test.cs" />
+    <Compile Include="08_String\03_Format\TestCustomFormatter.cs" />
+    <Compile Include="08_String\03_Format\TestFormatProvider.cs" />
+    <Compile Include="08_String\03_Format\TestFormattable.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\AppContextSwitchesNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenRegistrationNET.cs" />
