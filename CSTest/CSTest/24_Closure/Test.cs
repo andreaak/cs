@@ -11,7 +11,7 @@ namespace CSTest._24_Closure
     public class Test
     {
         [Test]
-        public void TestClosureBefore()//C#4.0
+        public void TestClosure1Before()//C#4.0
         {
             var actions = new List<Action>();
 
@@ -38,7 +38,7 @@ namespace CSTest._24_Closure
         }
 
         [Test]
-        public void TestClosureAfter()//C#5.0
+        public void TestClosure1After()//C#5.0
         {
             var actions = new List<Action>();
 
@@ -65,7 +65,7 @@ namespace CSTest._24_Closure
         }
 
         [Test]
-        public void TestClosureAfter2()//C#5.0
+        public void TestClosure2After()//C#5.0
         {
             var actions = new List<Action>();
             foreach (var i in Enumerable.Range(1, 3))
@@ -83,8 +83,23 @@ namespace CSTest._24_Closure
             */
         }
 
+        //[Test]
+        //public void TestClosure2After()
+        //{
+        //    List<Action> actionList = new List<Action>();
+        //    foreach (int num in Enumerable.Range(1, 3))
+        //    {
+        //        GeneratedClass generated = new GeneratedClass();
+        //        generated.i = num;
+        //        // ISSUE: method pointer
+        //        actionList.Add(new Action((object)generated, __methodptr(b__0)));
+        //    }
+        //    foreach (Action action in actionList)
+        //        action();
+        //}
+
         [Test]
-        public void TestClosure4()//C#4.0
+        public void TestClosure3()//C#4.0
         {
             var actions = new List<Action>();
 
@@ -104,6 +119,22 @@ namespace CSTest._24_Closure
             */
         }
 
+        //[Test]
+        //public void TestClosure3()
+        //{
+        //    List<Action> actionList = new List<Action>();
+        //    GeneratedClass generated = new GeneratedClass();
+        //    int num;
+        //    for (generated.i = 0; generated.i < 3; generated.i = num + 1)
+        //    {
+        //        // ISSUE: method pointer
+        //        actionList.Add(new Action((object)generated, __methodptr(b__0)));
+        //        num = generated.i;
+        //    }
+        //    foreach (Action action in actionList)
+        //        action();
+        //}
+
         class Closure
         {
             public int i;
@@ -113,5 +144,14 @@ namespace CSTest._24_Closure
             }
         }
 
+        private sealed class GeneratedClass
+        {
+            public int i;
+
+            internal void b__0()
+            {
+                Debug.WriteLine((object)this.i);
+            }
+        }
     }
 }

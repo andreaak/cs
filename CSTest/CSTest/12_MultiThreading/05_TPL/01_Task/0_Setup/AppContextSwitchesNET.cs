@@ -8,7 +8,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
         private static int _noAsyncCurrentCulture;
         public static bool NoAsyncCurrentCulture
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            //[MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 return GetCachedSwitchValue(AppContextDefaultValuesNET.SwitchNoAsyncCurrentCulture, ref _noAsyncCurrentCulture);
@@ -18,7 +18,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
         private static int _throwExceptionIfDisposedCancellationTokenSource;
         public static bool ThrowExceptionIfDisposedCancellationTokenSource
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            //[MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 return GetCachedSwitchValue(AppContextDefaultValuesNET.SwitchThrowExceptionIfDisposedCancellationTokenSource, ref _throwExceptionIfDisposedCancellationTokenSource);
@@ -28,7 +28,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
         private static int _preserveEventListnerObjectIdentity;
         public static bool PreserveEventListnerObjectIdentity
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            //[MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 return GetCachedSwitchValue(AppContextDefaultValuesNET.SwitchPreserveEventListnerObjectIdentity, ref _preserveEventListnerObjectIdentity);
@@ -43,14 +43,16 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
 
         static AppContextSwitchesNET()
         {
+#if CS6
             bool isEnabled;
             if (AppContext.TryGetSwitch(@"TestSwitch.LocalAppContext.DisableCaching", out isEnabled))
             {
                 DisableCaching = isEnabled;
             }
+#endif
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        //[MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static bool GetCachedSwitchValue(string switchName, ref int switchValue)
         {
             if (switchValue < 0) return false;
@@ -61,9 +63,10 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
 
         private static bool GetCachedSwitchValueInternal(string switchName, ref int switchValue)
         {
-            bool isSwitchEnabled;
+            bool isSwitchEnabled = false;
+#if CS6
             AppContext.TryGetSwitch(switchName, out isSwitchEnabled);
-
+#endif
             if (DisableCaching)
             {
                 return isSwitchEnabled;

@@ -24,7 +24,11 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
     //[ComVisible(false)]
     ////[__DynamicallyInvokable]
     [Serializable]
-    public class DictionaryNET<TKey, TValue> : IDictionary<TKey, TValue>, ICollection<KeyValuePair<TKey, TValue>>, IEnumerable<KeyValuePair<TKey, TValue>>, IEnumerable, IDictionary, ICollection, IReadOnlyDictionary<TKey, TValue>, IReadOnlyCollection<KeyValuePair<TKey, TValue>>, ISerializable, IDeserializationCallback
+    public class DictionaryNET<TKey, TValue> : IDictionary<TKey, TValue>, ICollection<KeyValuePair<TKey, TValue>>, IEnumerable<KeyValuePair<TKey, TValue>>, IEnumerable, IDictionary, ICollection
+#if CS5
+        , IReadOnlyDictionary<TKey, TValue>, IReadOnlyCollection<KeyValuePair<TKey, TValue>> 
+#endif
+        , ISerializable, IDeserializationCallback
     {
         private int[] buckets;
         public DictionaryNET<TKey, TValue>.Entry[] entries;
@@ -105,7 +109,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 return (ICollection<TKey>)this.keys;
             }
         }
-
+#if CS5
         //[__DynamicallyInvokable]
         IEnumerable<TKey> IReadOnlyDictionary<TKey, TValue>.Keys
         {
@@ -117,7 +121,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 return (IEnumerable<TKey>)this.keys;
             }
         }
-
+#endif
         /// <summary>
         /// Gets a collection containing the values in the <see cref="T:System.Collections.Generic.Dictionary`2"/>.
         /// </summary>
@@ -148,7 +152,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 return (ICollection<TValue>)this.values;
             }
         }
-
+#if CS5
         //[__DynamicallyInvokable]
         IEnumerable<TValue> IReadOnlyDictionary<TKey, TValue>.Values
         {
@@ -160,7 +164,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 return (IEnumerable<TValue>)this.values;
             }
         }
-
+#endif
         /// <summary>
         /// Gets or sets the value associated with the specified key.
         /// </summary>
@@ -1004,7 +1008,10 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         [DebuggerDisplay("Count = {Count}")]
         //[__DynamicallyInvokable]
         [Serializable]
-        public sealed class KeyCollection : ICollection<TKey>, IEnumerable<TKey>, IEnumerable, ICollection, IReadOnlyCollection<TKey>
+        public sealed class KeyCollection : ICollection<TKey>, IEnumerable<TKey>, IEnumerable, ICollection
+#if CS5
+            , IReadOnlyCollection<TKey>
+#endif
         {
             private DictionaryNET<TKey, TValue> dictionary;
 
@@ -1281,7 +1288,10 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         [DebuggerDisplay("Count = {Count}")]
         //[__DynamicallyInvokable]
         [Serializable]
-        public sealed class ValueCollection : ICollection<TValue>, IEnumerable<TValue>, IEnumerable, ICollection, IReadOnlyCollection<TValue>
+        public sealed class ValueCollection : ICollection<TValue>, IEnumerable<TValue>, IEnumerable, ICollection
+#if CS5
+            , IReadOnlyCollection<TValue>
+#endif
         {
             private DictionaryNET<TKey, TValue> dictionary;
 

@@ -68,8 +68,10 @@ namespace CSTest._31_Tricks
             catch (TargetInvocationException e)
             {
                 // «разворачиваем» исключение и бросаем исходное
+#if CS5
                 var edi = ExceptionDispatchInfo.Capture(e.InnerException);
                 edi.Throw();
+#endif
                 // эта точка недостижима, но компилятор об этом не знает!
                 return default(T);
             }

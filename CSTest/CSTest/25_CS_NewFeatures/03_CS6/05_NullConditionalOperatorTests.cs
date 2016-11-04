@@ -4,10 +4,11 @@ using NUnit.Framework;
 
 namespace CSTest._25_CS_NewFeatures._03_CS6
 {
+#if CS6
     [TestFixture]
     public class _05_NullConditionalOperatorTests : IDisposable
     {
-#if CS6
+
         // Elvis operator
         [Test]
         public void Test1()
@@ -27,6 +28,7 @@ namespace CSTest._25_CS_NewFeatures._03_CS6
 
         private StreamWriter LogWriter { get; } = new StreamWriter(new MemoryStream());
 
-#endif
+
     }
+#endif
 }

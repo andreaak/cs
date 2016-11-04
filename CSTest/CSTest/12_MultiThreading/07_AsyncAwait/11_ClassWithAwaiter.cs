@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if CS5
+
+using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -68,3 +70,4 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
     }
 }
+#endif

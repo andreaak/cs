@@ -7,6 +7,8 @@ using System.Diagnostics.Contracts;
 using System.Threading;
 using CSTest._30_NET_Code;
 
+#if CS5
+
 namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
 {
     /// <summary>
@@ -1222,3 +1224,4 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
     }
 }
 
+#endif

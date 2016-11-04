@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if CS5
+
+using System;
 using System.Security.Permissions;
 using System.Threading;
 
@@ -161,4 +163,5 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
         }
     }
 }
+#endif
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if CS6
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -8,7 +9,7 @@ namespace CSTest._25_CS_NewFeatures._03_CS6
     [TestFixture]
     public class _08_AwaitInCatchAndFinally
     {
-#if CS6
+
         [Test]
         public async void Test1()
         {
@@ -37,6 +38,7 @@ namespace CSTest._25_CS_NewFeatures._03_CS6
                 Debug.WriteLine("In finally");
             }
         }
-#endif
+
     }
 }
+#endif

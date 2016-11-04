@@ -1,5 +1,7 @@
 ﻿#pragma warning disable 0420 // turn off 'a reference to a volatile field will not be treated as volatile' during CAS.
 
+#if CS5
+
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
@@ -488,4 +490,4 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
         }
     }
 }
-
+#endif

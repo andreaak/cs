@@ -1,4 +1,6 @@
-﻿using CSTest._30_NET_Code;
+﻿#if CS5
+
+using CSTest._30_NET_Code;
 using System;
 using System.Diagnostics.Contracts;
 using System.Security;
@@ -309,7 +311,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
             uint startTime = 0;
             if (millisecondsTimeout != Timeout.Infinite && millisecondsTimeout > 0)
             {
-                startTime = _30_NET_Code.TimeoutHelper.GetTime();
+                startTime = _30_NET_Code.TimeoutHelperNET.GetTime();
             }
 
             bool waitSuccessful = false;
@@ -441,7 +443,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
 
                 if (millisecondsTimeout != Timeout.Infinite)
                 {
-                    remainingWaitMilliseconds = _30_NET_Code.TimeoutHelper.UpdateTimeOut(startTime, millisecondsTimeout);
+                    remainingWaitMilliseconds = _30_NET_Code.TimeoutHelperNET.UpdateTimeOut(startTime, millisecondsTimeout);
                     if (remainingWaitMilliseconds <= 0)
                     {
                         // The thread has expires its timeout
@@ -592,9 +594,10 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
             }
 
             // Bail early for cancellation
+#if CS6
             if (cancellationToken.IsCancellationRequested)
                 return Task.FromCanceled<bool>(cancellationToken);
-
+#endif
             lock (m_lockObj)
             {
                 // If there are counts available, allow this waiter to succeed.
@@ -899,4 +902,4 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
         #endregion
     }
 }
-
+#endif

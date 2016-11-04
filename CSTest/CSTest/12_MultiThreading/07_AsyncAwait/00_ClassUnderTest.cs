@@ -16,7 +16,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Thread.Sleep(2000);
             Debug.WriteLine("End");
         }
-
+#if CS5
         public async Task Operation2()
         {
             Debug.WriteLine("Operation ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
@@ -24,7 +24,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             await Task.Delay(2000);
             Debug.WriteLine("End");
         }
-
+#endif
         public int OperationWithResult()
         {
             Debug.WriteLine("Operation4 ThreadID {0}", Thread.CurrentThread.ManagedThreadId);

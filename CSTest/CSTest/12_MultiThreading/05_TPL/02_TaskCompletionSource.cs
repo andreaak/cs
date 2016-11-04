@@ -59,6 +59,7 @@ namespace CSTest._12_MultiThreading._05_TPL
              */
         }
 
+#if CS5
         [Test]
         public void TestTaskCompletionSource3()
         {
@@ -80,7 +81,7 @@ namespace CSTest._12_MultiThreading._05_TPL
             42
              */
         }
-
+#endif
         Task<int> GetAnswerToLife()
         {
             var tcs = new TaskCompletionSource<int>();

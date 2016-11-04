@@ -80,11 +80,13 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
         /// </summary>
         class LazyInternalExceptionHolder
         {
+#if CS5
             internal ExceptionDispatchInfo m_edi;
             internal LazyInternalExceptionHolder(Exception ex)
             {
                 m_edi = ExceptionDispatchInfo.Capture(ex);
             }
+#endif
         }
         #endregion
 
@@ -327,7 +329,9 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
 
                     LazyInternalExceptionHolder exc = m_boxed as LazyInternalExceptionHolder;
                     Contract.Assert(m_boxed != null);
+#if CS5
                     exc.m_edi.Throw();
+#endif
                 }
 
                 // Fall through to the slow path.
@@ -374,6 +378,7 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
             }
             else
             {
+#if CS5
                 object threadSafeObj = Volatile.Read(ref m_threadSafeObj);
                 bool lockTaken = false;
                 try
@@ -396,7 +401,9 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
                         {
                             LazyInternalExceptionHolder exHolder = m_boxed as LazyInternalExceptionHolder;
                             Contract.Assert(exHolder != null);
+
                             exHolder.m_edi.Throw();
+
                         }
                     }
                 }
@@ -405,7 +412,9 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
                     if (lockTaken)
                         Monitor.Exit(threadSafeObj);
                 }
+#endif
             }
+
             Contract.Assert(boxed != null);
             return boxed.m_value;
         }
@@ -441,8 +450,10 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
                 catch (Exception ex)
                 {
                     if (mode != LazyThreadSafetyMode.PublicationOnly) // don't cache the exception for PublicationOnly mode
+#if CS5
                         m_boxed = new LazyInternalExceptionHolder(ex);
-                    throw;
+#endif
+                        throw;
                 }
             }
             else
@@ -456,7 +467,9 @@ namespace CSTest._25_CS_NewFeatures._01_CS4._01_Lazy
                 {
                     Exception ex = new System.MissingMemberException(EnvironmentNET.GetResourceString("Lazy_CreateValue_NoParameterlessCtorForT"));
                     if (mode != LazyThreadSafetyMode.PublicationOnly) // don't cache the exception for PublicationOnly mode
+#if CS5
                         m_boxed = new LazyInternalExceptionHolder(ex);
+#endif
                     throw ex;
                 }
             }

@@ -11,7 +11,63 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         const int Iterations = 1000;
 
         [Test]
-        public void TestLDictionary1Grow()
+        public void TestLDictionary1Initialization()
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            dict.Add("FirstName", "Ivan");
+            dict.Add("LastName", "Ivanov");
+            dict.Add("Age", 20.ToString());
+
+            Debug.WriteLine(dict["FirstName"]);
+            Debug.WriteLine(dict["LastName"]);
+            Debug.WriteLine(dict["Age"]);
+
+            dict = new Dictionary<string, string>()
+            {
+                {"FirstName", "Ivan"},
+                {"LastName", "Ivanov"},
+                {"Age", 20.ToString()},
+            };
+
+            Debug.WriteLine(dict["FirstName"]);
+            Debug.WriteLine(dict["LastName"]);
+            Debug.WriteLine(dict["Age"]);
+
+            /*
+            Ivan
+            Ivanov
+            20
+            Ivan
+            Ivanov
+            20 
+            */
+        }
+
+        [Test]
+        public void TestLDictionary2Add()
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            dict.Add("FirstName", "Ivan");
+            //dict.Add("FirstName", "Ivanov"); //ArgumentException An item with the same key has already been added.
+
+            dict = new Dictionary<string, string>()
+            {
+                {"FirstName", "Ivan"},
+                //{"FirstName", "Ivanov"},//ArgumentException An item with the same key has already been added.
+            };
+
+            dict = new Dictionary<string, string>()
+            {
+                ["FirstName"] = "Ivan",
+                ["FirstName"] = "Ivanov",
+            };
+
+            /*
+            */
+        }
+
+        [Test]
+        public void TestLDictionary3Grow()
         {
             DictionaryNET<int, int> dict = new DictionaryNET<int, int>();
             for (int i = 0; i < Iterations; i++)
@@ -109,16 +165,14 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         }
 
         [Test]
-        public void TestDictionary2()
+        public void TestDictionary4ToDictionary()
         {
             var dic = new Dictionary<string, TestDict>();
             dic = new List<TestDict>
             {
                 new TestDict {Code = "AD"},
-                new TestDict {Code = "AD"},
+                //new TestDict {Code = "AD"},//ArgumentException An item with the same key has already been added.
             }.ToDictionary(c => c.Code);
-
-
         }
 
         class TestDict
