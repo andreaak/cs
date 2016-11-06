@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task._0_Setup
 {
