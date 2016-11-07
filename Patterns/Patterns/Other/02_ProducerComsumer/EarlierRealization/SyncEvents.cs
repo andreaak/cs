@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Patterns.Other._02_ProducerComsumer
+namespace Patterns.Other._02_ProducerComsumer.EarlierRealization
 {
     public class SyncEvents
     {

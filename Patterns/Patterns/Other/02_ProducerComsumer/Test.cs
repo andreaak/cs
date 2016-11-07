@@ -1,8 +1,13 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using NUnit.Framework;
+using Patterns.Other._02_ProducerComsumer.EarlierRealization;
+using CS4 = Patterns.Other._02_ProducerComsumer.CS4Realization;
 
 namespace Patterns.Other._02_ProducerComsumer
 {
@@ -39,11 +44,59 @@ namespace Patterns.Other._02_ProducerComsumer
             /*
             Configuring worker threads...
             Launching producer and consumer threads...
-            8 22 99 79 51 98 10 35 89 18 81 79 43 15 18 61 62 14 36 43 
-            48 13 39 99 62 82 90 18 83 6 32 22 13 81 95 70 82 89 88 
-            77 41 32 89 95 39 5 48 81 7 97 92 66 74 28 8 56 23 3 74 
-            49 43 54 86 13 75 53 28 99 50 46 28 32 26 68 87 98 25 58 26 
-            Signaling threads to terminate... 
+            11 64 53 58 96 84 72 8 95 73 79 74 16 61 99 87 99 50 29 9 
+            9 25 63 92 23 7 64 58 58 76 43 88 38 2 41 16 40 92 87 48 
+            44 20 64 8 75 71 79 0 46 54 12 68 61 76 22 89 65 51 21 69 
+            79 74 65 28 36 89 29 51 34 75 37 32 32 85 3 68 96 91 52 
+            Signaling threads to terminate...
+            Consumer Thread: consumed 2532300 items
+            The thread 0x1e24 has exited with code 0 (0x0).
+            Producer thread: produced 2532319 items
+            */
+        }
+
+        [Test]
+        public void TestProducerComsumerBlockingCollection()
+        {
+            BlockingCollection<int> queue = new BlockingCollection<int>();
+            CancellationTokenSource endTokenSource = new CancellationTokenSource();
+
+            Debug.WriteLine("Configuring tasks...");
+            CS4.Producer producer1 = new CS4.Producer(queue, endTokenSource);
+            CS4.Producer producer2 = new CS4.Producer(queue, endTokenSource);
+            CS4.Consumer consumer = new CS4.Consumer(queue, endTokenSource);
+
+            var tasks = new[]
+            {
+                new Task(producer1.ThreadRun),
+                new Task(producer2.ThreadRun),
+                new Task(consumer.ThreadRun)
+            };
+
+            Debug.WriteLine("Launching producer and consumer tasks...");
+            Array.ForEach(tasks, task => task.Start());
+
+            for (int i = 0; i < 4; i++)
+            {
+                Thread.Sleep(2500);
+                ShowQueueContents(queue);
+            }
+
+            Debug.WriteLine("Signaling tasks to terminate...");
+            endTokenSource.Cancel();
+            Task.WaitAll(tasks);
+
+            /*
+            Configuring tasks...
+            Launching producer and consumer tasks...
+            38 71 69 77 51 30 30 43 89 65 15 67 74 10 97 11 24 62 10 49 5 
+            67 85 0 95 1 83 96 63 27 21 96 35 99 73 85 66 94 
+            50 76 73 98 37 71 3 7 79 80 87 57 64 43 38 5 83 94 24 15 29 
+            68 31 53 81 89 33 32 12 12 23 8 93 22 10 3 88 
+            Signaling tasks to terminate...
+            Producer thread: produced 10468890 items
+            Consumer Thread: consumed 22829472 items
+            Producer thread: produced 12360602 items
             */
         }
 
@@ -55,6 +108,15 @@ namespace Patterns.Other._02_ProducerComsumer
                 {
                     Debug.Write(string.Format("{0} ", item));
                 }
+            }
+            Debug.WriteLine("");
+        }
+
+        private static void ShowQueueContents(BlockingCollection<int> q)
+        {
+            foreach (int item in q)
+            {
+                Debug.Write(string.Format("{0} ", item));
             }
             Debug.WriteLine("");
         }

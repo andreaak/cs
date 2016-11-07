@@ -19,6 +19,8 @@ namespace CSTest._09_Array
 
             array = new int[] { 1, 2, 3, 4, 5 };
 
+            array = new[] { 1, 2, 3, 4, 5 };
+
             // Вывод на экран значений элементов массива.
             for (int i = 0; i < array.Length; i++)
             {
@@ -44,7 +46,6 @@ namespace CSTest._09_Array
                 }
             }
 
-
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -58,7 +59,7 @@ namespace CSTest._09_Array
         [Test]
         public void TestArray3ArrayMultiDim()
         {
-            int[, ,] threeDim = { 
+            int[,,] threeDim = {
                                   {{1, 2},{ 3, 4}},
                                   {{5, 6}, {7, 8}}
                                 };

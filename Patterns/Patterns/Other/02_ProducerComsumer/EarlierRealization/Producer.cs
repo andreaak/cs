@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Patterns.Other._02_ProducerComsumer
+namespace Patterns.Other._02_ProducerComsumer.EarlierRealization
 {
     public class Producer
     {
