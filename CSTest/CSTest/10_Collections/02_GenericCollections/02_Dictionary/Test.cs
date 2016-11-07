@@ -56,18 +56,75 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
                 //{"FirstName", "Ivanov"},//ArgumentException An item with the same key has already been added.
             };
 
-            dict = new Dictionary<string, string>()
-            {
-                ["FirstName"] = "Ivan",
-                ["FirstName"] = "Ivanov",
-            };
+            //dict = new Dictionary<string, string>()
+            //{
+            //    ["FirstName"] = "Ivan",
+            //    ["FirstName"] = "Ivanov",
+            //};
 
             /*
             */
         }
 
         [Test]
-        public void TestLDictionary3Grow()
+        public void TestLDictionary3Iteration()
+        {
+            DictionaryNET<int, int> dict = new DictionaryNET<int, int>();
+            dict.Add(0, 0);
+            dict.Add(3, 33);
+            dict.Add(6, 66);
+            DisplayDictionary(dict);
+
+            dict.Remove(3);
+            dict.Add(8, 88);
+            DisplayDictionary(dict);
+            /*
+            ----
+            KeyValue
+            Key: 0 Value: 0
+            Key: 3 Value: 33
+            Key: 6 Value: 66
+            Buckets: 2 -1 -1 
+            Entries
+            Key: 0 Value: 0 Hash: 0 Next: -1
+            Key: 3 Value: 33 Hash: 3 Next: 0
+            Key: 6 Value: 66 Hash: 6 Next: 1
+            ----
+            KeyValue
+            Key: 0 Value: 0
+            Key: 8 Value: 88
+            Key: 6 Value: 66
+            Buckets: 2 -1 1 
+            Entries
+            Key: 0 Value: 0 Hash: 0 Next: -1
+            Key: 8 Value: 88 Hash: 8 Next: -1
+            Key: 6 Value: 66 Hash: 6 Next: 0
+            */
+        }
+
+        private void DisplayDictionary(DictionaryNET<int, int> dict)
+        {
+            Debug.WriteLine("----");
+            Debug.WriteLine("KeyValue");
+            foreach (var item in dict)
+            {
+                Debug.WriteLine("Key: {0} Value: {1}", item.Key, item.Value);
+            }
+            Debug.Write("Buckets: ");
+            foreach (var item in dict.buckets)
+            {
+                Debug.Write(item + " ");
+            }
+            Debug.WriteLine("");
+            Debug.WriteLine("Entries");
+            foreach (var item in dict.entries)
+            {
+                Debug.WriteLine("Key: {0} Value: {1} Hash: {2} Next: {3}", item.key, item.value, item.hashCode, item.next);
+            }
+        }
+
+        [Test]
+        public void TestLDictionary4Grow()
         {
             DictionaryNET<int, int> dict = new DictionaryNET<int, int>();
             for (int i = 0; i < Iterations; i++)
@@ -165,7 +222,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
         }
 
         [Test]
-        public void TestDictionary4ToDictionary()
+        public void TestDictionary5ToDictionary()
         {
             var dic = new Dictionary<string, TestDict>();
             dic = new List<TestDict>

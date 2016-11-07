@@ -30,7 +30,7 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
 #endif
         , ISerializable, IDeserializationCallback
     {
-        private int[] buckets;
+        public int[] buckets;
         public DictionaryNET<TKey, TValue>.Entry[] entries;
         private int count;
         private int version;

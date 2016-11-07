@@ -119,6 +119,11 @@
     <Compile Include="04_Class\00_Base\0_Setup\TestClass.cs" />
     <Compile Include="10_Collections\01_Collections\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\EqualityComparerNET.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\KeyValuePairNET.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\SortedDictionary\SortedDictionaryNET.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\03_HashSet\SortedSetEqualityComparerNET.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\03_HashSet\SortedSetNET.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\SortedDictionary\TreeSetNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\03_HashSet\HashSetEqualityComparerNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\03_HashSet\HashSetNET.cs" />
     <Compile Include="08_String\03_Format\Test.cs" />
@@ -127,6 +132,7 @@
     <Compile Include="08_String\03_Format\TestFormattable.cs" />
     <Compile Include="10_Collections\02_GenericCollections\04_Queue\QueueNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\05_Stack\StackNET.cs" />
+    <Compile Include="10_Collections\02_GenericCollections\TupleNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\AppContextSwitchesNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenRegistrationNET.cs" />

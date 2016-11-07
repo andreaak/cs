@@ -6,9 +6,6 @@ using System.Runtime.Serialization;
 
 namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
 {
-    using System.Globalization;
-    using System.Runtime;
-    using System.Runtime.CompilerServices;
     using System.Diagnostics.Contracts;
     using _30_NET_Code;
     [Serializable]

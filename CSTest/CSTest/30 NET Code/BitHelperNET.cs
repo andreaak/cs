@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Text;
-
-namespace CSTest._30_NET_Code
+﻿namespace CSTest._30_NET_Code
 {
 
     /// <summary>

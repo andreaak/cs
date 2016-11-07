@@ -104,11 +104,11 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
         [Test]
         public void TestList3ToList()
         {
-            IList<string> lst = new string[] {"One", "Two", "Three"};
+            IList<string> lst = new string[] { "One", "Two", "Three" };
             IList<string> lst2 = lst.ToList();
             Debug.WriteLine("Ref Equals lst lst2 : " + ReferenceEquals(lst, lst2));
 
-            List<string> lst3 = new List<string> {"One", "Two", "Three"};
+            List<string> lst3 = new List<string> { "One", "Two", "Three" };
             List<string> lst4 = lst.ToList();
             Debug.WriteLine("Ref Equals lst3 lst4 : " + ReferenceEquals(lst3, lst4));
 
@@ -137,32 +137,36 @@ namespace CSTest._10_Collections._02_GenericCollections._01_List
             List<string> lst3 = new List<string> { "One", "Two", "Three" };
             Debug.WriteLine("lst3 Count : " + lst3.Count);
             IEnumerable<string> lst4 = lst3;
+            Debug.WriteLine("IEnumerable as List: " + (lst4 as List<string>));
+            Debug.WriteLine("IEnumerable as IList: " + (lst4 as IList<string>));
+            Debug.WriteLine("IEnumerable as Array: " + (lst4 as string[]));
+
+            IList<string> lst7 = new[] { "One", "Two", "Three" };
+            IEnumerable<string> lst8 = lst7;
+            Debug.WriteLine("IEnumerable as List: " + (lst8 as List<string>));
+            Debug.WriteLine("IEnumerable as IList: " + (lst8 as IList<string>));
+            Debug.WriteLine("IEnumerable as Array: " + (lst8 as string[]));
+
             List<string> lst5 = lst4 as List<string>;
-            if(lst5 != null)
+            if (lst5 != null)
             {
                 lst5.Add("Four");
             }
-
             Debug.WriteLine("lst3 Count : " + lst3.Count);
 
             List<int> lst6 = new List<int> { 1, 2, 3 };
-            IEnumerable<int> lst7 = lst6;
             //IEnumerable<object> lst8 = lst6;//Error CS0266  Cannot implicitly convert type 'System.Collections.Generic.List<int>' to 'System.Collections.Generic.IEnumerable<object>'.
-                                            //An explicit conversion exists (are you missing a cast?)  CSTest D:\My\cs\CSTest\CSTest\10_Collections\02_GenericCollections\_01_List.cs	148	Active
-
-
-            if (lst3.Count != 0)
-            {
-                Debug.WriteLine(lst3.Count);
-            }
-
-            if (lst3.Count == 0)
-            {
-                Debug.WriteLine(lst3.Count);
-            }
+            //An explicit conversion exists (are you missing a cast?)  CSTest D:\My\cs\CSTest\CSTest\10_Collections\02_GenericCollections\_01_List.cs	148	Active
 
             /*
             lst3 Count : 3
+            IEnumerable as List: System.Collections.Generic.List`1[System.String]
+            IEnumerable as IList: System.Collections.Generic.List`1[System.String]
+            IEnumerable as Array: 
+
+            IEnumerable as List: 
+            IEnumerable as IList: System.String[]
+            IEnumerable as Array: System.String[]
             lst3 Count : 4
             */
         }
