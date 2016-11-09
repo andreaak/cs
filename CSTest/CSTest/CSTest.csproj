@@ -117,6 +117,14 @@
     <Compile Include="01_Elements CS\04_TypeConversion\_01_Casting.cs" />
     <Compile Include="01_Elements CS\02_Variables\_04_sizeof.cs" />
     <Compile Include="04_Class\00_Base\0_Setup\TestClass.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\04_LambdaTest4.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\03_AccessorsTest.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\0_Setup\EventArgExtensions.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\0_Setup\Fax.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\0_Setup\MailManager.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\0_Setup\MailManagerCompiled.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\0_Setup\Accessors\AccessorEvent.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\0_Setup\NewMailEventArgs.cs" />
     <Compile Include="10_Collections\01_Collections\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\EqualityComparerNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\KeyValuePairNET.cs" />
@@ -186,10 +194,10 @@
     <Compile Include="04_Class\16_Polymorfizm\BaseClass.cs" />
     <Compile Include="04_Class\16_Polymorfizm\DerivedClass.cs" />
     <Compile Include="04_Class\16_Polymorfizm\Test.cs" />
-    <Compile Include="05_Delegates and Events\Delegates\_05_CoContrVarianceTest.cs" />
-    <Compile Include="05_Delegates and Events\Delegates\0_Setup\TestClass.cs" />
-    <Compile Include="05_Delegates and Events\Events\05_ForwardEventWithDefferedSubscriptionTest.cs" />
-    <Compile Include="05_Delegates and Events\Events\0_Setup\TestClass.cs" />
+    <Compile Include="05_Delegates and Events\01_Delegates\_05_CoContrVarianceTest.cs" />
+    <Compile Include="05_Delegates and Events\01_Delegates\0_Setup\TestClass.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\05_ForwardEventWithDefferedSubscriptionTest.cs" />
+    <Compile Include="05_Delegates and Events\02_Events\0_Setup\TestClass.cs" />
     <Compile Include="06_Interface\0_Setup\BaseClass.cs" />
     <Compile Include="06_Interface\0_Setup\IDisposablee.cs" />
     <Compile Include="06_Interface\_02_DerivedClass.cs" />
@@ -226,7 +234,6 @@
     <Compile Include="09_Array\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\01_List\ListNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\DictionaryNET.cs" />
-    <Compile Include="10_Collections\02_GenericCollections\09_Linq\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\CollectionExtensions.cs" />
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\Test.cs" />
     <Compile Include="12_MultiThreading\02_Synchronization\01_User\_08_SemaphoreSlimNET.cs" />
@@ -254,6 +261,7 @@
     <Compile Include="25_CS_NewFeatures\03_CS6\08_AwaitInCatchAndFinally.cs" />
     <Compile Include="25_CS_NewFeatures\03_CS6\09_Other.cs" />
     <Compile Include="25_CS_NewFeatures\03_CS6\Setup\Employee.cs" />
+    <Compile Include="26_Linq\Test.cs" />
     <Compile Include="30 NET Code\BitHelperNET.cs" />
     <Compile Include="30 NET Code\HashHelpersNET.cs" />
     <Compile Include="30 NET Code\InternalTaskOptions.cs" />

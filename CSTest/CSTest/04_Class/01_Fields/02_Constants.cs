@@ -1,4 +1,6 @@
-﻿namespace CSTest._04_Class._01_Fields
+﻿using System.Diagnostics;
+
+namespace CSTest._04_Class._01_Fields
 {
     // Константа (Constant) - это область памяти, которая хранит в себе некоторое значение, которое нельзя изменить.
     class _02_Constants
@@ -19,14 +21,28 @@
 
         private static int Init()
         {
-            return 8;
+            return field;
         }
 
         public void Show()
         {
-            const int y = 0;
+            const int y = 9;
             // Попытка присвоения константе нового значения, приводит к ошибке уровня компиляции!
-            //y = 25555; 
+            //y = 25555;
+            Debug.WriteLine(y);
         }
+
+        //Decompiled
+        /*
+        private static int Init()
+        {
+            return 5;
+        }
+
+        public void Show()
+        {
+            Debug.WriteLine((object) 9);
+        }
+        */
     }
 }
