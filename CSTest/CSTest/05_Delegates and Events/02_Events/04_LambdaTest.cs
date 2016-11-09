@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace CSTest._05_Delegates_and_Events._02_Events
 {
     [TestFixture]
-    public class _04_LambdaTest4
+    public class _04_LambdaTest
     {
         [Test]
         public void TestEventsLambda1()
@@ -33,33 +33,33 @@ namespace CSTest._05_Delegates_and_Events._02_Events
             */
         }
 
-[Test]
-public void TestEventsLambda2()
-{
-    KeyEvent kevt = new KeyEvent();
-    ConsoleKeyInfo key;
-    int count = 0;
-            
-    // Использовать лямбда-выражение для отображения факта нажатия клавиши. 
-    kevt.KeyPress += (sender, e) => Debug.WriteLine("Получено сообщение о нажатии клавиши: " + e.ch);
-            
-    // Использовать лямбда-выражение для подсчета нажатых клавиш. 
-    kevt.KeyPress += (sender, e) => count++; // count — это внешняя переменная 
+        [Test]
+        public void TestEventsLambda2()
+        {
+            KeyEvent kevt = new KeyEvent();
+            ConsoleKeyInfo key;
+            int count = 0;
 
-    Debug.WriteLine("Введите несколько символов. По завершении введите точку.");
-    do
-    {
-        key = new ConsoleKeyInfo('.', ConsoleKey.O, false, false, false);
-        kevt.OnKeyPress(key.KeyChar);
-    } while (key.KeyChar != '.');
-    Debug.WriteLine("Было нажато " + count + " клавиш.");
+            // Использовать лямбда-выражение для отображения факта нажатия клавиши. 
+            kevt.KeyPress += (sender, e) => Debug.WriteLine("Получено сообщение о нажатии клавиши: " + e.ch);
 
-    /*
-    Введите несколько символов. По завершении введите точку.
-    Получено сообщение о нажатии клавиши: .
-    Было нажато 1 клавиш.
-    */
-}
+            // Использовать лямбда-выражение для подсчета нажатых клавиш. 
+            kevt.KeyPress += (sender, e) => count++; // count — это внешняя переменная 
+
+            Debug.WriteLine("Введите несколько символов. По завершении введите точку.");
+            do
+            {
+                key = new ConsoleKeyInfo('.', ConsoleKey.O, false, false, false);
+                kevt.OnKeyPress(key.KeyChar);
+            } while (key.KeyChar != '.');
+            Debug.WriteLine("Было нажато " + count + " клавиш.");
+
+            /*
+            Введите несколько символов. По завершении введите точку.
+            Получено сообщение о нажатии клавиши: .
+            Было нажато 1 клавиш.
+            */
+        }
 
         delegate void LambdaEventHandler(int n);
         // Объявить класс, содержащий событие, 
@@ -77,7 +77,7 @@ public void TestEventsLambda2()
 
         // Пример обработки событий, связанных с нажатием клавиш на клавиатуре. 
         // Создать класс, производный от класса EventArgs и 
-        
+
         // хранящий символ нажатой клавиши. 
         class KeyEventArgs : EventArgs
         {
