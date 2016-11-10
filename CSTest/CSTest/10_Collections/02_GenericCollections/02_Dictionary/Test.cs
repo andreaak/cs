@@ -102,6 +102,109 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary
             */
         }
 
+        [Test]
+        public void TestLDictionary4Iteration()
+        {
+            DictionaryNET<int, int> dict = new DictionaryNET<int, int>();
+            Debug.WriteLine("Add 1");
+            dict.Add(1, 11);
+            DisplayDictionary(dict);
+            Debug.WriteLine("Add 0");
+            dict.Add(0, 0);
+            DisplayDictionary(dict);
+            Debug.WriteLine("Add 4");
+            dict.Add(4, 44);
+            DisplayDictionary(dict);
+            Debug.WriteLine("Add 2");
+            dict.Add(2, 22);
+            DisplayDictionary(dict);
+            Debug.WriteLine("Remove 1");
+            dict.Remove(1);
+            DisplayDictionary(dict);
+            Debug.WriteLine("Add 9");
+            dict.Add(9, 88);
+            DisplayDictionary(dict);
+            /*
+            Add 1
+            ----
+            KeyValue
+            Key: 1 Value: 11
+            Buckets: -1 0 -1 
+            Entries
+            Key: 1 Value: 11 Hash: 1 Next: -1
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Add 0
+            ----
+            KeyValue
+            Key: 1 Value: 11
+            Key: 0 Value: 0
+            Buckets: 1 0 -1 
+            Entries
+            Key: 1 Value: 11 Hash: 1 Next: -1
+            Key: 0 Value: 0 Hash: 0 Next: -1
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Add 4
+            ----
+            KeyValue
+            Key: 1 Value: 11
+            Key: 0 Value: 0
+            Key: 4 Value: 44
+            Buckets: 1 2 -1 
+            Entries
+            Key: 1 Value: 11 Hash: 1 Next: -1
+            Key: 0 Value: 0 Hash: 0 Next: -1
+            Key: 4 Value: 44 Hash: 4 Next: 0
+            Add 2
+            ----
+            KeyValue
+            Key: 1 Value: 11
+            Key: 0 Value: 0
+            Key: 4 Value: 44
+            Key: 2 Value: 22
+            Buckets: 1 0 3 -1 2 -1 -1 
+            Entries
+            Key: 1 Value: 11 Hash: 1 Next: -1
+            Key: 0 Value: 0 Hash: 0 Next: -1
+            Key: 4 Value: 44 Hash: 4 Next: -1
+            Key: 2 Value: 22 Hash: 2 Next: -1
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Remove 1
+            ----
+            KeyValue
+            Key: 0 Value: 0
+            Key: 4 Value: 44
+            Key: 2 Value: 22
+            Buckets: 1 -1 3 -1 2 -1 -1 
+            Entries
+            Key: 0 Value: 0 Hash: -1 Next: -1
+            Key: 0 Value: 0 Hash: 0 Next: -1
+            Key: 4 Value: 44 Hash: 4 Next: -1
+            Key: 2 Value: 22 Hash: 2 Next: -1
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Add 9
+            ----
+            KeyValue
+            Key: 9 Value: 88
+            Key: 0 Value: 0
+            Key: 4 Value: 44
+            Key: 2 Value: 22
+            Buckets: 1 -1 0 -1 2 -1 -1 
+            Entries
+            Key: 9 Value: 88 Hash: 9 Next: 3
+            Key: 0 Value: 0 Hash: 0 Next: -1
+            Key: 4 Value: 44 Hash: 4 Next: -1
+            Key: 2 Value: 22 Hash: 2 Next: -1
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            Key: 0 Value: 0 Hash: 0 Next: 0
+            */
+        }
+
         private void DisplayDictionary(DictionaryNET<int, int> dict)
         {
             Debug.WriteLine("----");

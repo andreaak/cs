@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using NUnit.Framework;
+using CSTest._04_Class._00_Base._0_Setup;
 
 namespace CSTest._04_Class._01_Fields
 {
@@ -25,6 +26,21 @@ namespace CSTest._04_Class._01_Fields
 
             // Ошибка Компиляции.
             //program.field = "Попытка записи в поле только для чтения.";
+        }
+
+        [Test]
+        public void TestStaticFieldsAndMethods()
+        {
+            TestClass.staticField = "Hello world! Static";
+
+            Debug.WriteLine(TestClass.staticField);
+
+            // Вызов метода с именем StaticMethod.
+            TestClass.StaticMethod();
+            /*
+            Hello world! Static
+            Hello world! Static
+            */
         }
     }
 }

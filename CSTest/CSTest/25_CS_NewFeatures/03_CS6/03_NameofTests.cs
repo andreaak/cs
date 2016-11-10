@@ -113,7 +113,6 @@ namespace CSTest._25_CS_NewFeatures._03_CS6
                 handler(sender, new PropertyChangedEventArgs(member));
             }
         }
-    }
-
 #endif
+    }
 }

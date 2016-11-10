@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSTest._05_Delegates_and_Events.Events._0_Setup
+namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup
 {
     class TestClass
     {
@@ -8,17 +8,17 @@ namespace CSTest._05_Delegates_and_Events.Events._0_Setup
 
         public TestClass()
         {
-            Test = TestClassBase_Test1;
-            Test += TestClassBase_Test;
+            Test = TestClass_Test1;
+            Test += TestClass_Test;
             TestEvent(ref Test);
         }
 
-        private void TestClassBase_Test1(object sender, EventArgs e)
+        private void TestClass_Test1(object sender, EventArgs e)
         {
 
         }
 
-        void TestClassBase_Test(object sender, EventArgs e)
+        private void TestClass_Test(object sender, EventArgs e)
         {
         }
 

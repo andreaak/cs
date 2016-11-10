@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NUnit.Framework;
 
-namespace CSTest._05_Delegates_and_Events.Events
+namespace CSTest._05_Delegates_and_Events._02_Events
 {
     [TestFixture]
     public class _05_ForwardEventWithDefferedSubscriptionTest
