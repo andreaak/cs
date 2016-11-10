@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using NUnit.Framework;
 
 namespace CSTest._26_Linq
@@ -39,6 +40,51 @@ namespace CSTest._26_Linq
         private bool Filter(int arg)
         {
             return arg > 5;
+        }
+
+        [Test]
+        public void TestSelectMany()
+        {
+            int[] a = { 1, 2, 3, 4, 5 };
+            int[] b = { 6, 7, 8, 9, 10 };
+            int[] d = { };
+
+            int[][] c = { a, b, d };
+            Filter(c);
+            Filter(a, b, d);
+        }
+
+        private void Filter(params int[][] arg)
+        {
+            var a = arg.SelectMany(arr => arr).ToArray();
+            foreach (var item in a)
+            {
+                Debug.WriteLine(item);
+            }
+        }
+
+        [Test]
+        public void TestDefaultIfEmpty()
+        {
+            int[] a = { 1, 2, 3, 4, 5 };
+            int[] b = { 6, 7, 8, 9, 10 };
+            int[] d = { };
+
+            int[][] c = { a, b, d };
+
+            var res = b.DefaultIfEmpty(66).First();
+            Debug.WriteLine(res);
+            object[] e = { 1, 2, 3, 4, 5 };
+            var res2 = e.Cast<int>().DefaultIfEmpty(55).First();
+            Debug.WriteLine(res2);
+            object[] f = { };
+            var res3 = f.Cast<int>().DefaultIfEmpty(77).First();
+            Debug.WriteLine(res3);
+            /*
+            6
+            1
+            77
+            */
         }
     }
 }
