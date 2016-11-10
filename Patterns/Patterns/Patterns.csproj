@@ -844,6 +844,11 @@
     <Compile Include="Other\02_ProducerComsumer\EarlierRealization\Producer.cs" />
     <Compile Include="Other\02_ProducerComsumer\EarlierRealization\SyncEvents.cs" />
     <Compile Include="Other\02_ProducerComsumer\Test.cs" />
+    <Compile Include="Other\03_ActiveStateMachine\State.cs" />
+    <Compile Include="Other\03_ActiveStateMachine\StateMachineAction.cs" />
+    <Compile Include="Other\03_ActiveStateMachine\StateMachineEventArgs.cs" />
+    <Compile Include="Other\03_ActiveStateMachine\Test.cs" />
+    <Compile Include="Other\03_ActiveStateMachine\Transition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\Adapters\HomeCatAdapter.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\CatInfoPrinter.cs" />
