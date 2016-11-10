@@ -28,6 +28,10 @@ namespace CSTest._25_CS_NewFeatures._03_CS6
         //or
         public override string ToString() => "New";//expression bodied method
 
+        public static _02_ExpressionBodiedMembersTests Add(_02_ExpressionBodiedMembersTests first, _02_ExpressionBodiedMembersTests second) => first + second;
+
+        public static _02_ExpressionBodiedMembersTests operator +(_02_ExpressionBodiedMembersTests first, _02_ExpressionBodiedMembersTests second) => new _02_ExpressionBodiedMembersTests();//expression bodied operator
+
 #endif
     }
 }

@@ -13,7 +13,7 @@ namespace CSTest._25_CS_NewFeatures._03_CS6
         {
             TestClass cut = new TestClass();
             Debug.WriteLine($"Id = {cut.Id} NameId = {cut.NameId} Name = {cut.Name}");
-            //cut.Name = "NewName";
+            //cut.NameId = 11;;
             /*
             Id = bcb2f3ed-603a-45b4-8ea7-79414cfeb4f1 NameId = 5 Name = TestStr
             */
@@ -22,6 +22,7 @@ namespace CSTest._25_CS_NewFeatures._03_CS6
 
     class TestClass
     {
+        //old style
         //public Guid Id { get; protected set; }
 
         //public TestClass()
@@ -33,6 +34,7 @@ namespace CSTest._25_CS_NewFeatures._03_CS6
         public Guid Id { get; } = Guid.NewGuid();
 
         //auto property with getter only - can set only in ctor
+        //immutable field
         public int NameId { get; } = 3;
 
         public string Name { get; set; } = "Test";
@@ -45,7 +47,8 @@ namespace CSTest._25_CS_NewFeatures._03_CS6
 
         public void SetName()
         {
-            //Name = "Test2"; can be set only in ctor
+            //NameId = 7; //can be set only in ctor
+            Name = "TestStr222";
         }
     }
 }

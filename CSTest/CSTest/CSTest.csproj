@@ -226,7 +226,6 @@
     <Compile Include="09_Array\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\01_List\ListNET.cs" />
     <Compile Include="10_Collections\02_GenericCollections\02_Dictionary\DictionaryNET.cs" />
-    <Compile Include="10_Collections\02_GenericCollections\09_Linq\Test.cs" />
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\CollectionExtensions.cs" />
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\Test.cs" />
     <Compile Include="12_MultiThreading\02_Synchronization\01_User\_08_SemaphoreSlimNET.cs" />
@@ -253,7 +252,7 @@
     <Compile Include="25_CS_NewFeatures\03_CS6\01_AutoPropertyInitializersTests.cs" />
     <Compile Include="25_CS_NewFeatures\03_CS6\08_AwaitInCatchAndFinally.cs" />
     <Compile Include="25_CS_NewFeatures\03_CS6\09_Other.cs" />
-    <Compile Include="25_CS_NewFeatures\03_CS6\Setup\Employee.cs" />
+    <Compile Include="26_Linq\Test.cs" />
     <Compile Include="30 NET Code\BitHelperNET.cs" />
     <Compile Include="30 NET Code\HashHelpersNET.cs" />
     <Compile Include="30 NET Code\InternalTaskOptions.cs" />
@@ -408,6 +407,7 @@
     <Folder Include="11_Input Output\" />
     <Folder Include="12_MultiThreading\04_Problems\" />
     <Folder Include="12_MultiThreading\06_ThreadPool\" />
+    <Folder Include="25_CS_NewFeatures\03_CS6\Setup\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="01_Elements CS\04_TypeConversion\Conversions.jpg" />
