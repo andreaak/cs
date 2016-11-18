@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Media;
+using Patterns.Other._03_ActiveStateMachine.Common;
 
 namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
 {
-    class TelephoneActivities
+    public class TelephoneActivities
     {
         //events to communicate from state machine to managers - wiring will be done via event manager
         public event EventHandler<StateMachineEventArgs> TelephoneUiEvent;

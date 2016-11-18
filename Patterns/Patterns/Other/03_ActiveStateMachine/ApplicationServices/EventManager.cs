@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Patterns.Other._03_ActiveStateMachine.Common;
 
 namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
 {
-    class EventManager
+    public class EventManager
     {
         //used for logging 
         public event EventHandler<StateMachineEventArgs> EventManagerEvent;

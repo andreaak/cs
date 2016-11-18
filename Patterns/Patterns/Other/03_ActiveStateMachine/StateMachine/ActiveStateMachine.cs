@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Patterns.Other._03_ActiveStateMachine.Common;
 
-namespace Patterns.Other._03_ActiveStateMachine
+namespace Patterns.Other._03_ActiveStateMachine.StateMachine
 {
     public enum EngineState
     {
@@ -15,7 +16,7 @@ namespace Patterns.Other._03_ActiveStateMachine
         Paused,
     }
 
-    class ActiveStateMachine
+    public class ActiveStateMachine
     {
         public event EventHandler<StateMachineEventArgs> StateMachineEvent;
 

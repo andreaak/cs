@@ -12,6 +12,7 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
             : base(deviceName, eventCallBack)
         { }
 
+        //Initialization
         public override void OnInit()
         {
             Ringing = false;

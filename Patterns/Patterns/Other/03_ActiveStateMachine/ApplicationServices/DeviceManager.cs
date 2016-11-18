@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Patterns.Other._03_ActiveStateMachine.Common;
 
 namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
 {
-    class DeviceManager
+    public class DeviceManager
     {
         //used for logging 
         public event EventHandler<StateMachineEventArgs> DeviceManagerEvent;
@@ -107,7 +108,7 @@ namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
             RaiseDeviceManagerEvent("Removed device", name);
         }
 
-        //Method to raise a device manager event fo logging, etc
+        //Method to raise a device manager event for logging, etc
         private void RaiseDeviceManagerEvent(string name, string info)
         {
             var arg = new StateMachineEventArgs(name, "Devie manager event: " + info, StateMachineEventType.System, "Device Manager", "");

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
+using Patterns.Other._03_ActiveStateMachine.Common;
 
 namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
 {
-    class ViewManager
+    public class ViewManager
     {
         public event EventHandler<StateMachineEventArgs> ViewManagerEvent;
 

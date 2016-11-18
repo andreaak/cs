@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Patterns.Other._03_ActiveStateMachine
+namespace Patterns.Other._03_ActiveStateMachine.StateMachine
 {
-    class StateMachineAction
+    public class StateMachineAction
     {
         private Action _method;
 

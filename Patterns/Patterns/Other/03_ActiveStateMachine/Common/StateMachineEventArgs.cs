@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Patterns.Other._03_ActiveStateMachine
+namespace Patterns.Other._03_ActiveStateMachine.Common
 {
     public enum StateMachineEventType
     {
@@ -10,7 +10,7 @@ namespace Patterns.Other._03_ActiveStateMachine
         External
     }
 
-    class StateMachineEventArgs
+    public class StateMachineEventArgs
     {
         public string EventName { get; }
 

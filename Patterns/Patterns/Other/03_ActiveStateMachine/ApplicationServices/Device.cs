@@ -8,7 +8,7 @@ namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
 
         public string DevName { get; }
 
-        public Device(string deviceName, Action<string, string, string> eventCallBack)
+        protected Device(string deviceName, Action<string, string, string> eventCallBack)
         {
             DevName = deviceName;
             _devEventMethod = eventCallBack;

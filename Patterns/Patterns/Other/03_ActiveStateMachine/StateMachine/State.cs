@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Patterns.Other._03_ActiveStateMachine
+namespace Patterns.Other._03_ActiveStateMachine.StateMachine
 {
-    class State
+    public class State
     {
         public string StateName { get; }
 

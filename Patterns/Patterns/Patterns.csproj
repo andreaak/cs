@@ -844,6 +844,7 @@
     <Compile Include="Other\02_ProducerComsumer\EarlierRealization\Producer.cs" />
     <Compile Include="Other\02_ProducerComsumer\EarlierRealization\SyncEvents.cs" />
     <Compile Include="Other\02_ProducerComsumer\Test.cs" />
+    <Compile Include="Other\03_ActiveStateMachine\Common\IViewState.cs" />
     <Compile Include="Other\03_ActiveStateMachine\StateMachine\ActiveStateMachine.cs" />
     <Compile Include="Other\03_ActiveStateMachine\ApplicationServices\Device.cs" />
     <Compile Include="Other\03_ActiveStateMachine\ApplicationServices\DeviceManager.cs" />
@@ -861,6 +862,8 @@
     <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\DeviceReceiver.cs" />
     <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneActivities.cs" />
     <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneDeviceConfiguration.cs" />
+    <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneStateMachine.cs" />
+    <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneStateMachineConfiguration.cs" />
     <Compile Include="Other\03_ActiveStateMachine\Test.cs" />
     <Compile Include="Other\03_ActiveStateMachine\StateMachine\Transition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1072,6 +1075,9 @@
     <Content Include="03_Behavioral\Visitor\001_Base\Visitor.png" />
     <Content Include="03_Behavioral\Visitor\001_Base\VisitorSD.png" />
     <Content Include="03_Behavioral\Visitor\Visitor.png" />
+    <Content Include="Other\03_ActiveStateMachine\StateMachine\States.jpg" />
+    <Content Include="Other\03_ActiveStateMachine\StateMachine\StatesDiagram.jpg" />
+    <Content Include="Other\03_ActiveStateMachine\TelephoneStateMachine\Devices.jpg" />
     <Content Include="Resources\clear.png" />
     <None Include="packages.config" />
     <None Include="Resources\Clear_.png" />

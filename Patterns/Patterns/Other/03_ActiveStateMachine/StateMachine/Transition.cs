@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Patterns.Other._03_ActiveStateMachine
+namespace Patterns.Other._03_ActiveStateMachine.StateMachine
 {
-    class Transition
+    public class Transition
     {
         public string Name { get; }
 

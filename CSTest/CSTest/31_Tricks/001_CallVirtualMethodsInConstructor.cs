@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
 using NUnit.Framework;
@@ -26,15 +27,40 @@ namespace CSTest._31_Tricks
         public void TestCallVirtualMethodsInConstructor1()
         {
             var p1 = ProductFactory.Create<ConcreteProduct>();
+            var p2 = ProductFactory2.Create<ConcreteProduct>(5);
             /*
+            Product: ctor
             ConcreteProduct: construction
             ConcreteProduct: post construction
+
+            Product: ctor
+            ConcreteProduct: construction wit param
+            ConcreteProduct: post construction
+            */
+        }
+
+        [Test]
+        // Создать и запустить задачу на исполнение. 
+        public void TestCallVirtualMethodsInConstructor3Interface()
+        {
+            var p1 = PostConstructionFactory.Create<ConcreteProduct2>();
+            var p2 = PostConstructionFactory.Create<ConcreteProduct2>(5);
+            /*
+            ConcreteProduct2: construction
+            ConcreteProduct2: post construction
+            ConcreteProduct2: construction wit param
+            ConcreteProduct2: post construction
             */
         }
     }
 
     public abstract class Product
     {
+        protected Product()
+        {
+            Debug.WriteLine("Product: ctor");
+        }
+
         protected internal abstract void PostConstruction();
     }
 
@@ -47,9 +73,33 @@ namespace CSTest._31_Tricks
             Debug.WriteLine("ConcreteProduct: construction");
         }
 
+        public ConcreteProduct(int w)
+        {
+            Debug.WriteLine("ConcreteProduct: construction wit param");
+        }
+
         protected internal override void PostConstruction()
         {
             Debug.WriteLine("ConcreteProduct: post construction");
+        }
+    }
+    public class ConcreteProduct2 : IPostConstruction
+    {
+        // Внутренний конструктор не позволит клиентам иерархии
+        // создавать объекты напрямую.
+        public ConcreteProduct2()
+        {
+            Debug.WriteLine("ConcreteProduct2: construction");
+        }
+
+        public ConcreteProduct2(int w)
+        {
+            Debug.WriteLine("ConcreteProduct2: construction wit param");
+        }
+
+        public void PostConstruction()
+        {
+            Debug.WriteLine("ConcreteProduct2: post construction");
         }
     }
 
@@ -86,4 +136,44 @@ namespace CSTest._31_Tricks
     Чтобы упростить работу с нашей фабрикой, можно «развернуть» это исключение в методе Create 
     и пробросить исходное исключение с сохранением стека вызовов с помощью ExceptionDispatchInfo1 
     */
+
+    public static class ProductFactory2
+    {
+        public static T Create<T>(params object[] parameters) where T : Product, new()
+        {
+            try
+            {
+                T t = (T)Activator.CreateInstance(typeof(T), parameters);
+                // Вызываем постобработку
+                t.PostConstruction();
+                return t;
+            }
+            catch (TargetInvocationException e)
+            {
+                // «разворачиваем» исключение и бросаем исходное
+#if CS5
+                var edi = ExceptionDispatchInfo.Capture(e.InnerException);
+                edi.Throw();
+#endif
+                // эта точка недостижима, но компилятор об этом не знает!
+                return default(T);
+            }
+        }
+    }
+
+    public interface IPostConstruction
+    {
+        void PostConstruction();
+    }
+
+    public static class PostConstructionFactory
+    {
+        public static T Create<T>(params object[] parameters) where T : IPostConstruction
+        {
+            T t = (T)Activator.CreateInstance(typeof(T), parameters);
+            // Вызываем постобработку
+            t.PostConstruction();
+            return t;
+        }
+    }
 }

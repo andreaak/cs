@@ -1,6 +1,6 @@
-﻿namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
+﻿namespace Patterns.Other._03_ActiveStateMachine.Common
 {
-    interface IUserInterface
+    public interface IUserInterface
     {
         void LoadViewState(string viewState);
     }

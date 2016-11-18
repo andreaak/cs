@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using Patterns.Other._03_ActiveStateMachine.Common;
 
 namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
 {
-    class LogManager
+    public class LogManager
     {
         private static readonly Lazy<LogManager> _logger = new Lazy<LogManager>(() => new LogManager());
 

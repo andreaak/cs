@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
+namespace Patterns.Other._03_ActiveStateMachine.Common
 {
     public interface IDeviceConfiguration
     {
