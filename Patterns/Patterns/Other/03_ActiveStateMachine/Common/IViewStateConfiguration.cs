@@ -8,6 +8,6 @@ namespace Patterns.Other._03_ActiveStateMachine.Common
 
         string[] ViewStateList { get; set; }
 
-        string DefaultViewState { get; set; }
+        string DefaultViewState { get; }
     }
 }

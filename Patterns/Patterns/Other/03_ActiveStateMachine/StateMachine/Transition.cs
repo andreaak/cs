@@ -4,17 +4,17 @@ namespace Patterns.Other._03_ActiveStateMachine.StateMachine
 {
     public class Transition
     {
-        public string Name { get; }
+        public string Name { get; private set; }
 
-        public string SourceStateName { get; }
+        public string SourceStateName { get; private set; }
 
-        public string TargetStateName { get; }
+        public string TargetStateName { get; private set; }
 
-        public List<StateMachineAction> GuardList{ get; }
+        public List<StateMachineAction> GuardList { get; private set; }
 
-        public List<StateMachineAction> TransitionActionList{ get; }
+        public List<StateMachineAction> TransitionActionList { get; private set; }
 
-        public string Trigger { get; }
+        public string Trigger { get; private set; }
 
         public Transition(string name, string sourceStateName, string targetStateName, List<StateMachineAction> guardList, List<StateMachineAction> transitionActionList, string trigger)
         {

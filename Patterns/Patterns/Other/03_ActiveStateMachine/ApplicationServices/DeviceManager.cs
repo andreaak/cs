@@ -111,7 +111,7 @@ namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
         //Method to raise a device manager event for logging, etc
         private void RaiseDeviceManagerEvent(string name, string info)
         {
-            var arg = new StateMachineEventArgs(name, "Devie manager event: " + info, StateMachineEventType.System, "Device Manager", "");
+            var arg = new StateMachineEventArgs(name, "Device manager event: " + info, StateMachineEventType.System, "Device Manager", "");
             if (DeviceManagerEvent != null)
                 DeviceManagerEvent(this, arg);
         }
@@ -120,7 +120,6 @@ namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
         public void RaiseDeviceManagerNotification(string command, string info, string source)
         {
             var arg = new StateMachineEventArgs(command, info, StateMachineEventType.Notification, source, "State Machine");
-            var emp = DeviceManagerNotification;
             if (DeviceManagerNotification != null)
                 DeviceManagerNotification(this, arg);
         }

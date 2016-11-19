@@ -71,12 +71,16 @@ namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
                 _ui.LoadViewState(DefaultViewState);
                 CurrentView = DefaultViewState;
             }
+            if (e.EventName == "CompleteFailure")
+            {
+                _ui.LoadViewState("CompleteFailure");
+            }
         }
 
         //Method to raise a view manager event fo logging, etc
-        private void RaiseViewManagerEvent(string eventName, string eventInfo, StateMachineEventType eventType = StateMachineEventType.System)
+        private void RaiseViewManagerEvent(string name, string info, StateMachineEventType eventType = StateMachineEventType.System)
         {
-            var arg = new StateMachineEventArgs(eventName, eventInfo, eventType, "EventManager", "");
+            var arg = new StateMachineEventArgs(name, "View manager event: " + info, eventType, "View Manager", "");
             if (ViewManagerEvent != null)
                 ViewManagerEvent(this, arg);
         }

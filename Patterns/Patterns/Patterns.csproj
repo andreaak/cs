@@ -1075,8 +1075,13 @@
     <Content Include="03_Behavioral\Visitor\001_Base\Visitor.png" />
     <Content Include="03_Behavioral\Visitor\001_Base\VisitorSD.png" />
     <Content Include="03_Behavioral\Visitor\Visitor.png" />
-    <Content Include="Other\03_ActiveStateMachine\StateMachine\States.jpg" />
-    <Content Include="Other\03_ActiveStateMachine\StateMachine\StatesDiagram.jpg" />
+    <Content Include="Other\03_ActiveStateMachine\Configuration.jpg" />
+    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\Signals1.jpg" />
+    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\Signals2.jpg" />
+    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\Signals3.jpg" />
+    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\Signals4.jpg" />
+    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\States.jpg" />
+    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\StatesDiagram.jpg" />
     <Content Include="Other\03_ActiveStateMachine\TelephoneStateMachine\Devices.jpg" />
     <Content Include="Resources\clear.png" />
     <None Include="packages.config" />

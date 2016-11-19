@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Telephone.cs">
+    <Compile Include="01_StateMachine\Telephone.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telephone.Designer.cs">
+    <Compile Include="01_StateMachine\Telephone.Designer.cs">
       <DependentUpon>Telephone.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TelephoneViewState.cs" />
-    <Compile Include="TelephoneViewStateConfiguration.cs" />
-    <EmbeddedResource Include="Telephone.resx">
+    <Compile Include="01_StateMachine\TelephoneViewState.cs" />
+    <Compile Include="01_StateMachine\TelephoneViewStateConfiguration.cs" />
+    <EmbeddedResource Include="01_StateMachine\Telephone.resx">
       <DependentUpon>Telephone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -86,6 +86,11 @@
       <Project>{a3a1eab3-457b-4dbc-8273-74e863dd61fe}</Project>
       <Name>Patterns</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="01_StateMachine\Images\Signals1.jpg" />
+    <Content Include="01_StateMachine\Images\Signals2.jpg" />
+    <Content Include="01_StateMachine\Images\Signals3.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

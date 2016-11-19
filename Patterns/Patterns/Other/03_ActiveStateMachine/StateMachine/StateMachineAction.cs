@@ -4,9 +4,9 @@ namespace Patterns.Other._03_ActiveStateMachine.StateMachine
 {
     public class StateMachineAction
     {
-        private Action _method;
+        public string Name { get; private set; }
 
-        public string Name { get; }
+        private Action _method;
 
         public StateMachineAction(string name, Action method)
         {

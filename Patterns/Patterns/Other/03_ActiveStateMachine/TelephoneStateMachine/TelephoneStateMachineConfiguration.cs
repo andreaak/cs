@@ -47,6 +47,7 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
             var actionViewPhoneRings = new StateMachineAction("ActionViewPhoneRings", TelephoneActivities.ActionViewPhoneRings);
             var actionViewPhoneIdle = new StateMachineAction("ActionViewPhoneIdle", TelephoneActivities.ActionViewPhoneIdle);
             var actionViewTalking = new StateMachineAction("ActionViewTalking", TelephoneActivities.ActionViewTalking);
+            var actionViewErrorPhoneRings = new StateMachineAction("ActionViewErrorPhoneRings", TelephoneActivities.ActionErrorPhoneRings);
 
             //Create transitions and corresponding triggers, states need to be added
             var emptyList = new List<StateMachineAction>();//to avoid null ref exception, use empty list where no actions are used
@@ -55,6 +56,11 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
             var ICActions = new List<StateMachineAction>();
             ICActions.Add(actionViewPhoneRings);
             var transitionIncomingCall = new Transition("TransitionIncomingCall", "StatePhoneIdle", "StatePhoneRings", emptyList, ICActions, "OnLineExternalActive");
+
+            //Transition ErrorPhoneRings
+            var EPRActions = new List<StateMachineAction>();
+            EPRActions.Add(actionViewErrorPhoneRings);
+            var transitionErrorPhoneRings = new Transition("TransitionErrorPhoneRings", "StatePhoneRings", "StatePhoneRings", emptyList, EPRActions, "OnBellBroken");
 
             //Transition CallBlocked
             var CBActions = new List<StateMachineAction>();
@@ -80,12 +86,13 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
             transitionsPhoneIdle.Add("TransitionIncomingCall", transitionIncomingCall);
             var entryActionsPhoneIdle = new List<StateMachineAction>();
             var exitActionsPhoneIdle = new List<StateMachineAction>();
-            var phoneIdle = new State("StatePhoneIdle", transitionsPhoneIdle, entryActionsPhoneIdle, exitActionsPhoneIdle);
+            var phoneIdle = new State("StatePhoneIdle", transitionsPhoneIdle, entryActionsPhoneIdle, exitActionsPhoneIdle, true);
 
             //State : PhoneRings
             var transitionsPhoneRings = new Dictionary<string, Transition>();
             transitionsPhoneRings.Add("TransitionCallBlocked", transitionCallBlocked);
             transitionsPhoneRings.Add("TransitionCallAccepted", transitionCallAccepted);
+            transitionsPhoneRings.Add("TransitionErrorPhoneRings", transitionErrorPhoneRings);
             var entryActionsPhoneRings = new List<StateMachineAction>();
             entryActionsPhoneRings.Add(actionBellRings);
             var exitActionsPhoneRings = new List<StateMachineAction>();
@@ -131,7 +138,7 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
 
             //Framework / infrastructure events
             TelephoneEventManager.RegisterEvent("StateMachineEvent", telephoneStateMachine);
-            TelephoneEventManager.RegisterEvent("UINotification", TelephoneViewManager);
+            //TelephoneEventManager.RegisterEvent("UINotification", TelephoneViewManager);
             TelephoneEventManager.RegisterEvent("DeviceManagerNotification", TelephoneDeviceManager);
             TelephoneEventManager.RegisterEvent("EventManagerEvent", TelephoneEventManager);
             TelephoneEventManager.RegisterEvent("ViewManagerEvent", TelephoneViewManager);
@@ -144,7 +151,7 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
             #region Event Mappings
 
             //Logging
-            TelephoneEventManager.SubscribeEvent("UINotification", "LogEventHandler", TelephoneLogManager);
+            //TelephoneEventManager.SubscribeEvent("UINotification", "LogEventHandler", TelephoneLogManager);
             TelephoneEventManager.SubscribeEvent("DeviceManagerNotification", "LogEventHandler", TelephoneLogManager);
             TelephoneEventManager.SubscribeEvent("StateMachineEvent", "LogEventHandler", TelephoneLogManager);
             TelephoneEventManager.SubscribeEvent("EventManagerEvent", "LogEventHandler", TelephoneLogManager);
@@ -152,8 +159,9 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
             TelephoneEventManager.SubscribeEvent("DeviceManagerEvent", "LogEventHandler", TelephoneLogManager);
 
             //Notifications / Triggers
-            TelephoneEventManager.SubscribeEvent("UINotification", "InternalNotificationHandler", telephoneStateMachine);
-            TelephoneEventManager.SubscribeEvent("DeviceManagerNotification", "InternalNotificationHandler", TelephoneLogManager);
+            //TelephoneEventManager.SubscribeEvent("UINotification", "InternalNotificationHandler", telephoneStateMachine);
+            TelephoneEventManager.SubscribeEvent("ViewManagerEvent", "InternalNotificationHandler", telephoneStateMachine);
+            TelephoneEventManager.SubscribeEvent("DeviceManagerNotification", "InternalNotificationHandler", telephoneStateMachine);
 
             //System event listeners in managers
             TelephoneEventManager.SubscribeEvent("TelephoneUiEvent", "ViewCommandHandler", TelephoneViewManager);

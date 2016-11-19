@@ -48,13 +48,18 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
         {
             RaiseTelephoneUiEvent("ViewTalking");
         }
+
+        public void ActionErrorPhoneRings()
+        {
+            RaiseTelephoneUiEvent("ViewErrorPhoneRings");
+        }
         //View actons
 
         public void RaiseTelephoneUiEvent(string command)
         {
             var arg = new StateMachineEventArgs(command, "UI command", StateMachineEventType.Command, "State machine action", "View Manager");
-            if (TelephoneDeviceEvent != null)
-                TelephoneDeviceEvent(this, arg);
+            if (TelephoneUiEvent != null)
+                TelephoneUiEvent(this, arg);
         }
 
         public void RaiseDeviceEvent(string target, string command)

@@ -20,13 +20,8 @@ namespace Patterns.Other._03_ActiveStateMachine.ApplicationServices
         {
         }
 
-        public void LoadViewStateConfiguration(IDeviceConfiguration configuration)
-        {
-            //DeviceList = configuration.Devices;
-        }
-
-        //Log info to debug window
-        public void DeviceCommandHandler(object sender, StateMachineEventArgs e)
+        //Log infos to debug window
+        public void LogEventHandler(object sender, StateMachineEventArgs e)
         {
             //Log system events
             if (e.EventType != StateMachineEventType.Notification)

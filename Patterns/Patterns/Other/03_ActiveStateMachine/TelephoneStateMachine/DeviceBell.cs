@@ -20,8 +20,27 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
 
         public void Rings()
         {
-            Ringing = true;
-            SystemSounds.Hand.Play();
+            try
+            {
+                //Catastrofic error stoping system
+                //throw new SystemException("System device fatal error");
+                //
+                //throw new SystemException("OnBellBroken");
+                Ringing = true;
+                SystemSounds.Hand.Play();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "OnBellBroken")
+                {
+                    DoNotificationCallback("OnBellBroken", ex.Message, "Bell");
+                }
+                else
+                {
+                    DoNotificationCallback("CompleteFailure", ex.Message, "Bell");
+                }
+            }
+
         }
 
         public void Silent()

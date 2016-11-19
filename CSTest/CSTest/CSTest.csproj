@@ -249,6 +249,7 @@
     <Compile Include="12_MultiThreading\07_AsyncAwait\02_TestTask.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\04_TestException.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\03_TestTaskWithResult.cs" />
+    <Compile Include="25_CS_NewFeatures\01_CS4\02_CoContraVarianceTests.cs" />
     <Compile Include="25_CS_NewFeatures\03_CS6\02_PrimaryCtorTests.cs" />
     <Compile Include="25_CS_NewFeatures\03_CS6\06_EventInitializerTests.cs" />
     <Compile Include="25_CS_NewFeatures\03_CS6\07_ExceptionFiltersTests.cs" />

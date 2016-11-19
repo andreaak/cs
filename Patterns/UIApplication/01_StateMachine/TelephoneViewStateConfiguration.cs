@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using Patterns.Other._03_ActiveStateMachine.Common;
 
-namespace UIApplication
+namespace UIApplication._01_StateMachine
 {
     class TelephoneViewStateConfiguration : IViewStateConfiguration
     {
+        public Dictionary<string, object> ViewStates
+        {
+            get; set;
+        }
+        public string[] ViewStateList
+        {
+            get; set;
+        }
+
         public string DefaultViewState
         {
             get
@@ -18,20 +27,6 @@ namespace UIApplication
                 }
                 throw new Exception("Missing default view state");
             }
-            set
-            {
-                
-            }
-        }
-
-        public string[] ViewStateList
-        {
-            get; set;
-        }
-
-        public Dictionary<string, object> ViewStates
-        {
-            get; set;
         }
 
         public TelephoneViewStateConfiguration()
@@ -45,10 +40,11 @@ namespace UIApplication
             {
                 {"ViewPhoneIdle", new TelephoneViewState("ViewPhoneIdle", false, false, true, true) },//Default view state
                 {"ViewPhoneRings", new TelephoneViewState("ViewPhoneRings", true, false, true) },
+                {"ViewErrorPhoneRings", new TelephoneViewState("ViewErrorPhoneRings", true, false, true) },
                 {"ViewTalking", new TelephoneViewState("ViewTalking", false, true, false) },
             };
 
-            ViewStateList = new[] {"ViewPhoneIdle", "ViewPhoneRings", "ViewTalking"};
+            ViewStateList = new[] { "ViewPhoneIdle", "ViewPhoneRings", "ViewErrorPhoneRings", "ViewTalking" };
         }
     }
 }

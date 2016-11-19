@@ -41,12 +41,12 @@ namespace Patterns.Other._03_ActiveStateMachine.StateMachine
             _initialState = new State("InitialState", null, null, null);
 
             TriggerQueue = new BlockingCollection<string>(queueCapacity);
-            InitStateMchine();
+            InitStateMachine();
             RaiseStateMachineSystemEvent("StateMachine: Initialized", "System ready to start");
             StateMachineEngine = EngineState.Initialized;
         }
 
-        private void InitStateMchine()
+        public void InitStateMachine()
         {
             //set initial state to an unspecific initial state.
             PreviousState = _initialState;
@@ -135,7 +135,7 @@ namespace Patterns.Other._03_ActiveStateMachine.StateMachine
                     {
                         ExecuteTransition(transition.Value);
                     }
-                    //Do not place any code here? because it will not be executed!
+                    //Do not place any code here, because it will not be executed!
                     //The foreach loop keeps spinning on the queue until thread is canceled.
                 }
             }
@@ -164,6 +164,13 @@ namespace Patterns.Other._03_ActiveStateMachine.StateMachine
                 return;
             }
 
+            //Self transition - just do transition without executing exit, entry actions or guards
+            if (transition.SourceStateName == transition.TargetStateName)
+            {
+                transition.TransitionActionList.ForEach(t => t.Execute());
+                return;
+            }
+
             //Run all exit actions of the old state
             CurrentState.ExitActions.ForEach(a => a.Execute());
 
@@ -174,11 +181,10 @@ namespace Patterns.Other._03_ActiveStateMachine.StateMachine
 
             //Run all actions of the transition
             transition.TransitionActionList.ForEach(t => t.Execute());
-
-            //state change
             info = transition.TransitionActionList.Count + " transition actions executed!";
             RaiseStateMachineSystemEvent("State machine: Begin state change", info);
 
+            //State change
             //First resolve the target state with the help of its name
             var targetState = GetStateFromStateList(transition.TargetStateName);
 
@@ -217,7 +223,15 @@ namespace Patterns.Other._03_ActiveStateMachine.StateMachine
 
         public void InternalNotificationHandler(object sender, StateMachineEventArgs e)
         {
-            EnterTrigger(e.EventName);
+            if (e.EventName == "CompleteFailure")
+            {
+                RaiseStateMachineSystemCommand("CompleteFailure", "Device: " + e.Source);
+                Stop();
+            }
+            else
+            {
+                EnterTrigger(e.EventName);
+            }
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿namespace UIApplication
+﻿namespace UIApplication._01_StateMachine
 {
     partial class Telephone
     {

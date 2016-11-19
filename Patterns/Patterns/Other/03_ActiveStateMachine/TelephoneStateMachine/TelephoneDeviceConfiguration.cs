@@ -20,7 +20,7 @@ namespace Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine
         {
             var bell = new DeviceBell("Bell", _devMan.RaiseDeviceManagerNotification);
             var phoneLine = new DevicePhoneLine("PhoneLine", _devMan.RaiseDeviceManagerNotification);
-            var receiver = new DevicePhoneLine("Receiver", _devMan.RaiseDeviceManagerNotification);
+            var receiver = new DeviceReceiver("Receiver", _devMan.RaiseDeviceManagerNotification);
 
             Devices = new Dictionary<string, object> { { "Bell", bell }, { "PhoneLine", phoneLine }, { "Receiver", receiver } };
         }

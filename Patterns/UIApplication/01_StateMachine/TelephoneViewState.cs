@@ -1,6 +1,6 @@
 ﻿using Patterns.Other._03_ActiveStateMachine.Common;
 
-namespace UIApplication
+namespace UIApplication._01_StateMachine
 {
     public class TelephoneViewState : IViewState
     {
