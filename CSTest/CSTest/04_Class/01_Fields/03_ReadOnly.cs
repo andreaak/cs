@@ -11,12 +11,14 @@ namespace CSTest._04_Class._01_Fields
             fieldStatic = 7;
         }
 
+        public int fieldInt = 0;
+
         // Поле только для чтения
-        public readonly string field = "hello";
+        public readonly string readonlyField = "hello";
 
         public readonly TestClass fieldClass = new TestClass();
 
-        public readonly int z = Init();
+        public readonly int readOnlyInt = Init();
 
         private static int Init()
         {
@@ -26,17 +28,17 @@ namespace CSTest._04_Class._01_Fields
         // Конструктор.
         public _03_ReadOnly()
         {
-            Debug.WriteLine(field);
-            field = "Поле только для чтения ";
-            field += "!";
+            Debug.WriteLine(readonlyField);
+            readonlyField = "Поле только для чтения ";
+            readonlyField += "!";
         }
 
         public _03_ReadOnly(int i)
             : this()
         {
-            field = "Поле только для чтения ";
+            readonlyField = "Поле только для чтения ";
 
-            field += "!";
+            readonlyField += "!";
         }
     }
 }

@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CS5</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -837,35 +837,38 @@
     <Compile Include="03_Behavioral\Visitor\003_Visitor\Test.cs" />
     <Compile Include="03_Behavioral\Visitor\003_Visitor\Visitor.cs" />
     <Compile Include="03_Behavioral\Visitor\004_VisitorExtMethod\Test.cs" />
-    <Compile Include="Other\01_Null_object\Test.cs" />
-    <Compile Include="Other\02_ProducerComsumer\CS4Realization\Consumer.cs" />
-    <Compile Include="Other\02_ProducerComsumer\CS4Realization\Producer.cs" />
-    <Compile Include="Other\02_ProducerComsumer\EarlierRealization\Consumer.cs" />
-    <Compile Include="Other\02_ProducerComsumer\EarlierRealization\Producer.cs" />
-    <Compile Include="Other\02_ProducerComsumer\EarlierRealization\SyncEvents.cs" />
-    <Compile Include="Other\02_ProducerComsumer\Test.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\Common\IViewState.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\StateMachine\ActiveStateMachine.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\ApplicationServices\Device.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\ApplicationServices\DeviceManager.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\ApplicationServices\EventManager.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\Common\IDeviceConfiguration.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\Common\IUserInterface.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\Common\IViewStateConfiguration.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\ApplicationServices\LogManager.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\ApplicationServices\ViewManager.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\StateMachine\State.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\StateMachine\StateMachineAction.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\Common\StateMachineEventArgs.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\DeviceBell.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\DevicePhoneLine.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\DeviceReceiver.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneActivities.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneDeviceConfiguration.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneStateMachine.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneStateMachineConfiguration.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\Test.cs" />
-    <Compile Include="Other\03_ActiveStateMachine\StateMachine\Transition.cs" />
+    <Compile Include="04_Other\01_Null_object\Test.cs" />
+    <Compile Include="04_Other\02_ProducerComsumer\CS4Realization\Consumer.cs" />
+    <Compile Include="04_Other\02_ProducerComsumer\CS4Realization\Producer.cs" />
+    <Compile Include="04_Other\02_ProducerComsumer\EarlierRealization\Consumer.cs" />
+    <Compile Include="04_Other\02_ProducerComsumer\EarlierRealization\Producer.cs" />
+    <Compile Include="04_Other\02_ProducerComsumer\EarlierRealization\SyncEvents.cs" />
+    <Compile Include="04_Other\02_ProducerComsumer\Test.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\Common\IViewState.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\StateMachine\ActiveStateMachine.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\ApplicationServices\Device.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\ApplicationServices\DeviceManager.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\ApplicationServices\EventManager.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\Common\IDeviceConfiguration.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\Common\IUserInterface.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\Common\IViewStateConfiguration.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\ApplicationServices\LogManager.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\ApplicationServices\ViewManager.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\StateMachine\State.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\StateMachine\StateMachineAction.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\Common\StateMachineEventArgs.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\TelephoneStateMachine\DeviceBell.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\TelephoneStateMachine\DevicePhoneLine.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\TelephoneStateMachine\DeviceReceiver.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneActivities.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneDeviceConfiguration.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneStateMachine.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\TelephoneStateMachine\TelephoneStateMachineConfiguration.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\Test.cs" />
+    <Compile Include="04_Other\03_ActiveStateMachine\StateMachine\Transition.cs" />
+    <Compile Include="05_Tricks\01_CallVirtualMethodsInConstructor\Product.cs" />
+    <Compile Include="05_Tricks\01_CallVirtualMethodsInConstructor\ProductFactory.cs" />
+    <Compile Include="05_Tricks\01_CallVirtualMethodsInConstructor\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\Adapters\HomeCatAdapter.cs" />
     <Compile Include="02_Structural\Adapter\001_Cats\CatInfoPrinter.cs" />
@@ -1075,14 +1078,14 @@
     <Content Include="03_Behavioral\Visitor\001_Base\Visitor.png" />
     <Content Include="03_Behavioral\Visitor\001_Base\VisitorSD.png" />
     <Content Include="03_Behavioral\Visitor\Visitor.png" />
-    <Content Include="Other\03_ActiveStateMachine\Configuration.jpg" />
-    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\Signals1.jpg" />
-    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\Signals2.jpg" />
-    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\Signals3.jpg" />
-    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\Signals4.jpg" />
-    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\States.jpg" />
-    <Content Include="Other\03_ActiveStateMachine\StateMachine\Images\StatesDiagram.jpg" />
-    <Content Include="Other\03_ActiveStateMachine\TelephoneStateMachine\Devices.jpg" />
+    <Content Include="04_Other\03_ActiveStateMachine\Configuration.jpg" />
+    <Content Include="04_Other\03_ActiveStateMachine\StateMachine\Images\Signals1.jpg" />
+    <Content Include="04_Other\03_ActiveStateMachine\StateMachine\Images\Signals2.jpg" />
+    <Content Include="04_Other\03_ActiveStateMachine\StateMachine\Images\Signals3.jpg" />
+    <Content Include="04_Other\03_ActiveStateMachine\StateMachine\Images\Signals4.jpg" />
+    <Content Include="04_Other\03_ActiveStateMachine\StateMachine\Images\States.jpg" />
+    <Content Include="04_Other\03_ActiveStateMachine\StateMachine\Images\StatesDiagram.jpg" />
+    <Content Include="04_Other\03_ActiveStateMachine\TelephoneStateMachine\Devices.jpg" />
     <Content Include="Resources\clear.png" />
     <None Include="packages.config" />
     <None Include="Resources\Clear_.png" />

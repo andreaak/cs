@@ -32,8 +32,7 @@ namespace CSTest._05_Delegates_and_Events._02_Events
             evt.OnSomeEvent();
             Debug.WriteLine("");
             // Попробовать удалить обработчик еще раз. 
-            Debug.WriteLine("Попытка удалить обработчик " +
-            "xOb.Xhandler еще раз.");
+            Debug.WriteLine("Попытка удалить обработчик " + "xOb.Xhandler еще раз.");
             evt.SomeEvent -= xOb.Xhandler;
             evt.OnSomeEvent();
             Debug.WriteLine("");

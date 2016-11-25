@@ -48,6 +48,7 @@ namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup
             }
         }
 
+        //EventArgExtensions
         protected virtual void OnNewMail4(NewMailEventArgs e)
         {
             e.Raise(this, ref NewMail);
