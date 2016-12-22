@@ -31,5 +31,12 @@ namespace ReelsHelper
             Form form = new RemoveIndexForm(reels);
             form.Show();
         }
+
+        private void buttonCheckShiftPreparer_Click(object sender, EventArgs e)
+        {
+            IList<Reel> reels = JSonParser.ParseReels(textBox1.Text);
+            Form form = new CheckShiftReelsPrepareForm(reels);
+            form.Show();
+        }
     }
 }

@@ -15,6 +15,7 @@ _ReSharper*
 *.mdf
 *.ldf
 *.licx
+*.DotSettings
 ParseQuery2/
 SocialNetwork/
 Tests/

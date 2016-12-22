@@ -12,6 +12,8 @@ namespace ReelsHelper
             set;
         }
 
+        public int Count => Indexes.Count;
+
         public int? this[int index]
         {
             get

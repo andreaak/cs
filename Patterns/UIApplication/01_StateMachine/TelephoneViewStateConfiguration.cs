@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Patterns.Other._03_ActiveStateMachine.Common;
+using Patterns._04_Other._03_ActiveStateMachine.Common;
 
 namespace UIApplication._01_StateMachine
 {

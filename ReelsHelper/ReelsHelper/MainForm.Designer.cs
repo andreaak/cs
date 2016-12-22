@@ -33,6 +33,7 @@
             this.buttonVerticalReel = new System.Windows.Forms.Button();
             this.buttonGorizontalReel = new System.Windows.Forms.Button();
             this.buttonRemoveIndex = new System.Windows.Forms.Button();
+            this.buttonCheckShiftPreparer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -82,11 +83,22 @@
             this.buttonRemoveIndex.UseVisualStyleBackColor = true;
             this.buttonRemoveIndex.Click += new System.EventHandler(this.buttonRemoveIndex_Click);
             // 
+            // buttonCheckShiftPreparer
+            // 
+            this.buttonCheckShiftPreparer.Location = new System.Drawing.Point(794, 113);
+            this.buttonCheckShiftPreparer.Name = "buttonCheckShiftPreparer";
+            this.buttonCheckShiftPreparer.Size = new System.Drawing.Size(89, 36);
+            this.buttonCheckShiftPreparer.TabIndex = 2;
+            this.buttonCheckShiftPreparer.Text = "CheckShift\r\nPreparer";
+            this.buttonCheckShiftPreparer.UseVisualStyleBackColor = true;
+            this.buttonCheckShiftPreparer.Click += new System.EventHandler(this.buttonCheckShiftPreparer_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 581);
+            this.Controls.Add(this.buttonCheckShiftPreparer);
             this.Controls.Add(this.buttonRemoveIndex);
             this.Controls.Add(this.buttonGorizontalReel);
             this.Controls.Add(this.buttonVerticalReel);
@@ -107,6 +119,7 @@
         private System.Windows.Forms.Button buttonVerticalReel;
         private System.Windows.Forms.Button buttonGorizontalReel;
         private System.Windows.Forms.Button buttonRemoveIndex;
+        private System.Windows.Forms.Button buttonCheckShiftPreparer;
     }
 }
 

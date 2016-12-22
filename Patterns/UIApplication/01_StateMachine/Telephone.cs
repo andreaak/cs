@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Patterns.Other._03_ActiveStateMachine.ApplicationServices;
-using Patterns.Other._03_ActiveStateMachine.Common;
-using Patterns.Other._03_ActiveStateMachine.TelephoneStateMachine;
+using Patterns._04_Other._03_ActiveStateMachine.ApplicationServices;
+using Patterns._04_Other._03_ActiveStateMachine.Common;
+using Patterns._04_Other._03_ActiveStateMachine.TelephoneStateMachine;
 
 namespace UIApplication._01_StateMachine
 {
