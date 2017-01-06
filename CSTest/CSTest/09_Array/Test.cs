@@ -103,8 +103,7 @@ namespace CSTest._09_Array
         }
 
         [Test]
-
-        public void TestArray4()
+        public void TestArray4UseArrayClass()
         {
             // Все массивы являются производными от класса Array.
             int[] vector = { 1, 2, 3 };
@@ -116,6 +115,7 @@ namespace CSTest._09_Array
                 Debug.WriteLine(vector[i]);
             }
         }
+
         [Test]
         public void TestArray5()
         {
@@ -132,6 +132,7 @@ namespace CSTest._09_Array
             // Не компилируется. (Несовместимые типы)
             // var array3 = new [] { 1, "string" };
         }
+
         [Test]
         public void TestArray6Covariance()
         {
@@ -162,6 +163,19 @@ namespace CSTest._09_Array
                 dogs[i].Voice();
                 dogs[i].Jump();
             }
+        }
+
+        [Test]
+        public void TestArray6Resize()
+        {
+            Dog[] array = new Dog[] {new Dog()};
+            Debug.WriteLine("Size: " + array.Length);
+            Array.Resize(ref array, 5);
+            Debug.WriteLine("Size: " + array.Length);
+            /*
+            Size: 1
+            Size: 5 
+            */
         }
     }
 }

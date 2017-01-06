@@ -1,4 +1,4 @@
-﻿namespace CSTest._07_Generics
+﻿namespace CSTest._07_Generics._0_Setup
 {
     public interface IContainer<T>
     {

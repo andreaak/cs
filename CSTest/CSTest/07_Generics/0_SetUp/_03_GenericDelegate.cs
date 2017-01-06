@@ -1,4 +1,4 @@
-﻿namespace CSTest._07_Generics
+﻿namespace CSTest._07_Generics._0_Setup
 {
     // Универсальные шаблоны. (Универсальный делегат)
 
@@ -10,7 +10,7 @@
     
     delegate R GenericDelegate<T, R>(T t);
 
-    class _03_GenericDelegateClass
+    class _03_GenericDelegate
     {
 
         public static int Add(int i)

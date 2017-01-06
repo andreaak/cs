@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace CSTest._07_Generics
+namespace CSTest._07_Generics._0_Setup.Constraints
 {
     // where T : new()  -  Аргумент типа должен иметь открытый конструктор без параметров.
     // нельзя использовать struct и new одновременно
@@ -16,6 +16,7 @@ namespace CSTest._07_Generics
             Debug.WriteLine(instance.ToString());
         }
     }
+
     class _11_ThirdLevelConstraints
     {
         public int MyIntProperty { get; set; }

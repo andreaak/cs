@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace CSTest._07_Generics
+namespace CSTest._07_Generics._0_Setup
 {
     // Универсальные шаблоны. (Универсальный метод)
     class _02_GenericMethod

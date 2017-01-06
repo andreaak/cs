@@ -1,15 +1,13 @@
-﻿using CSTest._07_Generics._0_Setup;
-
-namespace CSTest._07_Generics
+﻿namespace CSTest._07_Generics._0_Setup.CoContrvariance
 {
     delegate T CovarianceDelegate<out T>();   // out - Для возвращаемого значения.
     
     class _07_DelegateCovariance
     {
 
-        public static Cat CatCreator()
+        public static Derived CatCreator()
         {
-            return new Cat();
+            return new Derived();
         }
     }
 }

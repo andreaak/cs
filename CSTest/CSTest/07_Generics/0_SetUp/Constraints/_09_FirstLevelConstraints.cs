@@ -1,6 +1,4 @@
-﻿using CSTest._07_Generics._0_Setup;
-
-namespace CSTest._07_Generics
+﻿namespace CSTest._07_Generics._0_Setup.Constraints
 {
     // where T : class  -   Аргумент типа должен иметь ссылочный тип, это также распространяется на тип любого класса, интерфейса, делегата или массива.
     class GenericClassWithConstraint<T> where T : class
