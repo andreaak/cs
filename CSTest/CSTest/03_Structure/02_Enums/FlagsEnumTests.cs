@@ -5,7 +5,7 @@ using CSTest._03_Structure._02_Enums._0_Setup;
 namespace CSTest._03_Structure._02_Enums
 {
     [TestFixture]
-    public class FlagsEnumTest
+    public class FlagsEnumTests
     {
         [Test]
         public void TestFlagEnum1()

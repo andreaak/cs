@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using NUnit.Framework;
 
@@ -86,5 +87,34 @@ namespace CSTest._26_Linq
             77
             */
         }
+
+        [Test]
+        public void Test1()
+        {
+            TestClass[] a =
+            {
+                new TestClass {Code = 1},
+                new TestClass {Code = 2},
+                new TestClass {Code = 3},
+            };
+
+            Func<TestClass, bool> first = (x) =>  1 < x.Code;
+            Func<TestClass, bool> second = (x) => x.Code < 3;
+
+            Func<TestClass, bool> res = (x) => first(x) && second(x);
+            var test = a.Where(res).ToArray();
+
+            Debug.WriteLine("");
+            /*
+            6
+            1
+            77
+            */
+        }
+    }
+
+    class TestClass
+    {
+        public int Code;
     }
 }

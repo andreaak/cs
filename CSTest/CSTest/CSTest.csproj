@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="01_Elements CS\01_Types\0_Setup\DynamicClass.cs" />
+    <Compile Include="03_Structure\02_Enums\FlagsEnumTests.cs" />
     <Compile Include="03_Structure\03_Nullable\NullableNET.cs" />
     <Compile Include="03_Structure\03_Nullable\Test.cs" />
     <Compile Include="01_Elements CS\01_Types\_01_BaseTypes.cs" />
@@ -151,7 +152,7 @@
     <Compile Include="25_CS_NewFeatures\01_CS4\01_Lazy\Test.cs" />
     <Compile Include="02_Object\Test.cs" />
     <Compile Include="02_Object\TestClass.cs" />
-    <Compile Include="03_Structure\02_Enums\FlagsEnumTest.cs" />
+    <Compile Include="03_Structure\02_Enums\EnumTests.cs" />
     <Compile Include="03_Structure\02_Enums\0_Setup\TestFlagsEnum.cs" />
     <Compile Include="03_Structure\0_Setup\TestStructure.cs" />
     <Compile Include="03_Structure\Test.cs" />
