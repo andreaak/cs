@@ -4,7 +4,7 @@ namespace Note.Domain.Entities
 {
     public class TextData
     {
-        public long ID
+        public int ID
         {
             get;
             set;
@@ -23,6 +23,12 @@ namespace Note.Domain.Entities
         }
 
         public string PlainText
+        {
+            get;
+            set;
+        }
+
+        public string HtmlText
         {
             get;
             set;

@@ -39,7 +39,7 @@ namespace Note
             presenter = new MainPresenter(this);
 
             InitSpellChecker();
-            
+
             rtfWrapper = new RtfWrapper(myRichEditControl);
             treeWrapper = new TreeWrapper(treeList1, rtfWrapper, presenter);
             exportHelper = new ExportHelper(treeWrapper, presenter);
@@ -135,7 +135,9 @@ namespace Note
 
         private void barButtonItemConvertDb_ItemClick(object sender, EventArgs e)
         {
-
+            string headerText = "Normalize database";
+            Action action = () => presenter.Normalize();
+            CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         private void barButtonItemVacuum_ItemClick(object sender, EventArgs e)
@@ -161,7 +163,7 @@ namespace Note
             {
                 return;
             }
-            
+
             string[] extensions = new string[]
             {
                 "Rtf Files (*.rtf)|*.rtf|",
@@ -173,19 +175,19 @@ namespace Note
             {
                 treeWrapper.DisableFocusing();
                 foreach (string file in fileNames.Where(File.Exists))
-	            {
-		            string rtf = File.ReadAllText(file);
-	                long parentId = treeWrapper.GetParentId(true);
-	                string description = Path.GetFileNameWithoutExtension(file);
-                    long id = presenter.Insert(parentId, description, DataTypes.NOTE);
+                {
+                    string rtf = File.ReadAllText(file);
+                    int parentId = treeWrapper.GetParentId(true);
+                    string description = Path.GetFileNameWithoutExtension(file);
+                    int id = presenter.Insert(parentId, description, DataTypes.NOTE);
                     if (id != DBConstants.BASE_LEVEL)
                     {
                         treeWrapper.Insert(id, parentId, description, DataTypes.NOTE);
                         rtfWrapper.EditValue = rtf;
-                        presenter.UpdateTextData(id, rtfWrapper.EditValue, rtfWrapper.PlainText);
+                        presenter.UpdateTextData(id, rtfWrapper.EditValue, rtfWrapper.PlainText, rtfWrapper.HtmlText);
                     }
                     treeWrapper.FocusParentNode();
-	            }
+                }
                 treeWrapper.EnableFocusing();
             }
         }
@@ -197,8 +199,8 @@ namespace Note
 
         void barButtonItemSpelling_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-            this.spellChecker1.SpellCheckMode = barButtonItemSpelling.Checked ? 
-                DevExpress.XtraSpellChecker.SpellCheckMode.AsYouType 
+            this.spellChecker1.SpellCheckMode = barButtonItemSpelling.Checked ?
+                DevExpress.XtraSpellChecker.SpellCheckMode.AsYouType
                 : DevExpress.XtraSpellChecker.SpellCheckMode.OnDemand;
         }
 
@@ -228,7 +230,6 @@ namespace Note
             {
                 presenter.Init();
                 rtfWrapper.Clear();
-                //treeWrapper.DataSource(presenter.GetBindingTable());
                 treeWrapper.SetDataSource();
                 Text = string.Format("{0} {1}", TITLE, presenter.GetConnectionDescription());
                 notifyIcon.Text = presenter.GetDBFileName();
@@ -269,8 +270,8 @@ namespace Note
                 return;
             }
 
-            long parentId = treeWrapper.GetParentId(form.IsChildNode);
-            long id = presenter.Insert(parentId, form.Description, type);
+            int parentId = treeWrapper.GetParentId(form.IsChildNode);
+            int id = presenter.Insert(parentId, form.Description, type);
             if (id != DBConstants.BASE_LEVEL)
             {
                 treeWrapper.Insert(id, parentId, form.Description, type);
@@ -287,7 +288,7 @@ namespace Note
             {
                 try
                 {
-                    long id = treeWrapper.SelectedNodeId;
+                    int id = treeWrapper.SelectedNodeId;
                     presenter.Delete(id);
                     treeWrapper.Delete(id);
                 }
@@ -305,11 +306,11 @@ namespace Note
 
             this.Visible = true;
             notifyIcon.Visible = false;
-            this.SizeChanged -= new System.EventHandler(this.Main_SizeChanged);
+            this.SizeChanged -= new EventHandler(this.Main_SizeChanged);
             this.LocationChanged -= Main_LocationChanged;
             this.WindowState = FormWindowState.Normal;
             this.Bounds = Settings.Default.WindowPosition;
-            this.SizeChanged += new System.EventHandler(this.Main_SizeChanged);
+            this.SizeChanged += new EventHandler(this.Main_SizeChanged);
             this.LocationChanged += Main_LocationChanged;
         }
 

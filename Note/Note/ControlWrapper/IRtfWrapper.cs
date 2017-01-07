@@ -8,6 +8,11 @@ namespace Note.ControlWrapper
             get;
         }
 
+        string HtmlText
+        {
+            get;
+        }
+
         string EditValue
         {
             get;

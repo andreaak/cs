@@ -61,17 +61,20 @@ namespace Note.Domain.Repository
         {
         }
 
-        public long Insert(long parentId, string description, DataTypes type)
+        public int Insert(int parentId, string description, DataTypes type)
         {
-            var maxPos = dataContext.Entity
+            var positions = dataContext.Entity
                 .Where(itm => itm.ParentID == parentId)
-                .Select(itm => itm.OrderPosition)
-                .Max();
+                .Select(itm => itm.OrderPosition).ToArray();
+
+            int position = positions.Length != 0 ? positions.Max() : DBConstants.START_POSITION;
+
+            //    .Max();
             Entity item = new Entity
             {
                 ParentID = parentId,
                 Description = description,
-                OrderPosition = maxPos.HasValue ? maxPos + 1 : DBConstants.START_POSITION,
+                OrderPosition = position,
                 Type = (byte)type,
                 ModDate = DateConverter.GetCurrentDate()
             };
@@ -92,7 +95,7 @@ namespace Note.Domain.Repository
             ;
         }
 
-        public string GetTextData(long id)
+        public string GetTextData(int id)
         {
             EntityData item = dataContext.EntityData.FirstOrDefault(row => row.ID == id);
             if (item != null)
@@ -102,13 +105,17 @@ namespace Note.Domain.Repository
             return null;
         }
 
-        public bool UpdateTextData(long id, string editValue, string plainText)
+        public bool UpdateTextData(int id, string editValue, string plainText, string htmlText)
         {
             EntityData entityData = dataContext.EntityData.FirstOrDefault(item => item.ID == id);
-            if (entityData != null && editValue != entityData.Data)
+            if (entityData != null 
+                && (editValue != entityData.Data 
+                || string.IsNullOrEmpty(entityData.HtmlData) 
+                || string.IsNullOrEmpty(entityData.TextData)))
             {
                 entityData.Data = editValue;
                 entityData.TextData = plainText;
+                entityData.HtmlData = htmlText;
                 entityData.ModDate = DateConverter.GetCurrentDate();
                 dataContext.SubmitChanges();
                 return true;
@@ -116,7 +123,7 @@ namespace Note.Domain.Repository
             return false;
         }
 
-        public bool UpdateDescription(long id, string description)
+        public bool UpdateDescription(int id, string description)
         {
             Entity entity = dataContext.Entity.FirstOrDefault(item => item.ID == id);
             if (entity != null && entity.Description != description)
@@ -129,7 +136,7 @@ namespace Note.Domain.Repository
             return false;
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             Entity item = dataContext.Entity.FirstOrDefault(row => row.ID == id);
             if (item != null)
@@ -139,7 +146,7 @@ namespace Note.Domain.Repository
                     .SelectMany(RecurseSelect).ToArray();
                 if (subItems.Length != 0)
                 {
-                    long[] ids = subItems.Select(subItem => subItem.ID).ToArray();
+                    int[] ids = subItems.Select(subItem => subItem.ID).ToArray();
                     IEnumerable<EntityData> subItemsData = dataContext.EntityData
                         .Where(subItemData => ids.Contains(subItemData.ID));
                     dataContext.EntityData.DeleteAllOnSubmit(subItemsData);
@@ -156,7 +163,7 @@ namespace Note.Domain.Repository
             }
         }
 
-        public bool IsCanChangeLevel(int position, long parentId, Direction direction)
+        public bool IsCanChangeLevel(int position, int parentId, Direction direction)
         {
             if (direction == Direction.UP)
             {
@@ -165,7 +172,7 @@ namespace Note.Domain.Repository
             return !IsMinLevel(position, parentId);
         }
 
-        public bool ChangeLevel(int position, long parentId, long id, Direction direction)
+        public bool ChangeLevel(int position, int parentId, int id, Direction direction)
         {
             Entity currentitem = dataContext.Entity.FirstOrDefault(item => item.ID == id);
             if (currentitem == null)
@@ -173,7 +180,7 @@ namespace Note.Domain.Repository
                 return false;
             }
 
-            long? destItemId;
+            int? destItemId;
             if (direction == Direction.UP)
             {
                 Entity levelUpItem = dataContext.Entity.FirstOrDefault(item => item.ID == currentitem.ParentID && item.Type == (int)DataTypes.DIR);
@@ -198,14 +205,14 @@ namespace Note.Domain.Repository
                 destItemId = destItem.ID;
             }
 
-            long destPosition = dataContext.Entity
-                .Where(item => item.ParentID == destItemId)
-                .Select(item => item.OrderPosition)
-                .Max() + 1 ?? DBConstants.START_POSITION;
-
             if (destItemId.HasValue)
             {
-                currentitem.ParentID = destItemId;
+                var positions = dataContext.Entity
+                .Where(item => item.ParentID == destItemId)
+                .Select(item => item.OrderPosition).ToArray();
+                int destPosition = positions.Length != 0 ? positions.Max() + 1 : DBConstants.START_POSITION;
+
+                currentitem.ParentID = destItemId.Value;
                 currentitem.OrderPosition = destPosition;
                 currentitem.ModDate = DateConverter.GetCurrentDate();
                 dataContext.SubmitChanges();
@@ -214,7 +221,7 @@ namespace Note.Domain.Repository
             return false;
         }
 
-        public bool IsCanMove(int position, long parentId, Direction direction)
+        public bool IsCanMove(int position, int parentId, Direction direction)
         {
             if (direction == Direction.UP)
             {
@@ -223,7 +230,7 @@ namespace Note.Domain.Repository
             return !IsMaxPosition(position, parentId);
         }
 
-        public bool Move(int position, long parentId, long id, Direction direction)
+        public bool Move(int position, int parentId, int id, Direction direction)
         {
             Entity currentitem = dataContext.Entity.FirstOrDefault(item => item.ID == id);
             if (currentitem == null)
@@ -231,20 +238,20 @@ namespace Note.Domain.Repository
                 return false;
             }
 
-            long destPosition;
+            int destPosition;
             if (direction == Direction.UP)
             {
-                destPosition = dataContext.Entity
+                var positions = dataContext.Entity
                     .Where(item => item.ParentID == parentId && item.OrderPosition < position)
-                    .Select(item => item.OrderPosition)
-                    .Max() ?? WRONG_POSITION;
+                    .Select(item => item.OrderPosition).ToArray();
+                destPosition = positions.Length != 0 ? positions.Max() : WRONG_POSITION;
             }
             else
             {
-                destPosition = dataContext.Entity
+                var positions = dataContext.Entity
                     .Where(item => item.ParentID == parentId && item.OrderPosition > position)
-                    .Select(item => item.OrderPosition)
-                    .Min() ?? WRONG_POSITION;
+                    .Select(item => item.OrderPosition).ToArray();
+                destPosition = positions.Length != 0 ? positions.Min() : WRONG_POSITION;
             }
             if (destPosition == WRONG_POSITION)
             {
@@ -387,22 +394,22 @@ namespace Note.Domain.Repository
             .SelectMany(RecurseSelect));
         }
 
-        private bool IsMinPosition(long position, long parentId)
+        private bool IsMinPosition(int position, int parentId)
         {
             return !dataContext.Entity.Any(item => item.ParentID == parentId && item.OrderPosition < position);
         }
 
-        private bool IsMaxPosition(long position, long parentId)
+        private bool IsMaxPosition(int position, int parentId)
         {
             return !dataContext.Entity.Any(item => item.ParentID == parentId && item.OrderPosition > position);
         }
 
-        private bool IsMaxLevel(long parentId)
+        private bool IsMaxLevel(int parentId)
         {
             return parentId <= DBConstants.BASE_LEVEL;
         }
 
-        private bool IsMinLevel(long position, long parentId)
+        private bool IsMinLevel(int position, int parentId)
         {
             return !dataContext.Entity.Any(item => item.ParentID == parentId
                         && item.Type == (int)DataTypes.DIR
@@ -417,7 +424,7 @@ namespace Note.Domain.Repository
             list.Add(desc);
         }
 
-        private void AddParentDescriptions(IDataRepository repository, long id, List<DescriptionWithStatus> list)
+        private void AddParentDescriptions(IDataRepository repository, int id, List<DescriptionWithStatus> list)
         {
             Description entity = repository.Descriptions.FirstOrDefault(item => item.ID == id);
             while (entity != null && entity.ParentID > DBConstants.BASE_LEVEL)
@@ -452,9 +459,9 @@ namespace Note.Domain.Repository
 
         private void AddParentDescriptions(Entity entity, List<DescriptionWithText> list)
         {
-            while (entity != null && entity.ParentID.HasValue && entity.ParentID > DBConstants.BASE_LEVEL)
+            while (entity != null && entity.ParentID > DBConstants.BASE_LEVEL)
             {
-                Entity parent = dataContext.Entity.FirstOrDefault(item => item.ID == entity.ParentID.Value);
+                Entity parent = dataContext.Entity.FirstOrDefault(item => item.ID == entity.ParentID);
                 if (parent != null)
                 {
                     list.Add(LinqToSqlConverter.ConvertWithText(parent));

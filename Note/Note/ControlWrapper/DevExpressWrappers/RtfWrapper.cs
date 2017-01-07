@@ -36,6 +36,14 @@ namespace Note.ControlWrapper.DevExpressWrappers
             }
         }
 
+        public string HtmlText
+        {
+            get
+            {
+                return control.HtmlText;
+            }
+        }
+
         public bool Enabled
         {
             set

@@ -4,7 +4,7 @@ namespace Note.ControlWrapper
 {
     public class Node
     {
-        public long ID
+        public int ID
         {
             get;
             set;

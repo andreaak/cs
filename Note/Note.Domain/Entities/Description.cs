@@ -5,13 +5,13 @@ namespace Note.Domain.Entities
 {
     public class Description
     {
-        public long ID
+        public int ID
         {
             get;
             set;
         }
 
-        public long ParentID
+        public int ParentID
         {
             get;
             set;

@@ -36,6 +36,7 @@ namespace Note.Domain.Concrete
                 ID INTEGER  PRIMARY KEY NOT NULL,
                 Data TEXT,
                 TextData TEXT,
+                HtmlData TEXT,
                 ModDate TEXT         
             );
         ";

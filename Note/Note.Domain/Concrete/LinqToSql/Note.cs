@@ -1,16 +1,112 @@
+// 
+//  ____  _     __  __      _        _ 
+// |  _ \| |__ |  \/  | ___| |_ __ _| |
+// | | | | '_ \| |\/| |/ _ \ __/ _` | |
+// | |_| | |_) | |  | |  __/ || (_| | |
+// |____/|_.__/|_|  |_|\___|\__\__,_|_|
+//
+// Auto-generated from main on 2017-01-07 01:30:25Z.
+// Please visit http://code.google.com/p/dblinq2007/ for more information.
+//
+using System;
+using System.ComponentModel;
 using System.Data;
 #if MONO_STRICT
 	using System.Data.Linq;
 #else   // MONO_STRICT
-using DbLinq.Data.Linq;
-using DbLinq.Vendor;
+	using DbLinq.Data.Linq;
+	using DbLinq.Vendor;
 #endif  // MONO_STRICT
-using System.Data.Linq.Mapping;
+	using System.Data.Linq.Mapping;
 using System.Diagnostics;
-
 
 namespace Note.Domain.Concrete.LinqToSql
 {
+
+    public partial class NoteDataContext : DataContext
+    {
+
+        #region Extensibility Method Declarations
+        partial void OnCreated();
+        #endregion
+
+
+        public NoteDataContext(string connectionString) :
+                base(connectionString)
+        {
+            this.OnCreated();
+        }
+
+        public NoteDataContext(string connection, MappingSource mappingSource) :
+                base(connection, mappingSource)
+        {
+            this.OnCreated();
+        }
+
+        public NoteDataContext(IDbConnection connection, MappingSource mappingSource) :
+                base(connection, mappingSource)
+        {
+            this.OnCreated();
+        }
+
+        public Table<Entity> Entity
+        {
+            get
+            {
+                return this.GetTable<Entity>();
+            }
+        }
+
+        public Table<EntityData> EntityData
+        {
+            get
+            {
+                return this.GetTable<EntityData>();
+            }
+        }
+    }
+
+    #region Start MONO_STRICT
+#if MONO_STRICT
+
+public partial class Main
+{
+	
+	public Main(IDbConnection connection) : 
+			base(connection)
+	{
+		this.OnCreated();
+	}
+}
+    #region End MONO_STRICT
+    #endregion
+#else     // MONO_STRICT
+
+    public partial class NoteDataContext
+    {
+
+        public NoteDataContext(IDbConnection connection) :
+                base(connection, new DbLinq.Sqlite.SqliteVendor())
+        {
+            this.OnCreated();
+        }
+
+        public NoteDataContext(IDbConnection connection, IVendor sqlDialect) :
+                base(connection, sqlDialect)
+        {
+            this.OnCreated();
+        }
+
+        public NoteDataContext(IDbConnection connection, MappingSource mappingSource, IVendor sqlDialect) :
+                base(connection, mappingSource, sqlDialect)
+        {
+            this.OnCreated();
+        }
+    }
+    #region End Not MONO_STRICT
+    #endregion
+#endif     // MONO_STRICT
+    #endregion
 
     [Table(Name = "main.Entity")]
     public partial class Entity : System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
@@ -20,15 +116,15 @@ namespace Note.Domain.Concrete.LinqToSql
 
         private string _description;
 
-        private long _id;
-
-        private System.Nullable<long> _orderPosition;
-
-        private System.Nullable<long> _parentID;
-
-        private System.Nullable<int> _type;
+        private int _id;
 
         private string _modDate;
+
+        private int _orderPosition;
+
+        private int _parentID;
+
+        private int _type;
 
         #region Extensibility Method Declarations
         partial void OnCreated();
@@ -39,24 +135,23 @@ namespace Note.Domain.Concrete.LinqToSql
 
         partial void OnIDChanged();
 
-        partial void OnIDChanging(long value);
-
-        partial void OnOrderPositionChanged();
-
-        partial void OnOrderPositionChanging(System.Nullable<long> value);
-
-        partial void OnParentIDChanged();
-
-        partial void OnParentIDChanging(System.Nullable<long> value);
-
-        partial void OnTypeChanged();
-
-        partial void OnTypeChanging(System.Nullable<int> value);
+        partial void OnIDChanging(int value);
 
         partial void OnModDateChanged();
 
         partial void OnModDateChanging(string value);
 
+        partial void OnOrderPositionChanged();
+
+        partial void OnOrderPositionChanging(int value);
+
+        partial void OnParentIDChanged();
+
+        partial void OnParentIDChanging(int value);
+
+        partial void OnTypeChanged();
+
+        partial void OnTypeChanging(int value);
         #endregion
 
 
@@ -89,7 +184,7 @@ namespace Note.Domain.Concrete.LinqToSql
 
         [Column(Storage = "_id", Name = "ID", DbType = "INTEGER", IsPrimaryKey = true, IsDbGenerated = true, AutoSync = AutoSync.Never, CanBeNull = false)]
         [DebuggerNonUserCode()]
-        public long ID
+        public int ID
         {
             get
             {
@@ -108,9 +203,31 @@ namespace Note.Domain.Concrete.LinqToSql
             }
         }
 
+        [Column(Storage = "_modDate", Name = "ModDate", DbType = "Text", AutoSync = AutoSync.Never)]
+        [DebuggerNonUserCode()]
+        public string ModDate
+        {
+            get
+            {
+                return this._modDate;
+            }
+            set
+            {
+                if (((_modDate == value)
+                            == false))
+                {
+                    this.OnModDateChanging(value);
+                    this.SendPropertyChanging();
+                    this._modDate = value;
+                    this.SendPropertyChanged("ModDate");
+                    this.OnModDateChanged();
+                }
+            }
+        }
+
         [Column(Storage = "_orderPosition", Name = "OrderPosition", DbType = "INTEGER", AutoSync = AutoSync.Never)]
         [DebuggerNonUserCode()]
-        public System.Nullable<long> OrderPosition
+        public int OrderPosition
         {
             get
             {
@@ -131,7 +248,7 @@ namespace Note.Domain.Concrete.LinqToSql
 
         [Column(Storage = "_parentID", Name = "ParentID", DbType = "INTEGER", AutoSync = AutoSync.Never)]
         [DebuggerNonUserCode()]
-        public System.Nullable<long> ParentID
+        public int ParentID
         {
             get
             {
@@ -152,7 +269,7 @@ namespace Note.Domain.Concrete.LinqToSql
 
         [Column(Storage = "_type", Name = "Type", DbType = "INTEGER", AutoSync = AutoSync.Never)]
         [DebuggerNonUserCode()]
-        public System.Nullable<int> Type
+        public int Type
         {
             get
             {
@@ -167,28 +284,6 @@ namespace Note.Domain.Concrete.LinqToSql
                     this._type = value;
                     this.SendPropertyChanged("Type");
                     this.OnTypeChanged();
-                }
-            }
-        }
-
-        [Column(Storage = "_modDate", Name = "ModDate", DbType = "TEXT", AutoSync = AutoSync.Never)]
-        [DebuggerNonUserCode()]
-        public string ModDate
-        {
-            get
-            {
-                return this._modDate;
-            }
-            set
-            {
-                if (((_modDate == value)
-                            == false))
-                {
-                    this.OnModDateChanging(value);
-                    this.SendPropertyChanging();
-                    this._modDate = value;
-                    this.SendPropertyChanged("ModDate");
-                    this.OnModDateChanged();
                 }
             }
         }
@@ -214,14 +309,9 @@ namespace Note.Domain.Concrete.LinqToSql
                 h(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-
-        public override string ToString()
-        {
-            return string.Format("{0} {1}", ID, Description) ;
-        }
     }
 
-[Table(Name = "main.EntityData")]
+    [Table(Name = "main.EntityData")]
     public partial class EntityData : System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
     {
 
@@ -229,11 +319,13 @@ namespace Note.Domain.Concrete.LinqToSql
 
         private string _data;
 
-        private long _id;
+        private string _htmlData;
 
-        private string _textData;
+        private int _id;
 
         private string _modDate;
+
+        private string _textData;
 
         #region Extensibility Method Declarations
         partial void OnCreated();
@@ -242,17 +334,21 @@ namespace Note.Domain.Concrete.LinqToSql
 
         partial void OnDataChanging(string value);
 
+        partial void OnHtmlDataChanged();
+
+        partial void OnHtmlDataChanging(string value);
+
         partial void OnIDChanged();
 
-        partial void OnIDChanging(long value);
-
-        partial void OnTextDataChanged();
-
-        partial void OnTextDataChanging(string value);
+        partial void OnIDChanging(int value);
 
         partial void OnModDateChanged();
 
         partial void OnModDateChanging(string value);
+
+        partial void OnTextDataChanged();
+
+        partial void OnTextDataChanging(string value);
         #endregion
 
 
@@ -283,9 +379,31 @@ namespace Note.Domain.Concrete.LinqToSql
             }
         }
 
+        [Column(Storage = "_htmlData", Name = "HtmlData", DbType = "TEXT", AutoSync = AutoSync.Never)]
+        [DebuggerNonUserCode()]
+        public string HtmlData
+        {
+            get
+            {
+                return this._htmlData;
+            }
+            set
+            {
+                if (((_htmlData == value)
+                            == false))
+                {
+                    this.OnHtmlDataChanging(value);
+                    this.SendPropertyChanging();
+                    this._htmlData = value;
+                    this.SendPropertyChanged("HtmlData");
+                    this.OnHtmlDataChanged();
+                }
+            }
+        }
+
         [Column(Storage = "_id", Name = "ID", DbType = "INTEGER", IsPrimaryKey = true, IsDbGenerated = true, AutoSync = AutoSync.Never, CanBeNull = false)]
         [DebuggerNonUserCode()]
-        public long ID
+        public int ID
         {
             get
             {
@@ -300,6 +418,28 @@ namespace Note.Domain.Concrete.LinqToSql
                     this._id = value;
                     this.SendPropertyChanged("ID");
                     this.OnIDChanged();
+                }
+            }
+        }
+
+        [Column(Storage = "_modDate", Name = "ModDate", DbType = "Text", AutoSync = AutoSync.Never)]
+        [DebuggerNonUserCode()]
+        public string ModDate
+        {
+            get
+            {
+                return this._modDate;
+            }
+            set
+            {
+                if (((_modDate == value)
+                            == false))
+                {
+                    this.OnModDateChanging(value);
+                    this.SendPropertyChanging();
+                    this._modDate = value;
+                    this.SendPropertyChanged("ModDate");
+                    this.OnModDateChanged();
                 }
             }
         }
@@ -326,28 +466,6 @@ namespace Note.Domain.Concrete.LinqToSql
             }
         }
 
-        [Column(Storage = "_modDate", Name = "ModDate", DbType = "TEXT", AutoSync = AutoSync.Never)]
-        [DebuggerNonUserCode()]
-        public string ModDate
-        {
-            get
-            {
-                return this._modDate;
-            }
-            set
-            {
-                if (((_modDate == value)
-                            == false))
-                {
-                    this.OnModDateChanging(value);
-                    this.SendPropertyChanging();
-                    this._modDate = value;
-                    this.SendPropertyChanged("ModDate");
-                    this.OnModDateChanged();
-                }
-            }
-        }
-
         public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
 
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -370,114 +488,4 @@ namespace Note.Domain.Concrete.LinqToSql
             }
         }
     }
-    
-    public partial class NoteDataContext : DataContext
-    {
-
-        #region Extensibility Method Declarations
-        partial void OnCreated();
-        #endregion
-
-
-        public NoteDataContext(string connectionString) :
-            base(connectionString)
-        {
-            this.OnCreated();
-        }
-
-        public NoteDataContext(string connection, MappingSource mappingSource) :
-            base(connection, mappingSource)
-        {
-            this.OnCreated();
-        }
-
-        public NoteDataContext(IDbConnection connection, MappingSource mappingSource) :
-            base(connection, mappingSource)
-        {
-            this.OnCreated();
-        }
-
-        public Table<Entity> Entity
-        {
-            get
-            {
-                return this.GetTable<Entity>();
-            }
-        }
-
-        public Table<EntityData> EntityData
-        {
-            get
-            {
-                return this.GetTable<EntityData>();
-            }
-        }
-
-        public NoteDataContext(IDbConnection connection) :
-            base(connection, new DbLinq.Sqlite.SqliteVendor())
-        {
-            this.OnCreated();
-        }
-
-        public NoteDataContext(IDbConnection connection, IVendor sqlDialect) :
-            base(connection, sqlDialect)
-        {
-            this.OnCreated();
-        }
-
-        public NoteDataContext(IDbConnection connection, MappingSource mappingSource, IVendor sqlDialect) :
-            base(connection, mappingSource, sqlDialect)
-        {
-            this.OnCreated();
-        }
-    }
 }
-
-
-
-
-//#region Start MONO_STRICT
-//#if MONO_STRICT
-
-//public partial class Main
-//{
-	
-//    public Main(IDbConnection connection) : 
-//            base(connection)
-//    {
-//        this.OnCreated();
-//    }
-//}
-//#region End MONO_STRICT
-//#endregion
-//#else     // MONO_STRICT
-
-//public partial class NoteDataContext
-//{
-
-//    public NoteDataContext(IDbConnection connection) :
-//        base(connection, new DbLinq.Sqlite.SqliteVendor())
-//    {
-//        this.OnCreated();
-//    }
-
-//    public NoteDataContext(IDbConnection connection, IVendor sqlDialect) :
-//        base(connection, sqlDialect)
-//    {
-//        this.OnCreated();
-//    }
-
-//    public NoteDataContext(IDbConnection connection, MappingSource mappingSource, IVendor sqlDialect) :
-//        base(connection, mappingSource, sqlDialect)
-//    {
-//        this.OnCreated();
-//    }
-//}
-//#region End Not MONO_STRICT
-//#endregion
-//#endif     // MONO_STRICT
-//#endregion
-
-
-
-

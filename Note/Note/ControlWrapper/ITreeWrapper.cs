@@ -6,7 +6,7 @@ namespace Note.ControlWrapper
 {
     public interface ITreeWrapper
     {
-        long SelectedNodeId
+        int SelectedNodeId
         {
             get;
         }
@@ -26,17 +26,17 @@ namespace Note.ControlWrapper
 
         bool IsNodeSelect();
         bool IsNoteSelect();
-        long GetParentId(bool isChildNode);
+        int GetParentId(bool isChildNode);
 
         //void DataSource(BindingDataset.DescriptionDataTable table);
         void SetDataSource();
 
-        void Insert(long id, long parentId, string description, DataTypes type);
+        void Insert(int id, int parentId, string description, DataTypes type);
 
-        void Delete(long id);
+        void Delete(int id);
 
-        void ChangeNodeLocation(Func<int, long, Direction, bool> IsValidAction,
-            Func<int, long, long, Direction, bool> PerformAction, Direction dir);
+        void ChangeNodeLocation(Func<int, int, Direction, bool> IsValidAction,
+            Func<int, int, int, Direction, bool> PerformAction, Direction dir);
         
         void FocusParentNode();
     }

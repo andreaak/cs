@@ -130,7 +130,7 @@ namespace Note
             }
         }
 
-        public long Insert(long parentId, string description, DataTypes type)
+        public int Insert(int parentId, string description, DataTypes type)
         {
             try
             {
@@ -143,7 +143,7 @@ namespace Note
             }
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             try
             {
@@ -155,7 +155,7 @@ namespace Note
             }
         }
 
-        public string GetTextData(long id)
+        public string GetTextData(int id)
         {
             try
             {
@@ -168,11 +168,16 @@ namespace Note
             }
         }
 
-        public bool UpdateTextData(long id, string editValue, string plainText)
+        public void Normalize()
+        {
+            new Normalizer().Normalize(DataManager);
+        }
+
+        public bool UpdateTextData(int id, string editValue, string plainText, string htmlText)
         {
             try
             {
-                return DataManager.UpdateTextData(id, editValue, plainText);
+                return DataManager.UpdateTextData(id, editValue, plainText, htmlText);
             }
             catch (Exception ex)
             {
@@ -181,7 +186,7 @@ namespace Note
             }
         }
 
-        public bool UpdateDescription(long id, string description)
+        public bool UpdateDescription(int id, string description)
         {
             try
             {
@@ -222,7 +227,7 @@ namespace Note
             return CancelFormEx.ShowProgressWindow(func, headerText);
         }
 
-        public bool IsCanChangeLevel(int position, long parentId, Direction direction)
+        public bool IsCanChangeLevel(int position, int parentId, Direction direction)
         {
             try
             {
@@ -235,7 +240,7 @@ namespace Note
             }
         }
 
-        public bool ChangeLevel(int position, long parentId, long id, Direction direction)
+        public bool ChangeLevel(int position, int parentId, int id, Direction direction)
         {
             try
             {
@@ -248,7 +253,7 @@ namespace Note
             }
         }
 
-        public bool IsCanMove(int position, long parentId, Direction direction)
+        public bool IsCanMove(int position, int parentId, Direction direction)
         {
             try
             {
@@ -261,7 +266,7 @@ namespace Note
             }
         }
 
-        public bool Move(int position, long parentId, long id, Direction direction)
+        public bool Move(int position, int parentId, int id, Direction direction)
         {
             try
             {

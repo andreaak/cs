@@ -1,20 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="main" Class="Main" BaseType="DbLinq.Data.Linq.DataContext" Provider="Sqlite" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+<?xml version="1.0"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="main" Class="Main" BaseType="DbLinq.Data.Linq.DataContext" Provider="Sqlite" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Table Name="main.Entity" Member="Entity">
     <Type Name="Entity">
-      <Column Name="Description" Storage="_description" Type="System.String" DbType="TEXT" CanBeNull="true" />
-      <Column Name="ID" Storage="_id" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="OrderPosition" Storage="_orderPosition" Type="System.Int32" DbType="INTEGER" CanBeNull="true" />
-      <Column Name="ParentID" Storage="_parentID" Type="System.Int32" DbType="INTEGER" CanBeNull="true" />
-      <Column Name="Type" Storage="_type" Type="System.Int32" DbType="INTEGER" CanBeNull="true" />
-      <Column Name="ModDate" Type="System.String" DbType="TEXT" CanBeNull="true" />
+      <Column Name="Description" Member="Description" Storage="_description" Type="System.String" DbType="TEXT" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="ID" Member="ID" Storage="_id" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModDate" Member="ModDate" Storage="_modDate" Type="System.String" DbType="Text" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="OrderPosition" Member="OrderPosition" Storage="_orderPosition" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="ParentID" Member="ParentID" Storage="_parentID" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="Type" Member="Type" Storage="_type" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="main.EntityData" Member="EntityData">
     <Type Name="EntityData">
-      <Column Name="Data" Storage="_data" Type="System.String" DbType="TEXT" CanBeNull="true" />
-      <Column Name="ID" Storage="_id" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TextData" Storage="_textData" Type="System.String" DbType="TEXT" CanBeNull="true" />
-      <Column Name="ModDate" Type="System.String" DbType="TEXT" CanBeNull="true" />
+      <Column Name="Data" Member="Data" Storage="_data" Type="System.String" DbType="TEXT" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="HtmlData" Member="HtmlData" Storage="_htmlData" Type="System.String" DbType="TEXT" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="ID" Member="ID" Storage="_id" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModDate" Member="ModDate" Storage="_modDate" Type="System.String" DbType="Text" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="TextData" Member="TextData" Storage="_textData" Type="System.String" DbType="TEXT" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

@@ -89,47 +89,47 @@ namespace Note.Domain
             dataRepository.Init();
         }
 
-        public long Insert(long parentId, string description,  DataTypes type)
+        public int Insert(int parentId, string description,  DataTypes type)
         {
             return dataRepository.Insert(parentId, description,  type);
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             dataRepository.Delete(id);
         }
 
-        public bool IsCanChangeLevel(int position, long parentId, Direction direction)
+        public bool IsCanChangeLevel(int position, int parentId, Direction direction)
         {
             return dataRepository.IsCanChangeLevel(position, parentId, direction);
         }
 
-        public bool ChangeLevel(int position, long parentId, long id, Direction direction)
+        public bool ChangeLevel(int position, int parentId, int id, Direction direction)
         {
             return dataRepository.ChangeLevel(position, parentId, id, direction);
         } 
 
-        public bool IsCanMove(int position, long parentId, Direction direction)
+        public bool IsCanMove(int position, int parentId, Direction direction)
         {
             return dataRepository.IsCanMove(position, parentId, direction);
         }
 
-        public bool Move(int position, long parentId, long id, Direction direction)
+        public bool Move(int position, int parentId, int id, Direction direction)
         {
             return dataRepository.Move(position, parentId, id, direction);
         }
 
-        public string GetTextData(long id)
+        public string GetTextData(int id)
         {
             return dataRepository.GetTextData(id);
         }
 
-        public bool UpdateTextData(long id, string editValue, string plainText)
+        public bool UpdateTextData(int id, string editValue, string plainText, string htmlText)
         {
-            return dataRepository.UpdateTextData(id, editValue, plainText);
+            return dataRepository.UpdateTextData(id, editValue, plainText, htmlText);
         }
 
-        public bool UpdateDescription(long id, string description)
+        public bool UpdateDescription(int id, string description)
         {
             return dataRepository.UpdateDescription(id, description);
         }
@@ -144,6 +144,11 @@ namespace Note.Domain
             return dataRepository.Find(text);
         } 
       
+        public IList<TextData> GetTextData()
+        {
+            return dataRepository.Texts;
+        }
+
         #endregion
     }
 }

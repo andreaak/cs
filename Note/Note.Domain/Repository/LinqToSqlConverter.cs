@@ -32,6 +32,7 @@ namespace Note.Domain.Repository
                 ID = item.ID,
                 EditValue = item.Data,
                 PlainText = item.TextData,
+                HtmlText = item.HtmlData,
                 ModDate = DateConverter.Convert(item.ModDate),
             };
         }
@@ -54,8 +55,8 @@ namespace Note.Domain.Repository
         public static void Convert(Description item, Entity entity)
         {
             item.ID = entity.ID;
-            item.ParentID = (long)entity.ParentID;
-            item.OrderPosition = (int)entity.OrderPosition;
+            item.ParentID = entity.ParentID;
+            item.OrderPosition = entity.OrderPosition;
             item.Type = (DataTypes)entity.Type;
             item.EditValue = entity.Description;
             item.ModDate = DateConverter.Convert(entity.ModDate);

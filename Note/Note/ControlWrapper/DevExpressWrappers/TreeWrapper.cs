@@ -16,21 +16,21 @@ namespace Note.ControlWrapper.DevExpressWrappers
         private readonly IRtfWrapper rtfWrapper;
         private readonly MainPresenter presenter;
 
-        public long SelectedNodeId
+        public int SelectedNodeId
         {
             get
             {
                 TreeListNode node = control.Selection[0];
-                return (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
+                return (int)node.GetValue(DBConstants.ENTITY_TABLE_ID);
             }
         }
 
-        private long ParentId
+        private int ParentId
         {
             get
             {
                 TreeListNode node = control.Selection[0];
-                return (long)node.GetValue(DBConstants.ENTITY_TABLE_PARENTID);
+                return (int)node.GetValue(DBConstants.ENTITY_TABLE_PARENTID);
             }
         }
 
@@ -69,13 +69,6 @@ namespace Note.ControlWrapper.DevExpressWrappers
 
         #region PUBLIC
 
-        public void DataSource(BindingDataset.DescriptionDataTable table)
-        {
-            DisableFocusing();
-            control.DataSource = table;
-            EnableFocusing();
-        }
-
         public void SetDataSource()
         {
             DisableFocusing();
@@ -83,7 +76,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             EnableFocusing();
         }
 
-        public void ChangeNodeLocation(Func<int, long, Direction, bool> IsValidAction, Func<int, long, long, Direction, bool> PerformAction, Direction dir)
+        public void ChangeNodeLocation(Func<int, int, Direction, bool> IsValidAction, Func<int, int, int, Direction, bool> PerformAction, Direction dir)
         {
             DisableFocusing();
             if (!IsNodeSelect())
@@ -93,14 +86,14 @@ namespace Note.ControlWrapper.DevExpressWrappers
             }
 
             int position = Position;
-            long parentId = ParentId;
+            int parentId = ParentId;
             if (!IsValidAction(position, parentId, dir))
             {
                 EnableFocusing();
                 return;
             }
 
-            long id = SelectedNodeId;
+            int id = SelectedNodeId;
             if (PerformAction(position, parentId, id, dir))
             {
                 control.DataSource = presenter.GetDataSource();
@@ -129,25 +122,25 @@ namespace Note.ControlWrapper.DevExpressWrappers
             this.control.FocusedNodeChanged -= new FocusedNodeChangedEventHandler(FocusedNodeChanged);
         }
 
-        public long GetParentId(bool isChildNode)
+        public int GetParentId(bool isChildNode)
         {
-            long parentId = DBConstants.BASE_LEVEL;
+            int parentId = DBConstants.BASE_LEVEL;
             if (IsNodeSelect())
             {
                 TreeListNode selNode = control.Selection[0];
                 if (isChildNode)
                 {
-                    parentId = (long)selNode.GetValue(DBConstants.ENTITY_TABLE_ID);
+                    parentId = (int)selNode.GetValue(DBConstants.ENTITY_TABLE_ID);
                 }
                 else if (selNode.ParentNode != null)
                 {
-                    parentId = (long)selNode.ParentNode.GetValue(DBConstants.ENTITY_TABLE_ID);
+                    parentId = (int)selNode.ParentNode.GetValue(DBConstants.ENTITY_TABLE_ID);
                 }
             }
             return parentId;
         }
 
-        public void Insert(long id, long parentId, string description, DataTypes type)
+        public void Insert(int id, int parentId, string description, DataTypes type)
         {
             BindingDataset.DescriptionDataTable table = control.DataSource as BindingDataset.DescriptionDataTable;
             if (table == null)
@@ -177,7 +170,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             FocusSelectedNode();
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             BindingDataset.DescriptionDataTable table = control.DataSource as BindingDataset.DescriptionDataTable;
             if (table == null)
@@ -227,10 +220,11 @@ namespace Note.ControlWrapper.DevExpressWrappers
 
         private void SubscribeEvents()
         {
+            control.Columns[0].SortMode = DevExpress.XtraGrid.ColumnSortMode.Custom;
             this.control.CompareNodeValues += CompareNodeValues;
         }
 
-        private void Delete(long id, BindingDataset.DescriptionDataTable table)
+        private void Delete(int id, BindingDataset.DescriptionDataTable table)
         {
             var subItems = table.Where(itm => Utils.IsActiveRow(itm) && itm.ParentID == id).ToArray();
             foreach (var subItem in subItems)
@@ -287,7 +281,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             {
                 return false;
             }
-            long id = (long) node.GetValue(DBConstants.ENTITY_TABLE_ID);
+            int id = (int) node.GetValue(DBConstants.ENTITY_TABLE_ID);
             DataRow row = table.FirstOrDefault(rw => Utils.IsActiveRow(rw) && rw.ID == id);
             return row != null && row.RowState == DataRowState.Modified;
         }
@@ -296,13 +290,13 @@ namespace Note.ControlWrapper.DevExpressWrappers
 
         private void UpdateTextData(TreeListNode node)
         {
-            long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
-            presenter.UpdateTextData(id, rtfWrapper.EditValue, rtfWrapper.PlainText);
+            int id = (int)node.GetValue(DBConstants.ENTITY_TABLE_ID);
+            presenter.UpdateTextData(id, rtfWrapper.EditValue, rtfWrapper.PlainText, rtfWrapper.HtmlText);
         }
 
         private void UpdateDescription(TreeListNode node)
         {
-            long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
+            int id = (int)node.GetValue(DBConstants.ENTITY_TABLE_ID);
             string description = (string)node.GetValue(DBConstants.ENTITY_TABLE_DESC);
             presenter.UpdateDescription(id, description);
         }
@@ -314,7 +308,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             bool isNoteNode = IsNoteNode(node);
             if (isNoteNode)
             {
-                long id = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
+                int id = (int)node.GetValue(DBConstants.ENTITY_TABLE_ID);
                 rtfWrapper.EditValue = presenter.GetTextData(id); //selRow.Data;
             }
             rtfWrapper.ChangeState(isNoteNode);
@@ -327,7 +321,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             {
                 int nodeIndex = treeListNodes.IndexOf(node);
                 Node res = new Node();
-                res.ID = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
+                res.ID = (int)node.GetValue(DBConstants.ENTITY_TABLE_ID);
                 res.EditValue = node.GetDisplayText(0);
                 res.IsNote = TreeWrapper.IsNoteNode(node);
                 res.Index = nodeIndex;
@@ -351,7 +345,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             }
         }
 
-        private void FocusNode(long id)
+        private void FocusNode(int id)
         {
             TreeListNode node = null;
             if (control.Nodes.Count != 0 && TryGetNodeById(id, control.Nodes, ref node))
@@ -364,7 +358,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             }
         }
 
-        private bool TryGetNodeById(long id, TreeListNodes nodes, ref TreeListNode resNode)
+        private bool TryGetNodeById(int id, TreeListNodes nodes, ref TreeListNode resNode)
         {
             foreach (TreeListNode node in nodes)
             {
@@ -372,8 +366,8 @@ namespace Note.ControlWrapper.DevExpressWrappers
                 {
                     return true;
                 }
-                
-                long itemId = (long)node.GetValue(DBConstants.ENTITY_TABLE_ID);
+
+                int itemId = (int)node.GetValue(DBConstants.ENTITY_TABLE_ID);
                 if (itemId == id)
                 {
                     resNode = node;
