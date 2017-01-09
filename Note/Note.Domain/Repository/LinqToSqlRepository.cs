@@ -330,7 +330,8 @@ namespace Note.Domain.Repository
                 var baseData = dataContext.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
                 if (baseData != null
                     && IsCanCompare(baseData.ModDate, comparedData.ModDate)
-                    && (string.IsNullOrEmpty(baseData.ModDate) || comparedData.ModDate > DateConverter.Convert(baseData.ModDate)))
+                    && (string.IsNullOrEmpty(baseData.ModDate) || comparedData.ModDate > DateConverter.Convert(baseData.ModDate))
+                    && baseData.Data != comparedData.EditValue)
                 {
                     var comparedItem = comparedRepository.Descriptions.FirstOrDefault(item => item.ID == comparedData.ID);
                     if (comparedItem != null)
@@ -346,7 +347,8 @@ namespace Note.Domain.Repository
                 var baseData = dataContext.EntityData.FirstOrDefault(item => item.ID == comparedData.ID);
                 if (baseData != null
                     && !string.IsNullOrEmpty(baseData.ModDate)
-                    && comparedData.ModDate < DateConverter.Convert(baseData.ModDate))
+                    && comparedData.ModDate < DateConverter.Convert(baseData.ModDate)
+                    && baseData.Data != comparedData.EditValue)
                 {
                     var comparedItem = comparedRepository.Descriptions.FirstOrDefault(item => item.ID == comparedData.ID);
                     if (comparedItem != null)
@@ -413,7 +415,8 @@ namespace Note.Domain.Repository
         {
             return !dataContext.Entity.Any(item => item.ParentID == parentId
                         && item.Type == (int)DataTypes.DIR
-                        && item.OrderPosition > position);
+                        && item.OrderPosition
+                        > position);
         }
 
         private void AddDescription(Description entity, DataStatus dataStatus, List<DescriptionWithStatus> list)
