@@ -107,5 +107,18 @@ namespace Note
                 return alphabetPath;
             }
         }
+
+        private static string dbDirectory;
+        public static string DbDirectory
+        {
+            get
+            {
+                if (dbDirectory == null)
+                {
+                    dbDirectory = ConfigurationManager.AppSettings["dbDirectory"];
+                }
+                return dbDirectory;
+            }
+        }
     }
 }

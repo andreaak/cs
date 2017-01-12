@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Configuration;
 using System.Threading;
 using Utils.WorkWithDB;
+using System.Data.SQLite;
+using System.IO;
 
 namespace Utils
 {
@@ -112,13 +114,33 @@ namespace Utils
                     if (!string.IsNullOrEmpty(ConnectionName))
                     {
                         connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
+                        DbPath = connectionString;
                     }
                 }
+
                 return connectionString;
+
             }
             set { connectionString = value; }
         }
 
+        private static string dbPath;
+        public static string DbPath
+        {
+            get
+            {
+                return dbPath;
+            }
+            private set
+            {
+                SQLiteConnectionStringBuilder builder = new SQLiteConnectionStringBuilder(value);
+
+                FileInfo file = new FileInfo(builder.DataSource);
+                dbPath = file.Exists ?
+                        file.FullName :
+                        Environment.CurrentDirectory + Path.DirectorySeparatorChar + builder.DataSource;
+            }
+        }
 
         public static void ClearDbData()
         {

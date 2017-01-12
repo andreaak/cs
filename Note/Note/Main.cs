@@ -210,6 +210,20 @@ namespace Note
             form.Show();
         }
 
+        private void barButtonItemUpload_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string headerText = "Upload database";
+            Action action = () => presenter.Upload();
+            CancelFormEx.ShowProgressWindow(action, headerText);
+        }
+
+        private void barButtonItemDownload_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string headerText = "Download database";
+            Action action = () => presenter.Download();
+            CancelFormEx.ShowProgressWindow(action, headerText);
+        }
+
         #endregion
 
         private void InitSpellChecker()
@@ -254,7 +268,7 @@ namespace Note
             , barButtonItemHeaderFormat, barButtonItemImport, barButtonItemInfoFormat, barButtonItemMethodFormat
             , barButtonItemRemoveLineBreak, barButtonItemRemoveWhiteSpace, barButtonItemRemoveDoubleWhiteSpace
             , barButtonItemSaveAll, barButtonItemVacuum , barButtonItemLevelUp, barButtonItemLevelDown, barButtonItemConvertDb
-            , barButtonItemCheckNewestEntity, barButtonItemSpelling, barButtonItemFind
+            , barButtonItemCheckNewestEntity, barButtonItemSpelling, barButtonItemFind, barButtonItemUpload, barButtonItemDownload
             };
         }
 
@@ -346,6 +360,8 @@ namespace Note
             Settings.Default.Save();
         }
 
+
         #endregion
+
     }
 }

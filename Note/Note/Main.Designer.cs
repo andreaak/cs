@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            DevExpress.XtraRichEdit.Model.BorderInfo borderInfo1 = new DevExpress.XtraRichEdit.Model.BorderInfo();
             DevExpress.XtraSpellChecker.OptionsSpelling optionsSpelling1 = new DevExpress.XtraSpellChecker.OptionsSpelling();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -119,7 +118,7 @@
             this.changeTableBorderLineStyleItem1 = new DevExpress.XtraRichEdit.UI.ChangeTableBorderLineStyleItem();
             this.repositoryItemBorderLineStyle1 = new DevExpress.XtraRichEdit.Forms.Design.RepositoryItemBorderLineStyle();
             this.myRichEditControl = new DevExpress.XtraRichEdit.RichEditControl();
-            this.spellChecker1 = new DevExpress.XtraSpellChecker.SpellChecker();
+            this.spellChecker1 = new DevExpress.XtraSpellChecker.SpellChecker(this.components);
             this.changeTableBorderLineWeightItem1 = new DevExpress.XtraRichEdit.UI.ChangeTableBorderLineWeightItem();
             this.repositoryItemBorderLineWeight1 = new DevExpress.XtraRichEdit.Forms.Design.RepositoryItemBorderLineWeight();
             this.changeTableBorderColorItem1 = new DevExpress.XtraRichEdit.UI.ChangeTableBorderColorItem();
@@ -290,6 +289,7 @@
             this.barButtonItemCheckNewestEntity = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSpelling = new DevExpress.XtraBars.BarCheckItem();
             this.barButtonItemFind = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemUpload = new DevExpress.XtraBars.BarButtonItem();
             this.headerFooterToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.HeaderFooterToolsRibbonPageCategory();
             this.tableToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.TableToolsRibbonPageCategory();
             this.tableDesignRibbonPage1 = new DevExpress.XtraRichEdit.UI.TableDesignRibbonPage();
@@ -348,6 +348,7 @@
             this.showParagraphFormItem1 = new DevExpress.XtraRichEdit.UI.ShowParagraphFormItem();
             this.showEditStyleFormItem1 = new DevExpress.XtraRichEdit.UI.ShowEditStyleFormItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.barButtonItemDownload = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBorderLineStyle1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBorderLineWeight1)).BeginInit();
@@ -611,9 +612,11 @@
             this.barButtonItemRemoveWhiteSpace,
             this.barButtonItemCheckNewestEntity,
             this.barButtonItemSpelling,
-            this.barButtonItemFind});
+            this.barButtonItemFind,
+            this.barButtonItemUpload,
+            this.barButtonItemDownload});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 250;
+            this.ribbonControl1.MaxItemId = 252;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.headerFooterToolsRibbonPageCategory1,
@@ -637,7 +640,7 @@
             this.repositoryItemRichEditStyleEdit1,
             this.repositoryItemFloatingObjectOutlineWeight1,
             this.repositoryItemTextEditExtension});
-            this.ribbonControl1.Size = new System.Drawing.Size(1329, 142);
+            this.ribbonControl1.Size = new System.Drawing.Size(1360, 141);
             // 
             // barButtonItemAddDir
             // 
@@ -1221,13 +1224,7 @@
             // changeTableBorderLineStyleItem1
             // 
             this.changeTableBorderLineStyleItem1.Edit = this.repositoryItemBorderLineStyle1;
-            borderInfo1.Color = System.Drawing.Color.Black;
-            borderInfo1.Frame = false;
-            borderInfo1.Offset = 0;
-            borderInfo1.Shadow = false;
-            borderInfo1.Style = DevExpress.XtraRichEdit.Model.BorderLineStyle.Single;
-            borderInfo1.Width = 10;
-            this.changeTableBorderLineStyleItem1.EditValue = borderInfo1;
+            this.changeTableBorderLineStyleItem1.EditWidth = 130;
             this.changeTableBorderLineStyleItem1.Id = 80;
             this.changeTableBorderLineStyleItem1.Name = "changeTableBorderLineStyleItem1";
             // 
@@ -1246,10 +1243,8 @@
             this.myRichEditControl.MenuManager = this.ribbonControl1;
             this.myRichEditControl.Name = "myRichEditControl";
             this.myRichEditControl.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-            this.myRichEditControl.Options.MailMerge.KeepLastParagraph = false;
             this.myRichEditControl.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-            this.spellChecker1.SetShowSpellCheckMenu(this.myRichEditControl, false);
-            this.myRichEditControl.Size = new System.Drawing.Size(1023, 520);
+            this.myRichEditControl.Size = new System.Drawing.Size(1054, 521);
             this.myRichEditControl.SpellChecker = this.spellChecker1;
             this.spellChecker1.SetSpellCheckerOptions(this.myRichEditControl, optionsSpelling1);
             this.myRichEditControl.TabIndex = 0;
@@ -1266,6 +1261,7 @@
             // 
             this.changeTableBorderLineWeightItem1.Edit = this.repositoryItemBorderLineWeight1;
             this.changeTableBorderLineWeightItem1.EditValue = 20;
+            this.changeTableBorderLineWeightItem1.EditWidth = 130;
             this.changeTableBorderLineWeightItem1.Id = 81;
             this.changeTableBorderLineWeightItem1.Name = "changeTableBorderLineWeightItem1";
             // 
@@ -2540,6 +2536,7 @@
             // 
             // barButtonItemSpelling
             // 
+            this.barButtonItemSpelling.BindableChecked = true;
             this.barButtonItemSpelling.Caption = "Spelling";
             this.barButtonItemSpelling.Checked = true;
             this.barButtonItemSpelling.Id = 248;
@@ -2550,20 +2547,31 @@
             // 
             // barButtonItemFind
             // 
-            this.barButtonItemFind.Caption = "Find";
+            this.barButtonItemFind.Caption = "Upload";
             this.barButtonItemFind.Id = 249;
             this.barButtonItemFind.LargeGlyph = global::Note.Properties.Resources.Search44;
             this.barButtonItemFind.Name = "barButtonItemFind";
             this.barButtonItemFind.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
             this.barButtonItemFind.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFind_ItemClick);
             // 
+            // barButtonItemUpload
+            // 
+            this.barButtonItemUpload.Caption = "Upload";
+            this.barButtonItemUpload.Id = 250;
+            this.barButtonItemUpload.LargeGlyph = global::Note.Properties.Resources.Google_Drive_Icon;
+            this.barButtonItemUpload.Name = "barButtonItemUpload";
+            this.barButtonItemUpload.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItemUpload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpload_ItemClick);
+            // 
             // headerFooterToolsRibbonPageCategory1
             // 
+            this.headerFooterToolsRibbonPageCategory1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(176)))), ((int)(((byte)(35)))));
             this.headerFooterToolsRibbonPageCategory1.Control = null;
             this.headerFooterToolsRibbonPageCategory1.Name = "headerFooterToolsRibbonPageCategory1";
             // 
             // tableToolsRibbonPageCategory1
             // 
+            this.tableToolsRibbonPageCategory1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(233)))), ((int)(((byte)(20)))));
             this.tableToolsRibbonPageCategory1.Control = this.myRichEditControl;
             this.tableToolsRibbonPageCategory1.Name = "tableToolsRibbonPageCategory1";
             this.tableToolsRibbonPageCategory1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -2643,6 +2651,7 @@
             // 
             // floatingPictureToolsRibbonPageCategory1
             // 
+            this.floatingPictureToolsRibbonPageCategory1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(0)))), ((int)(((byte)(119)))));
             this.floatingPictureToolsRibbonPageCategory1.Control = this.myRichEditControl;
             this.floatingPictureToolsRibbonPageCategory1.Name = "floatingPictureToolsRibbonPageCategory1";
             this.floatingPictureToolsRibbonPageCategory1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -2704,6 +2713,8 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemCheckNewestEntity);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemSpelling);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemFind);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemUpload);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemDownload);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
             // homeRibbonPage1
@@ -2930,13 +2941,13 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 142);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 141);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.treeList1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.myRichEditControl);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1329, 520);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1360, 521);
             this.splitContainerControl1.SplitterPosition = 301;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -2971,14 +2982,14 @@
             this.treeList1.OptionsView.ShowIndicator = false;
             this.treeList1.OptionsView.ShowVertLines = false;
             this.treeList1.SelectImageList = this.imageListState;
-            this.treeList1.Size = new System.Drawing.Size(301, 520);
+            this.treeList1.Size = new System.Drawing.Size(301, 521);
             this.treeList1.TabIndex = 0;
             // 
             // colDescription
             // 
             this.colDescription.Caption = " ";
             this.colDescription.FieldName = "Description";
-            this.colDescription.MinWidth = 33;
+            this.colDescription.MinWidth = 34;
             this.colDescription.Name = "colDescription";
             this.colDescription.SortOrder = System.Windows.Forms.SortOrder.Ascending;
             this.colDescription.Visible = true;
@@ -3250,11 +3261,20 @@
             this.notifyIcon.Text = "Note";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // barButtonItemDownload
+            // 
+            this.barButtonItemDownload.Caption = "Download";
+            this.barButtonItemDownload.Id = 251;
+            this.barButtonItemDownload.LargeGlyph = global::Note.Properties.Resources.Google_Drive_Icon;
+            this.barButtonItemDownload.Name = "barButtonItemDownload";
+            this.barButtonItemDownload.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItemDownload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDownload_ItemClick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1329, 662);
+            this.ClientSize = new System.Drawing.Size(1360, 662);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.ribbonControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -3277,6 +3297,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.richEditBarController1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -3594,6 +3615,8 @@
         private DevExpress.XtraBars.BarCheckItem barButtonItemSpelling;
         private DevExpress.XtraSpellChecker.SpellChecker spellChecker1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemFind;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemUpload;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDownload;
     }
 }
 

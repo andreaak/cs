@@ -139,14 +139,14 @@
   <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\paste.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="openHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="texteffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\texteffect.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hibernate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hibernate.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,8 +163,8 @@
   <data name="filesave" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\filesave.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="texteffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\texteffect.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\paste.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FilesImportCaption" xml:space="preserve">
     <value>File's Import</value>
@@ -184,6 +184,9 @@
   <data name="DeleteQuestion" xml:space="preserve">
     <value>Delete Selected Node?</value>
   </data>
+  <data name="spelling2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spelling2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="signature" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signature.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -202,7 +205,7 @@
   <data name="_2downarrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2downarrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="spelling2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\spelling2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Google-Drive-Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Google-Drive-Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

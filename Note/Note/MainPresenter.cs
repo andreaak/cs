@@ -10,6 +10,8 @@ using Note.Properties;
 using Utils;
 using Utils.ActionWindow;
 using Utils.WorkWithDB;
+using Utils.Google;
+using System.IO;
 
 namespace Note
 {
@@ -294,6 +296,21 @@ namespace Note
                     form.Show();
                 }
             }
+        }
+
+        public void Upload()
+        {
+            GoogleDriveHelper helper = new GoogleDriveHelper();
+            helper.Init();
+            helper.UploadOrUpdateFile(OptionsUtils.DbPath, Options.DbDirectory);
+        }
+
+
+        internal void Download()
+        {
+            GoogleDriveHelper helper = new GoogleDriveHelper();
+            helper.Init();
+            helper.DownloadFile(OptionsUtils.DbPath, Options.DbDirectory, OptionsUtils.DbPath);
         }
 
         private void HandleError(bool showMessage, string errorMessage)
