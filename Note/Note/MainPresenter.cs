@@ -298,7 +298,7 @@ namespace Note
             }
         }
 
-        public void Upload()
+        public void UploadToGoogleDrive()
         {
             GoogleDriveHelper helper = new GoogleDriveHelper();
             helper.Init();
@@ -306,7 +306,7 @@ namespace Note
         }
 
 
-        internal void Download()
+        public void DownloadFromGoogleDrive()
         {
             GoogleDriveHelper helper = new GoogleDriveHelper();
             helper.Init();

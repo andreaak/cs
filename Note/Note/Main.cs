@@ -213,14 +213,14 @@ namespace Note
         private void barButtonItemUpload_ItemClick(object sender, ItemClickEventArgs e)
         {
             string headerText = "Upload database";
-            Action action = () => presenter.Upload();
+            Action action = () => presenter.UploadToGoogleDrive();
             CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
         private void barButtonItemDownload_ItemClick(object sender, ItemClickEventArgs e)
         {
             string headerText = "Download database";
-            Action action = () => presenter.Download();
+            Action action = () => presenter.DownloadFromGoogleDrive();
             CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
