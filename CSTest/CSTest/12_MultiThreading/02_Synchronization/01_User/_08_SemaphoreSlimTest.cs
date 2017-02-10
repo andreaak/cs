@@ -13,13 +13,49 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
         // SemaphoreSlim  - легковесный класс-семафор, который не использует объекты синхронизации ядра.
         public void TestSemaphoreSlim1()
         {
-            slim = new SemaphoreSlim(1);
+            slim = new SemaphoreSlim(0, 1);
             Thread[] threads = { new Thread(Function), new Thread(Function), new Thread(Function) };
 
             for (int i = 0; i < threads.Length; i++)
             {
                 threads[i].Name = i.ToString();
-                threads[i].Start();
+                threads[i].Start(500);
+            }
+
+            // Delay.
+            Thread.Sleep(1000);
+            Debug.WriteLine("Сброс");
+            slim.Release();
+
+            // Delay.
+            Thread.Sleep(3000);
+
+            /*
+            Сброс
+            Поток 9 начал работу.
+            Поток 9 закончил работу.
+
+            Поток 10 начал работу.
+            The thread 0x4ed4 has exited with code 0 (0x0).
+            Поток 10 закончил работу.
+
+            The thread 0x580 has exited with code 0 (0x0).
+            Поток 11 начал работу.
+            Поток 11 закончил работу.
+            */
+        }
+
+        [Test]
+        // SemaphoreSlim  - легковесный класс-семафор, который не использует объекты синхронизации ядра.
+        public void TestSemaphoreSlim2()
+        {
+            slim = new SemaphoreSlim(1, 1);
+            Thread[] threads = { new Thread(Function), new Thread(Function), new Thread(Function) };
+
+            for (int i = 0; i < threads.Length; i++)
+            {
+                threads[i].Name = i.ToString();
+                threads[i].Start(500);
             }
 
             // Delay.
@@ -39,7 +75,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
         }
 
         [Test]
-        public void TestSemaphoreSlim2()
+        public void TestSemaphoreSlim3()
         {
             slim = new SemaphoreSlim(1, 2);
             Thread[] threads = { new Thread(Function), new Thread(Function), new Thread(Function) };
@@ -72,7 +108,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
         }
 
         [Test]
-        public void TestSemaphoreSlim3()
+        public void TestSemaphoreSlim4()
         {
             slim = new SemaphoreSlim(2);
             Thread[] threads = { new Thread(Function), new Thread(Function), new Thread(Function) };

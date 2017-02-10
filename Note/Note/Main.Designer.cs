@@ -2547,7 +2547,7 @@
             // 
             // barButtonItemFind
             // 
-            this.barButtonItemFind.Caption = "Upload";
+            this.barButtonItemFind.Caption = "Find";
             this.barButtonItemFind.Id = 249;
             this.barButtonItemFind.LargeGlyph = global::Note.Properties.Resources.Search44;
             this.barButtonItemFind.Name = "barButtonItemFind";

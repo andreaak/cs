@@ -305,7 +305,6 @@ namespace Note
             helper.UploadOrUpdateFile(OptionsUtils.DbPath, Options.DbDirectory);
         }
 
-
         public void DownloadFromGoogleDrive()
         {
             GoogleDriveHelper helper = new GoogleDriveHelper();
