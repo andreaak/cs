@@ -21,13 +21,13 @@ namespace CSTest._12_MultiThreading._02_Synchronization._02_Kernel
         Все ожидающие потоки освобождаются.
         */
         // ManualResetEvent - Уведомляет один или более ожидающих потоков о том, что произошло событие.
-        private static ManualResetEvent manual = new ManualResetEvent(false);
+        private static ManualResetEvent manual;
 
         [Test]
         public void TestManualResetEvent1()
         {
-
-            Thread[] threads = { new Thread(Function1), new Thread(Function2) };
+            manual = new ManualResetEvent(false);
+            Thread[] threads = { new Thread(Function), new Thread(Function) };
 
             foreach (Thread thread in threads)
             {
@@ -35,78 +35,107 @@ namespace CSTest._12_MultiThreading._02_Synchronization._02_Kernel
             }
 
             // Delay.
-            Debug.WriteLine("Нажмите на любую клавишу для перевода ManualResetEvent в сигнальное состояние.\n");
-            Thread.Sleep(2000);
-            Debug.WriteLine("Нажатие кнопки.\n");
+            Thread.Sleep(500);
+            Debug.WriteLine("\nПеревод в сигнальное состояние.");
             manual.Set(); // Просылает сигнал всем потокам.
 
             // Delay.
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
             /*
-            Нажмите на любую клавишу для перевода ManualResetEvent в сигнальное состояние.
+            Поток 9 запущен и ожидает сигнала.
+            Поток 10 запущен и ожидает сигнала.
 
-            Поток 1 запущен и ожидает сигнала.
-            Поток 2 запущен и ожидает сигнала.
-            Нажатие кнопки.
-
-            Поток 1 завершается.
-            Поток 2 завершается.
+            Перевод в сигнальное состояние.
+            Поток 10 завершается.
+            Поток 9 завершается.
             */
         }
-        static void Function1()
-        {
-            Debug.WriteLine("Поток 1 запущен и ожидает сигнала.");
-            manual.WaitOne(); // после завершения WaitOne() ManualResetEvent остаеться в сигнальном сотоянии.
-            Debug.WriteLine("Поток 1 завершается.");
 
-        }
-
-        static void Function2()
+        static void Function()
         {
-            Debug.WriteLine("Поток 2 запущен и ожидает сигнала.");
+            Debug.WriteLine("Поток {0} запущен и ожидает сигнала.", Thread.CurrentThread.ManagedThreadId);
             manual.WaitOne(); // после завершения WaitOne() ManualResetEvent остаеться в сигнальном сотоянии.
-            Debug.WriteLine("Поток 2 завершается.");
+            Debug.WriteLine("Поток {0} завершается.", Thread.CurrentThread.ManagedThreadId);
         }
 
         [Test]
         public void TestManualResetEvent2()
         {
+            manual = new ManualResetEvent(false);
+            Thread[] threads = { new Thread(Function2), new Thread(Function2) };
+
+            foreach (Thread thread in threads)
+            {
+                thread.Start();
+            }
+
+            // Delay.
+            Thread.Sleep(500);
+            Debug.WriteLine("\nПеревод 1 в сигнальное состояние.");
+            manual.Set(); // Просылает сигнал всем потокам.
+
+            Thread.Sleep(500);
+            Debug.WriteLine("\nПеревод 2 в сигнальное состояние.");
+            manual.Set(); // Просылает сигнал всем потокам.
+
+            // Delay.
+            Thread.Sleep(500);
+            /*
+            Поток 9 запущен и ожидает сигнала.
+            Поток 10 запущен и ожидает сигнала.
+
+            Перевод 1 в сигнальное состояние.
+            Поток 10 завершается.
+            Поток 9 завершается.
+
+            Перевод 2 в сигнальное состояние.
+            */
+        }
+
+        static void Function2()
+        {
+            Debug.WriteLine("Поток {0} запущен и ожидает сигнала.", Thread.CurrentThread.ManagedThreadId);
+            manual.WaitOne(); // после завершения WaitOne() ManualResetEvent остаеться в сигнальном сотоянии.
+            manual.Reset();//ошибочное решение не приводящее к блокировке втогого потока
+            Debug.WriteLine("Поток {0} завершается.", Thread.CurrentThread.ManagedThreadId);
+        }
+
+        [Test]
+        public void TestManualResetEvent3()
+        {
             // false - установка несигнального состояния.
             var manual = new ManualResetEvent(false);
 
-            var thread = new Work("1", manual);
-            Debug.WriteLine("Основной поток ожидает событие.\n");
+            new Work("1", manual);
 
+            Debug.WriteLine("\nОжидание поток 1.");
             manual.WaitOne(); // Ожидать уведомления о событии. 
-            Debug.WriteLine("\nОсновной поток получил уведомление о событии от первого потока.\n");
-
+            Debug.WriteLine("\nПеревод в не сигнальное состояние.");
             manual.Reset(); // Сбрасывает в несигнальное состояние.
 
-            thread = new Work("2", manual);
-            Debug.WriteLine("Основной поток ожидает событие.\n");
-
+            new Work("2", manual);
+            Debug.WriteLine("\nОжидание поток 2.");
             manual.WaitOne(); // Ожидать уведомления о событии. 
-            Debug.WriteLine("\nОсновной поток получил уведомление о событии от второго потока.");
 
-            // Delay.
-            Thread.Sleep(10000);
-
+            Debug.WriteLine("\nОкончание.");
             /*
-            Основной поток ожидает событие.
-
+            Ожидание поток 1.
             Запущен поток 1
             . . . . . . . . . . 
             Поток 1 завершен
 
-            Основной поток получил уведомление о событии от первого потока.
+            Перевод в сигнальное состояние.
 
-            Основной поток ожидает событие.
+            Перевод в не сигнальное состояние.
 
+            Ожидание поток 2.
             Запущен поток 2
             . . . . . . . . . . 
             Поток 2 завершен
 
-            Основной поток получил уведомление о событии от второго потока.
+            Перевод в сигнальное состояние.
+
+            Окончание.
             */
         }
     }
@@ -139,6 +168,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._02_Kernel
             Debug.WriteLine("\nПоток " + thread.Name + " завершен");
 
             // Уведомление о событии происходит при помощи вызова метода Set()
+            Debug.WriteLine("\nПеревод в сигнальное состояние.");
             manual.Set();
         }
     }

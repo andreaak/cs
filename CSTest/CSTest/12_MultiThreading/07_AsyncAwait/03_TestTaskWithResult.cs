@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -53,6 +54,8 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             var test = new _03_TestTaskWithResult();
             string res = await test.TestReturnNullResult();
             Debug.WriteLine(res);//res == null
+
+            Assert.Catch<NullReferenceException>(async () => await test.TestReturnNullResult2());
         }
 
         private string Bonus { get; set; }
@@ -63,6 +66,13 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 return null;
             await Task.Run(() => { });
             return "AsyncTest";
+        }
+
+        public Task<string> TestReturnNullResult2()
+        {
+            if (Bonus == null)
+                return null;
+            return TestReturnNullResult();
         }
     }
 

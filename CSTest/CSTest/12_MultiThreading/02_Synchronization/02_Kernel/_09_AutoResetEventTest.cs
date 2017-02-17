@@ -8,12 +8,12 @@ namespace CSTest._12_MultiThreading._02_Synchronization._02_Kernel
     public class _09_AutoResetEventTest
     {
         // AutoResetEvent - Уведомляет ожидающий поток о том, что произошло событие. 
-        static readonly AutoResetEvent auto = new AutoResetEvent(false);
+        static AutoResetEvent auto;
         
         [Test]
         public void TestAutoResetEvent1()
         {
-
+            auto = new AutoResetEvent(false);
             var thread = new Thread(Function1);
             thread.Start();
 
@@ -50,43 +50,65 @@ namespace CSTest._12_MultiThreading._02_Synchronization._02_Kernel
         [Test]
         public void TestAutoResetEvent2()
         {
-            var thread = new Thread(Function3);
+            auto = new AutoResetEvent(false);
+            var thread = new Thread(Function);
             thread.Start();
-            var thread2 = new Thread(Function4);
+            var thread2 = new Thread(Function);
             thread2.Start();
 
-            Thread.Sleep(1000);
-            Debug.WriteLine("Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.\n");
             Thread.Sleep(500);
+            Debug.WriteLine("\nПеревод 1 в сигнальное состояние.");
             auto.Set(); // Послать сигнал первому потоку
+
+            Thread.Sleep(500);
+            Debug.WriteLine("\nПеревод 2 в сигнальное состояние.");
             auto.Set(); // Послать сигнал второму потоку
             // Delay.
             thread.Join();
             thread2.Join();
-            Thread.Sleep(2000);
             /*
-            Поток 1 запущен и ожидает сигнала.
-            Поток 2 запущен и ожидает сигнала.
-            Нажмите на любую клавишу для перевода AutoResetEvent в сигнальное состояние.
+            Поток 9 запущен и ожидает сигнала.
+            Поток 10 запущен и ожидает сигнала.
 
-            Поток 1 завершается.
-            Поток 2 завершается.
+            Перевод 1 в сигнальное состояние.
+            Поток 9 завершается.
+
+            Перевод 2 в сигнальное состояние.
+            Поток 10 завершается.
             */
         }
 
-        static void Function3()
+        [Test]
+        public void TestAutoResetEvent3()
         {
-            Debug.WriteLine("Поток 1 запущен и ожидает сигнала.");
-            auto.WaitOne(); // Остановка выполнения вторичного потока 1
-            Debug.WriteLine("Поток 1 завершается.");
+            auto = new AutoResetEvent(true);
+            var thread = new Thread(Function);
+            thread.Start();
+            var thread2 = new Thread(Function);
+            thread2.Start();
 
+            Thread.Sleep(500);
+            Debug.WriteLine("\nПеревод в сигнальное состояние.");
+            auto.Set();
+
+            // Delay.
+            thread.Join();
+            thread2.Join();
+            /*
+            Поток 9 запущен и ожидает сигнала.
+            Поток 10 запущен и ожидает сигнала.
+            Поток 9 завершается.
+
+            Перевод в сигнальное состояние.
+            Поток 10 завершается.
+            */
         }
 
-        static void Function4()
+        static void Function()
         {
-            Debug.WriteLine("Поток 2 запущен и ожидает сигнала.");
-            auto.WaitOne(); // Остановка выполнения вторичного потока 2
-            Debug.WriteLine("Поток 2 завершается.");
+            Debug.WriteLine("Поток {0} запущен и ожидает сигнала.", Thread.CurrentThread.ManagedThreadId);
+            auto.WaitOne();
+            Debug.WriteLine("Поток {0} завершается.", Thread.CurrentThread.ManagedThreadId);
         }
     }
 }

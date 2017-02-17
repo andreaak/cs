@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._01_Types
@@ -39,6 +40,23 @@ namespace CSTest._01_Elements_CS._01_Types
             Debug.WriteLine(variable1);
             Debug.WriteLine(variable2);
             Debug.WriteLine(variable3);
+            /*
+            0,1234568
+            0,123456789012346
+            0,12345678901234567890
+            */
+        }
+
+        [Test]
+        public void TestReal3Truncate()
+        {
+            double variable2 = 5566.92345678901234567890d;
+            Debug.WriteLine(Math.Truncate(variable2));
+            long variable3 = (long)variable2;
+            Debug.WriteLine(variable3);
+            /*
+            5566
+            */
         }
     }
 }
