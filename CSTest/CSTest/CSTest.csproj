@@ -148,6 +148,7 @@
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenRegistrationNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenSourceNET.cs" />
+    <Compile Include="24_Closure\Test.cs" />
     <Compile Include="25_CS_NewFeatures\01_CS4\01_Lazy\LazyNET.cs" />
     <Compile Include="25_CS_NewFeatures\01_CS4\01_Lazy\Test.cs" />
     <Compile Include="02_Object\Test.cs" />
@@ -399,7 +400,7 @@
     <Compile Include="21_Database\03_LinqToSql\Test.cs" />
     <Compile Include="22_AppConfig\Test.cs" />
     <Compile Include="23_CallerInfo\Test.cs" />
-    <Compile Include="24_Closure\Test.cs" />
+    <Compile Include="24_Closure\TestInCycles.cs" />
     <Compile Include="30_NET Code\BinaryCompatibility.cs" />
     <Compile Include="30_NET Code\CompatibilitySwitches.cs" />
     <Compile Include="30_NET Code\EnvironmentNET.cs" />

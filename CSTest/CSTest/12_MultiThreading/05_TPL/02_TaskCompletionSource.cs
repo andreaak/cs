@@ -120,5 +120,19 @@ namespace CSTest._12_MultiThreading._05_TPL
             }).Start();
             return tcs.Task;
         }
+
+        Task Delay(int milliseconds)
+        {
+            var tcs = new TaskCompletionSource<object>();
+            var timer = new System.Timers.Timer(milliseconds) { AutoReset = false };
+            timer.Elapsed += delegate
+            {
+                timer.Dispose();
+                tcs.SetResult(null);
+            };
+            timer.Start();
+            return tcs.Task;
+        }
+
     }
 }

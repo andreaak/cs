@@ -8,8 +8,8 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
     class _05_InterlockedUtils
     {
         // Счетчик запущеных потоков.
-        static private long counter;
-        static private readonly Random random = new Random();
+        private static long counter;
+        private static readonly Random random = new Random();
 
         // Проверка количества запущеных потоков. 
         public static void Report()
@@ -44,19 +44,19 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
         }
 
         //SpinLock
-        static readonly _05_InterlockedSpinLock block = new _05_InterlockedSpinLock(10); // Интервал 10 млск.
+        static readonly _05_InterlockedExchange block = new _05_InterlockedExchange(10); // Интервал 10 млск.
         static readonly FileStream stream = File.Open("log.txt", FileMode.Append, FileAccess.Write, FileShare.None);
         static readonly StreamWriter writer = new StreamWriter(stream);
 
         // Будет запускаться в отдельном потоке.
-        public static void Function2()
+        public static void FunctionInterlockedExchange()
         {
             using (new _05_InterlockedSpinLockManager(block)) // Вызывается block.Enter();
             {
-                Debug.WriteLine("Начало записи. Thread = " + Thread.CurrentThread.GetHashCode());
-                writer.WriteLine("Поток {0} запускается.", Thread.CurrentThread.GetHashCode());
+                Debug.WriteLine("Начало записи. Thread = " + Thread.CurrentThread.Name);
+                writer.WriteLine("Поток {0} запускается.", Thread.CurrentThread.Name);
                 writer.Flush(); // Очищает буфер writer и записывает данные в файл.
-                Debug.WriteLine("Окончание записи. Thread = " + Thread.CurrentThread.GetHashCode());
+                Debug.WriteLine("Окончание записи. Thread = " + Thread.CurrentThread.Name);
             }   // Вызывается public void Dispose() { block.Exit(); }
 
             int time = random.Next(200, 1000);
@@ -64,10 +64,10 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
 
             using (new _05_InterlockedSpinLockManager(block)) // Вызывается block.Enter();
             {
-                Debug.WriteLine("Начало записи. Thread = " + Thread.CurrentThread.GetHashCode());
-                writer.WriteLine("Поток [{0}] завершается.", Thread.CurrentThread.GetHashCode());
+                Debug.WriteLine("Начало записи 2. Thread = " + Thread.CurrentThread.Name);
+                writer.WriteLine("Поток [{0}] завершается 2.", Thread.CurrentThread.Name);
                 writer.Flush(); // Очищает буфер writer и записывает данные в файл.
-                Debug.WriteLine("Окончание записи. Thread = " + Thread.CurrentThread.GetHashCode());
+                Debug.WriteLine("Окончание записи 2. Thread = " + Thread.CurrentThread.Name);
             }   // Вызывается public void Dispose() { block.Exit(); }
         }
     }

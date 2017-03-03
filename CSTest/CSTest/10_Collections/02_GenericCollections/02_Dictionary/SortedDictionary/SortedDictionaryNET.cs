@@ -7,12 +7,16 @@ using CSTest._30_NET_Code;
 
 namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary.SortedDictionary
 {
+#if CS5
+
 #if !FEATURE_NETCORE
     [Serializable]
 #endif
     //[DebuggerTypeProxy(typeof(System_DictionaryDebugView<,>))]
     [DebuggerDisplay("Count = {Count}")]
-    public class SortedDictionaryNET<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary, IReadOnlyDictionary<TKey, TValue>
+    public class SortedDictionaryNET<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary
+            , IReadOnlyDictionary<TKey, TValue>
+
     {
 #if !FEATURE_NETCORE
         [NonSerialized]
@@ -970,5 +974,6 @@ namespace CSTest._10_Collections._02_GenericCollections._02_Dictionary.SortedDic
             }
         }
     }
+#endif
 }
 

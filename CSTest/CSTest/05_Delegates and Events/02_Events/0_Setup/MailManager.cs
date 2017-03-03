@@ -18,8 +18,12 @@ namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup
         {
             // Сохранить ссылку на делегата во временной переменной
             // для обеспечения безопасности потоков
+#if CS5
 
             EventHandler<NewMailEventArgs> temp = Volatile.Read(ref NewMail);
+#else
+            EventHandler<NewMailEventArgs> temp = Interlocked.CompareExchange(ref NewMail, null, null);
+#endif
             // Если есть объекты, зарегистрированные для получения
             // уведомления о событии, уведомляем их
             if (temp != null)
@@ -41,7 +45,13 @@ namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup
         // Версия 3
         protected void OnNewMail3(NewMailEventArgs e)
         {
+#if CS5
+
             EventHandler<NewMailEventArgs> temp = Volatile.Read(ref NewMail);
+#else
+            EventHandler<NewMailEventArgs> temp = Interlocked.CompareExchange(ref NewMail, null, null);
+#endif
+
             if (temp != null)
             {
                 temp(this, e);

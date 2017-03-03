@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using CSTest._30_NET_Code;
 
+
 namespace CSTest._10_Collections._02_GenericCollections._04_Queue
 {
+
     // A simple Queue of generic objects.  Internally it is implemented as a 
     // circular buffer, so Enqueue can be O(n).  Dequeue is O(1).
     //[DebuggerTypeProxy(typeof(System_QueueDebugView<>))]
@@ -15,8 +17,10 @@ namespace CSTest._10_Collections._02_GenericCollections._04_Queue
 #endif
     [System.Runtime.InteropServices.ComVisible(false)]
     public class QueueNET<T> : IEnumerable<T>,
-        System.Collections.ICollection,
-        IReadOnlyCollection<T>
+        System.Collections.ICollection
+#if CS5
+        , IReadOnlyCollection<T>
+#endif
     {
         private T[] _array;
         private int _head;       // First valid element in the queue
@@ -457,4 +461,3 @@ namespace CSTest._10_Collections._02_GenericCollections._04_Queue
         }
     }
 }
-

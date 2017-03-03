@@ -67,8 +67,11 @@ namespace Note.Domain.Repository
                 .Where(itm => itm.ParentID == parentId)
                 .Select(itm => itm.OrderPosition).ToArray();
 
-            int position = positions.Length != 0 ? positions.Max() : DBConstants.START_POSITION;
-
+            int position = positions.Length != 0 ? positions.Max() + 1 : DBConstants.START_POSITION;
+            if (position < positions.Length)
+            {
+                position = positions.Length;
+            }
             //    .Max();
             Entity item = new Entity
             {

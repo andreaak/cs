@@ -38,7 +38,10 @@ namespace CSTest._10_Collections._02_GenericCollections._03_HashSet
     [DebuggerDisplay("Count = {Count}")]
 #if !FEATURE_NETCORE
     [Serializable]
-    public class SortedSetNET<T> : ISet<T>, ICollection<T>, ICollection, ISerializable, IDeserializationCallback, IReadOnlyCollection<T>
+    public class SortedSetNET<T> : ISet<T>, ICollection<T>, ICollection, ISerializable, IDeserializationCallback
+#if CS5
+            , IReadOnlyCollection<T>
+#endif
     {
 #else
     public class SortedSetNET<T> : ISet<T>, ICollection<T>, ICollection, IReadOnlyCollection<T> {

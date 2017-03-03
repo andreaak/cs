@@ -12,7 +12,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
     public class _05_InterlockedTest
     {
         [Test]
-        public void TestInterlocked1()
+        public void TestInterlocked1IncrementDecrement()
         {
             var reporter = new Thread(_05_InterlockedUtils.Report)
             {
@@ -51,13 +51,13 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
         }
 
         [Test]
-        public void TestInterlocked2()
+        public void TestInterlocked2Exchange()
         {
             var threads = new Thread[5];
 
             for (uint i = 0; i < 5; ++i)
             {
-                threads[i] = new Thread(_05_InterlockedUtils.Function2);
+                threads[i] = new Thread(_05_InterlockedUtils.FunctionInterlockedExchange);
                 threads[i].Name = "Thread " + i;
                 threads[i].Start();
             }
@@ -65,50 +65,59 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
             Thread.Sleep(7000);
 
             /*
-            Блокировка получена. Thread = 11
-            Начало записи. Thread = 11
-            Окончание записи. Thread = 11
-            Блокировка снята. Thread = 11
-            Блокировка получена. Thread = 10
-            Начало записи. Thread = 10
-            Окончание записи. Thread = 10
-            Блокировка снята. Thread = 10
-            Блокировка получена. Thread = 15
-            Начало записи. Thread = 15
-            Окончание записи. Thread = 15
-            Блокировка снята. Thread = 15
-            Блокировка получена. Thread = 14
-            Начало записи. Thread = 14
-            Окончание записи. Thread = 14
-            Блокировка снята. Thread = 14
-            Блокировка получена. Thread = 12
-            Начало записи. Thread = 12
-            Окончание записи. Thread = 12
-            Блокировка снята. Thread = 12
-            Блокировка получена. Thread = 10
-            Начало записи. Thread = 10
-            Окончание записи. Thread = 10
-            Блокировка снята. Thread = 10
-            The thread 0x24b0 has exited with code 0 (0x0).
-            Блокировка получена. Thread = 11
-            Начало записи. Thread = 11
-            Окончание записи. Thread = 11
-            Блокировка снята. Thread = 11
-            The thread 0x1b64 has exited with code 0 (0x0).
-            Блокировка получена. Thread = 15
-            Начало записи. Thread = 15
-            Окончание записи. Thread = 15
-            Блокировка снята. Thread = 15
-            The thread 0x26d0 has exited with code 0 (0x0).
-            Блокировка получена. Thread = 14
-            Начало записи. Thread = 14
-            Окончание записи. Thread = 14
-            Блокировка снята. Thread = 14
-            The thread 0x1600 has exited with code 0 (0x0).
-            Блокировка получена. Thread = 12
-            Начало записи. Thread = 12
-            Окончание записи. Thread = 12
-            Блокировка снята. Thread = 12
+            Блокировка получена. Thread = Thread 0
+            Начало записи. Thread = Thread 0
+            Окончание записи. Thread = Thread 0
+            Блокировка снята. Thread = Thread 0
+
+            Блокировка получена. Thread = Thread 3
+            Начало записи. Thread = Thread 3
+            Окончание записи. Thread = Thread 3
+            Блокировка снята. Thread = Thread 3
+
+            Блокировка получена. Thread = Thread 4
+            Начало записи. Thread = Thread 4
+            Окончание записи. Thread = Thread 4
+            Блокировка снята. Thread = Thread 4
+
+            Блокировка получена. Thread = Thread 2
+            Начало записи. Thread = Thread 2
+            Окончание записи. Thread = Thread 2
+            Блокировка снята. Thread = Thread 2
+
+            Блокировка получена. Thread = Thread 1
+            Начало записи. Thread = Thread 1
+            Окончание записи. Thread = Thread 1
+            Блокировка снята. Thread = Thread 1
+
+            Блокировка получена. Thread = Thread 1
+            Начало записи 2. Thread = Thread 1
+            Окончание записи 2. Thread = Thread 1
+            Блокировка снята. Thread = Thread 1
+
+            The thread 0x3af8 has exited with code 0 (0x0).
+            Блокировка получена. Thread = Thread 3
+            Начало записи 2. Thread = Thread 3
+            Окончание записи 2. Thread = Thread 3
+            Блокировка снята. Thread = Thread 3
+
+            The thread 0x35ac has exited with code 0 (0x0).
+            Блокировка получена. Thread = Thread 2
+            Начало записи 2. Thread = Thread 2
+            Окончание записи 2. Thread = Thread 2
+            Блокировка снята. Thread = Thread 2
+
+            The thread 0x39cc has exited with code 0 (0x0).
+            Блокировка получена. Thread = Thread 0
+            Начало записи 2. Thread = Thread 0
+            Окончание записи 2. Thread = Thread 0
+            Блокировка снята. Thread = Thread 0
+
+            The thread 0x5584 has exited with code 0 (0x0).
+            Блокировка получена. Thread = Thread 4
+            Начало записи 2. Thread = Thread 4
+            Окончание записи 2. Thread = Thread 4
+            Блокировка снята. Thread = Thread 4
             */
         }
     }

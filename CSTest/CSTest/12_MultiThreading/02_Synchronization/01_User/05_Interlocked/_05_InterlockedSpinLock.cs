@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
 {
-    public class _05_InterlockedSpinLock
+    public class _05_InterlockedExchange
     {
         // Указывает выполняется ли блок кода потоком. 0 - блок свободен. 1 - блок занят.
         private int block;
@@ -11,7 +11,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
         //  Интервал через который потоки проверяют переменную block.
         private readonly int wait;
 
-        public _05_InterlockedSpinLock(int wait)
+        public _05_InterlockedExchange(int wait)
         {
             this.wait = wait;
         }
@@ -31,13 +31,14 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
                 Thread.Sleep(wait);
                 result = Interlocked.CompareExchange(ref block, 1, 0);
             }
-            Debug.WriteLine("Блокировка получена. Thread = " + Thread.CurrentThread.GetHashCode());
+            Debug.WriteLine("Блокировка получена. Thread = " + Thread.CurrentThread.Name);
         }
 
         // Сбросить блокировку.
         public void Exit()
         {
-            Debug.WriteLine("Блокировка снята. Thread = " + Thread.CurrentThread.GetHashCode());
+            Debug.WriteLine("Блокировка снята. Thread = " + Thread.CurrentThread.Name);
+            Debug.WriteLine("");
             Interlocked.Exchange(ref block, 0);
         }
     }

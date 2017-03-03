@@ -16,8 +16,10 @@ namespace CSTest._10_Collections._02_GenericCollections._05_Stack
 #endif
     [System.Runtime.InteropServices.ComVisible(false)]
     public class StackNET<T> : IEnumerable<T>,
-        System.Collections.ICollection,
-        IReadOnlyCollection<T>
+        System.Collections.ICollection
+#if CS5
+            , IReadOnlyCollection<T>
+#endif
     {
         private T[] _array;     // Storage for stack elements
         private int _size;           // Number of items in the stack.
