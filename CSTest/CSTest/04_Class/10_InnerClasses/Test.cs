@@ -1,5 +1,4 @@
-﻿using System.CodeDom;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace CSTest._04_Class._10_InnerClasses
 {

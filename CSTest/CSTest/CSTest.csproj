@@ -286,7 +286,7 @@
     <Compile Include="10_Collections\03_Iterators\_02_Yield\_03_YieldMulti.cs" />
     <Compile Include="10_Collections\03_Iterators\_02_Yield\_04_YieldGeneric.cs" />
     <Compile Include="10_Collections\02_GenericCollections\01_List\Test.cs" />
-    <Compile Include="10_Collections\03_Iterators\_02_Yield\_05_YieldStateMachine.cs" />
+    <Compile Include="10_Collections\03_Iterators\_02_Yield\_05_YieldDecompiled.cs" />
     <Compile Include="12_MultiThreading\01_Thread\0_Setup\_04_AbortThread.cs" />
     <Compile Include="12_MultiThreading\01_Thread\0_Setup\_03_PriorityThread.cs" />
     <Compile Include="12_MultiThreading\01_Thread\_03_PriorityTest.cs" />

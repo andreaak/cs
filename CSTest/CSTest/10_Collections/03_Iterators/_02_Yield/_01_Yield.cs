@@ -66,5 +66,10 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
                 yield return (char)(ch1 + i);
             }
         }
+
+        public IEnumerable StaticText()
+        {
+            yield return "Hello world!";
+        }
     }
 }
