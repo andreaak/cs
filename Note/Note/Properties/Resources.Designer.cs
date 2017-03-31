@@ -120,6 +120,15 @@ namespace Note.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Database file will be deleted. Continue?.
+        /// </summary>
+        internal static string DeleteFileQuestion {
+            get {
+                return ResourceManager.GetString("DeleteFileQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Selected Node?.
         /// </summary>
         internal static string DeleteQuestion {

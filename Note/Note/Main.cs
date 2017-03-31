@@ -219,6 +219,9 @@ namespace Note
 
         private void barButtonItemDownload_ItemClick(object sender, ItemClickEventArgs e)
         {
+            if (DisplayMessage.ShowWarningYesNO(Resources.DeleteFileQuestion) != DialogResult.Yes)
+                return;
+
             string headerText = "Download database";
             Action action = () => presenter.DownloadFromGoogleDrive();
             CancelFormEx.ShowProgressWindow(action, headerText);

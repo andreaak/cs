@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
 namespace CSTest._08_String
@@ -157,6 +158,35 @@ namespace CSTest._08_String
             ReferenceEquals(temp3, res): True
             ReferenceEquals(temp3, res2): True
             IsInterbed temp3: Not
+            */
+        }
+
+        [Test]
+        public void TestString5Split()
+        {
+            string temp = "\n John \x00a0 S   \t\n";
+
+            var sep = new[] {' ', '\r', '\n', '\t', '\v', '\f' };
+            foreach (var symbol in sep)
+            {
+                Debug.WriteLine("Symbol: {0} Value: {1}" , symbol, (int)symbol);
+            }
+
+            var res = temp.Split(sep);
+
+            var res2 = temp.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+            var res3 = temp.Split(null);
+            var res4 = temp.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+            var res5 = temp.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+            /*
+            Symbol:   Value: 32
+            Symbol: 
+             Value: 13
+            Symbol: 
+             Value: 10
+            Symbol: 	 Value: 9
+            Symbol:  Value: 11
+            Symbol:  Value: 12
             */
         }
 

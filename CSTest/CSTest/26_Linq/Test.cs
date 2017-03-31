@@ -111,10 +111,40 @@ namespace CSTest._26_Linq
             77
             */
         }
+
+        [Test]
+        public void TestLinqGroupBy()
+        {
+            TestClass2[] a =
+            {
+                new TestClass2 {Code = 1, Value = 4},
+                new TestClass2 {Code = 1, Value = 7},
+                new TestClass2 {Code = 2, Value = 9},
+            };
+
+            var temp = a.GroupBy(item => item.Code);
+            foreach (var group in temp)
+            {
+                Debug.WriteLine("Key {0}, Max {1}", group.Key, group.Max(item => item.Value));
+            }
+
+            Debug.WriteLine("");
+            /*
+            6
+            1
+            77
+            */
+        }
     }
 
     class TestClass
     {
         public int Code;
+    }
+
+    class TestClass2
+    {
+        public int Code;
+        public int Value;
     }
 }
