@@ -23,7 +23,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
             }
         }
 
-        public static void Function()
+        public static void FunctionIncrementDecrement()
         {
             // Поток увеличивает счетчик.
             // Interlocked.Increment(ref counter);

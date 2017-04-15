@@ -311,6 +311,7 @@
     <None Include="Resources\spelling.jpg" />
     <None Include="Resources\spelling2.jpg" />
     <None Include="Resources\Google-Drive-Icon.png" />
+    <None Include="Resources\Google-Drive-Icon 2.png" />
     <Content Include="ToolDoc.ico" />
   </ItemGroup>
   <ItemGroup>

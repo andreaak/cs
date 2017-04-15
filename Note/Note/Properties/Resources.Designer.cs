@@ -120,7 +120,7 @@ namespace Note.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Database file will be deleted. Continue?.
+        ///   Looks up a localized string similar to Database file will be rewrited. Continue?.
         /// </summary>
         internal static string DeleteFileQuestion {
             get {
@@ -181,6 +181,16 @@ namespace Note.Properties {
         internal static System.Drawing.Bitmap Google_Drive_Icon {
             get {
                 object obj = ResourceManager.GetObject("Google-Drive-Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Google_Drive_Icon_2 {
+            get {
+                object obj = ResourceManager.GetObject("Google-Drive-Icon 2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

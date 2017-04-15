@@ -24,7 +24,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User._05_Interlocked
 
             for (uint i = 0; i < 5; ++i)
             {
-                threads[i] = new Thread(_05_InterlockedUtils.Function);
+                threads[i] = new Thread(_05_InterlockedUtils.FunctionIncrementDecrement);
                 threads[i].Name = "Thread " + i;
                 threads[i].Start();
             }
