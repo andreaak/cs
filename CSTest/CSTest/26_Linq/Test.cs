@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace CSTest._26_Linq
 {
@@ -135,6 +136,31 @@ namespace CSTest._26_Linq
             77
             */
         }
+
+        [Test]
+        public void TestLinqNullable()
+        {
+            var items = new List<TestStruct?>()
+            {
+                new TestStruct {Code = 1, Value = 4},
+                new TestStruct {Code = 1, Value = 7},
+                new TestStruct {Code = 2, Value = 9},
+            };
+
+            var temp = items.FirstOrDefault(item => /*item != null && */item.Value.Code == 4);
+
+            if (temp.HasValue)
+            {
+                
+            }
+
+            Debug.WriteLine("");
+            /*
+            6
+            1
+            77
+            */
+        }
     }
 
     class TestClass
@@ -143,6 +169,12 @@ namespace CSTest._26_Linq
     }
 
     class TestClass2
+    {
+        public int Code;
+        public int Value;
+    }
+
+    struct TestStruct
     {
         public int Code;
         public int Value;
