@@ -14,6 +14,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             Debug.WriteLine("OperationWithResult ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(2000);
+            Debug.WriteLine("OperationWithResult End ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             return 2 + 2;
         }
 
@@ -27,32 +28,60 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
         public async void OperationAsync5_CustomAwaiter()
         {
-            var customTask = new CustomAwaitable();
+            var customTask = new CustomAwaitable<int>(OperationWithResult);
+            var awaiter = customTask.GetAwaiter();
             Action continuation = () =>
             {
-                Thread.Sleep(2000);
-                Debug.WriteLine("\nРезультат: {0}\n", customTask.GetResult());
+                Thread.Sleep(1000);
+                Debug.WriteLine("\nРезультат: {0}\n", awaiter.GetResult());
             };
-            customTask.OnCompleted(continuation);
+            awaiter.OnCompleted(continuation);
             var result = await customTask;
             Debug.WriteLine(result);
         }
     }
 
-    class CustomAwaitable : INotifyCompletion
+    public interface IAwaitable<T>
     {
-        private Task task; 
+        IAwaiter<T> GetAwaiter();
+    }
 
-        public CustomAwaitable GetAwaiter()
+    public interface IAwaiter<T> : INotifyCompletion
+    {
+        bool IsCompleted { get; }
+        T GetResult();
+    }
+
+    class CustomAwaitable<T> : IAwaitable<T>
+    {
+        public Task<T> Task { get; }
+
+        public CustomAwaitable(Func<T> delFunc)
         {
-            return this;
+            Task = Task<T>.Factory.StartNew(delFunc);
+        }
+
+        public IAwaiter<T> GetAwaiter()
+        {
+            return new CustomAwaiter<T>(this);
+        }
+    }
+
+    class CustomAwaiter<T> : IAwaiter<T>
+    {
+        private Action continuation;
+        private readonly Task<T> task;
+
+        public CustomAwaiter(CustomAwaitable<T> awaitable)
+        {
+            task = awaitable.Task;
         }
 
         public bool IsCompleted
         {
             get
             {
-                Debug.WriteLine("IsCompleted");
+                Debug.WriteLine("IsCompleted " + task.IsCompleted);
                 return task.IsCompleted;
             }
         }
@@ -60,13 +89,16 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         public void OnCompleted(Action continuation)
         {
             Debug.WriteLine("OnCompleted");
-            this.task = Task.Run(continuation);
+            if (this.continuation == null)
+                this.continuation = continuation;
+            else if(task.IsCompleted)
+                Task.Run(continuation);
         }
 
-        public string GetResult()
+        public T GetResult()
         {
             Debug.WriteLine("GetResult");
-            return "Return Value";
+            return task.Result;
         }
     }
 }

@@ -33,13 +33,13 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             _11_ClassWithAwaiter mc = new _11_ClassWithAwaiter();
             mc.OperationAsync5_CustomAwaiter();
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-            Thread.Sleep(5000);
+            Thread.Sleep(10000);
             /*
             Main ThreadID 8
             OnCompleted
+            OperationWithResult ThreadID 9
             IsCompleted
-            GetResult
-            Return Value
+            OnCompleted
             Main thread ended. ThreadID 8
             */
         }
