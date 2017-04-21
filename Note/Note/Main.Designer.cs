@@ -290,6 +290,7 @@
             this.barButtonItemSpelling = new DevExpress.XtraBars.BarCheckItem();
             this.barButtonItemFind = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemUpload = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDownload = new DevExpress.XtraBars.BarButtonItem();
             this.headerFooterToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.HeaderFooterToolsRibbonPageCategory();
             this.tableToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.TableToolsRibbonPageCategory();
             this.tableDesignRibbonPage1 = new DevExpress.XtraRichEdit.UI.TableDesignRibbonPage();
@@ -348,7 +349,6 @@
             this.showParagraphFormItem1 = new DevExpress.XtraRichEdit.UI.ShowParagraphFormItem();
             this.showEditStyleFormItem1 = new DevExpress.XtraRichEdit.UI.ShowEditStyleFormItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.barButtonItemDownload = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBorderLineStyle1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBorderLineWeight1)).BeginInit();
@@ -2563,6 +2563,15 @@
             this.barButtonItemUpload.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemUpload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpload_ItemClick);
             // 
+            // barButtonItemDownload
+            // 
+            this.barButtonItemDownload.Caption = "Download";
+            this.barButtonItemDownload.Id = 251;
+            this.barButtonItemDownload.LargeGlyph = global::Note.Properties.Resources.Google_Drive_Icon_2;
+            this.barButtonItemDownload.Name = "barButtonItemDownload";
+            this.barButtonItemDownload.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItemDownload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDownload_ItemClick);
+            // 
             // headerFooterToolsRibbonPageCategory1
             // 
             this.headerFooterToolsRibbonPageCategory1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(176)))), ((int)(((byte)(35)))));
@@ -3260,15 +3269,6 @@
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "Note";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
-            // 
-            // barButtonItemDownload
-            // 
-            this.barButtonItemDownload.Caption = "Download";
-            this.barButtonItemDownload.Id = 251;
-            this.barButtonItemDownload.LargeGlyph = global::Note.Properties.Resources.Google_Drive_Icon;
-            this.barButtonItemDownload.Name = "barButtonItemDownload";
-            this.barButtonItemDownload.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.barButtonItemDownload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDownload_ItemClick);
             // 
             // Main
             // 

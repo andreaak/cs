@@ -33,7 +33,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             }
             finally
             {
-                //connection.Close();
+                connection.Close();
             }
             /*
             Id: 2101 Company: Jones Mfg. Limit:65000.0000
@@ -85,7 +85,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             }
             finally
             {
-                //connection.Close();
+                connection.Close();
             }
             /*
             Id: 2101 Description: Jones Mfg. Other: 65000.0000
@@ -149,7 +149,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             }
             finally
             {
-                //connection.Close();
+                connection.Close();
             }
             /*
             Id: 2101 Company: Jones Mfg. Limit:65000.0000
@@ -259,7 +259,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             }
             finally
             {
-                //connection.Close();
+                connection.Close();
             }
             /*
             Id: 2101 Company: Jones Mfg. Rep: 106 Limit:65000.0000
@@ -302,7 +302,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             }
             finally
             {
-                //connection.Close();
+                connection.Close();
             }
             /*
             Id: 2101 Company: Jones Mfg. Rep: 106 Limit:65000.0000
@@ -482,7 +482,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             }
             finally
             {
-                //connection.Close();
+                connection.Close();
             }
             /*
             Id: 2102 Company: First Corp. Rep: 101 Limit:65000.0000
