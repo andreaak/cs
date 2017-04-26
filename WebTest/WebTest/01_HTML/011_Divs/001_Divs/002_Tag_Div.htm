@@ -1,14 +1,27 @@
 ﻿<!--
-    Если размещать несколько дивов на странице, то каждый автоматически будет начинаться со следующей строки и заполнять 
+    Если размещать несколько дивов на странице, то каждый автоматически будет начинаться со следующей строки и заполнять
     по ширине все доступное пространство.
 -->
 <html>
-    <head>
-        <title>Тег div</title>
-    </head>
-    <body>
-        <div style=" background-color:Yellow">Этот текст находится в контейнере</div>
-        <div style=" background-color:Red">Этот текст находится в контейнере</div>
-        <div style=" background-color:Green">Этот текст находится в контейнере</div>
-    </body>
+<head>
+    <title>Тег div</title>
+    <style type="text/css">
+        div.item1 {
+            background-color: Yellow;
+        }
+
+        div.item2 {
+            background-color: Red;
+        }
+
+        div.item3 {
+            background-color: Green;
+        }
+    </style>
+</head>
+<body>
+    <div class="item1">Этот текст находится в контейнере</div>
+    <div class="item2">Этот текст находится в контейнере</div>
+    <div class="item3">Этот текст находится в контейнере</div>
+</body>
 </html>
