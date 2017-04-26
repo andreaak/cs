@@ -33,7 +33,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Action continuation = () =>
             {
                 Thread.Sleep(1000);
-                Debug.WriteLine("\nРезультат: {0}\n", awaiter.GetResult());
+                Debug.WriteLine("Продолжение");
             };
             awaiter.OnCompleted(continuation);
             var result = await customTask;
@@ -69,7 +69,6 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
 
     class CustomAwaiter<T> : IAwaiter<T>
     {
-        private Action continuation;
         private readonly Task<T> task;
 
         public CustomAwaiter(CustomAwaitable<T> awaitable)
@@ -81,18 +80,15 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         {
             get
             {
-                Debug.WriteLine("IsCompleted " + task.IsCompleted);
-                return task.IsCompleted;
+                Debug.WriteLine("IsCompleted " + task.GetAwaiter().IsCompleted);
+                return task.GetAwaiter().IsCompleted;
             }
         }
 
         public void OnCompleted(Action continuation)
         {
-            Debug.WriteLine("OnCompleted");
-            if (this.continuation == null)
-                this.continuation = continuation;
-            else if(task.IsCompleted)
-                Task.Run(continuation);
+            Debug.WriteLine("OnCompleted " + continuation.Target + " " + continuation.Method);
+            task.GetAwaiter().OnCompleted(continuation);
         }
 
         public T GetResult()
