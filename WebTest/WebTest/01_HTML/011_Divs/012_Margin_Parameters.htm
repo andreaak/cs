@@ -1,0 +1,58 @@
+﻿<!--
+   Свойство margin может принимать от одного до 4 параметров:
+   1 - этот отступ будет установлен для всех сторон одинаково
+   2 - первый будет устанавливать отступы по вертикали(сверху и снизу), второй по горизонтали(слева-справа)
+   3 - первый устанавливает отступ сверху, второй - слева и справа, третий - снизу
+   4 - первый устанавливает отступ сверху, второй - справа, третий - снизу, четвертый - слева
+-->
+<html>
+<head>
+    <title>Тег div</title>
+    <style type="text/css">
+        div {
+            width: 200px;
+            height: 200px;
+        }
+
+            div.item1 {
+                background-color: Blue;
+                width: 400px;
+                height: 400px;
+            }
+
+            div.item2 {
+                background-color: Yellow;
+                margin: 200px auto;
+            }
+
+            div.item3 {
+                background-color: coral;
+                margin: 10px 20px 30px;
+            }
+
+            div.item4 {
+                background-color: red;
+                margin: 50px 20px 30px 40px;
+            }
+    </style>
+</head>
+<body>
+    <div class="item1">
+        <div class="item2">
+            содержимое тега 2
+        </div>
+    </div>
+
+    <div class="item1">
+        <div class="item3">
+            содержимое тега 3
+        </div>
+    </div>
+
+    <div class="item1">
+        <div class="item4">
+            содержимое тега 4
+        </div>
+    </div>
+</body>
+</html>

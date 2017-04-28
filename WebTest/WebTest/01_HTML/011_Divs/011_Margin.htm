@@ -1,0 +1,54 @@
+﻿<!--
+   Свойство margin отвечает за отступы от границ элемента до границ соседних либо родительских элементов.
+-->
+<html>
+<head>
+    <title>Свойство margin</title>
+    <style type="text/css">
+        body {
+            background-color: blue;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+        }
+
+            div.item1 {
+                background-color: yellow;
+                margin: 0px;
+            }
+
+            div.item2 {
+                background-color: green;
+                margin: 30px;
+            }
+
+            div.item3 {
+                background-color: coral;
+            }
+
+            div.item4 {
+                background-color: red;
+                margin: -40px 10px 0;
+            }
+    </style>
+</head>
+<body style="background-color:Blue">
+    <div class="item1">
+        Отспуп от соседнего блока составляет 0px
+    </div>
+
+    <div class="item2">
+        Отспуп от соседнего блока составляет 30px
+    </div>
+
+    <div class="item3">
+        Текст
+    </div>
+
+    <div class="item4">
+        Отспуп от соседнего блока составляет -40px
+    </div>
+</body>
+</html>

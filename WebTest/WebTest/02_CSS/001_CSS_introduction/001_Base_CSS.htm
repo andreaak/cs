@@ -1,13 +1,19 @@
 ﻿<!--
-CSS — Cascading Style Sheets (каскадные таблицы стилей) — это средство,
-позволяющее задавать различные визуальные свойства HTML-тегам.
-http://www.w3.org/TR/CSS21/cover.html
+    CSS — Cascading Style Sheets (каскадные таблицы стилей) — это средство,
+    позволяющее задавать различные визуальные свойства HTML-тегам.
+    http://www.w3.org/TR/CSS21/cover.html
 
     Методы определения таблицы стилей в документе HTML:
     1 Связывание(linking)
     2 Встраивание(embeding)
     3 Вложение(inline)
     4 Импорт(import)(IE)
+
+    Не рекомендуется использовать inline и embeding
+    1) Захламляет документ
+    2) Неудобно для изменений
+
+    Лучше использовать linking
 
     Единица CSS состоит из селектора который выбирает элемент и набора правил которые будут применены к выбранному элементу
         p/*селектор*/
@@ -21,7 +27,7 @@ http://www.w3.org/TR/CSS21/cover.html
 <head>
     <title>Тег Table</title>
     <!--linking-->
-    <link href="001_Definition\003_CSS_file.css" rel="stylesheet" type="text/css"/>
+    <link href="001_Definition\003_CSS_file.css" rel="stylesheet" type="text/css" />
     <!--embeding-->
     <style type="text/css">
         p {
@@ -33,7 +39,8 @@ http://www.w3.org/TR/CSS21/cover.html
 
 <body>
     Простое содержимое для сравнения
-    <p style="color:Blue"><!--inline-->
+    <p style="color:Blue">
+        <!--inline-->
         Содержимое параграфа
     </p>
 </body>

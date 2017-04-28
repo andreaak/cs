@@ -8,7 +8,7 @@ namespace CSTest._21_Database._03_LinqToSql
     public class Test
     {
         [Test]
-        public void TestLTSRead()
+        public void TestLinqToSqlRead()
         {
             ShopDBDataContext context = new ShopDBDataContext();
 
@@ -43,7 +43,7 @@ namespace CSTest._21_Database._03_LinqToSql
         }
 
         [Test]
-        public void TestLTSProcedure1()
+        public void TestLinqToSqlProcedure1()
         {
             ShopDBDataContext context = new ShopDBDataContext();
             var result = context.spCustomerByName("First Corp.");
@@ -57,7 +57,7 @@ namespace CSTest._21_Database._03_LinqToSql
         }
 
         [Test]
-        public void TestLTSProcedure2()
+        public void TestLinqToSqlProcedure2()
         {
             ShopDBDataContext context = new ShopDBDataContext();
             string company = null;
@@ -71,7 +71,7 @@ namespace CSTest._21_Database._03_LinqToSql
         }
 
         [Test]
-        public void TestLTSProcedure3()
+        public void TestLinqToSqlProcedure3()
         {
             ShopDBDataContext context = new ShopDBDataContext();
             var result = context.spCustomerByName2("First Corp.");
@@ -85,7 +85,7 @@ namespace CSTest._21_Database._03_LinqToSql
         }
 
         [Test]
-        public void TestLTSFunction1()
+        public void TestLinqToSqlFunction1()
         {
             ShopDBDataContext context = new ShopDBDataContext();
             string result = context.sfCustomerCompanyById(2102);
@@ -96,7 +96,7 @@ namespace CSTest._21_Database._03_LinqToSql
         }
 
         [Test]
-        public void TestLTSFunction2()
+        public void TestLinqToSqlFunction2()
         {
             ShopDBDataContext context = new ShopDBDataContext();
             var result = context.sfCustomerInfoById(2102);

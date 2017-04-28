@@ -11,7 +11,7 @@ namespace CSTest._21_Database._02_EntityFramework
     public class Test
     {
         [Test]
-        public void TestEFRead()
+        public void TestEntityFrameworkRead()
         {
             ShopDBEntities context = new ShopDBEntities();
 
@@ -46,7 +46,7 @@ namespace CSTest._21_Database._02_EntityFramework
         }
 
         [Test]
-        public void TestEFAddRemoveItem()
+        public void TestEntityFrameworkAddRemoveItem()
         {
             ShopDBEntities context = new ShopDBEntities();
 
@@ -90,7 +90,7 @@ namespace CSTest._21_Database._02_EntityFramework
         }
 
         [Test]
-        public void TestEFProcedure1()
+        public void TestEntityFrameworkProcedure1()
         {
             ShopDBEntities context = new ShopDBEntities();
             var result = context.spCustomerByName("First Corp.");
@@ -104,7 +104,7 @@ namespace CSTest._21_Database._02_EntityFramework
         }
 
         [Test]
-        public void TestEFProcedure2()
+        public void TestEntityFrameworkProcedure2()
         {
             ShopDBEntities context = new ShopDBEntities();
 
@@ -119,7 +119,7 @@ namespace CSTest._21_Database._02_EntityFramework
         }
 
         [Test]
-        public void TestEFProcedure3()
+        public void TestEntityFrameworkProcedure3()
         {
             ShopDBEntities context = new ShopDBEntities();
             var result = context.spCustomerByName2("First Corp.");
@@ -144,7 +144,7 @@ namespace CSTest._21_Database._02_EntityFramework
         //}
 
         [Test]
-        public void TestEFFunction1()
+        public void TestEntityFrameworkFunction1()
         {
             ShopDBEntities context = new ShopDBEntities();
             var result = context.sfCustomerInfoById(2102);

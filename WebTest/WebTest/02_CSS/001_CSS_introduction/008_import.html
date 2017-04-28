@@ -1,19 +1,22 @@
-<!--
-    @import url(cascade.css);
-    /*@import 'cascade.css';*/
+﻿<!--
+    Правило @import позволяет импортировать содержимое CSS-файла в текущую стилевую таблицу.
+    @import не разрешается вставлять после любых объявлений кроме @charset или другого @import.
 -->
 
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Inline CSS</title>
-        <link href="resources/inline.css" rel="stylesheet" type="text/css" />
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <title>Inline CSS</title>
+    <style>
+        @import "resources/inline.css"; /*импорт файла*/
+    </style>
+    <!--link href="resources/inline.css" rel="stylesheet" type="text/css" /--><!-- импорт в файле CSS -->
+</head>
 
-    <body>
-        Простое содержимое для сравнения
-        <p>Применен импортированный стиль</p>
-        <div>Применен импортированный стиль</div>
-        <p style="color:blue">Применен встроенный стиль</p>
-    </body>
+<body>
+    Простое содержимое для сравнения
+    <p>Применен импортированный стиль</p>
+    <div>Применен импортированный стиль</div>
+    <p style="color:blue">Применен встроенный стиль</p>
+</body>
 </html>

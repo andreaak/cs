@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <title>Приоритет правил CSS</title>
+        <style type="text/css">
+            td
+            {
+                width:150px !important;
+            }
+        </style>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>Priority</th>
+            </tr>
+            <tr>
+                <td>user !important</td>
+            </tr>
+            <tr>
+                <td>author !important</td>
+            </tr>
+            <tr>
+                <td>author</td>
+            </tr>
+            <tr>
+                <td>user</td>
+            </tr>
+            <tr>
+                <td>default</td>
+            </tr>
+        </table>
+    </body>
+</html>
