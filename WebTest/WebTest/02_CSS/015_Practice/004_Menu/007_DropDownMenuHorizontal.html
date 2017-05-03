@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой первый сайт</title>
+    <meta charset="utf-8">
+    <link href="../reset.css" rel="stylesheet">
+    <style type="text/css">
+        #footer_menu, #footer_menu ul {
+        }
+
+            #footer_menu li {
+                float: left;
+                padding: 10px 5px;
+                background: #888;
+                position: relative;
+                /* width: 70px;
+                    text-align: center; */
+            }
+
+            #footer_menu ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+
+            #footer_menu li:hover ul {
+                display: block;
+            }
+
+            #footer_menu ul li {
+                display: inline;
+            }
+    </style>
+</head>
+<body>
+    <ul id="footer_menu">
+        <li>Главная</li>
+        <li>
+            Каталог
+            <ul>
+                <li>Каталог 1</li>
+                <li>Каталог 2</li>
+                <li>Каталог 3</li>
+            </ul>
+        </li>
+        <li>Страница1</li>
+        <li>Страница2</li>
+        <li>
+            Контакты
+            <ul>
+                <li>Контакты 1</li>
+                <li>Контакты 2</li>
+                <li>Контакты 3</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

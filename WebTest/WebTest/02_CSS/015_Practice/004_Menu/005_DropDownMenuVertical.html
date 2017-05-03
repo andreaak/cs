@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой первый сайт</title>
+    <meta charset="utf-8">
+    <link href="../reset.css" rel="stylesheet">
+    <style type="text/css">
+        #menu {
+            margin-bottom: 50px;
+        }
+
+            #menu, #menu ul {
+                width: 100px;
+            }
+
+                #menu li {
+                    /*border: 1px solid black;*/
+                    padding: 10px 5px;
+                    background: #888;
+                    position: relative;
+                }
+
+                #menu ul {
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    left: 100%;
+                }
+
+                #menu li:hover ul {
+                    display: block;
+                }
+
+                #menu, #menu ul {
+                    width: 100px;
+                }
+
+                    #menu li {
+                        //border: 1px solid black;
+                        padding: 10px 5px;
+                        background: #888;
+                        position: relative;
+                    }
+
+                    #menu ul {
+                        display: none;
+                        position: absolute;
+                        top: 0;
+                        left: 100%;
+                    }
+
+                    #menu li:hover ul {
+                        display: block;
+                    }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>Главная</li>
+        <li>
+            Каталог
+            <ul>
+                <li>Каталог 1</li>
+                <li>Каталог 2</li>
+                <li>Каталог 3</li>
+            </ul>
+        </li>
+        <li>Страница1</li>
+        <li>Страница2</li>
+        <li>
+            Контакты
+            <ul>
+                <li>Контакты 1</li>
+                <li>Контакты 2</li>
+                <li>Контакты 3</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
