@@ -59,6 +59,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
       <Private>False</Private>
@@ -408,6 +412,8 @@
     <Compile Include="30_NET Code\SRNET.cs" />
     <Compile Include="30_NET Code\ThrowHelperNET.cs" />
     <Compile Include="30_NET Code\TimeoutHelperNET.cs" />
+    <Compile Include="31_Json\JsonMiniGameConfigParserExtensions.cs" />
+    <Compile Include="31_Json\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -462,6 +468,9 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>ShopDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="31_Json\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="App.Config">
       <SubType>Designer</SubType>

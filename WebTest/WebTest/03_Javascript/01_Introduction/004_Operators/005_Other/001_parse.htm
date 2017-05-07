@@ -14,8 +14,8 @@
 
     <script type="text/javascript">
 
-        var x = prompt("Input x value ", "0"); // х - будет строкового типа
-        var y = prompt("Input y value ", "0"); // y - будет строкового типа
+        var x = prompt("Input x value ", "2"); // х - будет строкового типа
+        var y = prompt("Input y value ", "3"); // y - будет строкового типа
         var result = x + y;
         document.write(result + "<hr/>");
 
@@ -33,6 +33,15 @@
         str = "G";
         document.write(str + " parse to " + parseInt(str) + "<br/>");
 
+
+        /*
+        23
+        5
+        0 parse to 0
+        55G parse to 55
+        G0 parse to NaN
+        G parse to NaN
+        */
     </script>
 
 </head>

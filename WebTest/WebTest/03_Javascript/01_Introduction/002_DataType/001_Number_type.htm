@@ -1,6 +1,6 @@
 ﻿<!--
 
-    Все числа хранятся в формате float64 - 8 байт с плавающей точкой. 
+    Все числа хранятся в формате float64 - 8 байт с плавающей точкой.
     В этом формате не всегда возможны точные вычисления.
 
         Infinity
@@ -11,11 +11,15 @@
         Number.POSITIVE_INFINITY - + бессконечность 1.7976931348623157E+10308
         Number.NEGATIVE_INFINITY - - бессконечность -1.7976931348623157E+10308
 
+    NaN - это тип данных, когда выражение не может быть приведено к числу.
+        - деление 0 на 0
+        - парсинг строки в число
+
 -->
 
 <html>
 <head>
-    <title>Интеграция JavaScript</title>
+    <title>Number</title>
 
     <script type="text/javascript">
 
@@ -34,6 +38,55 @@
         document.write(d + "<br/>");
         var e = 0x10;
         document.write(e + "<br/>");
+
+        var result = 8 / 0;
+        document.write("8 / 0 = " + result + "<br />");
+
+        result = -8 / 0;
+        document.write("-8 / 0 = " + result + "<br />");
+
+        /*
+        a + b = 10.8
+        Number.NaN = NaN
+        Number.MAX_VALUE = 1.7976931348623157e+308
+        Number.MIN_VALUE = 5e-324
+        Number.POSITIVE_INFINITY = Infinity
+        Number.NEGATIVE_INFINITY = -Infinity
+        8
+        16
+        8 / 0 = Infinity
+        -8 / 0 = -Infinity
+        */
+
+        var a2 = 0;
+        var b2 = 0;
+
+        document.write(" 0 / 0  = " + a2 / b2 + "<br/>");
+        var str = "G0";
+        document.write(str + " parse to " + parseInt(str) + "<br/>");
+
+        test1("TEST");
+
+        test1();//undefined param x
+
+        function test1(x) {
+            var y = x * 8;
+            document.writeln("Param x = " + x + " Param y = " + y + "<br/>");
+        }
+
+        var с2 = 8;
+        //Javascript пытается привести строковый операнд к числу(результат NaN)
+        var string2 = "12b";
+        result = string2 - с2;
+        document.write("12b - с2 = " + result + "<br />");
+
+        /*
+        0 / 0 = NaN
+        G0 parse to NaN
+        Param x = TEST Param y = NaN
+        Param x = undefined Param y = NaN
+        12b - с2 = NaN
+        */
     </script>
 
 </head>
