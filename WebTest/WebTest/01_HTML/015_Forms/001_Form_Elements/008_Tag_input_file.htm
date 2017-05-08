@@ -1,0 +1,29 @@
+<!--
+    input type="file" - элемент формы, предназначенный для создания поля выбора загрузки файла. 
+    В разных барузерах отображается по разному.
+    Аттрибут value запрещен, а текстовое поле атавизм.
+    Если бы он был разрешен то можно было бы
+    1) Делают поле file невидимым
+    2) Через javascript добавляется в value file с важной инфо
+    3) Отсылается на сервер.
+
+    Чтобы такое не происходило нельзя устанавливать значение value для данного типа
+-->
+
+<html>
+    <head>
+        <title>Поле для загрузки файла</title>
+    </head>
+    <body>
+            <form>
+                <br />
+                Enter your login: <input type="text" name="login" value="here..." />
+                <br />
+                Enter your password: <input type="password" name="password" />
+                <br />
+                <input type="file" name="input_file" value="choose here..." />
+                <br />
+                <input type="submit" name="submit" value="Enter" />
+            </form>
+    </body>
+</html>

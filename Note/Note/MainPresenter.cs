@@ -309,7 +309,10 @@ namespace Note
         {
             GoogleDriveHelper helper = new GoogleDriveHelper();
             helper.Init();
-            helper.DownloadFile(OptionsUtils.DbPath, Options.DbDirectory, OptionsUtils.DbPath);
+            if (helper.DownloadFile(OptionsUtils.DbPath, Options.DbDirectory, OptionsUtils.DbPath))
+            {
+                Connect();
+            }
         }
 
         private void HandleError(bool showMessage, string errorMessage)

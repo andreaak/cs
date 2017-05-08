@@ -66,23 +66,23 @@ namespace Utils.Google
         /// Download a file
         /// Documentation: https://developers.google.com/drive/v2/reference/files/get
         /// </summary>
-        /// <param name="_service">a Valid authenticated DriveService</param>
-        /// <param name="_fileResource">File resource of the file to download</param>
-        /// <param name="_saveTo">location of where to save the file including the file name to save it as.</param>
+        /// <param name="fileResource">File resource of the file to download</param>
+        /// <param name="saveTo">location of where to save the file including the file name to save it as.</param>
         /// <returns></returns>
-        public bool DownloadFile(File _fileResource, string _saveTo)
+        public bool DownloadFile(File fileResource, string saveTo)
         {
 
-            if (!String.IsNullOrEmpty(_fileResource.DownloadUrl))
+            if (!string.IsNullOrEmpty(fileResource.DownloadUrl))
             {
                 try
                 {
-                    var x = Service.HttpClient.GetByteArrayAsync(_fileResource.DownloadUrl);
+                    BackupFile(saveTo);
+                    var x = Service.HttpClient.GetByteArrayAsync(fileResource.DownloadUrl);
                     byte[] arrBytes = x.Result;
-                    System.IO.File.WriteAllBytes(_saveTo, arrBytes);
+                    System.IO.File.WriteAllBytes(saveTo, arrBytes);
                     return true;
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
                     //Console.WriteLine("An error occurred: " + e.Message);
                     return false;
@@ -92,6 +92,24 @@ namespace Utils.Google
             {
                 // The file doesn't have any content stored on Drive.
                 return false;
+            }
+        }
+
+        private void BackupFile(string saveTo)
+        {
+            string tempDirectory = System.IO.Path.GetDirectoryName(saveTo) + 
+                                    System.IO.Path.DirectorySeparatorChar + "Temp";
+            string fileName = System.IO.Path.GetFileName(saveTo);
+            if (!System.IO.Directory.Exists(tempDirectory))
+            {
+                System.IO.Directory.CreateDirectory(tempDirectory);
+            }
+            if (System.IO.File.Exists(saveTo))
+            {
+                System.IO.File.Copy(saveTo, tempDirectory + 
+                    System.IO.Path.DirectorySeparatorChar + 
+                    fileName + 
+                    DateTime.Now.ToString("yyyyMMdd-HHmmss"));
             }
         }
 

@@ -1,0 +1,29 @@
+﻿<!--
+    Атрибут disabled - указывает на то, что элемент формы должен отображаться пользователю не активным.
+    Применяется только к элементам ввода.
+    Контрол отображается серым цветом и некликабельный, нельзя перевести фокус, 
+    значение на сервер не передается.
+-->
+
+<html>
+<head>
+    <title>атрибут style</title>
+</head>
+<body>
+    <form>
+        <br />
+        Enter your first name:
+        <input type="text" name="first_name" value="Ivanov" />
+        <br />
+        Enter your second name:
+        <input type="text" name="sec_name" value="Ivan" disabled="disabled" />
+        <br />
+        Enter your password:
+        <input type="password" name="password" />
+        <br />
+        <input type="submit" name="submit" value="Enter" />
+        <br />
+        <input type="reset" name="reset" value="Reset" />
+    </form>
+</body>
+</html>

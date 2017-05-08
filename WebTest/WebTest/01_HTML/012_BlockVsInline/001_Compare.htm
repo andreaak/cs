@@ -1,0 +1,61 @@
+﻿<!--
+
+Блочные
+    Растягиваются на всю ширину
+    Можно задать ширину и высоту
+    Перенос на другую строку следующего элемента
+
+Строчные
+    Ширина по контенту
+    Нельзя задать ширину и высоту
+    Располагаются друг за другом
+
+inline
+    символьные данные, a, abbr, acronym, b, bdo, big, br,
+    button, cite, code, del, dfn, em, i, input, ins, kbd,
+    label, object, q, samp, select, small, span, strong, sub,
+    sup, textarea, tt, var
+
+block:
+    address, blockquote, body, div, dd, dl, dt, ﬁeldset, form, h*, hr, html, list-item(li), ol, p, pre, table(...), ul  
+	
+	
+inline-block: (элементы являющиеся строчными но внутри можно вставить любой контент)
+    img, iframe, object, embed
+    audio, video, canvas
+    input, textarea, select, button
+
+none (не отображаемый)
+		
+inline-table
+
+
+Другие типы: 
+    • run-in, inline-block, inline-table 
+    • table-cell (td, th), table-row (tr), table-row-group (tbody), table-header-group (thead), table-footer-group (tfoot), 
+    table-column (col), table-column-group (colgroup), table-caption (caption) 
+
+Без группы: 
+    • body, dd, dt, html, li (порождают блочные области) 
+    • caption, col, colgroup, head, legend, link, optgroup, option, param, style, tbody, td, tfoot, th, thead, title, tr 
+-->
+<html>
+<head>
+    <title>Тег div</title>
+    <style type="text/css">
+        div, span {
+            border: 1px solid black;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <span>First</span>
+    <span>Second</span>
+    <span>Third</span>
+</body>
+</html>

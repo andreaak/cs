@@ -1,28 +1,43 @@
 ﻿<!--
-    Когда margin одного знака происходит выборка большего значения по модулю.
-    Когда margin разного знака то происходит сложение.
+    Когда вертикальный margin одного знака происходит выборка большего значения по модулю (#first and #second)
+    Когда вертикальный margin разного знака то происходит сложение (#third and #fourth)
 -->
 
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Margin collapse соседних элементов</title>
-        <style type="text/css">
-            #first{
-	            height:200px;
-	            background:#69c;
-	            margin:0 0 -100px;	
-            }
-            #second{
-	            height:200px;
-	            background:#f60;
-	            margin:0 100px 0;
-            }
-        </style>
-    </head>
-    <body>
-	    <div id="first">first</div>
-	    <div id="second">second</div>	
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>Margin collapse соседних элементов</title>
+    <style type="text/css">
+        #first {
+            height: 200px;
+            background: green;
+            margin: 100px;
+        }
+
+        #second {
+            height: 200px;
+            background: gray;
+            margin: 100px;
+        }
+
+        #third {
+            height: 200px;
+            background: #69c;
+            margin: 0 0 -100px;
+        }
+
+        #fourth {
+            height: 200px;
+            background: #f60;
+            margin: 50px 100px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="first">first</div>
+    <div id="second">second</div>
+    <div id="third">third</div>
+    <div id="fourth">fourth</div>
+</body>
 </html>
