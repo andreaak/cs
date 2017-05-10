@@ -17,8 +17,14 @@
         var a;
 
         document.write(a + "<br/>"); // undefined
-        document.write(b + "<br/>"); // Ошибка!
+        if (a == undefined)
+            document.write("Undefined value <br/>");
 
+        document.write(b + "<br/>"); // Ошибка!
+        /*
+        undefined
+        Undefined value
+        */
     </script>
 
 </head>

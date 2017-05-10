@@ -1,9 +1,7 @@
 ﻿<!--
-
-    Функция может принимать аргументы. При создании функции 
-    можно указать под какими именами в ее теле будут использоваться 
+    Функция может принимать аргументы. При создании функции
+    можно указать под какими именами в ее теле будут использоваться
     значения переданные ей в качестве аргументов.
-
 -->
 
 <html>
@@ -19,22 +17,26 @@
 
         function Sum1() {
             var result = a + b;
-            document.write("<p>Sum1 result: " + result);
+            document.write("<p>Sum1 result: " + result + "<p/>");
         }
 
         function Sum2(x1, x2) {
+            document.write("typeof x1: " + typeof (x1) +
+                            " typeof x2: " + typeof (x2));
             var result = x1 + x2;
-            document.write("<p>Sum2 result: " + result);
+            document.write("<p>Sum2 result: " + result + "<p/>");
         }
 
-
         // Вызов функций.
-
         Sum1();
-
-        Sum2(); // Не передаем параметров при вызове.
         Sum2(c, d);
 
+        /*
+        Sum1 result: 25
+
+        typeof x1: number typeof x2: number
+        Sum2 result: 41
+        */
     </script>
 
 </head>

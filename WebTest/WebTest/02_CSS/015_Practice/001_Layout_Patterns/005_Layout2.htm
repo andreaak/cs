@@ -1,0 +1,81 @@
+﻿<!--
+
+-->
+<html>
+<head>
+    <title>Layout1</title>
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            border: 1px solid black;
+        }
+
+        p.white {
+            color: whitesmoke;
+            margin: 0px;
+        }
+
+        #wrapper {
+            margin: 0 auto;
+        }
+
+        #center {
+            background-color: orange;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        #right {
+            height: 500px;
+            width: 20%;
+            background-color: cadetblue;
+            float: right;
+        }
+
+        #header {
+            background-color: darkgray;
+            height: 150px;
+        }
+
+        #footer {
+            background-color: darkgreen;
+            clear: both;
+            height: 100px;
+        }
+        
+       #content {
+            background-color: bisque;
+            height: 500px;
+        }
+
+        .wrap {
+            width: 960px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div class="wrap">
+                <p class="white">Header</p>
+            </div>
+        </div>
+        <div id="content">
+            <div class="wrap">
+                <div id="right">Right</div>
+                <div id="center">Center</div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="wrap">
+                <p class="white">Footer</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

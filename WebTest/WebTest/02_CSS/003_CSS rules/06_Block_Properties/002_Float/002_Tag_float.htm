@@ -1,45 +1,89 @@
 ﻿<!--
     Float элементы не учитываются другими блочными элементами и обтекаются строчными.
+    overflow: hidden заставляет блочные элементы учитывать Float элементы
 -->
 
 <!doctype html>
 <html>
-    <head>
-        <title>Использование float при построении колонок</title>
-        <style type="text/css">
-            #left{
-	            float:left;
-	            width:200px;
-	            background:#ccf;
-            }
-            #right{
-	            float:right;
-	            width:200px;
-	            background:#fcc;
-            }
-            #center{
-	            /*margin:0 210px;*/
-	            background:#cfc;
-            }
-        </style>
-    </head>
-    <body>
-	    <div id="left">left<br>left<br>left<br>left<br>left</div>
-	    <div id="right">right<br>right<br>right<br>right</div>
-	    <div id="center">center text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text text text text text text text text text text text text text text text 
-            text text text text text text text</div>
-    </body>
+<head>
+    <title>Использование float при построении колонок</title>
+    <style type="text/css">
+        div {
+            border: 1px solid black;
+        }
+
+        #left {
+            float: left;
+            width: 200px;
+            background: #ccf;
+            margin: 10px;
+        }
+
+        #right {
+            float: right;
+            width: 200px;
+            background: #fcc;
+            margin: 10px;
+        }
+
+        #center {
+            /*margin:0 210px;*/
+            background: #cfc;
+        }
+
+        #over {
+            background: #cfc;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="left">left<br>left<br>left<br>left<br>left</div>
+    <div id="right">right<br>right<br>right<br>right</div>
+    <div id="center">
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+    </div>
+    <br /><br />overflow: hidden; <br />
+    <div id="left">left<br>left<br>left<br>left<br>left</div>
+    <div id="right">right<br>right<br>right<br>right</div>
+    <div id="over">
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text text text text text text
+    </div>
+</body>
 </html>

@@ -1,4 +1,9 @@
-﻿        body, div, dl, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, input, textarea, p, blockquote, th, td, menu {
+﻿/*
+    У разных браузеров разные значения по умолчанию в правилах для тегов.
+    Чтобы от этого не зависеть и иметь одинаковые значения производится сброс
+*/
+
+        body, div, dl, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, input, textarea, p, blockquote, th, td, menu {
             margin: 0;
             padding: 0;
         }

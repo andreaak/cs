@@ -16,13 +16,29 @@
 
         // При присвоении значения по индексу, которого нет в массиве, происходит добавление нового элемента массива.
         arr[10] = 777;
-        document.write("Новая длина массива " + arr.length + "<br/><hr/>");
+        document.write("Новая длина массива " + arr.length + "<br/>");
 
         // Значение свойства arr.length - всегда на единицу больше индекса последнего элемента в массиве.
 
         for (var i = 0; i < arr.length; i++) {
             document.write(arr[i] + "<br />");
         }
+
+        /*
+        Длина массива 3
+        Новая длина массива 11
+        111
+        222
+        333
+        undefined
+        undefined
+        undefined
+        undefined
+        undefined
+        undefined
+        undefined
+        777
+        */
 
     </script>
 

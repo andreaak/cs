@@ -5,14 +5,15 @@
         <style type="text/css">
             #left{
 	            float:left;
-	            margin:10px;
+	            margin:10px 100px 10px  10px;
 	            width:200px;
 	            height:200px;
 	            background:#ccf;
             }
             #content{
-	            margin:0 0 50px;
+	            margin-left:100px;/*margin не работает т.к float элемент не в потоке документа. Нужно ставить margin в float элеменете*/
 	            background:#cfc;
+                overflow: hidden;
             }
             #end{
 	            clear:both;
