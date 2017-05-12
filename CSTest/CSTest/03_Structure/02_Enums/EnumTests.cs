@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using System.Diagnostics;
 
 namespace CSTest._03_Structure._02_Enums
@@ -32,6 +33,21 @@ namespace CSTest._03_Structure._02_Enums
             5
             Test2
             14
+            */
+        }
+
+        [Test]
+        public void TestEnum2()
+        {
+            SomeEnum en = SomeEnum.Test1;
+            Debug.WriteLine(Enum.GetName(typeof(SomeEnum), en));
+            Debug.WriteLine(en.ToString());
+            foreach (var item in Enum.GetValues(typeof(SomeEnum)))
+            {
+                
+            }
+            /*
+            Test1
             */
         }
     }
