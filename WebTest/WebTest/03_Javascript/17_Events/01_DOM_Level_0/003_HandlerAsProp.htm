@@ -9,29 +9,45 @@
         function loadHandler() {
             var p1 = document.getElementById("p1");
             var p2 = document.getElementById("p2");
+            var dv = document.getElementById("dv");
 
-            // обработичк как анонимная функция. 
-            p1.onclick = function () { alert("hello") }; // Ненавязчивый JS
+            // обработичк как анонимная функция.
+            p1.onclick = function () {//onclick p1
+                alert("onclick p1");
+                console.log("onclick p1");
+            }; // Ненавязчивый JS
 
             // обработчик как другая функция из этого сценария.
-            p2.onclick = clickHandler;
+            p2.onclick = clickHandler;//onclick p2 onclick div
+            //При клике на внутреннем элементе событие всплывает на родительские элементы и его можно обработать
+            dv.onclick = function () {
+                alert("onclick div");
+                console.log("onclick div");
+            }
         }
 
         function clickHandler() {
             alert("hello");
+            console.log("onclick p2");
         }
+
     </script>
 </head>
 
 <body>
-    
+
     <p id="p1">
         click me!
     </p>
 
-    <p id="p2">
-        click me!
-    </p>
+    <div id="dv">
+        <p>
+            Don't click me!
+        </p>
+        <p id="p2">
+            click me!
+        </p>
+    </div>
 
 </body>
 </html>

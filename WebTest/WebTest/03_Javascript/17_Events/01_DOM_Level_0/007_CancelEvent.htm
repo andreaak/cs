@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Обработчик как свойство</title>
+    <script type="text/javascript">
+        window.onload = loadHandler;
+
+        function loadHandler() {
+
+            var a = document.querySelector("a");
+
+            a.onclick = function () {
+                /*
+                В первую очередь отрабатывают заданные кастомные обработчики события элемента
+                Стандартное действие браузера отрабатывает последним
+                Если кастомный обработчики события элемента возвращает false то отменяется стандартное действие
+                */
+                alert("Canceled");
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <a href="http://google.com" target="_blank">Google</a>
+</body>
+</html>
