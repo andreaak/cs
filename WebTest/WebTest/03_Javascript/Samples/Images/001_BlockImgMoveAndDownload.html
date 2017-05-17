@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Block Images Moving And Downloading</title>
+        <style>
+            html, body {
+                margin: 40px;
+            }
+
+            .gallery img {
+                width: 400px;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+
+                var images = document.querySelectorAll('.gallery img');
+
+                for (var i = 0; i < images.length; i++) {
+                    images[i].onmousedown = stopMove;
+                    images[i].oncontextmenu = stopMove;
+                }
+
+                function stopMove(e) {
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="gallery">
+            <img src="img/Penguins.jpg">
+            <img src="img/Penguins.jpg">
+        </div>
+    </body>
+</html>

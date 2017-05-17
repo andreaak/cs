@@ -1,0 +1,40 @@
+﻿<html>
+<head>
+    <title>Разные формы определения классов</title>
+
+    <script type="text/javascript">
+
+        var Friend = function (mood) {
+
+            this.mood = mood;
+
+            this.talk = function () {
+                document.write("Hello Friend <br/>");
+            };
+        }
+
+        function Friend2(mood) {
+
+            this.mood = mood;
+
+            this.talk = function () {
+                document.write("Hello Friend2 <br/>");
+            };
+        }
+
+        var friendMood = null;
+        var David = new Friend(friendMood);
+        David.talk();
+
+        var Mike = new Friend2(friendMood);
+        Mike.talk();
+        /*
+        Hello Friend
+        Hello Friend2
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

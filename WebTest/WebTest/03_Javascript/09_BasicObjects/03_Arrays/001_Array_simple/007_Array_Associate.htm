@@ -1,0 +1,52 @@
+﻿<!--
+
+        Ассоциативный массив - абстрактный тип данных, позволяющий хранить пары вида «(ключ, значение)».
+        От простых массивов отличается тем, что доступ к элементам происходит по ключу.
+
+-->
+
+<html>
+<head>
+    <title>Аcсоциативные массивы</title>
+
+    <script type="text/javascript">
+
+        // Объект, имеющий три свойства.
+        var laptop = { cpu: "Core i7", ram: "4 GB", screen: "15" };
+
+        // Запрос на введение имени свойства.
+        var key = prompt("Введите интересующий параметр (ram, cpu, screen)", "");
+
+        // Обращение к массиву по ключу.
+        var value = laptop[key];
+        document.write(value + "<br/>");
+
+        // Обращение к массиву по ключу.
+        // Данные выражения имеют одинаковое значение:
+        document.write(laptop.cpu + "<br/>");
+        document.write(laptop["cpu"] + "<br/>");
+
+        // Обращение к массиву по несуществующему ключу.
+        value = laptop["aaa"];
+        document.write(value + "<br/>");
+
+        for (var key in laptop) {
+            document.write("Key: " + key + " Value: " + laptop[key] + "<br/>");
+        }
+
+        /*
+        4 GB
+        Core i7
+        Core i7
+        undefined
+        Key: cpu Value: Core i7
+        Key: ram Value: 4 GB
+        Key: screen Value: 15
+        */
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

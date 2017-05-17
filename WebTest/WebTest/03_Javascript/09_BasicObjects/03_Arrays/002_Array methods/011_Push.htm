@@ -1,0 +1,35 @@
+﻿<!--
+
+        push() - добавление одного или нескольких элементов в конец массива.
+        (возвращаемое значение - количество элементов в новом массиве)
+
+-->
+
+<html>
+<head>
+    <title>Метод Push()</title>
+
+    <script type="text/javascript">
+
+        var stack = ["January", "February", "March"];
+        document.write("<p>Исходный: " + stack.join(" "));
+        document.write("<p>Размер массива: " + stack.length);
+
+        document.write("<hr/>");
+
+        var lenght = stack.push("April");
+        document.write("<p>После добавления: " + stack.join(" "));
+        document.write("<p>Размер массива: " + lenght);
+
+        document.write("<hr/>");
+
+        lenght = stack.push("May", "June");
+        document.write("<p>После добавления: " + stack.join(" "));
+        document.write("<p>Размер массива: " + lenght);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <style>
+        html, body {
+            margin: 40px;
+        }
+
+        .err {
+            outline: 1px solid red;
+        }
+    </style>
+    <script>
+        window.onload = function (e) {
+
+            $$$('.items .item').on('click', function () {
+                $$$(this).funcWithCallBack(1000,
+                    function () {
+                        console.log(this);//Window
+                    },
+                    function () {
+                        console.log(this);//div
+                        this.style.opacity = 0.5;
+                        this.style.color = 'red';
+                    }
+                );
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="items">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+    </div>
+    <script src="ourjquery.js"></script>
+</body>
+</html>

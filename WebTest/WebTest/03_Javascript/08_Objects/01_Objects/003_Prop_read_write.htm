@@ -1,0 +1,36 @@
+﻿<!--
+
+                К свойствам обьекта необходимо обращаться явно указывая имя обьекта, 
+                символ "." и имя свойства.
+
+                Свойства можно создавать, читать, изменять и удалять из объекта.
+
+-->
+
+
+<html>
+<head>
+    <title>Массивы в JavaScript</title>
+
+    <script type="text/javascript">
+
+        var person = {
+            firstName: "Jim",
+            lastName: "Rainbow",
+            age: 30,
+            occupation: "Web Developer"
+        };
+
+        // Обращения к свойствам объекта.
+        document.write("<p>" + person.firstName + " " + person.lastName);
+
+        // Изменение значений свойств объекта.
+        person.age = 25;
+        document.write("<p>Age: " + person.age + " years old.");
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

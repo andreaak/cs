@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Обработчик как свойство</title>
+    <title>Отмена стандартного действия</title>
     <script type="text/javascript">
         window.onload = loadHandler;
 
@@ -10,14 +10,15 @@
 
             var a = document.querySelector("a");
 
-            a.onclick = function () {
+            a.onclick = function (e) {
                 /*
                 В первую очередь отрабатывают заданные кастомные обработчики события элемента
                 Стандартное действие браузера отрабатывает последним
                 Если кастомный обработчики события элемента возвращает false то отменяется стандартное действие
                 */
                 alert("Canceled");
-                return false;
+                //return false;//не рекомендуется использовать. 
+                e.preventDefault();
             }
         }
     </script>

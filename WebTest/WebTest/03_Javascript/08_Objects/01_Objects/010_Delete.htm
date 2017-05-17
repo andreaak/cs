@@ -1,0 +1,41 @@
+﻿<!--
+
+            delete - оператор который способен удалить свойство в обьекте, 
+            для этого необходимо использовать его следующим образом:
+            delete  имя_обьекта.имя_свойства;
+
+            При обращении к свойству впоследствии будет возвращаться undefined.
+
+-->
+
+<html>
+<head>
+    <title>Оператор delete</title>
+
+    <script type="text/javascript">
+
+        var house = {
+            roof: "<img src='Images/Roof.gif'/><br/>",
+            secondFloor: "<img src='Images/SecondFloor.gif'/><br/>",
+            firstFloor: "<img src='Images/FirstFloor.gif'/><br/>",
+            basement: "<img src='Images/Basement.gif'/><br/>",
+            address: "<p style='color:green'>UK. London. Muswell Hill. N10<hr/>"
+        }
+
+        // Строительство дома.
+
+        if ("secondFloor" in house) {
+            // Удаление свойства secondFloor из объекта house.
+            delete house.secondFloor;
+        }
+
+        for (element in house) {
+            document.write(house[element]);
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

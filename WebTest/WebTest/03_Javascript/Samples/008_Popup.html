@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <style type="text/css">
+        .modal {
+            position: fixed;
+            width: 60vw;
+            height: 60vh;
+            margin: 20vh 0 0 20vw;
+            background: #fff;
+            display: none;
+            z-index: 1001;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .open {
+            display: block;
+        }
+
+        .callme-popup input[type=text] {
+            padding: 20px;
+            color: red;
+        }
+
+        .for-callme-popup {
+            display: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function Popup(options) {
+            this.modal = document.querySelector(options.modal);
+            this.overlay = document.querySelector(options.overlay);
+
+            var popup = this;
+
+            this.open = function (content) {
+                popup.modal.innerHTML = content;
+                popup.overlay.classList.add('open');
+                popup.modal.classList.add('open');
+            }
+
+            this.close = function () {
+                popup.overlay.classList.remove('open');
+                popup.modal.classList.remove('open');
+            }
+
+            this.overlay.onclick = popup.close;
+        }
+
+        window.onload = function () {
+            var p = new Popup({
+                modal: '.modal',
+                overlay: '.overlay'
+            });
+
+            document.querySelector('.write').onclick = function () {
+                p.open('форма отправки сообщения');
+            };
+
+            document.querySelector('.callme').onclick = function () {
+                var form = document.querySelector('.for-callme-popup');
+                p.open(form.innerHTML);
+            };
+        }
+    </script>
+</head>
+<body>
+    <div class="modal"></div>
+    <div class="overlay"></div>
+    <input type="button" class="callme" value="Позвоните">
+    <input type="button" class="write" value="Написать">
+    <div class="for-callme-popup">
+        <form class="callme-popup">
+            Имя<br><input type="text"><br>
+            Имя<br><input type="text"><br>
+            Имя<br><input type="text"><br>
+            Имя<br><input type="text"><br>
+            <input type="button" value="Отправить">
+        </form>
+    </div>
+</body>
+</html>

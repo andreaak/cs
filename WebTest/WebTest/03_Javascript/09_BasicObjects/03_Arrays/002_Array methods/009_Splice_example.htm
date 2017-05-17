@@ -1,0 +1,27 @@
+﻿<!--
+
+                Метод splice()
+
+-->
+
+<html>
+<head>
+    <title>Метод splice() пример</title>
+
+    <script type="text/javascript">
+
+        var Students = ["Алексей", "Владимир", "Александр", "Владислав", "Елена", "Руслан", "Анна", "Киррил", "Ольга", "Валентин", "Андрей"];
+
+        var from = prompt("Введите индекс человека с которого начать выборку:");
+        var count = prompt("Введите количество человек:");
+
+        var res = Students.splice(from, count);
+
+        document.write(res.join("<p>"));
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

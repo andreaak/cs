@@ -1,0 +1,36 @@
+﻿<!--
+
+-->
+
+<html>
+<head>
+    <title>Массив Аргументов arguments</title>
+
+    <script type="text/javascript">
+
+        function over(a) {
+            document.write("Over 1 parameter " + a + "<br/>");
+        }
+
+        function over(a, b) {
+            document.write("Over 2 parameters " + a + " " + b + "<br/>");
+        }
+
+        function over(a, b, c) {
+            document.write("Over 3 parameters " + a + " " + b + " " + c + "<br/>");
+        }
+        var res = over(0);
+        var res = over(1, 2);
+        var res = over(4, 5, 6);
+
+        /*
+        Over 3 parameters 0 undefined undefined
+        Over 3 parameters 1 2 undefined
+        Over 3 parameters 4 5 6
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

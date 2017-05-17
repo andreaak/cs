@@ -1,0 +1,29 @@
+﻿<!--
+
+            pop() - выполняет удаление последнего элемента массива.
+            (возвращаемое значение - удаленный элемент массива)
+
+-->
+
+<html>
+<head>
+    <title>Метод Pop()</title>
+
+    <script type="text/javascript">
+
+        var stack = ["January", "February", "March", "April", "May", "June"];
+        document.write("<p>Исходный: " + stack.join(" "));
+        document.write("<p>Размер массива: " + stack.length);
+
+        document.write("<hr/>");
+
+        var lenght = stack.pop();        
+        document.write("<p>После pop: " + stack.join(" "));
+        document.write("<p>Удаленный элемент: " + lenght);
+        document.write("<p>Размер массива после удаления: " + stack.length);
+    </script>
+
+</head>
+<body>
+</body>
+</html>

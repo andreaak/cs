@@ -1,0 +1,79 @@
+﻿<!--
+    typeof - оператор для получения типа объекта в виде строкового значения
+    Оператор typeof может быть удобен для того что бы отличить объект от базового типа.
+-->
+
+<html>
+<head>
+    <title>Оператор typeof</title>
+
+    <script type="text/javascript">
+
+        var test = "hello";
+        document.write(typeof test); // аналог GetType() в C#
+        document.write("<br />");//string
+
+        var test2 = 123;
+        document.write(typeof test2);
+        document.write("<br />");//number
+
+        var test3 = true;
+        document.write(typeof test3);
+        document.write("<br />");//boolean
+
+        var test4 = new Object();
+        document.write("Object - " + typeof test4);
+        document.write("<br />");//object
+
+        var test5 = new Date();
+        document.write("Date - " + typeof test5);
+        document.write("<br />");//object
+
+        var test6 = new Array();
+        document.write("Array - " + typeof test6);
+        document.write("<br />");//object
+
+        var test7 = new String();
+        document.write("String - " + typeof test7);
+        document.write("<br />");//object
+
+        var test8 = new Function();
+        document.write("Function - " + typeof test8);
+        document.write("<br />");//function
+
+        document.write("toString - " + typeof test5.toString);
+        document.write("<br />");//function
+
+        function printMessage(message) {
+            // проверка типа параметра функции
+            if (typeof message != "string") {
+                document.write("Параметр должен быть строкового типа!<br/>");
+            }
+            else {
+                document.write(message + "<br/>");
+            }
+        }
+
+        printMessage(new Array());
+        printMessage("Hello world");
+
+        /*
+        string
+        number
+        boolean
+        Object - object
+        Date - object
+        Array - object
+        String - object
+        Function - function
+        toString - function
+        Параметр должен быть строкового типа!
+        Hello world
+        */
+    </script>
+
+</head>
+<body>
+    <!--Здесь располагается какая либо разметка-->
+</body>
+</html>

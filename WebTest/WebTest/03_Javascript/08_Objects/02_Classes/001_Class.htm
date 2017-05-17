@@ -1,0 +1,39 @@
+﻿<!--
+    Функция конструктор - это функция, которая создает объекты по определенному шаблону (классу).
+    Конструкторы должны вызываться после оператора new.
+    Ключевое слово new создает пустой объект, который в конструкторе будет доступен через ключевое слово this.
+-->
+
+<html>
+<head>
+    <title>Пользовательский конструктор</title>
+
+    <script type="text/javascript">
+
+        // Функция-конструктор для создания объектов Point.
+
+        function Human(name) {
+            // свойство
+            this.firstName = name;
+
+            // метод - свойство объекта, которое содежит значение в виде функции.
+            this.sayHello = function () {
+                document.write("Hello! My name is " + this.firstName + "<br /> ");
+            }
+        }
+
+        // Создание двух экземпляров типа Human
+
+        var h = new Human("Homer");
+        var r = new Human("Rocky");
+
+        // Вызов метода SayHello() на созданых обьектах. 
+        h.sayHello();
+        r.sayHello();
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>
