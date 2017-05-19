@@ -1,0 +1,30 @@
+﻿<!--
+
+        Метки.
+
+-->
+
+<html>
+<head>
+    <title>Метки</title>
+
+    <script type="text/javascript">
+
+        Label: for (var j = 0; j < 2; j++) {
+            for (var i = 0; i < 2; i++) {
+                var input = prompt("Введите любой текст, чтобы выйти нажмите отмена", '');
+                if (input == null)
+                    break Label; //выйти сразу из 2-х циклов.
+                //continue Label;
+                document.write(input + " ");
+            }
+            document.write("<br/>");
+        }
+        document.write('Готово!');
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

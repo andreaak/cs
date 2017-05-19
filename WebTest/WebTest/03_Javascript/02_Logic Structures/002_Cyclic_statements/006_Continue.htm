@@ -1,0 +1,31 @@
+﻿<!--
+
+        Оператор - continue.
+
+-->
+
+<html>
+<head>
+    <title>Оператор continue</title>
+
+    <script type="text/javascript">
+
+        var count = prompt("Сколько Вы хотите провести итераций?");
+        var exit = prompt("Какое число вы не хотите увидеть?");
+
+        for (var i = 0; i < count; i++) {
+            if (i == exit) {
+                document.write("<br />");
+                continue;
+            }
+            else {
+                document.write(i + "<br />");
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

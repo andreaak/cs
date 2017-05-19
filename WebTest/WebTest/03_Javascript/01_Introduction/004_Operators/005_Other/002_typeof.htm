@@ -1,5 +1,6 @@
 ﻿<!--
-    typeof - определяет тип переменной
+    typeof - оператор для получения типа объекта в виде строкового значения// аналог GetType() в C#
+    Оператор typeof может быть удобен для того что бы отличить объект от базового типа.
 -->
 
 <html>
@@ -9,20 +10,74 @@
     <script type="text/javascript">
         var a = 5;
         document.write(typeof a + "<br/>");//number
-        var b = "Text";
-        document.write(typeof b + "<br/>");//string
-        var c = true;
-        document.write(typeof c + "<br/>");//boolean
-        var d = new Date();
-        document.write(typeof d + "<br/>");//object
-        var e = new Array();
-        document.write(typeof e + "<br/>");//object
-        var f;
-        document.write(typeof f + "<br/>");//undefined
-        var g = null;
-        document.write(typeof g + "<br/>");//object
+
         var h = Number.NaN;
         document.write(typeof h + "<br/>");//number
+
+        var b = "Text";
+        document.write(typeof b + "<br/>");//string
+
+        var c = true;
+        document.write(typeof c + "<br/>");//boolean
+
+        var test4 = new Object();
+        document.write("Object type: " + typeof test4 + "<br/>");//object
+
+        var d = new Date();
+        document.write("Date type: " + typeof d + "<br/>");//object
+
+        document.write("toString type: " + typeof d.toString + "<br/>");//function
+
+        function test() {
+
+        }
+        document.write("function type: " + typeof test + "<br/>");//function
+
+        var e = new Array();
+        document.write("Array type: " + typeof e + "<br/>");//object
+
+        var test7 = new String();
+        document.write("String type: " + typeof test7 + "<br/>");//object
+
+        var test8 = new Function();
+        document.write("Function type: " + typeof test8 + "<br/>");//function
+
+        var f;
+        document.write(typeof f + "<br/>");//undefined
+
+        var g = null;
+        document.write(typeof g + "<br/>");//object
+
+
+        function printMessage(message) {
+            // проверка типа параметра функции
+            if (typeof message != "string") {
+                document.write("Параметр должен быть строкового типа!<br/>");
+            }
+            else {
+                document.write(message + "<br/>");
+            }
+        }
+
+        printMessage(new Array());
+        printMessage("Hello world");
+        /*
+        number
+        number
+        string
+        boolean
+        Object type: object
+        Date type: object
+        toString type: function
+        function type: function
+        Array type: object
+        String type: object
+        Function type: function
+        undefined
+        object
+        Параметр должен быть строкового типа!
+        Hello world
+        */
     </script>
 
 </head>

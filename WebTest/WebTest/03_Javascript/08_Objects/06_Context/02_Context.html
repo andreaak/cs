@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html lang="ru">
+<!--
+Контекст функции - тот объект который ее вызывает.
+this ссылка на текущий контекст вызова.
+
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: grey;
+        }
+
+        .item .item-active {
+            border: 3px solid black;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var item = document.querySelector('.items .item');
+
+            item.onclick = function () {
+                console.log(this);//в данном случае this ссылается на item
+                activeItem();//лог дает window т.к. происходит вызов функции определенной в контексте окна
+                //и вызов проходит через замыкание.
+
+                activeItem.call(item);//вызов activeItem в контексте item
+                //в данном случае this ссылается на item
+            }
+
+            //item.onclick = activeItem;//в данном случае лог выводит item
+            //т.к вызов произойдет позже из контекста item
+
+            activeItem(); //в данном случае лог выводит window
+
+            var timer = new Timer();
+            timer.tick();//в данном случае лог выводит Timer
+            setInterval(timer.tick, 5000);//в данном случае лог выводит window
+            setInterval(function() {
+                timer.tick();//с помощью замыкания видим timer и вызываем в контексте timer
+            }, 1000);//в данном случае лог выводит Timer
+        }
+
+        function activeItem() {
+            console.log(this);
+        }
+
+        function Timer() {
+            this.tick = function() {
+                console.log(this);
+            }
+        }
+
+        /*
+        window
+        <div class='item'
+        */
+    </script>
+</head>
+<body>
+    <div class="items">
+        <div class="item">1</div>
+    </div>
+</body>
+</html>
