@@ -18,7 +18,7 @@
             var xhr = new XMLHttpRequest();
 
             document.getElementById("buttonGet").onclick = function () {
-                xhr.open("GET", "TestHandler.ashx");
+                xhr.open("GET", "TimeOutHandler.ashx");
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         hide(); // скрыть индикатор.
@@ -34,7 +34,8 @@
 <body>
     <input id="buttonGet" type="button" value="Get Data" />
     <p id="loader" style="display: none; color:red;">
-        <img src="ajax-loader.gif" /></p>
+        <img src="ajax-loader.gif" />
+    </p>
     <p id="output"></p>
 </body>
 </html>
