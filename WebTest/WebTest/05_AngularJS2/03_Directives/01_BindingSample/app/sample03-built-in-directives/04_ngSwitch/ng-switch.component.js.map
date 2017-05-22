@@ -1,0 +1,1 @@
+{"version":3,"file":"ng-switch.component.js","sourceRoot":"","sources":["ng-switch.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAO1C;IAAA;IAEA,CAAC;IAPD;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,QAAQ,EAAE,iBAAiB;YAC3B,WAAW,EAAE,0BAA0B;SAC1C,CAAC;;yBAAA;IAGF,wBAAC;AAAD,CAAC,AAFD,IAEC;AAFY,yBAAiB,oBAE7B,CAAA"}

@@ -1,0 +1,15 @@
+
+<div *ngIf="isVisible">
+    Hello world
+</div>
+
+<template [ngIf]="isVisible">
+    <div>
+        Hello world
+    </div>
+</template>
+
+
+
+
+<button (click)="hide()">Hide</button>

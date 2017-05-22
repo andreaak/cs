@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSONP with JavaScript</title>
+</head>
+<body>
+    <!--<script src="http://localhost:2145/Home/GetDataJsonp?callback=processData"></script>-->
+    <script>
+
+        window.addEventListener("load", function () {
+            document.getElementById("getData").addEventListener("click", function () {
+                // Добавление в разметку элемента script, который ссылается на другой домен
+                var script = document.createElement("script");
+                script.src = "http://localhost:2145/Home/GetDataJsonp?callback=processData";
+                document.body.appendChild(script);
+            });
+        });
+
+        function processData(data) {
+            var div = document.getElementById("output");
+            var text = data.FirstName + "<br />";
+            text += data.LastName + "<br />";
+            text += data.Age + "<br />";
+            div.innerHTML = text;
+        }
+    </script>
+
+    <div id="output"></div>
+    <button id="getData">Get Data</button>
+    <!--<script>
+        processData({ "FirstName": "Ivan", "LastName": "Ivanov", "Age": 30 });
+    </script>-->
+</body>
+</html>

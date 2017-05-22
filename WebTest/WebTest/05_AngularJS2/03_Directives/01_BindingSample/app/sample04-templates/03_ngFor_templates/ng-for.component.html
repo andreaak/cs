@@ -1,0 +1,12 @@
+<!--<ul>
+	<li *ngFor="let item of items">
+		{{item}}
+	</li>
+</ul>-->
+<ul>
+	<template ngFor let-item [ngForOf]="items">
+		<li>
+			{{item}}
+		</li>
+	</template>
+</ul>

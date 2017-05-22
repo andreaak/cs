@@ -1,0 +1,1 @@
+{"version":3,"file":"manage-phrases.component.js","sourceRoot":"","sources":["manage-phrases.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAO1C;IAAA;IAAqC,CAAC;IALtC;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,QAAQ,EAAE,gBAAgB;YAC1B,WAAW,EAAE,+BAA+B;SAC/C,CAAC;;8BAAA;IACmC,6BAAC;AAAD,CAAC,AAAtC,IAAsC;AAAzB,8BAAsB,yBAAG,CAAA"}

@@ -1,0 +1,39 @@
+{
+  "name": "angular-quickstart",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "lite": "lite-server",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings"
+  },
+  "license": "ISC",
+  // dependencies - зависимости необходимы для запуска приложения
+  "dependencies": {
+    "@angular/common": "2.0.0",                     // Общие сервисы, директивы и фильтры, предоставленные командой Angular
+    "@angular/compiler": "2.0.0",                   // Компилятор шаблонов. Преобразовывает шаблоны в код, которые делает возможным запуск и отображения приложения. В основном с компилятором не работают напрямую.
+    "@angular/core": "2.0.0",                       // критически важная часть framework, которая включает все необходимые элементы - компоненты, директивы и прочее.
+    "@angular/forms": "2.0.0",                      // Сервисы и директивы для создания форм
+    "@angular/http": "2.0.0",                       // HTTP клиент
+    "@angular/platform-browser": "2.0.0",           // Все что связано с DOM и браузером. 
+    "@angular/platform-browser-dynamic": "2.0.0",   // Компоненты для компиляции приложения на клиенте. 
+    "@angular/router": "3.0.0",                     // Компонент для маршрутизации
+    "@angular/upgrade": "2.0.0",                    // Утилиты для обновления Angular 1 приложения
+    "core-js": "^2.4.1",                            // Замещает некоторые методы глобального объекта window для поддержки ES2015 (ES6)
+    "reflect-metadata": "^0.1.3",                   // Зависимость, которая совместно используется Angular и TypeScript. Для обновления TS без обновления Angular
+    "rxjs": "5.0.0-beta.12",                        // Polyfill для Observable спецификации https://github.com/zenparsing/es-observable
+    "systemjs": "0.19.27",                          // Динамический загрузчик модулей совместимый со спецификацией ES2015 module http://www.2ality.com/2014/09/es6-modules-final.html
+    "zone.js": "^0.6.23",                           // Polyfill для Zone спецификации https://gist.github.com/mhevery/63fdcdf7c65886051d55
+    "angular2-in-memory-web-api": "0.0.20",         // Библиотека для эмуляции веб апи сервера без наличия самого сервера.
+    "bootstrap": "^3.3.6"                           // HTML и CSS framework 
+  },
+  // devDependencies - зависимости необходимые для разработки
+  "devDependencies": {
+    "concurrently": "^2.2.0",   // Для параллельного запуска нескольких npm команд
+    "lite-server": "^2.2.2",    // Легковесный сервер
+    "typescript": "^2.0.2",     // TypeScript 
+    "typings": "^1.3.2"         // Менеджер для TS difinition files
+  }
+}

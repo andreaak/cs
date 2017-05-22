@@ -1,0 +1,1 @@
+{"version":3,"file":"message-box-host.component.js","sourceRoot":"","sources":["message-box-host.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAO1C;IAAA;IAAuC,CAAC;IALxC;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,QAAQ,EAAE,kBAAkB;YAC5B,WAAW,EAAE,iCAAiC;SACjD,CAAC;;+BAAA;IACqC,8BAAC;AAAD,CAAC,AAAxC,IAAwC;AAA3B,+BAAuB,0BAAI,CAAA"}
