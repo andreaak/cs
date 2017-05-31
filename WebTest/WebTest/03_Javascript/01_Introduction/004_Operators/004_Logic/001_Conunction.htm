@@ -1,6 +1,6 @@
 ﻿<!--
 
-    Логическое И (&&) - возвращает true тогда и только тогда 
+    Логическое И (&&) - возвращает true тогда и только тогда
     когда оба операнда равны true.
 
     Таблица истинности логического И (&&):
@@ -19,12 +19,21 @@
 
         var a = true;
         var b = false;
+        var c;
 
         var res = a && b;
         document.write("a && b = " + res + "<br />");
 
+        res = c && a;
+        document.write("c && a = " + res + "<br />");
+
+        res = c && b;
+        document.write("c && b = " + res + "<br />");
+
         /*
         a && b = false
+        c && a = undefined
+        c && b = undefined
         */
     </script>
 

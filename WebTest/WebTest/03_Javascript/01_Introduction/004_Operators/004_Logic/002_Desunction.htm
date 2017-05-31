@@ -1,6 +1,6 @@
 ﻿<!--
 
-        Логическое ИЛИ (||) - возвращает true, 
+        Логическое ИЛИ (||) - возвращает true,
         если первый или второй операнд (или оба) равны true.
 
         Таблица истинности логического ИЛИ (||):
@@ -18,13 +18,21 @@
     <script type="text/javascript">
 
         var a = false;
-        var b = false;
+        var b = true;
+        var c;
 
         var res = a || b;
         document.write("a || b = " + res + "<br />");
 
+        res = c || a;
+        document.write("c || a = " + res + "<br />");
+
+        res = c || b;
+        document.write("c || b = " + res + "<br />");
         /*
-        a || b = false
+        a || b = true
+        c || a = false
+        c || b = true
         */
     </script>
 

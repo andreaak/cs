@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!--
+
+    JSONP - получение данных с другого сервера
+    Обход правила ограничения домена - когда можно запрашивать 
+    только данные с сайта на котором находитесь
+
+-->
+<head>
+    <meta charset="utf-8"/>
+    <title>JSONP - получение данных с другого сервера</title>
+</head>
+<body>
+<h2>Links</h2>
+<ol id="links"></ol>
+
+<script>
+    function dataHandler(info) {
+        var output = '';
+        for (var i = 0; i <= info.links.length - 1; i++) {
+            for (key in info.links[i]) {
+                if (info.links[i].hasOwnProperty(key)) {
+                    output += '<li>' +
+                        '<a href = "' +
+                        info.links[i][key] +
+                        '">' +
+                        key +
+                        '</a>' +
+                        '</li>';
+                }
+            }
+        }
+
+        var update = document.getElementById('links');
+        update.innerHTML = output;
+    }
+</script>
+<script src="http://localhost:2949/03_Javascript/24_JSON/02_JSONP/data.json"></script>
+</body>
+</html>

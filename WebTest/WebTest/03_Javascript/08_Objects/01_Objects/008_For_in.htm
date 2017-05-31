@@ -1,11 +1,13 @@
 ﻿<!--
 
-        Циклическая конструкция for in, используется для перебора
-        элементов массива или перебора свойств объекта.
+    Циклическая конструкция for in, используется для перебора
+    элементов массива или перебора свойств объекта.
 
-        Принцип работы конструкции:
-        for ( переменная_итерации in массив_или_обьект) { ...тело конструкции ...}
+    Принцип работы конструкции:
+        for ( переменная_итерации in массив_или_обьект)
+            { ...тело конструкции ...}
 
+    Не гарантирует порядок вывода элементов
 -->
 
 <html>
@@ -22,11 +24,92 @@
             address: "<p style='color:green'>UK. London. Muswell Hill. N10<hr/>"
         }
 
+        document.write("<br/>");
+
         // Перебор значений свойств в обьекте - house
         for (element in house) {
             document.write(house[element]);
         }
+        document.write("<br/>");
 
+        var test = {
+            roof: "roof value",
+            secondFloor: "secondFloor value",
+            firstFloor: "firstFloor value",
+            basement: "basement value"
+        }
+        ///
+        for (element in test) {
+            document.write("Key: ", element, " Value: ", test[element], "<br/>");
+        }
+        document.write("<br/>");
+        ///
+        delete (test.secondFloor);
+        ///
+        document.write("Without own property<br/>");
+        for (element in test) {
+            document.write("Key: ", element, " Value: ", test[element], "<br/>");
+        }
+        document.write("<br/>");
+        ///
+        document.write("With own property<br/>");
+        for (element in test) {
+            if (test.hasOwnProperty(element)) {
+                document.write("Key: ", element, " Value: ", test[element], "<br/>");
+            }
+        }
+        document.write("<br/>");
+        ///
+        document.write("Use for<br/>");
+        for (var i = 0; i < test.length; i++) {//test.length = undefined
+            document.write(test[i], "<br/>");
+        }
+        document.write("<br/>");
+        ///
+        var test2 = {
+            items: [
+                { roof: "roof value" },
+                { secondFloor: "secondFloor value" },
+                { firstFloor: "firstFloor value" },
+                { basement: "basement value" }
+            ]
+        }
+
+        document.write("Use ordered for<br/>");
+        //Гарантированный порядок вывода через массив
+        for (var i = 0; i < test2.items.length; i++) {
+            var item = test2.items[i];
+            for (element in item) {
+                if (item.hasOwnProperty(element)) {
+                    document.write("Key: ", element, " Value: ", item[element], "<br/>");
+                }
+            }
+        }
+
+        /*
+        Key: roof Value: roof value
+        Key: secondFloor Value: secondFloor value
+        Key: firstFloor Value: firstFloor value
+        Key: basement Value: basement value
+
+        Without own property
+        Key: roof Value: roof value
+        Key: firstFloor Value: firstFloor value
+        Key: basement Value: basement value
+
+        With own property
+        Key: roof Value: roof value
+        Key: firstFloor Value: firstFloor value
+        Key: basement Value: basement value
+
+        Use for
+
+        Use ordered for
+        Key: roof Value: roof value
+        Key: secondFloor Value: secondFloor value
+        Key: firstFloor Value: firstFloor value
+        Key: basement Value: basement value
+        */
     </script>
 
 </head>

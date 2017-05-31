@@ -1,0 +1,56 @@
+﻿<!--
+    Объект document
+    documentElement – ссылка на объект корневого узла документа
+    body – ссылка на объект элементов <body> или <frameset>
+    title – содержимое элемента <title> документа
+    anchors[] – коллекция объектов Anchor (якоря)
+    applets[] – коллекция объектов Applet (апплеты)
+    forms[] – коллекция объектов Form (формы)
+    images[] – коллекция объектов Image (изображения)
+    links[] – коллекция объектов Link в документе (гиперссылки)
+    createAttribute() – создание нового атрибута
+    createComment() – создание нового комментария
+    createElement() – создание нового элемента
+    createTextNode() – создание нового текстового узла
+    createDocumentFragment() – создание пустого узла DocumentFragment
+    getElementById() – получение доступа к элементу с указанным идентификатором
+    getElementsByTagName() – получение доступа к элементам с указанным названием
+    
+    // При вызове метода document.write() после формирования страницы происходит создание нового документа и удалению содержимого страницы.
+    // Данный метод не следует вызывать в обработчиках событий, что бы не потерять содержимое текущей страницы.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Методы write() и writeln() объекта document</title>
+    <script type="text/javascript">
+
+        function ButtonHandler() {
+            document.write("Hello world");
+        }
+
+    </script>
+</head>
+<body>
+
+    <!--Использование метода write-->
+    <p style="padding: 8px; margin: 8px; color: Green; font-weight: bold; border: solid 1px black;">
+        <script type="text/javascript">
+            document.write("hello");
+            document.write(" 1", "-", "2", "-", "3");
+        </script>
+    </p>
+
+    <!--Использование метода writeln-->
+    <pre style="padding: 8px; margin: 8px; color: Green; font-weight: bold; border: solid 1px black;">
+<script type="text/javascript">
+    document.writeln("hello");
+    document.writeln("world");
+</script>
+    </pre>
+
+    <input type="button" value="Кнопка" onclick="ButtonHandler()" />
+
+</body>
+</html>

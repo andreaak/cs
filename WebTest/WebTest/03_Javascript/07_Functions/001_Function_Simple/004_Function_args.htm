@@ -17,25 +17,36 @@
 
         function Sum1() {
             var result = a + b;
-            document.write("<p>Sum1 result: " + result + "<p/>");
+            document.write("Sum1 result: " + result + "<br/>");
         }
 
-        function Sum2(x1, x2) {
+        function Sum2(text, x1, x2) {
             document.write("typeof x1: " + typeof (x1) +
-                            " typeof x2: " + typeof (x2));
+                            " typeof x2: " + typeof (x2) + "<br/>");
             var result = x1 + x2;
-            document.write("<p>Sum2 result: " + result + "<p/>");
+            document.write(text + result + "<br/><br/>");
         }
 
         // Вызов функций.
         Sum1();
-        Sum2(c, d);
+        Sum2('c Sum2 d = ', c, d);
+        Sum2('"2" Sum2 d = ', "2", d);
+        Sum2('+"2" Sum2 d = ', +"2", d);
+        Sum2('-"2" Sum2 d = ', -"2", d);
 
         /*
         Sum1 result: 25
+        typeof x1: number typeof x2: number
+        c Sum2 d = 41
+
+        typeof x1: string typeof x2: number
+        "2" Sum2 d = 221
 
         typeof x1: number typeof x2: number
-        Sum2 result: 41
+        +"2" Sum2 d = 23
+
+        typeof x1: number typeof x2: number
+        -"2" Sum2 d = 19
         */
     </script>
 
