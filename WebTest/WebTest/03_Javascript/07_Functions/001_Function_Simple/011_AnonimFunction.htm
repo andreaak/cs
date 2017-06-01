@@ -1,0 +1,32 @@
+﻿<!--
+
+-->
+
+<html>
+<head>
+    <title>Анонимные функции</title>
+
+    <script type="text/javascript">
+        //Анонимные функции всегда функциональные выражения
+        (function () {
+            document.write("Anonim 1<br/>");
+        })();
+
+        (function (name) {
+            document.write(name + "<br/>");
+        })("Test");
+
+        +function () {
+            document.write("Anonim 2<br/>");
+        }();
+        /*
+        Anonim 1
+        Test
+        Anonim 2
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

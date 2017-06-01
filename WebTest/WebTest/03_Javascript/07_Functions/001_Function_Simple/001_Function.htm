@@ -24,7 +24,7 @@
         MyFirstFunction();
         document.write("<br/>");
 
-        //Function declaration Функции объявленные таким образом 
+        //Function declaration Функции объявленные таким образом
         //могут использоваться в любой части программы
         function MyFirstFunction() {
             document.write("Hello from MyFirstFunction!<br/>");
@@ -41,14 +41,15 @@
         //
         //f3();//Uncaught TypeError: f3 is not a function
 
-        //Function expression Функции объявленные таким образом могут использоваться только после объявления
+        //Function expression(Функциональное выражение) 
+        //Функции объявленные таким образом могут использоваться только после объявления
         var f3 = function myThirdFunction() {
             document.write("Hello from MyThirdFunction!<br/>");
             document.write(test + "<br/>");
         }
 
         // Вызов функций.
-         
+
         MySecondFunction();
         document.write("<br/>");
 

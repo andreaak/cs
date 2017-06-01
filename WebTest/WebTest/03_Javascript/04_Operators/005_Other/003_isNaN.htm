@@ -1,0 +1,28 @@
+﻿<!--
+    isNaN - проверка переменной на NaN
+-->
+
+<html>
+<head>
+    <title>isNaN</title>
+
+    <script type="text/javascript">
+        var с = 8;
+        var string2 = "12b";
+        result = string2 - с;
+        var nan = isNaN(result);
+        document.write("12b - с isNaN " + nan + "<br />");
+        if (isNaN(result)) {
+            document.write("12b - с isNaN " + true + "<br />");
+        }
+
+        /*
+        12b - с isNaN true
+        12b - с isNaN true
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

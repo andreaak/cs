@@ -1,0 +1,39 @@
+﻿<!--
+
+    Палиндром - число читающееся одинаково в обоих направлениях
+
+-->
+
+<html>
+<head>
+    <title>Палиндром</title>
+
+    <script type="text/javascript">
+
+        function palindrom(num) {
+
+            var oldNum = num;
+            var newNum = 0;
+
+            while (num > 0) {
+                newNum = newNum * 10 + num % 10;
+                num = parseInt(num / 10);
+            }
+
+            return oldNum === newNum;
+        }
+
+        document.write(palindrom(3), "<br/>");
+        document.write(palindrom(32), "<br/>");
+        document.write(palindrom(303), "<br/>");
+        /*
+        true
+        false
+        true
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>
