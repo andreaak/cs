@@ -41,18 +41,28 @@
         Student.prototype = human;
         Worker.prototype = human;
 
-        var Alex = new Student("Alexander");
-        var Andrew = new Worker("Andrew");
+        var alex = new Student("Alexander");
+        var andrew = new Worker("Andrew");
 
         document.write("<br />Student<br />");
 
-        Alex.talk();
-        document.write(Alex.school);
+        alex.talk();
+        document.write(alex.school);
 
         document.write("<br />Worker<br />");
 
-        Andrew.talk();
-        document.write(Andrew.speciality);
+        andrew.talk();
+        document.write(andrew.speciality);
+
+        /*
+        Student
+        Hello My Name is Alexander
+        CBS school
+
+        Worker
+        Hello My Name is Andrew
+        Software developer
+        */
     </script>
 </head>
 <body>

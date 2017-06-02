@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!--
+
+-->
+<head>
+    <meta charset="utf-8" />
+    <title>Strings</title>
+</head>
+<body>
+
+    <script>
+
+        class Bird {
+            constructor(name) {
+                this.name = name;
+            }
+
+            getName() {
+                return this.name;
+            }
+        }
+
+        class Parrot extends Bird {
+            constructor(name) {
+                super(name);
+                this.canSpeak = true;
+            }
+        }
+
+        var bird = new Bird("SomeBird");
+        document.write(`Name: ${bird.getName()}<br/>`);
+
+        var parrot = new Parrot("SomeParrot");
+        document.write(`Name: ${parrot.getName()}<br/>`);
+        document.write(`Can Speak: ${parrot.canSpeak}<br/>`);
+
+        /*
+        Name: SomeBird
+        Name: SomeParrot
+        Can Speak: true
+        */
+    </script>
+</body>
+</html>

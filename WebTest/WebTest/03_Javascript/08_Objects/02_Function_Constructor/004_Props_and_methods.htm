@@ -10,9 +10,27 @@
             this.x = x;
             this.y = y;
 
+            // закрытое поле
+            var temp = 578;
+
             // метод экземпляра
             this.print = function () {
                 document.write("(" + this.x + ", " + this.y + ")<br />");
+            }
+
+            // закрытый метод
+            var privateMethod = function () {
+                document.write("Private method this point: (" + this.x + ", " + this.y + ")<br />");
+                document.write("Private method point: (" + x + ", " + y + ")<br />");
+                document.write("Temp: " + temp + "<br />");
+            };
+
+            this.testPrivateMethod = function () {
+                privateMethod();
+            }
+
+            this.setMethod = function (val) {
+                temp = val;
             }
         }
 
@@ -28,18 +46,40 @@
         var p1 = new Point(100, 200);
         p1.x = 300;
         p1.y = 400;
+        document.write("First point: ");
         p1.print();
 
+        //document.write("Private method call: ");
+        //p1.privateMethod();//Uncaught TypeError: p1.privateMethod is not a function
+        //document.write(p1.temp());//Uncaught TypeError: p1.temp is not a function
 
-        var p2 = new Point(100, 200);
+        document.write("Test Private method call<br/>");
+        p1.testPrivateMethod();
+        p1.setMethod(444);
+        p1.testPrivateMethod();
+
+        /*
+        First point: (300, 400)
+        Test Private method call
+        Private method this point: (undefined, undefined)
+        Private method point: (100, 200)
+        Temp: 578
+        Private method this point: (undefined, undefined)
+        Private method point: (100, 200)
+        Temp: 444
+        */
+
+        document.write("Second point: ");
+        var p2 = new Point(1000, 2000);
         p2.print();
 
         // работа с свойством и методом функции-конструктора.
         Point.MaxPointCount = 10;
+        document.write("getOrigin point: ");
         Point.getOrigin().print();
 
-        p1.h = 500;
-        document.write(p1.h + "<br />");
+        p1.someField = 500;
+        document.write("p1.someField: " + p1.someField + "<br />");
 
         //ошибка p1.getOrigin is not a function
         //document.write(p1.getOrigin() + "<br />");
@@ -47,10 +87,9 @@
         document.write(p1.DDD + "<br />");//undefined
 
         /*
-        (300, 400)
-        (100, 200)
-        (0, 0)
-        500
+        Second point: (1000, 2000)
+        getOrigin point: (0, 0)
+        p1.someField: 500
         undefined
         undefined
         */

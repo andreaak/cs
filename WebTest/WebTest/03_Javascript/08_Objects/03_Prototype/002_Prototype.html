@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+
+    prototype - системное свойство присущее каждому объекту.
+
+    Как правило, свойство prototype используется для предоставления
+    базового набора функциональных возможностей классу объектов.
+    Новые экземпляры объекта "наследуют" поведение прототипа,
+    присвоенного этому объекту.
+
+    Также методы прототипа будут доступны каждому экземпляру,
+    но храниться будут только в прототипе
+    и соответственно занимать меньше места чем 
+    если бы метод принадлежал каждому экземпляру.
+
+    При вызове функции объекта obj.func()
+    интерпретатор сначала ищет функцию в определении объекта,
+    а потом в prototype
+
+-->
+<head>
+    <title>Прототип</title>
+
+    <script type="text/javascript">
+
+        function Rectangle(w, h) {
+            // свойства
+            this.width = w;
+            this.height = h;
+            this.toStr = function () {
+                return this.name;
+            }
+        }
+
+        /*
+        Метод прототипа Rectangle будет доступен каждому экземпляру,
+        но храниться будет в прототипе соответственно занимать меньше места
+        чем если бы метод принадлежал каждому экземпляру.
+        */
+        Rectangle.prototype.getArea = function () {
+            return this.width * this.height;
+        }
+
+        // Свойство прототпа, будет доступно всем экземплярам
+        Rectangle.prototype.name = "RECTANGLE";
+
+        var rect = new Rectangle(100, 50);
+        var rect2 = new Rectangle(200, 50);
+
+        document.write("Площадь прямоугольника 1: " + rect.getArea() + "<br/>");
+        document.write("Имя прямоугольника 1: " + rect.name + "<br />");
+
+        document.write("Площадь прямоугольника 2: " + rect2.getArea() + "<br/>");
+        document.write("Имя прямоугольника 2: " + rect2.name + "<br />");
+
+
+        document.write("Name: " + rect.toStr() + "<br/>");
+
+        /* 
+        При попытке смены значения, которое было унаследовано от прототипа,
+        в объекте будет создана копия свойства (свойство прототипа не изменится).
+        Значение в прототипе может быть измененно
+        только черзе операцию Rectangle.prototype.name
+        */
+        rect.name = "first rectangle";
+        document.write("После смены имени объекта rect1<br/>");
+        document.write("Имя прямоугольника 1: " + rect.name + "<br />");
+        document.write("Имя прямоугольника 2: " + rect2.name + "<br />");
+
+        Rectangle.prototype.name = "first rectangle";
+
+        document.write("После смены прототипа<br/>");
+        document.write("Имя прямоугольника 1: " + rect.name + "<br />");
+        document.write("Имя прямоугольника 2: " + rect2.name + "<br />");
+
+
+        /*
+        Площадь прямоугольника 1: 5000
+        Имя прямоугольника 1: RECTANGLE
+
+        Площадь прямоугольника 2: 10000
+        Имя прямоугольника 2: RECTANGLE
+
+        Name: RECTANGLE
+
+        После смены имени объекта rect1
+        Имя прямоугольника 1: first rectangle
+        Имя прямоугольника 2: RECTANGLE
+
+        После смены прототипа
+        Имя прямоугольника 1: first rectangle
+        Имя прямоугольника 2: first rectangle
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

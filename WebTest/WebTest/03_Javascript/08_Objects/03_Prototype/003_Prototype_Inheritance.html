@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+
+    prototype - системное свойство присущее каждому объекту.
+    При вызове функции объекта obj.func()
+    интерпретатор сначала ищет функцию в определении объекта,
+    а потом в prototype
+
+-->
+<head>
+    <title>Прототип</title>
+
+    <script type="text/javascript">
+
+        function Bird() {
+            this.getName = function() {
+                return this.name;
+            }
+        }
+
+        Bird.prototype.setName = function (name) {
+            this.name = name;
+        }
+
+        function Parrot() {
+            this.canSpeak = true;
+        }
+
+        Parrot.prototype = new Bird();
+
+        var bird = new Bird();
+        bird.setName("SomeBird");
+        document.write("Bird Name: " + bird.name + "<br />");
+
+        var parrot = new Parrot();
+        parrot.setName("SomeParrot");
+        document.write("Parrot Name: " + parrot.name + "<br />");
+        document.write("Can speak: " + parrot.canSpeak + "<br />");
+
+        /*
+        Bird Name: SomeBird
+
+        Parrot Name: SomeParrot
+        Can speak: true
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>
