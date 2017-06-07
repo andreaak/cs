@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Шаблон открытия модуль</title>
+</head>
+<body>
+    <!--Сценарий для создания пространства имен-->
+    <script src="../01_Namespace/namespaceCreation.js"></script>
+
+    <script>
+        // определяем пространство имен
+        App.define("util.calc");
+
+        // инициализируем объект используя немедленно вызываемую функцию.
+        App.util.calc = (function () {
+
+            // закрытые члены
+            var x, y;
+            //закрытые функции начинаются с '_'
+            //более стабильное решение т.к никто не сможет изменить _func()
+            function _add() {
+                return x + y;
+            }
+
+            function _setX(val) {
+                x = val;
+            }
+
+            function _setY(val) {
+                y = val;
+            }
+
+            return {
+                // открытые доступа к определенным методам.
+                add: _add,
+                setX: _setX,
+                //setX: null,//не изменяет внутренние функции
+                setY: _setY
+            }
+        }());
+
+    </script>
+
+    <script>
+        (function () {
+            var calc = App.util.calc;
+
+            calc.setX(2);
+            calc.setY(3);
+
+            document.write(calc.add(), "<br/>");
+            document.write(calc._setX, "<br/>");
+
+        }());
+
+        /*
+        5
+        undefined
+        */
+    </script>
+</body>
+</html>

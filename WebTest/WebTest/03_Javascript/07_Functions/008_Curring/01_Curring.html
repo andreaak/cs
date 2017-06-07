@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Частичное применение. Каррирование.</title>
+</head>
+<body>
+    <script>
+        /* 
+        частичное применение - передача в функцию не всех аргументов, а только части.
+        процесс, в результате которого появляется новая функция, 
+        обладающая возможностью частичного применения, называется
+        каррированием (curring)
+        */
+
+        function add(x, y) {
+
+            var oldX = x, oldY = y;
+
+            if (typeof oldY === "undefined") { // частичное применение
+                return function (newY) {
+                    return oldX + newY;
+                }
+            }
+
+            return x + y; // полное применение
+        }
+
+        document.write(typeof add(10) + "<br />"); // function
+
+        // вызывая add(10) мы получаем новую функцию, которая в замыкании хранит значения переменной oldX
+        // после этого мы запускаем новую функцию и передаем ей значение 20
+        var r = add(10)(20); // 30
+        document.write(r + "<br />");
+        
+        var add20 = add(20);
+
+        var r1 = add20(1); // 21
+        var r2 = add20(2); // 22
+        var r3 = add20(3); // 23
+
+        document.write(r1 + "<br />");
+        document.write(r2 + "<br />");
+        document.write(r3 + "<br />");
+    </script>
+</body>
+</html>
+

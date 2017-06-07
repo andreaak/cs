@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Заимствование конструктора</title>
+
+    <script>
+
+        // родительский конструктор
+        function Parent(name) {
+            this.name = name || "Adam";
+            this.test = function() {
+                
+            }
+        }
+
+        // дополнительное поведение добавленное в прототип.
+        Parent.prototype.say = function () {
+            document.write("Hello my name is ", this.name, "<br/>");
+        }
+
+        // дочерний конструктор.
+        function Child(name_) {
+            /*
+            Вызов конструктора Parent с передачей ссылки на пустой объект, 
+            который должна заполнить данная функция конструктор.
+            По сути в этом конструкторе копируются все свойства из объекта Parent в объект Child.
+            */
+            Parent.apply(this, arguments);
+        }
+
+
+        var kid = new Child("Ivan");
+        document.write(kid.name, "<br/>");
+        document.write(kid.test, "<br/>");
+        document.write(kid.say, "<br/>");
+
+        /*
+        Недостатки шаблона:
+        Не наследуются свойства и методы прототипа родителя, 
+        вызвать метод say на объекте kid сейчас не возможно.
+        */
+        /*
+        Ivan
+        function () { }
+        undefined
+        */
+    </script>
+</head>
+<body>
+</body>
+</html>

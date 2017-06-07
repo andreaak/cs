@@ -1,9 +1,12 @@
 ﻿<!--
 
     Функция - это блок кода, который можно многократно вызывать на исполнение.
-    При этом функции можно передавать аргументы (параметры) с которыми она будет работать.
-    Также можно вызывать функцию без параметров.
-    В теле функции можно работать с переменными, читать и изменять их.
+
+    Функции в JS - это объекты.
+        * Могут создаваться динамически в процессе выполения.
+        * Могут присваиваться переменным.
+        * Могут передаваться в качестве параметров в другие функции.
+        * Могут иметь собственные свойства и методы.
 
     Для создания функции используется следующая семантика:
         function имя_функции ( аргументы ) { тело функции }
@@ -24,46 +27,45 @@
         MyFirstFunction();
         document.write("<br/>");
 
-        //Function declaration Функции объявленные таким образом
-        //могут использоваться в любой части программы
+        /*
+        Function declaration(функция-объявление)
+        Функции объявленные таким образом могут использоваться в любой части программы
+        */
         function MyFirstFunction() {
             document.write("Hello from MyFirstFunction!<br/>");
-            document.write("How are you?<br/>");
-            document.write("Goodbye!<br/>");
             test = "Test var";
         }
 
-        function MySecondFunction() {
-            document.write("Hello from MySecondFunction!<br/>");
-            document.write(test + "<br/>");
-        }
-
-        //
         //f3();//Uncaught TypeError: f3 is not a function
 
-        //Function expression(Функциональное выражение) 
-        //Функции объявленные таким образом могут использоваться только после объявления
+        /*
+        Function expression(именованная функция-выражение)
+        Функции объявленные таким образом могут использоваться только после объявления
+        */
         var f3 = function myThirdFunction() {
             document.write("Hello from MyThirdFunction!<br/>");
             document.write(test + "<br/>");
         }
 
-        // Вызов функций.
+        f3();
 
-        MySecondFunction();
         document.write("<br/>");
 
-        f3();
+        // функция-выражение или анонимная функция
+        var f4 = function (a, b) {
+            document.write("Hello from anonym function!<br/>");
+            return a + b;
+        }
+
+        document.write(f4(1, 6));
         /*
         Hello from MyFirstFunction!
-        How are you?
-        Goodbye!
-
-        Hello from MySecondFunction!
-        Test var
 
         Hello from MyThirdFunction!
         Test var
+
+        Hello from anonym function!
+        7
         */
 
     </script>

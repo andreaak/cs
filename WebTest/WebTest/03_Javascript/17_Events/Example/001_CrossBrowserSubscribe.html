@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Определение функций на этапе инициализации</title>
+</head>
+<body>
+    <script>
+        var utils = {
+            addListener: null,
+            removeListener: null
+        };
+
+        if (typeof window.addEventListener === "function") {
+            utils.addListener = function (e, type, fn) {
+                e.addEventListener(type, fn, false);
+            }
+            utils.removeListener = function (e, type, fn) {
+                e.removeEventListener(type, fn, false);
+            }
+        }
+
+        else if (typeof document.attachEvent === "function") {
+            utils.addListener = function (e, type, fn) {
+                e.attachEvent("on" + type, fn);
+            }
+            utils.removeListener = function (e, type, fn) {
+                e.detachEvent("on" + type, fn);
+            }
+        }
+
+        else {
+            utils.addListener = function (e, type, fn) {
+                e["on" + type] = fn;
+            }
+            utils.removeListener = function (e, type, fn) {
+                e["on" + type] = null;
+            }
+        }
+
+
+        // Реализация методов объекта utils не оптимальна, так как при каждом вызове addListener или removeListener
+        // выполняется один и тот же набор проверок.
+
+        utils.addListener(window, "load", function () {
+            var testBtn = document.getElementById("test"),
+                removeBtn = document.getElementById("removeHandler");
+
+            var text = document.querySelector("#text");
+
+            function say() {
+                text.innerHTML += "Hello world<br/>";
+            }
+
+            utils.addListener(testBtn, "click", say);
+
+            utils.addListener(removeBtn,
+                "click",
+                function () {
+                    utils.removeListener(testBtn, "click", say);
+                });
+        });
+
+    </script>
+
+    <button id="test">Тест</button>
+    <button id="removeHandler">Удалить обработчик</button>
+    <div id="text"></div>
+</body>
+</html>

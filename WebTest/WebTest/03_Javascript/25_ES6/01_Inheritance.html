@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Наследование через прототип ECMAScript 5</title>
+</head>
+<body>
+    <script>
+        var base = {
+            name: "Jhon"
+        };
+
+        // Шаблон наследования через прототип стал официальной частью языка в стандарте ECMAScript 5
+        var derived = Object.create(base);
+
+        alert(derived.name);
+
+        // первый параметр - объект свойства, которого необходимо наследовать.
+        // второй параметр - дополнительные свойства для нового объекта.
+        var derived2 = Object.create(base,
+            {
+                age: { value: 30 }
+            }
+        );
+
+        alert(derived2.name);
+        alert(derived2.age);
+
+        alert(derived2.hasOwnProperty("name")); // false
+        alert(derived2.hasOwnProperty("age")); // true
+    </script>
+</body>
+</html>
+

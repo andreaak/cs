@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Шаблон модуль</title>
+</head>
+<body>
+    <!--Сценарий для создания пространства имен-->
+    <script src="../01_Namespace/namespaceCreation.js"></script>
+    <script src="moduleTemlate.js"></script>
+
+    <script>
+        //// определяем пространство имен
+        //App.define("util.calc");
+
+        //// Определение модуля
+        //// инициализируем объект используя немелденно вызываемую функцию.
+        //App.util.calc = (function () {
+        //    // закрытые члены
+        //    var x, y;
+
+        //    return {
+        //        // открытые члены
+        //        add: function () {
+        //            return x + y;
+        //        },
+        //        setX: function (val) {
+        //            x = val;
+        //        },
+        //        setY: function (val) {
+        //            y = val;
+        //        }
+        //    }
+        //}());
+
+    </script>
+
+    <script>
+        (function () {
+            var calc = App.util.calc;
+
+            calc.setX(2);
+            calc.setY(3);
+
+            document.write(calc.add());
+        }());
+
+        /*
+        5
+        */
+    </script>
+</body>
+</html>

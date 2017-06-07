@@ -10,13 +10,15 @@
             this.x = x;
             this.y = y;
 
-            // закрытое поле
-            var temp = 578;
 
             // метод экземпляра
             this.print = function () {
                 document.write("(" + this.x + ", " + this.y + ")<br />");
             }
+
+            // Закрытые поля и методы возможны только в функции-конструтор, но не в литерале
+            // закрытое поле
+            var temp = 578;
 
             // закрытый метод
             var privateMethod = function () {
@@ -49,32 +51,41 @@
         document.write("First point: ");
         p1.print();
 
-        //document.write("Private method call: ");
-        //p1.privateMethod();//Uncaught TypeError: p1.privateMethod is not a function
-        //document.write(p1.temp());//Uncaught TypeError: p1.temp is not a function
+        document.write("p1.MaxPointCount: ", p1.MaxPointCount, "<br/>");// undefined
+        document.write("Point.MaxPointCount: ", Point.MaxPointCount, "<br/>");// undefined
+        document.write("<br/>");
 
-        document.write("Test Private method call<br/>");
+        document.write("p1.privateMethod: ", p1.privateMethod, "<br/>");// undefined
+        //p1.privateMethod();//Uncaught TypeError: p1.privateMethod is not a function
+        document.write("p1.temp: ", p1.temp, "<br/>");// undefined
+
         p1.testPrivateMethod();
+        document.write("<br/>");
         p1.setMethod(444);
         p1.testPrivateMethod();
 
         /*
         First point: (300, 400)
-        Test Private method call
+        p1.MaxPointCount: undefined
+        Point.MaxPointCount: 100
+
+        p1.privateMethod: undefined
+        p1.temp: undefined
         Private method this point: (undefined, undefined)
         Private method point: (100, 200)
         Temp: 578
+
         Private method this point: (undefined, undefined)
         Private method point: (100, 200)
         Temp: 444
         */
+        document.write("<br/><br/>");
 
         document.write("Second point: ");
         var p2 = new Point(1000, 2000);
         p2.print();
 
         // работа с свойством и методом функции-конструктора.
-        Point.MaxPointCount = 10;
         document.write("getOrigin point: ");
         Point.getOrigin().print();
 

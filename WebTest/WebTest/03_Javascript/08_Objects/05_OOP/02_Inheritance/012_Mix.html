@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Смешивание</title>
+</head>
+<body>
+    <script>
+        /*
+        задача функции mix пройти по всем свойствам объектов,
+        которые были переданы через параметры, и объединить эти свойства в новом объекте
+        */
+        function mix() {
+            var arg, prop, child = {};
+            for (arg = 0; arg < arguments.length; arg++) {
+                for (prop in arguments[arg]) {
+                    if (arguments[arg].hasOwnProperty(prop)) {
+                        child[prop] = arguments[arg][prop];
+                    }
+                }
+            }
+
+            return child;
+        }
+
+        var ingredient1 = { eggs: 2 };
+        var ingredient2 = { butter: 1, salted: true };
+        var ingredient3 = { flour: "3 cups" };
+        var ingredient4 = { sugare: true };
+
+        var cake = mix(ingredient1, ingredient2, ingredient3, ingredient4);
+
+        // dir - отображает все свойства объекта.
+        var res = "";
+        for (var i in cake) {
+            res += (i + " = " + cake[i] + "<br/>");
+        }
+        document.write(res);
+        /*
+        eggs = 2
+        butter = 1
+        salted = true
+        flour = 3 cups
+        sugare = true
+        */
+    </script>
+</body>
+</html>

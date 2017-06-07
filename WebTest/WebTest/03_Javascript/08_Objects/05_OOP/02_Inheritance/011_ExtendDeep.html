@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Глубокое копирование</title>
+</head>
+<body>
+    <script>
+        function extendDeep(parent, child) {
+            var i,
+                toString = Object.prototype.toString,
+                aStr = "[object Array]";
+
+            child = child || {}; // проверка наличия второго аргумента.
+
+            for (i in parent) {
+                if (parent.hasOwnProperty(i)) {
+                    if (typeof parent[i] == "object") {
+                        child[i] = (toString.call(parent[i]) == aStr) ? [] : {};
+                        // рекурсивный вызов, для того что бы скопировать все свойства объекта
+                        // или элементы массива.
+                        extendDeep(parent[i], child[i]);
+                    }
+                    else {
+                        child[i] = parent[i];
+                    }
+                }
+            }
+
+            return child;
+        }
+
+        var base = {
+            id: "0",
+            name: "base object",
+            innerArray: [1, 2, 3]
+        };
+
+        var child = {};
+
+        extendDeep(base, child);
+
+        child.innerArray.push(4);
+        document.write("child.innerArray == base.innerArray: ",
+                        child.innerArray == base.innerArray, "<br/>");
+        document.write("base.innerArray: ", base.innerArray, "<br/>");
+        document.write("child.innerArray: ", child.innerArray, "<br/>");
+        /*
+        child.innerArray == base.innerArray: false
+        base.innerArray: 1,2,3
+        child.innerArray: 1,2,3,4
+        */
+    </script>
+</body>
+</html>

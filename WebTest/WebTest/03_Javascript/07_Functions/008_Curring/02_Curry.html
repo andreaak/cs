@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Каррирование.</title>
+</head>
+<body>
+    <script>
+        function curry(fn) {
+
+            var slice = Array.prototype.slice,
+                oldArgs = slice.call(arguments, 1); // отбрасываем первый аргумент
+
+            return function () {
+                var newArgs = slice.call(arguments),
+                    args = oldArgs.concat(newArgs);
+
+                return fn.apply(null, args); // вызываем функцию для, которой проводилось каррирование
+            }
+
+        }
+
+        function add(x, y) {
+            return x + y;
+        }
+
+        var add10 = curry(add, 10);
+        var r1 = add10(5);  // 15
+        var r2 = add10(10); // 20
+        
+        document.write(r1 + "<br />");
+        document.write(r2 + "<br />");
+
+        function sum(a, b, c) {
+            return a + b + c;
+        }
+
+        var newSum = curry(sum, 1, 2);
+        var r3 = newSum(5); // 8
+        document.write(r3);
+
+    </script>
+</body>
+</html>

@@ -19,7 +19,10 @@
         // базовая функция-конструктор
         function Human(name) {
             this.name = name;
-            this.talk = function () { document.write("Hello My Name is " + this.name + "<br />") }
+            this.some = "someField";
+            this.talk = function () {
+                document.write("Hello My Name is ", this.name, "<br />");
+            }
         }
 
         // производная функция конструктор
@@ -35,32 +38,30 @@
 
         // Создаем экземпляр родителя
         var human = new Human("name");
-        //human.talk();
+        human.talk();
 
         // наследуем Student и Worker от Human устанавливая функцию как прототип.
         Student.prototype = human;
         Worker.prototype = human;
 
         var alex = new Student("Alexander");
-        var andrew = new Worker("Andrew");
-
-        document.write("<br />Student<br />");
-
         alex.talk();
-        document.write(alex.school);
+        document.write(alex.some, "<br />");
+        document.write(alex.school, "<br /><br />");
 
-        document.write("<br />Worker<br />");
-
+        var andrew = new Worker("Andrew");
         andrew.talk();
-        document.write(andrew.speciality);
+        document.write(andrew.some, "<br />");
+        document.write(andrew.speciality, "<br /><br />");
 
         /*
-        Student
+        Hello My Name is name
         Hello My Name is Alexander
+        someField
         CBS school
 
-        Worker
         Hello My Name is Andrew
+        someField
         Software developer
         */
     </script>

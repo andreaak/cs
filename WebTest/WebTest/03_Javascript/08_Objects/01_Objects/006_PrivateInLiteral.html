@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Закрытые члены и литералы объектов</title>
+</head>
+<body>
+    <script>
+        var obj1;
+        (function () {
+            // закрытые члены
+            var name = "Jhon Doe";
+
+            // открытые члены
+            obj1 = {
+                getName: function () {
+                    return name;
+                }
+            }
+        })();
+
+        document.write(obj1.name + "<br />");//undefined
+        document.write(obj1.getName() + "<br />");//Jhon Doe
+
+        var obj2 = (function () {
+            // закрытые члены
+            var name = "Ivan Ivanov";
+
+            // открытые члены
+            return {
+                getName: function () {
+                    return name;
+                }
+            }
+        })();
+
+
+        document.write(obj2.name + "<br />");//undefined
+        document.write(obj2.getName() + "<br />");//Ivan Ivanov
+
+
+        /*
+        undefined
+        Jhon Doe
+        undefined
+        Ivan Ivanov
+        */
+
+    </script>
+</body>
+</html>

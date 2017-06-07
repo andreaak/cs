@@ -1,0 +1,63 @@
+﻿<!--
+
+            delete - оператор который способен удалить свойство в обьекте, 
+            для этого необходимо использовать его следующим образом:
+            delete  имя_обьекта.имя_свойства;
+
+            При обращении к свойству впоследствии будет возвращаться undefined.
+
+-->
+
+<html>
+<head>
+    <title>Оператор delete</title>
+
+    <script type="text/javascript">
+
+        var house = {
+            roof: "<img src='../../Images/Roof.gif'/><br/>",
+            secondFloor: "<img src='../../Images/SecondFloor.gif'/><br/>",
+            firstFloor: "<img src='../../Images/FirstFloor.gif'/><br/>",
+            basement: "<img src='../../Images/Basement.gif'/><br/>",
+            address: "<p style='color:green'>UK. London. Muswell Hill. N10<hr/>"
+        }
+
+        // Строительство дома.
+
+        if ("secondFloor" in house) {
+            // Удаление свойства secondFloor из объекта house.
+            delete house.secondFloor;
+        }
+
+        for (element in house) {
+            document.write(house[element]);
+        }
+
+        /*
+        С помощью оператора delete можно удалять элементы массивов по указанному индексу.
+        */
+
+        var array = new Array(0, 1, 2, 3, 4, 5, 6, 7);
+
+        document.write("Массив до удаления: ", array, "<br/>");
+
+        var index = 4;//prompt("Выберите индекс элемента для удаления: " + array.join(", "));
+
+        // Удаление элемента масива по указанному индексу.
+        delete array[index];
+        //array[index] = null;//аналог
+
+        document.write("Массив после удаления: ", array, "<br/>");
+
+        /*
+        Массив до удаления: 0, 1, 2, 3, 4, 5, 6, 7
+
+        Массив после удаления: 0, 1, 2, 3, , 5, 6, 7
+        */
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

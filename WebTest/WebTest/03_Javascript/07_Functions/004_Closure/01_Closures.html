@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Замыкание или closures</title>
+</head>
+<body>
+    <script>
+        function init() {
+            var str = "Hello World";
+
+            function displayStr() {
+                // вложенная функция имеет доступ к переменной str
+                alert(str);
+            }
+
+            displayStr();
+        }
+
+        init();
+
+        function makeFunc() {
+            var str = "Hello world";
+            function displayStr() {
+                alert(str);
+            }
+            // функция возвращается но не запускается.
+            return displayStr;
+        }
+
+        /* 
+        Замыкание - функция, в которой находятся переменные объявленные 
+        в не тела этой функции.
+        Замыкание - это функция и окружение, в которой была создана функция.
+        */
+        var myFunc = makeFunc();
+        myFunc();
+    </script>
+</body>
+</html>

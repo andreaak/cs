@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Подъем функций</title>
+</head>
+<body>
+    <script>
+
+        // window.myfunction = fn; window.foo = fn; window.bar = undefined;
+
+        function myfunction() {
+            foo(); 
+            bar(); // TypeError: bar is not a function
+        }
+        //with error
+        myfunction();
+
+        // функция-объявление
+        // имя foo и определение "поднимаються" вместе
+        function foo() {
+            document.write("foo function", "<br/>");
+        }
+
+        // анонимная функция
+        // "поднимается" только имя
+        var bar = function () {
+            document.write("bar function", "<br/>");
+        }
+        
+        //without error
+        //myfunction();
+
+        /*
+        foo function
+        */
+
+    </script>
+</body>
+</html>

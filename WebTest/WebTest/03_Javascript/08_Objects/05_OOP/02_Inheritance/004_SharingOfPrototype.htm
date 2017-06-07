@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Совместное использование прототипа</title>
+
+    <script>
+
+        // родительский конструктор
+        function Parent(name) {
+            this.name = name || "Adam";
+        }
+
+        // дополнительное поведение добавленное в прототип.
+        Parent.prototype.say = function () {
+            document.write("Hello my name is ", this.name, "<br/>");
+        }
+
+        function Child(name) {
+            Parent.apply(this, arguments);
+        }
+
+        inherit(Child, Parent);
+
+        function inherit(child, parent) {
+            child.prototype = parent.prototype;
+        }
+
+        var kid = new Child("Ivan");
+        kid.say();
+
+        Child.prototype.test = function() {
+            document.write("test() <br/>");
+        }
+        var parent = new Parent("Petr");
+        parent.test();
+        /*
+        Недостатки шаблона:
+        Все объекты используют один и тот же прототип, 
+        если один из дочерних объектов поменяет прототип 
+        это скажется на всех родительских объектах.
+        */
+
+        /*
+        Hello my name is Ivan
+        test() 
+        */
+    </script>
+</head>
+<body>
+</body>
+</html>

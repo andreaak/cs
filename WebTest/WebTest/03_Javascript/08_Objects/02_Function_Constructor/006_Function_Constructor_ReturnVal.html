@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Возвращаемое конструктором значение</title>
+</head>
+<body>
+    <script>
+        /*
+        Если вызвать функцию конструктор без использования ключевого слова new,
+        то контекст функции не будет ссылаться на новый пустой объект и вместо этого, контекст
+        будет указывать на глобальный объект window
+        При создании конструкторов придерживайтесь стиля именования, при котором,
+        имя конструктора начинается с заглавной буквы.
+        */
+        function User(name) {
+            this.name = name;
+        }
+
+        var a = new User("Ivan");
+        document.write(a.name, "<br/>");
+
+        var b = User("Ivan");
+        document.write("b = ", b, "<br/>");
+        document.write("window.name = ", window.name, "<br/>");
+        /*
+        Ivan
+        b = undefined
+        window.name = Ivan
+        */
+
+        document.write("<br/><br/>");
+        /*
+        Шаблоны принудительного использования ключевого слова new
+        */
+
+        // Данная функция всегда будет возвращать объект даже если будет вызвана без ключевого слова new
+        // Недостаток заключается в том, что будет утеряна связь с прототипом.
+        function User2(name) {
+            var that = {};
+            that.name = name;
+            return that;
+        }
+
+        var a2 = new User2("Ivan2");
+        document.write(a2.name, "<br/>");
+
+        // без ключевого слова new
+        var b2 = User2("Ivan2");
+        document.write("b = ", b2, "<br/>");
+        document.write("window.name = ", window.name, "<br/>");
+
+        /*
+        Ivan2
+        b = [object Object]
+        window.name = Ivan
+        */
+
+        document.write("<br/><br/>");
+
+        function User3(name) {
+            // Если конструктор вызван без ключевого слова new, this это window.
+            // в таком случае вызывается этот же конструктор но с ключевым словом new
+            if (!(this instanceof User3)) {
+                return new User3(name);
+            }
+
+            this.name = name;
+        }
+
+        var a3 = new User3("Ivan");
+        document.write(a3.name, "<br/>");
+
+        // без ключевого слова new
+        var b3 = User3("Ivan");
+        document.write("b = ", b3, "<br/>");
+        document.write("window.name = ", window.name, "<br/>");
+
+        /*
+        Ivan
+        b = [object Object]
+        window.name = Ivan
+        */
+    </script>
+</body>
+</html>

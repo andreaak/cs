@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Немедленно вызываемая функция</title>
+</head>
+<body>
+    <script>
+        
+        // немедленно вызываемая функция. Вариант 1.
+        (function () {
+            document.write("Hello world", "<br/>");
+        }());
+        
+        // немедленно вызываемая функция. Вариант 2.
+        (function () {
+            document.write("Hello world", "<br/>");
+        })();
+        document.write("<br/>");
+
+
+        /*
+        функция представляет локальную область видимости - 
+        все переменные которые созданы в следующей функции 
+        не добавляться в глобальную область видимости.
+        Функция самостоятельно запускается и не требует имени, 
+        соответственно в этом примере нет ни одной глобальной переменной.
+        */
+        (function () {
+            var days = ["воскресень", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"],
+                today = new Date(),
+                msg = "Сегодня " + days[today.getDay()];
+            i = 5;//global variable
+            document.write(msg, "<br/>");
+        }());
+
+        document.write("i = ", i, "<br/>");
+        document.write("<br/>");
+
+        // Данная функция принимает при вызове ссылку на глобальный объект.
+        // Это позволяет обращаться к глобальному объекту без использования свойства window.
+        // Это позволяет использовать эту функцию в средах, отличных от браузера
+        (function (global) {
+
+            global.document.write("Hello world", "<br/>");
+
+        }(this));
+        document.write("<br/>");
+
+        var obj = {
+            // немедленно вызываемая функция может использоваться при задании значений
+            // свойств объектов.
+            name: (function () {
+                var fName = "Ivan",
+                    lName = "Ivanov";
+
+                return fName + " " + lName;
+            }()),
+
+            sayHello: function () {
+                document.write("Hello my name is ", this.name, "<br/>");
+            }
+        };
+
+        obj.sayHello();
+
+        /*
+        Hello world
+        Hello world
+
+        Сегодня вторник
+        i = 5
+
+        Hello world
+
+        Hello my name is Ivan Ivanov
+        */
+    </script>
+</body>
+</html>

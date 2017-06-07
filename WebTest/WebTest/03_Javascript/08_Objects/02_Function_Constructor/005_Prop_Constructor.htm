@@ -1,0 +1,72 @@
+﻿<!--
+    constructor - свойство, которое хранит ссылку на функцию-конструктор,
+    через которую был создан объект.
+-->
+
+<html>
+<head>
+    <title>Свойство constructor</title>
+
+    <script type="text/javascript">
+
+        // Создаем несколько обьектов используя различные конструкторы
+        var MyArray = new Array(10);
+        var b = ["Hello", "world", "!"];
+        var MyDate = new Date();
+        var MyString = new String("Some string value");
+        var MyObj = new Object();
+        var MyFunc = new Function("x", "y", "return x + y;");
+
+        var MyCtor = function (x, y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        var MyCtorObject = new MyCtor(12, 3);
+
+        // Создаем функцию для вывода содержимого свойства constructor аргумента
+
+        function showCtor(obj, name) {
+            document.write("Конструктор объекта " + name + " - " + obj.constructor + "<br />");
+        }
+
+        showCtor(MyArray, "MyArray");
+        showCtor(MyDate, "MyDate");
+        showCtor(MyString, "MyString");
+        showCtor(MyObj, "MyObj");
+        showCtor(MyFunc, "MyFunc");
+        showCtor(MyCtorObject, "MyCtorObject");
+        document.write("<br />");
+
+        // Вызываем конструктор с помощью которого был создан объект MyDate
+        var someNewObject = new MyDate.constructor();
+
+        document.write("Значение обьекта someNewObject: " + someNewObject , "<br />");
+
+        document.write(typeof MyArray + "<br />");
+        document.write((MyArray.constructor === Array) + "<br />");
+
+        document.write(typeof b + "<br />");
+        document.write((b.constructor === Array) + "<br />");
+
+        /*
+        Конструктор объекта MyArray - function Array() { [native code] }
+        Конструктор объекта MyDate - function Date() { [native code] }
+        Конструктор объекта MyString - function String() { [native code] }
+        Конструктор объекта MyObj - function Object() { [native code] }
+        Конструктор объекта MyFunc - function Function() { [native code] }
+        Конструктор объекта MyCtorObject - function (x, y) { this.x = x; this.y = y; }
+
+        Значение обьекта someNewObject: Tue Jun 06 2017 12:10:45 GMT+0300 (FLE Daylight Time)
+        object
+        true
+        object
+        true
+        */
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

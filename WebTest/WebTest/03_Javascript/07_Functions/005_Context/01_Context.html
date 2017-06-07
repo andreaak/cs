@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Context</title>
+    <script>
+        // Контекст - объект, на который указывает ключевое слово this в момент вызова функции.
+        function contextTest1() {
+            document.write(this === window, "<br/>");
+            document.write(this === obj, "<br/>");
+        }
+
+        // При вызове функции контекстом является глобальный объект winodw
+        contextTest1();
+
+        document.write("<br/>");
+
+        var obj = {};
+        obj.test = contextTest1;
+
+        // При вызове метода, контекстом функции является объект, на котором произошел вызов
+        obj.test();
+
+        document.write("<br/>");
+
+        function ContextTest3() {
+            document.write(this instanceof ContextTest3, "<br/>");
+        }
+
+        // При вызове функции с ключевым словом new контекстом будет новый пустой объект
+        new ContextTest3();
+
+        /*
+        true
+        false
+
+        false
+        true
+
+        true
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

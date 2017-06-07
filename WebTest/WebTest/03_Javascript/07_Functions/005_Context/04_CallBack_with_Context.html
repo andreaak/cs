@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Пример функции обратного вызова</title>
+</head>
+<body>
+    <p>
+        Paragraph 1
+    </p>
+    <p>
+        Paragraph 2
+    </p>
+    <p>
+        Paragraph 3
+    </p>
+    <p>
+        Paragraph 4
+    </p>
+    <p>
+        Paragraph 5
+    </p>
+    <p>
+        Paragraph 6
+    </p>
+    <p>
+        Paragraph 7
+    </p>
+    <p>
+        Paragraph 8
+    </p>
+    <p>
+        Paragraph 9
+    </p>
+    <p>
+        Paragraph 10
+    </p>
+
+    <script>
+        // Для того что бы функция была максимально универсальной она только возвращает узлы документа не изменяя их.
+        function findNodes(callback, callbackObj) {
+            var nodes = [],
+                pArray = [],
+                found;
+
+            pArray = document.getElementsByTagName("p");
+
+            if (typeof callback != "function") {
+                callback = false;
+            }
+
+            for (var i = 0; i < pArray.length; i++) {
+                found = pArray[i];
+
+                if (callback) {
+                    // вызов функции на объекте callbackObj
+                    callback.call(callbackObj, found);
+                }
+
+                nodes.push(found);
+            }
+
+            return nodes;
+        }
+
+        var app = {};
+        app.color = "green";
+        app.borderStyle = "solid";
+        app.borderWidth = "1px";
+        // Функция для изменения найденного узла.
+        app.makeBorder = function (node) {
+            node.style.border = this.borderStyle + " " + this.borderWidth + " " + this.color;
+        }
+
+        // найти узлы и добавить им рамку
+        findNodes(app.makeBorder, app); 
+
+    </script>
+
+</body>
+</html>
+

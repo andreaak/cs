@@ -1,0 +1,104 @@
+﻿<!--
+
+    Объект – это составной тип данных,
+    он объединяет множество значений в единый модуль и
+    позволяет сохранять и извлекать значения по их именам.
+
+    1. Создание объекта через блок инициализации:
+        var имя_обьекта = {
+            имя_свойства: значение_свойства,
+
+            имя_свойства: значение_свойства,
+
+            methodName: function() {
+                    .....
+            }
+        }
+
+    Свойства объекта будут создаваться автоматически при первом обращении
+    по имени будущего свойства и присвоения ему значения.
+
+    Метод - это функция принадлежащая конкретному объекту,
+    которую вызвать ее можно только на этом объекте.
+    При этом такая функция описывается, как функция литерал присвоенная свойству.
+-->
+
+<html>
+<head>
+    <title>Литералы</title>
+
+    <script type="text/javascript">
+
+        // Создание объекта через блок инициализации.
+        var instance = {
+            propertyA: 222,
+            propertyB: 444,
+            //this.propertyC: 222,//Ошибка
+
+            // Метод getType в блоке инициализации обьекта.
+            getType: function () {
+                return this;//return instance
+            }
+        };
+        document.write("instance.propertyA = ", instance.propertyA, "<br/>");
+        document.write("instance.propertyB = ", instance.propertyB, "<br/>");
+        document.write("instance.getType() = ", instance.getType(), "<br/>");
+        console.log(instance.getType());
+        document.write("<br/>");
+
+        // Присвоение новых значений свойствам.
+        instance.propertyA = 333;       // 1 способ.
+        instance["propertyB"] = 555;    // 2 способ.
+        document.write("instance.propertyA = ", instance.propertyA, "<br/>");
+        document.write("instance.propertyB = ", instance.propertyB, "<br/>");
+        document.write("<br/>");
+
+        // во время выполнения программы можно:
+        // 1. добавлять новые свойства и методы в объект
+        // 2. менять свойства и методы объекта
+        // 3. удалять свойства и методы.
+
+        // добавляем к объекту свойство.
+        instance.name = "admin";
+        document.write("instance.name = ", instance.name, "<br/>");
+
+        // добавляем метод.
+        instance.getName = function () {
+            return instance.name;
+        }
+        document.write("instance.getName() = ", instance.getName(), "<br/>");
+
+        // изменение метода.
+        instance.getName = function () {
+            return "anonymous";
+        }
+        document.write("instance.getName() = ", instance.getName(), "<br/>");
+
+        // добавление еще одного свойства.
+        instance.newProperty = "Hello world";
+        document.write("instance.newProperty = ", instance.newProperty, "<br/>");
+
+        // удаление свойства.
+        delete instance.newProperty;
+        document.write("instance.newProperty = ", instance.newProperty, "<br/>");
+
+        /*
+        instance.propertyA = 222
+        instance.propertyB = 444
+        instance.getType() = [object Object]
+
+        instance.propertyA = 333
+        instance.propertyB = 555
+
+        instance.name = admin
+        instance.getName() = admin
+        instance.getName() = anonymous
+        instance.newProperty = Hello world
+        instance.newProperty = undefined
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

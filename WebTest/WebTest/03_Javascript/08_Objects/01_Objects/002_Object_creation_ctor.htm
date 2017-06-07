@@ -1,0 +1,89 @@
+﻿<!--
+
+    2. Помимо создания объекта через блок инициализации, можно реализовать
+    создание через специально предусмотренный конструктор Object().
+    Конструктор не принимает никаких параметров,
+    а перед ним обязательно должно указываться ключевое слово new.
+
+-->
+
+<html>
+<head>
+    <title>Обьекты</title>
+
+    <script type="text/javascript">
+
+        // Создаем обьект с именем point.
+        var point = new Object();
+
+        /*
+        Обращение к свойству x обьекта point.
+        Если свойство отсутствует то оно создается автоматически
+        и ему присваивается значение.
+        */
+        point.x = 10;
+
+        // Создаем свойство y и присваиваем ему значение.
+        point.y = 15;
+
+        // Добавляем к объекту метод.
+        point.f = function () {
+            document.write("x = ", point.x, "<br/>y = ", point.y, "<br/>");
+        };
+
+        point.f();
+
+        // К строковому объекту можно добавить свойство.
+        var strObj = new String("Hello");
+        strObj.myProp = 123;
+        document.write("strObj.myProp: ", strObj.myProp, "<br/>"); // 123
+
+        // Добавлять новые свойства к примитивным значениям невозможно
+        var str = "world";
+        // Значение временно преобразовывается в объект, для которого добавляется свойство.
+        str.myProp = 123;
+        // При обращении к str значение повторно преобразовывается в объект.
+        // Так как это новый временный объект, то он не содержит свойства myProp
+        document.write("str.myProp: ", str.myProp, "<br/>"); // undefined
+
+        var n = 5;
+        n.myProp = 123;
+        document.write("n.myProp: ", n.myProp, "<br/>"); // undefined
+
+        /*
+        Недостатки конструктора
+        Конструктор Object является фабрикой и меняет свое поведение
+        в зависимости от параметра
+        Конструктор Object может принимать параметр и делегировать вызов другому
+        встроенному конструктору, вернув в результате объект другого типа.
+        */
+
+        var obj = new Object();
+        document.write(obj.constructor === Object, "<br/>");    // true
+
+        var obj = new Object(1);
+        document.write(obj.constructor === Number, "<br/>");    // true
+
+        var obj = new Object("Hello world");
+        document.write(obj.constructor === String, "<br/>");    // true
+
+        var obj = new Object(true);
+        document.write(obj.constructor === Boolean, "<br/>");   // true
+
+        /*
+        x = 10
+        y = 15
+        strObj.myProp: 123
+        str.myProp: undefined
+        n.myProp: undefined
+        true
+        true
+        true
+        true
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

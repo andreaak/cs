@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Функция создания пространства имен</title>
+</head>
+<body>
+    <script src="namespaceCreation.js"></script>
+
+    <script>
+        (function () {
+            // создание пространства имен utils.ajax
+
+            var module1 = App.define("App.utils.ajax");
+            module1.test = function() {
+                document.write("test App.utils.ajax <br/>");
+            }
+            console.log(module1 === App.utils.ajax); // true
+            module1.test();
+
+            // создание пространства имен utils.dom
+
+            var module2 = App.define("utils.dom");
+            console.log(module2 == App.utils.dom); // true
+
+            console.dir(App); // отобразит свойства объекта (для Firebug или Chrome Dev Tools)
+        }());
+    </script>
+</body>
+</html>
+

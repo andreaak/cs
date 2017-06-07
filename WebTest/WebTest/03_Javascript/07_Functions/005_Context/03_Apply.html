@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+    Метод apply вызывается на функции и в качестве первого параметра принимает объект,
+    на который будет ссылаться ключевое слово this
+    в теле функции, а в качестве второго параметра массив аргументов,
+    который будет передан в функцию.
+    В данном случае функция print вызывается как метод объекта person.
+
+    print.apply(person, ["green", 3]);
+
+    Метод call аналогичен методу apply за исключением того,
+    что аргументы передаются не массивом, а отдельными параметрами.
+-->
+<head>
+    <title>Применение функций - apply и call</title>
+    <script>
+        window.onload = function () {
+
+            var person = {
+                firstName: "Ivan",
+                lastName: "Ivanov"
+            };
+
+            function print(color, count) {
+                var p = document.getElementById("output");
+                p.style.color = color;
+                for (var i = 0; i < count; i++) {
+                    p.innerHTML += "Hello, my name is " + this.firstName + "<br />";
+                }
+            }
+
+            // Применение функции для объекта person
+            print.call(person, "green", 3);
+
+            /*
+            Hello, my name is Ivan
+            Hello, my name is Ivan
+            Hello, my name is Ivan
+            */
+        }
+    </script>
+</head>
+<body>
+    <p id="output">
+    </p>
+</body>
+</html>

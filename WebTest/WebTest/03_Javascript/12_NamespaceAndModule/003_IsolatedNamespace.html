@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Исолированное пространство имен</title>
+</head>
+<body>
+    <script>
+        /*
+        Шаблон изолированного пространства имен
+        предоставляет каждому модулю окружение, изолированное от других модулей
+        и их пространств имен.
+        */
+
+        function App() {
+            // преобразовываем аргументы в массив.
+            var args = Array.prototype.slice.call(arguments),
+                // функция обратного вызова
+                callback = args.pop(),
+                // имена модулей могут передаться как один массив или через запятую.
+                modules = (args[0] && typeof args[0] == "string") ? args : args[0],
+                i;
+
+            // проверка, была ли функция вызвана с ключевым слововм new
+            if (!(this instanceof App)) {
+                return new App(modules, callback);
+            }
+
+            // свойства
+            this.productName = "Isolated Namespace Sample";
+            this.version = "1.0.0.0";
+
+            /*
+            если в параметр modules передано значение * или модули не указаны -
+            нужно подключить все доступные модули.
+            */
+            if (!modules || modules === "*") {
+                modules = [];
+                for (i in App.modules) {
+                    if (App.modules.hasOwnProperty(i)) {
+                        modules.push(i);
+                    }
+                }
+            }
+
+            // инициализация всех необходимых модулей
+            for (i = 0; i < modules.length; i++) {
+                // каждый модуль представленн функцией. см. код ниже.
+                App.modules[modules[i]](this);
+            }
+
+            callback(this);
+        }
+
+        // определение модулей.
+        App.modules = {}
+
+        // Модуль для работы с DOM
+        App.modules.dom = function (box) {
+            box.getElement = function (e) {
+                document.write("call to getElement with param " + e + "<br/>");
+            }
+            box.create = function (e) {
+                document.write("call to create with param " + e + "<br/>");
+            }
+            box.setStyle = function () {
+                document.write("call to getStyle<br/>");
+            }
+            box.getStyle = function () {
+                document.write("call to setStyle<br/>");
+            }
+        }
+
+        // Модуль для обработки событий
+        App.modules.events = function (box) {
+            box.addListener = function (elem, event) {
+                document.write("call to addListener<br/>");
+            }
+            box.removeListener = function (elem, event) {
+                document.write("call to removeListener<br/>");
+            }
+        }
+
+        // Модуль для отправки AJAX запросов
+        App.modules.ajax = function (box) {
+            box.sendRequest = function (data) {
+                document.write("call to sendRequest with param " + data + "<br/>");
+            }
+        }
+
+    </script>
+
+    <script>
+        // создание пространства имен, которое использует все модули ajax, events и dom
+        App(function (box) {
+            //box - библиотека с динамически подключенными функциями из указанных модулей
+            var e = box.getElement("div1");
+            box.addListener(e, "click");
+
+            box.sendRequest("hello world");
+            document.write(box.productName + " " + box.version + "<br/>");
+            /*
+            call to getElement with param div1
+            call to addListener
+            call to sendRequest with param hello world
+            Isolated Namespace Sample 1.0.0.0
+            */
+        });
+    </script>
+
+    <script>
+        // создание пространства имен, которое использует модуль ajax
+        App("ajax", function (box) {
+
+            box.sendRequest("request");
+            document.write(box.addListener, "<br/>");
+            /*
+            call to sendRequest with param request
+            undefined
+            */
+        });
+    </script>
+</body>
+</html>

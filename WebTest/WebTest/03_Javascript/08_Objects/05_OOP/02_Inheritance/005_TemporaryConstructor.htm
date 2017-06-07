@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Временный конструктор</title>
+
+    <script>
+
+        // родительский конструктор
+        function Parent(name) {
+            this.name = name || "Adam";
+        }
+
+        // дополнительное поведение добавленное в прототип.
+        Parent.prototype.say = function () {
+            document.write("Hello my name is ", this.name, "<br/>");
+        }
+
+        function Child(name) {
+            Parent.apply(this, arguments);
+            this.some = "someField";
+        }
+
+        inherit(Child, Parent);
+
+        function inherit(child, parent) {
+            // пустая функция, которая будет использоваться для задания прототипа дочернему объекту
+            var F = function () { };
+            // установка для прототипа новой функции прототипа родителя
+            F.prototype = parent.prototype;
+            child.prototype = new F();
+        }
+
+        var kid = new Child("Ivan");
+        kid.say();
+        document.write("kid.some: ", kid.some, "<br/>");
+
+        Child.prototype.test = function () {
+            document.write("test() <br/>");
+        }
+        var parent = new Parent("Petr");
+        document.write("parent.test: ", parent.test);
+
+        /*
+        Hello my name is Ivan
+        kid.some: someField
+        parent.test: undefined
+        */
+    </script>
+</head>
+<body>
+</body>
+</html>

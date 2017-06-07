@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Проблема с наследованием копированием свойств</title>
+</head>
+<body>
+    <script>
+        function extend(parent, child) {
+            var i;
+            child = child || {}; // проверка наличия второго аргумента.
+            for (i in parent) {
+                // если свойство является свойством объекта parent то копируем его.
+                if (parent.hasOwnProperty(i)) {
+                    child[i] = parent[i]; // объекты и массивы при копировании передаются по ссылке
+                }
+            }
+            return child;
+        }
+
+        var base = {
+            id: "0",
+            name: "base object",
+            innerArray: [1, 2, 3] // при использовании функции extend массив будет передан по ссылке.
+        };
+
+        var child = {};
+
+        extend(base, child);
+
+        child.innerArray.push(4);
+
+        document.write("child.innerArray == base.innerArray: ",
+                        child.innerArray == base.innerArray, "<br/>");
+        document.write("base.innerArray: ", base.innerArray, "<br/>");
+        document.write("child.innerArray: ", child.innerArray, "<br/>");
+        /*
+        child.innerArray == base.innerArray: true
+        base.innerArray: 1,2,3,4
+        child.innerArray: 1,2,3,4
+        */
+    </script>
+</body>
+</html>

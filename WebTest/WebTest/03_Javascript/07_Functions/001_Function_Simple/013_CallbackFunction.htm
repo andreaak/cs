@@ -1,8 +1,6 @@
 ﻿<!--
-
-          Функции передаваемые в качестве аргументов другой функции 
-          (CallBack Function - функции обратного вызова).
-
+    Функции передаваемые в качестве аргументов другой функции
+    (CallBack Function - функции обратного вызова).
 -->
 
 <html>
@@ -19,15 +17,10 @@
             return a - b;
         };
 
-
-
         function show(callBackFunction, a, b) {
-
             var result = callBackFunction(a, b);
-            document.write("<p>" + result);
-
+            document.write(result, "<b/>");
         };
-
 
         show(add, 10, 20);
 
