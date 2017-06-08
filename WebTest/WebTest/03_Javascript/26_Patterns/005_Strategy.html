@@ -1,20 +1,26 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <title>Стратегия (Strategy)</title>
 </head>
 <body>
     <script>
-        // Позволяет выбрать определенный алгоритм во время выполнения.
-        // При этом меняя алгоритм интерфейс объекта, который создан по шаблону стратегия, не меняется
-
+        /*
+        Позволяет выбрать определенный алгоритм во время выполнения.
+        При этом меняя алгоритм интерфейс объекта,
+        который создан по шаблону стратегия, не меняется
+        */
         var validator = {
             types: {},
             messages: [],
             config: {},
 
-            // проверяет корректность значений в объекте data в соответствии с настройками указанными в свойстве config
-            // возвращает true при наличии ошибок, false - если свойства объекта заполнены правильно.
+            /*
+            проверяет корректность значений в объекте data
+            в соответствии с настройками указанными в свойстве config
+            возвращает true при наличии ошибок,
+            false - если свойства объекта заполнены правильно.
+            */
             validate: function (data) {
                 var i,
                     msg,
@@ -35,7 +41,7 @@
                         if (!checker) {
                             throw {
                                 name: "ValidatorError",
-                                messgae: "Не найден валидатор " + type
+                                message: "Не найден валидатор " + type
                             }
                         }
 
@@ -103,23 +109,21 @@
         };
 
         var result = validator.validate(data1);
-        console.log(result); // false
+        document.write(result, "<br/>"); // false
 
         // проверка и вывод ошибок
         if (validator.validate(data1)) {
-            console.dir(validator.messages);
+            document.write(validator.messages, "<br/>");
         }
 
         result = validator.validate(data2);
-        console.log(result); // true
+        document.write(result, "<br/>"); // true
 
         // проверка и вывод ошибок
         if (validator.validate(data2)) {
-            console.dir(validator.messages);
+            document.write(validator.messages, "<br/>");
         }
 
     </script>
 </body>
 </html>
-
-

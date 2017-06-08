@@ -45,7 +45,7 @@
             return this.width * this.height;
         }
 
-        // Свойство прототпа, будет доступно всем экземплярам
+        // Свойство прототипа, будет доступно всем экземплярам
         Rectangle.prototype.name = "RECTANGLE";
 
         var rect = new Rectangle(100, 50);
@@ -57,14 +57,13 @@
         document.write("Площадь прямоугольника 2: " + rect2.getArea() + "<br/>");
         document.write("Имя прямоугольника 2: " + rect2.name + "<br />");
 
-
         document.write("Name: " + rect.toStr() + "<br/>");
 
         /*
         При попытке смены значения, которое было унаследовано от прототипа,
         в объекте будет создана копия свойства (свойство прототипа не изменится).
         Значение в прототипе может быть измененно
-        только черзе операцию Rectangle.prototype.name
+        только через операцию Rectangle.prototype.name
         */
         rect.name = "first rectangle";
         document.write("После смены имени объекта rect1<br/>");
