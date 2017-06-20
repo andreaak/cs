@@ -6,8 +6,9 @@
     max-width:900px;
     border:solid 4px white;
 }
-header
+.header
 {
+    
     display:block;
     background-color:Orange;
     color:White;
@@ -30,12 +31,12 @@ h4
     left:-140px;
     top:-350px;
 }
-nav
+#nav
 {
     width:25%;
     float:left;    
 }
-nav a:link, nav a:visited
+#nav a:link, #nav a:visited
 {
     display:block;
     font-weight:bold;
@@ -43,18 +44,18 @@ nav a:link, nav a:visited
     text-decoration:none;
     margin:5px;    
 }
-nav a:hover
+#nav a:hover
 {
     color:White;
     background-color:Orange;    
 }
-section
+.section
 {
     display:block;
     width:50%;
     float:left;    
 }
-article header
+div.header
 {
     /*-webkit - для Chrome и Safari*/
     -webkit-border-radius:10px;
@@ -63,24 +64,26 @@ article header
     border-radius:10px;
     padding:5px;
 }
-article p
+.article p
 {
     margin:10px;    
 }
-aside
+#aside
 {
     float:left;
     width:25%;    
 }
-aside p
+#aside p
 {
     margin:15px;    
 }
-footer
-{
-    clear:both;    
-    color:white;
-    background-color:Orange;
-    text-align:center;
-    padding:15px;
+#footer {
+    clear: both;
+    color: white;
+    background-color: Orange;
+    text-align: center;
+    padding: 15px;
 }
+ span {
+     font-weight: bolder;
+ } 
