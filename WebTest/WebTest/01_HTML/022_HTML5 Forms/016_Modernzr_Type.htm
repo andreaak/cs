@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование Modernizr</title>
+    <script src="/00_Libs/Modernizr.js"></script>
+    <script src="/04_jQuery/00_Libs/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+    <link href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" rel="stylesheet" />
+</head>
+<body>
+    <form>
+        <p>
+            <label>
+                Дата рождения
+                <input type="date" name="dob" id="dob" /></label>
+        </p>
+        <p>
+            <input type="submit" value="Отправить" />
+        </p>
+    </form>
+    <script>
+        if (!Modernizr.inputtypes.date) {
+            $("#dob").datepicker();
+        }
+    </script>
+</body>
+</html>

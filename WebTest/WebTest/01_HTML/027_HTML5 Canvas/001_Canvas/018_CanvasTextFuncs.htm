@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>text functions</title>
+    <script type="text/javascript">
+        function draw() {
+            var context = document.getElementById("canvas").getContext("2d");
+            context.beginPath();
+            context.moveTo(0, 100);
+            context.lineTo(300, 100);
+            context.stroke();
+            // настройка шрфита
+            // font: [font-style||font-variant||font-weight] font-size [/line-height] font-family | inherit
+            context.font = "bold 24px Segoe UI";
+            context.textBaseline = "alphabetic";
+
+            var text = "HTML5 Rocks!";
+            var w = context.measureText(text);
+            context.fillText(text, (context.canvas.width - w.width) / 2, 98);
+        }
+
+        if (window.addEventListener)
+            window.addEventListener("load", draw, true);
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300" style="border: solid 1px black;">
+    </canvas>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿<!--
+    Свойство float определяет по какому краю будет выравниваться элемент и как он будет обтекаем другими элементами.
+    float - позиционирование при котором:
+        1. Любой элемент становится блочным;
+        2. Его размеры определаются его контентом
+        3. Блочные неплавающие элементы его не учитывают а строчные элементы его обтекают;
+        4. Блочные неплавающие элементы его учитывают при указании свойства clear;
+        5. Float элементы учитывают положение друг друга.
+        6. У Плавающих элементов Marging Collapse не происходит;
+
+    Может принимать 3 значения:
+        left - элемент выравнивается по левому краю и будет обтекаем с правой стороны.
+        right - элемент выравнивается по правому краю и будет обтекаем с левой стороны.
+        none – обтекание элемента не задается.
+-->
+<html>
+<head>
+    <title>Свойство Clear</title>
+    <style type="text/css">
+        div {
+            width: 100%;
+            height: 100px;
+            background-color: black;
+            border: 1px solid;
+            margin: 5px;
+        }
+
+            div.item1 {
+                background-color: aqua;
+            }
+
+            div.item2 {
+                background-color: Yellow;
+                float: left;
+                margin: 30px;
+                width: 100px;
+            }
+
+            div.item3 {
+                background-color: Red;
+                float: left;
+                margin: 30px;
+                width: 100px;
+            }
+
+            div.item4 {
+                background-color: aquamarine;
+            }
+
+            div.clear {
+                background-color: coral;
+                clear: both;
+            }
+
+        span {
+            border: 1px solid black;
+            background-color: antiquewhite;
+        }
+
+        .spanLeft {
+            float: left;
+            margin: 10px;
+            /*width: 100px;
+            height: 100px;*/
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="item1">Div 1</div>
+    <div class="item2">Float Left 2 No Marging Collapse</div>
+    <div class="item3">Float Left 3 учитывают положение друг друга</div>
+    <div class="item4">Div 4 неплавающие элементы его не учитывают</div>
+    <div class="clear">Clear 5 неплавающие элементы его учитывают при указании свойства clear</div>
+    <span>Span 6 строчные элементы его обтекают</span>
+    <span class="spanLeft">Span left 7 становится блочным</span>
+    <div class="item1">Div 8 неплавающие элементы его не учитывают</div>
+</body>
+</html>

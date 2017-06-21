@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Shadows</title>
+    <script type="text/javascript">
+        function draw() {
+            var context = document.getElementById("canvas").getContext("2d");
+            context.font = "bold 40px Segoe UI";
+            context.fillStyle = "Orange";
+            context.textBaseline = "alphabetic";
+
+            context.shadowColor = "rgba(0, 0, 0, 0.2)";
+            context.shadowOffsetX = 5;
+            context.shadowOffsetY = 5;
+            context.shadowBlur = 10;
+
+            var text = "HTML5 Rocks!";
+            var w = context.measureText(text);
+            context.fillText(text, (context.canvas.width - w.width) / 2, 100);
+        }
+
+        if (window.addEventListener)
+            window.addEventListener("load", draw, true);
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300" style="border: solid 1px black;">
+    </canvas>
+</body>
+</html>

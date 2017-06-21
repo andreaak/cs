@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<!--
+
+-->
+
+<html>
+<head>
+    <title>«Плавающие» элементы — правило float</title>
+    <style type="text/css">
+        div {
+            width: 100%;
+            height: 100px;
+            background-color: coral;
+            border: 1px solid;
+        }
+
+            div.overflow {
+                background-color: aqua;
+                overflow: hidden;
+            }
+
+        .nooverflow {
+            /*
+            margin не работает т.к float элемент не в потоке документа.
+            Нужно ставить margin в float элементе
+
+            margin-left:100px;
+            */
+            background: #cfc;
+            /*overflow: hidden;*/
+        }
+
+        span {
+            border: 1px solid black;
+            background-color: antiquewhite;
+        }
+
+        .spanLeft {
+            float: left;
+            margin: 10px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <span class="spanLeft">Span float 1 Span float 1 Span float 1 Span float 1</span>
+    <div class="nooverflow">
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+        No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3 No Overflow 3
+    </div>
+
+    <div class="clear">Clear 4</div>
+    <br /><br /><br />
+
+    <span class="spanLeft">Float Left Span 5</span>
+    <div class="overflow">
+        Overflow Hidden 6 Overflow Hidden 6 Overflow Hidden 6 Overflow Hidden 6 Overflow Hidden 6
+        Overflow Hidden 6 Overflow Hidden 6 Overflow Hidden 6 Overflow Hidden 6 Overflow Hidden 6
+    </div>
+
+</body>
+</html>
