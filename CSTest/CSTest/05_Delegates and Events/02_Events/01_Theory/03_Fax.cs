@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup
+namespace CSTest._05_Delegates_and_Events._02_Events._01_Theory
 {
     internal sealed class Fax
     {
@@ -25,7 +25,7 @@ namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup
             // Обычно расположенный здесь код отправляет сообщение по факсу
             // Тестовая реализация выводит информацию на консоль
             Debug.WriteLine("Faxing mail message:");
-            Debug.WriteLine(" From={0}, To={1}, Subject={2}",
+            Debug.WriteLine("From={0}, To={1}, Subject={2}",
                 e.From, e.To, e.Subject);
         }
 

@@ -179,7 +179,7 @@ namespace CSTest._24_Closure
         {
             var names = new []{"First", "Second", "Third"};
 
-            foreach (var name in names)
+            foreach (string name in names)
             {
                 Task.Factory.StartNew(() =>
                 {
@@ -222,10 +222,6 @@ namespace CSTest._24_Closure
         class Closure
         {
             public int i;
-            public void Action()
-            {
-                Debug.WriteLine(i);
-            }
         }
 
         //private sealed class GeneratedClass

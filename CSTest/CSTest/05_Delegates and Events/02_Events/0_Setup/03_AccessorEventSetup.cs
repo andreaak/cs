@@ -4,7 +4,7 @@ namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup.Accessors
 {
     delegate void TestAccessorEventHandler();
 
-    class AccessorEvent
+    class _03_AccessorEventSetup
     {
         TestAccessorEventHandler[] evnt = new TestAccessorEventHandler[3];
         public event TestAccessorEventHandler SomeEvent

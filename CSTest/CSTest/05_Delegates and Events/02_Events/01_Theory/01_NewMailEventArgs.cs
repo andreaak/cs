@@ -1,6 +1,6 @@
 using System;
 
-namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup
+namespace CSTest._05_Delegates_and_Events._02_Events._01_Theory
 {
 
     // Этап 1. Определение типа для хранения информации,

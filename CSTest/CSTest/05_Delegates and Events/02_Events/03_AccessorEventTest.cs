@@ -5,12 +5,12 @@ using NUnit.Framework;
 namespace CSTest._05_Delegates_and_Events._02_Events
 {
     [TestFixture]
-    public class _04_AccessorsTest
+    public class _03_AccessorEventTest
     {
         [Test]
         public void TestAccessorsEvents()
         {
-            var evt = new AccessorEvent();
+            var evt = new _03_AccessorEventSetup();
             var wOb = new W();
             var xOb = new X();
             var yOb = new Y();
