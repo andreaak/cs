@@ -14,72 +14,70 @@
 <head>
     <title>Div Position Absolute</title>
     <style type="text/css">
-        
-        div
-        {
-            width:150px;
-            height:150px;
-            border:1px solid black;
-        }
-        
-        div.absolute
-        {
-            margin:15px;
-            position:absolute;
+        div {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
         }
 
-        #Relative
-        {
-            top:200px;
-            left:200px;
-            border:1px dotted black;
-            position:relative;
-            background-color:#808080;
-        }
-    
-        #MisterGreen
-        {
-            z-index:3;
-            top:40px;
-            left:130px;
-            background-color:Green;
-        }
-    
-        #MisterRed
-        {
-            z-index:2;
-            top:20px;
-            left:100px;
-            background-color:Red;
-        }
-    
-        #MisterYellow
-        {
-            z-index:1;
-            background-color:Yellow;
+            div.absolute {
+                margin: 20px;
+                position: absolute;
+            }
+
+        #MisterRed {
+            z-index: 2;
+            top: 20px;
+            left: 100px;
+            background-color: Red;
         }
 
-        #MisterGreen2
-        {
-            z-index:1;
-            top:40px;
-            left:40px;
-            background-color:Green;
+        #MisterGreen {
+            z-index: 3;
+            top: 40px;
+            left: 130px;
+            background-color: Green;
         }
 
+        #MisterYellow {
+            z-index: 4;
+            background-color: Yellow;
+        }
+
+        #Relative {
+            top: 150px;
+            left: 150px;
+            border: 1px dotted black;
+            position: relative;
+            background-color: #808080;
+        }
+
+        #MisterGreen2 {
+            z-index: 1;
+            top: 40px;
+            left: 40px;
+            background-color: Green;
+        }
+
+        span {
+            float: left;
+        }
     </style>
 </head>
 <body>
-    <div>Static</div>
-    <div class="absolute" id="MisterGreen">top:40px left:130px</div>
-    <div class="absolute" id="MisterRed">top:20px left:100px</div>
-    <div class="absolute" id="MisterYellow">top:0 left:0</div>
-    <div style="border:1px dotted red; margin-top:200px;">
-        <div style="border:1px dotted black;" id="Relative">
-            Relative
-            <div class="absolute" id="MisterGreen2">top:40px left:40px</div>
+    <div><span>Static 1</span></div>
+    <div class="absolute" id="MisterGreen">Absolute 2 top:40px left:130px</div>
+    <div class="absolute" id="MisterRed">Absolute 3 top:20px left:100px</div>
+    <div class="absolute" id="MisterYellow">Absolute 4 Without top and left</div>
+    <div style="border: 1px dotted blue; "><span>Static 5</span></div>
+    <div style="border: 1px dotted red; margin-top: 50px">
+        <span>Static 6</span>
+        <div style="border: 1px dotted black;" id="Relative">
+            Relative 6.1
+            <div class="absolute" id="MisterGreen2">Absolute 6.1.1 top:40px left:40px</div>
         </div>
+
     </div>
-    
+
 </body>
 </html>
