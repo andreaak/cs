@@ -72,9 +72,11 @@
     <p id="status">
     </p>
     <script type="text/javascript">
-        // Разовое получение данных о местоположении.
-        // updateLocation - метод, который запуститься после получения данных о местоположении.
-        // handleError - метод запуститься в случае сбоя при получении местоположения.
+        /*
+        Разовое получение данных о местоположении.
+        updateLocation - метод, который запуститься после получения данных о местоположении.
+        handleError - метод запуститься в случае сбоя при получении местоположения.
+        */
         navigator.geolocation.getCurrentPosition(updateLocation, handleError);
 
         function updateLocation(position) {
