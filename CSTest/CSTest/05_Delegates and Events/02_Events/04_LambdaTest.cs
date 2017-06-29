@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using CSTest._05_Delegates_and_Events._02_Events._0_Setup;
 using NUnit.Framework;
 
 namespace CSTest._05_Delegates_and_Events._02_Events
@@ -10,7 +11,7 @@ namespace CSTest._05_Delegates_and_Events._02_Events
         [Test]
         public void TestEventsLambda1()
         {
-            LambdaEvent evt = new LambdaEvent();
+            _04_Lambda evt = new _04_Lambda();
 
             // Использовать лямбда-выражение в качестве обработчика событий, 
             evt.SomeEvent += (n) => Debug.WriteLine("Событие от лямбды получено. Значение равно " + n);
@@ -64,12 +65,12 @@ namespace CSTest._05_Delegates_and_Events._02_Events
         [Test]
         public void TestEventsLambda3()
         {
-            LambdaEvent obj = new LambdaEvent();
+            _04_Lambda obj = new _04_Lambda();
             int index = 5;
             LambdaEventHandler h = (i) => SomeMethod(index, i);
             obj.SomeEvent += h;
 
-            LambdaEvent obj2 = new LambdaEvent();
+            _04_Lambda obj2 = new _04_Lambda();
             int index2 = 4;
             LambdaEventHandler h2 = (i) => SomeMethod(index2, i);
             obj2.SomeEvent += h2;
@@ -80,9 +81,9 @@ namespace CSTest._05_Delegates_and_Events._02_Events
             obj2.SomeEvent -= h2;
 
 
-            LambdaEvent2[] objs = new LambdaEvent2[2];
-            objs[0] = new LambdaEvent2();
-            objs[1] = new LambdaEvent2();
+            _04_Lambda2[] objs = new _04_Lambda2[2];
+            objs[0] = new _04_Lambda2();
+            objs[1] = new _04_Lambda2();
 
             Action<int>[] acts = new Action<int>[2];
             for (int i = 0; i < 2; i++)
@@ -111,56 +112,6 @@ namespace CSTest._05_Delegates_and_Events._02_Events
         private void SomeMethod(int index, int i)
         {
             Debug.WriteLine("Index: {0}. Var: {1}", index, i);
-        }
-
-        delegate void LambdaEventHandler(int n);
-        // Объявить класс, содержащий событие, 
-        class LambdaEvent
-        {
-            public event LambdaEventHandler SomeEvent;
-            // Этот метод вызывается для запуска события, 
-            public void OnSomeEvent(int n)
-            {
-                if (SomeEvent != null)
-                    SomeEvent(n);
-            }
-        }
-
-        // Объявить класс, содержащий событие, 
-        class LambdaEvent2
-        {
-            public event Action<int> SomeEvent;
-            // Этот метод вызывается для запуска события, 
-            public void OnSomeEvent(int n)
-            {
-                if (SomeEvent != null)
-                    SomeEvent(n);
-            }
-        }
-
-        // Пример обработки событий, связанных с нажатием клавиш на клавиатуре. 
-        // Создать класс, производный от класса EventArgs и 
-
-        // хранящий символ нажатой клавиши. 
-        class KeyEventArgs : EventArgs
-        {
-            public char ch;
-        }
-
-        // Объявить класс события, связанного с нажатием клавиш на клавиатуре, 
-        class KeyEvent
-        {
-            public event EventHandler<KeyEventArgs> KeyPress;
-            // Этот метод вызывается при нажатии клавиши, 
-            public void OnKeyPress(char key)
-            {
-                KeyEventArgs k = new KeyEventArgs();
-                if (KeyPress != null)
-                {
-                    k.ch = key;
-                    KeyPress(this, k);
-                }
-            }
         }
     }
 }

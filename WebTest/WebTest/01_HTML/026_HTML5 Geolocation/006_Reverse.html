@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Получение координат по адресу</title>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script>
+        window.onload = function () {
+            // проверяем нажатие кнопки 
+            document.getElementById('go').onclick = function () {
+
+                // получаем введенный пользователем адрес 
+                var address = document.getElementById('address').value;
+
+                if (address) {
+                    // используем API Google Maps для геокодирования адреса
+                    // настраиваем объект Geocoder
+                    var geocoder = new google.maps.Geocoder();
+
+                    // возвращаем координаты
+                    geocoder.geocode({ 'address': address }, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+
+                            if (results[0]) {
+                                // выводим результаты на экран 
+                                printLatLong(
+                                    results[0].geometry.location.lat(),
+                                    results[0].geometry.location.lng());
+                            } else {
+                                error('Google не возвратил результатов.');
+                            }
+
+                        } else {
+                            error("Геокодирование завершилось ошибкой - " + status);
+                        }
+                    });
+                }
+                else {
+                    error('Пожалуйста, введите адрес');
+                }
+            };
+        };
+
+        // выводим значения широты и долготы 
+        function printLatLong(lat, long) {
+            document.getElementById("latOutput").innerHTML = lat;
+            document.getElementById("longOutput").innerHTML = long;
+        }
+
+        function error(msg) {
+            alert(msg);
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <label for="address">
+            Введите адрес:
+        <input type="text" id="address" /></label>
+
+        <div>
+            <input type="button" id="go" value="Определить широту и долготу" />
+        </div>
+
+        <br />
+
+        <table>
+            <tr>
+                <td>Широта:</td>
+                <td id="latOutput"></td>
+            </tr>
+            <tr>
+                <td>Долгота:</td>
+                <td id="longOutput"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Canvas Loader</title>
+    <script src="http://padolsey.net/p/Sonic/repo/src/sonic.js"></script>
+</head>
+<body>
+    <script>
+        // Создание объекта Sonic для отображения анимированных элементов в canvas
+        var square = new Sonic({
+            width: 100,
+            height: 100,
+
+            fillColor: '#000',
+
+            // Массив определяющий движение анимации
+            path: [['line', 10, 10, 90, 10], ['line', 90, 10, 90, 90], ['line', 90, 90, 10, 90], ['line', 10, 90, 10, 10]]
+        });
+
+        // запуск анимации
+        square.play();
+
+        // добавление анимации в документ
+        document.body.appendChild(square.canvas);
+    </script>
+    <br />
+    <a href="http://padolsey.net/p/Sonic/repo/demo/demo.html">Дополнительные примеры</a><br />
+    <a href="https://github.com/padolsey/Sonic">Документация</a>
+</body>
+</html>

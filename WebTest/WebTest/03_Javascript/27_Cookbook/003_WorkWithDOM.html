@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Изменение элементов DOM</title>
+    <style>
+        .test {
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="test">Hello world</div>
+    <script>
+        // АНТИШАБЛОН
+        var e = document.getElementById("test");
+        //e.style.padding = "10px";
+        //e.style.border = "1px solid black";
+
+        console.time("2");
+        for (var i = 0; i < 1000; i++) {
+            e.style.padding = "10px";
+            e.style.border = "1px solid black";
+        }
+        console.timeEnd("2");
+
+        console.time("3");
+
+        var e = document.getElementById("test");
+        for (var i = 0; i < 1000; i++) {
+            e.className = "test";
+        }
+
+        console.timeEnd("3");
+
+    </script>
+</body>
+</html>
