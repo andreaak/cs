@@ -7,7 +7,8 @@
     <button id="get">Получить текущее расположение</button>
     <table border="1" cellpadding="10" cellspacing="0">
         <tr>
-            <td>широта
+            <td>
+                широта
             </td>
             <td>
                 <p id="latitude">
@@ -15,7 +16,8 @@
             </td>
         </tr>
         <tr>
-            <td>долгота
+            <td>
+                долгота
             </td>
             <td>
                 <p id="longitude">
@@ -23,7 +25,8 @@
             </td>
         </tr>
         <tr>
-            <td>точность (м)
+            <td>
+                точность (м)
             </td>
             <td>
                 <p id="accuracy">
@@ -40,15 +43,25 @@
 
             showLoadStatus();
 
-            // Разовое получение данных о местоположении.
-            // updateLocation - метод, который запуститься после получения данных о местоположении.
-            // handleError - метод запуститься в случае сбоя при получении местоположения.
-            // { 
-            //   enableHighAccuracy: true, - попытаться получить наиболее точные данные
-            //   timeout: 10000, - данные должны быть получены в течении 10 секунд.
-            //   maximumAge: 30000 - если данные были получены в течении последних 30 секунд их можно не запрашивать заново.
-            // }
-            navigator.geolocation.getCurrentPosition(updateLocation, handleError, { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 });
+            /*
+            Разовое получение данных о местоположении.
+            updateLocation - метод, который запуститься после получения данных о местоположении.
+            handleError - метод запуститься в случае сбоя при получении местоположения.
+            
+            {
+                enableHighAccuracy: true, - попытаться получить наиболее точные данные
+                timeout: 10000, - данные должны быть получены в течении 10 секунд.
+                maximumAge: 30000 - если данные были получены в течении последних 30 секунд 
+                                    их можно не запрашивать заново.
+            }
+            */
+            navigator.geolocation.getCurrentPosition(updateLocation,
+                                                    handleError,
+                                                    {
+                                                        enableHighAccuracy: true,
+                                                        timeout: 10000,
+                                                        maximumAge: 30000
+                                                    });
 
             function updateLocation(position) {
                 var $ = function (selector) {
