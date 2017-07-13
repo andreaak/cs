@@ -30,12 +30,12 @@
                 // key - получение элемента по индексу
                 document.write(window.localStorage[localStorage.key(i)] + "<br />");
             }
-            document.write("<br />")
+            document.write("<br />");
         }
 
         document.getElementById("btn1").onclick = function () {
             // удаление всех записей в хранилище
-            window.localStorage.clear(); 
+            window.localStorage.clear();
             showStorageContent();
         }
     </script>

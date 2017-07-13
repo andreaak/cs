@@ -1,16 +1,20 @@
-﻿<!DOCTYPE html>
+﻿<!-- 
+    rgba(red, green, blue, alpha)
+    значение каналов red, green, blue - от 0 до 255
+    значение alpha-канала 0 - полностью прозрачный, 1 - полностью не прозрачный
+    При использовании rgba прозрачность задаётся только элементу, дочерние элементы остаются без изменений.
+-->
+<!DOCTYPE html>
 <html>
 <head>
     <title>rgba</title>
     <style>
         body {
-            background-image: url(bg.jpg);
-            background-repeat: no-repeat;
-
             -moz-background-size: 500px 370px;
             -o-background-size: 500px 370px;
             -webkit-background-size: 500px 370px;
             background-size: 500px 370px;
+            background: beige;
         }
 
         div {
@@ -26,11 +30,6 @@
         }
 
         #id1 {
-            /* rgba(red, green, blue, alpha) 
-               значение каналов red, green, blue - от 0 до 255
-               значение alpha-канала 0 - полностью прозрачный, 1 - полностью не прозрачный 
-               При использовании rgba прозрачность задаётся только элементу, дочерние элементы остаются без изменений.
-            */
             background-color: rgba(0, 0, 0, 0.1);
         }
 

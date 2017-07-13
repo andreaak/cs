@@ -1,5 +1,8 @@
 ﻿<!DOCTYPE html>
-<!-- С помощью файла manifest="Manifest.ashx" браузер определяет, какие файлы должны быть скачаны локально и сохранены -->
+<!--
+    С помощью файла manifest="Manifest.ashx" браузер определяет,
+    какие файлы должны быть скачаны локально и сохранены
+-->
 <html manifest="Manifest.ashx">
 <head>
     <title>Offline Page</title>
@@ -21,7 +24,6 @@
                 support.style.backgroundColor = "red";
                 return;
             }
-
 
             // Отображение событий запускаемых объектом applicationCache
             function writeLog(msg) {
@@ -83,10 +85,12 @@
     </div>
 
     <button id="updateCache">
-        Обновить кэш</button>
+        Обновить кэш
+    </button>
 
     <button id="showStatus">
-        Показать текущий статус</button>
+        Показать текущий статус
+    </button>
 
     <a href="OfflineTest.htm">Offline Test</a>
     <a href="Online.htm">Online Test</a>

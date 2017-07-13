@@ -3,24 +3,31 @@
 <head>
     <title>Сохранение объектов JSON</title>
     <script type="text/javascript">
-        var person = {};
-        person.firstName = "Jhon";
-        person.lastName = "Doe";
-        person.age = 30;
+        var person = {
+            firstName: "Jhon",
+            lastName: "Doe",
+            age: 30
+        };
 
         function save() {
-            window.localStorage["data"] = JSON.stringify(person); // сериализация данных и сохранение их в локальном хранилище
+            // сериализация данных и сохранение их в локальном хранилище
+            window.localStorage["data"] = JSON.stringify(person);
         }
 
         function read() {
-            var data = JSON.parse(window.localStorage["data"]); // десериализация объекта из локального хранилища.
-            alert("First Name: " + data.firstName +
-                "\r\nLast Name: " + data.lastName +
-                "\r\nAge: " + data.age);
+            // десериализация объекта из локального хранилища.
+            var temp = window.localStorage["data"];
+            if (temp) {
+                var data = JSON.parse(temp);
+                alert("First Name: " + data.firstName +
+                    "\r\nLast Name: " + data.lastName +
+                    "\r\nAge: " + data.age);
+            }
         }
 
         function clearStorage() {
-            window.localStorage.clear(); // удаление данных из локального хранилища
+            // удаление данных из локального хранилища
+            window.localStorage.clear();
         }
 
     </script>

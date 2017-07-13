@@ -3,7 +3,7 @@
 <head>
     <title>Web Worker</title>
     <script type="text/javascript">
-        var worker = new Worker("task2.js"); // создание потока Web Worker.
+        var worker = new Worker("003_WorkerJSON.js"); // создание потока Web Worker.
 
         window.addEventListener("load", function () {
             document.getElementById("btnStart").addEventListener("click", startCmd, true);
@@ -34,11 +34,14 @@
 <body>
 
     <button id="btnStart">
-        Команда Старт</button>
+        Команда Старт
+    </button>
     <button id="btnUnknown">
-        Команда Unknown</button>
+        Команда Unknown
+    </button>
     <button id="btnStop">
-        Команда Стоп</button>
+        Команда Стоп
+    </button>
 
     <div id="output">
     </div>

@@ -1,0 +1,28 @@
+body{
+	background:#ffc;
+	color:#fff;
+}
+h2{
+	font:italic bold 40px 'palatino linotype', 'book antiqua', serif;
+	text-decoration:line-through;
+	letter-spacing:-.1em;
+	word-spacing:1em;
+	color:#d30;
+}
+p{
+	text-transform:uppercase;
+	background-image:url(fon.jpg);
+	background-repeat:no-repeat;
+}
+em{
+	vertical-align:20px;
+}
+ul{
+	color:#000;
+	list-style-type:upper-roman;
+	list-style-position:inside;
+	list-style-image:url(ball.gif);
+}
+li{
+	font-size:30px;
+}

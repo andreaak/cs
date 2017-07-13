@@ -4,7 +4,7 @@
     <title>Web Worker</title>
     <script type="text/javascript">
         // создание потока (Web Worker).
-        var worker = new Worker("task.js");
+        var worker = new Worker("002_SimpleWorker.js");
 
         // Привязка обработчика на событие message, которое будет возникать в случае если поток присылает данные.
         worker.addEventListener("message", function (e) {

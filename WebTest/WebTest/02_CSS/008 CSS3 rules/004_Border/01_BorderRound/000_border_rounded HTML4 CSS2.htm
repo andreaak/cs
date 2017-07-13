@@ -1,0 +1,85 @@
+﻿<html>
+<!--border-radius – позволяет закруглять границы (border) HTML-элементов-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Закругленные углы</title>
+    <style type="text/css">
+        body {
+            Font-size: 14pt;
+            padding-left: 300px;
+        }
+
+        #border_corner {
+            background-color: #ddccb5;
+            border: 2px solid #897048;
+            padding: 10px;
+            margin-top: 30px;
+            width: 200px;
+            height: 125px;
+            border-radius: 200px/100px;
+            /*-moz-border-radius: 400px;
+                -webkit-border-radius: 100px 20px;*/
+        }
+
+        .Simple {
+            /*Проблема с изменением размера. Требуется перерисовывать изображение!*/
+            background: url(img001/RectRaund.png);
+            width: 224px;
+            height: 149px;
+            /*width: 250px;
+            height: 170px;*/
+        }
+
+        .corners {
+            width: 25%;
+            background: #7b39b8 url(img001/t-l.gif) top left no-repeat;
+        }
+
+            .corners div {
+                background: url(img001/t-r.gif) top right no-repeat;
+            }
+
+                .corners div div {
+                    background: url(img001/b-r.gif) bottom right no-repeat;
+                }
+
+                    .corners div div div {
+                        background: url(img001/b-l.gif) bottom left no-repeat;
+                    }
+    </style>
+</head>
+
+<body>
+    <!--Как бы мы реализовали закругленные края с помощью png-->
+    Как бы мы реализовали закругленные края с помощью png:
+
+    <div class="Simple">
+    </div>
+    <br />
+
+    <!--Как бы мы реализовали закругленные края спомощью слоев-->
+    Как бы мы реализовали закругленные края с помощью слоев:
+    <div class="corners">
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <p style="text-align: center; overflow: hidden;">
+                            Содержание блока
+                            <br />
+                            <br />
+                            Конец содержимого блока
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    Реализация в CSS3:
+    <div id="border_corner">
+    </div>
+</body>
+</html>

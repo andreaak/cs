@@ -28,7 +28,7 @@
                 context.save();
                 // трансформация масштабирования.
                 context.scale(x, y);
-                context.drawImage(img, 0, 0, 100, 100); 
+                context.drawImage(img, 0, 0, 100, 100);
                 // восстановление сохранённого состояния полотна.
                 context.restore();
             }
@@ -39,16 +39,13 @@
     </script>
 </head>
 <body>
-    <canvas id="canvas" width="300" height="300">
-    </canvas>
+    <canvas id="canvas" width="300" height="300"></canvas>
     <div style="border: 1px solid gray; padding: 8px; margin: 8px;">
-        Масштаб X 
+        Масштаб X
         <input type="text" id="X" value="1" />
-        Масштаб Y 
+        Масштаб Y
         <input type="text" id="Y" value="1" />
         <input type="button" id="btn" value="scale" />
     </div>
 </body>
 </html>
-
-
