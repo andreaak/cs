@@ -1,4 +1,19 @@
-﻿<!DOCTYPE html>
+﻿<!--
+    Для создания анимации в CSS3 используется свойство @keyframes.
+    Для задания CSS3 анимации элементу используется CSS3 свойство animation.
+    Это свойство — сокращенная запись различных свойств анимации:
+        animation-name — задает имя анимации
+        animation-duration — задает время проигрывания анимации
+        animation-timing-function — описывает метод расчета промежуточных значений свойств для анимации
+        animation-delay — задает задержку анимации
+        animation-iteration-count — задает количество циклов анимации
+        animation-direction — задает направление анимации
+        animation-play-state — определяет, проигрывается ли анимация или стоит на паузе.
+    Выбрать наиболее подходящий вариант кривой для интерполяции
+    можно с помощью свойства animation-timing-function (-webkit-animation-timing-function).
+-->
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Анимация</title>
@@ -9,7 +24,6 @@
             from {
                 margin-left: 3px;
             }
-
             /* завершаем анимацию с margin-left 500px*/
             to {
                 margin-left: 500px;
@@ -42,10 +56,10 @@
             height: 100px;
             width: 100px;
             font-size: 20px;
-
             -moz-animation: moveRight 4s 3;
             -webkit-animation: moveRight 4s 3;
-            animation: moveRight 4s 3; /* запустить анимацию с именем moveLeft, продолжительность анимации 4s, повторить анимацию 3 раза*/
+            /* запустить анимацию с именем moveLeft, продолжительность анимации 4s, повторить анимацию 3 раза*/
+            animation: moveRight 4s 3;
         }
     </style>
 

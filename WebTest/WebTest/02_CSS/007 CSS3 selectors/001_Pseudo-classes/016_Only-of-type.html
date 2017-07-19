@@ -1,16 +1,20 @@
-﻿<!DOCTYPE html>
+﻿<!--
+:only-of-type применяется к дочернему элементу указанного типа, только если он единственный у родителя.
+    Аналогичен использованию :first-of-type:last-of-type или :nth-of-type(1):nth-last-of-type(1).
+-->
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>only-of-type</title>
     <style>
-        /* Псевдокласс :only-of-type применяется к дочернему элементу указанного типа, только если он единственный у родителя */
         p:only-of-type {
             border: 5px double red;
         }
     </style>
 </head>
 <body>
-    
+
     <div>
         <p>Paragraph 1</p>
         <p>Paragraph 2</p> <!--удалите данный параграф-->

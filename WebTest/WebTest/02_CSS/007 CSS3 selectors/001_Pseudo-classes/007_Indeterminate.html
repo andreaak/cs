@@ -1,15 +1,20 @@
-﻿<!DOCTYPE html>
+﻿<!--
+:indeterminate задает стиль для элементов форм, таким как флажки и переключатели,
+когда они находятся в неопределенном состоянии.
+К примеру, если из группы флажков ни один не помечен, то флажки находятся в указанном состоянии.
+В реальности, стиль применяется только к элементам, у которых DOM-атрибут
+:indeterminate через JavaScript установлен в значение true.
+-->
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>indeterminate</title>
 
     <style>
-
-        /* :indeterminate - элементы в неопределенном состояние. Состояние задается через JavaScript код. */
         :indeterminate + span {
             background-color: limegreen;
         }
-
     </style>
 
     <script>
