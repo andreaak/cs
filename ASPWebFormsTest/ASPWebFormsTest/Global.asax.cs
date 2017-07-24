@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.Routing;
-using System.Web.Security;
-using ASPTest;
 
-namespace ASPTest
+namespace ASPWebFormsTest
 {
     public class Global : HttpApplication
     {

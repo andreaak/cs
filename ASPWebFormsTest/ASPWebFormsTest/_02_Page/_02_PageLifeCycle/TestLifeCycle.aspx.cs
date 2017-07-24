@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-namespace ASPTest._02_Page._02_PageLifeCycle
+namespace ASPWebFormsTest._02_Page._02_PageLifeCycle
 {
     public partial class TestLifeCycle : System.Web.UI.Page
     {

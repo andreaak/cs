@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPTest
+namespace ASPWebFormsTest
 {
 
 

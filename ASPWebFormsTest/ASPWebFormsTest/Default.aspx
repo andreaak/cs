@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ASPTest.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ASPWebFormsTest.Default1" %>
 
 <!DOCTYPE html>
 
@@ -7,10 +7,12 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-     Default
-    </div>
-    </form>
+    <ol>
+        <li><a href="_01_BaseInfo/Default.aspx">Base Info</a></li>
+        <li><a href="_02_Page/Default.aspx">Page</a></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
 </body>
 </html>

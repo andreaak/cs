@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="_01_DataTransferUseAction.aspx.cs" Inherits="ASPTest._02_Page._06_DataTransferBetweenPages._01_DataTransferUseAction" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="_01_DataTransferUseAction.aspx.cs" Inherits="ASPWebFormsTest._02_Page._06_DataTransferBetweenPages._01_DataTransferUseAction" %>
 
 <!DOCTYPE html>
 

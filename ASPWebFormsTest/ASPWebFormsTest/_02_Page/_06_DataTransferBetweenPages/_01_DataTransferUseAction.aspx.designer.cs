@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPTest._02_Page._06_DataTransferBetweenPages {
+namespace ASPWebFormsTest._02_Page._06_DataTransferBetweenPages {
     
     
     public partial class _01_DataTransferUseAction {

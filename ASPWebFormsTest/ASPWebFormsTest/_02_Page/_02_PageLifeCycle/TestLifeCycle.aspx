@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TestLifeCycle.aspx.cs" Inherits="ASPTest._02_Page._02_PageLifeCycle.TestLifeCycle" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TestLifeCycle.aspx.cs" Inherits="ASPWebFormsTest._02_Page._02_PageLifeCycle.TestLifeCycle" %>
 
 <!DOCTYPE html>
 

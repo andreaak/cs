@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="_01_DestinationPage.aspx.cs" Inherits="ASPTest._02_Page._05_PageRedirection._01_DestinationPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="_01_DestinationPage.aspx.cs" Inherits="ASPWebFormsTest._02_Page._05_PageRedirection._01_DestinationPage" %>
 
 <!DOCTYPE html>
 

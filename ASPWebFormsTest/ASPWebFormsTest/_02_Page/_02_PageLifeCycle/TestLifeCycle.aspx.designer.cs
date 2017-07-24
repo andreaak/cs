@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPTest._02_Page._02_PageLifeCycle {
+namespace ASPWebFormsTest._02_Page._02_PageLifeCycle {
     
     
     public partial class TestLifeCycle {

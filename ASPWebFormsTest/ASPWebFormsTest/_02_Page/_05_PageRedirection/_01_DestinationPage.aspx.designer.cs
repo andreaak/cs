@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPTest._02_Page._05_PageRedirection {
+namespace ASPWebFormsTest._02_Page._05_PageRedirection {
     
     
     public partial class _01_DestinationPage {

@@ -11,14 +11,15 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ASPTest</RootNamespace>
-    <AssemblyName>ASPTest</AssemblyName>
+    <RootNamespace>ASPWebFormsTest</RootNamespace>
+    <AssemblyName>ASPWebFormsTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,6 +104,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\TextFile.txt" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Images\accent.png" />
@@ -119,6 +121,15 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="packages.config" />
+    <Content Include="_01_BaseInfo\003_ServerTag.aspx" />
+    <Content Include="_01_BaseInfo\004_Comments.aspx" />
+    <Content Include="_01_BaseInfo\005_Namespaces.aspx" />
+    <Content Include="_01_BaseInfo\006_ClassUsing.aspx" />
+    <Content Include="_01_BaseInfo\007_AppData.aspx" />
+    <Content Include="_01_BaseInfo\008_Form.aspx" />
+    <Content Include="_01_BaseInfo\Default.aspx" />
+    <Content Include="_01_BaseInfo\001_BaseInfo.aspx" />
+    <Content Include="_02_Page\Default.aspx" />
     <Content Include="_02_Page\_02_PageLifeCycle\TestLifeCycle.aspx" />
     <Content Include="_02_Page\_05_PageRedirection\_01_DestinationPage.aspx" />
     <Content Include="_02_Page\_05_PageRedirection\_01_StartPage.aspx" />
@@ -153,6 +164,70 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="_01_BaseInfo\003_ServerTag.aspx.cs">
+      <DependentUpon>003_ServerTag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_01_BaseInfo\003_ServerTag.aspx.designer.cs">
+      <DependentUpon>003_ServerTag.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_01_BaseInfo\004_Comments.aspx.cs">
+      <DependentUpon>004_Comments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_01_BaseInfo\004_Comments.aspx.designer.cs">
+      <DependentUpon>004_Comments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_01_BaseInfo\005_Namespaces.aspx.cs">
+      <DependentUpon>005_Namespaces.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_01_BaseInfo\005_Namespaces.aspx.designer.cs">
+      <DependentUpon>005_Namespaces.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_01_BaseInfo\006_ClassUsing.aspx.cs">
+      <DependentUpon>006_ClassUsing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_01_BaseInfo\006_ClassUsing.aspx.designer.cs">
+      <DependentUpon>006_ClassUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_01_BaseInfo\007_AppData.aspx.cs">
+      <DependentUpon>007_AppData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_01_BaseInfo\007_AppData.aspx.designer.cs">
+      <DependentUpon>007_AppData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_01_BaseInfo\008_Form.aspx.cs">
+      <DependentUpon>008_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_01_BaseInfo\008_Form.aspx.designer.cs">
+      <DependentUpon>008_Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_01_BaseInfo\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_01_BaseInfo\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_01_BaseInfo\001_BaseInfo.aspx.cs">
+      <DependentUpon>001_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_01_BaseInfo\001_BaseInfo.aspx.designer.cs">
+      <DependentUpon>001_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_01_BaseInfo\Person.cs" />
+    <Compile Include="_02_Page\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_02_Page\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="_02_Page\_02_PageLifeCycle\TestLifeCycle.aspx.cs">
       <DependentUpon>TestLifeCycle.aspx</DependentUpon>
@@ -192,7 +267,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account\" />
-    <Folder Include="App_Data\" />
     <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>
