@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="/04_jQuery/00_Libs/jquery.js"></script>
+    <script type="text/javascript">
+        // обработчик события загрузки страницы.
+        window.onload = function () {
+
+            $("#loader").hide();
+
+            $("button").click(function () {
+                $("#loader").show();
+                var dataToSend = "";
+
+                dataToSend += "login=" + $("#login").val();
+                dataToSend += "&pass=" + $("#password").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "03_DataHandler.ashx",
+
+                    // данные, которые будут отправлятся на сервер с запросом
+                    data: dataToSend,
+
+                    success: function (data) {
+                        $("#output").text(data);
+                        $("#loader").hide();
+                    }
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+    Login <input id="login" type="text" />
+    <br />
+    Password <input id="password" type="text" />
+    <br />
+    <button>Войти</button> <br />
+    <span id="loader"> Загрузка</span>
+    <p id="output"></p>
+</body>
+</html>

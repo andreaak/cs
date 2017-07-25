@@ -1,0 +1,6 @@
+﻿<note>
+  <to>user@example.com</to>
+  <from>sender@example.com</from>
+  <heading>New Message</heading>
+  <body>Hello! How are you?</body>
+</note>

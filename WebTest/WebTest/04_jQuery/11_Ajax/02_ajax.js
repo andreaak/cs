@@ -1,0 +1,1 @@
+﻿$("p").text("Hello Ajax!!!");

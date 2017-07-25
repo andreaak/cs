@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="/04_jQuery/00_Libs/jquery.js"></script>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            // Создание объекта запроса.
+            // $.ajax() возвращает объект XMLHttpRequest.
+            $.ajax({
+                type: "GET",
+                url: "02_ajax.js",
+                // определение типа ответа, который ожидается со стороны сервера
+                dataType: "script" // json, text, xml, script
+            });
+
+            $("button").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "test.html",
+                    success: function (data) {
+                        $("p:first").append(data);
+                    }
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+    <button id="click">Запрос</button>
+    <p></p>
+</body>
+</html>
