@@ -10,6 +10,6 @@
 namespace ASPWebFormsTest {
     
     
-    public partial class Default1 {
+    public partial class Default {
     }
 }

@@ -1,19 +1,22 @@
 ﻿using System;
+using System.Text;
 
 namespace ASPWebFormsTest._02_Page
 {
     public partial class _02_PageLifeCycle : System.Web.UI.Page
     {
+        private StringBuilder _output = new StringBuilder();
+
         protected void Page_PreInit(object sender, EventArgs e)
         {
-            Response.Write($"<p>IsPostBack: {IsPostBack}</p>");
-
-            Response.Write("<p>Page_PreInit</p>");
+            _output.Clear();
+            _output.Append($"<p>IsPostBack: {IsPostBack}</p>");
+            _output.Append("<p>Page_PreInit</p>");
         }
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            Response.Write("<p>Page_Init</p>");
+            _output.Append("<p>Page_Init</p>");
         }
 
         protected void Page_InitComplete(object sender, EventArgs e)
@@ -21,10 +24,10 @@ namespace ASPWebFormsTest._02_Page
             // no sense. ViewState not loaded  
             var test1 = ViewState["Test1"] as string; 
             var test2 = ViewState["Test2"] as string;
-            Response.Write("<p>Page_InitComplete<br/>");
-            Response.Write($"Test1: {test1}<br/>");
-            Response.Write($"Test2: {test2}<br/>");
-            Response.Write("</p>");
+            _output.Append("<p>Page_InitComplete<br/>");
+            _output.Append($"Test1: {test1}<br/>");
+            _output.Append($"Test2: {test2}<br/>");
+            _output.Append("</p>");
 
             // no sense. ViewState will be overrided on PostBack  
             ViewState["Test3"] = "ViewState_Page_InitComplete";
@@ -45,16 +48,16 @@ namespace ASPWebFormsTest._02_Page
             var test1 = ViewState["Test1"] as string;
             var test2 = ViewState["Test2"] as string;
             var test3 = ViewState["Test3"] as string;
-            Response.Write("<p>Page_PreLoad<br/>");
-            Response.Write($"Test1: {test1}<br/>");
-            Response.Write($"Test2: {test2}<br/>");
-            Response.Write($"Test3: {test3}<br/>");
-            Response.Write("</p>");
+            _output.Append("<p>Page_PreLoad<br/>");
+            _output.Append($"Test1: {test1}<br/>");
+            _output.Append($"Test2: {test2}<br/>");
+            _output.Append($"Test3: {test3}<br/>");
+            _output.Append("</p>");
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write("<p>Page_Load</p>");
+            _output.Append("<p>Page_Load</p>");
         }
 
         //protected void Page_ProcessPostData2(object sender, EventArgs e)
@@ -74,24 +77,24 @@ namespace ASPWebFormsTest._02_Page
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Write("<p>Button1_Click</p>");
+            _output.Append("<p>Button1_Click</p>");
         }
 
         private void Page_LoadComplete(object sender, EventArgs e)
         {
-            Response.Write("<p>Page_LoadComplete</p>");
+            _output.Append("<p>Page_LoadComplete</p>");
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            Response.Write("<p>Page_PreRender</p>");
+            _output.Append("<p>Page_PreRender</p>");
         }
 
         protected void Page_PreRenderComplete(object sender, EventArgs e)
         {
             ViewState["Test1"] = "ViewState_Page_PreRenderComplete";
             ViewState["Test3"] = "ViewState_Page_PreRenderComplete_3";
-            Response.Write("<p>Page_PreRenderComplete</p>");
+            _output.Append("<p>Page_PreRenderComplete</p>");
         }
 
         //protected void Page_SaveState(object sender, EventArgs e)
@@ -102,7 +105,8 @@ namespace ASPWebFormsTest._02_Page
         protected void Page_SaveStateComplete(object sender, EventArgs e)
         {
             ViewState["Test2"] = "ViewState_Page_SaveStateComplete"; // no sense. View state is saved
-            Response.Write("<p>Page_SaveStateComplete</p>");
+            _output.Append("<p>Page_SaveStateComplete</p>");
+            Output.Text = _output.ToString();
         }
 
         //protected void Page_Render(object sender, EventArgs e)
@@ -110,8 +114,11 @@ namespace ASPWebFormsTest._02_Page
         //    Response.Write("<p>Page_Render</p>");
         //}
 
+        // Рендеринг страницы. Все элементы управления превращаются в HTML, CSS и JavaScript, который будет отправлен клиенту.
+
         protected void Page_Unload(object sender, EventArgs e)
         {
+            // Освобождение ресурсов, которые использовала страница.
             //Response.Write("<p>Page_Unload</p>"); // Can't write in response - exception
         }
 

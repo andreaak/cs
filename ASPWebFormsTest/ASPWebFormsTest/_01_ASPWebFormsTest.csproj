@@ -105,7 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="02_Page\01_BaseInfo.aspx" />
+    <Content Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx" />
+    <Content Include="02_Page\03_PageEventHandling\02_EventHandlingPageEvents.aspx" />
+    <Content Include="02_Page\03_PageEventHandling\03_EventHandlingOverrideHandlers.aspx" />
+    <Content Include="02_Page\04_IsPostBackProp.aspx" />
     <Content Include="App_Data\TextFile.txt" />
+    <Content Include="Content\My.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Images\accent.png" />
@@ -156,6 +161,34 @@
     </Compile>
     <Compile Include="02_Page\01_BaseInfo.aspx.designer.cs">
       <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx.cs">
+      <DependentUpon>01_EventHandlingWireup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx.designer.cs">
+      <DependentUpon>01_EventHandlingWireup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\02_EventHandlingPageEvents.aspx.cs">
+      <DependentUpon>02_EventHandlingPageEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\02_EventHandlingPageEvents.aspx.designer.cs">
+      <DependentUpon>02_EventHandlingPageEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\03_EventHandlingOverrideHandlers.aspx.cs">
+      <DependentUpon>03_EventHandlingOverrideHandlers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\03_EventHandlingOverrideHandlers.aspx.designer.cs">
+      <DependentUpon>03_EventHandlingOverrideHandlers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\04_IsPostBackProp.aspx.cs">
+      <DependentUpon>04_IsPostBackProp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\04_IsPostBackProp.aspx.designer.cs">
+      <DependentUpon>04_IsPostBackProp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

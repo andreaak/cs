@@ -1,6 +1,5 @@
 ﻿<%@ WebHandler Language="C#" Class="Manifest" %>
 
-using System;
 using System.Web;
 
 public class Manifest : IHttpHandler {

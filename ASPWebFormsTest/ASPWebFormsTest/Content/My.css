@@ -1,0 +1,19 @@
+﻿        span {
+            font-weight: bold;
+        }
+
+        table caption {
+            text-align: left;
+        }
+
+        ul {
+            margin-top: 1px;
+        }
+
+        .description {
+            margin-left: 30px;
+        }
+
+        .mostUsed {
+            color: red;
+        }
