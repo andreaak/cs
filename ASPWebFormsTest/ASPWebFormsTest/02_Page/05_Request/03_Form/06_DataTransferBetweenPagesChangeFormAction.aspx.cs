@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ASPWebFormsTest._02_Page._06_DataTransferBetweenPages
+namespace ASPWebFormsTest._02_Page._05_Request._03_Form
 {
-    public partial class _06_DataTransferBetweenPages : System.Web.UI.Page
+    public partial class _06_DataTransferBetweenPagesChangeFormAction : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ASPWebFormsTest._02_Page._06_DataTransferBetweenPages
+namespace ASPWebFormsTest._02_Page._05_Request._03_Form
 {
     public partial class _06_DestinationPage : System.Web.UI.Page
     {

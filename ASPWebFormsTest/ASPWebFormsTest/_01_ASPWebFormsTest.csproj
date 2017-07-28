@@ -109,6 +109,19 @@
     <Content Include="02_Page\03_PageEventHandling\02_EventHandlingPageEvents.aspx" />
     <Content Include="02_Page\03_PageEventHandling\03_EventHandlingOverrideHandlers.aspx" />
     <Content Include="02_Page\04_IsPostBackProp.aspx" />
+    <Content Include="02_Page\05_Request\01_BaseInfo.aspx" />
+    <Content Include="02_Page\05_Request\02_QueryString\01_RequestWithQueryString.aspx" />
+    <Content Include="02_Page\05_Request\02_QueryString\02_QueryStringRead.aspx" />
+    <Content Include="02_Page\05_Request\03_Form\01_RequestProperty.htm" />
+    <Content Include="02_Page\05_Request\03_Form\01_RequestPropertyDestination.aspx" />
+    <Content Include="02_Page\06_Response\01_BaseInfo.aspx" />
+    <Content Include="02_Page\06_Response\02_ResponseWrite.aspx" />
+    <Content Include="02_Page\06_Response\03_ResponseWriteFile.aspx" />
+    <Content Include="02_Page\06_Response\Item.txt" />
+    <Content Include="02_Page\07_Server\01_BaseInfo.aspx" />
+    <Content Include="02_Page\07_Server\02_MapPath.aspx" />
+    <Content Include="02_Page\07_Server\03_HtmlEncode.aspx" />
+    <Content Include="02_Page\07_Server\04_UrlEncode.aspx" />
     <Content Include="App_Data\TextFile.txt" />
     <Content Include="Content\My.css" />
     <Content Include="Content\Site.css" />
@@ -139,10 +152,10 @@
     <Content Include="01_BaseInfo\01_BaseInfo.aspx" />
     <Content Include="02_Page\Default.aspx" />
     <Content Include="02_Page\02_PageLifeCycle.aspx" />
-    <Content Include="02_Page\05_PageRedirection\05_DestinationPage.aspx" />
-    <Content Include="02_Page\05_PageRedirection\05_PageRedirection.aspx" />
-    <Content Include="02_Page\06_DataTransferBetweenPages\06_DestinationPage.aspx" />
-    <Content Include="02_Page\06_DataTransferBetweenPages\06_DataTransferBetweenPages.aspx" />
+    <Content Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirectDestination.aspx" />
+    <Content Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirect.aspx" />
+    <Content Include="02_Page\05_Request\03_Form\06_DestinationPage.aspx" />
+    <Content Include="02_Page\05_Request\03_Form\06_DataTransferBetweenPagesChangeFormAction.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -189,6 +202,83 @@
     </Compile>
     <Compile Include="02_Page\04_IsPostBackProp.aspx.designer.cs">
       <DependentUpon>04_IsPostBackProp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\02_QueryString\01_RequestWithQueryString.aspx.cs">
+      <DependentUpon>01_RequestWithQueryString.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\02_QueryString\01_RequestWithQueryString.aspx.designer.cs">
+      <DependentUpon>01_RequestWithQueryString.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\02_QueryString\02_QueryStringRead.aspx.cs">
+      <DependentUpon>02_QueryStringRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\02_QueryString\02_QueryStringRead.aspx.designer.cs">
+      <DependentUpon>02_QueryStringRead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\03_Form\01_RequestPropertyDestination.aspx.cs">
+      <DependentUpon>01_RequestPropertyDestination.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\03_Form\01_RequestPropertyDestination.aspx.designer.cs">
+      <DependentUpon>01_RequestPropertyDestination.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\06_Response\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\06_Response\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\06_Response\02_ResponseWrite.aspx.cs">
+      <DependentUpon>02_ResponseWrite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\06_Response\02_ResponseWrite.aspx.designer.cs">
+      <DependentUpon>02_ResponseWrite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\06_Response\03_ResponseWriteFile.aspx.cs">
+      <DependentUpon>03_ResponseWriteFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\06_Response\03_ResponseWriteFile.aspx.designer.cs">
+      <DependentUpon>03_ResponseWriteFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\07_Server\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\07_Server\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\07_Server\02_MapPath.aspx.cs">
+      <DependentUpon>02_MapPath.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\07_Server\02_MapPath.aspx.designer.cs">
+      <DependentUpon>02_MapPath.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\07_Server\03_HtmlEncode.aspx.cs">
+      <DependentUpon>03_HtmlEncode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\07_Server\03_HtmlEncode.aspx.designer.cs">
+      <DependentUpon>03_HtmlEncode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\07_Server\04_UrlEncode.aspx.cs">
+      <DependentUpon>04_UrlEncode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\07_Server\04_UrlEncode.aspx.designer.cs">
+      <DependentUpon>04_UrlEncode.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -286,33 +376,33 @@
     <Compile Include="02_Page\02_PageLifeCycle.aspx.designer.cs">
       <DependentUpon>02_PageLifeCycle.aspx</DependentUpon>
     </Compile>
-    <Compile Include="02_Page\05_PageRedirection\05_DestinationPage.aspx.cs">
-      <DependentUpon>05_DestinationPage.aspx</DependentUpon>
+    <Compile Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirectDestination.aspx.cs">
+      <DependentUpon>05_ResponseRedirectDestination.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="02_Page\05_PageRedirection\05_DestinationPage.aspx.designer.cs">
-      <DependentUpon>05_DestinationPage.aspx</DependentUpon>
+    <Compile Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirectDestination.aspx.designer.cs">
+      <DependentUpon>05_ResponseRedirectDestination.aspx</DependentUpon>
     </Compile>
-    <Compile Include="02_Page\05_PageRedirection\05_PageRedirection.aspx.cs">
-      <DependentUpon>05_PageRedirection.aspx</DependentUpon>
+    <Compile Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirect.aspx.cs">
+      <DependentUpon>05_ResponseRedirect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="02_Page\05_PageRedirection\05_PageRedirection.aspx.designer.cs">
-      <DependentUpon>05_PageRedirection.aspx</DependentUpon>
+    <Compile Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirect.aspx.designer.cs">
+      <DependentUpon>05_ResponseRedirect.aspx</DependentUpon>
     </Compile>
-    <Compile Include="02_Page\06_DataTransferBetweenPages\06_DestinationPage.aspx.cs">
+    <Compile Include="02_Page\05_Request\03_Form\06_DestinationPage.aspx.cs">
       <DependentUpon>06_DestinationPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="02_Page\06_DataTransferBetweenPages\06_DestinationPage.aspx.designer.cs">
+    <Compile Include="02_Page\05_Request\03_Form\06_DestinationPage.aspx.designer.cs">
       <DependentUpon>06_DestinationPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="02_Page\06_DataTransferBetweenPages\06_DataTransferBetweenPages.aspx.cs">
-      <DependentUpon>06_DataTransferBetweenPages.aspx</DependentUpon>
+    <Compile Include="02_Page\05_Request\03_Form\06_DataTransferBetweenPagesChangeFormAction.aspx.cs">
+      <DependentUpon>06_DataTransferBetweenPagesChangeFormAction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="02_Page\06_DataTransferBetweenPages\06_DataTransferBetweenPages.aspx.designer.cs">
-      <DependentUpon>06_DataTransferBetweenPages.aspx</DependentUpon>
+    <Compile Include="02_Page\05_Request\03_Form\06_DataTransferBetweenPagesChangeFormAction.aspx.designer.cs">
+      <DependentUpon>06_DataTransferBetweenPagesChangeFormAction.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

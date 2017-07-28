@@ -1,13 +1,36 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="01_BaseInfo.aspx.cs" Inherits="ASPWebFormsTest._02_Page._01_BaseInfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="01_BaseInfo.aspx.cs"
+    Inherits="ASPWebFormsTest._02_Page._01_BaseInfo" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="~/Content/My.css" rel="stylesheet"/>
+    <link href="~/Content/My.css" rel="stylesheet" />
 </head>
 <body>
+
+    <p>Все веб формы являются экземплярами класса System.Web.Ui.Page. Основные свойства класса Page.</p>
+    <ul>
+        <li>Session</li>
+        <li>Application</li>
+        <li>Cache</li>
+        <li>Request</li>
+        <li>Response</li>
+        <li>Server</li>
+        <li>User</li>
+        <li>Trace</li>
+    </ul>
+    <p>
+        <strong>Request</strong> - экземпляр класса System.Web.HttpRequest. 
+        Этот объект представляет свойства и значения HTTP запроса, вызвавшие загрузку страницы.
+    </p>
+    <p><strong>Response</strong> - экземпляр класса System.Web.HttpResponse представляющий ответ сервера на запрос клиента.</p>
+    <p>
+        <strong>Server</strong> - экземпляр класса System.Web.HttpServerUtility. 
+        Этот класс предоставляет разнообразные вспомогательные методы и свойства.
+    </p>
+
     <h2>Этапы обработки web-форм</h2>
     <ol>
         <li>Запрос страницы.(Page Request)</li>

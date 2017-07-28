@@ -1,32 +1,11 @@
 ﻿using System;
+using System.Threading;
 
-namespace ASPWebFormsTest._02_Page._05_PageRedirection
+namespace ASPWebFormsTest._02_Page._06_Response._05_ResponseRedirect
 {
-    public partial class _05_PageRedirection : System.Web.UI.Page
+    public partial class _05_ResponseRedirect : System.Web.UI.Page
     {
         string response = null;
-        
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            response += ("<p>Page_Load</p>\n");
-
-            if (IsPostBack)
-            {
-                try
-                {
-                    Response.Redirect("05_DestinationPage.aspx?id=1");
-                }
-                catch (Exception ex)
-                {
-                    string message = string.Format("<p>{0}</p>", ex.ToString());
-                    response += (message + "\n");
-                }
-                finally
-                {
-
-                }
-            }
-        }
 
         protected void Page_PreInit(object sender, EventArgs e)
         {
@@ -41,6 +20,24 @@ namespace ASPWebFormsTest._02_Page._05_PageRedirection
         protected void Page_InitComplete(object sender, EventArgs e)
         {
             response += ("<p>Page_InitComplete</p>\n");
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            response += ("<p>Page_Load</p>\n");
+
+            if (IsPostBack)
+            {
+                try
+                {
+                    Response.Redirect("05_DestinationPage.aspx?id=1");
+                }
+                catch (ThreadAbortException ex)
+                {
+                    string message = string.Format("<p>{0}</p>", ex.ToString());
+                    response += (message + "\n");
+                }
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -75,12 +72,17 @@ namespace ASPWebFormsTest._02_Page._05_PageRedirection
 
         protected void Page_Unload(object sender, EventArgs e)
         {
-            response += ("<p>Page_Unload</p>\n"); 
+            response += ("<p>Page_Unload</p>\n");
         }
 
         protected void Page_Disposed(object sender, EventArgs e)
         {
             response += ("<p>Page_Disposed</p>");
         }
+
+        /*
+        
+         
+         */
     }
 }

@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._02_Page {
+namespace ASPWebFormsTest._02_Page._05_Request._03_Form {
     
     
-    public partial class _02_PageLifeCycle {
+    public partial class _06_DataTransferBetweenPagesChangeFormAction {
         
         /// <summary>
         /// form1 control.
@@ -38,14 +38,5 @@ namespace ASPWebFormsTest._02_Page {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// Output control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Output;
     }
 }

@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="06_DataTransferBetweenPages.aspx.cs" Inherits="ASPWebFormsTest._02_Page._06_DataTransferBetweenPages._06_DataTransferBetweenPages" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="06_DataTransferBetweenPagesChangeFormAction.aspx.cs" 
+    Inherits="ASPWebFormsTest._02_Page._05_Request._03_Form._06_DataTransferBetweenPagesChangeFormAction" %>
 
 <!DOCTYPE html>
 

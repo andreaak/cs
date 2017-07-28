@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._02_Page._05_PageRedirection {
+namespace ASPWebFormsTest._02_Page._06_Response._05_ResponseRedirect {
     
     
-    public partial class _05_PageRedirection {
+    public partial class _05_ResponseRedirect {
         
         /// <summary>
         /// form1 control.
