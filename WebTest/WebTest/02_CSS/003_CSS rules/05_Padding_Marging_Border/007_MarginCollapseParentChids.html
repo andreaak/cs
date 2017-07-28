@@ -13,23 +13,68 @@
     <title>Margin collapse вложенных элементов</title>
     <style type="text/css">
         #out {
-            height: 300px;
+            height: 150px;
             background: #69c;
             /*border: 1px solid black;*/
             /*padding:10px;*/
             /*overflow:hidden;*/
         }
 
-        #in {
-            height: 200px;
+        .in {
+            height: 100px;
             background: #f60;
-            margin: 200px 100px 0;
+            margin: 100px 100px 0;
+        }
+
+        #outBorder {
+            height: 150px;
+            background: #69c;
+            border: 1px solid black;
+        }
+
+        #outOverflow {
+            height: 150px;
+            background: #69c;
+            overflow: hidden;
+        }
+
+        #outPadding {
+            height: 150px;
+            background: #69c;
+            padding: 10px;
+        }
+
+        p {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div id="out">
-        <div id="in">in</div>
+        <div class="in">in</div>
+    </div>
+    <br />
+    <div id="out">
+        <span>Some content</span>
+        <div class="in">in</div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <p>Overflow</p>
+    <div id="outOverflow">
+        <div class="in">in</div>
+    </div>
+    <br />
+    <p>Border</p>
+    <div id="outBorder">
+        <div class="in">in</div>
+    </div>
+    <br />
+    <p>Padding</p>
+    <div id="outPadding">
+        <div class="in">in</div>
     </div>
 </body>
 </html>

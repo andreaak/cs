@@ -21,25 +21,25 @@
         }
 
             div.absolute {
-                margin: 20px;
+                margin-left: 10px;
                 position: absolute;
             }
 
-        #MisterRed {
+        .absolute1 {
+            z-index: 3;
+            top: 60px;
+            left: 170px;
+            background-color: Green;
+        } 
+        
+        .absolute2 {
             z-index: 2;
             top: 20px;
-            left: 100px;
+            left: 250px;
             background-color: Red;
         }
 
-        #MisterGreen {
-            z-index: 3;
-            top: 40px;
-            left: 130px;
-            background-color: Green;
-        }
-
-        #MisterYellow {
+        .absoluteWithioutOffset {
             z-index: 4;
             background-color: Yellow;
         }
@@ -66,18 +66,16 @@
 </head>
 <body>
     <div><span>Static 1</span></div>
-    <div class="absolute" id="MisterGreen">Absolute 2 top:40px left:130px</div>
-    <div class="absolute" id="MisterRed">Absolute 3 top:20px left:100px</div>
-    <div class="absolute" id="MisterYellow">Absolute 4 Without top and left</div>
-    <div style="border: 1px dotted blue; "><span>Static 5</span></div>
+<div class="absolute absolute1">Absolute 2<br/> top:20px left:170px</div>
+    <div class="absolute absolute2">Absolute 3<br /> top:40px left:250px</div>
+    <div class="absolute absoluteWithioutOffset">Absolute 4<br /> Without top and left</div>
+    <div style="border: 1px dotted blue; ">Static 5</div>
     <div style="border: 1px dotted red; margin-top: 50px">
         <span>Static 6</span>
         <div style="border: 1px dotted black;" id="Relative">
             Relative 6.1
-            <div class="absolute" id="MisterGreen2">Absolute 6.1.1 top:40px left:40px</div>
+            <div class="absolute" id="MisterGreen2">Absolute 6.1.1<br /> top:40px left:40px</div>
         </div>
-
     </div>
-
 </body>
 </html>

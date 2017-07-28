@@ -30,6 +30,7 @@
             height: 100px;
             width: 100px;
             background-color: pink;
+            margin: 10px;
         }
 
         #divAbsolute {
@@ -44,7 +45,7 @@
             right: 0px;
         }
 
-        #divRelative {
+        .divRelative {
             position: relative;
             top: 20px;
             left: 40px;
@@ -56,21 +57,21 @@
 </head>
 <body>
     <div id="divAbsolute">
-        Absolute
+        Absolute 1
     </div>
     <div id="divFixed">
-        Fixed
+        Fixed 2
     </div>
-    <div>
-        <div id="divRelative">Relative</div>
-    </div>
-
-    <div>
-        Static
+    <div> 3
+        <div class="divRelative">Relative 3</div>
     </div>
 
     <div>
-        <div id="divRelative">Relative</div>
+        Static 4
+    </div>
+
+    <div> 5
+        <div class="divRelative">Relative 5</div>
     </div>
 </body>
 </html>

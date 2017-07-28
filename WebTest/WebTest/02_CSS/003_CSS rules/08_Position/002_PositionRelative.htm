@@ -5,68 +5,55 @@
     Для строчных элементов ширина и высота игнорируются(width и height не работают).
 -->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Div Position Absolute</title>
     <style type="text/css">
-        
-        div
-        {
-            text-align:center;
-            width:150px;
-            height:150px;
-            position:relative;
-        }
-    
-        #MisterGreen
-        {
-            background-color:Green;
-            border:1px solid black;
-        }
-    
-        #MisterRed
-        {
-            top:30px;
-            left:30px;
-            background-color:Red;
-            border:1px solid black;
-        }
-    
-        #MisterYellow
-        {
-            /*position: relative;*/
-            left:20px;
-            background-color:Yellow;
-            border:1px solid black;
-            z-index: 5;
-        }
-    
-        .MisterWhite
-        {
-            margin:15px;
-            border:1px dashed black;
-        }
-
-        .MisterBlue
-        {
+        div {
+            text-align: center;
             width: 150px;
             height: 150px;
-            background: blue;
         }
 
+        .out {
+            border: 1px dashed black;
+            margin: 20px;
+            background-color: antiquewhite;
+        }
+
+        .static {
+            background-color: Green;
+            border: 1px solid black;
+        }
+
+        .relative1 {
+            top: 30px;
+            left: 30px;
+            background-color: Red;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .relative2 {
+            background-color: Yellow;
+            border: 1px solid black;
+            z-index: 5;
+            left: 20px;
+            position: relative;
+        }
     </style>
 </head>
 <body>
-    <div class="MisterWhite">
-        <div id="MisterGreen"><br/><br/>In Its Place</div>
+    <div class="out">
+        <div class="static"><br /><br />In Its Place</div>
     </div>
-    <div class="MisterBlue">
-        <div id="MisterYellow"><br /><br />left:20px;</div>
+    <div class="out">
+        <div class="relative2"><br /><br />left:20px;</div>
     </div>
-    <div class="MisterWhite">
-        <div id="MisterRed"><br /><br/>top:30px;<br /> left:30px;</div>
+    <div class="out">
+        <div class="relative1"><br /><br />top:30px;<br /> left:30px;</div>
     </div>
 </body>
 </html>
