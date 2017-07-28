@@ -122,6 +122,30 @@
     <Content Include="02_Page\07_Server\02_MapPath.aspx" />
     <Content Include="02_Page\07_Server\03_HtmlEncode.aspx" />
     <Content Include="02_Page\07_Server\04_UrlEncode.aspx" />
+    <Content Include="03_StateSaving\01_BaseInfo.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\02_BaseInfo.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\01_StateStorageProblem.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\03_ViewStateUsing.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\04_ViewStateSaveObject.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\viewstate_firstrequest.png" />
+    <Content Include="03_StateSaving\02_ViewState\viewstate_postback.png" />
+    <Content Include="03_StateSaving\03_URL\01_CatalogPage.aspx" />
+    <Content Include="03_StateSaving\03_URL\02_DescriptionPage.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\01_CookieWrite.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\02_CookieRead.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\03_CookieWrite.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\04_CookieRead.aspx" />
+    <Content Include="03_StateSaving\05_Session\01_SessionWrite.aspx" />
+    <Content Include="03_StateSaving\05_Session\02_SessionRead.aspx" />
+    <Content Include="03_StateSaving\06_Application\01_ApplicationUsing.aspx" />
+    <Content Include="03_StateSaving\06_Application\02_ApplicationLock.aspx" />
+    <Content Include="03_StateSaving\06_AuthenticationSample\Closed.aspx" />
+    <Content Include="03_StateSaving\06_AuthenticationSample\Default.aspx" />
+    <Content Include="03_StateSaving\06_AuthenticationSample\Login.aspx" />
+    <Content Include="03_StateSaving\06_AuthenticationSample\Logout.aspx" />
+    <Content Include="03_StateSaving\Default.aspx" />
+    <Content Include="03_StateSaving\state_server.png" />
+    <Content Include="03_StateSaving\state_user.png" />
     <Content Include="App_Data\TextFile.txt" />
     <Content Include="Content\My.css" />
     <Content Include="Content\Site.css" />
@@ -279,6 +303,148 @@
     </Compile>
     <Compile Include="02_Page\07_Server\04_UrlEncode.aspx.designer.cs">
       <DependentUpon>04_UrlEncode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\02_BaseInfo.aspx.cs">
+      <DependentUpon>02_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\02_BaseInfo.aspx.designer.cs">
+      <DependentUpon>02_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\01_StateStorageProblem.aspx.cs">
+      <DependentUpon>01_StateStorageProblem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\01_StateStorageProblem.aspx.designer.cs">
+      <DependentUpon>01_StateStorageProblem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\03_ViewStateUsing.aspx.cs">
+      <DependentUpon>03_ViewStateUsing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\03_ViewStateUsing.aspx.designer.cs">
+      <DependentUpon>03_ViewStateUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\04_ViewStateSaveObject.aspx.cs">
+      <DependentUpon>04_ViewStateSaveObject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\04_ViewStateSaveObject.aspx.designer.cs">
+      <DependentUpon>04_ViewStateSaveObject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\Customer.cs" />
+    <Compile Include="03_StateSaving\03_URL\01_CatalogPage.aspx.cs">
+      <DependentUpon>01_CatalogPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\03_URL\01_CatalogPage.aspx.designer.cs">
+      <DependentUpon>01_CatalogPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\03_URL\02_DescriptionPage.aspx.cs">
+      <DependentUpon>02_DescriptionPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\03_URL\02_DescriptionPage.aspx.designer.cs">
+      <DependentUpon>02_DescriptionPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\01_CookieWrite.aspx.cs">
+      <DependentUpon>01_CookieWrite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\01_CookieWrite.aspx.designer.cs">
+      <DependentUpon>01_CookieWrite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\02_CookieRead.aspx.cs">
+      <DependentUpon>02_CookieRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\02_CookieRead.aspx.designer.cs">
+      <DependentUpon>02_CookieRead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\03_CookieWrite.aspx.cs">
+      <DependentUpon>03_CookieWrite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\03_CookieWrite.aspx.designer.cs">
+      <DependentUpon>03_CookieWrite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\04_CookieRead.aspx.cs">
+      <DependentUpon>04_CookieRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\04_CookieRead.aspx.designer.cs">
+      <DependentUpon>04_CookieRead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\05_Session\01_SessionWrite.aspx.cs">
+      <DependentUpon>01_SessionWrite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\05_Session\01_SessionWrite.aspx.designer.cs">
+      <DependentUpon>01_SessionWrite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\05_Session\02_SessionRead.aspx.cs">
+      <DependentUpon>02_SessionRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\05_Session\02_SessionRead.aspx.designer.cs">
+      <DependentUpon>02_SessionRead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_Application\01_ApplicationUsing.aspx.cs">
+      <DependentUpon>01_ApplicationUsing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_Application\01_ApplicationUsing.aspx.designer.cs">
+      <DependentUpon>01_ApplicationUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_Application\02_ApplicationLock.aspx.cs">
+      <DependentUpon>02_ApplicationLock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_Application\02_ApplicationLock.aspx.designer.cs">
+      <DependentUpon>02_ApplicationLock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Closed.aspx.cs">
+      <DependentUpon>Closed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Closed.aspx.designer.cs">
+      <DependentUpon>Closed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\CryptoProvider.cs" />
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

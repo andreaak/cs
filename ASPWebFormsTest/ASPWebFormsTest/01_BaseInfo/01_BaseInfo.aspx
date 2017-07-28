@@ -7,15 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style>
-        span {
-            font-weight: bold;
-        }
-
-        table caption {
-            text-align: left;
-        }
-    </style>
+    <link href="~/Content/My.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -35,39 +27,39 @@
     <img src="01_BaseInfo.png" alt="" />
     <br />
     <p>
-        <span>Веб сервер</span> ответственный за получение и обработку запросов полученных через HTTP. 
+        <span class="bold">Веб сервер</span> ответственный за получение и обработку запросов полученных через HTTP. 
         Веб сервер обрабатывает запрос и отправляет ответ обратно веб браузеру. 
         После отправки ответа веб сервер закрывает соединении с браузером и освобождает все ресурсы, 
         которые были задействованы при обработке запроса.
     </p>
     <p>
-        <span>Веб браузер</span> - независимое от платформы приложение для запроса и отображения HTML страниц. 
+        <span class="bold">Веб браузер</span> - независимое от платформы приложение для запроса и отображения HTML страниц. 
         В обязанности браузера входит отображение информацииполученной с сервера 
         и получение информации от пользователя для отправки ее обратно на сервер.
     </p>
     <p>
-        <span>HTTP</span> - это протокол прикладного уровня для передачи данных от браузера к серверу и обратно. 
+        <span class="bold">HTTP</span> - это протокол прикладного уровня для передачи данных от браузера к серверу и обратно. 
         HTTP сообщение обычно передаются между сервером и браузером через порт 80 
         или 443 при использовании Secure HTTP (HTTPS).
     </p>
 
     <p>
-        <span>Request</span><br />
+        <span class="bold">Request</span><br />
         При запросе страницы браузер отправляет текстовую команду на сервер.<br />
         GET /default.aspx HTTP/1.1<br />
         Host: www.example.com<br />
         <br />
 
-        <span>GET</span> - HTTP глагол (метод или команда) описывающая действие, которое должен выполнить веб сервер.<br />
+        <span class="bold">GET</span> - HTTP глагол (метод или команда) описывающая действие, которое должен выполнить веб сервер.<br />
         /default.aspx-запрашиваемая на сервере страница.<br />
-        <span>HTTP/1.1</span> - версия протокола<br />
-        <span>Host: www.example.com</span> - заголовок. Доменное имя сайта к которому выполняется запрос. 
+        <span class="bold">HTTP/1.1</span> - версия протокола<br />
+        <span class="bold">Host: www.example.com</span> - заголовок. Доменное имя сайта к которому выполняется запрос. 
                 Полезно в том случае если на сервере одновременно работает несколько веб приложений.
         <br />
     </p>
 
     <table border="1px">
-        <caption><span>Глаголы HTTP</span></caption>
+        <caption><span class="bold">Глаголы HTTP</span></caption>
         <tr>
             <td>HTTP Глагол</td>
             <td>Описание</td>
@@ -103,7 +95,7 @@
     </table>
 
     <p>
-        <span>Response</span><br />
+        <span class="bold">Response</span><br />
         HTTP/1.1 200 OK<br />
         Server: Microsoft-IIS/6.0<br />
         Content-Type: text/html<br />
@@ -111,20 +103,20 @@
         &lt;html&gt;&lt;body&gt;Hello world&lt;/body&gt;&lt;/html&gt;<br />
         <br />
 
-        <span>HTTP/1.1</span> - версия протокола<br />
-        <span>200</span> - status code
+        <span class="bold">HTTP/1.1</span> - версия протокола<br />
+        <span class="bold">200</span> - status code
         <br />
-        <span>OK</span> - описание статуса<br />
-        <span>Server: Microsoft-IIS/6.0</span> - заголовок хранящий версию сервера<br />
-        <span>Content-Type: text/html</span> - заголовок с MIME типом ответа. 
+        <span class="bold">OK</span> - описание статуса<br />
+        <span class="bold">Server: Microsoft-IIS/6.0</span> - заголовок хранящий версию сервера<br />
+        <span class="bold">Content-Type: text/html</span> - заголовок с MIME типом ответа. 
         Данное значение нужно для того, 
         что бы браузер правильно интерпретировал данные полученные от сервера<br />
-        <span>Content-Length:36</span> - размер тела ответа в байтах<br />
-        <span>&lt;html&gt;&lt;body&gt;Hello world&lt;/body&gt;&lt;/html&gt;</span> - тело ответа<br />
+        <span class="bold">Content-Length:36</span> - размер тела ответа в байтах<br />
+        <span class="bold">&lt;html&gt;&lt;body&gt;Hello world&lt;/body&gt;&lt;/html&gt;</span> - тело ответа<br />
     </p>
 
     <table border="1px">
-        <caption><span>Группы статус кодов</span></caption>
+        <caption><span class="bold">Группы статус кодов</span></caption>
         <tr>
             <td>Группа</td>
             <td>Описание</td>

@@ -7,15 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style>
-        span {
-            font-weight: bold;
-        }
-
-        table caption {
-            text-align: left;
-        }
-    </style>
+    <link href="~/Content/My.css" rel="stylesheet" />
 </head>
 <body>
     <h1>Типы проектов:</h1>

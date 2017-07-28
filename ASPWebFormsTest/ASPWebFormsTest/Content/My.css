@@ -1,19 +1,33 @@
-﻿        span {
-            font-weight: bold;
-        }
+﻿.bold {
+    font-weight: bold;
+}
 
-        table caption {
-            text-align: left;
-        }
+table caption {
+    text-align: left;
+}
 
-        ul {
-            margin-top: 1px;
-        }
+ul {
+    margin-top: 1px;
+}
 
-        .description {
-            margin-left: 30px;
-        }
+.description {
+    margin-left: 30px;
+}
 
-        .mostUsed {
-            color: red;
-        }
+.mostUsed {
+    color: red;
+}
+
+.image {
+    width: 500px;
+    height: 400px;
+}
+
+    /* This will style any <img> element in .parent div */
+    .image img {
+        width: 100%;
+    }
+
+.marking {
+    font-style: italic;
+}

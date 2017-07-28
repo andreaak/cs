@@ -10,15 +10,15 @@ namespace ASPWebFormsTest._02_Page
         protected void Page_PreInit(object sender, EventArgs e)
         {
             _output.Clear();
-            _output.Append($"<p>IsPostBack: {IsPostBack}</p>");
-            _output.Append("<p>Page_PreInit<br/>");
+            _output.Append($"<p><span class=\"bold\">IsPostBack: {IsPostBack}</span></p>");
+            _output.Append("<p><span class=\"bold\">Page_PreInit</span><br/>");
             _output.Append($"TextBox1: {TextBox1.Text}");
             _output.Append("</p>");
         }
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            _output.Append("<p>Page_Init<br/>");
+            _output.Append("<p><span class=\"bold\">Page_Init</span><br/>");
             _output.Append($"TextBox1: {TextBox1.Text}");
             _output.Append("</p>");
         }
@@ -28,7 +28,7 @@ namespace ASPWebFormsTest._02_Page
             // no sense. ViewState not loaded  
             var test1 = ViewState["Test1"] as string;
             var test2 = ViewState["Test2"] as string;
-            _output.Append("<p>Page_InitComplete<br/>");
+            _output.Append("<p><span class=\"bold\">Page_InitComplete</span><br/>");
             _output.Append($"TextBox1: {TextBox1.Text}<br/>");
             _output.Append($"Test1: {test1}<br/>");
             _output.Append($"Test2: {test2}<br/>");
@@ -40,12 +40,10 @@ namespace ASPWebFormsTest._02_Page
 
         //protected void Page_LoadState(object sender, EventArgs e)
         //{
-        //    Response.Write("<p>Page_LoadState</p>");
         //}
 
         //protected void Page_ProcessPostData(object sender, EventArgs e)
         //{
-        //    Response.Write("<p>Page_ProcessPostData</p>");
         //}
 
         protected void Page_PreLoad(object sender, EventArgs e)
@@ -53,7 +51,7 @@ namespace ASPWebFormsTest._02_Page
             var test1 = ViewState["Test1"] as string;
             var test2 = ViewState["Test2"] as string;
             var test3 = ViewState["Test3"] as string;
-            _output.Append("<p>Page_PreLoad<br/>");
+            _output.Append("<p><span class=\"bold\">Page_PreLoad</span><br/>");
             _output.Append($"TextBox1: {TextBox1.Text}<br/>");
             _output.Append($"Test1: {test1}<br/>");
             _output.Append($"Test2: {test2}<br/>");
@@ -63,43 +61,40 @@ namespace ASPWebFormsTest._02_Page
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _output.Append("<p>Page_Load<br/>");
+            _output.Append("<p><span class=\"bold\">Page_Load<br/>");
             _output.Append($"TextBox1: {TextBox1.Text}");
             _output.Append("</p>");
         }
 
         //protected void Page_ProcessPostData2(object sender, EventArgs e)
         //{
-        //    Response.Write("<p>Page_ProcessPostData2</p>");
         //}
 
         //protected void Page_ChangedEvents(object sender, EventArgs e)
         //{
-        //    Response.Write("<p>Page_ChangedEvents</p>");
         //}
 
         //protected void Page_PostBackEvent(object sender, EventArgs e)
         //{
-        //    Response.Write("<p>Page_PostBackEvent</p>");
         //}
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            _output.Append("<p>Button1_Click<br/>");
+            _output.Append("<p><span class=\"bold\">Button1_Click</span><br/>");
             _output.Append($"TextBox1: {TextBox1.Text}");
             _output.Append("</p>");
         }
 
         private void Page_LoadComplete(object sender, EventArgs e)
         {
-            _output.Append("<p>Page_LoadComplete<br/>");
+            _output.Append("<p><span class=\"bold\">Page_LoadComplete</span><br/>");
             _output.Append($"TextBox1: {TextBox1.Text}");
             _output.Append("</p>");
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            _output.Append("<p>Page_PreRender<br/>");
+            _output.Append("<p><span class=\"bold\">Page_PreRender</span><br/>");
             _output.Append($"TextBox1: {TextBox1.Text}");
             _output.Append("</p>");
         }
@@ -108,20 +103,19 @@ namespace ASPWebFormsTest._02_Page
         {
             ViewState["Test1"] = "ViewState_Page_PreRenderComplete";
             ViewState["Test3"] = "ViewState_Page_PreRenderComplete_3";
-            _output.Append("<p>Page_PreRenderComplete<br/>");
+            _output.Append("<p><span class=\"bold\">Page_PreRenderComplete</span><br/>");
             _output.Append($"TextBox1: {TextBox1.Text}<br/>");
             _output.Append("</p>");
         }
 
         //protected void Page_SaveState(object sender, EventArgs e)
         //{
-        //    Response.Write("<p>Page_SaveState</p>");
         //}
 
         protected void Page_SaveStateComplete(object sender, EventArgs e)
         {
             ViewState["Test2"] = "ViewState_Page_SaveStateComplete"; // no sense. View state is saved
-            _output.Append("<p>Page_SaveStateComplete<br/>");
+            _output.Append("<p><span class=\"bold\">Page_SaveStateComplete</span><br/>");
             _output.Append($"TextBox1: {TextBox1.Text}<br/>");
             _output.Append("</p>");
 
@@ -130,7 +124,6 @@ namespace ASPWebFormsTest._02_Page
 
         //protected void Page_Render(object sender, EventArgs e)
         //{
-        //    Response.Write("<p>Page_Render</p>");
         //}
 
         // Рендеринг страницы. Все элементы управления превращаются в HTML, CSS и JavaScript, который будет отправлен клиенту.
@@ -138,12 +131,10 @@ namespace ASPWebFormsTest._02_Page
         protected void Page_Unload(object sender, EventArgs e)
         {
             // Освобождение ресурсов, которые использовала страница.
-            //Response.Write("<p>Page_Unload</p>"); // Can't write in response - exception
         }
 
         protected void Page_Disposed(object sender, EventArgs e)
         {
-            //Response.Write("<p>Page_Disposed</p>"); //Can't write in response
         }
 
         /* 

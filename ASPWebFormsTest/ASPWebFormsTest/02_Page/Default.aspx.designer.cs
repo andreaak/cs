@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._02_Page {
+namespace ASPWebFormsTest._03_StateSaving {
     
     
     public partial class Default {
