@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿<!--
+    border-box - фон позиционируется относительно границы,
+        при этом рамка элемента может перекрывать фон
+    padding-box - фон позиционируется относительно края элемента
+        с учетом толщины border
+    content-box - фон позиционируется относительно содержимого элемента
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>background-origin</title>
@@ -15,8 +22,6 @@
 
         #id1 {
             background-image: url("bg.jpg");
-
-            /* border-box - фон позиционируется относительно границы, при этом рамка элемента может перекрывать фон */
             -moz-background-origin: border-box;
             -webkit-background-origin: border-box;
             background-origin: border-box;
@@ -24,8 +29,6 @@
 
         #id2 {
             background-image: url("bg.jpg");
-
-            /* padding-box - фон позиционируется относительно края элемента с учетом толщины border*/
             -moz-background-origin: padding-box;
             -webkit-background-origin: padding-box;
             background-origin: padding-box;
@@ -33,8 +36,6 @@
 
         #id3 {
             background-image: url("bg.jpg");
-
-            /* content-box - фон позиционируется относительно содержимого элемента*/
             -moz-background-origin: content-box;
             -webkit-background-origin: content-box;
             background-origin: content-box;
@@ -47,4 +48,3 @@
     <div id="id3">content-box</div>
 </body>
 </html>
-

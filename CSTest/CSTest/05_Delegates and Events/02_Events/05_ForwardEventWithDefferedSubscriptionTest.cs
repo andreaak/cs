@@ -21,7 +21,8 @@ namespace CSTest._05_Delegates_and_Events._02_Events
             Button Click Static Handler
             Form_FormLambda
             Form_FormLambda
-            Form_FormClickDelegat
+            6
+            Form_FormClickDelegate
             */
         }
 

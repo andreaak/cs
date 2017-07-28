@@ -72,8 +72,7 @@ namespace CSTest._05_Delegates_and_Events._02_Events
         {
             button = new TestButton();
 
-            //button.Click += FormClickFault;
-            FormClickFault += FormClickFaultAction_Click;
+            //FormClickFault += FormClickFaultAction_Click;
             button.Click += FormClickFault;
             button.Click += Button_Click;
             button.Click += Button_Click_Static;

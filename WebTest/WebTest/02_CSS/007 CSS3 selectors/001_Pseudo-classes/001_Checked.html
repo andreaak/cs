@@ -1,11 +1,18 @@
-﻿<!DOCTYPE html>
+﻿<!--
+Псевдоклассы – определяют динамическое состояние элемента,
+которое изменяется со временем или из-за действий пользователя.
+
+:checked применяется к элементам интерфейса, таким как переключатели (checkbox) и флажки (radio),
+когда они находятся в положение «включено».
+-->
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>checked</title>
     <style>
-        /* 
-            :checked псевдокласс, который применяется к элементам интерфейса (checkbox или radio) когда они находиться в выбранном состоянии 
-            input:checked + span - найти все span, которые следуют за выбранным input    
+        /*
+        input:checked + span - найти все span, которые следуют за выбранным input
         */
         input:checked + span {
             background: #fc0;
@@ -19,9 +26,9 @@
         <input type="checkbox" name="a2"><span>JAVASCRIPT</span><br>
         <input type="checkbox" name="a3"><span>jQuery</span><br>
         <input type="checkbox" name="a4"><span>C# Starter</span><br>
-        <p>
-            <input type="submit" value="Отправить">
-        </p>
+    <p>
+        <input type="submit" value="Отправить">
+    </p>
 </body>
 </html>
 

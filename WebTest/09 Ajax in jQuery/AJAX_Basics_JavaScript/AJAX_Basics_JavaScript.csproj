@@ -24,6 +24,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,30 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="001_XMLHttpRequest\ajax.jpg" />
-    <Content Include="002_Ajax%28%29\001_ajax%28%29.jpg" />
-    <Content Include="002_Ajax%28%29\006_load%28%29.jpg" />
     <Content Include="00_Scripts\jquery-1.10.2.js" />
-    <Content Include="001_XMLHttpRequest\01_SyncRequest.html" />
-    <Content Include="001_XMLHttpRequest\02_AsyncRequest.html" />
-    <Content Include="001_XMLHttpRequest\testfile.html" />
-    <Content Include="002_Ajax%28%29\001_ajax%28%29.html" />
-    <Content Include="002_Ajax%28%29\Data\test2.html" />
-    <Content Include="002_Ajax%28%29\004_Javascript xml.html" />
-    <Content Include="002_Ajax%28%29\005_xml.html" />
-    <Content Include="002_Ajax%28%29\006_load%28%29.htm" />
-    <Content Include="002_Ajax%28%29\000_ajaxSetup%28%29.html" />
-    <Content Include="002_Ajax%28%29\002_ajax%28%29.html" />
-    <Content Include="002_Ajax%28%29\Data\JScript.js" />
-    <Content Include="002_Ajax%28%29\Data\note.xml" />
-    <Content Include="002_Ajax%28%29\Data\test.html" />
-    <Content Include="002_Ajax%28%29\003_data.html" />
-    <Content Include="002_Ajax%28%29\Data\test.js" />
-    <Content Include="003_Event\001_Events.html" />
-    <Content Include="003_Event\test.html" />
-    <Content Include="005_JSON\001_Javascript JSON.html" />
-    <Content Include="005_JSON\002_ajax%28json%29.html" />
-    <Content Include="005_JSON\HandlerObject.ashx" />
     <Content Include="Task\HtmlPage3.html" />
     <Content Include="Task\index.html" />
     <Content Include="Task\HtmlPage2.html" />
@@ -98,16 +76,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="005_JSON\HandlerObject.ashx.cs">
-      <DependentUpon>HandlerObject.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="002_Ajax%28%29\HandlerData.ashx.cs">
-      <DependentUpon>HandlerData.ashx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="002_Ajax%28%29\HandlerData.ashx" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

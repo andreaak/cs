@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
@@ -8,10 +9,15 @@ namespace ReelsHelper
 {
     public partial class VerticalReelsForm : Form
     {
+        private IList<Reel> _reels;
+        private BindingSource bindingSource1 = new BindingSource();
+
         public VerticalReelsForm(IList<Reel> reels)
         {
             InitializeComponent();
-            dataGridView1.DataSource = CreateVerticalReelDataTable(reels);
+            _reels = reels;
+            bindingSource1.DataSource = CreateVerticalReelDataTable(reels);
+            dataGridView1.DataSource = bindingSource1;
         }
 
         private static DataTable CreateVerticalReelDataTable(IList<Reel> reels)
@@ -66,12 +72,31 @@ namespace ReelsHelper
                 }
             }
 
-            return $"{new string(' ', 8)}\"reels\": " + 
+            return $"{new string(' ', 8)}\"reels\": " +
                 JSonParser.CreateJson(newReels.Select(item => item.Indexes.ToArray()).ToArray())
                 .Replace("],[", $"],\r\n{new string(' ', 12)}[")
                 .Replace("[[", $"[\r\n{new string(' ', 12)}[")
                 .Replace("]]", $"]\r\n{new string(' ', 8)}]")
                 .Replace(",", ", ");
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            int maxIndex = (int)numericUpDown1.Value;
+            labelError.Visible = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.ErrorText = string.Empty;
+                    int index;
+                    if (maxIndex > 0 && int.TryParse(Convert.ToString(cell.Value), out index) && maxIndex < index)
+                    {
+                        cell.ErrorText = "Wrong Index";
+                        labelError.Visible = true;
+                    }
+                }
+            }
         }
     }
 }

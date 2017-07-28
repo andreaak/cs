@@ -8,7 +8,7 @@
             document.getElementById("btnGet").onclick = function () {
 
                 var xhr = new XMLHttpRequest();          // Создание объекта для HTTP запроса.
-                xhr.open("GET", "testfile.html", false); // Настройка объекта для отправки синхронного GET запроса
+                xhr.open("GET", "test.html", false); // Настройка объекта для отправки синхронного GET запроса
                 xhr.send();                              // Отправка запроса, так как запрос является синхронным, следующая строка кода выполнится только после получения ответа со стороны сервера.
                 document.getElementById("output").innerHTML += xhr.responseText; // responseText - текст ответа полученного с сервера.
             }

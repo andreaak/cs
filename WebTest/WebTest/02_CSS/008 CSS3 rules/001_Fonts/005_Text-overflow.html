@@ -6,11 +6,10 @@
         #id1 {
             width: 450px;
             border: 1px #000 solid;
-
             -ms-text-overflow: ellipsis;
             -o-text-overflow: ellipsis;
-            text-overflow: ellipsis; /* Текст обрезается и к концу строки добавляется многоточие. */
-
+            /* Текст обрезается и к концу строки добавляется многоточие. */
+            text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
         }
@@ -18,10 +17,10 @@
         #id2 {
             width: 450px;
             border: 1px #000 solid;
-
             -ms-text-overflow: clip;
             -o-text-overflow: clip;
-            text-overflow: clip; /* Текст обрезается по размеру области. */
+            /* Текст обрезается по размеру области. */
+            text-overflow: clip;
             overflow: hidden;
             white-space: nowrap;
         }

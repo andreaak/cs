@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<!--
+:not задаёт правила стилей для элементов, которые не содержат указанный селектор.
+-->
+
+<!DOCTYPE html>
 <html>
 <head>
     <title></title>
@@ -8,10 +12,19 @@
             color: green;
         }
 
-        /* :not() псевдокласс для элементов которые не содержат указанный селектор */
         /* все элементы, которые не являются параграфами - красного цвета*/
         :not(p) {
             color: red;
+        }
+
+        /* правило для всех input, которые не используют атрибут type="submit" */
+        input:not([type=submit]) {
+            border: 1px solid #999;
+            border-radius: 3px;
+            color: #aaa;
+            padding: 4px 2px;
+            margin: 2px;
+            width: 40%;
         }
     </style>
 </head>
@@ -25,7 +38,19 @@
     <div>Текст в dive</div>
 
     <a href="#" target="_blank">Ссылка</a>
-
+    <form>
+        Поле
+        <input name="name1" value="value" /><br />
+        Поле
+        <input name="name2" value="value" /><br />
+        Поле
+        <input name="name3" value="value" /><br />
+        Поле
+        <input name="name4" value="value" /><br />
+        Поле
+        <input name="name5" value="value" /><br />
+        <input type="submit" name="name6" value="Отправить" />
+    </form>
 </body>
 </html>
 

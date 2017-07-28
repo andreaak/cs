@@ -1,3 +1,0 @@
-﻿//function browserIn() {
-    alert("Hello");
-//}

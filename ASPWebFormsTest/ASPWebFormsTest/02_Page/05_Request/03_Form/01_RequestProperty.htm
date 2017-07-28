@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Тестовая страница</title>
+</head>
+<body>
+    <!--
+        form - элемент  HTML позволяющий отправлять сообщения со стороны клиента на сервер.
+        атрибуты:
+        action - адрес серверного ресурса, которому будет отправлен запрос
+        method - HTTP глагол
+
+        Каждый из ключей, который находиться в теле запроса, на стороне сервера можно
+        прочесть обратившись к коллекции Request.Form[имя_ключа];
+
+        Обычно значения серверных элементов управления передаются в форме, но при этом
+        на стороне сервера они считываются из свойств объектов контролов, а не из коллекции Form
+    -->
+
+    <form action="01_RequestPropertyDestination.aspx" method="post">
+        Логин
+        <!--Поле ввода для логина-->
+        <input type="text" name="loginParam" /><br />
+        Пароль
+        <!--Поле ввода для пароля-->
+        <input type="text" name="passwordParam" />
+        <br />
+        <!--Кнопка, которая инициирует отправку данных на сервер по адресу указанному в атрибуте action-->
+        <input type="submit" value="Отправить" />
+    </form>
+</body>
+</html>

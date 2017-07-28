@@ -1,0 +1,96 @@
+﻿body {
+    font-family: 'Segoe UI';
+    -moz-background-size: 50px 50px;
+    -o-background-size: 50px 50px;
+    -webkit-background-size: 50px 50px;
+    background-size: 50px 50px;
+    /* фон документа */
+    background-color: #ac0;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+}
+
+/* Стиль шапки */
+header {
+    background-color: #d7e689;
+    padding: 10px;
+    border-radius: 5px;
+    width: 960px;
+    margin: auto;
+}
+
+    header h1 {
+        margin: 0px;
+        padding: 0px;
+        color: white;
+    }
+
+/* Стиль главного баннера */
+.main-banner {
+    height: 160px;
+    background-color: #ffd800;
+    margin: 10px;
+    border: 1px solid white;
+}
+
+/* контейнер в котором размещаются колонки */
+#main {
+    width: 960px;
+    margin: auto;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flexbox;
+}
+
+.block {
+    background-color: #0094ff;
+    min-height: 300px;
+    width: 30%;
+    margin: 7px;
+    padding: 10px;
+}
+
+.small-banner {
+    height: 90px;
+    width: 270px;
+    margin: auto 10px;
+    background-color: blue;
+    border: 1px solid white;
+}
+
+/* Стиль для мобильных устройств с разрешением экрана ниже 960px*/
+@media screen and (max-width: 960px) {
+    /* устанавливаем ширину шапки равную ширине экрана*/
+    header {
+        width: 100%;
+    }
+
+    /* отменяем flexbox для главного контейнера изменяя display на block*/
+    #main {
+        margin: auto;
+        display: block;
+        width: 100%;
+    }
+
+    /* убираем баннер */
+    .main-banner {
+        display: none;
+    }
+
+    /* теперь колоник будут отображаться на всю ширину страницы*/
+    .block {
+        width: 97%;
+        min-height: 100px;
+    }
+
+    /* с помощью float указываем что маленькие баннеры должны отображаться в левой части блока с информацией*/
+    .small-banner {
+        height: 90px;
+        width: 270px;
+        float: left;
+        margin: 0px 10px 0px 0px;
+    }
+}
+

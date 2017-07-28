@@ -74,6 +74,13 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 return null;
             return TestReturnNullResult();
         }
+
+        public Task<object> TestReturnNullResult3()
+        {
+            if (Bonus == null)
+                return Task.FromResult<object>(null);
+            return TestReturnNullResult3();
+        }
     }
 
 #endif

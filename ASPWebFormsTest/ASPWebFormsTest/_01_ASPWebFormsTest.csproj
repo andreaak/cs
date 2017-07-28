@@ -11,14 +11,15 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ASPTest</RootNamespace>
-    <AssemblyName>ASPTest</AssemblyName>
+    <RootNamespace>ASPWebFormsTest</RootNamespace>
+    <AssemblyName>ASPWebFormsTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,6 +104,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="02_Page\01_BaseInfo.aspx" />
+    <Content Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx" />
+    <Content Include="02_Page\03_PageEventHandling\02_EventHandlingPageEvents.aspx" />
+    <Content Include="02_Page\03_PageEventHandling\03_EventHandlingOverrideHandlers.aspx" />
+    <Content Include="02_Page\04_IsPostBackProp.aspx" />
+    <Content Include="02_Page\05_Request\01_BaseInfo.aspx" />
+    <Content Include="02_Page\05_Request\02_QueryString\01_RequestWithQueryString.aspx" />
+    <Content Include="02_Page\05_Request\02_QueryString\02_QueryStringRead.aspx" />
+    <Content Include="02_Page\05_Request\03_Form\01_RequestProperty.htm" />
+    <Content Include="02_Page\05_Request\03_Form\01_RequestPropertyDestination.aspx" />
+    <Content Include="02_Page\06_Response\01_BaseInfo.aspx" />
+    <Content Include="02_Page\06_Response\02_ResponseWrite.aspx" />
+    <Content Include="02_Page\06_Response\03_ResponseWriteFile.aspx" />
+    <Content Include="02_Page\06_Response\Item.txt" />
+    <Content Include="02_Page\07_Server\01_BaseInfo.aspx" />
+    <Content Include="02_Page\07_Server\02_MapPath.aspx" />
+    <Content Include="02_Page\07_Server\03_HtmlEncode.aspx" />
+    <Content Include="02_Page\07_Server\04_UrlEncode.aspx" />
+    <Content Include="03_StateSaving\01_BaseInfo.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\02_BaseInfo.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\01_StateStorageProblem.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\03_ViewStateUsing.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\04_ViewStateSaveObject.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\viewstate_firstrequest.png" />
+    <Content Include="03_StateSaving\02_ViewState\viewstate_postback.png" />
+    <Content Include="03_StateSaving\03_URL\01_CatalogPage.aspx" />
+    <Content Include="03_StateSaving\03_URL\02_DescriptionPage.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\01_CookieWrite.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\02_CookieRead.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\03_CookieWrite.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\04_CookieRead.aspx" />
+    <Content Include="03_StateSaving\05_Session\01_SessionWrite.aspx" />
+    <Content Include="03_StateSaving\05_Session\02_SessionRead.aspx" />
+    <Content Include="03_StateSaving\06_Application\01_ApplicationUsing.aspx" />
+    <Content Include="03_StateSaving\06_Application\02_ApplicationLock.aspx" />
+    <Content Include="03_StateSaving\06_AuthenticationSample\Closed.aspx" />
+    <Content Include="03_StateSaving\06_AuthenticationSample\Default.aspx" />
+    <Content Include="03_StateSaving\06_AuthenticationSample\Login.aspx" />
+    <Content Include="03_StateSaving\06_AuthenticationSample\Logout.aspx" />
+    <Content Include="03_StateSaving\Default.aspx" />
+    <Content Include="03_StateSaving\state_server.png" />
+    <Content Include="03_StateSaving\state_user.png" />
+    <Content Include="App_Data\TextFile.txt" />
+    <Content Include="Content\My.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Images\accent.png" />
@@ -119,11 +164,22 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="packages.config" />
-    <Content Include="_02_Page\_02_PageLifeCycle\TestLifeCycle.aspx" />
-    <Content Include="_02_Page\_05_PageRedirection\_01_DestinationPage.aspx" />
-    <Content Include="_02_Page\_05_PageRedirection\_01_StartPage.aspx" />
-    <Content Include="_02_Page\_06_DataTransferBetweenPages\_01_DestinationPage.aspx" />
-    <Content Include="_02_Page\_06_DataTransferBetweenPages\_01_DataTransferUseAction.aspx" />
+    <Content Include="01_BaseInfo\02_ProjectTypes.aspx" />
+    <Content Include="01_BaseInfo\01_BaseInfo.png" />
+    <Content Include="01_BaseInfo\03_ServerTag.aspx" />
+    <Content Include="01_BaseInfo\04_Comments.aspx" />
+    <Content Include="01_BaseInfo\05_Namespaces.aspx" />
+    <Content Include="01_BaseInfo\06_ClassUsing.aspx" />
+    <Content Include="01_BaseInfo\07_AppData.aspx" />
+    <Content Include="01_BaseInfo\08_Form.aspx" />
+    <Content Include="01_BaseInfo\Default.aspx" />
+    <Content Include="01_BaseInfo\01_BaseInfo.aspx" />
+    <Content Include="02_Page\Default.aspx" />
+    <Content Include="02_Page\02_PageLifeCycle.aspx" />
+    <Content Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirectDestination.aspx" />
+    <Content Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirect.aspx" />
+    <Content Include="02_Page\05_Request\03_Form\06_DestinationPage.aspx" />
+    <Content Include="02_Page\05_Request\03_Form\06_DataTransferBetweenPagesChangeFormAction.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -136,6 +192,260 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="02_Page\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx.cs">
+      <DependentUpon>01_EventHandlingWireup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx.designer.cs">
+      <DependentUpon>01_EventHandlingWireup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\02_EventHandlingPageEvents.aspx.cs">
+      <DependentUpon>02_EventHandlingPageEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\02_EventHandlingPageEvents.aspx.designer.cs">
+      <DependentUpon>02_EventHandlingPageEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\03_EventHandlingOverrideHandlers.aspx.cs">
+      <DependentUpon>03_EventHandlingOverrideHandlers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\03_PageEventHandling\03_EventHandlingOverrideHandlers.aspx.designer.cs">
+      <DependentUpon>03_EventHandlingOverrideHandlers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\04_IsPostBackProp.aspx.cs">
+      <DependentUpon>04_IsPostBackProp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\04_IsPostBackProp.aspx.designer.cs">
+      <DependentUpon>04_IsPostBackProp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\02_QueryString\01_RequestWithQueryString.aspx.cs">
+      <DependentUpon>01_RequestWithQueryString.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\02_QueryString\01_RequestWithQueryString.aspx.designer.cs">
+      <DependentUpon>01_RequestWithQueryString.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\02_QueryString\02_QueryStringRead.aspx.cs">
+      <DependentUpon>02_QueryStringRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\02_QueryString\02_QueryStringRead.aspx.designer.cs">
+      <DependentUpon>02_QueryStringRead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\03_Form\01_RequestPropertyDestination.aspx.cs">
+      <DependentUpon>01_RequestPropertyDestination.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\03_Form\01_RequestPropertyDestination.aspx.designer.cs">
+      <DependentUpon>01_RequestPropertyDestination.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\06_Response\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\06_Response\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\06_Response\02_ResponseWrite.aspx.cs">
+      <DependentUpon>02_ResponseWrite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\06_Response\02_ResponseWrite.aspx.designer.cs">
+      <DependentUpon>02_ResponseWrite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\06_Response\03_ResponseWriteFile.aspx.cs">
+      <DependentUpon>03_ResponseWriteFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\06_Response\03_ResponseWriteFile.aspx.designer.cs">
+      <DependentUpon>03_ResponseWriteFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\07_Server\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\07_Server\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\07_Server\02_MapPath.aspx.cs">
+      <DependentUpon>02_MapPath.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\07_Server\02_MapPath.aspx.designer.cs">
+      <DependentUpon>02_MapPath.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\07_Server\03_HtmlEncode.aspx.cs">
+      <DependentUpon>03_HtmlEncode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\07_Server\03_HtmlEncode.aspx.designer.cs">
+      <DependentUpon>03_HtmlEncode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\07_Server\04_UrlEncode.aspx.cs">
+      <DependentUpon>04_UrlEncode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\07_Server\04_UrlEncode.aspx.designer.cs">
+      <DependentUpon>04_UrlEncode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\02_BaseInfo.aspx.cs">
+      <DependentUpon>02_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\02_BaseInfo.aspx.designer.cs">
+      <DependentUpon>02_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\01_StateStorageProblem.aspx.cs">
+      <DependentUpon>01_StateStorageProblem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\01_StateStorageProblem.aspx.designer.cs">
+      <DependentUpon>01_StateStorageProblem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\03_ViewStateUsing.aspx.cs">
+      <DependentUpon>03_ViewStateUsing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\03_ViewStateUsing.aspx.designer.cs">
+      <DependentUpon>03_ViewStateUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\04_ViewStateSaveObject.aspx.cs">
+      <DependentUpon>04_ViewStateSaveObject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\04_ViewStateSaveObject.aspx.designer.cs">
+      <DependentUpon>04_ViewStateSaveObject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\Customer.cs" />
+    <Compile Include="03_StateSaving\03_URL\01_CatalogPage.aspx.cs">
+      <DependentUpon>01_CatalogPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\03_URL\01_CatalogPage.aspx.designer.cs">
+      <DependentUpon>01_CatalogPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\03_URL\02_DescriptionPage.aspx.cs">
+      <DependentUpon>02_DescriptionPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\03_URL\02_DescriptionPage.aspx.designer.cs">
+      <DependentUpon>02_DescriptionPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\01_CookieWrite.aspx.cs">
+      <DependentUpon>01_CookieWrite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\01_CookieWrite.aspx.designer.cs">
+      <DependentUpon>01_CookieWrite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\02_CookieRead.aspx.cs">
+      <DependentUpon>02_CookieRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\02_CookieRead.aspx.designer.cs">
+      <DependentUpon>02_CookieRead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\03_CookieWrite.aspx.cs">
+      <DependentUpon>03_CookieWrite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\03_CookieWrite.aspx.designer.cs">
+      <DependentUpon>03_CookieWrite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\04_CookieRead.aspx.cs">
+      <DependentUpon>04_CookieRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\04_Cookies\04_CookieRead.aspx.designer.cs">
+      <DependentUpon>04_CookieRead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\05_Session\01_SessionWrite.aspx.cs">
+      <DependentUpon>01_SessionWrite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\05_Session\01_SessionWrite.aspx.designer.cs">
+      <DependentUpon>01_SessionWrite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\05_Session\02_SessionRead.aspx.cs">
+      <DependentUpon>02_SessionRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\05_Session\02_SessionRead.aspx.designer.cs">
+      <DependentUpon>02_SessionRead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_Application\01_ApplicationUsing.aspx.cs">
+      <DependentUpon>01_ApplicationUsing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_Application\01_ApplicationUsing.aspx.designer.cs">
+      <DependentUpon>01_ApplicationUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_Application\02_ApplicationLock.aspx.cs">
+      <DependentUpon>02_ApplicationLock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_Application\02_ApplicationLock.aspx.designer.cs">
+      <DependentUpon>02_ApplicationLock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Closed.aspx.cs">
+      <DependentUpon>Closed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Closed.aspx.designer.cs">
+      <DependentUpon>Closed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\CryptoProvider.cs" />
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\06_AuthenticationSample\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -154,45 +464,115 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="_02_Page\_02_PageLifeCycle\TestLifeCycle.aspx.cs">
-      <DependentUpon>TestLifeCycle.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\02_ProjectTypes.aspx.cs">
+      <DependentUpon>02_ProjectTypes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_02_Page\_02_PageLifeCycle\TestLifeCycle.aspx.designer.cs">
-      <DependentUpon>TestLifeCycle.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\02_ProjectTypes.aspx.designer.cs">
+      <DependentUpon>02_ProjectTypes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="_02_Page\_05_PageRedirection\_01_DestinationPage.aspx.cs">
-      <DependentUpon>_01_DestinationPage.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\03_ServerTag.aspx.cs">
+      <DependentUpon>03_ServerTag.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_02_Page\_05_PageRedirection\_01_DestinationPage.aspx.designer.cs">
-      <DependentUpon>_01_DestinationPage.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\03_ServerTag.aspx.designer.cs">
+      <DependentUpon>03_ServerTag.aspx</DependentUpon>
     </Compile>
-    <Compile Include="_02_Page\_05_PageRedirection\_01_StartPage.aspx.cs">
-      <DependentUpon>_01_StartPage.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\04_Comments.aspx.cs">
+      <DependentUpon>04_Comments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_02_Page\_05_PageRedirection\_01_StartPage.aspx.designer.cs">
-      <DependentUpon>_01_StartPage.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\04_Comments.aspx.designer.cs">
+      <DependentUpon>04_Comments.aspx</DependentUpon>
     </Compile>
-    <Compile Include="_02_Page\_06_DataTransferBetweenPages\_01_DestinationPage.aspx.cs">
-      <DependentUpon>_01_DestinationPage.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\05_Namespaces.aspx.cs">
+      <DependentUpon>05_Namespaces.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_02_Page\_06_DataTransferBetweenPages\_01_DestinationPage.aspx.designer.cs">
-      <DependentUpon>_01_DestinationPage.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\05_Namespaces.aspx.designer.cs">
+      <DependentUpon>05_Namespaces.aspx</DependentUpon>
     </Compile>
-    <Compile Include="_02_Page\_06_DataTransferBetweenPages\_01_DataTransferUseAction.aspx.cs">
-      <DependentUpon>_01_DataTransferUseAction.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\06_ClassUsing.aspx.cs">
+      <DependentUpon>06_ClassUsing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_02_Page\_06_DataTransferBetweenPages\_01_DataTransferUseAction.aspx.designer.cs">
-      <DependentUpon>_01_DataTransferUseAction.aspx</DependentUpon>
+    <Compile Include="01_BaseInfo\06_ClassUsing.aspx.designer.cs">
+      <DependentUpon>06_ClassUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="01_BaseInfo\07_AppData.aspx.cs">
+      <DependentUpon>07_AppData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01_BaseInfo\07_AppData.aspx.designer.cs">
+      <DependentUpon>07_AppData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="01_BaseInfo\08_Form.aspx.cs">
+      <DependentUpon>08_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01_BaseInfo\08_Form.aspx.designer.cs">
+      <DependentUpon>08_Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="01_BaseInfo\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01_BaseInfo\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="01_BaseInfo\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01_BaseInfo\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="01_BaseInfo\Person.cs" />
+    <Compile Include="02_Page\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\02_PageLifeCycle.aspx.cs">
+      <DependentUpon>02_PageLifeCycle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\02_PageLifeCycle.aspx.designer.cs">
+      <DependentUpon>02_PageLifeCycle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirectDestination.aspx.cs">
+      <DependentUpon>05_ResponseRedirectDestination.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirectDestination.aspx.designer.cs">
+      <DependentUpon>05_ResponseRedirectDestination.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirect.aspx.cs">
+      <DependentUpon>05_ResponseRedirect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirect.aspx.designer.cs">
+      <DependentUpon>05_ResponseRedirect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\03_Form\06_DestinationPage.aspx.cs">
+      <DependentUpon>06_DestinationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\03_Form\06_DestinationPage.aspx.designer.cs">
+      <DependentUpon>06_DestinationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\05_Request\03_Form\06_DataTransferBetweenPagesChangeFormAction.aspx.cs">
+      <DependentUpon>06_DataTransferBetweenPagesChangeFormAction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\05_Request\03_Form\06_DataTransferBetweenPagesChangeFormAction.aspx.designer.cs">
+      <DependentUpon>06_DataTransferBetweenPagesChangeFormAction.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account\" />
-    <Folder Include="App_Data\" />
     <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>

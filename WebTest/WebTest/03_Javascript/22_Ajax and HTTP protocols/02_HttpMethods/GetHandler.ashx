@@ -1,6 +1,5 @@
 ﻿<%@ WebHandler Language="C#" Class="GetHandler" %>
 
-using System;
 using System.Web;
 
 public class GetHandler : IHttpHandler {

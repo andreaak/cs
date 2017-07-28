@@ -1,0 +1,36 @@
+﻿<!--
+    Для absolute, fixed можно показывать только часть.
+    clip: rect(Y1, X1, Y2, X2) | auto | inherit
+-->
+
+<!doctype html>
+<html>
+    <head>
+        <title>Обрезка элементов — правило clip</title>
+        <style type="text/css">
+
+            div
+            {
+	            width:300px;
+	            height:300px;
+            }
+            
+            #outer{
+	            position:absolute;
+	            background:#cfc;
+	            left:50px;
+	            top:50px;
+	            clip:rect(0 100px 150px 20px);
+            }
+
+        </style>
+    </head>
+    <body>
+        <div style="border:1px dotted black; margin-top:50px; margin-left:50px;">
+            <div id="outer">
+	            <h1>Заголовок</h1>
+	            <p>Текст в параграфе, который пока виден, но затем его обрежут, хотя не очень понятно — в чем же провинился этот злосчастный кусочек невнятных мыслей, что родились спонтанно и не претендовали на что-то серьезное</p>
+            </div>
+        </div>
+    </body>
+</html>
