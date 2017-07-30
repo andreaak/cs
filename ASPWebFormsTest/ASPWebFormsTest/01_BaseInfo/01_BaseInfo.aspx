@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="~/Content/My.css" rel="stylesheet"/>
+    <link href="~/Content/My.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -31,16 +31,19 @@
         Веб сервер обрабатывает запрос и отправляет ответ обратно веб браузеру. 
         После отправки ответа веб сервер закрывает соединении с браузером и освобождает все ресурсы, 
         которые были задействованы при обработке запроса.
+   
     </p>
     <p>
         <span class="bold">Веб браузер</span> - независимое от платформы приложение для запроса и отображения HTML страниц. 
         В обязанности браузера входит отображение информацииполученной с сервера 
         и получение информации от пользователя для отправки ее обратно на сервер.
+   
     </p>
     <p>
         <span class="bold">HTTP</span> - это протокол прикладного уровня для передачи данных от браузера к серверу и обратно. 
         HTTP сообщение обычно передаются между сервером и браузером через порт 80 
         или 443 при использовании Secure HTTP (HTTPS).
+   
     </p>
 
     <p>
@@ -55,10 +58,11 @@
         <span class="bold">HTTP/1.1</span> - версия протокола<br />
         <span class="bold">Host: www.example.com</span> - заголовок. Доменное имя сайта к которому выполняется запрос. 
                 Полезно в том случае если на сервере одновременно работает несколько веб приложений.
+       
         <br />
     </p>
 
-    <table border="1px">
+    <table>
         <caption><span class="bold">Глаголы HTTP</span></caption>
         <tr>
             <td>HTTP Глагол</td>
@@ -105,6 +109,7 @@
 
         <span class="bold">HTTP/1.1</span> - версия протокола<br />
         <span class="bold">200</span> - status code
+       
         <br />
         <span class="bold">OK</span> - описание статуса<br />
         <span class="bold">Server: Microsoft-IIS/6.0</span> - заголовок хранящий версию сервера<br />
@@ -115,7 +120,7 @@
         <span class="bold">&lt;html&gt;&lt;body&gt;Hello world&lt;/body&gt;&lt;/html&gt;</span> - тело ответа<br />
     </p>
 
-    <table border="1px">
+    <table>
         <caption><span class="bold">Группы статус кодов</span></caption>
         <tr>
             <td>Группа</td>
@@ -142,6 +147,6 @@
             <td>Серверные ошибки</td>
         </tr>
     </table>
-    
+
 </body>
 </html>

@@ -10,7 +10,7 @@
 namespace ASPWebFormsTest._03_StateSaving._04_Cookies {
     
     
-    public partial class CookieRead {
+    public partial class _02_CookieRead {
         
         /// <summary>
         /// form1 control.

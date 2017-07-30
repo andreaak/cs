@@ -2,7 +2,7 @@
 
 namespace ASPWebFormsTest._03_StateSaving._05_Session
 {
-    public partial class SessionWrite : System.Web.UI.Page
+    public partial class _01_SessionWrite : System.Web.UI.Page
     {
         protected void SaveButton_Click(object sender, EventArgs e)
         {

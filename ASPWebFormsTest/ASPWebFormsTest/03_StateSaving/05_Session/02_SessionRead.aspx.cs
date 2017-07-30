@@ -2,7 +2,7 @@
 
 namespace ASPWebFormsTest._03_StateSaving._05_Session
 {
-    public partial class SessionRead : System.Web.UI.Page
+    public partial class _02_SessionRead : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

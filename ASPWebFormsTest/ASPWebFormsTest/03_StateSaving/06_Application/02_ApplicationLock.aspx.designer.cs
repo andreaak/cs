@@ -10,7 +10,7 @@
 namespace ASPWebFormsTest._03_StateSaving._06_Application {
     
     
-    public partial class ApplicationLock {
+    public partial class _02_ApplicationLock {
         
         /// <summary>
         /// form1 control.

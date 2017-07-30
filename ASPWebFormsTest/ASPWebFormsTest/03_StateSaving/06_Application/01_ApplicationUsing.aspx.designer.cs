@@ -10,7 +10,7 @@
 namespace ASPWebFormsTest._03_StateSaving._06_Application {
     
     
-    public partial class ApplicationUsing {
+    public partial class _01_ApplicationUsing {
         
         /// <summary>
         /// form1 control.

@@ -10,7 +10,7 @@
 namespace ASPWebFormsTest._03_StateSaving._05_Session {
     
     
-    public partial class SessionWrite {
+    public partial class _01_SessionWrite {
         
         /// <summary>
         /// form1 control.

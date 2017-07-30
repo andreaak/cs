@@ -131,12 +131,14 @@
     <Content Include="03_StateSaving\02_ViewState\viewstate_postback.png" />
     <Content Include="03_StateSaving\03_URL\01_CatalogPage.aspx" />
     <Content Include="03_StateSaving\03_URL\02_DescriptionPage.aspx" />
-    <Content Include="03_StateSaving\04_Cookies\01_CookieWrite.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\01_Cookie.aspx" />
     <Content Include="03_StateSaving\04_Cookies\02_CookieRead.aspx" />
-    <Content Include="03_StateSaving\04_Cookies\03_CookieWrite.aspx" />
-    <Content Include="03_StateSaving\04_Cookies\04_CookieRead.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\03_CookieExpires.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\04_CookieClear.aspx" />
+    <Content Include="03_StateSaving\04_Cookies\01_Cookie.png" />
     <Content Include="03_StateSaving\05_Session\01_SessionWrite.aspx" />
     <Content Include="03_StateSaving\05_Session\02_SessionRead.aspx" />
+    <Content Include="03_StateSaving\05_Session\01_SessionWrite.png" />
     <Content Include="03_StateSaving\06_Application\01_ApplicationUsing.aspx" />
     <Content Include="03_StateSaving\06_Application\02_ApplicationLock.aspx" />
     <Content Include="03_StateSaving\06_AuthenticationSample\Closed.aspx" />
@@ -144,8 +146,8 @@
     <Content Include="03_StateSaving\06_AuthenticationSample\Login.aspx" />
     <Content Include="03_StateSaving\06_AuthenticationSample\Logout.aspx" />
     <Content Include="03_StateSaving\Default.aspx" />
-    <Content Include="03_StateSaving\state_server.png" />
-    <Content Include="03_StateSaving\state_user.png" />
+    <Content Include="03_StateSaving\01_BaseInfo_state_server.png" />
+    <Content Include="03_StateSaving\01_BaseInfo_state_user.png" />
     <Content Include="App_Data\TextFile.txt" />
     <Content Include="Content\My.css" />
     <Content Include="Content\Site.css" />
@@ -354,12 +356,12 @@
     <Compile Include="03_StateSaving\03_URL\02_DescriptionPage.aspx.designer.cs">
       <DependentUpon>02_DescriptionPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="03_StateSaving\04_Cookies\01_CookieWrite.aspx.cs">
-      <DependentUpon>01_CookieWrite.aspx</DependentUpon>
+    <Compile Include="03_StateSaving\04_Cookies\01_Cookie.aspx.cs">
+      <DependentUpon>01_Cookie.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="03_StateSaving\04_Cookies\01_CookieWrite.aspx.designer.cs">
-      <DependentUpon>01_CookieWrite.aspx</DependentUpon>
+    <Compile Include="03_StateSaving\04_Cookies\01_Cookie.aspx.designer.cs">
+      <DependentUpon>01_Cookie.aspx</DependentUpon>
     </Compile>
     <Compile Include="03_StateSaving\04_Cookies\02_CookieRead.aspx.cs">
       <DependentUpon>02_CookieRead.aspx</DependentUpon>
@@ -368,19 +370,19 @@
     <Compile Include="03_StateSaving\04_Cookies\02_CookieRead.aspx.designer.cs">
       <DependentUpon>02_CookieRead.aspx</DependentUpon>
     </Compile>
-    <Compile Include="03_StateSaving\04_Cookies\03_CookieWrite.aspx.cs">
-      <DependentUpon>03_CookieWrite.aspx</DependentUpon>
+    <Compile Include="03_StateSaving\04_Cookies\03_CookieExpires.aspx.cs">
+      <DependentUpon>03_CookieExpires.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="03_StateSaving\04_Cookies\03_CookieWrite.aspx.designer.cs">
-      <DependentUpon>03_CookieWrite.aspx</DependentUpon>
+    <Compile Include="03_StateSaving\04_Cookies\03_CookieExpires.aspx.designer.cs">
+      <DependentUpon>03_CookieExpires.aspx</DependentUpon>
     </Compile>
-    <Compile Include="03_StateSaving\04_Cookies\04_CookieRead.aspx.cs">
-      <DependentUpon>04_CookieRead.aspx</DependentUpon>
+    <Compile Include="03_StateSaving\04_Cookies\04_CookieClear.aspx.cs">
+      <DependentUpon>04_CookieClear.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="03_StateSaving\04_Cookies\04_CookieRead.aspx.designer.cs">
-      <DependentUpon>04_CookieRead.aspx</DependentUpon>
+    <Compile Include="03_StateSaving\04_Cookies\04_CookieClear.aspx.designer.cs">
+      <DependentUpon>04_CookieClear.aspx</DependentUpon>
     </Compile>
     <Compile Include="03_StateSaving\05_Session\01_SessionWrite.aspx.cs">
       <DependentUpon>01_SessionWrite.aspx</DependentUpon>

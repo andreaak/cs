@@ -3,7 +3,7 @@ using System.Web;
 
 namespace ASPWebFormsTest._03_StateSaving._04_Cookies
 {
-    public partial class CookieRead : System.Web.UI.Page
+    public partial class _02_CookieRead : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

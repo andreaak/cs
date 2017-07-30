@@ -2,7 +2,7 @@
 
 namespace ASPWebFormsTest._03_StateSaving._06_Application
 {
-    public partial class ApplicationUsing : System.Web.UI.Page
+    public partial class _01_ApplicationUsing : System.Web.UI.Page
     {
         private static string key = "counter";
         public int Counter

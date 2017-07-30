@@ -10,7 +10,7 @@
 namespace ASPWebFormsTest._03_StateSaving._04_Cookies {
     
     
-    public partial class CookieUsing2 {
+    public partial class _03_CookieExpires {
         
         /// <summary>
         /// form1 control.

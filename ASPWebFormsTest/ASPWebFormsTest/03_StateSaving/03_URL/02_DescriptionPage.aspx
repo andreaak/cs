@@ -8,12 +8,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <a href="01_CatalogPage.aspx">Каталог</a>
-        <br />
-        <br />
-        <asp:Label ID="DescriptionLabel" runat="server"></asp:Label>
-    </div>
+        <div>
+            <a href="01_CatalogPage.aspx">Каталог</a>
+            <br />
+            <br />
+            <asp:Label ID="DescriptionLabel" runat="server"></asp:Label>
+        </div>
     </form>
 </body>
 </html>

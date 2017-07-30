@@ -7,16 +7,19 @@
     <title>Список браузеров</title>
 </head>
 <body>
+    <p>
+        Строка запроса – распространенный способ сохранения состояния при передаче значений со страницы на страницу в GET параметрах (в адресной строке).
+    </p>
     <form id="form1" runat="server">
-    <div>
-        <ul>
-            <li><a href="02_DescriptionPage.aspx?id=1">Mozzila Firefox</a></li>
-            <li><a href="02_DescriptionPage.aspx?id=2">Google Chrome</a></li>
-            <li><a href="02_DescriptionPage.aspx?id=3">Internet Explorer</a></li>
-            <li><a href="02_DescriptionPage.aspx?id=4">Opera</a></li>
-            <li><a href="02_DescriptionPage.aspx?id=5">Safari</a></li>
-        </ul>
-    </div>
+        <div>
+            <ul>
+                <li><a href="02_DescriptionPage.aspx?id=1">Mozzila Firefox</a></li>
+                <li><a href="02_DescriptionPage.aspx?id=2">Google Chrome</a></li>
+                <li><a href="02_DescriptionPage.aspx?id=3">Internet Explorer</a></li>
+                <li><a href="02_DescriptionPage.aspx?id=4">Opera</a></li>
+                <li><a href="02_DescriptionPage.aspx?id=5">Safari</a></li>
+            </ul>
+        </div>
     </form>
 </body>
 </html>

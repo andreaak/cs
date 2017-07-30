@@ -2,7 +2,7 @@
 
 namespace ASPWebFormsTest._03_StateSaving._06_Application
 {
-    public partial class ApplicationLock : System.Web.UI.Page
+    public partial class _02_ApplicationLock : System.Web.UI.Page
     {
         protected void AddOneButton_Click(object sender, EventArgs e)
         {
