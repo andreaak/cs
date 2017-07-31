@@ -1,0 +1,19 @@
+﻿body /*Стиль для всей страницы*/
+{
+	background-color:LightBlue;
+}
+/*
+	Стиль для элементов с атрибутом class="TextBoxStyle" (если элемент HTML)
+	и CssClass="TextBoxStyle" (если это серверный элемент управления)
+*/
+.TextBoxStyle
+{
+	color:Yellow;
+	background-color:Green;
+	border:solid 1px gray;	
+}
+.ButtonStyle
+{
+	color:Green;
+	border:solid 1px Black	
+}

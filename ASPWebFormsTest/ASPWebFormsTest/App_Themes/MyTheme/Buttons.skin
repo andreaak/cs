@@ -1,0 +1,2 @@
+﻿<asp:ImageButton SkinID="OkButton" ImageUrl="ButtonImages/ok.png" runat="server" Tooltip="Ok" />
+<asp:ImageButton SkinID="CancelButton" ImageUrl="ButtonImages/cancel.png" runat="server" Tooltip="Cancel" />

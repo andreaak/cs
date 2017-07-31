@@ -1,0 +1,7 @@
+﻿<asp:TextBox runat="server" BackColor="LightBlue" BorderColor="Blue" ForeColor="Aqua" />
+<asp:Button runat="server" Font-Bold="true" ForeColor="White" BackColor="Blue" />
+
+<%--Обычное поле ввода--%>
+<asp:TextBox runat="server" SkinId="TextBoxBig" Font-Size="20" BackColor="LightBlue" BorderColor="Blue" ForeColor="Aqua" />
+<%--Поле ввода для пароля--%>
+<asp:TextBox runat="server" SkinID="TextBoxUsual" BackColor="Blue" BorderColor="LightBlue" ForeColor="Aqua" />

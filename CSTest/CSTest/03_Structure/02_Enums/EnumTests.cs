@@ -50,5 +50,35 @@ namespace CSTest._03_Structure._02_Enums
             Test1
             */
         }
+
+        [Test]
+        public void TestEnum3()
+        {
+            SomeEnum2 en = SomeEnum2.FreeSpineOne;
+            int i = 2;
+            if (Enum.TryParse(i.ToString(), out en))
+            {
+               Debug.WriteLine(en); 
+            }
+            else
+            {
+                Debug.WriteLine("Can't parse");
+            }
+
+            SomeEnum2 en2 = (SomeEnum2) i;
+            Debug.WriteLine(en2);
+
+            /*
+            Test1
+            */
+        }
+    }
+
+    enum SomeEnum2
+    {
+        Regular = -1,
+        FreeSpineOne = 0,
+        FreeSpineDouble = 1,
+        FreeSpineQuatro = 2,
     }
 }

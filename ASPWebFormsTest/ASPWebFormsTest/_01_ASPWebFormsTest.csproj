@@ -104,6 +104,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="01_BaseInfo\09_Trace.aspx" />
     <Content Include="02_Page\01_BaseInfo.aspx" />
     <Content Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx" />
     <Content Include="02_Page\03_PageEventHandling\02_EventHandlingPageEvents.aspx" />
@@ -148,7 +149,38 @@
     <Content Include="03_StateSaving\Default.aspx" />
     <Content Include="03_StateSaving\01_BaseInfo_state_server.png" />
     <Content Include="03_StateSaving\01_BaseInfo_state_user.png" />
+    <Content Include="04_ServerControls\01_BaseInfo.aspx" />
+    <Content Include="04_ServerControls\01_HtmlServerControls\01_BaseInfo.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\01_BaseInfo.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\02_Button.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\15_Table.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\14_Panel.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\12_HyperLink.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\13_LinkButton.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\09_Image.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\10_ImageButton.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\11_ImageMap.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\08_RadioButton.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\07_CheckBox.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\05_Label.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\06_Literal.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\04_TextBox.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\03_PlaceHolder.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\Images\button.jpg" />
+    <Content Include="04_ServerControls\02_WebServerControls\Images\button_pressed.jpg" />
+    <Content Include="04_ServerControls\02_WebServerControls\Images\logo.jpg" />
+    <Content Include="04_ServerControls\02_WebServerControls\Images\map.jpg" />
+    <Content Include="04_ServerControls\Default.aspx" />
+    <Content Include="05_PageDesign\01_BaseInfo.aspx" />
+    <Content Include="05_PageDesign\01_CSS\01_BaseInfo.aspx" />
+    <Content Include="05_PageDesign\01_CSS\01_BaseInfo.css" />
+    <Content Include="05_PageDesign\02_Themes\02_ChangeTheme.aspx" />
+    <Content Include="05_PageDesign\02_Themes\01_BaseInfo.aspx" />
+    <Content Include="05_PageDesign\02_Themes\03_ImagesUsing.aspx" />
+    <Content Include="05_PageDesign\Default.aspx" />
     <Content Include="App_Data\TextFile.txt" />
+    <Content Include="App_Themes\MyTheme\ButtonImages\cancel.png" />
+    <Content Include="App_Themes\MyTheme\ButtonImages\ok.png" />
     <Content Include="Content\My.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
@@ -182,6 +214,9 @@
     <Content Include="02_Page\06_Response\05_ResponseRedirect\05_ResponseRedirect.aspx" />
     <Content Include="02_Page\05_Request\03_Form\06_DestinationPage.aspx" />
     <Content Include="02_Page\05_Request\03_Form\06_DataTransferBetweenPagesChangeFormAction.aspx" />
+    <Content Include="App_Themes\Spring\Spring.skin" />
+    <Content Include="App_Themes\Winter\Winter.skin" />
+    <Content Include="App_Themes\MyTheme\Buttons.skin" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -194,6 +229,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="01_BaseInfo\09_Trace.aspx.cs">
+      <DependentUpon>09_Trace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01_BaseInfo\09_Trace.aspx.designer.cs">
+      <DependentUpon>09_Trace.aspx</DependentUpon>
+    </Compile>
     <Compile Include="02_Page\01_BaseInfo.aspx.cs">
       <DependentUpon>01_BaseInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -446,6 +488,174 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="03_StateSaving\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\01_HtmlServerControls\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\01_HtmlServerControls\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\02_Button.aspx.cs">
+      <DependentUpon>02_Button.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\02_Button.aspx.designer.cs">
+      <DependentUpon>02_Button.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\15_Table.aspx.cs">
+      <DependentUpon>15_Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\15_Table.aspx.designer.cs">
+      <DependentUpon>15_Table.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\14_Panel.aspx.cs">
+      <DependentUpon>14_Panel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\14_Panel.aspx.designer.cs">
+      <DependentUpon>14_Panel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\12_HyperLink.aspx.cs">
+      <DependentUpon>12_HyperLink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\12_HyperLink.aspx.designer.cs">
+      <DependentUpon>12_HyperLink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\13_LinkButton.aspx.cs">
+      <DependentUpon>13_LinkButton.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\13_LinkButton.aspx.designer.cs">
+      <DependentUpon>13_LinkButton.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\09_Image.aspx.cs">
+      <DependentUpon>09_Image.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\09_Image.aspx.designer.cs">
+      <DependentUpon>09_Image.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\10_ImageButton.aspx.cs">
+      <DependentUpon>10_ImageButton.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\10_ImageButton.aspx.designer.cs">
+      <DependentUpon>10_ImageButton.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\11_ImageMap.aspx.cs">
+      <DependentUpon>11_ImageMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\11_ImageMap.aspx.designer.cs">
+      <DependentUpon>11_ImageMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\08_RadioButton.aspx.cs">
+      <DependentUpon>08_RadioButton.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\08_RadioButton.aspx.designer.cs">
+      <DependentUpon>08_RadioButton.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\07_CheckBox.aspx.cs">
+      <DependentUpon>07_CheckBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\07_CheckBox.aspx.designer.cs">
+      <DependentUpon>07_CheckBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\05_Label.aspx.cs">
+      <DependentUpon>05_Label.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\05_Label.aspx.designer.cs">
+      <DependentUpon>05_Label.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\06_Literal.aspx.cs">
+      <DependentUpon>06_Literal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\06_Literal.aspx.designer.cs">
+      <DependentUpon>06_Literal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\04_TextBox.aspx.cs">
+      <DependentUpon>04_TextBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\04_TextBox.aspx.designer.cs">
+      <DependentUpon>04_TextBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\03_PlaceHolder.aspx.cs">
+      <DependentUpon>03_PlaceHolder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\03_PlaceHolder.aspx.designer.cs">
+      <DependentUpon>03_PlaceHolder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\01_CSS\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\01_CSS\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\02_Themes\02_ChangeTheme.aspx.cs">
+      <DependentUpon>02_ChangeTheme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\02_Themes\02_ChangeTheme.aspx.designer.cs">
+      <DependentUpon>02_ChangeTheme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\02_Themes\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\02_Themes\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\02_Themes\03_ImagesUsing.aspx.cs">
+      <DependentUpon>03_ImagesUsing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\02_Themes\03_ImagesUsing.aspx.designer.cs">
+      <DependentUpon>03_ImagesUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">

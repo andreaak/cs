@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ASPWebFormsTest._03_StateSaving.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" 
+    Inherits="ASPWebFormsTest._01_BaseInfo.Default" %>
 
 <!DOCTYPE html>
 
@@ -16,6 +17,7 @@
         <li><a href="06_ClassUsing.aspx">Class using</a></li>
         <li><a href="07_AppData.aspx">App Data</a></li>
         <li><a href="08_Form.aspx">Form</a></li>
+        <li><a href="09_Trace.aspx">Trace</a></li>
     </ol>
 </body>
 </html>
