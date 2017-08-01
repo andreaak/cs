@@ -65,8 +65,8 @@
     <table>
         <caption><span class="bold">Глаголы HTTP</span></caption>
         <tr>
-            <td>HTTP Глагол</td>
-            <td>Описание</td>
+            <th>HTTP Глагол</th>
+            <th>Описание</th>
         </tr>
         <tr>
             <td>OPTIONS</td>
@@ -123,8 +123,8 @@
     <table>
         <caption><span class="bold">Группы статус кодов</span></caption>
         <tr>
-            <td>Группа</td>
-            <td>Описание</td>
+            <th>Группа</th>
+            <th>Описание</th>
         </tr>
         <tr>
             <td>1xx</td>

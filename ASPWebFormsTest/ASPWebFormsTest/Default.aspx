@@ -13,9 +13,7 @@
         <li><a href="03_StateSaving/Default.aspx">State Saving</a></li>
         <li><a href="04_ServerControls/Default.aspx">Server Controls</a></li>
         <li><a href="05_PageDesign/Default.aspx">Page Design</a></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li><a href="08_DataBinding/Default.aspx">Data Binding</a></li>
     </ol>
 </body>
 </html>

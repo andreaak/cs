@@ -1,0 +1,23 @@
+﻿<Advertisements>
+  <Ad>
+    <ImageUrl>Images/Image1.png</ImageUrl>
+    <NavigateUrl>http://example.com?param=1</NavigateUrl>
+    <AlternateText>Advertisment Block 1</AlternateText>
+    <Impressions>50</Impressions>
+    <Keyword>Category 1</Keyword>
+  </Ad>
+  <Ad>
+    <ImageUrl>Images/Image2.png</ImageUrl>
+    <NavigateUrl>http://example.com?param=2</NavigateUrl>
+    <AlternateText>Advertisment Block 2</AlternateText>
+    <Impressions>40</Impressions>
+    <Keyword>Category 1</Keyword>
+  </Ad>
+  <Ad>
+    <ImageUrl>Images/Image3.png</ImageUrl>
+    <NavigateUrl>http://example.com?param=3</NavigateUrl>
+    <AlternateText>Advertisment Block 3</AlternateText>
+    <Impressions>10</Impressions>
+    <Keyword>Category 2</Keyword>
+  </Ad>
+</Advertisements>

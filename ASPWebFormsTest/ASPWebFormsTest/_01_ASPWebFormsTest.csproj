@@ -166,6 +166,22 @@
     <Content Include="04_ServerControls\02_WebServerControls\06_Literal.aspx" />
     <Content Include="04_ServerControls\02_WebServerControls\04_TextBox.aspx" />
     <Content Include="04_ServerControls\02_WebServerControls\03_PlaceHolder.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\16_ListControls\01_BaseInfo.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\16_ListControls\02_DropDownList.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\16_ListControls\03_ListBox.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\16_ListControls\04_CheckBoxList.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\16_ListControls\05_RadioButtonList.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\16_ListControls\06_BullettedList.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\16_ListControls\image.gif" />
+    <Content Include="04_ServerControls\02_WebServerControls\16_ListControls\list_controls.png" />
+    <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\01_AdRotator.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\01_AdRotator.xml" />
+    <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Images\Image1.png" />
+    <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Images\Image2.png" />
+    <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Images\Image3.png" />
+    <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\02_Calendar.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\03_MultiView.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\04_FileUploader.aspx" />
     <Content Include="04_ServerControls\02_WebServerControls\Images\button.jpg" />
     <Content Include="04_ServerControls\02_WebServerControls\Images\button_pressed.jpg" />
     <Content Include="04_ServerControls\02_WebServerControls\Images\logo.jpg" />
@@ -178,6 +194,23 @@
     <Content Include="05_PageDesign\02_Themes\01_BaseInfo.aspx" />
     <Content Include="05_PageDesign\02_Themes\03_ImagesUsing.aspx" />
     <Content Include="05_PageDesign\Default.aspx" />
+    <Content Include="08_DataBinding\01_BaseInfo.aspx" />
+    <Content Include="08_DataBinding\02_SingleValueBinding.aspx" />
+    <Content Include="08_DataBinding\03_MultipleValueBinding.aspx" />
+    <Content Include="08_DataBinding\04_MultipleObjectsBinding.aspx" />
+    <Content Include="08_DataBinding\05_SimpleSqlDataBinding.aspx" />
+    <Content Include="08_DataBinding\06_LinkedSqlDataBinding.aspx" />
+    <Content Include="08_DataBinding\07_DetailsViewBinding\01_DetailsView.aspx" />
+    <Content Include="08_DataBinding\07_DetailsViewBinding\02_DetailsViewEditable.aspx" />
+    <Content Include="08_DataBinding\07_DetailsViewBinding\03_DetailsViewStyled.aspx" />
+    <Content Include="08_DataBinding\07_DetailsViewBinding\04_DetailsViewObjectDataSource.aspx" />
+    <Content Include="06_WorkingWithDatabase\02_WorkingWithDatabase.aspx" />
+    <Content Include="08_DataBinding\Default.aspx" />
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Script.sql" />
     <Content Include="App_Data\TextFile.txt" />
     <Content Include="App_Themes\MyTheme\ButtonImages\cancel.png" />
     <Content Include="App_Themes\MyTheme\ButtonImages\ok.png" />
@@ -217,6 +250,8 @@
     <Content Include="App_Themes\Spring\Spring.skin" />
     <Content Include="App_Themes\Winter\Winter.skin" />
     <Content Include="App_Themes\MyTheme\Buttons.skin" />
+    <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Web.config" />
+    <Content Include="08_DataBinding\Web.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -609,6 +644,76 @@
     <Compile Include="04_ServerControls\02_WebServerControls\03_PlaceHolder.aspx.designer.cs">
       <DependentUpon>03_PlaceHolder.aspx</DependentUpon>
     </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\02_DropDownList.aspx.cs">
+      <DependentUpon>02_DropDownList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\02_DropDownList.aspx.designer.cs">
+      <DependentUpon>02_DropDownList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\03_ListBox.aspx.cs">
+      <DependentUpon>03_ListBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\03_ListBox.aspx.designer.cs">
+      <DependentUpon>03_ListBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\04_CheckBoxList.aspx.cs">
+      <DependentUpon>04_CheckBoxList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\04_CheckBoxList.aspx.designer.cs">
+      <DependentUpon>04_CheckBoxList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\05_RadioButtonList.aspx.cs">
+      <DependentUpon>05_RadioButtonList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\05_RadioButtonList.aspx.designer.cs">
+      <DependentUpon>05_RadioButtonList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\06_BullettedList.aspx.cs">
+      <DependentUpon>06_BullettedList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\16_ListControls\06_BullettedList.aspx.designer.cs">
+      <DependentUpon>06_BullettedList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\17_ComplexControls\01_AdRotator.aspx.cs">
+      <DependentUpon>01_AdRotator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\17_ComplexControls\01_AdRotator.aspx.designer.cs">
+      <DependentUpon>01_AdRotator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\17_ComplexControls\02_Calendar.aspx.cs">
+      <DependentUpon>02_Calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\17_ComplexControls\02_Calendar.aspx.designer.cs">
+      <DependentUpon>02_Calendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\17_ComplexControls\03_MultiView.aspx.cs">
+      <DependentUpon>03_MultiView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\17_ComplexControls\03_MultiView.aspx.designer.cs">
+      <DependentUpon>03_MultiView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\17_ComplexControls\04_FileUploader.aspx.cs">
+      <DependentUpon>04_FileUploader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\17_ComplexControls\04_FileUploader.aspx.designer.cs">
+      <DependentUpon>04_FileUploader.aspx</DependentUpon>
+    </Compile>
     <Compile Include="04_ServerControls\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -656,6 +761,92 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="05_PageDesign\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\02_SingleValueBinding.aspx.cs">
+      <DependentUpon>02_SingleValueBinding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\02_SingleValueBinding.aspx.designer.cs">
+      <DependentUpon>02_SingleValueBinding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\03_MultipleValueBinding.aspx.cs">
+      <DependentUpon>03_MultipleValueBinding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\03_MultipleValueBinding.aspx.designer.cs">
+      <DependentUpon>03_MultipleValueBinding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\04_MultipleObjectsBinding.aspx.cs">
+      <DependentUpon>04_MultipleObjectsBinding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\04_MultipleObjectsBinding.aspx.designer.cs">
+      <DependentUpon>04_MultipleObjectsBinding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\05_SimpleSqlDataBinding.aspx.cs">
+      <DependentUpon>05_SimpleSqlDataBinding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\05_SimpleSqlDataBinding.aspx.designer.cs">
+      <DependentUpon>05_SimpleSqlDataBinding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\06_LinkedSqlDataBinding.aspx.cs">
+      <DependentUpon>06_LinkedSqlDataBinding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\06_LinkedSqlDataBinding.aspx.designer.cs">
+      <DependentUpon>06_LinkedSqlDataBinding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\01_DetailsView.aspx.cs">
+      <DependentUpon>01_DetailsView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\01_DetailsView.aspx.designer.cs">
+      <DependentUpon>01_DetailsView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\02_DetailsViewEditable.aspx.cs">
+      <DependentUpon>02_DetailsViewEditable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\02_DetailsViewEditable.aspx.designer.cs">
+      <DependentUpon>02_DetailsViewEditable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\03_DetailsViewStyled.aspx.cs">
+      <DependentUpon>03_DetailsViewStyled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\03_DetailsViewStyled.aspx.designer.cs">
+      <DependentUpon>03_DetailsViewStyled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\04_DetailsViewObjectDataSource.aspx.cs">
+      <DependentUpon>04_DetailsViewObjectDataSource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\04_DetailsViewObjectDataSource.aspx.designer.cs">
+      <DependentUpon>04_DetailsViewObjectDataSource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="06_WorkingWithDatabase\02_WorkingWithDatabase.aspx.cs">
+      <DependentUpon>02_WorkingWithDatabase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="06_WorkingWithDatabase\02_WorkingWithDatabase.aspx.designer.cs">
+      <DependentUpon>02_WorkingWithDatabase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\Product.cs" />
+    <Compile Include="08_DataBinding\07_DetailsViewBinding\ProductsRepository.cs" />
+    <Compile Include="08_DataBinding\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
@@ -784,6 +975,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Uploads\" />
     <Folder Include="Account\" />
     <Folder Include="App_Start\" />
   </ItemGroup>
