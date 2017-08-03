@@ -183,6 +183,8 @@
     <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\02_Calendar.aspx" />
     <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\03_MultiView.aspx" />
     <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\04_FileUploader.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\18_Menu\02_Menu.aspx" />
+    <Content Include="04_ServerControls\02_WebServerControls\19_TreeView\02_TreeView.aspx" />
     <Content Include="04_ServerControls\02_WebServerControls\Images\button.jpg" />
     <Content Include="04_ServerControls\02_WebServerControls\Images\button_pressed.jpg" />
     <Content Include="04_ServerControls\02_WebServerControls\Images\logo.jpg" />
@@ -194,7 +196,14 @@
     <Content Include="05_PageDesign\02_Themes\02_ChangeTheme.aspx" />
     <Content Include="05_PageDesign\02_Themes\01_BaseInfo.aspx" />
     <Content Include="05_PageDesign\02_Themes\03_ImagesUsing.aspx" />
+    <Content Include="05_PageDesign\03_MasterPage\Default.aspx" />
+    <Content Include="05_PageDesign\03_MasterPage\master_page.png" />
+    <Content Include="05_PageDesign\03_MasterPage\Page1.aspx" />
+    <Content Include="05_PageDesign\03_MasterPage\Page2.aspx" />
+    <Content Include="05_PageDesign\03_MasterPage\Page3.aspx" />
+    <Content Include="05_PageDesign\03_MasterPage\Page4.aspx" />
     <Content Include="05_PageDesign\Default.aspx" />
+    <Content Include="06_WorkingWithDatabase\Default.aspx" />
     <Content Include="08_DataBinding\01_BaseInfo.aspx" />
     <Content Include="08_DataBinding\02_SingleValueBinding.aspx" />
     <Content Include="08_DataBinding\03_MultipleValueBinding.aspx" />
@@ -228,6 +237,36 @@
     <Content Include="08_DataBinding\09_GridView\Images\safari.png" />
     <Content Include="08_DataBinding\binding_single.png" />
     <Content Include="08_DataBinding\Default.aspx" />
+    <Content Include="09_Validation\01_BaseInfo.aspx" />
+    <Content Include="09_Validation\09_CauseValidation.aspx" />
+    <Content Include="09_Validation\02_RequiredFieldValidator.aspx" />
+    <Content Include="09_Validation\03_RangeValidator.aspx" />
+    <Content Include="09_Validation\04_CompareValidator.aspx" />
+    <Content Include="09_Validation\05_RegularExpressionValidator.aspx" />
+    <Content Include="09_Validation\06_CustomValidator.aspx" />
+    <Content Include="09_Validation\07_ValidationSummary.aspx" />
+    <Content Include="09_Validation\08_ValidationGroup.aspx" />
+    <Content Include="09_Validation\Default.aspx" />
+    <Content Include="10_Navigation\01_BaseInfo.aspx" />
+    <Content Include="10_Navigation\02_SiteMapPath\Customers\AddCustomer.aspx" />
+    <Content Include="10_Navigation\02_SiteMapPath\Customers\CustomersList.aspx" />
+    <Content Include="10_Navigation\02_SiteMapPath\Customers\EditCustomer.aspx" />
+    <Content Include="10_Navigation\02_SiteMapPath\02_SiteMapPath.aspx" />
+    <Content Include="10_Navigation\02_SiteMapPath\Products\AddProduct.aspx" />
+    <Content Include="10_Navigation\02_SiteMapPath\Products\EditProduct.aspx" />
+    <Content Include="10_Navigation\02_SiteMapPath\Products\ProductsList.aspx" />
+    <Content Include="10_Navigation\Default.aspx" />
+    <Content Include="11_AJAX\01_BaseInfo.aspx" />
+    <Content Include="11_AJAX\02_AJAX_JavaScript\01_SimpleRequest.aspx" />
+    <Content Include="11_AJAX\03_AJAX\01_SimpleRequest.aspx" />
+    <Content Include="11_AJAX\03_AJAX\02_ReadObject.aspx" />
+    <Content Include="11_AJAX\03_AJAX\WebService1.asmx" />
+    <Content Include="11_AJAX\ajax_diagramm.png" />
+    <Content Include="11_AJAX\Default.aspx" />
+    <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
+    <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
+    <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
+    <Content Include="30_Examples\Default.aspx" />
     <Content Include="App_Data\Database.mdf" />
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
@@ -278,6 +317,11 @@
     <Content Include="App_Themes\MyTheme\Buttons.skin" />
     <Content Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Web.config" />
     <Content Include="08_DataBinding\Web.config" />
+    <Content Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx" />
+    <Content Include="30_Examples\Web.config" />
+    <Content Include="05_PageDesign\03_MasterPage\Site.Master" />
+    <Content Include="10_Navigation\02_SiteMapPath\Site.Master" />
+    <Content Include="11_AJAX\02_AJAX_JavaScript\01_SimpleRequestHandler.ashx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -288,6 +332,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="01_BaseInfo\09_Trace.aspx.cs">
@@ -740,6 +785,20 @@
     <Compile Include="04_ServerControls\02_WebServerControls\17_ComplexControls\04_FileUploader.aspx.designer.cs">
       <DependentUpon>04_FileUploader.aspx</DependentUpon>
     </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\18_Menu\02_Menu.aspx.cs">
+      <DependentUpon>02_Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\18_Menu\02_Menu.aspx.designer.cs">
+      <DependentUpon>02_Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\19_TreeView\02_TreeView.aspx.cs">
+      <DependentUpon>02_TreeView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="04_ServerControls\02_WebServerControls\19_TreeView\02_TreeView.aspx.designer.cs">
+      <DependentUpon>02_TreeView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="04_ServerControls\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -782,11 +841,60 @@
     <Compile Include="05_PageDesign\02_Themes\03_ImagesUsing.aspx.designer.cs">
       <DependentUpon>03_ImagesUsing.aspx</DependentUpon>
     </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Page1.aspx.cs">
+      <DependentUpon>Page1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Page1.aspx.designer.cs">
+      <DependentUpon>Page1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Page2.aspx.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Page2.aspx.designer.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Page3.aspx.cs">
+      <DependentUpon>Page3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Page3.aspx.designer.cs">
+      <DependentUpon>Page3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Page4.aspx.cs">
+      <DependentUpon>Page4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Page4.aspx.designer.cs">
+      <DependentUpon>Page4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
     <Compile Include="05_PageDesign\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="05_PageDesign\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="06_WorkingWithDatabase\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="06_WorkingWithDatabase\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="08_DataBinding\01_BaseInfo.aspx.cs">
@@ -973,6 +1081,221 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="08_DataBinding\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\09_CauseValidation.aspx.cs">
+      <DependentUpon>09_CauseValidation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\09_CauseValidation.aspx.designer.cs">
+      <DependentUpon>09_CauseValidation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\02_RequiredFieldValidator.aspx.cs">
+      <DependentUpon>02_RequiredFieldValidator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\02_RequiredFieldValidator.aspx.designer.cs">
+      <DependentUpon>02_RequiredFieldValidator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\03_RangeValidator.aspx.cs">
+      <DependentUpon>03_RangeValidator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\03_RangeValidator.aspx.designer.cs">
+      <DependentUpon>03_RangeValidator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\04_CompareValidator.aspx.cs">
+      <DependentUpon>04_CompareValidator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\04_CompareValidator.aspx.designer.cs">
+      <DependentUpon>04_CompareValidator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\05_RegularExpressionValidator.aspx.cs">
+      <DependentUpon>05_RegularExpressionValidator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\05_RegularExpressionValidator.aspx.designer.cs">
+      <DependentUpon>05_RegularExpressionValidator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\06_CustomValidator.aspx.cs">
+      <DependentUpon>06_CustomValidator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\06_CustomValidator.aspx.designer.cs">
+      <DependentUpon>06_CustomValidator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\07_ValidationSummary.aspx.cs">
+      <DependentUpon>07_ValidationSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\07_ValidationSummary.aspx.designer.cs">
+      <DependentUpon>07_ValidationSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\08_ValidationGroup.aspx.cs">
+      <DependentUpon>08_ValidationGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\08_ValidationGroup.aspx.designer.cs">
+      <DependentUpon>08_ValidationGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="09_Validation\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="09_Validation\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Customers\AddCustomer.aspx.cs">
+      <DependentUpon>AddCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Customers\AddCustomer.aspx.designer.cs">
+      <DependentUpon>AddCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Customers\CustomersList.aspx.cs">
+      <DependentUpon>CustomersList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Customers\CustomersList.aspx.designer.cs">
+      <DependentUpon>CustomersList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Customers\EditCustomer.aspx.cs">
+      <DependentUpon>EditCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Customers\EditCustomer.aspx.designer.cs">
+      <DependentUpon>EditCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\02_SiteMapPath.aspx.cs">
+      <DependentUpon>02_SiteMapPath.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\02_SiteMapPath.aspx.designer.cs">
+      <DependentUpon>02_SiteMapPath.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Products\AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Products\AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Products\EditProduct.aspx.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Products\EditProduct.aspx.designer.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Products\ProductsList.aspx.cs">
+      <DependentUpon>ProductsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Products\ProductsList.aspx.designer.cs">
+      <DependentUpon>ProductsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\02_SiteMapPath\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="10_Navigation\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="10_Navigation\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\02_AJAX_JavaScript\01_SimpleRequest.aspx.cs">
+      <DependentUpon>01_SimpleRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\02_AJAX_JavaScript\01_SimpleRequest.aspx.designer.cs">
+      <DependentUpon>01_SimpleRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\02_AJAX_JavaScript\01_SimpleRequestHandler.ashx.cs">
+      <DependentUpon>01_SimpleRequestHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\03_AJAX\01_SimpleRequest.aspx.cs">
+      <DependentUpon>01_SimpleRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\03_AJAX\01_SimpleRequest.aspx.designer.cs">
+      <DependentUpon>01_SimpleRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\03_AJAX\Customer.cs" />
+    <Compile Include="11_AJAX\03_AJAX\CustomersRepository.cs" />
+    <Compile Include="11_AJAX\03_AJAX\02_ReadObject.aspx.cs">
+      <DependentUpon>02_ReadObject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\03_AJAX\02_ReadObject.aspx.designer.cs">
+      <DependentUpon>02_ReadObject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\03_AJAX\WebService1.asmx.cs">
+      <DependentUpon>WebService1.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">
+      <DependentUpon>01_CaptchaHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="30_Examples\01_Captcha\01_Captcha.aspx.cs">
+      <DependentUpon>01_Captcha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="30_Examples\01_Captcha\01_Captcha.aspx.designer.cs">
+      <DependentUpon>01_Captcha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx.cs">
+      <DependentUpon>AppConfigUsing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx.designer.cs">
+      <DependentUpon>AppConfigUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="30_Examples\03_SendEmail\SendEmail.aspx.cs">
+      <DependentUpon>SendEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="30_Examples\03_SendEmail\SendEmail.aspx.designer.cs">
+      <DependentUpon>SendEmail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="30_Examples\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="30_Examples\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">

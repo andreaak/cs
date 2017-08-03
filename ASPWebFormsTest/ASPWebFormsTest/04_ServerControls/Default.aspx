@@ -52,6 +52,16 @@
                         <li><a href="02_WebServerControls/17_ComplexControls/04_FileUploader.aspx">FileUploader</a></li>
                     </ul>
                 </li>
+                <li>Menu
+                    <ul>
+                        <li><a href="02_WebServerControls/18_Menu/02_Menu.aspx">Menu</a></li>
+                    </ul>
+                </li>
+                <li>TreeView
+                    <ul>
+                        <li><a href="02_WebServerControls/19_TreeView/02_TreeView.aspx">TreeView</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
     </ol>

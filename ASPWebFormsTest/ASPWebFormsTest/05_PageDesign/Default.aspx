@@ -24,6 +24,7 @@
                 <li><a href="02_Themes/03_ImagesUsing.aspx">Images Using</a></li>
             </ul>
         </li>
+        <li><a href="03_MasterPage/Default.aspx">Master Page</a></li>
     </ol>
 </body>
 </html>
