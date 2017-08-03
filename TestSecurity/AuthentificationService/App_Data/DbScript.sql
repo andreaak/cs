@@ -31,3 +31,18 @@ CREATE TABLE [UsersInRoles] (
     FOREIGN KEY ([RoleId]) REFERENCES [dbo].[Roles] ([RoleId])
 );
 GO
+
+SET IDENTITY_INSERT [dbo].[Roles] ON
+INSERT INTO [dbo].[Roles] ([RoleId], [ApplicationId], [RoleName]) VALUES (1, N'TestSecurity', N'Admin')
+INSERT INTO [dbo].[Roles] ([RoleId], [ApplicationId], [RoleName]) VALUES (2, N'TestSecurity', N'Manager')
+INSERT INTO [dbo].[Roles] ([RoleId], [ApplicationId], [RoleName]) VALUES (3, N'TestSecurity', N'SuperUser')
+SET IDENTITY_INSERT [dbo].[Roles] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[Users] ON
+INSERT INTO [dbo].[Users] ([UserId], [ApplicationId], [UserName], [Password]) VALUES (1, N'TestSecurity', N'admin', N'admin!')
+SET IDENTITY_INSERT [dbo].[Users] OFF
+GO
+
+INSERT INTO [dbo].[UsersInRoles] ([UserId], [RoleId]) VALUES (1, 1)
+GO
