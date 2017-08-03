@@ -21,6 +21,28 @@
             </ul>
 
         </li>
+        <li>Repeater
+            <ul>
+                <li><a href="08_Repeater/01_RepeaterBindValue.aspx">Bind Value</a></li>
+                <li><a href="08_Repeater/02_RepeaterBindObjects.aspx">Bind Objects</a></li>
+                <li><a href="08_Repeater/03_RepeaterTemplates.aspx">Templates</a></li>
+                <li><a href="08_Repeater/04_RepeaterWithTable.aspx">Table in Template</a></li>
+            </ul>
+        </li>
+        <li>GridView
+            <ul>
+                <li><a href="09_GridView/01_GridViewColumns.aspx">GridView</a></li>
+                <li><a href="09_GridView/02_BoundField.aspx">BoundField</a></li>
+                <li><a href="09_GridView/03_ImageField.aspx">ImageField</a></li>
+                <li><a href="09_GridView/04_HyperlinkField.aspx">HyperlinkField</a></li>
+                <li><a href="09_GridView/05_TemplateField.aspx">TemplateField</a></li>
+                <li><a href="09_GridView/06_GridViewAppendStyle.aspx">GridView Style</a></li>
+                <li><a href="09_GridView/07_GridViewOnRowDataBound.aspx">OnRowDataBound</a></li>
+                <li><a href="09_GridView/08_GridViewSelectedRows.aspx">Selected Rows</a></li>
+                <li><a href="09_GridView/09_SelectedIndexChanged.aspx">SelectedIndexChanged</a></li>
+                <li><a href="09_GridView/10_SelectEditDelete.aspx">Select Edit Delete</a></li>
+            </ul>
+        </li>
     </ul>
 </body>
 </html>

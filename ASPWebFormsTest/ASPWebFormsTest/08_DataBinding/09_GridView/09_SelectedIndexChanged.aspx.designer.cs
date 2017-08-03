@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._02_Page._05_Request._03_Form {
+namespace ASPWebFormsTest._08_DataBinding._09_GridView {
     
     
-    public partial class _01_RequestPropertyDestination {
+    public partial class _09_SelectedIndexChanged {
         
         /// <summary>
         /// form1 control.
@@ -22,21 +22,30 @@ namespace ASPWebFormsTest._02_Page._05_Request._03_Form {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LabelLogin control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelLogin;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// LabelPassword control.
+        /// NorthwindDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelPassword;
+        protected global::System.Web.UI.WebControls.SqlDataSource NorthwindDataSource;
+        
+        /// <summary>
+        /// Output control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Output;
     }
 }

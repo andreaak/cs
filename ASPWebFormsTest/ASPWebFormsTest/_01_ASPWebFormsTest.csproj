@@ -113,8 +113,9 @@
     <Content Include="02_Page\05_Request\01_BaseInfo.aspx" />
     <Content Include="02_Page\05_Request\02_QueryString\01_RequestWithQueryString.aspx" />
     <Content Include="02_Page\05_Request\02_QueryString\02_QueryStringRead.aspx" />
-    <Content Include="02_Page\05_Request\03_Form\01_RequestProperty.htm" />
-    <Content Include="02_Page\05_Request\03_Form\01_RequestPropertyDestination.aspx" />
+    <Content Include="02_Page\05_Request\03_Form\02_RequestWithGetMethod.htm" />
+    <Content Include="02_Page\05_Request\03_Form\01_RequestWithPostMethod.htm" />
+    <Content Include="02_Page\05_Request\03_Form\01_ReadFormValues.aspx" />
     <Content Include="02_Page\06_Response\01_BaseInfo.aspx" />
     <Content Include="02_Page\06_Response\02_ResponseWrite.aspx" />
     <Content Include="02_Page\06_Response\03_ResponseWriteFile.aspx" />
@@ -205,10 +206,35 @@
     <Content Include="08_DataBinding\07_DetailsViewBinding\03_DetailsViewStyled.aspx" />
     <Content Include="08_DataBinding\07_DetailsViewBinding\04_DetailsViewObjectDataSource.aspx" />
     <Content Include="06_WorkingWithDatabase\02_WorkingWithDatabase.aspx" />
+    <Content Include="08_DataBinding\08_Repeater\01_RepeaterBindValue.aspx" />
+    <Content Include="08_DataBinding\08_Repeater\02_RepeaterBindObjects.aspx" />
+    <Content Include="08_DataBinding\08_Repeater\03_RepeaterTemplates.aspx" />
+    <Content Include="08_DataBinding\08_Repeater\04_RepeaterWithTable.aspx" />
+    <Content Include="08_DataBinding\09_GridView\01_GridViewColumns.aspx" />
+    <Content Include="08_DataBinding\09_GridView\02_BoundField.aspx" />
+    <Content Include="08_DataBinding\09_GridView\09_SelectedIndexChanged.aspx" />
+    <Content Include="08_DataBinding\09_GridView\10_SelectEditDelete.aspx" />
+    <Content Include="08_DataBinding\09_GridView\06_GridViewAppendStyle.aspx" />
+    <Content Include="08_DataBinding\09_GridView\07_GridViewOnRowDataBound.aspx" />
+    <Content Include="08_DataBinding\09_GridView\08_GridViewSelectedRows.aspx" />
+    <Content Include="08_DataBinding\09_GridView\03_ImageField.aspx" />
+    <Content Include="08_DataBinding\09_GridView\04_HyperlinkField.aspx" />
+    <Content Include="08_DataBinding\09_GridView\05_TemplateField.aspx" />
+    <Content Include="08_DataBinding\09_GridView\Images\arrow.png" />
+    <Content Include="08_DataBinding\09_GridView\Images\chrome.png" />
+    <Content Include="08_DataBinding\09_GridView\Images\internet_explorer.png" />
+    <Content Include="08_DataBinding\09_GridView\Images\mozilla.png" />
+    <Content Include="08_DataBinding\09_GridView\Images\opera.png" />
+    <Content Include="08_DataBinding\09_GridView\Images\safari.png" />
+    <Content Include="08_DataBinding\binding_single.png" />
     <Content Include="08_DataBinding\Default.aspx" />
     <Content Include="App_Data\Database.mdf" />
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Northwind.mdf" />
+    <Content Include="App_Data\Northwind_log.ldf">
+      <DependentUpon>Northwind.mdf</DependentUpon>
     </Content>
     <Content Include="App_Data\Script.sql" />
     <Content Include="App_Data\TextFile.txt" />
@@ -327,12 +353,12 @@
     <Compile Include="02_Page\05_Request\02_QueryString\02_QueryStringRead.aspx.designer.cs">
       <DependentUpon>02_QueryStringRead.aspx</DependentUpon>
     </Compile>
-    <Compile Include="02_Page\05_Request\03_Form\01_RequestPropertyDestination.aspx.cs">
-      <DependentUpon>01_RequestPropertyDestination.aspx</DependentUpon>
+    <Compile Include="02_Page\05_Request\03_Form\01_ReadFormValues.aspx.cs">
+      <DependentUpon>01_ReadFormValues.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="02_Page\05_Request\03_Form\01_RequestPropertyDestination.aspx.designer.cs">
-      <DependentUpon>01_RequestPropertyDestination.aspx</DependentUpon>
+    <Compile Include="02_Page\05_Request\03_Form\01_ReadFormValues.aspx.designer.cs">
+      <DependentUpon>01_ReadFormValues.aspx</DependentUpon>
     </Compile>
     <Compile Include="02_Page\06_Response\01_BaseInfo.aspx.cs">
       <DependentUpon>01_BaseInfo.aspx</DependentUpon>
@@ -842,6 +868,106 @@
     </Compile>
     <Compile Include="08_DataBinding\07_DetailsViewBinding\Product.cs" />
     <Compile Include="08_DataBinding\07_DetailsViewBinding\ProductsRepository.cs" />
+    <Compile Include="08_DataBinding\08_Repeater\01_RepeaterBindValue.aspx.cs">
+      <DependentUpon>01_RepeaterBindValue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\08_Repeater\01_RepeaterBindValue.aspx.designer.cs">
+      <DependentUpon>01_RepeaterBindValue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\08_Repeater\02_RepeaterBindObjects.aspx.cs">
+      <DependentUpon>02_RepeaterBindObjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\08_Repeater\02_RepeaterBindObjects.aspx.designer.cs">
+      <DependentUpon>02_RepeaterBindObjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\08_Repeater\03_RepeaterTemplates.aspx.cs">
+      <DependentUpon>03_RepeaterTemplates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\08_Repeater\03_RepeaterTemplates.aspx.designer.cs">
+      <DependentUpon>03_RepeaterTemplates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\08_Repeater\04_RepeaterWithTable.aspx.cs">
+      <DependentUpon>04_RepeaterWithTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\08_Repeater\04_RepeaterWithTable.aspx.designer.cs">
+      <DependentUpon>04_RepeaterWithTable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\08_Repeater\CustomersRepository.cs" />
+    <Compile Include="08_DataBinding\09_GridView\01_GridViewColumns.aspx.cs">
+      <DependentUpon>01_GridViewColumns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\01_GridViewColumns.aspx.designer.cs">
+      <DependentUpon>01_GridViewColumns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\02_BoundField.aspx.cs">
+      <DependentUpon>02_BoundField.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\02_BoundField.aspx.designer.cs">
+      <DependentUpon>02_BoundField.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\09_SelectedIndexChanged.aspx.cs">
+      <DependentUpon>09_SelectedIndexChanged.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\09_SelectedIndexChanged.aspx.designer.cs">
+      <DependentUpon>09_SelectedIndexChanged.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\10_SelectEditDelete.aspx.cs">
+      <DependentUpon>10_SelectEditDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\10_SelectEditDelete.aspx.designer.cs">
+      <DependentUpon>10_SelectEditDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\06_GridViewAppendStyle.aspx.cs">
+      <DependentUpon>06_GridViewAppendStyle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\06_GridViewAppendStyle.aspx.designer.cs">
+      <DependentUpon>06_GridViewAppendStyle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\07_GridViewOnRowDataBound.aspx.cs">
+      <DependentUpon>07_GridViewOnRowDataBound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\07_GridViewOnRowDataBound.aspx.designer.cs">
+      <DependentUpon>07_GridViewOnRowDataBound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\08_GridViewSelectedRows.aspx.cs">
+      <DependentUpon>08_GridViewSelectedRows.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\08_GridViewSelectedRows.aspx.designer.cs">
+      <DependentUpon>08_GridViewSelectedRows.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\03_ImageField.aspx.cs">
+      <DependentUpon>03_ImageField.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\03_ImageField.aspx.designer.cs">
+      <DependentUpon>03_ImageField.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\04_HyperlinkField.aspx.cs">
+      <DependentUpon>04_HyperlinkField.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\04_HyperlinkField.aspx.designer.cs">
+      <DependentUpon>04_HyperlinkField.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\05_TemplateField.aspx.cs">
+      <DependentUpon>05_TemplateField.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\05_TemplateField.aspx.designer.cs">
+      <DependentUpon>05_TemplateField.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="08_DataBinding\09_GridView\BrowsersRepository.cs" />
     <Compile Include="08_DataBinding\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

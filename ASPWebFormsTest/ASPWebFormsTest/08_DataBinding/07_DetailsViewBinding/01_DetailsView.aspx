@@ -7,6 +7,11 @@
     <title>DetailsView #1</title>
 </head>
 <body>
+    <p>
+        DetailsView (расширенный элемент управления данными) - 
+        подходит для показа одной записи из таблицы за раз.
+    </p>
+    <p>DetailsView поддерживает редактирование, перемещение по записям в таблице.</p>
     <form id="form1" runat="server">
         <div>
             <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px" AutoGenerateRows="False"

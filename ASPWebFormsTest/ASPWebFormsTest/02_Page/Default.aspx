@@ -22,7 +22,8 @@
             <ul>
                 <li><a href="05_Request/01_BaseInfo.aspx">Base Info</a></li>
                 <li><a href="05_Request/02_QueryString/01_RequestWithQueryString.aspx">Query String</a></li>
-                <li><a href="05_Request/03_Form/01_RequestProperty.htm">Form</a></li>
+                <li><a href="05_Request/03_Form/01_RequestWithPostMethod.htm">Form</a></li>
+                <li><a href="05_Request/03_Form/02_RequestWithGetMethod.htm">Form with GET method</a></li>
                 <li><a href="05_Request/03_Form/06_DataTransferBetweenPagesChangeFormAction.aspx">
                     Data Transfer Between Pages Witn Changing for Action
                 </a></li>
