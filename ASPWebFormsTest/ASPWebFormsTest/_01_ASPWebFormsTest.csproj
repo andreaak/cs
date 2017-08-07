@@ -261,8 +261,37 @@
     <Content Include="11_AJAX\03_AJAX\01_SimpleRequest.aspx" />
     <Content Include="11_AJAX\03_AJAX\02_ReadObject.aspx" />
     <Content Include="11_AJAX\03_AJAX\WebService1.asmx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\01_UpdatePanel.aspx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\02_UpdatePanelNotHandledError.aspx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\03_UpdatePanelHandledError.aspx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\04_ConditionalUpdate.aspx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\05_UpdatePanelTrigger.aspx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\06_Timer.aspx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\07_HandleTimerInCode.aspx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\08_UpdateProgress.aspx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\09_UpdateProgressCancel.aspx" />
+    <Content Include="11_AJAX\04_AJAXServerControls\ajax-loader.gif" />
     <Content Include="11_AJAX\ajax_diagramm.png" />
     <Content Include="11_AJAX\Default.aspx" />
+    <Content Include="12_Localization\01_BaseInfo.aspx" />
+    <Content Include="12_Localization\02_ImplicitLocalization.aspx" />
+    <Content Include="12_Localization\03_ImplicitLocalizationChangeLanguage.aspx" />
+    <Content Include="12_Localization\04_ImplicitLocalizationInnerObjects.aspx" />
+    <Content Include="12_Localization\05_ExplicitLocalizationGlobalRes.aspx" />
+    <Content Include="12_Localization\06_ExplicitLocalizationLocalRes.aspx" />
+    <Content Include="12_Localization\07_ExplicitLocalizationGlobalResFromCode.aspx" />
+    <Content Include="12_Localization\culture.png" />
+    <Content Include="12_Localization\Default.aspx" />
+    <Content Include="12_Localization\explicit_localization.png" />
+    <Content Include="12_Localization\implicit_localization.png" />
+    <Content Include="13_Routing\01_BaseInfo.aspx" />
+    <Content Include="13_Routing\02_RoutingWithParameterDestination.aspx" />
+    <Content Include="13_Routing\02_RoutingWithParameter.aspx" />
+    <Content Include="13_Routing\03_RoutingWithParameters.aspx" />
+    <Content Include="13_Routing\03_RoutingWithParametersDestination.aspx" />
+    <Content Include="13_Routing\04_RoutingAndCulture.aspx" />
+    <Content Include="13_Routing\04_RoutingAndCultureLogin.aspx" />
+    <Content Include="13_Routing\Default.aspx" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
@@ -1260,11 +1289,186 @@
       <DependentUpon>WebService1.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\01_UpdatePanel.aspx.cs">
+      <DependentUpon>01_UpdatePanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\01_UpdatePanel.aspx.designer.cs">
+      <DependentUpon>01_UpdatePanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\02_UpdatePanelNotHandledError.aspx.cs">
+      <DependentUpon>02_UpdatePanelNotHandledError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\02_UpdatePanelNotHandledError.aspx.designer.cs">
+      <DependentUpon>02_UpdatePanelNotHandledError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\03_UpdatePanelHandledError.aspx.cs">
+      <DependentUpon>03_UpdatePanelHandledError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\03_UpdatePanelHandledError.aspx.designer.cs">
+      <DependentUpon>03_UpdatePanelHandledError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\04_ConditionalUpdate.aspx.cs">
+      <DependentUpon>04_ConditionalUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\04_ConditionalUpdate.aspx.designer.cs">
+      <DependentUpon>04_ConditionalUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\05_UpdatePanelTrigger.aspx.cs">
+      <DependentUpon>05_UpdatePanelTrigger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\05_UpdatePanelTrigger.aspx.designer.cs">
+      <DependentUpon>05_UpdatePanelTrigger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\06_Timer.aspx.cs">
+      <DependentUpon>06_Timer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\06_Timer.aspx.designer.cs">
+      <DependentUpon>06_Timer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\07_HandleTimerInCode.aspx.cs">
+      <DependentUpon>07_HandleTimerInCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\07_HandleTimerInCode.aspx.designer.cs">
+      <DependentUpon>07_HandleTimerInCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\08_UpdateProgress.aspx.cs">
+      <DependentUpon>08_UpdateProgress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\08_UpdateProgress.aspx.designer.cs">
+      <DependentUpon>08_UpdateProgress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\09_UpdateProgressCancel.aspx.cs">
+      <DependentUpon>09_UpdateProgressCancel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\04_AJAXServerControls\09_UpdateProgressCancel.aspx.designer.cs">
+      <DependentUpon>09_UpdateProgressCancel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="11_AJAX\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="11_AJAX\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_Localization\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_Localization\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_Localization\02_ImplicitLocalization.aspx.cs">
+      <DependentUpon>02_ImplicitLocalization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_Localization\02_ImplicitLocalization.aspx.designer.cs">
+      <DependentUpon>02_ImplicitLocalization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_Localization\03_ImplicitLocalizationChangeLanguage.aspx.cs">
+      <DependentUpon>03_ImplicitLocalizationChangeLanguage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_Localization\03_ImplicitLocalizationChangeLanguage.aspx.designer.cs">
+      <DependentUpon>03_ImplicitLocalizationChangeLanguage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_Localization\04_ImplicitLocalizationInnerObjects.aspx.cs">
+      <DependentUpon>04_ImplicitLocalizationInnerObjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_Localization\04_ImplicitLocalizationInnerObjects.aspx.designer.cs">
+      <DependentUpon>04_ImplicitLocalizationInnerObjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_Localization\05_ExplicitLocalizationGlobalRes.aspx.cs">
+      <DependentUpon>05_ExplicitLocalizationGlobalRes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_Localization\05_ExplicitLocalizationGlobalRes.aspx.designer.cs">
+      <DependentUpon>05_ExplicitLocalizationGlobalRes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_Localization\06_ExplicitLocalizationLocalRes.aspx.cs">
+      <DependentUpon>06_ExplicitLocalizationLocalRes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_Localization\06_ExplicitLocalizationLocalRes.aspx.designer.cs">
+      <DependentUpon>06_ExplicitLocalizationLocalRes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_Localization\07_ExplicitLocalizationGlobalResFromCode.aspx.cs">
+      <DependentUpon>07_ExplicitLocalizationGlobalResFromCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_Localization\07_ExplicitLocalizationGlobalResFromCode.aspx.designer.cs">
+      <DependentUpon>07_ExplicitLocalizationGlobalResFromCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="12_Localization\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="12_Localization\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_Routing\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_Routing\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_Routing\02_RoutingWithParameterDestination.aspx.cs">
+      <DependentUpon>02_RoutingWithParameterDestination.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_Routing\02_RoutingWithParameterDestination.aspx.designer.cs">
+      <DependentUpon>02_RoutingWithParameterDestination.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_Routing\02_RoutingWithParameter.aspx.cs">
+      <DependentUpon>02_RoutingWithParameter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_Routing\02_RoutingWithParameter.aspx.designer.cs">
+      <DependentUpon>02_RoutingWithParameter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_Routing\03_RoutingWithParameters.aspx.cs">
+      <DependentUpon>03_RoutingWithParameters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_Routing\03_RoutingWithParameters.aspx.designer.cs">
+      <DependentUpon>03_RoutingWithParameters.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_Routing\03_RoutingWithParametersDestination.aspx.cs">
+      <DependentUpon>03_RoutingWithParametersDestination.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_Routing\03_RoutingWithParametersDestination.aspx.designer.cs">
+      <DependentUpon>03_RoutingWithParametersDestination.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_Routing\04_RoutingAndCulture.aspx.cs">
+      <DependentUpon>04_RoutingAndCulture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_Routing\04_RoutingAndCulture.aspx.designer.cs">
+      <DependentUpon>04_RoutingAndCulture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_Routing\04_RoutingAndCultureLogin.aspx.cs">
+      <DependentUpon>04_RoutingAndCultureLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_Routing\04_RoutingAndCultureLogin.aspx.designer.cs">
+      <DependentUpon>04_RoutingAndCultureLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="13_Routing\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="13_Routing\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">
@@ -1297,6 +1501,16 @@
     </Compile>
     <Compile Include="30_Examples\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\GlobalRes.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\GlobalRes.ru.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalRes.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1438,6 +1652,44 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="12_Localization\App_LocalResources\02_ImplicitLocalization.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="12_Localization\App_LocalResources\02_ImplicitLocalization.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="12_Localization\App_LocalResources\03_ImplicitLocalizationChangeLanguage.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="12_Localization\App_LocalResources\03_ImplicitLocalizationChangeLanguage.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="12_Localization\App_LocalResources\04_ImplicitLocalizationInnerObjects.aspx.resx" />
+    <Content Include="12_Localization\App_LocalResources\04_ImplicitLocalizationInnerObjects.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\GlobalRes.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>GlobalRes.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\GlobalRes.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>GlobalRes.ru.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="12_Localization\App_LocalResources\06_ExplicitLocalizationLocalRes.aspx.resx" />
+    <Content Include="12_Localization\App_LocalResources\06_ExplicitLocalizationLocalRes.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="12_Localization\App_LocalResources\07_ExplicitLocalizationGlobalResFromCode.aspx.resx" />
+    <Content Include="12_Localization\App_LocalResources\07_ExplicitLocalizationGlobalResFromCode.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="13_Routing\App_LocalResources\04_RoutingAndCultureLogin.aspx.resx" />
+    <Content Include="13_Routing\App_LocalResources\04_RoutingAndCultureLogin.aspx.ru.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

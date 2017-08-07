@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._11_AJAX {
+namespace ASPWebFormsTest._12_Localization {
     
     
-    public partial class _01_BaseInfo {
+    public partial class Default {
     }
 }
