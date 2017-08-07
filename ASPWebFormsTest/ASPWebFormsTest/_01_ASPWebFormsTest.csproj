@@ -1639,6 +1639,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Uploads\" />
+    <Folder Include="14_Application\" />
+    <Folder Include="15_ConfigFiles\" />
+    <Folder Include="16_Handlers\" />
+    <Folder Include="17_Modules\" />
+    <Folder Include="20_AsyncPages\" />
     <Folder Include="Account\" />
     <Folder Include="App_Start\" />
   </ItemGroup>
