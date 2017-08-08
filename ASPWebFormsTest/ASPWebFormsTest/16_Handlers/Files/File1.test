@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<UserList>
+  <User>
+    <FirstName>Olga</FirstName>
+    <LastName>Hansen</LastName>
+  </User>
+  <User>
+    <FirstName>Tove</FirstName>
+    <LastName>Svendson</LastName>
+  </User>
+  <User>
+    <FirstName>Kari</FirstName>
+    <LastName>Pettersen</LastName>
+  </User>
+</UserList>

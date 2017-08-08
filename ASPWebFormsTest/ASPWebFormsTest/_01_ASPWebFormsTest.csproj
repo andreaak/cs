@@ -318,7 +318,30 @@
     <Content Include="15_ConfigFiles\03_InnerConfig\03_InnerConfig.aspx" />
     <Content Include="15_ConfigFiles\03_InnerConfig\Admin\Default.aspx" />
     <Content Include="15_ConfigFiles\03_InnerConfig\User\Default.aspx" />
+    <Content Include="15_ConfigFiles\04_WriteConfig\04_WriteConfig.aspx" />
     <Content Include="15_ConfigFiles\Default.aspx" />
+    <Content Include="15_ConfigFiles\web_config.png" />
+    <Content Include="16_Handlers\01_BaseInfo.aspx" />
+    <Content Include="16_Handlers\02_TestHandler.aspx" />
+    <Content Include="16_Handlers\05_FileExtensionHandlerTest.aspx" />
+    <Content Include="16_Handlers\06_AXDFileTest.aspx" />
+    <Content Include="16_Handlers\07_GetImageFromDB.aspx" />
+    <Content Include="16_Handlers\07_InsertImage.aspx" />
+    <Content Include="16_Handlers\Default.aspx" />
+    <Content Include="16_Handlers\Images\image1.jpg" />
+    <Content Include="16_Handlers\Images\image2.jpg" />
+    <Content Include="16_Handlers\Images\image3.jpg" />
+    <Content Include="16_Handlers\Images\logo.jpg" />
+    <Content Include="16_Handlers\Images\Subfolder\image1.jpg" />
+    <Content Include="16_Handlers\Images\Subfolder\image3.jpg" />
+    <Content Include="17_Modules\01_BaseInfo.aspx" />
+    <Content Include="17_Modules\02_ModuleTest.aspx" />
+    <Content Include="17_Modules\03_Page1.aspx" />
+    <Content Include="17_Modules\03_Page2.aspx" />
+    <Content Include="17_Modules\03_PerformanceModuleTest.aspx" />
+    <Content Include="17_Modules\Default.aspx" />
+    <Content Include="17_Modules\02_Page1.aspx" />
+    <Content Include="17_Modules\02_Page2.aspx" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
@@ -381,6 +404,13 @@
     <Content Include="15_ConfigFiles\02_PathAttribute\Web.config" />
     <Content Include="15_ConfigFiles\03_InnerConfig\User\Web.config" />
     <Content Include="15_ConfigFiles\03_InnerConfig\Admin\Web.config" />
+    <Content Include="15_ConfigFiles\04_WriteConfig\web.config" />
+    <Content Include="16_Handlers\03_TextHandler.ashx" />
+    <Content Include="16_Handlers\04_ImageHandler.ashx" />
+    <Content Include="16_Handlers\Files\File1.test" />
+    <Content Include="16_Handlers\Files\File2.test" />
+    <Content Include="16_Handlers\Files\File3.test" />
+    <Content Include="16_Handlers\07_GetImageFromDBHandler.ashx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -1592,12 +1622,138 @@
     <Compile Include="15_ConfigFiles\03_InnerConfig\User\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="15_ConfigFiles\04_WriteConfig\04_WriteConfig.aspx.cs">
+      <DependentUpon>04_WriteConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="15_ConfigFiles\04_WriteConfig\04_WriteConfig.aspx.designer.cs">
+      <DependentUpon>04_WriteConfig.aspx</DependentUpon>
+    </Compile>
     <Compile Include="15_ConfigFiles\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="15_ConfigFiles\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="16_Handlers\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\03_TextHandler.ashx.cs">
+      <DependentUpon>03_TextHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\02_Handler.cs" />
+    <Compile Include="16_Handlers\04_ImageHandler.ashx.cs">
+      <DependentUpon>04_ImageHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\02_TestHandler.aspx.cs">
+      <DependentUpon>02_TestHandler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="16_Handlers\02_TestHandler.aspx.designer.cs">
+      <DependentUpon>02_TestHandler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\05_FileExtensionHandlerTest.aspx.cs">
+      <DependentUpon>05_FileExtensionHandlerTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="16_Handlers\05_FileExtensionHandlerTest.aspx.designer.cs">
+      <DependentUpon>05_FileExtensionHandlerTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\06_AXDFileHandler.cs" />
+    <Compile Include="16_Handlers\06_AXDFileTest.aspx.cs">
+      <DependentUpon>06_AXDFileTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="16_Handlers\06_AXDFileTest.aspx.designer.cs">
+      <DependentUpon>06_AXDFileTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\07_GetImageFromDB.aspx.cs">
+      <DependentUpon>07_GetImageFromDB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="16_Handlers\07_GetImageFromDB.aspx.designer.cs">
+      <DependentUpon>07_GetImageFromDB.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\07_GetImageFromDBHandler.ashx.cs">
+      <DependentUpon>07_GetImageFromDBHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\07_InsertImage.aspx.cs">
+      <DependentUpon>07_InsertImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="16_Handlers\07_InsertImage.aspx.designer.cs">
+      <DependentUpon>07_InsertImage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="16_Handlers\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="16_Handlers\05_FileExtensionHandler.cs" />
+    <Compile Include="17_Modules\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="17_Modules\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="17_Modules\02_Module.cs" />
+    <Compile Include="17_Modules\02_ModuleTest.aspx.cs">
+      <DependentUpon>02_ModuleTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="17_Modules\02_ModuleTest.aspx.designer.cs">
+      <DependentUpon>02_ModuleTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="17_Modules\03_Page1.aspx.cs">
+      <DependentUpon>03_Page1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="17_Modules\03_Page1.aspx.designer.cs">
+      <DependentUpon>03_Page1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="17_Modules\03_Page2.aspx.cs">
+      <DependentUpon>03_Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="17_Modules\03_Page2.aspx.designer.cs">
+      <DependentUpon>03_Page2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="17_Modules\03_PerformanceModule.cs" />
+    <Compile Include="17_Modules\03_PerformanceModuleTest.aspx.cs">
+      <DependentUpon>03_PerformanceModuleTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="17_Modules\03_PerformanceModuleTest.aspx.designer.cs">
+      <DependentUpon>03_PerformanceModuleTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="17_Modules\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="17_Modules\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="17_Modules\02_Page1.aspx.cs">
+      <DependentUpon>02_Page1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="17_Modules\02_Page1.aspx.designer.cs">
+      <DependentUpon>02_Page1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="17_Modules\02_Page2.aspx.cs">
+      <DependentUpon>02_Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="17_Modules\02_Page2.aspx.designer.cs">
+      <DependentUpon>02_Page2.aspx</DependentUpon>
     </Compile>
     <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">
       <DependentUpon>01_CaptchaHandler.ashx</DependentUpon>
@@ -1767,8 +1923,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Uploads\" />
-    <Folder Include="16_Handlers\" />
-    <Folder Include="17_Modules\" />
     <Folder Include="20_AsyncPages\" />
     <Folder Include="Account\" />
     <Folder Include="App_Start\" />
