@@ -106,6 +106,7 @@
   <ItemGroup>
     <Content Include="01_BaseInfo\09_Trace.aspx" />
     <Content Include="02_Page\01_BaseInfo.aspx" />
+    <Content Include="02_Page\02_PageLifeCycleTest.aspx" />
     <Content Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx" />
     <Content Include="02_Page\03_PageEventHandling\02_EventHandlingPageEvents.aspx" />
     <Content Include="02_Page\03_PageEventHandling\03_EventHandlingOverrideHandlers.aspx" />
@@ -292,6 +293,32 @@
     <Content Include="13_Routing\04_RoutingAndCulture.aspx" />
     <Content Include="13_Routing\04_RoutingAndCultureLogin.aspx" />
     <Content Include="13_Routing\Default.aspx" />
+    <Content Include="14_Application\01_BaseInfo.aspx" />
+    <Content Include="14_Application\02_ApplicationLifeCycle.aspx" />
+    <Content Include="14_Application\03_ApplicationEvents.aspx" />
+    <Content Include="14_Application\04_CompilationLifeCycle.aspx" />
+    <Content Include="14_Application\Images\02.png" />
+    <Content Include="14_Application\Images\03.png" />
+    <Content Include="14_Application\Images\04.png" />
+    <Content Include="14_Application\Images\05.png" />
+    <Content Include="14_Application\Images\06.png" />
+    <Content Include="14_Application\Images\07.png" />
+    <Content Include="14_Application\Images\08.png" />
+    <Content Include="14_Application\Images\09.png" />
+    <Content Include="14_Application\Images\20.png" />
+    <Content Include="14_Application\Images\21.png" />
+    <Content Include="14_Application\Images\22.png" />
+    <Content Include="14_Application\Images\app_domain.gif" />
+    <Content Include="14_Application\Default.aspx" />
+    <Content Include="14_Application\Images\http_context.gif" />
+    <Content Include="15_ConfigFiles\01_BaseInfo.aspx" />
+    <Content Include="15_ConfigFiles\02_PathAttribute\02_PathAttribute.aspx" />
+    <Content Include="15_ConfigFiles\02_PathAttribute\Admin\Default.aspx" />
+    <Content Include="15_ConfigFiles\02_PathAttribute\User\Default.aspx" />
+    <Content Include="15_ConfigFiles\03_InnerConfig\03_InnerConfig.aspx" />
+    <Content Include="15_ConfigFiles\03_InnerConfig\Admin\Default.aspx" />
+    <Content Include="15_ConfigFiles\03_InnerConfig\User\Default.aspx" />
+    <Content Include="15_ConfigFiles\Default.aspx" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
@@ -351,6 +378,9 @@
     <Content Include="05_PageDesign\03_MasterPage\Site.Master" />
     <Content Include="10_Navigation\02_SiteMapPath\Site.Master" />
     <Content Include="11_AJAX\02_AJAX_JavaScript\01_SimpleRequestHandler.ashx" />
+    <Content Include="15_ConfigFiles\02_PathAttribute\Web.config" />
+    <Content Include="15_ConfigFiles\03_InnerConfig\User\Web.config" />
+    <Content Include="15_ConfigFiles\03_InnerConfig\Admin\Web.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -377,6 +407,13 @@
     </Compile>
     <Compile Include="02_Page\01_BaseInfo.aspx.designer.cs">
       <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="02_Page\02_PageLifeCycleTest.aspx.cs">
+      <DependentUpon>02_PageLifeCycleTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="02_Page\02_PageLifeCycleTest.aspx.designer.cs">
+      <DependentUpon>02_PageLifeCycleTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx.cs">
       <DependentUpon>01_EventHandlingWireup.aspx</DependentUpon>
@@ -1471,6 +1508,97 @@
     <Compile Include="13_Routing\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="14_Application\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="14_Application\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="14_Application\02_ApplicationLifeCycle.aspx.cs">
+      <DependentUpon>02_ApplicationLifeCycle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="14_Application\02_ApplicationLifeCycle.aspx.designer.cs">
+      <DependentUpon>02_ApplicationLifeCycle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="14_Application\03_ApplicationEvents.aspx.cs">
+      <DependentUpon>03_ApplicationEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="14_Application\03_ApplicationEvents.aspx.designer.cs">
+      <DependentUpon>03_ApplicationEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="14_Application\04_CompilationLifeCycle.aspx.cs">
+      <DependentUpon>04_CompilationLifeCycle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="14_Application\04_CompilationLifeCycle.aspx.designer.cs">
+      <DependentUpon>04_CompilationLifeCycle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="14_Application\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="14_Application\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="15_ConfigFiles\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="15_ConfigFiles\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="15_ConfigFiles\02_PathAttribute\02_PathAttribute.aspx.cs">
+      <DependentUpon>02_PathAttribute.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="15_ConfigFiles\02_PathAttribute\02_PathAttribute.aspx.designer.cs">
+      <DependentUpon>02_PathAttribute.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="15_ConfigFiles\02_PathAttribute\Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="15_ConfigFiles\02_PathAttribute\Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="15_ConfigFiles\02_PathAttribute\User\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="15_ConfigFiles\02_PathAttribute\User\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="15_ConfigFiles\03_InnerConfig\03_InnerConfig.aspx.cs">
+      <DependentUpon>03_InnerConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="15_ConfigFiles\03_InnerConfig\03_InnerConfig.aspx.designer.cs">
+      <DependentUpon>03_InnerConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="15_ConfigFiles\03_InnerConfig\Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="15_ConfigFiles\03_InnerConfig\Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="15_ConfigFiles\03_InnerConfig\User\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="15_ConfigFiles\03_InnerConfig\User\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="15_ConfigFiles\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="15_ConfigFiles\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">
       <DependentUpon>01_CaptchaHandler.ashx</DependentUpon>
     </Compile>
@@ -1639,8 +1767,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Uploads\" />
-    <Folder Include="14_Application\" />
-    <Folder Include="15_ConfigFiles\" />
     <Folder Include="16_Handlers\" />
     <Folder Include="17_Modules\" />
     <Folder Include="20_AsyncPages\" />
