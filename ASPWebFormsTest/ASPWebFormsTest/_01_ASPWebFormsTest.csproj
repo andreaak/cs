@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,13 +13,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ASPWebFormsTest</RootNamespace>
     <AssemblyName>ASPWebFormsTest</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,18 +39,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -102,6 +103,7 @@
     <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.0\lib\net40\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="01_BaseInfo\09_Trace.aspx" />
@@ -342,6 +344,17 @@
     <Content Include="17_Modules\Default.aspx" />
     <Content Include="17_Modules\02_Page1.aspx" />
     <Content Include="17_Modules\02_Page2.aspx" />
+    <Content Include="20_AsyncPages\01_BaseInfo.aspx" />
+    <Content Include="20_AsyncPages\02_AsyncMethods.aspx" />
+    <Content Include="20_AsyncPages\03_Delegates.aspx" />
+    <Content Include="20_AsyncPages\04_PageAsyncTask.aspx" />
+    <Content Include="20_AsyncPages\05_PageAsyncTasks.aspx" />
+    <Content Include="20_AsyncPages\06_PageAsyncTaskAsyncAwait.aspx" />
+    <Content Include="20_AsyncPages\07_PageAsyncTaskAsyncAwait.aspx" />
+    <Content Include="20_AsyncPages\08_AsyncHandlerTest.aspx" />
+    <Content Include="20_AsyncPages\08_FastPage.aspx" />
+    <Content Include="20_AsyncPages\08_SlowPage.aspx" />
+    <Content Include="20_AsyncPages\Default.aspx" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
@@ -411,6 +424,7 @@
     <Content Include="16_Handlers\Files\File2.test" />
     <Content Include="16_Handlers\Files\File3.test" />
     <Content Include="16_Handlers\07_GetImageFromDBHandler.ashx" />
+    <Content Include="20_AsyncPages\08_AsyncHandler.ashx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -1755,6 +1769,87 @@
     <Compile Include="17_Modules\02_Page2.aspx.designer.cs">
       <DependentUpon>02_Page2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="20_AsyncPages\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\02_AsyncMethods.aspx.cs">
+      <DependentUpon>02_AsyncMethods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\02_AsyncMethods.aspx.designer.cs">
+      <DependentUpon>02_AsyncMethods.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\03_Delegates.aspx.cs">
+      <DependentUpon>03_Delegates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\03_Delegates.aspx.designer.cs">
+      <DependentUpon>03_Delegates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\04_PageAsyncTask.aspx.cs">
+      <DependentUpon>04_PageAsyncTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\04_PageAsyncTask.aspx.designer.cs">
+      <DependentUpon>04_PageAsyncTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\05_PageAsyncTasks.aspx.cs">
+      <DependentUpon>05_PageAsyncTasks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\05_PageAsyncTasks.aspx.designer.cs">
+      <DependentUpon>05_PageAsyncTasks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\06_PageAsyncTaskAsyncAwait.aspx.cs">
+      <DependentUpon>06_PageAsyncTaskAsyncAwait.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\06_PageAsyncTaskAsyncAwait.aspx.designer.cs">
+      <DependentUpon>06_PageAsyncTaskAsyncAwait.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\07_PageAsyncTaskAsyncAwait.aspx.cs">
+      <DependentUpon>07_PageAsyncTaskAsyncAwait.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\07_PageAsyncTaskAsyncAwait.aspx.designer.cs">
+      <DependentUpon>07_PageAsyncTaskAsyncAwait.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\08_AsyncHandler.ashx.cs">
+      <DependentUpon>08_AsyncHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\08_AsyncHandlerTest.aspx.cs">
+      <DependentUpon>08_AsyncHandlerTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\08_AsyncHandlerTest.aspx.designer.cs">
+      <DependentUpon>08_AsyncHandlerTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\08_FastPage.aspx.cs">
+      <DependentUpon>08_FastPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\08_FastPage.aspx.designer.cs">
+      <DependentUpon>08_FastPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\08_SlowPage.aspx.cs">
+      <DependentUpon>08_SlowPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\08_SlowPage.aspx.designer.cs">
+      <DependentUpon>08_SlowPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="20_AsyncPages\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="20_AsyncPages\05_PageAsyncTasksSlowTask.cs" />
     <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">
       <DependentUpon>01_CaptchaHandler.ashx</DependentUpon>
     </Compile>
@@ -1923,7 +2018,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="04_ServerControls\02_WebServerControls\17_ComplexControls\Uploads\" />
-    <Folder Include="20_AsyncPages\" />
     <Folder Include="Account\" />
     <Folder Include="App_Start\" />
   </ItemGroup>

@@ -22,6 +22,9 @@
         <li><a href="13_Routing/Default.aspx">Routing</a></li>
         <li><a href="14_Application/Default.aspx">Application</a></li>
         <li><a href="15_ConfigFiles/Default.aspx">Config Files</a></li>
+        <li><a href="16_Handlers/Default.aspx">Handlers</a></li>
+        <li><a href="17_Modules/Default.aspx">Modules</a></li>
+        <li><a href="20_AsyncPages/Default.aspx">Async Pages</a></li>
         <li><a href="30_Examples/Default.aspx">Examples</a></li>
     </ol>
 </body>
