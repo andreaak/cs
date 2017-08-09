@@ -51,6 +51,13 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "_01_ASPWebFormsSite(1)", ".
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAndLoadTestProject", "WebAndLoadTestProject\WebAndLoadTestProject.csproj", "{2228019D-C3C0-431C-AF3D-600E9E0AACEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{783F66F1-BCE8-43D1-8198-DDBF0817DD07}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +80,10 @@ Global
 		{ECA1BAE5-6972-4C47-A4F9-0FA4E89B9CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECA1BAE5-6972-4C47-A4F9-0FA4E89B9CA6}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{ECA1BAE5-6972-4C47-A4F9-0FA4E89B9CA6}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{2228019D-C3C0-431C-AF3D-600E9E0AACEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2228019D-C3C0-431C-AF3D-600E9E0AACEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2228019D-C3C0-431C-AF3D-600E9E0AACEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2228019D-C3C0-431C-AF3D-600E9E0AACEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

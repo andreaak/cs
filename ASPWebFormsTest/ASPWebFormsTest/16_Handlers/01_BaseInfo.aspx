@@ -15,6 +15,7 @@
         экземпляр использоваться для обработки нескольких запросов.<br />
         ProcessRequest - Метод выполняется при обращении к обработчику.
     </p>
+    <img src="handlers_modules.png" />
 
     <p>
         Для регистрации обработчика используется следующий код в файле web.config
@@ -24,7 +25,8 @@
         &nbsp; &lt;handlers&gt;<br />
         &nbsp; &nbsp; &lt;add name="MyFirstHandler" verb="GET" path="MyHandler.aspx" type="HttpHandlers.MyFirstHandler"/&gt;<br />
         &nbsp; &lt;/handlers&gt;<br />
-        &lt;/system.webServer&gt;</p>
+        &lt;/system.webServer&gt;
+    </p>
     <p>
         <strong>name</strong> - имя обработчика.<br />
         <strong>verb</strong> - HTTP глаголы на которые будет реагировать обработчик (например, GET, POST, PUT).<br />

@@ -127,7 +127,9 @@
     <Content Include="02_Page\07_Server\02_MapPath.aspx" />
     <Content Include="02_Page\07_Server\03_HtmlEncode.aspx" />
     <Content Include="02_Page\07_Server\04_UrlEncode.aspx" />
+    <Content Include="02_Page\02_PageLifeCycle.png" />
     <Content Include="03_StateSaving\01_BaseInfo.aspx" />
+    <Content Include="03_StateSaving\02_ViewState\05_LifeCycle.aspx" />
     <Content Include="03_StateSaving\02_ViewState\02_BaseInfo.aspx" />
     <Content Include="03_StateSaving\02_ViewState\01_StateStorageProblem.aspx" />
     <Content Include="03_StateSaving\02_ViewState\03_ViewStateUsing.aspx" />
@@ -330,6 +332,7 @@
     <Content Include="16_Handlers\07_GetImageFromDB.aspx" />
     <Content Include="16_Handlers\07_InsertImage.aspx" />
     <Content Include="16_Handlers\Default.aspx" />
+    <Content Include="16_Handlers\handlers_modules.png" />
     <Content Include="16_Handlers\Images\image1.jpg" />
     <Content Include="16_Handlers\Images\image2.jpg" />
     <Content Include="16_Handlers\Images\image3.jpg" />
@@ -354,7 +357,41 @@
     <Content Include="20_AsyncPages\08_AsyncHandlerTest.aspx" />
     <Content Include="20_AsyncPages\08_FastPage.aspx" />
     <Content Include="20_AsyncPages\08_SlowPage.aspx" />
+    <Content Include="20_AsyncPages\async_page.png" />
     <Content Include="20_AsyncPages\Default.aspx" />
+    <Content Include="20_AsyncPages\life_cycle.png" />
+    <Content Include="20_AsyncPages\page.png" />
+    <Content Include="21_UserControls\01_LifeCycle.aspx" />
+    <Content Include="21_UserControls\01_BaseInfo.aspx" />
+    <Content Include="21_UserControls\01_UserControl.ascx" />
+    <Content Include="21_UserControls\02_UserControlTest.aspx" />
+    <Content Include="21_UserControls\02_UserControl.ascx" />
+    <Content Include="21_UserControls\03_ControlRegisterInConfigTest.aspx" />
+    <Content Include="21_UserControls\04_UserControlAttributes.ascx" />
+    <Content Include="21_UserControls\04_UserControlAttributesTest.aspx" />
+    <Content Include="21_UserControls\05_UserControlSetProperty.ascx" />
+    <Content Include="21_UserControls\05_UserControlViewState.ascx" />
+    <Content Include="21_UserControls\05_UserControlViewStateTest.aspx" />
+    <Content Include="21_UserControls\06_UserControlEvents.ascx" />
+    <Content Include="21_UserControls\06_UserControlEventsTest.aspx" />
+    <Content Include="21_UserControls\07_UserControlEventArgs.ascx" />
+    <Content Include="21_UserControls\07_UserControlEventArgsTest.aspx" />
+    <Content Include="21_UserControls\09_TabControlTest.aspx" />
+    <Content Include="21_UserControls\10_AddTabControlDynamic.aspx" />
+    <Content Include="21_UserControls\Controls\03_ControlRegisterInConfig.ascx" />
+    <Content Include="21_UserControls\Controls\09_TabControl.ascx" />
+    <Content Include="21_UserControls\DataBinding\08_UserControlDataBound.ascx" />
+    <Content Include="21_UserControls\DataBinding\08_UserControlDataBoundTest.aspx" />
+    <Content Include="21_UserControls\Default.aspx" />
+    <Content Include="22_CustomServerControls\01_BaseInfo.aspx" />
+    <Content Include="22_CustomServerControls\02_SimpleServerControlTest.aspx" />
+    <Content Include="22_CustomServerControls\03_ServerControlStyleTest.aspx" />
+    <Content Include="22_CustomServerControls\04_ServerControlInheritanceTest.aspx" />
+    <Content Include="22_CustomServerControls\05_ServerControlInheritanceTest.aspx" />
+    <Content Include="22_CustomServerControls\06_ServerControlInheritanceTest.aspx" />
+    <Content Include="22_CustomServerControls\07_ServerControlPostBackTest.aspx" />
+    <Content Include="22_CustomServerControls\08_CompositeControlTest.aspx" />
+    <Content Include="22_CustomServerControls\Default.aspx" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
@@ -570,6 +607,13 @@
     </Compile>
     <Compile Include="03_StateSaving\01_BaseInfo.aspx.designer.cs">
       <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\05_LifeCycle.aspx.cs">
+      <DependentUpon>05_LifeCycle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="03_StateSaving\02_ViewState\05_LifeCycle.aspx.designer.cs">
+      <DependentUpon>05_LifeCycle.aspx</DependentUpon>
     </Compile>
     <Compile Include="03_StateSaving\02_ViewState\02_BaseInfo.aspx.cs">
       <DependentUpon>02_BaseInfo.aspx</DependentUpon>
@@ -1850,6 +1894,230 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="20_AsyncPages\05_PageAsyncTasksSlowTask.cs" />
+    <Compile Include="21_UserControls\01_LifeCycle.aspx.cs">
+      <DependentUpon>01_LifeCycle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\01_LifeCycle.aspx.designer.cs">
+      <DependentUpon>01_LifeCycle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\01_UserControl.ascx.cs">
+      <DependentUpon>01_UserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\01_UserControl.ascx.designer.cs">
+      <DependentUpon>01_UserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\02_UserControlTest.aspx.cs">
+      <DependentUpon>02_UserControlTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\02_UserControl.ascx.cs">
+      <DependentUpon>02_UserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\02_UserControl.ascx.designer.cs">
+      <DependentUpon>02_UserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\03_ControlRegisterInConfigTest.aspx.cs">
+      <DependentUpon>03_ControlRegisterInConfigTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\03_ControlRegisterInConfigTest.aspx.designer.cs">
+      <DependentUpon>03_ControlRegisterInConfigTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\04_UserControlAttributes.ascx.cs">
+      <DependentUpon>04_UserControlAttributes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\04_UserControlAttributes.ascx.designer.cs">
+      <DependentUpon>04_UserControlAttributes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\04_UserControlAttributesTest.aspx.cs">
+      <DependentUpon>04_UserControlAttributesTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\04_UserControlAttributesTest.aspx.designer.cs">
+      <DependentUpon>04_UserControlAttributesTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\05_UserControlSetProperty.ascx.cs">
+      <DependentUpon>05_UserControlSetProperty.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\05_UserControlSetProperty.ascx.designer.cs">
+      <DependentUpon>05_UserControlSetProperty.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\05_UserControlViewState.ascx.cs">
+      <DependentUpon>05_UserControlViewState.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\05_UserControlViewState.ascx.designer.cs">
+      <DependentUpon>05_UserControlViewState.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\05_UserControlViewStateTest.aspx.cs">
+      <DependentUpon>05_UserControlViewStateTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\05_UserControlViewStateTest.aspx.designer.cs">
+      <DependentUpon>05_UserControlViewStateTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\06_UserControlEvents.ascx.cs">
+      <DependentUpon>06_UserControlEvents.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\06_UserControlEvents.ascx.designer.cs">
+      <DependentUpon>06_UserControlEvents.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\06_UserControlEventsTest.aspx.cs">
+      <DependentUpon>06_UserControlEventsTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\06_UserControlEventsTest.aspx.designer.cs">
+      <DependentUpon>06_UserControlEventsTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\07_EventArgs.cs" />
+    <Compile Include="21_UserControls\07_UserControlEventArgs.ascx.cs">
+      <DependentUpon>07_UserControlEventArgs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\07_UserControlEventArgs.ascx.designer.cs">
+      <DependentUpon>07_UserControlEventArgs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\07_UserControlEventArgsTest.aspx.cs">
+      <DependentUpon>07_UserControlEventArgsTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\07_UserControlEventArgsTest.aspx.designer.cs">
+      <DependentUpon>07_UserControlEventArgsTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\09_SelectionChangedEventArgs.cs" />
+    <Compile Include="21_UserControls\09_TabControlTest.aspx.cs">
+      <DependentUpon>09_TabControlTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\09_TabControlTest.aspx.designer.cs">
+      <DependentUpon>09_TabControlTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\10_AddTabControlDynamic.aspx.cs">
+      <DependentUpon>10_AddTabControlDynamic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\10_AddTabControlDynamic.aspx.designer.cs">
+      <DependentUpon>10_AddTabControlDynamic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\Controls\03_ControlRegisterInConfig.ascx.cs">
+      <DependentUpon>03_ControlRegisterInConfig.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\Controls\03_ControlRegisterInConfig.ascx.designer.cs">
+      <DependentUpon>03_ControlRegisterInConfig.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\Controls\09_TabControl.ascx.cs">
+      <DependentUpon>09_TabControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\Controls\09_TabControl.ascx.designer.cs">
+      <DependentUpon>09_TabControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\DataBinding\08_Person.cs" />
+    <Compile Include="21_UserControls\DataBinding\08_UserControlDataBound.ascx.cs">
+      <DependentUpon>08_UserControlDataBound.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\DataBinding\08_UserControlDataBound.ascx.designer.cs">
+      <DependentUpon>08_UserControlDataBound.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\DataBinding\08_UserControlDataBoundTest.aspx.cs">
+      <DependentUpon>08_UserControlDataBoundTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\DataBinding\08_UserControlDataBoundTest.aspx.designer.cs">
+      <DependentUpon>08_UserControlDataBoundTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="21_UserControls\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="21_UserControls\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\02_SimpleServerControlTest.aspx.cs">
+      <DependentUpon>02_SimpleServerControlTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\02_SimpleServerControlTest.aspx.designer.cs">
+      <DependentUpon>02_SimpleServerControlTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\02_SimpleServerControl.cs" />
+    <Compile Include="22_CustomServerControls\03_ServerControlStyle.cs" />
+    <Compile Include="22_CustomServerControls\03_ServerControlStyleTest.aspx.cs">
+      <DependentUpon>03_ServerControlStyleTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\03_ServerControlStyleTest.aspx.designer.cs">
+      <DependentUpon>03_ServerControlStyleTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\04_ServerControlInheritanceHyperLink.cs" />
+    <Compile Include="22_CustomServerControls\04_ServerControlInheritanceTest.aspx.cs">
+      <DependentUpon>04_ServerControlInheritanceTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\04_ServerControlInheritanceTest.aspx.designer.cs">
+      <DependentUpon>04_ServerControlInheritanceTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\05_ServerControlInheritanceButton.cs" />
+    <Compile Include="22_CustomServerControls\05_ServerControlInheritanceTest.aspx.cs">
+      <DependentUpon>05_ServerControlInheritanceTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\05_ServerControlInheritanceTest.aspx.designer.cs">
+      <DependentUpon>05_ServerControlInheritanceTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\06_ServerControlInheritancePanel.cs" />
+    <Compile Include="22_CustomServerControls\06_ServerControlInheritanceTest.aspx.cs">
+      <DependentUpon>06_ServerControlInheritanceTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\06_ServerControlInheritanceTest.aspx.designer.cs">
+      <DependentUpon>06_ServerControlInheritanceTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\07_ServerControlPostBack.cs" />
+    <Compile Include="22_CustomServerControls\07_ServerControlPostBackTest.aspx.cs">
+      <DependentUpon>07_ServerControlPostBackTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\07_ServerControlPostBackTest.aspx.designer.cs">
+      <DependentUpon>07_ServerControlPostBackTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\08_CompositeControl.cs" />
+    <Compile Include="22_CustomServerControls\08_CompositeControlTest.aspx.cs">
+      <DependentUpon>08_CompositeControlTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\08_CompositeControlTest.aspx.designer.cs">
+      <DependentUpon>08_CompositeControlTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">
       <DependentUpon>01_CaptchaHandler.ashx</DependentUpon>
     </Compile>

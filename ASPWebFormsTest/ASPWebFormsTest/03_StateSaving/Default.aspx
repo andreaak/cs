@@ -16,6 +16,7 @@
                 <li><a href="02_ViewState/02_BaseInfo.aspx">Base Info</a></li>
                 <li><a href="02_ViewState/03_ViewStateUsing.aspx">View State Using</a></li>
                 <li><a href="02_ViewState/04_ViewStateSaveObject.aspx">Save Object</a></li>
+                <li><a href="02_ViewState/05_LifeCycle.aspx">Life Cycle</a></li>
             </ul>
         </li>
         <li><a href="03_URL/01_CatalogPage.aspx">URL</a></li>
