@@ -28,7 +28,7 @@
     <form id="form1" runat="server" defaultbutton="Button1">
         <div>
             <asp:Panel runat="server" Height="200" Width="200" ScrollBars="Auto" CssClass="bord">
-                <asp:Button ID="Button1" Text="Button 1" runat="server" />
+                <asp:Button ID="Button1" Text="Button 1" runat="server"/>
                 <p>
                     Text 1
                 </p>

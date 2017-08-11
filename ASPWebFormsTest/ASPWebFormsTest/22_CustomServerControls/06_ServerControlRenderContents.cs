@@ -2,7 +2,7 @@
 
 namespace ASPWebFormsTest._22_CustomServerControls
 {
-    public class _06_ServerControlInheritancePanel : Panel
+    public class _06_ServerControlRenderContents : Panel
     {
         protected override void RenderContents(System.Web.UI.HtmlTextWriter writer)
         {

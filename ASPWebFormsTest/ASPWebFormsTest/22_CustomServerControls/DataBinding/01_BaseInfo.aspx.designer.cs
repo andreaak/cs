@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._22_CustomServerControls {
+namespace ASPWebFormsTest._22_CustomServerControls.DataBinding {
     
     
     public partial class _01_BaseInfo {

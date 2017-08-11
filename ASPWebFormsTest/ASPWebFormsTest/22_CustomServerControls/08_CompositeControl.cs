@@ -17,6 +17,8 @@ namespace ASPWebFormsTest._22_CustomServerControls
 
     public class _08_CompositeControl : CompositeControl, INamingContainer
     {
+        public event EventHandler TestEvent;
+
         private Label _label;
         private TextBox _textBox;
         private Button _button;

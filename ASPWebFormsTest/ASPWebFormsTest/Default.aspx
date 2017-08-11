@@ -25,6 +25,8 @@
         <li><a href="16_Handlers/Default.aspx">Handlers</a></li>
         <li><a href="17_Modules/Default.aspx">Modules</a></li>
         <li><a href="20_AsyncPages/Default.aspx">Async Pages</a></li>
+        <li><a href="21_UserControls/Default.aspx">User Controls</a></li>
+        <li><a href="22_CustomServerControls/Default.aspx">Custom Server Controls</a></li>
         <li><a href="30_Examples/Default.aspx">Examples</a></li>
     </ol>
 </body>

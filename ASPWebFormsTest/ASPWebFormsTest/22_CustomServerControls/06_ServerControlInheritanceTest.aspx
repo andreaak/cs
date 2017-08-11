@@ -12,9 +12,9 @@
     <form id="form1" runat="server">
         <div>
 
-            <cc1:_06_ServerControlInheritancePanel ID="MyPanel1" runat="server" BackColor="Green" ForeColor="White" Font-Bold="true">
+            <cc1:_06_ServerControlRenderContents ID="MyPanel1" runat="server" BackColor="Green" ForeColor="White" Font-Bold="true">
                 <asp:Label runat="server">Test</asp:Label>
-            </cc1:_06_ServerControlInheritancePanel>
+            </cc1:_06_ServerControlRenderContents>
 
         </div>
     </form>

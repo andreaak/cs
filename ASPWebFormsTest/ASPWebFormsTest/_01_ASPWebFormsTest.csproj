@@ -128,6 +128,8 @@
     <Content Include="02_Page\07_Server\03_HtmlEncode.aspx" />
     <Content Include="02_Page\07_Server\04_UrlEncode.aspx" />
     <Content Include="02_Page\02_PageLifeCycle.png" />
+    <Content Include="02_Page\life_cycle_page.png" />
+    <Content Include="02_Page\life_cycle_page_postback.png" />
     <Content Include="03_StateSaving\01_BaseInfo.aspx" />
     <Content Include="03_StateSaving\02_ViewState\05_LifeCycle.aspx" />
     <Content Include="03_StateSaving\02_ViewState\02_BaseInfo.aspx" />
@@ -391,7 +393,14 @@
     <Content Include="22_CustomServerControls\06_ServerControlInheritanceTest.aspx" />
     <Content Include="22_CustomServerControls\07_ServerControlPostBackTest.aspx" />
     <Content Include="22_CustomServerControls\08_CompositeControlTest.aspx" />
+    <Content Include="22_CustomServerControls\10_DesignSupportTest.aspx" />
+    <Content Include="22_CustomServerControls\DataBinding\01_BaseInfo.aspx" />
+    <Content Include="22_CustomServerControls\DataBinding\02_SimpleDataBoundControlTest.aspx" />
+    <Content Include="22_CustomServerControls\DataBinding\03_SimpleDataBoundWithDataSource.aspx" />
+    <Content Include="22_CustomServerControls\DataBinding\04_InheritListControlTest.aspx" />
+    <Content Include="22_CustomServerControls\DataBinding\05_TemplatedControlTest.aspx" />
     <Content Include="22_CustomServerControls\Default.aspx" />
+    <Content Include="22_CustomServerControls\server_controls.png" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
@@ -2087,7 +2096,7 @@
     <Compile Include="22_CustomServerControls\05_ServerControlInheritanceTest.aspx.designer.cs">
       <DependentUpon>05_ServerControlInheritanceTest.aspx</DependentUpon>
     </Compile>
-    <Compile Include="22_CustomServerControls\06_ServerControlInheritancePanel.cs" />
+    <Compile Include="22_CustomServerControls\06_ServerControlRenderContents.cs" />
     <Compile Include="22_CustomServerControls\06_ServerControlInheritanceTest.aspx.cs">
       <DependentUpon>06_ServerControlInheritanceTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2110,6 +2119,56 @@
     </Compile>
     <Compile Include="22_CustomServerControls\08_CompositeControlTest.aspx.designer.cs">
       <DependentUpon>08_CompositeControlTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\10_DesignSupport.cs" />
+    <Compile Include="22_CustomServerControls\10_DesignSupportTest.aspx.cs">
+      <DependentUpon>10_DesignSupportTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\10_DesignSupportTest.aspx.designer.cs">
+      <DependentUpon>10_DesignSupportTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\02_MessageDataItem.cs" />
+    <Compile Include="22_CustomServerControls\DataBinding\02_SimpleDataBoundControlTest.aspx.cs">
+      <DependentUpon>02_SimpleDataBoundControlTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\02_SimpleDataBoundControlTest.aspx.designer.cs">
+      <DependentUpon>02_SimpleDataBoundControlTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\02_SimpleDataBoundControl.cs" />
+    <Compile Include="22_CustomServerControls\DataBinding\02_TestDataSource.cs" />
+    <Compile Include="22_CustomServerControls\DataBinding\03_SimpleDataBoundWithDataSource.aspx.cs">
+      <DependentUpon>03_SimpleDataBoundWithDataSource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\03_SimpleDataBoundWithDataSource.aspx.designer.cs">
+      <DependentUpon>03_SimpleDataBoundWithDataSource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\04_InheritListControl.cs" />
+    <Compile Include="22_CustomServerControls\DataBinding\04_InheritListControlTest.aspx.cs">
+      <DependentUpon>04_InheritListControlTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\04_InheritListControlTest.aspx.designer.cs">
+      <DependentUpon>04_InheritListControlTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\05_HeaderTemplateContainer.cs" />
+    <Compile Include="22_CustomServerControls\DataBinding\05_MessageTemplateContainer.cs" />
+    <Compile Include="22_CustomServerControls\DataBinding\05_TemplatedControl.cs" />
+    <Compile Include="22_CustomServerControls\DataBinding\05_TemplatedControlTest.aspx.cs">
+      <DependentUpon>05_TemplatedControlTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="22_CustomServerControls\DataBinding\05_TemplatedControlTest.aspx.designer.cs">
+      <DependentUpon>05_TemplatedControlTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="22_CustomServerControls\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

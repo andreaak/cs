@@ -39,6 +39,7 @@ namespace ASPWebFormsTest._22_CustomServerControls
             #endregion
 
             string javaScript = Page.ClientScript.GetPostBackEventReference(this, "");
+            //javaScript = "__doPostBack('ClickablePanel1','')"
             writer.AddAttribute(HtmlTextWriterAttribute.Onclick, javaScript);
 
             base.AddAttributesToRender(writer);
@@ -46,7 +47,7 @@ namespace ASPWebFormsTest._22_CustomServerControls
 
         public event EventHandler Click;
 
-        public void OnClick()
+        private void OnClick()
         {
             if (Click != null)
             {

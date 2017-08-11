@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._22_CustomServerControls {
+namespace ASPWebFormsTest._22_CustomServerControls.DataBinding {
     
     
-    public partial class _06_ServerControlInheritanceTest {
+    public partial class @__05_TemplatedControlTest {
         
         /// <summary>
         /// form1 control.
@@ -22,12 +22,12 @@ namespace ASPWebFormsTest._22_CustomServerControls {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// MyPanel1 control.
+        /// MessageBlock1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::ASPWebFormsTest._22_CustomServerControls._06_ServerControlRenderContents MyPanel1;
+        protected global::ASPWebFormsTest._22_CustomServerControls.DataBinding._05_TemplatedControl MessageBlock1;
     }
 }
