@@ -401,6 +401,20 @@
     <Content Include="22_CustomServerControls\DataBinding\05_TemplatedControlTest.aspx" />
     <Content Include="22_CustomServerControls\Default.aspx" />
     <Content Include="22_CustomServerControls\server_controls.png" />
+    <Content Include="23_CachingData\01_BaseInfo.aspx" />
+    <Content Include="23_CachingData\02_CachingOperations.aspx" />
+    <Content Include="23_CachingData\03_FileCachingDependencies.aspx" />
+    <Content Include="23_CachingData\03_FileCachingDependencies.txt" />
+    <Content Include="23_CachingData\04_AbsoluteExpirationTime.aspx" />
+    <Content Include="23_CachingData\05_SlidingExpirationTime.aspx" />
+    <Content Include="23_CachingData\06_CallBackFunction.aspx" />
+    <Content Include="23_CachingData\06_CallBackFunction.txt" />
+    <Content Include="23_CachingData\07_CacheFromCodeTest.aspx" />
+    <Content Include="23_CachingData\08_AggregateCacheDependency.aspx" />
+    <Content Include="23_CachingData\08_AggregateCacheDependency1.txt" />
+    <Content Include="23_CachingData\08_AggregateCacheDependency2.txt" />
+    <Content Include="23_CachingData\09_SqlDataSourceCaching.aspx" />
+    <Content Include="23_CachingData\Default.aspx" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
@@ -2175,6 +2189,77 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="22_CustomServerControls\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\02_CachingOperations.aspx.cs">
+      <DependentUpon>02_CachingOperations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\02_CachingOperations.aspx.designer.cs">
+      <DependentUpon>02_CachingOperations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\03_FileCachingDependencies.aspx.cs">
+      <DependentUpon>03_FileCachingDependencies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\03_FileCachingDependencies.aspx.designer.cs">
+      <DependentUpon>03_FileCachingDependencies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\04_AbsoluteExpirationTime.aspx.cs">
+      <DependentUpon>04_AbsoluteExpirationTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\04_AbsoluteExpirationTime.aspx.designer.cs">
+      <DependentUpon>04_AbsoluteExpirationTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\05_SlidingExpirationTime.aspx.cs">
+      <DependentUpon>05_SlidingExpirationTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\05_SlidingExpirationTime.aspx.designer.cs">
+      <DependentUpon>05_SlidingExpirationTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\06_CallBackFunction.aspx.cs">
+      <DependentUpon>06_CallBackFunction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\06_CallBackFunction.aspx.designer.cs">
+      <DependentUpon>06_CallBackFunction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\07_CacheFromCode.cs" />
+    <Compile Include="23_CachingData\07_CacheFromCodeTest.aspx.cs">
+      <DependentUpon>07_CacheFromCodeTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\07_CacheFromCodeTest.aspx.designer.cs">
+      <DependentUpon>07_CacheFromCodeTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\08_AggregateCacheDependency.aspx.cs">
+      <DependentUpon>08_AggregateCacheDependency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\08_AggregateCacheDependency.aspx.designer.cs">
+      <DependentUpon>08_AggregateCacheDependency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\09_SqlDataSourceCaching.aspx.cs">
+      <DependentUpon>09_SqlDataSourceCaching.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\09_SqlDataSourceCaching.aspx.designer.cs">
+      <DependentUpon>09_SqlDataSourceCaching.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">
