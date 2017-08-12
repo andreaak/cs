@@ -414,6 +414,8 @@
     <Content Include="23_CachingData\08_AggregateCacheDependency1.txt" />
     <Content Include="23_CachingData\08_AggregateCacheDependency2.txt" />
     <Content Include="23_CachingData\09_SqlDataSourceCaching.aspx" />
+    <Content Include="23_CachingData\10_CastomDependency.aspx" />
+    <Content Include="23_CachingData\10_CastomDependency.xml" />
     <Content Include="23_CachingData\Default.aspx" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
@@ -2255,6 +2257,14 @@
     <Compile Include="23_CachingData\09_SqlDataSourceCaching.aspx.designer.cs">
       <DependentUpon>09_SqlDataSourceCaching.aspx</DependentUpon>
     </Compile>
+    <Compile Include="23_CachingData\10_CastomDependency.aspx.cs">
+      <DependentUpon>10_CastomDependency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="23_CachingData\10_CastomDependency.aspx.designer.cs">
+      <DependentUpon>10_CastomDependency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="23_CachingData\10_XmlDataCacheDependency.cs" />
     <Compile Include="23_CachingData\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

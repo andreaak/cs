@@ -17,7 +17,7 @@
         <li><a href="07_CacheFromCodeTest.aspx">Cache From Code</a></li>
         <li><a href="08_AggregateCacheDependency.aspx">AggregateCacheDependency</a></li>
         <li><a href="09_SqlDataSourceCaching.aspx">SqlDataSource Caching</a></li>
-        <li><a href="01_BaseInfo.aspx">Base Info</a></li>
+        <li><a href="10_CastomDependency.aspx">Castom Dependency</a></li>
     </ul>
 </body>
 </html>
