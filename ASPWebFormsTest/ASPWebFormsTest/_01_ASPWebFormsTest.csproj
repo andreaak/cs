@@ -59,49 +59,49 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="AspNet.ScriptManager.jQuery">
-      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.8.2\lib\net40\AspNet.ScriptManager.jQuery.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\AspNet.ScriptManager.jQuery.1.8.2\lib\net40\AspNet.ScriptManager.jQuery.dll</HintPath>
     </Reference>
     <Reference Include="AspNet.ScriptManager.jQuery.UI.Combined">
-      <HintPath>..\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.8.24\lib\net40\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.8.24\lib\net40\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.OAuth.Consumer.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Membership.OpenAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.Membership.OpenAuth.1.0.1\lib\net40\Microsoft.AspNet.Membership.OpenAuth.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Membership.OpenAuth.1.0.1\lib\net40\Microsoft.AspNet.Membership.OpenAuth.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.0\lib\net40\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.0\lib\net40\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -416,6 +416,7 @@
     <Content Include="23_CachingData\09_SqlDataSourceCaching.aspx" />
     <Content Include="23_CachingData\10_CastomDependency.aspx" />
     <Content Include="23_CachingData\10_CastomDependency.xml" />
+    <Content Include="23_CachingData\cache.png" />
     <Content Include="23_CachingData\Default.aspx" />
     <Content Include="24_OutputCache\01_BaseInfo.aspx" />
     <Content Include="24_OutputCache\02_OutputCache.aspx" />
@@ -432,10 +433,46 @@
     <Content Include="24_OutputCache\10_Substitution.aspx" />
     <Content Include="24_OutputCache\11_SqlDependencyOutputCache.aspx" />
     <Content Include="24_OutputCache\Default.aspx" />
+    <Content Include="25_FormsAuthentication\01_BaseInfo.aspx" />
+    <Content Include="25_FormsAuthentication\03_CustomDataInTicket.aspx" />
+    <Content Include="25_FormsAuthentication\02_FormsTest.aspx" />
+    <Content Include="25_FormsAuthentication\02_Login.aspx" />
+    <Content Include="25_FormsAuthentication\02_Private.aspx" />
+    <Content Include="25_FormsAuthentication\03_Login.aspx" />
+    <Content Include="25_FormsAuthentication\03_Private.aspx" />
+    <Content Include="25_FormsAuthentication\anonim_access.png" />
+    <Content Include="25_FormsAuthentication\authentication.png" />
+    <Content Include="25_FormsAuthentication\cookie.png" />
+    <Content Include="25_FormsAuthentication\Default.aspx" />
+    <Content Include="26_MembershipApi\01_BaseInfo.aspx" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\02_Default.aspx" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\02_Login.aspx" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\02_Register.aspx" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\Account\ChangePassword.aspx" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\Account\Login.aspx" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\Account\Register.aspx" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\Account\RestorePassword.aspx" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\Private\Page1.aspx" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\Private\Page2.aspx" />
+    <Content Include="26_MembershipApi\03_Role\03_RoleTest.aspx" />
+    <Content Include="26_MembershipApi\03_Role\Account\ChangePassword.aspx" />
+    <Content Include="26_MembershipApi\03_Role\Account\Login.aspx" />
+    <Content Include="26_MembershipApi\03_Role\Account\Register.aspx" />
+    <Content Include="26_MembershipApi\03_Role\Account\RestorePassword.aspx" />
+    <Content Include="26_MembershipApi\03_Role\AdminPanel\Default.aspx" />
+    <Content Include="26_MembershipApi\03_Role\ManagerArea\Default.aspx" />
+    <Content Include="26_MembershipApi\03_Role\Private\Page1.aspx" />
+    <Content Include="26_MembershipApi\03_Role\Private\Page2.aspx" />
+    <Content Include="26_MembershipApi\Default.aspx" />
+    <Content Include="26_MembershipApi\membership.png" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
     <Content Include="30_Examples\Default.aspx" />
+    <Content Include="App_Data\ASPNETDB.MDF" />
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>ASPNETDB.MDF</DependentUpon>
+    </Content>
     <Content Include="App_Data\Database.mdf" />
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
@@ -502,6 +539,13 @@
     <Content Include="16_Handlers\Files\File3.test" />
     <Content Include="16_Handlers\07_GetImageFromDBHandler.ashx" />
     <Content Include="20_AsyncPages\08_AsyncHandler.ashx" />
+    <Content Include="25_FormsAuthentication\Site.Master" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\Site.Master" />
+    <Content Include="26_MembershipApi\02_SimpleMembership\Private\Web.config" />
+    <Content Include="26_MembershipApi\03_Role\Site.Master" />
+    <Content Include="26_MembershipApi\03_Role\ManagerArea\web.config" />
+    <Content Include="26_MembershipApi\03_Role\AdminPanel\web.config" />
+    <Content Include="26_MembershipApi\03_Role\Private\Web.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -511,7 +555,9 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
@@ -2392,6 +2438,223 @@
     <Compile Include="24_OutputCache\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="25_FormsAuthentication\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\03_CustomDataInTicket.aspx.cs">
+      <DependentUpon>03_CustomDataInTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\03_CustomDataInTicket.aspx.designer.cs">
+      <DependentUpon>03_CustomDataInTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\02_FormsTest.aspx.cs">
+      <DependentUpon>02_FormsTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\02_FormsTest.aspx.designer.cs">
+      <DependentUpon>02_FormsTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\02_Login.aspx.cs">
+      <DependentUpon>02_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\02_Login.aspx.designer.cs">
+      <DependentUpon>02_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\02_Private.aspx.cs">
+      <DependentUpon>02_Private.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\02_Private.aspx.designer.cs">
+      <DependentUpon>02_Private.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\03_Login.aspx.cs">
+      <DependentUpon>03_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\03_Login.aspx.designer.cs">
+      <DependentUpon>03_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\03_Private.aspx.cs">
+      <DependentUpon>03_Private.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\03_Private.aspx.designer.cs">
+      <DependentUpon>03_Private.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="25_FormsAuthentication\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\02_Default.aspx.cs">
+      <DependentUpon>02_Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\02_Default.aspx.designer.cs">
+      <DependentUpon>02_Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\02_Login.aspx.cs">
+      <DependentUpon>02_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\02_Login.aspx.designer.cs">
+      <DependentUpon>02_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\02_Register.aspx.cs">
+      <DependentUpon>02_Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\02_Register.aspx.designer.cs">
+      <DependentUpon>02_Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Account\RestorePassword.aspx.cs">
+      <DependentUpon>RestorePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Account\RestorePassword.aspx.designer.cs">
+      <DependentUpon>RestorePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Private\Page1.aspx.cs">
+      <DependentUpon>Page1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Private\Page1.aspx.designer.cs">
+      <DependentUpon>Page1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Private\Page2.aspx.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Private\Page2.aspx.designer.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\02_SimpleMembership\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\03_RoleTest.aspx.cs">
+      <DependentUpon>03_RoleTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\03_RoleTest.aspx.designer.cs">
+      <DependentUpon>03_RoleTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Account\RestorePassword.aspx.cs">
+      <DependentUpon>RestorePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Account\RestorePassword.aspx.designer.cs">
+      <DependentUpon>RestorePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\AdminPanel\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\AdminPanel\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\ManagerArea\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\ManagerArea\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Private\Page1.aspx.cs">
+      <DependentUpon>Page1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Private\Page1.aspx.designer.cs">
+      <DependentUpon>Page1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Private\Page2.aspx.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Private\Page2.aspx.designer.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\03_Role\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="26_MembershipApi\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="26_MembershipApi\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">
       <DependentUpon>01_CaptchaHandler.ashx</DependentUpon>
     </Compile>
@@ -2623,7 +2886,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62880</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

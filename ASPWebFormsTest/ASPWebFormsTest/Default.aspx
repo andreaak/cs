@@ -27,6 +27,10 @@
         <li><a href="20_AsyncPages/Default.aspx">Async Pages</a></li>
         <li><a href="21_UserControls/Default.aspx">User Controls</a></li>
         <li><a href="22_CustomServerControls/Default.aspx">Custom Server Controls</a></li>
+        <li><a href="23_CachingData/Default.aspx">Caching Data</a></li>
+        <li><a href="24_OutputCache/Default.aspx">Output Cache</a></li>
+        <li><a href="25_FormsAuthentication/Default.aspx">Forms Authentication</a></li>
+        <li><a href="26_MembershipApi/Default.aspx">Membership Api</a></li>
         <li><a href="30_Examples/Default.aspx">Examples</a></li>
     </ol>
 </body>

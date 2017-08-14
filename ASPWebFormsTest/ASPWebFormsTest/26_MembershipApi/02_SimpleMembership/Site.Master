@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ASPWebFormsTest._26_MembershipApi._02_SimpleMembership.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Membership Provider Sample</title>
+
+    <style>
+        h1 {
+            background-color: #cccccc;
+            padding: 10px;
+        }
+
+        .Header {
+            border: 1px solid Gray;
+            padding: 4px;
+            clear: right;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <a href="/26_MembershipApi/02_SimpleMembership/02_Default.aspx">Home</a> | <a href="/26_MembershipApi/02_SimpleMembership/Private/Page1.aspx">Page1</a> | <a href="/26_MembershipApi/02_SimpleMembership/Private/Page2.aspx">Page2</a>
+            <br />
+            <a href="/26_MembershipApi/02_SimpleMembership/Account/ChangePassword.aspx">Сменить пароль</a> | <a href="/26_MembershipApi/02_SimpleMembership/Account/RestorePassword.aspx">Восстановить пароль</a>
+            <br />
+            <div style="float: right; margin: 4px;">
+                Привет,
+                <asp:LoginView ID="MasterLoginView" runat="server">
+                    <AnonymousTemplate>
+                        Гость [<asp:LoginStatus ID="MasterLoginStatus" runat="server" />
+                        ]/[<a href="/26_MembershipApi/02_SimpleMembership/02_Register.aspx"> Регистрация</a>]
+                        /[<a href="/26_MembershipApi/02_SimpleMembership/Account/Register.aspx"> Регистрация</a>]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <asp:LoginName ID="MasterLoginName" runat="server" />
+                        [<asp:LoginStatus ID="MasterLoginStatus" runat="server" />
+                        ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+
+            </div>
+            <h1 class="Header">ASP.NET MembershipProvider Sample</h1>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

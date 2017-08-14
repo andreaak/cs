@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._23_CachingData {
+namespace ASPWebFormsTest._25_FormsAuthentication {
     
     
     public partial class _01_BaseInfo {

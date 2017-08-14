@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ASPWebFormsTest._25_FormsAuthentication.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>FormsAuthentication Sample</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+            <div style="margin: 20px;">
+                <%--Информация о пользователе--%>
+                <div style="float: right">
+                    <%--LoginView - контрол для отображения разметки для аутентифицированных и анонимных пользователей--%>
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <%--AnonymousTemplate - шаблон будет отображаться анонимным пользователям--%>
+                        <AnonymousTemplate>
+                            Welcome, guest
+                        </AnonymousTemplate>
+
+                        <%--LoggedInTemplate - шаблон будет отображаться пользователям, которые аутентифицировались--%>
+                        <LoggedInTemplate>
+                            Welcome,
+                            <asp:LoginName ID="LoginName1" runat="server" />
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Refresh" />
+                </div>
+            </div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
+

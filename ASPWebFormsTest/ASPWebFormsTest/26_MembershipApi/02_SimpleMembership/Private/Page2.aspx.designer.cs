@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._23_CachingData {
+namespace ASPWebFormsTest._26_MembershipApi._03_Role.Private {
     
     
-    public partial class _01_BaseInfo {
+    public partial class Page2 {
     }
 }
