@@ -417,6 +417,21 @@
     <Content Include="23_CachingData\10_CastomDependency.aspx" />
     <Content Include="23_CachingData\10_CastomDependency.xml" />
     <Content Include="23_CachingData\Default.aspx" />
+    <Content Include="24_OutputCache\01_BaseInfo.aspx" />
+    <Content Include="24_OutputCache\02_OutputCache.aspx" />
+    <Content Include="24_OutputCache\03_VaryByParam.aspx" />
+    <Content Include="24_OutputCache\04_VaryByParam.aspx" />
+    <Content Include="24_OutputCache\05_VaryByHeader.aspx" />
+    <Content Include="24_OutputCache\06_VaryByCustom.aspx" />
+    <Content Include="24_OutputCache\07_CacheProfile.aspx" />
+    <Content Include="24_OutputCache\08_Page1.aspx" />
+    <Content Include="24_OutputCache\08_Page2.aspx" />
+    <Content Include="24_OutputCache\08_UserControl.ascx" />
+    <Content Include="24_OutputCache\08_UserControlTest.aspx" />
+    <Content Include="24_OutputCache\09_Substitution.aspx" />
+    <Content Include="24_OutputCache\10_Substitution.aspx" />
+    <Content Include="24_OutputCache\11_SqlDependencyOutputCache.aspx" />
+    <Content Include="24_OutputCache\Default.aspx" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
@@ -2270,6 +2285,111 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="23_CachingData\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\02_OutputCache.aspx.cs">
+      <DependentUpon>02_OutputCache.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\02_OutputCache.aspx.designer.cs">
+      <DependentUpon>02_OutputCache.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\03_VaryByParam.aspx.cs">
+      <DependentUpon>03_VaryByParam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\03_VaryByParam.aspx.designer.cs">
+      <DependentUpon>03_VaryByParam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\04_VaryByParam.aspx.cs">
+      <DependentUpon>04_VaryByParam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\04_VaryByParam.aspx.designer.cs">
+      <DependentUpon>04_VaryByParam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\05_VaryByHeader.aspx.cs">
+      <DependentUpon>05_VaryByHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\05_VaryByHeader.aspx.designer.cs">
+      <DependentUpon>05_VaryByHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\06_VaryByCustom.aspx.cs">
+      <DependentUpon>06_VaryByCustom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\06_VaryByCustom.aspx.designer.cs">
+      <DependentUpon>06_VaryByCustom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\07_CacheProfile.aspx.cs">
+      <DependentUpon>07_CacheProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\07_CacheProfile.aspx.designer.cs">
+      <DependentUpon>07_CacheProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\08_Page1.aspx.cs">
+      <DependentUpon>08_Page1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\08_Page1.aspx.designer.cs">
+      <DependentUpon>08_Page1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\08_Page2.aspx.cs">
+      <DependentUpon>08_Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\08_Page2.aspx.designer.cs">
+      <DependentUpon>08_Page2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\08_UserControl.ascx.cs">
+      <DependentUpon>08_UserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\08_UserControl.ascx.designer.cs">
+      <DependentUpon>08_UserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\08_UserControlTest.aspx.cs">
+      <DependentUpon>08_UserControlTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\08_UserControlTest.aspx.designer.cs">
+      <DependentUpon>08_UserControlTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\09_Substitution.aspx.cs">
+      <DependentUpon>09_Substitution.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\09_Substitution.aspx.designer.cs">
+      <DependentUpon>09_Substitution.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\10_Substitution.aspx.cs">
+      <DependentUpon>10_Substitution.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\10_Substitution.aspx.designer.cs">
+      <DependentUpon>10_Substitution.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\11_SqlDependencyOutputCache.aspx.cs">
+      <DependentUpon>11_SqlDependencyOutputCache.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\11_SqlDependencyOutputCache.aspx.designer.cs">
+      <DependentUpon>11_SqlDependencyOutputCache.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="24_OutputCache\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="24_OutputCache\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">

@@ -29,13 +29,12 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
 
-            <asp:SqlDataSource ID="ProductsSqlDataSource" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:local %>" 
+            <asp:SqlDataSource ID="ProductsSqlDataSource" runat="server"
+                ConnectionString="<%$ ConnectionStrings:local %>"
                 SelectCommand="SELECT * FROM [Products]"
                 EnableCaching="true"
-                CacheExpirationPolicy="Absolute" 
-                CacheDuration="60">
-            </asp:SqlDataSource>
+                CacheExpirationPolicy="Absolute"
+                CacheDuration="60"></asp:SqlDataSource>
 
         </div>
     </form>
