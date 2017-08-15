@@ -6,22 +6,10 @@
 <head runat="server">
     <title></title>
     <%-- Данный блок используется другими страницами для добавления ссылок на файлы с JavaScript сценариями или CSS таблицами--%>
-    <asp:ContentPlaceHolder ID="head" runat="server">
+    <asp:ContentPlaceHolder ID="Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <p>
-        <strong>Мастер-страница</strong> - инструмент для стандартизации компоновки web-страниц. 
-        Мастер-страница представляет собой шаблон web-страниц, 
-        который может определять фиксированное содержимое и объявлять часть страницы, 
-        в которую будет помещено специальное содержимое. 
-    </p>
-    <p>
-        Только мастер-страница может использовать элемент управления ContentPlaceHolder<br />
-        Существует возможность создавать вложенные мастер страницы, когда одна мастер-страница наследует другую мастер страницу.
-    </p>
-    <img src="master_page.png" />
-    <br />
     <form id="form1" runat="server">
         <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#F7F6F3"
             DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#7C6F57"
@@ -49,7 +37,7 @@
         </asp:Menu>
         <div style="margin: 20px;">
             <%-- В данный блок будет помещен контент из страниц использующих данную мастер страницу. --%>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <asp:ContentPlaceHolder ID="Content" runat="server">
             </asp:ContentPlaceHolder>
         </div>
         <div style="margin-top: 20px; padding: 10px; color: Gray; font-style: italic;">

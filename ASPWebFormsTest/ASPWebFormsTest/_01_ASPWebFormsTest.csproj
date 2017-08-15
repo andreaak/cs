@@ -203,6 +203,7 @@
     <Content Include="05_PageDesign\02_Themes\02_ChangeTheme.aspx" />
     <Content Include="05_PageDesign\02_Themes\01_BaseInfo.aspx" />
     <Content Include="05_PageDesign\02_Themes\03_ImagesUsing.aspx" />
+    <Content Include="05_PageDesign\03_MasterPage\01_BaseInfo.aspx" />
     <Content Include="05_PageDesign\03_MasterPage\Default.aspx" />
     <Content Include="05_PageDesign\03_MasterPage\master_page.png" />
     <Content Include="05_PageDesign\03_MasterPage\Page1.aspx" />
@@ -1080,6 +1081,13 @@
     </Compile>
     <Compile Include="05_PageDesign\02_Themes\03_ImagesUsing.aspx.designer.cs">
       <DependentUpon>03_ImagesUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="05_PageDesign\03_MasterPage\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="05_PageDesign\03_MasterPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -2886,7 +2894,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62880</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

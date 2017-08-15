@@ -13,13 +13,13 @@ namespace ASPWebFormsTest._05_PageDesign._03_MasterPage {
     public partial class Site {
         
         /// <summary>
-        /// head control.
+        /// Head control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Head;
         
         /// <summary>
         /// form1 control.
@@ -40,12 +40,12 @@ namespace ASPWebFormsTest._05_PageDesign._03_MasterPage {
         protected global::System.Web.UI.WebControls.Menu Menu1;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// Content control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Content;
     }
 }
