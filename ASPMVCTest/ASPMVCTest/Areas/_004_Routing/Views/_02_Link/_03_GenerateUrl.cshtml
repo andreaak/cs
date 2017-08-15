@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GenerateUrl</title>
+</head>
+<body>
+    <div>
+        <p>
+            <strong>Url</strong> - объект, упрощающий создания URL 
+            опираясь на настройки системы маршрутизации<br />
+            Генерация URL без окружающей HTML разметки
+        </p>
+        <p>
+            <strong>@@Url.Action("_02_ActionWithParameters", "_02_Link", new { id = "customer-name" })</strong> =
+            @Url.Action("_02_ActionWithParameters", "_02_Link", new { id = "customer-name" })
+        </p>
+        <p>
+            <strong>@@Url.Action("_01_BaseInfo", "_02_Link")</strong> =
+            @Url.Action("_01_BaseInfo", "_02_Link")
+        </p>
+        <p>
+            <strong>@@Url.RouteUrl(new {action = "_01_BaseInfo", controller = "_02_Link"})</strong> =
+            @Url.RouteUrl(new { action = "_01_BaseInfo", controller = "_02_Link" })
+        </p>
+        <p>
+            <strong>
+                &lt;a href="@@Url.Action("_01_BaseInfo", "_02_Link")"&gt;@@Url.Action&lt;/a&gt;
+            </strong> <br />
+            <a href="@Url.Action("_01_BaseInfo", "_02_Link")">@@Url.Action</a>
+        </p>
+        <p>
+            <strong>
+                &lt;a href="@@Url.RouteUrl(new { action = "_01_BaseInfo", controller = "_02_Link", area = "_004_Routing" })"&gt;@@Url.RouteUrl&lt;/a&gt;
+            </strong><br />
+            <a href="@Url.RouteUrl(new {action = "_01_BaseInfo", controller = "_02_Link", area = "_004_Routing"})">@@Url.RouteUrl</a>
+        </p>
+    </div>
+</body>
+</html>

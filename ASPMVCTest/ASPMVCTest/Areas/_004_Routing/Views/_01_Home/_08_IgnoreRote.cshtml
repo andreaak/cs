@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IgnoreRote</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <p>Не маршрутизировать любые запросы направленные к файлам с расширением axd и любой строкой параметров.</p>
+    <p class="code">context.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");</p>
+    <p>В данном проекте включена трассировка.</p>
+    <p>
+        Для того что бы получить информацию трассировки необходимо выполнить запрос
+        к виртуальному файлу trace.axd который находиться в корне приложения.<br />
+        trace.axd - является точкой входа, зарегистрированной для HTTP обработчика.<br />
+        Для включения трассировки используется элемент &lt;trace enabled="true" /&gt;
+        в файле web.config
+    </p>
+    <div>
+        IgnoreRote Sample<br />
+        <a href="~/trace.axd">Trace Info</a>
+    </div>
+</body>
+</html>

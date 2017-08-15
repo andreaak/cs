@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <h4>Функции системы маршрутизации:</h4>
+    <ul>
+        <li>
+            <strong>Исследование входящих URL</strong>.
+            Определение для какого контроллера и действия предназначен запрос.
+        </li>
+        <li>
+            <strong>Генерация исходящих URL</strong>.
+            Создание URL для ссылок в HTML разметке.
+        </li>
+    </ul>
+    <p>http://mysite.com/Admin/Index - данный URL указывает на метод Index в AdminController.</p>
+    <p>
+        Сегменты - части URL за исключением имени хоста и строки запроса
+        разделенные символом /.<br />
+        http://mysite.com/Admin/Index <br />
+        Admin - Первый сегмент<br />
+        Index - Второй сегмент
+    </p>
+    <h4>Переменные сегментов</h4>
+    <p>
+        <strong>Переменные сегментов</strong> – переменные задающиеся при настройке маршрута,
+        используются для того чтобы получить значения сегментов URL.
+        При обработке входящих URL система маршрутизации должна сопоставить URL
+        с шаблоном и передать значения сегментов в переменные сегментов.
+        Переменные сегментов выражаются символами { и }<br />
+    </p>
+
+    <p>Шаблон URL с переменными: {controller}/{action}</p>
+    <table>
+        <tr>
+            <th>URL запроса</th>
+            <th>Переменные сегментов</th>
+        </tr>
+        <tr>
+            <td>http://mysite.com/Admin/Index</td>
+            <td>controller=Admin, action=Index</td>
+        </tr>
+        <tr>
+            <td>http://mysite.com/Hello/World</td>
+            <td>controller=Hello, action=World</td>
+        </tr>
+        <tr>
+            <td>http://mysite.com/Admin/Index/Test</td>
+            <td>Соответствий нет - много сегментов</td>
+        </tr>
+        <tr>
+            <td>http://musite.com/Admin</td>
+            <td>Соответствий нет - мало сегментов</td>
+        </tr>
+    </table>
+
+    <h4>Ключевое поведение шаблонов</h4>
+    <ul>
+        <li>
+            Шаблоны будут совпадать только с теми URL,
+            которые имеют то же самое количество сегментов, что и шаблон.
+        </li>
+        <li>
+            Если URL имеет правильное количество сегментов,
+            шаблон извлечет значение для переменной сегмента, каким бы оно ни было.
+        </li>
+    </ul>
+
+    <h4>Зарезервированные имена переменных сегментов</h4>
+    <ul>
+        <li>{controller}</li>
+        <li>{action}</li>
+        <li>{area}</li>
+    </ul>
+</body>
+</html>

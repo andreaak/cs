@@ -1,0 +1,48 @@
+﻿.bold {
+    font-weight: bold;
+}
+
+.code {
+    font-family:Consolas;
+    font-size:9pt;
+    font-weight:normal;
+    font-style:normal;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table caption {
+    text-align: left;
+}
+
+ul {
+    margin-top: 1px;
+}
+
+.description {
+    margin-left: 30px;
+}
+
+.mostUsed {
+    color: red;
+}
+
+.image {
+    width: 500px;
+    height: 400px;
+}
+
+    /* This will style any <img> element in .parent div */
+    .image img {
+        width: 100%;
+    }
+
+.marking {
+    font-style: italic;
+}

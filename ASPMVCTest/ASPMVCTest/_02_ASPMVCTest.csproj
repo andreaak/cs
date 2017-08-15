@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\_000_Base\Controllers\_001_HomeController.cs" />
+    <Compile Include="Areas\_000_Base\Models\Product.cs" />
     <Compile Include="Areas\_000_Base\_000_BaseAreaRegistration.cs" />
     <Compile Include="Areas\_001_Controller\Controllers\_001_HomeController.cs" />
     <Compile Include="Areas\_001_Controller\Controllers\_002_LowLevelController.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Areas\_003_Model\Models\AccountModel.cs" />
     <Compile Include="Areas\_003_Model\Models\AccountModelMetadata.cs" />
     <Compile Include="Areas\_003_Model\Models\MustBeTrueAttribute.cs" />
+    <Compile Include="Areas\_004_Routing\Controllers\_02_LinkController.cs" />
     <Compile Include="Areas\_005_Filters\Controllers\_001_HomeController.cs" />
     <Compile Include="Areas\_005_Filters\_005_FiltersAreaRegistration.cs" />
     <Compile Include="Areas\_006_Security\Controllers\_001_HomeController.cs" />
@@ -173,7 +175,7 @@
     <Compile Include="Areas\_003_Model\Models\MyModel.cs" />
     <Compile Include="ModelBinder\MyModelBinder.cs" />
     <Compile Include="Areas\_003_Model\_003_ModelAreaRegistration.cs" />
-    <Compile Include="Areas\_004_Routing\Controllers\_001_HomeController.cs" />
+    <Compile Include="Areas\_004_Routing\Controllers\_01_HomeController.cs" />
     <Compile Include="Areas\_004_Routing\_004_RoutingAreaRegistration.cs" />
     <Compile Include="Controllers\_000_HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -200,6 +202,7 @@
     <Content Include="Content\Images\MVCInteraction.png" />
     <Content Include="Content\Images\safari.png" />
     <Content Include="Content\Images\ViewBag.png" />
+    <Content Include="Content\My.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -257,9 +260,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Areas\_004_Routing\Views\Web.config" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\Index.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\BaseInfo.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\StaticSegments.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_01_Home\Index.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_01_Home\_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_01_Home\_03_StaticSegments.cshtml" />
     <Content Include="Areas\_000_Base\Views\Web.config" />
     <Content Include="Areas\_000_Base\Views\_001_Home\Index.cshtml" />
     <Content Include="Areas\_002_View\Views\Web.config" />
@@ -272,16 +275,15 @@
     <Content Include="Areas\_001_Controller\Views\_003_ReceiveData\GetDataFromRequest.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_004_ReceiveSimpleTypes\Index.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_003_ReceiveData\Index.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\Common.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\SegmentVariables.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\OptionalSegments.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\CatchAllSegments.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\SegmentsRestrictions.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\IgnoreRote.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\GenerateLink.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\Customer.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\CreateCustomer.cshtml" />
-    <Content Include="Areas\_004_Routing\Views\_001_Home\GenerateUrl.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_01_Home\_04_SegmentVariables.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_01_Home\_05_OptionalSegments.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_01_Home\_06_CatchAllSegments.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_01_Home\_07_SegmentsRestrictions.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_01_Home\_08_IgnoreRote.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_02_Link\_02_GenerateLink.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_02_Link\_02_ActionWithoutParameters.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_02_Link\_02_ActionWithParameters.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_02_Link\_03_GenerateUrl.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\Index.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\UseViewBag.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\UseTempData.cshtml" />
@@ -356,6 +358,11 @@
     <Content Include="Areas\_003_Model\Views\_003_Validation\ClientSideValidation.cshtml" />
     <Content Include="Areas\_005_Filters\Views\Web.config" />
     <Content Include="Areas\_006_Security\Views\Web.config" />
+    <Content Include="Areas\_000_Base\Views\_001_Home\_02_Products.cshtml" />
+    <Content Include="Areas\_000_Base\Views\_001_Home\_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_01_Home\_02_DefaultValues.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_02_Link\_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_004_Routing\Views\_02_Link\_04_Areas.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -389,7 +396,6 @@
     <Content Include="Web.config.install.xdt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\_000_Base\Models\" />
     <Folder Include="Areas\_000_Base\Views\Shared\" />
     <Folder Include="Areas\_001_Controller\Models\" />
     <Folder Include="Areas\_001_Controller\Views\Shared\" />

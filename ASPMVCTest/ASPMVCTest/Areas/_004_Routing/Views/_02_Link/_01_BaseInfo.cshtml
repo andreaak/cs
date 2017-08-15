@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Base Info</title>
+</head>
+<body>
+    <p>
+        При построении представления использовать разметку
+        <strong>&lt;a href=&rdquo;имя_контроллера/имя_метода&rdquo;&gt;</strong><br />
+        не рекомендуется, так как при изменении настроек системы маршрутизации
+        такие ссылки перестанут работать.
+    </p><p>
+        Для того, чтобы значение атрибута href всегда правильно ссылалось
+        на контроллер и метод действия в соответствии с текущими настройками маршрутизации,
+        используется метод ActionLink или RouteLink класса HtmlHelper.
+    </p>
+    <ul>
+        <li>@@Html.ActionLink(текст ссылки, действие);</li>
+        <li>@@Html.ActionLink(текст ссылки, действие, контроллер);</li>
+        <li>@@Html.ActionLink(текст ссылки, действие, контроллер, значения);</li>
+        <li>
+            @@Html.RouteLink(текст ссылки, new { controller = &ldquo; &rdquo;, action = &ldquo; &rdquo;});
+        </li>
+    </ul>
+</body>
+</html>

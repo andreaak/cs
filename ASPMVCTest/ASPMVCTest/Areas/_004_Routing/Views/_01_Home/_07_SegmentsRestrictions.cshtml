@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        Маршрут может быть настроен таким образом, что для совпадения с входящим запросам,
+        значения переменных сегментов должны подходить под шаблон,
+        который задан через регулярное выражение.
+    <p />
+    <p>
+        Данный маршрут требует, что бы:<br />
+        переменная <strong>{controller}</strong> имела значение, 
+        которое начинается с символа _001_H,<br />
+        <strong>{action}</strong> должна иметь значение либо Index либо About, <br />
+        переменная <strong>{id}</strong> должна быть числовым значением.<br />
+    </p>
+    <p class="code">
+        constraints: new<br />
+        {<br />
+        &nbsp;&nbsp;controller = "^_001_H.*",<br />
+        &nbsp;&nbsp;action = "^Index$|^About$"",<br />
+        &nbsp;&nbsp;id = "^\\d*$"<br />
+        }
+    </p>
+    <br /><br />
+    <h2>Route: @ViewBag.Route</h2><br />
+    <div>
+        <h2>Variable: @ViewBag.Message</h2>
+        <a href="~/_004_Routing/_01_Home/_04_ActionWithoutParameters/123/456">/_004_Routing/_01_Home/_04_ActionWithoutParameters/123/456 (OK)</a><br />
+        <a href="~/_004_Routing/_01_Home/_04_ActionWithParameters/123/456">/_004_Routing/_01_Home/_04_ActionWithParameters/123/456 (OK)</a><br />
+        <a href="~/_004_Routing/_01_Home/_07_ActionWithParameters/123/456">/_004_Routing/_01_Home/_07_ActionWithParameters/123/456 (Error)</a><br />
+        <a href="~/_004_Routing/Test/_04_ActionWithParameters/123/456">/_004_Routing/Test/_04_ActionWithParameters/123/456 (Error)</a><br />
+    </div>
+</body>
+</html>

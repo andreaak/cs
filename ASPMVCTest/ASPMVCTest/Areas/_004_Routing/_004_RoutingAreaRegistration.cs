@@ -14,41 +14,65 @@ namespace _01_ASPMVCTest.Areas._004_Routing
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+            /*
+            Не маршрутизировать любые запросы направленные к файлам с расширением axd 
+            и любой строкой параметров.
+            */
+            context.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            /* 
+            В данном проекте включена трассировка. 
+            Для того что бы получить информацию трассировки необходимо выполнить запрос
+            к виртуальному файлу trace.axd который находиться в корне приложения.
+            trace.axd - является точкой входа, зарегистрированной для HTTP обработчика.
+            Для включения трассировки используется элемент <trace enabled="true" /> 
+            в файле web.config
+            */
+
             context.MapRoute(
-                "_004_Routing_Optional",
-                "_004_Routing/{controller}/{action}/{id}",
-                new
+                name: "_004_Routing_Optional",
+                url: "_004_Routing/{controller}/{action}/{id}",
+                defaults: new
                 {
-                    controller = "_001_Home",
+                    controller = "_01_Home",
                     action = "Index",
                     id = UrlParameter.Optional// переменная сегмента со значением UrlParameter.Optional является необязательной
                 }
-            ); 
+            );
 
             context.MapRoute(
-                "_004_Routing_default",
-                "_004_Routing/{controller}/{action}/{x}/{y}",
-                new
+                name: "_004_Routing_Variables",
+                url: "_004_Routing/{controller}/{action}/{x}/{y}",
+                defaults: new
                 {
-                    controller = "_001_Home",
-                    action = "SegmentVariables1",
+                    controller = "_01_Home",
+                    action = "_04_ActionWithoutPatameters",
                     x = "DefaultIdX",
                     y = "DefaultIdY"
                 },
                 /*
-                Маршрут настроен таким образом, что для совпадения с входящим запросам, значения переменных сегментов
-                 должны подходить под шаблон, который задан через регулярное выражение.
-                 Данный маршрут требует, что бы переменная {controller} имела значение, которое начинается с символа H,
-                 {action} должна иметь значение либо Index либо About, переменная {id} должна быть числовым значением.
+                Маршрут настроен таким образом, что для совпадения с входящим запросам,
+                значения переменных сегментов должны подходить под шаблон, 
+                который задан через регулярное выражение.
+                Данный маршрут требует, что бы переменная {controller} имела значение,
+                которое начинается с символа H,
+                {action} должна иметь значение либо Index либо About, 
+                переменная {id} должна быть числовым значением.
                 */
-                constraints: new { controller = "^_001_H.*", action = "^SegmentVariables\\d?$"/*, id = "^\\d*$"*/ } 
+                constraints: new
+                {
+                    controller = "^_01_H.*",
+                    action = "^_04_Action.*Parameters$"
+                }
+                /*, id = "^\\d*$"*/
+                /*"^Index$|^About$"*/
             );
 
             context.MapRoute(
                 name: "_004_Routing_PublicRoute",
                 url: "_004_Routing/public/private/protected/{controller}/{action}"
             );
-            
+
             context.MapRoute(
                 name: "_004_Routing_CatchAll",
                 url: "_004_Routing/{controller}/{action}/{x}/{y}/{id}/{*catchall}"// * перед именем переменной сегмента указывает на то что данная переменная получит значения всех оставшихся сегментов которые есть в URL
