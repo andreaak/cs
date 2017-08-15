@@ -16,7 +16,7 @@ namespace _01_ASPMVCTest.Areas._002_View.Controllers
             return View();
         }
 
-        public ActionResult BaseInfo()
+        public ActionResult A_01_BaseInfo()
         {
             List<Product> products = new List<Product>();
 

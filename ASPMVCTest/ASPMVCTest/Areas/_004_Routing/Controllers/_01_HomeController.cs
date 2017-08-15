@@ -12,26 +12,26 @@ namespace _01_ASPMVCTest.Areas._004_Routing.Controllers
             return View();
         }
 
-        public ActionResult _01_BaseInfo()
+        public ActionResult A_01_BaseInfo()
         {
             return View();
         }
 
-        public ActionResult _02_DefaultValues()
+        public ActionResult A_02_DefaultValues()
         {
             ViewBag.Route = ((System.Web.Routing.Route)RouteData.Route).Url;
             return View();
         }
 
-        public ActionResult _03_StaticSegments()
+        public ActionResult A_03_StaticSegments()
         {
             ViewBag.Route = ((System.Web.Routing.Route)RouteData.Route).Url;
             return View();
         }
 
-        public ActionResult _04_SegmentVariables()
+        public ActionResult A_04_SegmentVariables()
         {
-            ViewBag.Title = "_04_SegmentVariables";
+            ViewBag.Title = "A_04_SegmentVariables";
             ViewBag.Route = ((System.Web.Routing.Route)RouteData.Route).Url;
             return View();
         }
@@ -62,7 +62,7 @@ namespace _01_ASPMVCTest.Areas._004_Routing.Controllers
             Строковое значение, переданное в качестве параметра метода View, 
             позволяет задать другое представление, которое вернется в ответ на запрос
             */
-            return View("_04_SegmentVariables");
+            return View("A_04_SegmentVariables");
         }
 
         /*
@@ -88,19 +88,19 @@ namespace _01_ASPMVCTest.Areas._004_Routing.Controllers
                 ViewBag.Message = string.Format("X = {0} Y = {1}", x, y);
             }
 
-            return View("_04_SegmentVariables");
+            return View("A_04_SegmentVariables");
         }
 
         // int id = 10 в случае если значение будет отсутствовать в сегментах, будет использовано значение 10
-        public ActionResult _05_OptionalSegments(int? id = 10)
+        public ActionResult A_05_OptionalSegments(int? id = 10)
         {
-            ViewBag.Title = "_05_OptionalSegments";
+            ViewBag.Title = "A_05_OptionalSegments";
             ViewBag.Route = ((System.Web.Routing.Route)RouteData.Route).Url;
             ViewBag.Message = string.Format("id = {0}", id);
             return View();
         }
 
-        public ActionResult _06_CatchAllSegments()
+        public ActionResult A_06_CatchAllSegments()
         {
             ViewBag.X = RouteData.Values["X"];
             ViewBag.Y = RouteData.Values["y"];
@@ -110,19 +110,19 @@ namespace _01_ASPMVCTest.Areas._004_Routing.Controllers
             return View();
         }
 
-        public ActionResult _07_SegmentsRestrictions()
+        public ActionResult A_07_SegmentsRestrictions()
         {
-            ViewBag.Title = "_07_SegmentsRestrictions";
+            ViewBag.Title = "A_07_SegmentsRestrictions";
             ViewBag.Route = ((System.Web.Routing.Route)RouteData.Route).Url;
             return View();
         }
 
         public ActionResult _07_ActionWithParameters(int? x, int? y)
         {
-            return View("_04_SegmentVariables");
+            return View("A_04_SegmentVariables");
         }
 
-        public ActionResult _08_IgnoreRote()
+        public ActionResult A_08_IgnoreRote()
         {
             return View();
         }

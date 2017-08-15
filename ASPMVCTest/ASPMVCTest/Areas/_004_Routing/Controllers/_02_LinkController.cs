@@ -4,36 +4,35 @@ namespace _01_ASPMVCTest.Areas._004_Routing.Controllers
 {
     public class _02_LinkController : Controller
     {
-        public ActionResult _01_BaseInfo()
+        public ActionResult A_01_BaseInfo()
         {
             return View();
         }
 
-        public ActionResult _02_GenerateLink()
+        public ActionResult A_02_GenerateLink()
         {
             return View();
         }
 
-        public ActionResult _02_ActionWithoutParameters()
+        public ActionResult A_02_ActionWithoutParameters()
         {
             return View();
         }
 
-        public ActionResult _02_ActionWithParameters(string id)
+        public ActionResult A_02_ActionWithParameters(string id)
         {
             ViewBag.Id = id;
             return View();
         }
 
-        public ActionResult _03_GenerateUrl()
+        public ActionResult A_03_GenerateUrl()
         {
             return View();
         }
 
-        public ActionResult _04_Areas()
+        public ActionResult A_04_Areas()
         {
             return View();
         }
-
     }
 }
