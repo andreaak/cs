@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 
-namespace ASPWebFormsTest._01_BaseInfo
+namespace ASPWebFormsTest._27_Debug
 {
-    public partial class _09_Trace : System.Web.UI.Page
+    public partial class _02_Trace : System.Web.UI.Page
     {
         protected void Button_Click(object sender, EventArgs e)
         {

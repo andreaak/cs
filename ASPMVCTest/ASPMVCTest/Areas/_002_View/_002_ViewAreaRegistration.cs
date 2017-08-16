@@ -19,7 +19,7 @@ namespace _01_ASPMVCTest.Areas._002_View
                 "_002_View/{controller}/{action}/{id}",
                 new
                 {
-                    controller = "_001_Home",
+                    controller = "_01_Home",
                     action = "Index",
                     id = UrlParameter.Optional
                 }

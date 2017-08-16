@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Bundling";
+    Layout = "~/Areas/_002_View/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index (Bundling &amp; Minification)</h2>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+    Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+    Placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante.
+</p>
+
+@section Header{
+    <h1>
+        <b>Header</b> представления Layouts
+    </h1>
+}
+@section Body{
+    <h1>
+        Section Body
+    </h1>
+}
+@section Footer{
+    <h3>
+        <b>Footer</b> представления Layouts
+    </h3>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("p").css("color", "green");
+        });
+    </script>    
+}

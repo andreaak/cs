@@ -120,7 +120,7 @@
     </Reference>
     <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-	  <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\WebTest\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -148,7 +148,7 @@
     <Compile Include="Areas\_001_Controller\Controllers\_010_JsonResultController.cs" />
     <Compile Include="Areas\_001_Controller\Controllers\_011_HttpCodesResultController.cs" />
     <Compile Include="Areas\_001_Controller\_001_ControllerAreaRegistration.cs" />
-    <Compile Include="Areas\_002_View\Controllers\_001_HomeController.cs" />
+    <Compile Include="Areas\_002_View\Controllers\_01_HomeController.cs" />
     <Compile Include="Areas\_002_View\Controllers\_002_HtmlHelperController.cs" />
     <Compile Include="Areas\_002_View\Controllers\_003_HtmlFormsController.cs" />
     <Compile Include="Areas\_002_View\Controllers\_003_HtmlFormsElementsController.cs" />
@@ -177,7 +177,7 @@
     <Compile Include="Areas\_003_Model\_003_ModelAreaRegistration.cs" />
     <Compile Include="Areas\_004_Routing\Controllers\_01_HomeController.cs" />
     <Compile Include="Areas\_004_Routing\_004_RoutingAreaRegistration.cs" />
-    <Compile Include="Controllers\_000_HomeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -266,7 +266,7 @@
     <Content Include="Areas\_000_Base\Views\Web.config" />
     <Content Include="Areas\_000_Base\Views\_001_Home\Index.cshtml" />
     <Content Include="Areas\_002_View\Views\Web.config" />
-    <Content Include="Areas\_002_View\Views\_001_Home\Index.cshtml" />
+    <Content Include="Areas\_002_View\Views\_01_Home\Index.cshtml" />
     <Content Include="Areas\_001_Controller\Views\Web.config" />
     <Content Include="Areas\_001_Controller\Views\_001_Home\Index.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_001_Home\BaseInfo.cshtml" />
@@ -287,17 +287,17 @@
     <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\Index.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\UseViewBag.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\UseTempData.cshtml" />
-    <Content Include="Areas\_002_View\Views\_001_Home\A_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_002_View\Views\_01_Home\V_01_BaseInfo.cshtml" />
     <Content Include="Areas\_002_View\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\_002_View\Views\_001_Home\Layouts.cshtml" />
-    <Content Include="Areas\_002_View\Views\_001_Home\LayoutWithoutSection.cshtml" />
-    <Content Include="Areas\_002_View\Views\_001_Home\Bundling.cshtml" />
-    <Content Include="Areas\_002_View\Views\_001_Home\PartialViews.cshtml" />
+    <Content Include="Areas\_002_View\Views\_01_Home\Layouts.cshtml" />
+    <Content Include="Areas\_002_View\Views\_01_Home\LayoutWithoutSection.cshtml" />
+    <Content Include="Areas\_002_View\Views\_01_Home\Bundling.cshtml" />
+    <Content Include="Areas\_002_View\Views\_01_Home\PartialViews.cshtml" />
     <Content Include="Areas\_002_View\Views\Shared\_SimpleList.cshtml" />
     <Content Include="Areas\_002_View\Views\Shared\_ErrorMessage.cshtml" />
     <Content Include="Areas\_002_View\Views\Shared\_ProductDesc.cshtml" />
-    <Content Include="Areas\_002_View\Views\_001_Home\StronglyTypedPartialViews.cshtml" />
-    <Content Include="Areas\_002_View\Views\_001_Home\ChildAction.cshtml" />
+    <Content Include="Areas\_002_View\Views\_01_Home\StronglyTypedPartialViews.cshtml" />
+    <Content Include="Areas\_002_View\Views\_01_Home\ChildAction.cshtml" />
     <Content Include="Areas\_002_View\Views\Shared\_Table.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\UseModel.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_005_FromControllerToView\UseViewData.cshtml" />
@@ -390,7 +390,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\_000_Home\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Areas\_001_Controller\Views\_004_ReceiveSimpleTypes\SimpleForm.cshtml" />
     <Content Include="Web.config.uninstall.xdt" />
     <Content Include="Web.config.install.xdt" />

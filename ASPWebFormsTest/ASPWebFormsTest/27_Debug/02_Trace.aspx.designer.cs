@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._01_BaseInfo
+namespace ASPWebFormsTest._27_Debug
 {
 
 
-    public partial class _09_Trace
+    public partial class _02_Trace
     {
 
         /// <summary>

@@ -106,7 +106,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="01_BaseInfo\09_Trace.aspx" />
+    <Content Include="27_Debug\01_BaseInfo.aspx" />
+    <Content Include="27_Debug\02_Trace.aspx" />
     <Content Include="02_Page\01_BaseInfo.aspx" />
     <Content Include="02_Page\02_PageLifeCycleTest.aspx" />
     <Content Include="02_Page\03_PageEventHandling\01_EventHandlingWireup.aspx" />
@@ -466,6 +467,7 @@
     <Content Include="26_MembershipApi\03_Role\Private\Page2.aspx" />
     <Content Include="26_MembershipApi\Default.aspx" />
     <Content Include="26_MembershipApi\membership.png" />
+    <Content Include="27_Debug\Default.aspx" />
     <Content Include="30_Examples\01_Captcha\01_Captcha.aspx" />
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
@@ -562,12 +564,19 @@
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="01_BaseInfo\09_Trace.aspx.cs">
-      <DependentUpon>09_Trace.aspx</DependentUpon>
+    <Compile Include="27_Debug\01_BaseInfo.aspx.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="01_BaseInfo\09_Trace.aspx.designer.cs">
-      <DependentUpon>09_Trace.aspx</DependentUpon>
+    <Compile Include="27_Debug\01_BaseInfo.aspx.designer.cs">
+      <DependentUpon>01_BaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="27_Debug\02_Trace.aspx.cs">
+      <DependentUpon>02_Trace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="27_Debug\02_Trace.aspx.designer.cs">
+      <DependentUpon>02_Trace.aspx</DependentUpon>
     </Compile>
     <Compile Include="02_Page\01_BaseInfo.aspx.cs">
       <DependentUpon>01_BaseInfo.aspx</DependentUpon>
@@ -2661,6 +2670,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="26_MembershipApi\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="27_Debug\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="27_Debug\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="30_Examples\01_Captcha\01_CaptchaHandler.ashx.cs">
