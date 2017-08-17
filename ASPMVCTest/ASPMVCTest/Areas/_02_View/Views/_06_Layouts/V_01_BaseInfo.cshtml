@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "V_01_BaseInfo";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        <strong>Компоновка (Layout)</strong> – эквивалент мастер-страницы в Web Forms.<br />
+        Это шаблон страницы, куда добавляется информация из представления, которое должно
+        быть возвращено после обработки запроса.<br />
+    </p>
+    <p>
+        Если для представления явно не задан файл компоновки,
+        компоновка будет устанавливаться в соответствии с настройками файла View/_ViewStart.cshtml
+        Путь компоновки по умолчанию – Views/Shared/_Layout.cshtml.
+    </p>
+    <img src="~/Content/Images/layouts.png" />
+
+    <div>
+        Методы для визуализации разметки представлений в файле компоновки
+        <ul>
+            <li>
+                <strong>RenderBody</strong> – помещает в компоновку всю размету текущего представления без учета
+                той разметки которая находится в отдельных секциях.<br />
+                <img src="~/Content/Images/RenderBody.png" alt="Render Body" />
+            </li>
+            <li>
+                <strong>RenderSection</strong> – метод, помещает в компоновку разметку определенной секции из текущего
+                представления.<br />
+                <img src="~/Content/Images/RenderSection.png" alt="Render Section" />
+            </li>
+        </ul>
+    </div>
+
+    <p>
+        При создании компоновки, вместо метода RenderBody
+        можно использовать только методы RenderSection.
+        Это поможет создать более строгую структуру представления
+        состоящую только из секций.
+    </p>
+    <p class="code">
+        @@RenderSection("Header")<br/>
+        @@RenderSection("Body")<br />
+        @@RenderSection("Footer")<br />
+    </p>
+</body>
+</html>

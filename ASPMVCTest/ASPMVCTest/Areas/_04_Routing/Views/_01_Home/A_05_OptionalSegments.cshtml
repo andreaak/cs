@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OptionalSegments</title>
+</head>
+<body>
+    <div>
+        <h2>Route: @ViewBag.Route</h2>
+        <h2>Variable: @ViewBag.Message</h2>
+        <br />
+
+        <a href="@Url.RouteUrl("_04_Routing_Optional", new {action = "A_05_OptionalSegments", controller = "_01_Home", id = 123})">/_01_Home/A_05_OptionalSegments/123</a><br />
+        <br />
+
+        <a href="~/_04_Routing/_01_Home/A_05_OptionalSegments">/_01_Home/A_05_OptionalSegments</a><br />
+        <a href="~/_04_Routing/_01_Home/A_05_OptionalSegments/123">/_01_Home/A_05_OptionalSegments/123</a><br />
+        <a href="~/_04_Routing/_01_Home/A_05_OptionalSegments/123/456">/_01_Home/A_05_OptionalSegments/123/456 - Error</a><br />
+
+    </div>
+</body>
+</html>

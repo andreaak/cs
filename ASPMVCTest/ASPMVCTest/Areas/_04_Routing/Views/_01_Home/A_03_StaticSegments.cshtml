@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StaticSegments</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        Используеться Route:
+    </p>
+    <p class="code">
+        context.MapRoute(<br />
+        &nbsp;&nbsp;name: "_04_Routing_PublicRoute",<br />
+        &nbsp;&nbsp;url: "_04_Routing/public/private/protected/{controller}/{action}"<br />
+        );
+    </p>
+    <br />
+    <h2>Route: @ViewBag.Route</h2>
+    <br />
+    <div>
+        <a href="~/_04_Routing/_01_Home/Index">/_04_Routing/_01_Home/Index</a><br />
+        <a href="~/_04_Routing/public/private/protected/_01_Home/Index">/_04_Routing/public/private/protected/_01_Home/Index</a><br />
+    </div>
+</body>
+</html>

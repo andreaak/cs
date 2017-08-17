@@ -1,0 +1,17 @@
+﻿@*Шаблон для отображения значений свойства типа Role*@
+@using _01_ASPMVCTest.Areas._02_View.Models
+@model _01_ASPMVCTest.Areas._02_View.Models.Role
+
+@foreach (Role value in Enum.GetValues(typeof(Role)))
+{
+    if (value == Model)
+    {
+        <u>@value</u>@:&nbsp;
+    }
+    else
+    {
+        @value @:&nbsp;
+    }
+}
+
+@*Guest&nbsp;User&nbsp;<u>Admin</u>&nbsp;*@

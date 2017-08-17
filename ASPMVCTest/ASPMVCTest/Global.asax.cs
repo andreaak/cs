@@ -16,7 +16,13 @@ namespace _01_ASPMVCTest
         // Обработчик события старта приложения.
         protected void Application_Start()
         {
-            // Регистрация областей. Поиск объектов типа производного от AreaRegistration и вызов методов RegisterArea для регистрации маршрутов каждой области.
+            /* 
+            Регистрация областей. 
+            Поиск объектов типа производного от AreaRegistration 
+            и вызов методов RegisterArea для регистрации маршрутов каждой области.
+            Метод RegisterAllAreas проходит по всем классам приложения 
+            и находит те классы, которые унаследованы от AreaRegistration.
+            */
             AreaRegistration.RegisterAllAreas();
             
             //регистрация пользовательской ValueProviderFactory

@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CatchAllSegments</title>
+    <link href="~/Content/My.css" rel="stylesheet"/>
+</head>
+<body>
+<p>
+    Сегмент общего захвата - переменная сегмента, имя которой начинается с символа *.
+    Например: {*catchall}
+</p>
+<p class="code">
+    context.MapRoute(<br/>
+    &nbsp;&nbsp;name: "_04_Routing_CatchAll",<br/>
+    &nbsp;&nbsp;url: "_04_Routing/{controller}/{action}/{x}/{y}/{id}/{*catchall}"//
+    * перед именем переменной сегмента указывает на то
+    что данная переменная получит значения всех оставшихся сегментов
+    которые есть в URL<br/>
+    );
+</p>
+<p>
+    <strong>_01_Home/A_06_CatchAllSegments/ggg/jjj/10/hello/world</strong><br/>
+
+    controller = _01_Home<br />
+    action = A_06_CatchAllSegments<br />
+    x = ggg<br />
+    y = jjj<br />
+    id = 10<br />
+    catchall = hello/world 
+</p>
+
+<h2>Route: @ViewBag.Route</h2>
+<div>
+    x = @ViewBag.X
+    <br/>
+    y = @ViewBag.Y
+    <br/>
+    id = @ViewBag.Id
+    <br/>
+    catchall = @ViewBag.All
+    <br/>
+    <br/>
+    <br/>
+    <a href="~/_04_Routing/_01_Home/A_06_CatchAllSegments/ggg/jjj/10/hello/world">/_04_Routing/_01_Home/A_06_CatchAllSegments/ggg/jjj/10/hello/world</a>
+</div>
+</body>
+</html>

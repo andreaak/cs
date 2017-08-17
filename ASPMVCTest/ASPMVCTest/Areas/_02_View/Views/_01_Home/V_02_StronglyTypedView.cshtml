@@ -1,0 +1,45 @@
+﻿@model IEnumerable<_01_ASPMVCTest.Areas._02_View.Models.Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        Данное представление строго типизированное.<br />
+        Строка <span class="code">
+            @@model IEnumerable&lt;_01_ASPMVCTest.Models.View.Product&gt;
+        </span>
+        указывает на тип объекта модели. <br />
+        Модель, переданная в контроллере в качестве параметра метода View,
+        может быть использована по ссылке <span class="code">@@Model</span>
+    </p>
+
+    @foreach (var item in Model)
+    {
+        @*Чтение свойства элемента модели*@
+        <h3>Имя продукта: @item.Name</h3>
+
+        if (item.Category == "Канцтовары")
+        {
+            @*Razor понимает, что оператор в теле if начинается с HTML дескриптора,
+                и поэтому относится к нему как к разметке, которую нужно генерировать*@
+            <p>На канцтовары действует <b>скидка 10%</b></p>
+        }
+
+        if (item.Price < 5)
+        {
+            @:стоимость доставки 10 грн.
+        }
+        <hr />
+    }
+</body>
+</html>

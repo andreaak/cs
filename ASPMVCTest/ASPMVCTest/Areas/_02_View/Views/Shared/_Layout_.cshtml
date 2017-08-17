@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @*
+        Бандл, который содержит все стили.
+        На этапе выполнения преобразовывается в <link herf="...." />
+    *@
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/My.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    @*Визуализация содержимого секции с именем Header*@
+    @RenderSection("Header")
+    <br />
+
+    @*Визуализация представления, которое использует данную компоновку*@
+    @*Визуализация контента представления, который не пренадлежит секциям*@
+    @RenderBody()
+    <br />
+
+    @*Визуализация содержимого секции с именем Footer*@
+    @RenderSection("Footer")
+    <br />
+
+    @RenderSection("Body")
+    <br />
+
+    @*Проверка наличия секции DefinedSection в текущем представлении*@
+    @if (IsSectionDefined("DefinedSection"))
+    {
+        @RenderSection("DefinedSection");
+    }
+    else
+    {
+        <h4>DefinedSection In _Layout_</h4>
+    }
+    <br />
+
+    @*Визуализация необязательной секции DefinedSection*@
+    @RenderSection(name: "DefinedSection2", required: false)
+
+
+    @*Бандл с JavaScrip библиотекой jQuery(тяжеловесные библиотеки)*@
+    @Scripts.Render("~/bundles/jquery")
+
+    @*Не обязательная секция для сценариев отдельных представлений*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

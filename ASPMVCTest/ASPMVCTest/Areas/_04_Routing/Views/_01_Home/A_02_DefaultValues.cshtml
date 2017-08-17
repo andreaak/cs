@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>02_DefaultValues</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h4>Определение значений по умолчанию</h4>
+
+    <p class="code">
+        routes.MapRoute(<br />
+        &nbsp;&nbsp;name: "Default",// имя маршрута<br />
+        &nbsp;&nbsp;url: "{controller}/{action}",// переменные сегментов<br />
+        &nbsp;&nbsp;defaults: new<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;{<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;controller = "_000_Home",<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;action = "Index",<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;}// значения по умолчанию<br />
+        );
+    </p>
+
+    <table>
+        <tr>
+            <th>URL запроса</th>
+            <th>Переменные сегментов</th>
+        </tr>
+        <tr>
+            <td>http://mysite.com</td>
+            <td>controller=Home, action=Index</td>
+        </tr>
+        <tr>
+            <td>http://mysite.com/Customer</td>
+            <td>controller=Customer, action=Index</td>
+        </tr>
+        <tr>
+            <td>http://mysite.com/Customer/List</td>
+            <td>controller=Customer, action=List</td>
+        </tr>
+        <tr>
+            <td>http://musite.com/Home/Index/All</td>
+            <td>Соответствий нет - мало сегментов</td>
+        </tr>
+    </table>
+    <br /><br />
+    <h2>Route: @ViewBag.Route</h2>
+    <br />
+    <div>
+        Определение значений по умолчанию.<br />
+        <a href="/_04_Routing">/_04_Routing</a><br />
+        <a href="/_04_Routing/_01_Home">/_04_Routing/_01_Home</a><br />
+        <a href="/_04_Routing/_01_Home/A_02_DefaultValues">/_04_Routing/_01_Home/A_02_DefaultValues</a><br />
+        <a href="/_04_Routing/_01_Home/A_01_BaseInfo/All">/_04_Routing/_01_Home/A_01_BaseInfo/All - Error</a><br />
+        <a href="/_04_Routing/_01_Home/Index/All">/_04_Routing/_01_Home/Index/All - Error</a><br />
+    </div>
+</body>
+</html>

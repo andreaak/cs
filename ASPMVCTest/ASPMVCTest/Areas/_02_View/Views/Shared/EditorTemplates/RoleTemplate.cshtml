@@ -1,0 +1,19 @@
+﻿@*Шаблон для редактирования значения свойства типа Role*@
+
+@using _01_ASPMVCTest.Areas._02_View.Models
+@model _01_ASPMVCTest.Areas._02_View.Models.Role
+
+<select id="Role" name="Role">
+    @foreach (Role value in Enum.GetValues(typeof(Role)))
+    {
+        <option value="@value" @(Model == value ? "selected=\"selected\"" : "")>
+            @value
+        </option>
+    }
+</select>
+
+@*<select id="Role" name="Role">
+        <option value="Guest">Guest</option>
+        <option value="User">User</option>
+        <option value="Admin" selected="selected">Admin</option>
+    </select>*@

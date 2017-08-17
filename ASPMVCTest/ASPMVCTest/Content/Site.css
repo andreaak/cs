@@ -1,20 +1,20 @@
-﻿body {
+﻿/*body {
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
     background-color: #fff;
-}
+}*/
 
 header, footer, nav, section {
     display: block;
 }
 
-pre {
+/*pre {
     font-size: 1em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color:green;
     font-style:italic;
-}
+}*/
 
 /* Styles for basic forms
 -----------------------------------------------------------*/

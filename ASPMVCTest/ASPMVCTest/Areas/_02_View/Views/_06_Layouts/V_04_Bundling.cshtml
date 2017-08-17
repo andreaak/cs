@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Bundling";
+    Layout = "~/Areas/_02_View/Views/Shared/_Layout_.cshtml";
+}
+
+<p>
+    Бандл - набор CSS или JavaScript файлов,
+    которые на этапе выполнения будут минимизированы и объеденены в один файл.
+    Настройка бандлов происходит в файле App_Start/BundleConfig.cs
+</p>
+<p>
+    Минификация и бандлинг будут работать только
+    если запустить веб приложение с настройкой
+    <span class="code"> &lt;compilation debug="false" targetFramework="4.5" /&gt; </span>
+</p>
+<p>
+    в файле web.config
+</p>
+<p>
+    Бандл, который содержит все стили.
+    На этапе выполнения преобразовывается в <span class="code"> &lt;link herf="...." /&gt;</span>
+</p>
+<p class="code">
+    @@Styles.Render("~/Content/css")
+</p>
+<p>
+    Бандл ссылается на JavaScrip библиотеку modernizr
+    для определения поддержки HTML5 и CSS3 возможностей в браузере
+    На этапе выполнения преобразовывается в
+    <span class="code">&lt;script src="...."&gt;&lt;/script&gt;</span>
+</p>
+<p class="code">
+    @@Scripts.Render("~/bundles/modernizr")
+</p>
+
+@section Header{
+    <h1>
+        <b>Header</b> представления V_05_Bundling.cshtml
+    </h1>
+}
+@section Body{
+    <h1>
+        Section Body представления V_05_Bundling.cshtml
+    </h1>
+}
+@section Footer{
+    <h3>
+        <b>Footer</b> представления V_05_Bundling.cshtml
+    </h3>
+}
+
+<div id="test">Test script</div>
+
+@section scripts
+        {
+    <script>
+        $(document).ready(function () {
+            $("#test").css("color", "green");
+        });
+    </script>
+}

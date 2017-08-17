@@ -1,0 +1,194 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        Все операторы Razor начинаются с символа '@@'
+    </p>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>Razor</th>
+            <th>WebForms</th>
+        </tr>
+        <tr>
+            <td>Код в разметке</td>
+            <td class="code">
+                @@{<br />
+                &nbsp;&nbsp;int a = 123;<br />
+                &nbsp;&nbsp;string message = "&lt;b>Hello world&lt;/b&gt;";<br />
+                }
+            </td>
+            <td class="code">
+                &lt;%<br />
+                &nbsp;&nbsp;int a = 123;<br />
+                &nbsp;&nbsp;string message = "&lt;b>Hello world&lt;/b&gt;";<br />
+                %&gt;
+            </td>
+        </tr>
+        <tr>
+            <td>Выражения (HTML Encoded)</td>
+            <td class="code">
+                @@message
+            </td>
+            <td class="code">
+                &lt;%: message %&gt;
+            </td>
+        </tr>
+        <tr>
+            <td>Выражения (unencoded)</td>
+            <td class="code">
+                @@Html.Raw(message)
+            </td>
+            <td class="code">
+                &lt;%= message %&gt;
+            </td>
+        </tr>
+        <tr>
+            <td>Комментарии</td>
+            <td class="code">
+                @@* ... *@@
+            </td>
+            <td class="code">
+                &lt;%-- ...  --%&gt;
+            </td>
+        </tr>
+    </table>
+    <p>
+        Префикс строки @@: указывает что строку нужно обработать так,
+        как если она будет HTML разметкой
+    </p>
+
+    <h4>
+        Блок кода:
+    </h4>
+    <p class="code">
+        @@{<br />
+        &nbsp;&nbsp;int a = 123;<br />
+        &nbsp;&nbsp;string message = "<b>Hello world</b>";<br />
+        }
+    </p>
+
+    <!--Блок кода---------------------------------------->
+    @{
+        int a = 123;
+        string message = "<b>Hello world</b>";
+    }
+
+    <h4>
+        Выражение (HTML encoded):
+    </h4>
+    <p class="code">
+        @@message
+    </p>
+
+    <p>@message</p>
+
+    <h4>Unencoded:</h4>
+    <p class="code">
+        @@Html.Raw(message)
+    </p>
+
+    <p>@Html.Raw(message)</p>
+
+    <h4>
+        Комбинирование кода и разметки:
+    </h4>
+    <p class="code">
+        @@{<br />
+        &nbsp;&nbsp;string[] items = { "Item 1", "Item 2", "Item 3" };<br />
+        }<br />
+        <br />
+        @@{<br />
+        &nbsp;&nbsp;foreach (string item in items)<br />
+        &nbsp;&nbsp;{<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;@@item&lt;/span&gt;<br />
+        &nbsp;&nbsp;}<br />
+        }
+    </p>
+
+    @{
+        string[] items = { "Item 1", "Item 2", "Item 3" };
+    }
+
+    @{
+        foreach (string item in items)
+        {
+            <span>@item</span>
+        }
+    }
+    <br />
+
+    <!--Комбинирование кода и текста--------------------->
+    <p class="code">
+        @@{<br />
+        &nbsp;&nbsp;bool foo = true;<br />
+        }<br />
+        <br/>
+        @@if (foo)<br />
+        {<br/> 
+        &nbsp;&nbsp;@@*Механизм визуализации понимает, что строка является HTML разметкой, а не C# кодом.*@@<br />
+        &nbsp;&nbsp;&lt;span&gt;Hello world&lt;/span&gt;<br />
+        }
+    </p>
+    @{
+        bool foo = true;
+    }
+
+    @if (foo)
+    {
+        @*Механизм визуализации понимает, что строка является HTML разметкой, 
+        а не C# кодом.*@
+        <span>Hello world</span>
+    }
+
+    <br />
+    <!--Комбинирование кода и текста (Вариант 2)--------->
+    <p class="code">
+        @@if (foo)<br />
+        {<br/>
+        &nbsp;&nbsp;@@*Если не использовать @@: механизм визуализации
+        будет воспринимать строку Hello world как C# код.*@@<br />
+        &nbsp;&nbsp;@@:Hello world<br />
+        }
+    </p>
+    @if (foo)
+    {
+        @*
+        Если не использовать @: механизм визуализации 
+        будет воспринимать строку Hello world как C# код.
+        *@
+        @:Hello world
+    }
+
+    <br />
+    <!--Email адреса в разметке-------------------------->
+    <p>
+        Механизм визуализации распознает email адреса
+        и не воспринимает @@ как разделитель кода
+    </p>
+    admin@example.com
+    <br />
+
+
+    <!--Использование символа at------------------------->
+    <p>Для получения доступа к значению переменной foo мы используем код @@foo</p>
+
+    <!--------------------------------------------------->
+    @*
+        Серверный
+        многострочный
+        комментарий
+    *@
+</body>
+</html>
