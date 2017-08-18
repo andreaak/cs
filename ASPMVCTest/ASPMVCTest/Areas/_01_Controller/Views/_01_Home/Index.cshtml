@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <ol>
+            <li>@Html.ActionLink("Base Info", "C_01_BaseInfo", "_01_Home")</li>
+            <li>@Html.ActionLink("Test Actions", "C_02_TestActions", "_01_Home")</li>
+            <li><a href="~/_01_Controller/_02_LowLevel">Low Level Controller</a></li>
+            <li>@Html.ActionLink("Low Level Controller", "Index2", "_02_LowLevel")</li>
+
+            <li>@Html.ActionLink("Receive data", "Index", "_03_ReceiveData")</li>
+            <li>@Html.ActionLink("Receive Simple Types", "Index", "_04_ReceiveSimpleTypes")</li>
+           <li>@Html.ActionLink("Simple Form", "C_07_SimpleForm", "_04_ReceiveSimpleTypes")</li>
+            <li>
+                @Html.ActionLink("Transfer data from controller to view", "Index", "_05_TransferDataToView")
+            </li>
+            <li>
+                @Html.ActionLink("Action result", "Index", "_06_ActionResult")
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BaseInfo</title>
+</head>
+<body>
+
+    @Html.ActionLink("Get Requets data", "C_02_TestActions", new { id = "hello-world-routedata" }) <br />
+    <div>
+        @using (Html.BeginForm("C_02_TestActions/1", "_01_Home", FormMethod.Post))
+        {
+            <input type="submit" value="Post Request" />
+        }
+    </div>
+    <p>Variable id = @ViewBag.Message </p>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        Message: @ViewBag.Message
+    </div>
+
+    <ul>
+        <li>@Html.ActionLink("Send data", "C_03_SendData", "_04_ReceiveSimpleTypes")</li>
+
+        <li>@Html.ActionLink("Simple type with route's parameter", "SimpleType/5", "_04_ReceiveSimpleTypes")</li>
+        <li><a href="@Url.Action("SimpleType", "_04_ReceiveSimpleTypes", new {id = 5})">Simple type with route's parameter</a></li>
+        <li><a href="~/_01_Controller/_04_ReceiveSimpleTypes/SimpleType?id=5">Simple type with query string parameter</a></li>
+
+        <li><a href="~/_01_Controller/_04_ReceiveSimpleTypes/SimpleType2?ff=5">Simple type with query string ff parameter</a></li>
+
+        <li>@Html.ActionLink("Simple form", "C_07_SimpleForm", "_04_ReceiveSimpleTypes")</li>
+    </ul>
+
+</body>
+</html>

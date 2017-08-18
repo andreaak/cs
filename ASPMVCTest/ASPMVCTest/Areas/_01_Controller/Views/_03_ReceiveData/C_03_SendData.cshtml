@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>C_03_SendData</title>
+</head>
+<body>
+<div>
+    <p>Данные отправляются с помощью POST запроса</p>
+    <form action="@Url.Action("C_04_PostInformation", "_03_ReceiveData")" method="post">
+        <input type="text" name="message"/>
+        <input type="submit" value="Отправить на сервер"/>
+    </form>
+
+    <p>Данные отправляются с помощью GET запроса, как данные в маршруте</p>
+    <a href="@Url.Action("C_05_RouteInformation", "_03_ReceiveData", new {id = "hello-world-routedata"})">Route Data</a>
+
+    <br/>
+    <p>Данные отправляются с помощью GET запроса, как данные адресной строки</p>
+    <a href="~/_01_Controller/_03_ReceiveData/C_06_QueryStringInformation?message=hello-world-querystring">QueryString Data</a>
+</div>
+</body>
+</html>

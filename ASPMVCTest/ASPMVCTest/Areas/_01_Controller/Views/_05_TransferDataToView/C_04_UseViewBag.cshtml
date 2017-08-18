@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UseViewBag</title>
+</head>
+<body>
+    <div>
+        <div>
+            <strong>ViewBag</strong> – свойство типа dynamic, которое предоставляет доступ к объекту типа System.Dynamic.ExpandoObject.<br />
+            System.Dynamic.ExpandoObject – класс представляет объект, которому можно добавить или удалить новые члены на этапе выполнения.<br />
+            ViewBag используется для передачи данных от контроллера к представлению.<br />
+        </div>
+        <img src="~/Content/Images/ViewBag.png" />
+        <div>
+            @*Чтение данных из объекта ViewBag*@
+            День недели: @ViewBag.Date.Year
+        </div>
+    </div>
+</body>
+</html>

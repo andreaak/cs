@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+<div>
+    Message: @ViewBag.Message
+</div>
+
+    <ul >
+        <li>@Html.ActionLink("Get data from context objects", "C_02_GetDataFromContextObjects", "_03_ReceiveData")</li>
+        <li>@Html.ActionLink("Send data", "C_03_SendData", "_03_ReceiveData")</li>
+    </ul>
+</body>
+</html>
