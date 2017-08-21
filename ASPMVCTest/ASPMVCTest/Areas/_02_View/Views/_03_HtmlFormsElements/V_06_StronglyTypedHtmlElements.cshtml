@@ -1,0 +1,31 @@
+﻿@model _01_ASPMVCTest.Areas._02_View.Models.TaskModel
+
+@{
+    ViewBag.Title = "Create New Task";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Create New Task Form</legend>
+
+        <div>
+            <label>Task Name</label>
+            @Html.TextBoxFor(m => m.Name)
+        </div>
+
+        <div>
+            <label>Start Date</label>
+            @Html.TextBoxFor(m => m.StartDate)
+        </div>
+
+        <div>
+            <label>Is Completed</label>
+            @Html.CheckBoxFor(m => m.Completed)
+        </div>
+
+        <input type="submit" value="Create" />
+
+    </fieldset>
+}

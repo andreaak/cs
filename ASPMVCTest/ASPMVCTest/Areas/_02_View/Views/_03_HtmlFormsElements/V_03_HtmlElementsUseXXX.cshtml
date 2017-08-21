@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Create New Task";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Create New Task Form</legend>
+
+        <div>
+            <label>Task Name</label>
+            @Html.TextBox("Name")
+        </div>
+
+        <div>
+            <label>Start Date</label>
+            @Html.TextBox("StartDate")
+        </div>
+
+        <div>
+            <label>Is Completed</label>
+            @Html.CheckBox("Completed")
+        </div>
+
+        <input type="submit" value="Create" />
+
+    </fieldset>
+}

@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "HtmlHelperMethod";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>HtmlHelperMethod</h2>
+@helper CreateLit(string[] items)
+{
+    <ul>
+        @foreach (var item in items)
+        {
+            <li>@item</li>
+        }
+    </ul>
+}
+
+Дни недели:
+@CreateLit(ViewBag.Days)
+
+Фрукты:
+@CreateLit(ViewBag.Fruits)

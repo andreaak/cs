@@ -17,7 +17,7 @@ namespace _01_ASPMVCTest
                 url: "{controller}/{action}/{id}",
                 defaults: new
                 {
-                    controller = "_01_Home",
+                    controller = "Home",
                     action = "Index",
                     id = UrlParameter.Optional
                 }
