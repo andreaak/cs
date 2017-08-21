@@ -60,5 +60,26 @@ namespace _01_ASPMVCTest.Areas._02_View.Controllers
         {
             return View("Selected", (object)Products);
         }
+
+        public ActionResult V_04_ListBox()
+        {
+            List<Product> products = new List<Product>()
+            {
+                new Product() { ProductId = 1, Name ="Product #1"},
+                new Product() { ProductId = 2, Name ="Product #2"},
+                new Product() { ProductId = 3, Name ="Product #3"},
+                new Product() { ProductId = 4, Name ="Product #4"}
+            };
+
+            ViewBag.Products = new SelectList(products, "ProductId", "Name", 2);
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult V_04_ListBox(string[] Products)
+        {
+            return View("Selected", (object)Products);
+        }
     }
 }

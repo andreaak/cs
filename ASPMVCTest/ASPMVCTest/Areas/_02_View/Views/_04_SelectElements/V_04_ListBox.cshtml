@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>V_04_ListBox</title>
+</head>
+<body>
+@using (Html.BeginForm())
+{
+    @Html.ListBox("Products")
+
+    <input type="submit" />
+}
+</body>
+</html>

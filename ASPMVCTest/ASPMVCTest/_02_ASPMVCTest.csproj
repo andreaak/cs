@@ -388,6 +388,7 @@
     <Content Include="Areas\_02_View\Views\_03_HtmlFormsElements\V_03_HtmlElementsUseXXX.cshtml" />
     <Content Include="Areas\_02_View\Views\_04_SelectElements\Index.cshtml" />
     <Content Include="Areas\_02_View\Views\_04_SelectElements\V_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_02_View\Views\_04_SelectElements\V_04_ListBox.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
