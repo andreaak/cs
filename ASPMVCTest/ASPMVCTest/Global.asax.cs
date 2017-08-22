@@ -1,10 +1,12 @@
-﻿using _01_ASPMVCTest.Areas._003_Model.Models;
+﻿using System.Data.Entity;
+using _01_ASPMVCTest.Areas._003_Model.Models;
 using _01_ASPMVCTest.ModelBinder;
 using _01_ASPMVCTest.Providers;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using _01_ASPMVCTest.Areas.E_30_Examples.Models;
 
 namespace _01_ASPMVCTest
 {
@@ -16,6 +18,7 @@ namespace _01_ASPMVCTest
         // Обработчик события старта приложения.
         protected void Application_Start()
         {
+            //Database.SetInitializer(new E_02_EF_ProductsDbInitializer());
             /* 
             Регистрация областей. 
             Поиск объектов типа производного от AreaRegistration 

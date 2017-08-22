@@ -1,7 +1,8 @@
 ﻿@*Шаблон для редактирования значения свойства типа Role*@
 
+
 @using _01_ASPMVCTest.Areas._02_View.Models
-@model _01_ASPMVCTest.Areas._02_View.Models.Role
+@model Role
 
 <select id="Role" name="Role">
     @foreach (Role value in Enum.GetValues(typeof(Role)))

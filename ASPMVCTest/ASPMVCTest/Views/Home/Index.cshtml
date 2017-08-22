@@ -15,31 +15,32 @@
     <h1>Index</h1>
     @using (Html.BeginForm())
     {
-        <div>
-            <ul>
-                <li>
-                    <h2>@Html.RouteLink("Base Info", new { controller = "_001_Home", action = "Index", area = "_000_Base" })</h2>
-                </li>
-                <li>
-                    <h2>@Html.RouteLink("Controller", new { controller = "_01_Home", action = "Index", area = "_01_Controller" })</h2>
-                </li>
-                <li>
-                    <h2>@Html.RouteLink("View", new { controller = "_01_Home", action = "Index", area = "_02_View" })</h2>
-                </li>
-                <li>
-                    <h2>@Html.RouteLink("Model", new { controller = "_001_Home", action = "Index", area = "_003_Model" })</h2>
-                </li>
-                <li>
-                    <h2>@Html.RouteLink("Routing", new { controller = "_01_Home", action = "Index", area = "_04_Routing" })</h2>
-                </li>
-                <li>
-                    <h2>@Html.RouteLink("Filters", new { controller = "_001_Home", action = "Index", area = "_005_Filters" })</h2>
-                </li>
-                <li>
-                    <h2>@Html.RouteLink("Security", new { controller = "_001_Home", action = "Index", area = "_006_Security" })</h2>
-                </li>
-            </ul>
-        </div>
+        <ul>
+            <li>
+                <h2>@Html.RouteLink("Base Info", new { controller = "_01_Home", action = "Index", area = "_00_Base" })</h2>
+            </li>
+            <li>
+                <h2>@Html.RouteLink("Controller", new { controller = "_01_Home", action = "Index", area = "_01_Controller" })</h2>
+            </li>
+            <li>
+                <h2>@Html.RouteLink("View", new { controller = "_01_Home", action = "Index", area = "_02_View" })</h2>
+            </li>
+            <li>
+                <h2>@Html.RouteLink("Model", new { controller = "_001_Home", action = "Index", area = "_003_Model" })</h2>
+            </li>
+            <li>
+                <h2>@Html.RouteLink("Routing", new { controller = "_01_Home", action = "Index", area = "_04_Routing" })</h2>
+            </li>
+            <li>
+                <h2>@Html.RouteLink("Filters", new { controller = "_001_Home", action = "Index", area = "_005_Filters" })</h2>
+            </li>
+            <li>
+                <h2>@Html.RouteLink("Security", new { controller = "_001_Home", action = "Index", area = "_006_Security" })</h2>
+            </li>
+            <li>
+                <h2>@Html.RouteLink("Examples", new { controller = "_01_Home", action = "Index", area = "_30_Examples" })</h2>
+            </li>
+        </ul>
     }
 </body>
 </html>

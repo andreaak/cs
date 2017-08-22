@@ -1,0 +1,53 @@
+﻿@model _01_ASPMVCTest.Areas.E_30_Examples.Models.E_03_EF_Order
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/E_30_Examples/Views/Shared/_03_EF_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Order</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustomerId, "Customer")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CustomerId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CustomerId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductId, "Product")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ProductId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ProductId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

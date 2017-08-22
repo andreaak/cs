@@ -10,7 +10,7 @@ namespace _01_ASPMVCTest.Areas._01_Controller.Controllers
             return View();
         }
 
-        public ActionResult C_02_GetDataFromContextObjects()
+        public ActionResult C_01_BaseInfo()
         {
             string userName = User.Identity.Name;
             string machineName = Server.MachineName;
@@ -23,7 +23,7 @@ namespace _01_ASPMVCTest.Areas._01_Controller.Controllers
             return View();
         }
 
-        public ActionResult C_03_SendData()
+        public ActionResult C_03_SendDataToController()
         {
             return View();
         }

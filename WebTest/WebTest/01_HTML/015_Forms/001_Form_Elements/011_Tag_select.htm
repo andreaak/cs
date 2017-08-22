@@ -9,9 +9,10 @@
 <html>
 <head>
     <title>Тег select</title>
+    <meta charset="utf-8">
 </head>
 <body>
-    <form>
+    <form action="http://www.google.com" method="get">
         <br />
         Enter your first name:
         <input type="text" name="first_name" value="Ivan" />
@@ -73,5 +74,18 @@
         <br />
         <input type="reset" name="reset" value="Reset" />
     </form>
+
+
+    <select name="select5" size="1">
+        <!--No sense use size ="1" -->
+        <option value="film001">2 smoking guns</option>
+        <option value="film002">Bad Boys</option>
+        <option value="film003">Revenge</option>
+        <option value="film004" selected="selected">Crow</option>
+        <option value="film005">Dead Man Walkin</option>
+        <option value="film006">Wrong thing</option>
+    </select>
+    <br />
+    <input type="submit" name="submit" value="Enter" />
 </body>
 </html>

@@ -6,7 +6,7 @@
 <h2>Способы создания HTML форм</h2>
 
 @{
-    Html.BeginForm("Index", "Home");
+    Html.BeginForm("V_02_FormCreation", "_03_HtmlForms");
 }
 
     <p>Первая форма</p>
@@ -16,9 +16,8 @@
     Html.EndForm();
 }
 
-@using (Html.BeginForm("Index", "Home"))
+@using (Html.BeginForm("V_02_FormCreation", "_03_HtmlForms"))
 {
     <p>Вторая форма</p>
     <input type="submit" />
 }
-<br />
