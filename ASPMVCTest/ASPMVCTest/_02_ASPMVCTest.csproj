@@ -365,7 +365,7 @@
     <Content Include="Areas\_03_Model\Views\_02_ModelBinding\M_05_ArrayBinding.cshtml" />
     <Content Include="Areas\_03_Model\Views\_02_ModelBinding\M_06_ManualBinding.cshtml" />
     <Content Include="Areas\_03_Model\Views\_02_ModelBinding\M_07_FileUpload.cshtml" />
-    <Content Include="Areas\_03_Model\Views\_02_ModelBinding\M_08_AdvancedBindingSettings.cshtml" />
+    <Content Include="Areas\_03_Model\Views\_02_ModelBinding\M_08_BindingCookie.cshtml" />
     <Content Include="Areas\_03_Model\Views\_02_ModelBinding\M_09_CustomModelBinder.cshtml" />
     <Content Include="Areas\_03_Model\Views\_03_Validation\Index.cshtml" />
     <Content Include="Areas\_03_Model\Views\_03_Validation\M_02_ExplicitDataValidation.cshtml" />
