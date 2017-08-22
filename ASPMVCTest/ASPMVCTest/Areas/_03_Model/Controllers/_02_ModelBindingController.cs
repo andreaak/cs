@@ -1,11 +1,11 @@
-﻿using _01_ASPMVCTest.Areas._003_Model.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using _01_ASPMVCTest.Areas._03_Model.Models;
 
-namespace _01_ASPMVCTest.Areas._003_Model.Controllers
+namespace _01_ASPMVCTest.Areas._03_Model.Controllers
 {
     public class _02_ModelBindingController : Controller
     {

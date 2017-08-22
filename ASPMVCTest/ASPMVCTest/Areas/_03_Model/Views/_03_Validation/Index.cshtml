@@ -3,9 +3,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-@Html.ActionLink("Explicit Data Validation", "ExplicitDataValidation")<br />
-@Html.ActionLink("Model Level Error", "ModelLevelError")<br />
-@Html.ActionLink("Metadata Validation", "MetadataValidation")<br />
-@Html.ActionLink("Custom Validation Attribute", "CustomValidationAttribute")<br />
-@Html.ActionLink("Client Side Validation", "ClientSideValidation")<br />
+<ul>
+    <li>@Html.ActionLink("Base Info", "M_01_BaseInfo")</li>
+    <li>@Html.ActionLink("Explicit Data Validation", "M_02_ExplicitDataValidation")</li>
+    <li>@Html.ActionLink("Model Level Error", "M_03_ModelLevelError")</li>
+    <li>@Html.ActionLink("Metadata Validation", "M_04_ValidationWithMetadata")</li>
+    <li>@Html.ActionLink("Custom Validation Attribute", "M_05_CustomValidationAttribute")</li>
+    <li>@Html.ActionLink("Client Side Validation", "M_06_ClientSideValidation")</li>
+</ul>

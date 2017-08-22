@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace _01_ASPMVCTest.Areas._003_Model.Models
+namespace _01_ASPMVCTest.Areas._03_Model.Models
 {
-    public class AccountModelMetadata
+    public class M_03_ModelWithValidationMetadata
     {
         // Required - поле обязательное для заполнения
         // StringLength - допустимая длина слова для поля ввода
@@ -31,10 +31,9 @@ namespace _01_ASPMVCTest.Areas._003_Model.Models
         public int Age { get; set; }
     }
 
-    public class AccountModelMetadataSuccessor : AccountModelMetadata
+    public class M_03_ModelWithCustomValidationAttribute : M_03_ModelWithValidationMetadata
     {
         [MustBeTrue(ErrorMessage = "Вы не согласились с условиями использования")]
         public bool TermsAccepted { get; set; }
-
     }
 }

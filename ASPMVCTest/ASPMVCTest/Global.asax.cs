@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-using _01_ASPMVCTest.Areas._003_Model.Models;
 using _01_ASPMVCTest.ModelBinder;
 using _01_ASPMVCTest.Providers;
 using System.Web.Http;
@@ -7,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using _01_ASPMVCTest.Areas.E_30_Examples.Models;
+using _01_ASPMVCTest.Areas._03_Model.Models;
 
 namespace _01_ASPMVCTest
 {
@@ -32,7 +32,7 @@ namespace _01_ASPMVCTest
             ValueProviderFactories.Factories.Add(new CookiesValueProviderFactory());
 
             //регистрация пользовательского ModelBinder
-            ModelBinders.Binders.Add(typeof(M_02_TestModelSuccessor), new MyModelBinder());
+            ModelBinders.Binders.Add(typeof(M_02_TestModelSuccessor), new M_02_ModelBinder());
 
             // Регистрации маршрутов для работы WebAPI.
             WebApiConfig.Register(GlobalConfiguration.Configuration);

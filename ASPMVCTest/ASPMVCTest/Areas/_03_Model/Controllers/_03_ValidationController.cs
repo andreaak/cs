@@ -1,26 +1,30 @@
-﻿using _01_ASPMVCTest.Areas._003_Model.Models;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using _01_ASPMVCTest.Areas._03_Model.Models;
 
-namespace _01_ASPMVCTest.Areas._003_Model.Controllers
+namespace _01_ASPMVCTest.Areas._03_Model.Controllers
 {
     public class _03_ValidationController : Controller
     {
         //
-        // GET: /_003_Model/_003_Validation/
-
+        // GET: /_03_Model/_03_Validation/
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult ExplicitDataValidation()
+        public ActionResult M_01_BaseInfo()
+        {
+            return View();
+        }
+
+        public ActionResult M_02_ExplicitDataValidation()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult ExplicitDataValidation(AccountModel model)
+        public ActionResult M_02_ExplicitDataValidation(M_03_TestModel model)
         {
             if (string.IsNullOrEmpty(model.Login))
             {
@@ -50,13 +54,13 @@ namespace _01_ASPMVCTest.Areas._003_Model.Controllers
             }
         }
 
-        public ActionResult ModelLevelError()
+        public ActionResult M_03_ModelLevelError()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult ModelLevelError(AccountModel model)
+        public ActionResult M_03_ModelLevelError(M_03_TestModel model)
         {
             if (string.IsNullOrEmpty(model.Login))
             {
@@ -92,13 +96,13 @@ namespace _01_ASPMVCTest.Areas._003_Model.Controllers
             }
         }
 
-        public ActionResult MetadataValidation()
+        public ActionResult M_04_ValidationWithMetadata()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult MetadataValidation(AccountModelMetadata model)
+        public ActionResult M_04_ValidationWithMetadata(M_03_ModelWithValidationMetadata model)
         {
             if (ModelState.IsValid)
             {
@@ -108,13 +112,13 @@ namespace _01_ASPMVCTest.Areas._003_Model.Controllers
             return View();
         }
 
-        public ActionResult CustomValidationAttribute()
+        public ActionResult M_05_CustomValidationAttribute()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CustomValidationAttribute(AccountModelMetadataSuccessor model)
+        public ActionResult M_05_CustomValidationAttribute(M_03_ModelWithCustomValidationAttribute model)
         {
             if (ModelState.IsValid)
             {
@@ -124,13 +128,13 @@ namespace _01_ASPMVCTest.Areas._003_Model.Controllers
             return View();
         }
 
-        public ActionResult ClientSideValidation()
+        public ActionResult M_06_ClientSideValidation()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult ClientSideValidation(AccountModelMetadata model)
+        public ActionResult M_06_ClientSideValidation(M_03_ModelWithValidationMetadata model)
         {
             if (ModelState.IsValid)
             {

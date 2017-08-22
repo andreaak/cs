@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace _01_ASPMVCTest.Areas._003_Model.Models
+namespace _01_ASPMVCTest.Areas._03_Model.Models
 {
     public class MustBeTrueAttribute : ValidationAttribute
     {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace _01_ASPMVCTest.Areas._003_Model.Controllers
+namespace _01_ASPMVCTest.Areas._03_Model.Controllers
 {
     public class _01_HomeController : Controller
     {

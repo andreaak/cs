@@ -1,9 +1,9 @@
-﻿using _01_ASPMVCTest.Areas._003_Model.Models;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using _01_ASPMVCTest.Areas._03_Model.Models;
 
 namespace _01_ASPMVCTest.ModelBinder
 {
-    public class MyModelBinder : IModelBinder
+    public class M_02_ModelBinder : IModelBinder
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {

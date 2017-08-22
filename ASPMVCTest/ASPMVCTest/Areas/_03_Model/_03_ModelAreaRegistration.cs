@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace _01_ASPMVCTest.Areas._003_Model
+namespace _01_ASPMVCTest.Areas._03_Model
 {
     public class _03_ModelAreaRegistration : AreaRegistration
     {
