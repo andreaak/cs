@@ -32,7 +32,7 @@ namespace _01_ASPMVCTest
             ValueProviderFactories.Factories.Add(new CookiesValueProviderFactory());
 
             //регистрация пользовательского ModelBinder
-            ModelBinders.Binders.Add(typeof(MyModel2), new MyModelBinder());
+            ModelBinders.Binders.Add(typeof(M_02_TestModelSuccessor), new MyModelBinder());
 
             // Регистрации маршрутов для работы WebAPI.
             WebApiConfig.Register(GlobalConfiguration.Configuration);

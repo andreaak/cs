@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>M_01_BaseInfo</title>
+</head>
+<body>
+    <p>
+        Связыватель модели - объект который производит поиск значений в запросе
+        в соответствии с именами параметров метода действия.
+        Связыватель модели по умолчанию производит поиск значений в следующем порядке:
+    </p>
+    <ol>
+        <li>Request.Form</li>
+        <li>RouteData.Values</li>
+        <li>Request.QueryString</li>
+        <li>Request.Files</li>
+    </ol>
+</body>
+</html>
