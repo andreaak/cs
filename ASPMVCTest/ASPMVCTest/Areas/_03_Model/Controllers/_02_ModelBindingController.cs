@@ -62,7 +62,7 @@ namespace _01_ASPMVCTest.Areas._03_Model.Controllers
         И осуществляет поиск и установку значений для каждого свойства по очереди, 
         используя стандартный приоритет поиска данных в запросе.
         */
-        [HttpPost]
+        [HttpPost]//Если убрать то при запросе система не распознает какой Action выбирать
         public ActionResult M_03_ComplexTypeBinding(M_02_TestModel model)
         {
             ViewBag.Message += "Prop1 = " + model.Prop1 + Environment.NewLine;
