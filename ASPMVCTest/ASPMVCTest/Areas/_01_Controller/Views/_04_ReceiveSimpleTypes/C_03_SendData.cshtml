@@ -25,12 +25,13 @@
     <p>Данные отправляются с помощью GET запроса, как данные адресной строки</p>
     <a href="~/_01_Controller/_04_ReceiveSimpleTypes/C_06_QueryStringInformation?message=hello-world-querystring">QueryString Data</a>
 
+    <ul>
+        <li>@Html.ActionLink("Simple type with route's parameter", "SimpleType/5")</li>
+        <li><a href="@Url.Action("SimpleType", "_04_ReceiveSimpleTypes", new {id = 5})">Simple type with route's parameter</a></li>
+        <li><a href="~/_01_Controller/_04_ReceiveSimpleTypes/SimpleType?id=5">Simple type with query string parameter</a></li>
+        <li><a href="~/_01_Controller/_04_ReceiveSimpleTypes/SimpleType2?ff=5">Simple type with query string ff parameter</a></li>
+    </ul>
 
-    <li>@Html.ActionLink("Simple type with route's parameter", "SimpleType/5")</li>
-    <li><a href="@Url.Action("SimpleType", "_04_ReceiveSimpleTypes", new {id = 5})">Simple type with route's parameter</a></li>
-    <li><a href="~/_01_Controller/_04_ReceiveSimpleTypes/SimpleType?id=5">Simple type with query string parameter</a></li>
-
-    <li><a href="~/_01_Controller/_04_ReceiveSimpleTypes/SimpleType2?ff=5">Simple type with query string ff parameter</a></li>
 </div>
 </body>
 </html>
