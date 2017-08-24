@@ -154,13 +154,13 @@ namespace _01_ASPMVCTest.Areas._03_Model.Controllers
             return View("DisplayResult");
         }
 
-        public ActionResult M_08_AdvancedBindingSettings()
+        public ActionResult M_08_CustomValueProvider()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult M_08_AdvancedBindingSettings(string data)
+        public ActionResult M_08_CustomValueProvider(string data)
         {
             // Данные для параметра data будут получены из cookie набора с именем data
             ViewBag.Data = "Данные прочитаные из cookie " + data;
