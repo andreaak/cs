@@ -8,8 +8,7 @@
 // Auto-generated from main on 2017-08-26 18:29:47Z.
 // Please visit http://code.google.com/p/dblinq2007/ for more information.
 //
-using System;
-using System.ComponentModel;
+
 using System.Data;
 #if MONO_STRICT
 	using System.Data.Linq;

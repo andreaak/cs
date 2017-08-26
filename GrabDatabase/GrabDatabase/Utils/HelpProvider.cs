@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Utils.WorkWithDB;
 using System.Windows.Forms;
 using Utils.ActionWindow;
-using Utils.WorkWithDB.Wrappers;
 using Utils.WorkWithDB.Connections;
 
 namespace GrabDatabase

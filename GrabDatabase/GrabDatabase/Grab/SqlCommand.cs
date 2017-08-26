@@ -6,7 +6,6 @@ using System.IO;
 using DevExpress.XtraEditors;
 using System.Text;
 using Utils.ActionWindow;
-using Utils.WorkWithDB.Wrappers;
 using System.Collections.Generic;
 using DevExpress.XtraGrid.Columns;
 using System.Linq;
@@ -14,7 +13,6 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Utils.Menu;
 using Utils.WorkWithDB;
-using System.Collections;
 using DevExpress.XtraGrid.Views.Base;
 
 namespace GrabDatabase.Grab

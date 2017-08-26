@@ -1,12 +1,6 @@
-﻿using GrabDatabase.Links;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using System.Data;
 using System.Windows.Forms;
 using Utils.WorkWithDB;
-using Utils.WorkWithDB.Wrappers;
 
 namespace GrabDatabase.Grab
 {

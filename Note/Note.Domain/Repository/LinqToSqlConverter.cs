@@ -1,10 +1,7 @@
 ﻿using Note.Domain.Common;
-using Note.Domain.Concrete.LinqToSql;
 using Note.Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
-using DbLinq.Data.Linq;
-using System;
 
 namespace Note.Domain.Repository
 {

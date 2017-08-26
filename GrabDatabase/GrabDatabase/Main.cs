@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
-using System.Text;
-using System.IO;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DBLinks;
@@ -12,7 +8,6 @@ using GrabDatabase.Links;
 using Utils;
 using GrabDatabase.Grab;
 using ParseQuery;
-using System.Threading;
 using Utils.WorkWithDB;
 using Utils.ActionWindow;
 using Utils.WorkWithFiles;
