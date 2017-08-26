@@ -315,6 +315,13 @@ namespace Note
             }
         }
 
+        public void ShowLogs()
+        {
+            Logs form = new Logs();
+            form.LoadData(DataManager.Logs);
+            form.Show();
+        }
+
         private void HandleError(bool showMessage, string errorMessage)
         {
             if (showMessage)

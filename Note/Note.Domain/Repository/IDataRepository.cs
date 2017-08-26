@@ -9,6 +9,7 @@ namespace Note.Domain.Repository
         bool IsProperDB{get;}
         IList<Description> Descriptions{get;}
         IList<TextData> Texts{get;}
+        IList<LogData> Logs { get;}
         void Init();
         int Insert(int parentId, string description, DataTypes type);
         string GetTextData(int id);

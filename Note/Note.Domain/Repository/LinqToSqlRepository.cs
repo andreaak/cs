@@ -57,6 +57,14 @@ namespace Note.Domain.Repository
             }
         }
 
+        public IList<LogData> Logs
+        {
+            get
+            {
+                return LinqToSqlConverter.Convert(dataContext.DataLog);
+            }
+        }
+
         public void Init()
         {
         }

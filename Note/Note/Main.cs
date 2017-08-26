@@ -227,6 +227,11 @@ namespace Note
             CancelFormEx.ShowProgressWindow(action, headerText);
         }
 
+        private void barButtonItemLogs_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            presenter.ShowLogs();
+        }
+
         #endregion
 
         private void InitSpellChecker()
@@ -272,6 +277,7 @@ namespace Note
             , barButtonItemRemoveLineBreak, barButtonItemRemoveWhiteSpace, barButtonItemRemoveDoubleWhiteSpace
             , barButtonItemSaveAll, barButtonItemVacuum , barButtonItemLevelUp, barButtonItemLevelDown, barButtonItemConvertDb
             , barButtonItemCheckNewestEntity, barButtonItemSpelling, barButtonItemFind, barButtonItemUpload, barButtonItemDownload
+            , barButtonItemLogs
             };
         }
 
@@ -365,6 +371,5 @@ namespace Note
 
 
         #endregion
-
     }
 }

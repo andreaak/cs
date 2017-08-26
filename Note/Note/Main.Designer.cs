@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            DevExpress.XtraSpellChecker.OptionsSpelling optionsSpelling1 = new DevExpress.XtraSpellChecker.OptionsSpelling();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraSpellChecker.OptionsSpelling optionsSpelling2 = new DevExpress.XtraSpellChecker.OptionsSpelling();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemAddDir = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemAddNote = new DevExpress.XtraBars.BarButtonItem();
@@ -349,6 +349,7 @@
             this.showParagraphFormItem1 = new DevExpress.XtraRichEdit.UI.ShowParagraphFormItem();
             this.showEditStyleFormItem1 = new DevExpress.XtraRichEdit.UI.ShowEditStyleFormItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.barButtonItemLogs = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBorderLineStyle1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBorderLineWeight1)).BeginInit();
@@ -614,9 +615,10 @@
             this.barButtonItemSpelling,
             this.barButtonItemFind,
             this.barButtonItemUpload,
-            this.barButtonItemDownload});
+            this.barButtonItemDownload,
+            this.barButtonItemLogs});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 252;
+            this.ribbonControl1.MaxItemId = 253;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.headerFooterToolsRibbonPageCategory1,
@@ -640,7 +642,7 @@
             this.repositoryItemRichEditStyleEdit1,
             this.repositoryItemFloatingObjectOutlineWeight1,
             this.repositoryItemTextEditExtension});
-            this.ribbonControl1.Size = new System.Drawing.Size(1360, 141);
+            this.ribbonControl1.Size = new System.Drawing.Size(1428, 141);
             // 
             // barButtonItemAddDir
             // 
@@ -1244,9 +1246,9 @@
             this.myRichEditControl.Name = "myRichEditControl";
             this.myRichEditControl.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
             this.myRichEditControl.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-            this.myRichEditControl.Size = new System.Drawing.Size(1054, 521);
+            this.myRichEditControl.Size = new System.Drawing.Size(1122, 521);
             this.myRichEditControl.SpellChecker = this.spellChecker1;
-            this.spellChecker1.SetSpellCheckerOptions(this.myRichEditControl, optionsSpelling1);
+            this.spellChecker1.SetSpellCheckerOptions(this.myRichEditControl, optionsSpelling2);
             this.myRichEditControl.TabIndex = 0;
             this.myRichEditControl.Text = "Type Text";
             // 
@@ -2501,9 +2503,9 @@
             this.barButtonItemLevelUp.Id = 245;
             this.barButtonItemLevelUp.Name = "barButtonItemLevelUp";
             this.barButtonItemLevelUp.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipItem1.Text = "Level Up";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barButtonItemLevelUp.SuperTip = superToolTip1;
+            toolTipItem3.Text = "Level Up";
+            superToolTip3.Items.Add(toolTipItem3);
+            this.barButtonItemLevelUp.SuperTip = superToolTip3;
             this.barButtonItemLevelUp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLevelUp_ItemClick);
             // 
             // barButtonItemLevelDown
@@ -2513,9 +2515,9 @@
             this.barButtonItemLevelDown.Id = 246;
             this.barButtonItemLevelDown.Name = "barButtonItemLevelDown";
             this.barButtonItemLevelDown.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipItem2.Text = "Level Down";
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barButtonItemLevelDown.SuperTip = superToolTip2;
+            toolTipItem4.Text = "Level Down";
+            superToolTip4.Items.Add(toolTipItem4);
+            this.barButtonItemLevelDown.SuperTip = superToolTip4;
             this.barButtonItemLevelDown.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLevelDown_ItemClick);
             // 
             // barButtonItemRemoveWhiteSpace
@@ -2724,6 +2726,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemFind);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemUpload);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemDownload);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemLogs);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
             // homeRibbonPage1
@@ -2956,7 +2959,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.myRichEditControl);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1360, 521);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1428, 521);
             this.splitContainerControl1.SplitterPosition = 301;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -3270,11 +3273,19 @@
             this.notifyIcon.Text = "Note";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // barButtonItemLogs
+            // 
+            this.barButtonItemLogs.Caption = "Logs";
+            this.barButtonItemLogs.Id = 252;
+            this.barButtonItemLogs.Name = "barButtonItemLogs";
+            this.barButtonItemLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItemLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLogs_ItemClick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 662);
+            this.ClientSize = new System.Drawing.Size(1428, 662);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.ribbonControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -3617,6 +3628,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemFind;
         private DevExpress.XtraBars.BarButtonItem barButtonItemUpload;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDownload;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemLogs;
     }
 }
 

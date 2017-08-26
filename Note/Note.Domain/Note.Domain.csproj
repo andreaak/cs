@@ -76,12 +76,12 @@
     <Compile Include="Common\NinjectObjectsFactory.cs" />
     <Compile Include="Common\ObjectsFactory.cs" />
     <Compile Include="Common\Options.cs" />
-    <Compile Include="DatabaseManager.cs" />
-    <Compile Include="Concrete\DBConstants.cs" />
-    <Compile Include="Concrete\LinqToSql\EntityComparer.cs" />
     <Compile Include="Concrete\LinqToSql\Note.cs">
       <DependentUpon>Note.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="Concrete\DBConstants.cs" />
+    <Compile Include="Concrete\LinqToSql\EntityComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\Enums.cs" />
     <Compile Include="Entities\TextData.cs" />
@@ -96,6 +96,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Repository\LogData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -104,11 +105,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Concrete\LinqToSql\Note.dbml.layout">
-      <DependentUpon>Note.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -120,6 +116,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Concrete\LinqToSql\Note.dbml.layout">
+      <DependentUpon>Note.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

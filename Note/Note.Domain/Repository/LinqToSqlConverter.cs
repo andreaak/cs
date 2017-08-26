@@ -3,6 +3,8 @@ using Note.Domain.Concrete.LinqToSql;
 using Note.Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using DbLinq.Data.Linq;
+using System;
 
 namespace Note.Domain.Repository
 {
@@ -60,6 +62,22 @@ namespace Note.Domain.Repository
             item.Type = (DataTypes)entity.Type;
             item.EditValue = entity.Description;
             item.ModDate = DateConverter.Convert(entity.ModDate);
+        }
+
+        internal static IList<LogData> Convert(IEnumerable<DataLog> table)
+        {
+            return table.Select(Convert).ToList();
+        }
+
+        public static LogData Convert(DataLog item)
+        {
+            return new LogData
+            {
+                EntityID = item.EntityID,
+                Operation = item.Operation,
+                EntityDescription = item.EntityDescription,
+                ModDate = DateConverter.Convert(item.ModDate),
+            };
         }
 
         public static void Convert(Description item, Description entity)

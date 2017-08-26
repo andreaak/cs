@@ -184,8 +184,8 @@ namespace Utils.WorkWithDB.Wrappers
 
         public virtual void FillTriggers(DataSet dataset, DbStructureDataset dbStructure)
         {
-            string triggerNameColumn = GetMetaDataColumn(DBObjects.Views, "TRIGGER_NAME");
-            string triggerSqlColumn = GetMetaDataColumn(DBObjects.Views, "TRIGGER_DEFINITION");
+            string triggerNameColumn = GetMetaDataColumn(DBObjects.Triggers, "TRIGGER_NAME");
+            string triggerSqlColumn = GetMetaDataColumn(DBObjects.Triggers, "TRIGGER_DEFINITION");
             string tableNameColumn = GetMetaDataColumn(DBObjects.Tables, "TABLE_NAME");
 
             foreach (DataRow triggerItem in dataset.Tables[DBObjects.Triggers.ToString()].AsEnumerable()

@@ -21,7 +21,7 @@ namespace GrabDatabase.Grab
 {
     public partial class SqlCommand : DevExpress.XtraEditors.XtraForm
     {
-        private const char SEPARATOR = ';';
+        private const string SEPARATOR = ";;";
         private const int DEFAULT_ROW_COUNT = 100;
         private DBService dbService;
         private HelpProvider help;
@@ -301,28 +301,24 @@ namespace GrabDatabase.Grab
 
         private static string ParseQueryFromMemo(MemoEdit edit)
         {
-            int lastPos = edit.Text.IndexOf(SEPARATOR, edit.SelectionStart);
-            int prevPos;
-            if (lastPos == -1)
+            int endPos = edit.Text.IndexOf(SEPARATOR, edit.SelectionStart);
+            int startPos;
+            if (endPos == -1)
             {
-                prevPos = edit.Text.LastIndexOf(SEPARATOR);
-                lastPos = edit.Text.Length - 1;
+                startPos = edit.Text.LastIndexOf(SEPARATOR) + 1;
+                endPos = edit.Text.Length - 1;
             }
             else
             {
-                prevPos = edit.Text.Remove(lastPos).LastIndexOf(SEPARATOR);
-                --lastPos; 
+                startPos = edit.Text.Remove(endPos).LastIndexOf(SEPARATOR) + 1;
+                --endPos; 
             }
 
-            if (prevPos == -1)
+            if(startPos != 0)
             {
-                prevPos = 0;
+                ++startPos;
             }
-            else
-            {
-                ++prevPos;
-            }
-            return edit.Text.Substring(prevPos, lastPos - prevPos + 1).Trim();
+            return edit.Text.Substring(startPos, endPos - startPos + 1).Trim();
         }
 
         private void InsertQueryInMemo(string query)

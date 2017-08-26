@@ -84,6 +84,14 @@ namespace Note.Domain
             }
         }
 
+        public IEnumerable<LogData> Logs
+        {
+            get
+            {
+                return dataRepository.Logs;
+            }
+        }
+
         public void Init()
         {
             dataRepository.Init();
