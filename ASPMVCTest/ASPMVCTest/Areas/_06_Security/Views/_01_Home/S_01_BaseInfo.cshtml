@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>V_01_BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h4>ASP.NET Simple Membership Provider</h4>
+    <p>
+        SimpleMembershipProvider - в MVC 4 механизм по умолчанию для аутентификации и авторизации пользователей.
+        С его помощью можно создавать, удалять и редактировать данные пользователей.<br />
+        Аутентификация (authentication) - проверка пользователя.<br />
+        Авторизация (authorization) - проверка прав доступа для определенного пользователя.<br />
+        Класс для работы с ролями - SimpleRoleProvider.
+    </p>
+
+    <h4>Основные типы данных:</h4>
+    <ul>
+        <li>WebMatrix.WebData.SimpleMembershipProvider - управление пользователями</li>
+        <li>WebMatrix.WebData.SimpleRoleProvider - управление ролями</li>
+    </ul>
+
+    <h4>WebSecurity</h4>
+    <p>
+        Для реализации входа и выхода пользователей используется класс WebSecurity.<br />
+        WebMatrix.WebData.WebSecurity - класс предоставляет основные функции для аутентификации пользователей,
+        включая возможность создания новых аккаунтов, смены или сброса паролей и других задач связанных с безопасностью.
+    </p>
+    <p>Методы класса WebSеcurity</p>
+    <p>
+        WebSecurity.Login(login, password) - авторизация пользователя. В случае, если указан правильный логин и пароль,
+        метод возвращает значение true и добавляет специальный cookie (токен аутентификации),
+        который будет использоваться для проверки пользователя при следующих обращениях к серверу.
+    </p>
+    <p>
+        InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true) -
+        настройка ASP.NET Simple Membership
+        <ol>
+            <li>1 параметр - имя строки подключения к базе данных.</li>
+            <li>2 параметр - таблица, которая содержит информацию о пользователях</li>
+            <li>3 параметр - имя колонки в таблице, которая отвечает за хранение логина</li>
+            <li>4 параметр - autoCreateTablesавтоматическое создание таблиц если они не существуют в базе</li>
+        </ol>
+    </p>
+    <p>
+        Logout() - удаление токенааутентификации.<br />CreateUserAndAccount(login, password) - создание нового пользователя.
+    </p>
+    <p>ChangePassword(login, currentPassword, newPassword) - смена пароля.</p>
+    <p>CurrentUserName - логин текущего пользователя.</p>
+</body>
+</html>

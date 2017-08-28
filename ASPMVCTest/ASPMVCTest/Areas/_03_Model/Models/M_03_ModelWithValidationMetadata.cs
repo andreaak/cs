@@ -17,7 +17,7 @@ namespace _01_ASPMVCTest.Areas._03_Model.Models
 
         [Required(ErrorMessage = "Поле пароль обязательно для заполнения")]
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Следует указать пароль от 5 до 20 символов")]
-        [Compare("PasswordConfirm", ErrorMessage = "Пароли не совпадают")]
+        [System.Web.Mvc.Compare("PasswordConfirm", ErrorMessage = "Пароли не совпадают")]
         public string Password { get; set; }
 
         public string PasswordConfirm { get; set; }

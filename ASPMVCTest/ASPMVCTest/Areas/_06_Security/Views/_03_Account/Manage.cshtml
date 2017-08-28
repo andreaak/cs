@@ -1,0 +1,20 @@
+﻿@model _01_ASPMVCTest.Areas.S_06_Security.Models.LocalPasswordModel
+@{
+    ViewBag.Title = "Manage Account";
+    Layout = "~/Areas/_06_Security/Views/Shared/_03_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<p class="message-success">@ViewBag.StatusMessage</p>
+
+<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+
+@Html.Partial("_ChangePasswordPartial")
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

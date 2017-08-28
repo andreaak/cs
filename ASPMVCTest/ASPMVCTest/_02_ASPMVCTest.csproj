@@ -13,15 +13,16 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>_01_ASPMVCTest</RootNamespace>
     <AssemblyName>_01_ASPMVCTest</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <WebGreaseLibPath>..\..\WebTest\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +32,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,76 +41,114 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net4-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.OAuth.Consumer.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\..\WebTest\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\..\WebTest\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\..\WebTest\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\..\WebTest\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net45\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\WebTest\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.Net.Http.2.0.20710.0\lib\net45\System.Net.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.Net.Http.2.0.20710.0\lib\net45\System.Net.Http.WebRequest.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
-      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net45\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net45\System.Web.Providers.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -116,15 +156,32 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="EntityFramework">
-      <HintPath>..\..\WebTest\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net45\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
     </Reference>
-    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\WebTest\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
       <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\WebGrease.1.5.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebPages.Data.2.0.30506.0\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebPages.OAuth.2.0.30506.0\lib\net45\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\WebTest\packages\Microsoft.AspNet.WebPages.WebData.2.0.30506.0\lib\net45\WebMatrix.WebData.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -179,10 +236,17 @@
     <Compile Include="Areas\_03_Model\Models\M_03_ModelWithValidationMetadata.cs" />
     <Compile Include="Areas\_03_Model\Models\MustBeTrueAttribute.cs" />
     <Compile Include="Areas\_04_Routing\Controllers\_02_LinkController.cs" />
-    <Compile Include="Areas\_005_Filters\Controllers\_001_HomeController.cs" />
-    <Compile Include="Areas\_005_Filters\_005_FiltersAreaRegistration.cs" />
-    <Compile Include="Areas\_006_Security\Controllers\_001_HomeController.cs" />
-    <Compile Include="Areas\_006_Security\_006_SecurityAreaRegistration.cs" />
+    <Compile Include="Areas\_05_Filters\Controllers\_01_HomeController.cs" />
+    <Compile Include="Areas\_05_Filters\Filters\F_03_ActionFilter.cs" />
+    <Compile Include="Areas\_05_Filters\Filters\F_04_ProfileAttribute.cs" />
+    <Compile Include="Areas\_05_Filters\Filters\F_05_MessageAttribute.cs" />
+    <Compile Include="Areas\_05_Filters\_05_FiltersAreaRegistration.cs" />
+    <Compile Include="Areas\_06_Security\Controllers\_03_AccountController.cs" />
+    <Compile Include="Areas\_06_Security\Controllers\_03_HomeController.cs" />
+    <Compile Include="Areas\_06_Security\Controllers\_01_HomeController.cs" />
+    <Compile Include="Areas\_06_Security\Filters\S_03_InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Areas\_06_Security\Models\S_03_AccountModels.cs" />
+    <Compile Include="Areas\_06_Security\_06_SecurityAreaRegistration.cs" />
     <Compile Include="Areas\E_30_Examples\Controllers\_01_HomeController.cs" />
     <Compile Include="Areas\E_30_Examples\Controllers\_02_EF_CodeFirstController.cs" />
     <Compile Include="Areas\E_30_Examples\Models\E_02_EF_Product.cs" />
@@ -209,10 +273,12 @@
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="App_Data\Script.sql" />
+    <Content Include="Content\Images\action_filter.jpg" />
     <Content Include="Content\Images\layouts.png" />
     <Content Include="Content\GridStyles.css" />
     <Content Include="Content\Images\chrome.png" />
     <Content Include="Content\Images\internet_explorer.png" />
+    <Content Include="Content\Images\model_binder.jpg" />
     <Content Include="Content\Images\mozilla.png" />
     <Content Include="Content\Images\opera.png" />
     <Content Include="Content\Images\RenderSection.png" />
@@ -220,8 +286,10 @@
     <Content Include="Content\Images\MVCRequestLifeCycle.jpg" />
     <Content Include="Content\Images\ASPPlatform.png" />
     <Content Include="Content\Images\MVCInteraction.png" />
+    <Content Include="Content\Images\result_filter.jpg" />
     <Content Include="Content\Images\safari.png" />
     <Content Include="Content\Images\special_template.png" />
+    <Content Include="Content\Images\unobtrusive_validation.jpg" />
     <Content Include="Content\Images\ViewBag.png" />
     <Content Include="Content\My.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -373,8 +441,8 @@
     <Content Include="Areas\_03_Model\Views\_03_Validation\M_04_ValidationWithMetadata.cshtml" />
     <Content Include="Areas\_03_Model\Views\_03_Validation\M_05_CustomValidationAttribute.cshtml" />
     <Content Include="Areas\_03_Model\Views\_03_Validation\M_06_ClientSideValidation.cshtml" />
-    <Content Include="Areas\_005_Filters\Views\Web.config" />
-    <Content Include="Areas\_006_Security\Views\Web.config" />
+    <Content Include="Areas\_05_Filters\Views\Web.config" />
+    <Content Include="Areas\_06_Security\Views\Web.config" />
     <Content Include="Areas\_00_Base\Views\_01_Home\B_02_Products.cshtml" />
     <Content Include="Areas\_00_Base\Views\_01_Home\B_01_BaseInfo.cshtml" />
     <Content Include="Areas\_04_Routing\Views\_01_Home\A_02_DefaultValues.cshtml" />
@@ -431,6 +499,33 @@
     <Content Include="Areas\_03_Model\Views\_02_ModelBinding\M_01_BaseInfo.cshtml" />
     <Content Include="Areas\_03_Model\Views\_03_Validation\M_01_BaseInfo.cshtml" />
     <Content Include="Areas\_03_Model\Views\_02_ModelBinding\M_08_CustomValueProvider.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\Index.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_02_ExceptionFilter.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_02_DivideError.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_03_ActionFilter.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_04_ResultFilter.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_04_SlowAction.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_04_SlowView.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_05_FiltersOrder.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_06_GlobalFilters.cshtml" />
+    <Content Include="Areas\_05_Filters\Views\_01_Home\F_07_OutputCache.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_01_Home\Index.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_01_Home\S_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_06_Security\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\_06_Security\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\_06_Security\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Home\About.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Home\Contact.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Home\Index.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Home\Private.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Account\Login.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Account\Manage.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Account\Register.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Areas\_06_Security\Views\Shared\_03_Layout.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Home\AdminPanel.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_03_Home\ModeratorPanel.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -447,7 +542,9 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -464,16 +561,14 @@
     <Content Include="Web.config.install.xdt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\_005_Filters\Models\" />
-    <Folder Include="Areas\_005_Filters\Views\Shared\" />
-    <Folder Include="Areas\_006_Security\Models\" />
-    <Folder Include="Areas\_006_Security\Views\Shared\" />
     <Folder Include="Areas\_00_Base\Views\Shared\" />
     <Folder Include="Areas\_01_Controller\Models\" />
     <Folder Include="Areas\_01_Controller\Views\Shared\" />
     <Folder Include="Areas\_03_Model\Views\Shared\" />
     <Folder Include="Areas\_04_Routing\Models\" />
     <Folder Include="Areas\_04_Routing\Views\Shared\" />
+    <Folder Include="Areas\_05_Filters\Models\" />
+    <Folder Include="Areas\_05_Filters\Views\Shared\" />
     <Folder Include="Filters\" />
     <Folder Include="Models\" />
     <Folder Include="Uploads\" />

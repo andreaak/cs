@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = "~/Areas/_06_Security/Views/Shared/_03_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article>
+    <p>
+        Use this area to provide additional information.
+    </p>
+
+    <p>
+        Use this area to provide additional information.
+    </p>
+
+    <p>
+        Use this area to provide additional information.
+    </p>
+</article>
+
+<aside>
+    <h3>Aside Title</h3>
+    <p>
+        Use this area to provide additional information.
+    </p>
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "_03_Home")</li>
+        <li>@Html.ActionLink("About", "About", "_03_Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "_03_Home")</li>
+    </ul>
+</aside>

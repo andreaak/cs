@@ -1,17 +1,119 @@
 ﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>M_01_BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        
-    </div>
+    <p>
+        <strong>Валидация данных</strong> - процесс проверки значений, предоставленных пользователем, перед их использованием,
+        и если значения не валидны, пользователь получает информацию для устранения ошибки.
+    </p>
+    <p>Процесс проверки:</p>
+    <ol>
+        <li>Проверка полученных данных.</li>
+        <li>Помощь пользователю в корректировке данных.</li>
+    </ol>
+    <p>Типы проверок:</p>
+    <ol>
+        <li>На стороне сервера</li>
+        <li>На стороне клиента</li>
+    </ol>
+    <p>
+        Валидация данных - процесс проверки значений, предоставленных пользователем, перед их использованием.
+        Валидация данных может производится на сторонке клиента с помощью JavaScript
+        и обязательно должна дублироваться на стороне сервера, средствами доступными в C# коде.
+    </p>
+
+    <table>
+        <tr>
+            <th>Перегруженная версия</th>
+            <th>Описание</th>
+        </tr>
+        <tr>
+            <td>Html.ValidationSummary()</td>
+            <td>Генерирует область сводки ссообщениями об ошибках проверки достоверности</td>
+        </tr>
+        <tr>
+            <td>Html.ValidationSummary(bool)</td>
+            <td>true - отображаются только сообщения уровня модели. false - отображаются все сообщения</td>
+        </tr>
+        <tr>
+            <td>Html.ValidationSummary(string)</td>
+            <td>Отображает сообщение передсводкой об ошибках</td>
+        </tr>
+        <tr>
+            <td>Html.ValidationSummary(bool, string)</td>
+            <td>Отображает сообщение перед сводкой и выводит ошибки либо все либо уровня модели</td>
+        </tr>
+    </table>
+    <p>
+        Для проверки данных на стороне сервера и клиента можно использовать атрибуты,
+        которые будут определять поведение шаблонизированных методов при генерации интерфейса
+        (чтобы методы генерировали специальные атрибуты для валидации) и определять логику на сервере
+        для проверки значений пришедших от клиента.
+    </p>
+    <p>DataValidation Attributes:</p>
+    <table>
+        <tr>
+            <th>Атрибут</th>
+            <th>Пример</th>
+            <th>Описание</th>
+        </tr>
+        <tr>
+            <td>Compare</td>
+            <td>[Compare(&ldquo;другое свойство&rdquo;)]</td>
+            <td>Два свойства должны иметь одинаковые значения</td>
+        </tr>
+        <tr>
+            <td>Range</td>
+            <td>[Range(10, 20)]</td>
+            <td>Значение недолжно выходить за указанные пределы</td>
+        </tr>
+        <tr>
+            <td>ReqularExpression</td>
+            <td>[ReqularExpression(&ldquo;pattern&rdquo;)]</td>
+            <td>Строковое значение должно соответствовать шаблону</td>
+        </tr>
+        <tr>
+            <td>Required</td>
+            <td>[Required]</td>
+            <td>Значение не должно быть пустым</td>
+        </tr>
+        <tr>
+            <td>StringLength</td>
+            <td>[StringLength(10)]</td>
+            <td>Строковое значение не должно быть длиннее указанной максимальной длины</td>
+        </tr>
+    </table>
+
+    <h4>Проверка на стороне клиента</h4>
+    <p>Для проверки значений на стороне клиента используется плагин jQuery Validation</p>
+    <p>Включение и отключение проверки в файле web.config:</p>
+    <p class="code">
+        &lt;appSettings&gt;<br />
+        &nbsp;&nbsp;&lt;add key="ClientValidationEnabled" value="true" /&gt;<br />
+        &nbsp;&nbsp;&lt;add key="UnobtrusiveJavaScriptEnabled" value="true" /&gt;<br />
+        &lt;/appSettings&gt;
+    </p>
+    <p>Отключения для отдельного представления:</p>
+    <p class="code">
+        @@{<br />
+        &nbsp;&nbsp;HtmlHelper.ClientValidationEnabled = false;<br />
+        }
+    </p>
+    <p>Добавление необходимых сценариев в файле компоновки</p>
+    <p class="code">
+
+        @@Scripts.Render("~/bundles/jquery")<br />
+        @@Scripts.Render("~/bundles/jqueryval") @@*Подключение сценариев для валидации форм*@@<br />
+        @@RenderSection("scripts", required: false)
+    </p>
+
+    <img src="~/Content/Images/unobtrusive_validation.jpg" width="500" />
 </body>
 </html>

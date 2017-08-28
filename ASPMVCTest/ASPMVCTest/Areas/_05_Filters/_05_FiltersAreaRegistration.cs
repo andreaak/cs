@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace _01_ASPMVCTest.Areas._006_Security
+namespace _01_ASPMVCTest.Areas._05_Filters
 {
-    public class _006_SecurityAreaRegistration : AreaRegistration
+    public class _05_FiltersAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "_006_Security";
+                return "_05_Filters";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "_006_Security_default",
-                "_006_Security/{controller}/{action}/{id}",
+                "_05_Filters_default",
+                "_05_Filters/{controller}/{action}/{id}",
                 new
                 {
                     action = "Index",
