@@ -253,6 +253,9 @@
     <Compile Include="Areas\E_30_Examples\Models\E_02_EF_ProductsContext.cs" />
     <Compile Include="Areas\E_30_Examples\Models\E_02_EF_ProductsDbInitializer.cs" />
     <Compile Include="Areas\E_30_Examples\E_30_ExamplesAreaRegistration.cs" />
+    <Compile Include="Areas\_07_Ajax\Controllers\_01_HomeController.cs" />
+    <Compile Include="Areas\_07_Ajax\Models\A_02_Order.cs" />
+    <Compile Include="Areas\_07_Ajax\_07_AjaxAreaRegistration.cs" />
     <Compile Include="Providers\CookiesValueProvider.cs" />
     <Compile Include="Areas\_03_Model\Models\M_02_TestModel.cs" />
     <Compile Include="ModelBinder\M_02_ModelBinder.cs" />
@@ -274,6 +277,9 @@
     </Content>
     <Content Include="App_Data\Script.sql" />
     <Content Include="Content\Images\action_filter.jpg" />
+    <Content Include="Content\Images\ajax_application.jpg" />
+    <Content Include="Content\Images\auth_token.jpg" />
+    <Content Include="Content\Images\basic_application.jpg" />
     <Content Include="Content\Images\layouts.png" />
     <Content Include="Content\GridStyles.css" />
     <Content Include="Content\Images\chrome.png" />
@@ -291,6 +297,7 @@
     <Content Include="Content\Images\special_template.png" />
     <Content Include="Content\Images\unobtrusive_validation.jpg" />
     <Content Include="Content\Images\ViewBag.png" />
+    <Content Include="Content\loading.gif" />
     <Content Include="Content\My.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -513,7 +520,6 @@
     <Content Include="Areas\_06_Security\Views\_01_Home\Index.cshtml" />
     <Content Include="Areas\_06_Security\Views\_01_Home\S_01_BaseInfo.cshtml" />
     <Content Include="Areas\_06_Security\Views\Shared\Error.cshtml" />
-    <Content Include="Areas\_06_Security\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\_06_Security\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\_06_Security\Views\_03_Home\About.cshtml" />
     <Content Include="Areas\_06_Security\Views\_03_Home\Contact.cshtml" />
@@ -526,6 +532,19 @@
     <Content Include="Areas\_06_Security\Views\Shared\_03_Layout.cshtml" />
     <Content Include="Areas\_06_Security\Views\_03_Home\AdminPanel.cshtml" />
     <Content Include="Areas\_06_Security\Views\_03_Home\ModeratorPanel.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\Web.config" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\Index.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\A_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\A_02_SimpleAjax.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\A_02_SimpleAjaxData.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\A_03_LoadingIndicator.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\A_04_AjaxLinks.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\A_05_AjaxCallbacks.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\A_06_JsonResult.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\A_07_JQuery.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_01_Home\S_04_XSS_BaseInfo.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

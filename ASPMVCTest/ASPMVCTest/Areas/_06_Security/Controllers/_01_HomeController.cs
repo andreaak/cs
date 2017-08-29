@@ -17,5 +17,11 @@ namespace _01_ASPMVCTest.Areas._06_Security.Controllers
             return View();
         }
 
+
+        public ActionResult S_04_XSS_BaseInfo()
+        {
+            return View();
+        }
+
     }
 }

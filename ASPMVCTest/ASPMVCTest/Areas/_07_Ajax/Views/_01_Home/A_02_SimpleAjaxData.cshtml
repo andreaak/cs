@@ -1,0 +1,13 @@
+﻿@using _01_ASPMVCTest.Areas._07_Ajax.Models
+
+@model IEnumerable<A_02_Order>
+
+@foreach (A_02_Order order in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(m => order.Id)</td>
+        <td>@Html.DisplayFor(m => order.Product)</td>
+        <td>@Html.DisplayFor(m => order.Quantity)</td>
+        <td>@Html.DisplayFor(m => order.Customer)</td>
+    </tr>
+}

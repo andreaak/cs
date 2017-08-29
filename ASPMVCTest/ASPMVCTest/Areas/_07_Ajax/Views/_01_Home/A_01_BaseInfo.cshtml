@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>V_01_BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        <strong>AJAX</strong> - Asynchronous JavaScript and XML. Модель для запросов данных на сервере в фоновом режиме, без перезагрузки веб-страницы.
+    </p>
+    <img src="~/Content/Images/basic_application.jpg" /><br />
+    <img src="~/Content/Images/ajax_application.jpg" />
+    <p>
+        MVC Framework поддерживает ненавязчивый AJAX основанный на JavaScript библиотеке jQuery. Тип данных в JavaScript,
+        который используется для создания AJAX приложений XMLHttpRequest.
+    </p>
+    <p>
+        Для использования AJAX в MVC приложении, на странице, которая будет использовать асинхронные обращения к серверу,
+        должна быть подключена библиотека jQuery и jquery.unobtrusive.ajax
+    </p>
+    <p>
+        Для создания формы, которая выполняет асинхронные запросы на сервер посредством библиотеки jquery.unobtrusive.ajax,
+        необходимо использовать вспомогательный метод <span class="code">Ajax.BeginForm</span>
+        и объект <span class="code">AjaxOptions</span> для определения настроек приложения.
+    </p>
+
+    <h4>Свойства AjaxOptions:</h4>
+
+    <table>
+        <tr>
+            <th>Свойство</th>
+            <th>Описание</th>
+        </tr>
+        <tr>
+            <td>Confirm</td>
+            <td>Сообщение для окна подтверждения перед отправкой запроса</td>
+        </tr>
+        <tr>
+            <td>HttpMethod</td>
+            <td>Метод, с помощью которого будет выполняться запрос: Post или Get</td>
+        </tr>
+        <tr>
+            <td>InsertionMode</td>
+            <td>Способ, которым контент полученный с сервера вставляется в HTML: InsertAfter, InsertBefore, Replace (по умолчанию)</td>
+        </tr>
+        <tr>
+            <td>LoadingElementId</td>
+            <td>Задает id элемента,который становится видимым при AJAX запросе</td>
+        </tr>
+        <tr>
+            <td>LoadingElementDuration</td>
+            <td>Количество миллисекунд, через которые должен постепенно появиться элемент LoadingElementId</td>
+        </tr>
+        <tr>
+            <td>UpdateTargetId</td>
+            <td>Идентификатор элемента в который будет вставлен контент полученный с сервера</td>
+        </tr>
+        <tr>
+            <td>Url</td>
+            <td>Url запрашиваемый с сервера</td>
+        </tr>
+    </table>
+
+    <h4>Callback функции, которые могут быть заданы при использовании Ajax.BeginForm и AjaxOptions.</h4>
+
+    <table>
+        <tr>
+            <th>Свойство</th>
+            <th>Событие jQuery</th>
+            <th>Описание</th>
+        </tr>
+        <tr>
+            <td>OnBegin</td>
+            <td>beforeSend</td>
+            <td>Вызывается перед отправкой запроса</td>
+        </tr>
+        <tr>
+            <td>OnSuccess</td>
+            <td>success</td>
+            <td>Вызывается после успешного выполнения</td>
+        </tr>
+        <tr>
+            <td>OnFailure</td>
+            <td>error</td>
+            <td>Вызывается после неудачного выполнения</td>
+        </tr>
+        <tr>
+            <td>OnComplete</td>
+            <td>complete</td>
+            <td>Вызывается после завершения запроса как успешного, так и неудачного</td>
+        </tr>
+    </table>
+
+</body>
+</html>

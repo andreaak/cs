@@ -12,7 +12,7 @@
 
     <h4>ASP.NET Simple Membership Provider</h4>
     <p>
-        SimpleMembershipProvider - в MVC 4 механизм по умолчанию для аутентификации и авторизации пользователей.
+        <strong>SimpleMembershipProvider</strong> - в MVC 4 механизм по умолчанию для аутентификации и авторизации пользователей.
         С его помощью можно создавать, удалять и редактировать данные пользователей.<br />
         Аутентификация (authentication) - проверка пользователя.<br />
         Авторизация (authorization) - проверка прав доступа для определенного пользователя.<br />
@@ -31,14 +31,16 @@
         WebMatrix.WebData.WebSecurity - класс предоставляет основные функции для аутентификации пользователей,
         включая возможность создания новых аккаунтов, смены или сброса паролей и других задач связанных с безопасностью.
     </p>
-    <p>Методы класса WebSеcurity</p>
+
+    <h4>Методы класса WebSеcurity</h4>
     <p>
-        WebSecurity.Login(login, password) - авторизация пользователя. В случае, если указан правильный логин и пароль,
+        <strong>WebSecurity.Login(login, password)</strong> - авторизация пользователя. В случае, если указан правильный логин и пароль,
         метод возвращает значение true и добавляет специальный cookie (токен аутентификации),
         который будет использоваться для проверки пользователя при следующих обращениях к серверу.
     </p>
+    <img src="~/Content/Images/auth_token.jpg" />
     <p>
-        InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true) -
+        <strong>WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true)</strong> -
         настройка ASP.NET Simple Membership
         <ol>
             <li>1 параметр - имя строки подключения к базе данных.</li>
@@ -47,10 +49,9 @@
             <li>4 параметр - autoCreateTablesавтоматическое создание таблиц если они не существуют в базе</li>
         </ol>
     </p>
-    <p>
-        Logout() - удаление токенааутентификации.<br />CreateUserAndAccount(login, password) - создание нового пользователя.
-    </p>
-    <p>ChangePassword(login, currentPassword, newPassword) - смена пароля.</p>
-    <p>CurrentUserName - логин текущего пользователя.</p>
+    <p><strong>WebSecurity.Logout()</strong>  - удаление токена аутентификации.</p>
+    <p><strong>CreateUserAndAccount(login, password)</strong> - создание нового пользователя.</p>
+    <p><strong>WebSecurity.ChangePassword(login, currentPassword, newPassword)</strong> - смена пароля.</p>
+    <p><strong>WebSecurity.CurrentUserName</strong> - логин текущего пользователя.</p>
 </body>
 </html>
