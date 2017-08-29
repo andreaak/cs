@@ -1,4 +1,5 @@
 ﻿using System;
+using ASPWebFormsTest.App_GlobalResources;
 
 namespace ASPWebFormsTest._12_Localization
 {
@@ -10,9 +11,9 @@ namespace ASPWebFormsTest._12_Localization
             //UICulture = "en-US";
             //Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru-RU");
             
-            ButtonLogin.Text = Resources.GlobalRes.ButtonEnter;
-            LabelLogin.Text = Resources.GlobalRes.LoginText;
-            LabelPassword.Text = Resources.GlobalRes.PassText;
+            ButtonLogin.Text = GlobalRes.ButtonEnter;
+            LabelLogin.Text = GlobalRes.LoginText;
+            LabelPassword.Text = GlobalRes.PassText;
 
 
             Label1.Text = Convert.ToString(GetGlobalResourceObject("GlobalRes", "ResValue"));

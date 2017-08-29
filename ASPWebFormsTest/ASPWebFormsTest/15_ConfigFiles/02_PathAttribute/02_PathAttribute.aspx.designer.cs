@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._15_ConfigFiles._03_InnerConfig {
+namespace ASPWebFormsTest._15_ConfigFiles._02_PathAttribute {
     
     
     public partial class _03_InnerConfig {

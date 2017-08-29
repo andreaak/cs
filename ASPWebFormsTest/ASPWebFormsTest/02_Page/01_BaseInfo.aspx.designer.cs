@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._03_StateSaving._02_ViewState {
+namespace ASPWebFormsTest._02_Page {
     
     
     public partial class _01_BaseInfo {

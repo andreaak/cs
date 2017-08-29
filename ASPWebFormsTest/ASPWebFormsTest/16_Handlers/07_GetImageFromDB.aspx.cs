@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GetImagesFromDb
+namespace ASPWebFormsTest._16_Handlers
 {
     public partial class _07_GetImageFromDB : System.Web.UI.Page
     {

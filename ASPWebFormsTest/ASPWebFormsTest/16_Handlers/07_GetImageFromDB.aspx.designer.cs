@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GetImagesFromDb
+namespace ASPWebFormsTest._16_Handlers
 {
 
 

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._26_MembershipApi._03_Role.Private {
+namespace ASPWebFormsTest._26_MembershipApi._02_SimpleMembership.Private {
     
     
     public partial class Page1 {

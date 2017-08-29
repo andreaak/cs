@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <a href="/02_Handler.aspx">Ссылка на HTTP обработчик</a><br />
+        <a href="/02_Handler.aspx">HTTP обработчик зарегистрированный в Web.config</a><br />
         <a href="03_TextHandler.ashx?id=5">Text Handler</a><br />
         <a href="04_ImageHandler.ashx">Image Handler</a>
     </div>

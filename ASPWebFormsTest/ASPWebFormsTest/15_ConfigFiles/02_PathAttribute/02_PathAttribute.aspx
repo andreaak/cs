@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="02_PathAttribute.aspx.cs" Inherits="ASPWebFormsTest._15_ConfigFiles._03_InnerConfig._03_InnerConfig" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="02_PathAttribute.aspx.cs" Inherits="ASPWebFormsTest._15_ConfigFiles._02_PathAttribute._03_InnerConfig" %>
 
 <!DOCTYPE html>
 

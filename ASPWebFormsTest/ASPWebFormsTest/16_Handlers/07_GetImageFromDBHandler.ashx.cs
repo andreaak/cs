@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Web;
 
-namespace GetImagesFromDb
+namespace ASPWebFormsTest._16_Handlers
 {
     /// <summary>
     /// Summary description for ImageHandler

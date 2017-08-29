@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="01_BaseInfo.aspx.cs"
-    Inherits="ASPWebFormsTest._03_StateSaving._02_ViewState._01_BaseInfo" %>
+    Inherits="ASPWebFormsTest._02_Page._01_BaseInfo" %>
 
 <!DOCTYPE html>
 

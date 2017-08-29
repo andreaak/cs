@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPWebFormsTest._05_PageDesign {
+namespace ASPWebFormsTest._04_ServerControls {
     
     
     public partial class _01_BaseInfo {

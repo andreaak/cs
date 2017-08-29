@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="07_GetImageFromDB.aspx.cs" Inherits="GetImagesFromDb._07_GetImageFromDB" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="07_GetImageFromDB.aspx.cs" Inherits="ASPWebFormsTest._16_Handlers._07_GetImageFromDB" %>
 
 <!DOCTYPE html>
 

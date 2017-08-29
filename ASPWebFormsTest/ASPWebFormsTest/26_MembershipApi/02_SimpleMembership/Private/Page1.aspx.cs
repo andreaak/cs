@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-namespace MembershipProviderSample.Private
+namespace ASPWebFormsTest._26_MembershipApi._02_SimpleMembership.Private
 {
     public partial class Default : System.Web.UI.Page
     {
