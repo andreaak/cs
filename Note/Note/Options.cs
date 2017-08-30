@@ -120,5 +120,18 @@ namespace Note
                 return dbDirectory;
             }
         }
+
+        private static string backupDirectory;
+        public static string BackupDirectory
+        {
+            get
+            {
+                if (backupDirectory == null)
+                {
+                    backupDirectory = ConfigurationManager.AppSettings["backupDirectory"];
+                }
+                return backupDirectory;
+            }
+        }
     }
 }

@@ -14,6 +14,8 @@ namespace Utils
     public class OptionsUtils
     {
         public const string Other = "OTHER";
+        public const string ProviderName = "provider";
+        public const string ConnectionStringName = "conString";
         static OptionsUtils instance;
         private static ResourceManager rm;
         private static CultureInfo culture;
@@ -104,39 +106,40 @@ namespace Utils
             set { provider = value; }
         }
 
-        private static string connectionString = null;
+        private static SQLiteConnectionStringBuilder builder;
         public static string ConnectionString
         {
             get
             {
-                if (connectionString == null)
+                if (builder == null)
                 {
                     if (!string.IsNullOrEmpty(ConnectionName))
                     {
-                        connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
-                        DbPath = connectionString;
+                        string connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
+                        builder = new SQLiteConnectionStringBuilder(connectionString);
                     }
                 }
-
-                return connectionString;
-
+                return builder?.ConnectionString;
             }
-            set { connectionString = value; }
+            set
+            {
+                builder = string.IsNullOrEmpty(value) ? null : new SQLiteConnectionStringBuilder(value);
+            }
         }
 
-        private static string dbPath;
+        public static string GetConnectionString(string dataSource)
+        {
+            var builder = new SQLiteConnectionStringBuilder();
+            builder.DataSource = dataSource;
+            return builder.ConnectionString;
+        }
+
         public static string DbPath
         {
             get
             {
-                return dbPath;
-            }
-            private set
-            {
-                SQLiteConnectionStringBuilder builder = new SQLiteConnectionStringBuilder(value);
-
                 FileInfo file = new FileInfo(builder.DataSource);
-                dbPath = file.Exists ?
+                return file.Exists ?
                         file.FullName :
                         Environment.CurrentDirectory + Path.DirectorySeparatorChar + builder.DataSource;
             }
@@ -146,7 +149,7 @@ namespace Utils
         {
             OptionsUtils.Provider = null;
             OptionsUtils.ConnectionName = null;
-            OptionsUtils.ConnectionString = null;
+            builder = null;
         }
 
         private static string GetConnectionName()

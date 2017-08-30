@@ -1,7 +1,11 @@
-﻿namespace Note.Domain.Common
+﻿using System.Collections.Generic;
+
+namespace Note.Domain.Common
 {
     public interface IObjectsFactory
     {
+        T GetService<T>(params KeyValuePair<string, object>[] parameters);
+
         T GetService<T>();
     }
 

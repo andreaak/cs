@@ -17,6 +17,7 @@ namespace Note
     public class MainPresenter
     {
         private readonly IMainView view;
+        private string backupedFile;
 
         public DatabaseManager DataManager
         {
@@ -280,10 +281,10 @@ namespace Note
             }
         }
 
-        public void CheckChangedItems()
+        public void CheckChangedItems(string path = null)
         {
             DatabaseManager dataManagerLocal;
-            if (TryGetDataManager(out dataManagerLocal))
+            if (TryGetDataManager(out dataManagerLocal, path))
             {
                 string headerText = "Find changed items";
                 Func<IEnumerable<DescriptionWithStatus>> func = () => GetModifiedDescriptions(dataManagerLocal);
@@ -308,9 +309,34 @@ namespace Note
         {
             GoogleDriveHelper helper = new GoogleDriveHelper();
             helper.Init();
-            if (helper.DownloadFile(OptionsUtils.DbPath, Options.DbDirectory, OptionsUtils.DbPath))
+            if (helper.DownloadFile(OptionsUtils.DbPath, Options.DbDirectory, OptionsUtils.DbPath, BackupFile))
             {
                 Connect();
+            }
+        }
+
+        public void CheckBackupedFile()
+        {
+            CheckChangedItems(backupedFile);
+        }
+
+        private void BackupFile(string sourceFile)
+        {
+            string backupDirectory = System.IO.Path.GetDirectoryName(sourceFile) +
+                System.IO.Path.DirectorySeparatorChar + Options.BackupDirectory;
+
+            string fileName = System.IO.Path.GetFileName(sourceFile);
+            if (!System.IO.Directory.Exists(backupDirectory))
+            {
+                System.IO.Directory.CreateDirectory(backupDirectory);
+            }
+            if (System.IO.File.Exists(sourceFile))
+            {
+                backupedFile = backupDirectory +
+                               System.IO.Path.DirectorySeparatorChar +
+                               fileName +
+                               DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                System.IO.File.Copy(sourceFile, backupedFile);
             }
         }
 
@@ -329,7 +355,7 @@ namespace Note
             }
         }
 
-        private bool TryGetDataManager(out DatabaseManager dataManagerLocal)
+        private bool TryGetDataManager(out DatabaseManager dataManagerLocal, string dataSource)
         {
             bool dbConnectionOk = false;
             bool showMessage = true;
@@ -337,12 +363,21 @@ namespace Note
             dataManagerLocal = null;
             try
             {
-                DialogResult form = new DBDataForm().ShowDialog(view.Form);
-                if (form != DialogResult.OK)
+                if (string.IsNullOrEmpty(dataSource))
                 {
-                    return false;
+                    DialogResult form = new DBDataForm().ShowDialog(view.Form);
+                    if (form != DialogResult.OK)
+                    {
+                        return false;
+                    }
+                    dataManagerLocal = ObjectsFactory.Instance.GetService<DatabaseManager>();
+                }else
+                {
+                    string connectionString = OptionsUtils.GetConnectionString(dataSource);
+                    dataManagerLocal = ObjectsFactory.Instance.GetService<DatabaseManager>(
+                        new KeyValuePair<string, object>(OptionsUtils.ProviderName, OptionsUtils.Provider),
+                        new KeyValuePair<string, object>(OptionsUtils.ConnectionStringName, connectionString));
                 }
-                dataManagerLocal = ObjectsFactory.Instance.GetService<DatabaseManager>();
                 if (dataManagerLocal.IsDBOnline())
                 {
                     dbConnectionOk = true;
@@ -363,7 +398,6 @@ namespace Note
             }
             return dbConnectionOk;
         }
-
         private IEnumerable<DescriptionWithStatus> GetModifiedDescriptions(DatabaseManager dataManagerLocal)
         {
             return DataManager.GetModifiedDescriptions(dataManagerLocal);

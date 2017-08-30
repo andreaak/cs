@@ -225,6 +225,7 @@ namespace Note
             string headerText = "Download database";
             Action action = () => presenter.DownloadFromGoogleDrive();
             CancelFormEx.ShowProgressWindow(action, headerText);
+            presenter.CheckBackupedFile();
         }
 
         private void barButtonItemLogs_ItemClick(object sender, ItemClickEventArgs e)

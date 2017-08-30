@@ -45,7 +45,7 @@ namespace Utils.Google
             return true;
         }
 
-        public bool DownloadFile(string fileName, string dirName, string downloadTo)
+        public bool DownloadFile(string fileName, string dirName, string saveTo, Action<string> backup)
         {
             var directory = GetDirectories(dirName).FirstOrDefault();
             if (directory == null)
@@ -59,7 +59,7 @@ namespace Utils.Google
                 return false;
             }
 
-            return DownloadFile(file, downloadTo);
+            return DownloadFile(file, saveTo, backup);
         }
 
         /// <summary>
@@ -69,14 +69,14 @@ namespace Utils.Google
         /// <param name="fileResource">File resource of the file to download</param>
         /// <param name="saveTo">location of where to save the file including the file name to save it as.</param>
         /// <returns></returns>
-        public bool DownloadFile(File fileResource, string saveTo)
+        private bool DownloadFile(File fileResource, string saveTo, Action<string> backup)
         {
 
             if (!string.IsNullOrEmpty(fileResource.DownloadUrl))
             {
                 try
                 {
-                    BackupFile(saveTo);
+                    backup(saveTo);
                     var x = Service.HttpClient.GetByteArrayAsync(fileResource.DownloadUrl);
                     byte[] arrBytes = x.Result;
                     System.IO.File.WriteAllBytes(saveTo, arrBytes);
@@ -92,24 +92,6 @@ namespace Utils.Google
             {
                 // The file doesn't have any content stored on Drive.
                 return false;
-            }
-        }
-
-        private void BackupFile(string saveTo)
-        {
-            string tempDirectory = System.IO.Path.GetDirectoryName(saveTo) + 
-                                    System.IO.Path.DirectorySeparatorChar + "Temp";
-            string fileName = System.IO.Path.GetFileName(saveTo);
-            if (!System.IO.Directory.Exists(tempDirectory))
-            {
-                System.IO.Directory.CreateDirectory(tempDirectory);
-            }
-            if (System.IO.File.Exists(saveTo))
-            {
-                System.IO.File.Copy(saveTo, tempDirectory + 
-                    System.IO.Path.DirectorySeparatorChar + 
-                    fileName + 
-                    DateTime.Now.ToString("yyyyMMdd-HHmmss"));
             }
         }
 

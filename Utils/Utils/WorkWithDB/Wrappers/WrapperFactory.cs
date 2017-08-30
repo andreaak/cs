@@ -8,13 +8,13 @@ namespace Utils.WorkWithDB.Wrappers
         private static Dictionary<string, IDBWrapper> providers;
         public static Dictionary<string, IDBWrapper> Providers
         {
-            get 
+            get
             {
                 if (providers == null)
                 {
                     providers = new Dictionary<string, IDBWrapper>();
                 }
-                return providers; 
+                return providers;
             }
         }
 
@@ -43,13 +43,6 @@ namespace Utils.WorkWithDB.Wrappers
                     break;
             }
             return wrapper;
-        }
-
-        public static IDBWrapper GetWrapper()
-        {
-            string provider = OptionsUtils.Provider;
-            string connString = OptionsUtils.ConnectionString;
-            return GetWrapper(provider, connString);
         }
 
         public static IDBWrapper GetWrapper(string provider, string connString)
