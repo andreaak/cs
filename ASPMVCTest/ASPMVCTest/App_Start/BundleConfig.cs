@@ -9,8 +9,7 @@ namespace _01_ASPMVCTest
         {
             // Создание бандла ~/bundles/jquery в который войдут файлы jquery-* 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js")
-                        .Include("~/Scripts/jquery.validate.js"));
+                        "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -19,14 +18,29 @@ namespace _01_ASPMVCTest
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            // Создание бандла ~/bundles/modernizr для библиотеки modernizr
+            /* 
+            modernizr-* - такая запись подгрузит все скрипты, которые начинаются с modernizr-
+            это позволяет избежать необходимости пересобрать проект после замены библиотеки modernizr на новую версию
+            */
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            // Создание бандла для стилей
+            bundles.Add(new ScriptBundle("~/bundles/javaScripts")
+                        .Include("~/Scripts/jquery*")
+                        .Include("~/Scripts/knockout-2.1.0.js"));
+
+            /*
+            StyleBundle - бандл для стилей. Минимизирует и объединяет несколько CSS файлов.
+            Для того что бы не нарушить пути к ресурсам определенным в CSS файлах, 
+            название папки такое же как и папки с исходными стилями.
+            */
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+
+            // Данный StyleBundle будет работать не правильно из-за пусти ~/bundles/css
+            //bundles.Add(new StyleBundle("~/bundles/css")
+            //    .Include("~/Content/Site.css")
+
+
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

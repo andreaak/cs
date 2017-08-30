@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_01_ASPWebFormsTest", "..\A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_ASPMVCTest", "..\ASPMVCTest\ASPMVCTest\_02_ASPMVCTest.csproj", "{E64E951E-5A58-4EDF-AF11-AA7CBE37DD7E}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "_01_ASPWebFormsSite(1)", "..\_01_ASPWebFormsSite\", "{ECA1BAE5-6972-4C47-A4F9-0FA4E89B9CA6}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "_01_ASPWebFormsSite", "..\_01_ASPWebFormsSite\", "{ECA1BAE5-6972-4C47-A4F9-0FA4E89B9CA6}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_9500"
@@ -58,6 +58,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Local.testsettings = Local.testsettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_MVC4EXample_TaskManager.Domain", "..\ASPMVCTest\TaskManager.Domain\_02_MVC4EXample_TaskManager.Domain.csproj", "{1D0D4776-E7F5-401F-997E-220E4C919AB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_MVC4EXample_TaskManager.Web", "..\ASPMVCTest\TaskManager.Web\_02_MVC4EXample_TaskManager.Web.csproj", "{94BFB58C-B460-4848-B2A5-1611687A0CFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_MVC4EXample_TaskManager.Web.Tests", "..\ASPMVCTest\TaskManager.Web.Tests\_02_MVC4EXample_TaskManager.Web.Tests.csproj", "{93B65EDF-9E9A-419D-8488-325F53B33B2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +90,18 @@ Global
 		{2228019D-C3C0-431C-AF3D-600E9E0AACEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2228019D-C3C0-431C-AF3D-600E9E0AACEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2228019D-C3C0-431C-AF3D-600E9E0AACEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0D4776-E7F5-401F-997E-220E4C919AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0D4776-E7F5-401F-997E-220E4C919AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0D4776-E7F5-401F-997E-220E4C919AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0D4776-E7F5-401F-997E-220E4C919AB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94BFB58C-B460-4848-B2A5-1611687A0CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94BFB58C-B460-4848-B2A5-1611687A0CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94BFB58C-B460-4848-B2A5-1611687A0CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94BFB58C-B460-4848-B2A5-1611687A0CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93B65EDF-9E9A-419D-8488-325F53B33B2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93B65EDF-9E9A-419D-8488-325F53B33B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93B65EDF-9E9A-419D-8488-325F53B33B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93B65EDF-9E9A-419D-8488-325F53B33B2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

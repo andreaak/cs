@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<button id="btn1">Article 1</button>
+<button id="btn2">Article 2</button>
+
+<div id="articleContent"></div>
+
+
+@section scripts
+{
+    <script>
+        // обработчик события загрузки страницы.
+        window.onload = function () {
+
+            var button1 = document.getElementById("btn1");
+            button1.onclick = function () {
+                makeRequestGet(1);
+            };
+
+            var button2 = document.getElementById("btn2");
+            button2.onclick = function () {
+                makeRequestPost(2);
+            };
+
+            // Создание объекта запроса.
+            var xhr = new XMLHttpRequest();
+
+            /*
+            функция-обработчик срабатывает при изменении свойства readyState
+            Значения свойства readyState:
+            0 - Метод open() еще не вызывался
+            1 - Метод open() уже был вызван, но метод send() еще не вызывался.
+            2 - Метод send() был вызван, но ответ от сервера еще не получен
+            3 - Идет прием данных от сервера. Для значения 3 Firefox вызывает обработчик события несколько раз IE только один раз.
+            4 - Ответ от сервера полностью получен (Запрос успешно завершен).
+            */
+            // обработчик нажатия кнопки.
+            function makeRequestGet(id) {
+                // Настройка объекта на отправку асинхронного запроса.
+                xhr.open("GET", "@Url.Action("A_07_GetArticle")" + "?id=" + id);
+                xhr.send(id);
+            }
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        document.getElementById("articleContent").innerHTML = xhr.responseText;
+                    }
+                }
+            }
+
+            var xhrPost = new XMLHttpRequest();
+            function makeRequestPost(id) {
+                // Настройка объекта на отправку асинхронного запроса.
+                xhrPost.open("POST", "@Url.Action("A_07_GetArticle")");
+                xhrPost.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhrPost.send("id=2");
+            }
+
+            xhrPost.onreadystatechange = function () {
+                if (xhrPost.readyState == 4) {
+                    if (xhrPost.status == 200) {
+                        document.getElementById("articleContent").innerHTML = xhrPost.responseText;
+                    }
+                }
+            }
+        }
+    </script>
+}
+

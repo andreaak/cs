@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Тестирование времени загрузки</title>
+</head>
+<body>
+
+    <ul>
+        <li>@Html.ActionLink("Base Info", "O_01_BaseInfo")</li>
+        <li>@Html.ActionLink("Не оптимизированная страница", "NotOptimized", null, new { target = "_blank" })</li>
+        <li>@Html.ActionLink("Оптимизированная страница", "Optimized", null, new { target = "_blank" })</li>
+    </ul>
+
+    <div>
+        Замер скорости загрузки страницы:
+        <br />
+        <ol>
+            <li>Запускаем Fiddler.</li>
+            <li>Включаем эмуляцию подключения через модем <i>Rules > Perfomance > Simulate Modem Speed</i></li>
+            <li>Отключаем кэширование <i>Rules > Perfomance > Disable Caching</i></li>
+            <li>Переходим по ссылке 'Не оптимизированная страница'</li>
+            <li>Выбираем в левой панели Fiddler все запросы сделанные к текущему приложению.</li>
+            <li>Ожидаем полной загрузки страницы (около 1 минуты) и анализируем содержимое вкладки Statistics</li>
+            <li>Удаляем все запросы в панели запросов</li>
+            <li>Переходим по второй ссылке 'Оптимизированная страница'.</li>
+            <li>Выбираем в левой панели Fiddler все запросы сделанные к текущему приложению.</li>
+            <li>Ожидаем полной загрузки страницы и анализируем содержимое вкладки Statistics</li>
+        </ol>
+    </div>
+</body>
+</html>
+

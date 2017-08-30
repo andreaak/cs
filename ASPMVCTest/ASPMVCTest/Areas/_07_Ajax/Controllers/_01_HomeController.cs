@@ -104,7 +104,6 @@ namespace _01_ASPMVCTest.Areas._07_Ajax.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-
         public ActionResult A_07_JQuery()
         {
             return View();
@@ -117,6 +116,11 @@ namespace _01_ASPMVCTest.Areas._07_Ajax.Controllers
                 return Content("Article " + id);
             }
             return new EmptyResult();
+        }
+
+        public ActionResult A_08_JavaScript()
+        {
+            return View();
         }
     }
 }

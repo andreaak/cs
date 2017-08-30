@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>S_05_SQL_Injection_BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        <strong>SQL Injection</strong> - один из распространённых способов взлома веб приложений, которые используют SQL базу данных.
+        Атака заключается в внедрении пользовательского SQL кода в запрос, что приводит к изменению выдаваемых данных на странице,
+        что в свою очередь ведет к утечке данных или нарушению целостности базы данных.
+    </p>
+
+    <strong>Способы защиты от SQL Injection:</strong>
+    <ul>
+
+        <li>Использование хранимых процедур</li>
+        <li>Использование SQL параметров</li>
+        <li>Использование ORM (например, EntityFramework)</li>
+    </ul>
+    <p class="code">
+        string query = string.Format("SELECT Login FROM Users WHERE Login='{0}' AND Password='{1}'", login, password);
+    </p>
+    <p>
+        В случае если пользователь передаст в качестве значения login значение x' OR 1=1 -- , <br />
+        а пароль пустым будет сформирован следующий SQL запрос -
+    </p>
+    <p class="code">
+        SELECT * FROM Users WHERE Login='x' OR 1=1 -- AND Password=''
+    </p>
+    <p>
+        Такой запрос выберет все записи из таблицы Users так как значение 1 всегда равно 1
+        даже если пользователя с именем x не будет в базе <br />
+        -- комментарии, соответственно пароль проверяться не будет.
+    </p>
+</body>
+</html>

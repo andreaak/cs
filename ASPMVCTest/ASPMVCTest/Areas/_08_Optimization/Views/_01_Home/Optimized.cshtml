@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>OPTIMIZED</title>
+
+    @*Настройки бандлов, которые отображаются через Styles.Render() и Scripts.Render() происходят в классе BundleConfig*@
+
+    @Styles.Render("~/content/css") @*Использование бандла со стилями*@
+    @Scripts.Render("~/bundles/modernizr") @*Использование бандла с библиотекой modernizer*@
+</head>
+
+<body>
+    <h1 class="message-success">Оптимизированная страница</h1>
+
+
+
+    @Scripts.Render("~/bundles/javaScripts") @*Использование бандла со всеми JS файлами сайта*@
+</body>
+</html>
+

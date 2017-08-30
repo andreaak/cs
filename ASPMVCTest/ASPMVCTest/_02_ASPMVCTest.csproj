@@ -44,6 +44,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AntiXssLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\..\WebTest\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DotNetOpenAuth.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\WebTest\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net4-full\DotNetOpenAuth.AspNet.dll</HintPath>
@@ -67,6 +71,10 @@
     <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\WebTest\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\..\WebTest\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin">
@@ -245,6 +253,7 @@
     <Compile Include="Areas\_06_Security\Controllers\_03_HomeController.cs" />
     <Compile Include="Areas\_06_Security\Controllers\_01_HomeController.cs" />
     <Compile Include="Areas\_06_Security\Filters\S_03_InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Areas\_06_Security\Models\BulletinBoardItem.cs" />
     <Compile Include="Areas\_06_Security\Models\S_03_AccountModels.cs" />
     <Compile Include="Areas\_06_Security\_06_SecurityAreaRegistration.cs" />
     <Compile Include="Areas\E_30_Examples\Controllers\_01_HomeController.cs" />
@@ -256,6 +265,8 @@
     <Compile Include="Areas\_07_Ajax\Controllers\_01_HomeController.cs" />
     <Compile Include="Areas\_07_Ajax\Models\A_02_Order.cs" />
     <Compile Include="Areas\_07_Ajax\_07_AjaxAreaRegistration.cs" />
+    <Compile Include="Areas\_08_Optimization\Controllers\_01_HomeController.cs" />
+    <Compile Include="Areas\_08_Optimization\_08_OptimizationAreaRegistration.cs" />
     <Compile Include="Providers\CookiesValueProvider.cs" />
     <Compile Include="Areas\_03_Model\Models\M_02_TestModel.cs" />
     <Compile Include="ModelBinder\M_02_ModelBinder.cs" />
@@ -278,19 +289,23 @@
     <Content Include="App_Data\Script.sql" />
     <Content Include="Content\Images\action_filter.jpg" />
     <Content Include="Content\Images\ajax_application.jpg" />
+    <Content Include="Content\Images\asp_net.jpg" />
     <Content Include="Content\Images\auth_token.jpg" />
     <Content Include="Content\Images\basic_application.jpg" />
+    <Content Include="Content\Images\bind_secure.jpg" />
+    <Content Include="Content\Images\csrf.jpg" />
     <Content Include="Content\Images\layouts.png" />
     <Content Include="Content\GridStyles.css" />
     <Content Include="Content\Images\chrome.png" />
     <Content Include="Content\Images\internet_explorer.png" />
     <Content Include="Content\Images\model_binder.jpg" />
     <Content Include="Content\Images\mozilla.png" />
+    <Content Include="Content\Images\not_optimized.jpg" />
     <Content Include="Content\Images\opera.png" />
+    <Content Include="Content\Images\optimized.jpg" />
     <Content Include="Content\Images\RenderSection.png" />
     <Content Include="Content\Images\RenderBody.png" />
     <Content Include="Content\Images\MVCRequestLifeCycle.jpg" />
-    <Content Include="Content\Images\ASPPlatform.png" />
     <Content Include="Content\Images\MVCInteraction.png" />
     <Content Include="Content\Images\result_filter.jpg" />
     <Content Include="Content\Images\safari.png" />
@@ -518,7 +533,7 @@
     <Content Include="Areas\_05_Filters\Views\_01_Home\F_06_GlobalFilters.cshtml" />
     <Content Include="Areas\_05_Filters\Views\_01_Home\F_07_OutputCache.cshtml" />
     <Content Include="Areas\_06_Security\Views\_01_Home\Index.cshtml" />
-    <Content Include="Areas\_06_Security\Views\_01_Home\S_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_01_Home\S_01_Membership_BaseInfo.cshtml" />
     <Content Include="Areas\_06_Security\Views\Shared\Error.cshtml" />
     <Content Include="Areas\_06_Security\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\_06_Security\Views\_03_Home\About.cshtml" />
@@ -545,6 +560,18 @@
     <Content Include="Areas\_07_Ajax\Views\_01_Home\A_06_JsonResult.cshtml" />
     <Content Include="Areas\_07_Ajax\Views\_01_Home\A_07_JQuery.cshtml" />
     <Content Include="Areas\_06_Security\Views\_01_Home\S_04_XSS_BaseInfo.cshtml" />
+    <Content Include="Areas\_07_Ajax\Views\_01_Home\A_08_JavaScript.cshtml" />
+    <Content Include="Areas\_08_Optimization\Views\Web.config" />
+    <Content Include="Areas\_08_Optimization\Views\_01_Home\Index.cshtml" />
+    <Content Include="Areas\_08_Optimization\Views\_01_Home\NotOptimized.cshtml" />
+    <Content Include="Areas\_08_Optimization\Views\_01_Home\Optimized.cshtml" />
+    <Content Include="Areas\_08_Optimization\Views\_01_Home\O_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_01_Home\S_04_XSS_Create.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_01_Home\S_04_XSS_Index.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_01_Home\S_05_SQL_Injection_BaseInfo.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_01_Home\S_06_CSRF_BaseInfo.cshtml" />
+    <Content Include="Areas\_06_Security\Views\_01_Home\S_07_ControllerRecommendation.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -588,6 +615,8 @@
     <Folder Include="Areas\_04_Routing\Views\Shared\" />
     <Folder Include="Areas\_05_Filters\Models\" />
     <Folder Include="Areas\_05_Filters\Views\Shared\" />
+    <Folder Include="Areas\_08_Optimization\Models\" />
+    <Folder Include="Areas\_08_Optimization\Views\Shared\" />
     <Folder Include="Filters\" />
     <Folder Include="Models\" />
     <Folder Include="Uploads\" />

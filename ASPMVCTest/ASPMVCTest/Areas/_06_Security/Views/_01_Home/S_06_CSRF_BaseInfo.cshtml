@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>S_06_CSRF_BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <h4>Cross-Site Request Forgery (CSRF)</h4>
+    <p>
+        На внешнем домене размещается html форма с данными, которые отправляются на атакуемый сайт.
+        Пользователь попадая на внешний домен, заставляет свой браузер выполнить отправку формы с вредоносными данными на атакуемый сайт.
+    </p>
+
+    <strong>Способы защиты от CSRF</strong>
+    <ul>
+        <li>Проверка входящего HTTP-заголовка Referer</li>
+        <li>В опасные запросы добавлялись элементы, связанные с данными пользователя, например, пароль учетной записи.</li>
+        <li>
+            Использование вспомогательного метода <span class="code">@@Html.AntiForgeryToken()</span> для представления
+            и фильтр <span class="code">[ValidateAntiForgeryToken]</span> для метода действия в контроллере.
+        </li>
+    </ul>
+    <p>
+        Фильтр <span class="code">[ValidateAntiForgeryToken]</span> проверяет,
+        что с клиента пришла форма содержащая поле и cookie набор с именем <span class="code">__RequestVerificationToken</span>
+        и соответствующими значениями.<br/>
+        <span class="code">@@Html.AntiForgeryToken()</span> - Создает скрытое поле и cookies с именем
+        <span class="code">__RequestVerificationToken</span> и случайными значениями, которые совпадают
+    </p>
+    <img src="~/Content/Images/csrf.jpg" />
+</body>
+</html>
