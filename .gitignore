@@ -12,8 +12,8 @@ _ReSharper*
 *.rar
 *.7z
 *.exe
-#*.mdf
-#*.ldf
+*.mdf
+*.ldf
 *.licx
 *.DotSettings
 ParseQuery2/
