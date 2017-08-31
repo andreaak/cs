@@ -10,6 +10,7 @@
     <p>
         Membership API - платформа представляющая полный набор функций 
         управления пользователями.
+   
     </p>
     <ul>
         <li>Создание и удаление пользователей.</li>
@@ -29,6 +30,7 @@
         SqlMembershipProvider - реализация MembershipProviderдля SQL базы данных.<br />
         ActiveDirectoryMembershipProvider - реализация MembershipProvider 
         для работы со службой Active Directory
+   
     </p>
     <img src="membership.png" />
     <h4>Свойства класса Membership</h4>
@@ -49,6 +51,7 @@
         пользователю нужно ответить на вопрос.<br />
         UsersOnlineTimeWindow - Время в минутах, в течении которых, 
         пользователь будет считаться подключенным не проявляя активности на сайте.
+   
     </p>
 
     <h4>Методы класса Membership</h4>
@@ -64,12 +67,14 @@
         UpdateUser - Принимает объект MembershipUser и обновляет хранящуюся информацию 
         в базе.<br />
         ValidateUser - Аутентифицирует пользователя по заданным учетным
+   
     </p>
     <p>
         Roles - класс для программного определения ролей, 
         а также для связывания с ними пользователей.<br />
         Во время выполнения страницы информация о пользователе, 
         а также о его роли может быть получена через свойство User контекста HTTP
+   
     </p>
     <h4>Методы класса Roles</h4>
     <p>
@@ -93,6 +98,12 @@
         RemoveUsersFromRole - Удаляет пользователей из заданной роли<br />
         RemoveUsersFromRoles - Удаляет пользователей из группы заданных ролей<br />
         RoleExists - Возвращает значение true, если заданная роль существует
+   
+    </p>
+    <p>
+        Добавление таблиц в БД: 
+        <span class="code">aspnet_regsql.exe -C "Data Source=.\SQLEXPRESS2014;Database='D:\TestSites\www\aspwebforms.com\App_Data\Database.mdf';Integrated Security=True" -A mr
+        </span>
     </p>
 </body>
 </html>

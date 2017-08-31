@@ -13,7 +13,7 @@ namespace ASPWebFormsTest._06_WorkingWithDatabase
         protected void Page_Load(object sender, EventArgs e)
         {
             // Чтение значения строки подключения из web.config из секции <connectionStrings>
-            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["local"].ConnectionString;
             // Настройка объекта подключения к базе и открытие подключения.
             _connection = new SqlConnection(connectionString);
             _connection.Open();

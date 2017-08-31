@@ -23,7 +23,8 @@
         <li>Простота развертывания и конфигурирования.</li>
     </ul>
     <br />
-
+    <a href="~/01_BaseInfo/01_BaseInfo.aspx" runat="server">~</a><br />
+    <a href="/01_BaseInfo/01_BaseInfo.aspx" runat="server">/</a><br />
     <img src="01_BaseInfo.png" alt="" />
     <br />
     <p>

@@ -25,7 +25,7 @@
 
                         <asp:SqlDataSource ID="CategoriesSqlDataSource"
                             runat="server"
-                            ConnectionString="<%$ ConnectionStrings:DatabaseConnection %>"
+                            ConnectionString="<%$ ConnectionStrings:local %>"
                             SelectCommand="SELECT [Id], [CategoryName] FROM [Categories]"></asp:SqlDataSource>
                     </td>
                 </tr>
@@ -40,7 +40,7 @@
 
                         <asp:SqlDataSource ID="ProductsSqlDataSource"
                             runat="server"
-                            ConnectionString="<%$ ConnectionStrings:DatabaseConnection %>"
+                            ConnectionString="<%$ ConnectionStrings:local %>"
                             SelectCommand="SELECT [Id], [Name] FROM [Products] WHERE ([CategoryId] = @CategoryId)">
 
                             <SelectParameters>

@@ -39,7 +39,7 @@
                         <%--Источник данных--%>
                         <asp:SqlDataSource ID="CategoriesSqlDataSource"
                             runat="server"
-                            ConnectionString="<%$ ConnectionStrings:DatabaseConnection %>"
+                            ConnectionString="<%$ ConnectionStrings:local %>"
                             SelectCommand="SELECT [Id], [CategoryName] FROM [Categories]"></asp:SqlDataSource>
                     </td>
                 </tr>

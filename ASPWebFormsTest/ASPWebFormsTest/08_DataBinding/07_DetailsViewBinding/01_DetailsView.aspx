@@ -25,7 +25,7 @@
                 </Fields>
             </asp:DetailsView>
             <%--строка подключения извлекается из файла web.config--%>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DatabaseConnection %>"
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:local %>"
                 SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
         </div>
     </form>

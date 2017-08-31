@@ -21,7 +21,7 @@
                 </Fields>
             </asp:DetailsView>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server"
-                ConnectionString="<%$ ConnectionStrings:DatabaseConnection %>"
+                ConnectionString="<%$ ConnectionStrings:local %>"
                 DeleteCommand="DELETE FROM [Users] WHERE [ID] = @ID"
                 InsertCommand="INSERT INTO [Users] ([Login], [Password], [Email]) VALUES (@Login, @Password, @Email)"
                 SelectCommand="SELECT * FROM [Users]"

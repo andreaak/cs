@@ -25,6 +25,9 @@
     <title>SqlDependency</title>
 </head>
 <body>
+    <p>
+        aspnet_regsql.exe -C "Data Source=.\SQLEXPRESS2014;Database='D:\TestSites\www\aspwebforms.com\App_Data\Database.mdf';Integrated Security=True" -ed -et -t Products
+    </p>
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="MessageLabel" runat="server" ForeColor="Red"></asp:Label>

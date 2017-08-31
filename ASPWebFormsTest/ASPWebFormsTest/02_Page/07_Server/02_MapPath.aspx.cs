@@ -11,6 +11,8 @@ namespace ASPWebFormsTest._02_Page._07_Server
             
             // Возрвращает физический путь соответствующий виртуальному.
             Label1.Text += "MapPath('02_MapPath.aspx')  = " + Server.MapPath("02_MapPath.aspx") + "<br />";
+            Label1.Text += "MapPath('/')  = " + Server.MapPath("/") + "<br />";
+            Label1.Text += "MapPath('~')  = " + Server.MapPath("~") + "<br />";
         }
     }
 }
