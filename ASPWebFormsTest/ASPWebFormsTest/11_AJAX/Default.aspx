@@ -10,8 +10,9 @@
     <ul>
         <li><a href="01_BaseInfo.aspx">Base Info</a></li>
         <li><a href="02_AJAX_JavaScript/01_SimpleRequest.aspx">Call handler with JavaScript</a></li>
-        <li><a href="03_AJAX/01_SimpleRequest.aspx">Call web-service with JavaScript</a></li>
-        <li><a href="03_AJAX/02_ReadObject.aspx">Read objects with web-service</a></li>
+        <li><a href="03_AJAX/01_SimpleRequest.aspx">Call web-service with ScriptManager</a></li>
+        <li><a href="03_AJAX/02_ReadObject.aspx">Read objects with web-service and ScriptManager</a></li>
+        <li><a href="03_AJAX/02_ReadObject.aspx">Call web-service with JavaScript</a></li>
         <li><a href="04_AJAXServerControls/01_UpdatePanel.aspx">UpdatePanel</a></li>
         <li><a href="04_AJAXServerControls/02_UpdatePanelNotHandledError.aspx">UpdatePanel Not Handled Error</a></li>
         <li><a href="04_AJAXServerControls/03_UpdatePanelHandledError.aspx">UpdatePanel Handled Error</a></li>

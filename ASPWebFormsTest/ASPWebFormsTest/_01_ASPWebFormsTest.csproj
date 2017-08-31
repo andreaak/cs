@@ -112,6 +112,7 @@
     <Content Include="03_StateSaving\05_Session\Default.aspx" />
     <Content Include="03_StateSaving\06_Application\01_BaseInfo.aspx" />
     <Content Include="03_StateSaving\06_Application\Default.aspx" />
+    <Content Include="11_AJAX\03_AJAX\03_JQuery.aspx" />
     <Content Include="27_Debug\01_BaseInfo.aspx" />
     <Content Include="27_Debug\02_Trace.aspx" />
     <Content Include="02_Page\01_BaseInfo.aspx" />
@@ -478,15 +479,12 @@
     <Content Include="30_Examples\02_WebConfigUsing\AppConfigUsing.aspx" />
     <Content Include="30_Examples\03_SendEmail\SendEmail.aspx" />
     <Content Include="30_Examples\Default.aspx" />
-    <Content Include="App_Data\ASPNETDB.MDF" />
-    <Content Include="App_Data\aspnetdb_log.ldf">
-      <DependentUpon>ASPNETDB.MDF</DependentUpon>
-    </Content>
     <Content Include="App_Data\Database.mdf" />
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="App_Data\Northwind.mdf" />
+    <Content Include="App_Data\northwind.sql" />
     <Content Include="App_Data\Northwind_log.ldf">
       <DependentUpon>Northwind.mdf</DependentUpon>
     </Content>
@@ -611,6 +609,13 @@
     </Compile>
     <Compile Include="03_StateSaving\06_Application\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="11_AJAX\03_AJAX\03_JQuery.aspx.cs">
+      <DependentUpon>03_JQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="11_AJAX\03_AJAX\03_JQuery.aspx.designer.cs">
+      <DependentUpon>03_JQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="27_Debug\01_BaseInfo.aspx.cs">
       <DependentUpon>01_BaseInfo.aspx</DependentUpon>
