@@ -26,8 +26,8 @@ namespace CSTest.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS2012;AttachDbFilename=|DataDirectory|\\ShopDB.mdf;Integrat" +
-            "ed Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS2012;AttachDbFilename=|DataDirectory|\\AppData\\ShopDB.mdf;" +
+            "Integrated Security=True")]
         public string ShopDBConnectionString {
             get {
                 return ((string)(this["ShopDBConnectionString"]));

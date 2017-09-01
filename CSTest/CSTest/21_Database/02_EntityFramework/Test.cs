@@ -1,6 +1,6 @@
-﻿using CSTest._21_Database._02_EntityFramework._01_DatabaseFirst;
+﻿using System.Data.Entity.Core.Objects;
+using CSTest._21_Database._02_EntityFramework._01_DatabaseFirst;
 using NUnit.Framework;
-using System.Data.Objects;
 using System.Diagnostics;
 using System.Linq;
 
