@@ -2,7 +2,7 @@
 
 namespace ASPWebFormsTest._24_OutputCache
 {
-    public partial class _11_SqlDependencyOutputCache : System.Web.UI.Page
+    public partial class _11_SqlDependency : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

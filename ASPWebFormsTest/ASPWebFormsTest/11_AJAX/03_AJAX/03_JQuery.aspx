@@ -13,7 +13,7 @@
             var output = document.getElementById("output");
 
             var button1 = document.getElementById("button1");
-            button1.onclick = clickHandler2;
+            button1.onclick = clickHandler;
 
             function OnSuccessCall(response) {
                 output.innerHTML = response.d
@@ -34,9 +34,10 @@
                 });
             };
 
-            var xhr = new XMLHttpRequest();
-            
+            var button2 = document.getElementById("button2");
+            button2.onclick = clickHandler2;
 
+            var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4) {
                     if (xhr.status == 200) {
@@ -58,11 +59,11 @@
 <body>
     <form id="form2" runat="server">
         <div>
-            <input type="button" value="AJAX кнопка" id="button1" />
+            <input type="button" value="AJAX JQuery кнопка" id="button1" /><br />
+            <input type="button" value="AJAX Javascript кнопка" id="button2" />
             <p id="output" style="color: Green; font-weight: bold;">
             </p>
         </div>
     </form>
-
 </body>
 </html>

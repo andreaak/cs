@@ -44,6 +44,7 @@
             this.toolStripTextBoxMaxItemsCount = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButtonUpdateDbData = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonExecute = new System.Windows.Forms.ToolStripButton();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.gridControlResult = new DevExpress.XtraGrid.GridControl();
             this.gridViewResult = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -78,16 +79,16 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(540, 186, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(850, 441);
+            this.layoutControl1.Size = new System.Drawing.Size(1120, 672);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // gridControlDbEntity
             // 
-            this.gridControlDbEntity.Location = new System.Drawing.Point(471, 36);
+            this.gridControlDbEntity.Location = new System.Drawing.Point(620, 36);
             this.gridControlDbEntity.MainView = this.gridViewDbEntity;
             this.gridControlDbEntity.Name = "gridControlDbEntity";
-            this.gridControlDbEntity.Size = new System.Drawing.Size(367, 113);
+            this.gridControlDbEntity.Size = new System.Drawing.Size(488, 214);
             this.gridControlDbEntity.TabIndex = 5;
             this.gridControlDbEntity.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDbEntity});
@@ -121,10 +122,11 @@
             this.toolStripLabel1,
             this.toolStripTextBoxMaxItemsCount,
             this.toolStripComboBox1,
-            this.toolStripButtonUpdateDbData});
+            this.toolStripButtonUpdateDbData,
+            this.toolStripButtonExecute});
             this.toolStripToolBox.Location = new System.Drawing.Point(12, 12);
             this.toolStripToolBox.Name = "toolStripToolBox";
-            this.toolStripToolBox.Size = new System.Drawing.Size(826, 20);
+            this.toolStripToolBox.Size = new System.Drawing.Size(1096, 20);
             this.toolStripToolBox.TabIndex = 3;
             this.toolStripToolBox.Text = "ToolBox";
             // 
@@ -226,22 +228,32 @@
             this.toolStripButtonUpdateDbData.Text = "Read Db Data";
             this.toolStripButtonUpdateDbData.Click += new System.EventHandler(this.toolStripButtonUpdateDbData_Click);
             // 
+            // toolStripButtonExecute
+            // 
+            this.toolStripButtonExecute.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonExecute.Image = global::GrabDatabase.Properties.Resources.Play;
+            this.toolStripButtonExecute.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonExecute.Name = "toolStripButtonExecute";
+            this.toolStripButtonExecute.Size = new System.Drawing.Size(23, 17);
+            this.toolStripButtonExecute.Text = "Execute";
+            this.toolStripButtonExecute.Click += new System.EventHandler(this.toolStripButtonExecute_Click);
+            // 
             // memoEdit1
             // 
             this.memoEdit1.Location = new System.Drawing.Point(71, 36);
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Properties.BeforeShowMenu += new DevExpress.XtraEditors.Controls.BeforeShowMenuEventHandler(this.memoEdit1_BeforeShowMenu);
-            this.memoEdit1.Size = new System.Drawing.Size(396, 113);
+            this.memoEdit1.Size = new System.Drawing.Size(545, 214);
             this.memoEdit1.StyleController = this.layoutControl1;
             this.memoEdit1.TabIndex = 1;
             this.memoEdit1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.memoEdit1_KeyPress);
             // 
             // gridControlResult
             // 
-            this.gridControlResult.Location = new System.Drawing.Point(12, 153);
+            this.gridControlResult.Location = new System.Drawing.Point(12, 254);
             this.gridControlResult.MainView = this.gridViewResult;
             this.gridControlResult.Name = "gridControlResult";
-            this.gridControlResult.Size = new System.Drawing.Size(826, 276);
+            this.gridControlResult.Size = new System.Drawing.Size(1096, 406);
             this.gridControlResult.TabIndex = 2;
             this.gridControlResult.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewResult});
@@ -264,8 +276,7 @@
             this.layoutControlItemDbEntity});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(850, 441);
-            this.layoutControlGroup1.Text = "Root";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1120, 672);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItemSqlQuery_
@@ -274,7 +285,7 @@
             this.layoutControlItemSqlQuery_.CustomizationFormText = "Sql Query:";
             this.layoutControlItemSqlQuery_.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItemSqlQuery_.Name = "layoutControlItemSqlQuery_";
-            this.layoutControlItemSqlQuery_.Size = new System.Drawing.Size(459, 117);
+            this.layoutControlItemSqlQuery_.Size = new System.Drawing.Size(608, 218);
             this.layoutControlItemSqlQuery_.Text = "SQL Query:";
             this.layoutControlItemSqlQuery_.TextSize = new System.Drawing.Size(56, 13);
             // 
@@ -282,12 +293,10 @@
             // 
             this.layoutControlItemGrid.Control = this.gridControlResult;
             this.layoutControlItemGrid.CustomizationFormText = "layoutControlItemGrid";
-            this.layoutControlItemGrid.Location = new System.Drawing.Point(0, 141);
+            this.layoutControlItemGrid.Location = new System.Drawing.Point(0, 242);
             this.layoutControlItemGrid.Name = "layoutControlItemGrid";
-            this.layoutControlItemGrid.Size = new System.Drawing.Size(830, 280);
-            this.layoutControlItemGrid.Text = "layoutControlItemGrid";
+            this.layoutControlItemGrid.Size = new System.Drawing.Size(1100, 410);
             this.layoutControlItemGrid.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItemGrid.TextToControlDistance = 0;
             this.layoutControlItemGrid.TextVisible = false;
             // 
             // layoutControlItemToolStrip
@@ -298,30 +307,26 @@
             this.layoutControlItemToolStrip.MaxSize = new System.Drawing.Size(0, 24);
             this.layoutControlItemToolStrip.MinSize = new System.Drawing.Size(201, 24);
             this.layoutControlItemToolStrip.Name = "layoutControlItemToolStrip";
-            this.layoutControlItemToolStrip.Size = new System.Drawing.Size(830, 24);
+            this.layoutControlItemToolStrip.Size = new System.Drawing.Size(1100, 24);
             this.layoutControlItemToolStrip.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItemToolStrip.Text = "layoutControlItemToolStrip";
             this.layoutControlItemToolStrip.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItemToolStrip.TextToControlDistance = 0;
             this.layoutControlItemToolStrip.TextVisible = false;
             // 
             // layoutControlItemDbEntity
             // 
             this.layoutControlItemDbEntity.Control = this.gridControlDbEntity;
             this.layoutControlItemDbEntity.CustomizationFormText = "layoutControlItemDbEntity";
-            this.layoutControlItemDbEntity.Location = new System.Drawing.Point(459, 24);
+            this.layoutControlItemDbEntity.Location = new System.Drawing.Point(608, 24);
             this.layoutControlItemDbEntity.Name = "layoutControlItemDbEntity";
-            this.layoutControlItemDbEntity.Size = new System.Drawing.Size(371, 117);
-            this.layoutControlItemDbEntity.Text = "layoutControlItemDbEntity";
+            this.layoutControlItemDbEntity.Size = new System.Drawing.Size(492, 218);
             this.layoutControlItemDbEntity.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItemDbEntity.TextToControlDistance = 0;
             this.layoutControlItemDbEntity.TextVisible = false;
             // 
             // SqlCommand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 441);
+            this.ClientSize = new System.Drawing.Size(1120, 672);
             this.Controls.Add(this.layoutControl1);
             this.Name = "SqlCommand";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -370,5 +375,6 @@
         private DevExpress.XtraGrid.GridControl gridControlDbEntity;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewDbEntity;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemDbEntity;
+        private System.Windows.Forms.ToolStripButton toolStripButtonExecute;
     }
 }

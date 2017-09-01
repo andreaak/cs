@@ -62,7 +62,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_MVC4EXample_TaskManager
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_MVC4EXample_TaskManager.Web", "..\ASPMVCTest\TaskManager.Web\_02_MVC4EXample_TaskManager.Web.csproj", "{94BFB58C-B460-4848-B2A5-1611687A0CFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_MVC4EXample_TaskManager.Web.Tests", "..\ASPMVCTest\TaskManager.Web.Tests\_02_MVC4EXample_TaskManager.Web.Tests.csproj", "{93B65EDF-9E9A-419D-8488-325F53B33B2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_ASPMVCTest.Tests", "..\ASPMVCTest\TaskManager.Web.Tests\_02_ASPMVCTest.Tests.csproj", "{93B65EDF-9E9A-419D-8488-325F53B33B2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

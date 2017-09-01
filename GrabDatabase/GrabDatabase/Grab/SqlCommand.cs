@@ -295,6 +295,20 @@ namespace GrabDatabase.Grab
             }
         }
 
+        private void toolStripButtonExecute_Click(object sender, EventArgs e)
+        {
+            string query;
+            if (memoEdit1.SelectionLength > 0 )
+            {
+                query = memoEdit1.SelectedText;
+            }
+            else
+            {
+                query = ParseQueryFromMemo(memoEdit1);
+            }
+            ExecuteQuery(query);
+        }
+
         #endregion
 
         private static string ParseQueryFromMemo(MemoEdit edit)
@@ -565,5 +579,7 @@ namespace GrabDatabase.Grab
                 set;
             }
         }
+
+
     }
 }

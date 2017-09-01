@@ -5,6 +5,7 @@ using DBLinks;
 using Utils.WorkWithDB;
 using Utils.WorkWithDB.Connections;
 using Utils.WorkWithDB.Wrappers;
+using Utils;
 
 namespace GrabDatabase
 {
@@ -46,7 +47,7 @@ namespace GrabDatabase
 
         public DBService()
         {
-            dbWrapper = WrapperFactory.GetWrapper();
+            dbWrapper = WrapperFactory.GetWrapper(OptionsUtils.Provider, OptionsUtils.ConnectionString);
         }
 
         public DBService(string provider, string connString)

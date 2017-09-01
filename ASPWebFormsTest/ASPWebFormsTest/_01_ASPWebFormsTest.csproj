@@ -440,7 +440,7 @@
     <Content Include="24_OutputCache\08_UserControlTest.aspx" />
     <Content Include="24_OutputCache\09_Substitution.aspx" />
     <Content Include="24_OutputCache\10_Substitution.aspx" />
-    <Content Include="24_OutputCache\11_SqlDependencyOutputCache.aspx" />
+    <Content Include="24_OutputCache\11_SqlDependency.aspx" />
     <Content Include="24_OutputCache\Default.aspx" />
     <Content Include="25_FormsAuthentication\01_BaseInfo.aspx" />
     <Content Include="25_FormsAuthentication\03_CustomDataInTicket.aspx" />
@@ -2494,12 +2494,12 @@
     <Compile Include="24_OutputCache\10_Substitution.aspx.designer.cs">
       <DependentUpon>10_Substitution.aspx</DependentUpon>
     </Compile>
-    <Compile Include="24_OutputCache\11_SqlDependencyOutputCache.aspx.cs">
-      <DependentUpon>11_SqlDependencyOutputCache.aspx</DependentUpon>
+    <Compile Include="24_OutputCache\11_SqlDependency.aspx.cs">
+      <DependentUpon>11_SqlDependency.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="24_OutputCache\11_SqlDependencyOutputCache.aspx.designer.cs">
-      <DependentUpon>11_SqlDependencyOutputCache.aspx</DependentUpon>
+    <Compile Include="24_OutputCache\11_SqlDependency.aspx.designer.cs">
+      <DependentUpon>11_SqlDependency.aspx</DependentUpon>
     </Compile>
     <Compile Include="24_OutputCache\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

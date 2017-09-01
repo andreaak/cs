@@ -18,7 +18,7 @@
         <li><a href="08_UserControlTest.aspx">Cache UserControl</a></li>
         <li><a href="09_Substitution.aspx">Substitution</a></li>
         <li><a href="10_Substitution.aspx">Substitution</a></li>
-        <li><a href="11_SqlDependencyOutputCache.aspx">Sql Dependency OutputCache</a></li>
+        <li><a href="11_SqlDependency.aspx">Sql Dependency OutputCache</a></li>
     </ul>
 </body>
 </html>

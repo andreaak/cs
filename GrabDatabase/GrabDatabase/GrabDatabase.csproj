@@ -262,6 +262,7 @@
     <EmbeddedResource Include="ParseQuery\ParseQueryForm.resx">
       <DependentUpon>ParseQueryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -327,6 +328,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Play.png" />
     <None Include="Resources\Search44.png" />
     <None Include="Resources\add_1.png" />
     <None Include="Resources\Delete1.png" />
