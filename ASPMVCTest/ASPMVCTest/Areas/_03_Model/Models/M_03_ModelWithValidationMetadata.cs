@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 
 namespace _01_ASPMVCTest.Areas._03_Model.Models
 {

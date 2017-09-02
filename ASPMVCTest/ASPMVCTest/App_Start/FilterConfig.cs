@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using _01_ASPMVCTest.Areas._05_Filters.Filters;
 
 namespace _01_ASPMVCTest
 {

@@ -1,5 +1,4 @@
 ﻿using _01_ASPMVCTest.Areas._06_Security.Models;
-using Microsoft.Security.Application;
 using System.Web.Mvc;
 
 namespace _01_ASPMVCTest.Areas._06_Security.Controllers

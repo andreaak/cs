@@ -1,0 +1,232 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>W_06_FormAndApi</title>
+    <style type="text/css">
+
+        #receivedElement {
+            clear: both;
+        }
+
+
+        #namesContainer {
+            width: 300px;
+            float: left;
+        }
+
+        #formContainer {
+            float: left;
+            margin-top: 15px;
+        }
+
+            #formContainer label {
+                width: 200px;
+                float: left;
+            }
+
+            #formContainer div {
+                margin: 0px 0px 20px 0px;
+            }
+
+        #linkContainer {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="namesContainer">
+        <ul id="names"></ul>
+    </div>
+
+    <div id="formContainer">
+        <div>
+            <label>Id элемента</label>
+            <input type="text" id="elementId" />
+            <button id="getButton">Получить имя</button>
+        </div>
+        <div id="receivedElement"></div>
+
+        <div>
+            <label>Имя нового элемента</label>
+            <input type="text" id="newName" />
+            <button id="addNewBtn">Добавить имя</button>
+        </div>
+        <div>
+            <label>Номер элемента</label><input type="text" id="numberOfElement" /><br />
+            <label>Новое имя</label><input type="text" id="changedName" />
+            <button id="changeBtn">Изменить</button>
+        </div>
+        <div>
+            <label>Номер элемента для удаления</label>
+            <input type="text" id="numberToDelete" />
+            <button id="deleteBtn">Удалить</button>
+        </div>
+
+        @*Ссылка на последний добавленный элемент*@
+        <div id="linkContainer">
+            <div>Ссылка на последний элемент (значение заголовка 'Location') :</div>
+            <div id="location"></div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+
+<script>
+    var baseUri = "/api/_06_FormAndApi";
+
+    // Функция вызывается при загрузке скрипта и делает асинхронный запрос на сервер
+    function loadList() {
+        $.ajax({
+            url: baseUri,
+
+            success: function (fruits) {
+
+                var list = $("#names");
+                list.empty();
+
+                for (var i = 0; i < fruits.length; i++) {// fruits - JSON объект полученый со стороны сервера.
+                    var name = fruits[i];
+                    list.append("<li>" + name + "</li>");
+                }
+            }
+        });
+    }
+
+    loadList();
+
+    // после загрузки документа, находим на страцние кнопку и добавляем метод getFruit 
+    // как обработчик на событие click
+
+    $(document).ready(function () {
+        $("#getButton").on("click", getFruit);
+        $("#addNewBtn").on("click", postFruit);
+        $("#changeBtn").on("click", putFruit);
+        $("#deleteBtn").on("click", deleteFruit);
+    });
+
+    function getFruit() {
+
+        // uri в формате /api/names/5
+        var link = baseUri + "/" + $("#elementId").val();
+
+        $.ajax({
+            url: link,
+            type: "GET",
+
+            // в случае успешной обработки запроса
+            success: function (data) {
+                $("#receivedElement").text(data); // вывод результата
+            },
+
+            // в случае ошибки
+            error: function (xhr) {
+
+                if (xhr.status == "404") {
+                    alert("Элемен по указанному индексу не найден.");
+                    $("#receivedElement").text(xhr.responseText);
+                }
+                if (xhr.status == "500") {
+                    alert("Ошибка сервера");
+                }
+
+            }
+        });
+    };
+
+    // добавление новго элемента
+    function postFruit() {
+
+        var nameToPost = $("#newName").val();
+
+        $.ajax({
+            url: baseUri,
+            type: "POST",
+            data: JSON.stringify(nameToPost), // сериализуем данные в JSON объект перед отправкой на сервер.
+            dataType: "json",
+            contentType: "application/json",
+
+            //позволяет выполнять различные функции, в зависимости от полученного статус-кода
+            statusCode: {
+                201: function () {
+                    alert("Created. Имя успешно добавлено в коллекцию.");
+                },
+                400: function () {
+                    alert("Bad Request. Операция не выполнена.");
+                }
+            },
+
+            success: function (data, textStatus, xhr) {
+                // data - информация, переданная обратно в теле ответа
+                // textStatus - статус операции
+                // xhr - обьект XMLHttpRequest
+
+                var locationHeader = xhr.getResponseHeader("Location");
+
+                $("#location").html("<a href='" + locationHeader + "'>последний элемент</a>");
+
+                $("#names").append("<li>" + data + "</li>");
+            },
+
+            error: errorHandler
+        });
+    }
+
+    // изменение элемента
+    function putFruit() {
+        var id = $("#numberOfElement").val(),
+            newValue = $("#changedName").val();
+
+        $.ajax({
+            url: baseUri + "/" + id,
+            type: "PUT",
+            data: JSON.stringify(newValue),
+            dataType: "json",
+            contentType: "application/json",
+
+            success: function (data, status, xhr) {
+                alert('Элемент ' + id + ' изменен');
+                loadList();
+            },
+
+            error: errorHandler
+        });
+    }
+
+    // удаление элемента
+    function deleteFruit() {
+        var id = $("#numberToDelete").val();
+
+        $.ajax({
+            url: baseUri + "/" + id,
+            type: "DELETE",
+
+            success: function () {
+                loadList();
+            },
+
+            error: errorHandler
+        });
+    }
+
+    function errorHandler(xhr, textStatus, error) {
+        if (xhr.status == "404") {
+            alert('Элемент не найден.')
+        }
+        else if (xhr.status == "400") {
+            alert('Запрос сформирован не правильно.')
+        }
+        else if (xhr.status == "500") {
+            alert('Ошибка сервера.')
+        }
+    }
+
+</script>
+</body>
+</html>

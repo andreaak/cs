@@ -1,0 +1,231 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        td {
+            border: 1px solid black;
+        }
+
+        th {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        #query {
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <strong>OData</strong> - это открытая спецификация, которая описывает стандарт синтаксиса запросов к источникам данных.
+    </p>
+    Для создания контролера поддерживающего OData необходимо:
+    <ol>
+        <li>Установить Microsoft ASP.NET Web API OData.</li>
+        <li>Установить возвращаемы тип методадействия как IQuaryable&lt;T&gt;</li>
+        <li>Декорировать метод атрибутом [Queryable]</li>
+    </ol>
+
+    <div style="float: left;">
+        <div style="height: 200px;">
+            <div id="formContainer" style="margin-top: 15px;">
+                <input type="text" id="query" />
+                <button id="button">Получить продукты</button>
+            </div>
+            <div id="products"></div>
+        </div>
+        <div style="background-color: #808080; height: 2px;"></div>
+
+        <div>
+            <span>Примеры запросов:</span>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <th colspan="2">Orderby System Query Option</th>
+                </tr>
+                <tr>
+                    <td>Сортировка</td>
+                    <td>?$orderby=Name</td>
+                </tr>
+                <tr>
+                    <td>Сортировка по убыванию</td>
+                    <td>?$orderby=Name desc</td>
+                </tr>
+                <tr>
+                    <td>Сортировка по возростанию</td>
+                    <td>?$orderby=Name asc</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Top System Query Option</th>
+                </tr>
+                <tr>
+                    <td>Первые 5 элементов</td>
+                    <td>?$top=5</td>
+                </tr>
+                <tr>
+                    <td>Первые 5 элементов, с сортировкой</td>
+                    <td>?$top=5&$orderby=Price desc</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Skip System Query Option</th>
+                </tr>
+                <tr>
+                    <td>Продукты, начиная с 3-го</td>
+                    <td>?$skip=2</td>
+                </tr>
+                <tr>
+                    <td>Комплекстный запрос</td>
+                    <td>?$skip=2&$top=2&$orderby=Price</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div style="float: left; margin-left: 50px;">
+
+        <span>Примеры запросов filter:</span>
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <th colspan="3">Logical Operators</th>
+            </tr>
+            <tr>
+                <td>eq</td>
+                <td>Equal</td>
+                <td>?$filter=Name eq 'House'</td>
+            </tr>
+            <tr>
+                <td>ne</td>
+                <td>Not equal</td>
+                <td>?$filter=Name ne 'House'</td>
+            </tr>
+            <tr>
+                <td>gt</td>
+                <td>Greater than</td>
+                <td>?$filter=Price gt 1400</td>
+            </tr>
+            <tr>
+                <td>ge</td>
+                <td>Greater than or equal</td>
+                <td>?$filter=Price ge 1400</td>
+            </tr>
+            <tr>
+                <td>lt</td>
+                <td>
+                    Less than
+                <td>?$filter=Price lt 4000</td>
+            </tr>
+            <tr>
+                <td>le</td>
+                <td>Less than or equal</td>
+                <td>?$filter=Price le 4000</td>
+            </tr>
+            <tr>
+                <td>and</td>
+                <td>Logical and</td>
+                <td>?$filter=Price le 10000 and Price gt 1000</td>
+            </tr>
+            <tr>
+                <td>or</td>
+                <td>Logical or</td>
+                <td>?$filter=Price le 100 or Price gt 5000</td>
+            </tr>
+            <tr>
+                <td>not</td>
+                <td>Logical negation</td>
+                <td>?$filter=not endswith(Name,'e')</td>
+            </tr>
+            <tr>
+                <th colspan="3">Arithmetic Operators</th>
+            </tr>
+            <tr>
+                <td>add </td>
+                <td>Addition</td>
+                <td>?$filter=Price add 5 gt 45</td>
+            </tr>
+            <tr>
+                <td>sub</td>
+                <td>Subtraction</td>
+                <td>?$filter=Price sub 5 lt 45</td>
+            </tr>
+            <tr>
+                <td>mul</td>
+                <td>Multiplication</td>
+                <td>?$filter=Price mul 1.5 gt 1000</td>
+            </tr>
+            <tr>
+                <td>div</td>
+                <td>Division</td>
+                <td>?$filter=Price div 5 gt 4</td>
+            </tr>
+            <tr>
+                <td>mod</td>
+                <td>Modulo</td>
+                <td>?$filter=Price mod 2 ne 0</td>
+            </tr>
+            <tr>
+                <th colspan="3">Grouping Operators</th>
+            </tr>
+            <tr>
+                <td>( )</td>
+                <td>Precedence grouping</td>
+                <td>?$filter=((Price sub 5) div 10) gt 10</td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#button").on("click", getProducts);
+
+        });
+
+        function getProducts() {
+
+            var query = $("#query").val();
+
+            $.ajax({
+                url: "/api/_07_OData" + query,
+                success: function (names) {
+
+                    var content = '<table>';
+
+                    $.each(names, function (key, value) {
+                        content += '<tr><th style="width:20px;">'
+                            + value.Id +
+                            '</th><td style="width:100px;">'
+                            + value.Name +
+                            '</td><td style="width:50px;">'
+                            + value.Price +
+                            "</td></tr>";
+                    });
+
+                    content += "</table>";
+
+                    $("#products").html(content);
+                }
+            });
+        };
+    </script>
+    <table style="width: 20px;"></table>
+</body>
+</html>

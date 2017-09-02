@@ -1,11 +1,9 @@
-﻿using System.Data.Entity;
-using _01_ASPMVCTest.ModelBinder;
+﻿using _01_ASPMVCTest.ModelBinder;
 using _01_ASPMVCTest.Providers;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using _01_ASPMVCTest.Areas.E_30_Examples.Models;
 using _01_ASPMVCTest.Areas._03_Model.Models;
 
 namespace _01_ASPMVCTest

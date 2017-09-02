@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>W_05_Values</title>
+</head>
+<body>
+
+    <button id="button1">Json</button><br /><br />
+    <button id="button2">Xml</button><br /><br />
+    <button id="button3">Text</button><br />
+
+    <p id="output"></p>
+
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var url = "/api/_05_ReturnValues";
+            var output = document.getElementById("output");
+
+            var button1 = document.getElementById("button1");
+            button1.onclick = clickHandlerJson;
+
+            var button2 = document.getElementById("button2");
+            button2.onclick = clickHandlerXml;
+
+            var button3 = document.getElementById("button3");
+            button3.onclick = clickHandlerText;
+
+            function OnSuccessCall(response) {
+                output.innerHTML = response;
+            }
+
+            function OnErrorCall(response) {;
+                output.innerHTML = response.status + " " + response.statusText;
+            }
+
+            function clickHandlerJson() {
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    //When sending data to the server, use this content type
+                    contentType: "application/json; charset=utf-8",
+                    //The type of data that you're expecting back from the server
+                    dataType: "json",
+                    success: OnSuccessCall,
+                    error: OnErrorCall
+                });
+            };
+
+            function clickHandlerXml() {
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    //When sending data to the server, use this content type
+                    contentType: "application/json; charset=utf-8",
+                    //The type of data that you're expecting back from the server
+                    dataType: "xml",
+                    success: function (xml) {
+                        output.innerHTML = $(xml).find("string").text(function(i, txt) {
+                            return txt + " ";
+                        }).text();
+                    },
+                    error: OnErrorCall
+                });
+            };
+
+            function clickHandlerText() {
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    //When sending data to the server, use this content type
+                    contentType: "application/json; charset=utf-8",
+                    //The type of data that you're expecting back from the server
+                    dataType: "text",
+                    success: OnSuccessCall,
+                    error: OnErrorCall
+                });
+            };
+        });
+    </script>
+</body>
+</html>
