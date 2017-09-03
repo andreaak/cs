@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 
-namespace _01_ASPMVCTest.Controllers.WebApi
+namespace _01_ASPMVCTest.Areas._09_WebApi.Controllers
 {
-    public class WebApiController : Controller
+    public class _01_HomeController : Controller
     {
         //
         // GET: /WebApi/
@@ -43,6 +43,22 @@ namespace _01_ASPMVCTest.Controllers.WebApi
         }
 
         public ActionResult W_07_OData()
+        {
+            return View();
+        }
+
+        public ActionResult W_08_MediaFormatter()
+        {
+            return View();
+        }
+
+        public ActionResult W_09_MessageHandlers_BaseInfo()
+        {
+            return View();
+        }
+
+
+        public ActionResult W_10_MessageHandlers_TestHandler()
         {
             return View();
         }

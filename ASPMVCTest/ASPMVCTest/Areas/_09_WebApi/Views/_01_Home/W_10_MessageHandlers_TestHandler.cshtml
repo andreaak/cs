@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+    string urlCode = Url.HttpRouteUrl("DefaultApi", new { controller = "_02_HttpVerbActionName" });
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>W_10_MessageHandlers_TestHandler</title>
+</head>
+<body>
+    <a href="@urlCode">API Controller GET request</a><br />
+
+    <h4>Method Override</h4>
+    <button id="btnPut">POST -> PUT</button><br />
+    <button id="btnDelete">POST -> DELETE</button>
+    <div id="output"></div>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+    <script>
+
+        var url = "@urlCode";
+        var output = document.getElementById("output");
+
+        function OnSuccessCall(response) {
+            output.innerHTML = response;
+        }
+
+        function OnErrorCall(response) {;
+            output.innerHTML = response.status + " " + response.statusText;
+        }
+
+
+        $("#btnDelete").click(function () {
+            $.ajax({
+                url: "@urlCode" + "/1",
+                type: "POST",
+                headers: {
+                    "X-HTTP-Method-Override": "DELETE"
+                },
+                dataType: "json",
+                success: OnSuccessCall,
+                error: OnErrorCall
+            });
+        });
+
+        $("#btnPut").click(function () {
+            var newValue = "ABC";
+            $.ajax({
+                url: "@urlCode" + "/1",
+                type: "POST",
+                headers: {
+                    "X-HTTP-Method-Override": "PUT"
+                },
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(newValue),
+                dataType: "json",
+                success: OnSuccessCall,
+                error: OnErrorCall
+            });
+        });
+    </script>
+
+</body>
+</html>

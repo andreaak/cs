@@ -1,4 +1,6 @@
 ﻿using System.Web.Http;
+using _01_ASPMVCTest.Areas._09_WebApi.Handlers;
+using _01_ASPMVCTest.Areas._09_WebApi.MediTypeFormatters;
 
 namespace _01_ASPMVCTest
 {
@@ -14,6 +16,12 @@ namespace _01_ASPMVCTest
                     id = RouteParameter.Optional
                 }
             );
+
+            config.Formatters.Add(new BinaryMediaTypeFormatter());
+            config.MessageHandlers.Add(new MH_02_TestMessageHandler());
+            //config.MessageHandlers.Add(new MH_02_ValidationMessageHandler());
+            config.MessageHandlers.Add(new MH_02_MethodOverrideHandler());
+            config.MessageHandlers.Add(new MH_02_CustomHeaderHandler());
         }
     }
 }

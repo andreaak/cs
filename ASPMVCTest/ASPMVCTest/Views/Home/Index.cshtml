@@ -2,9 +2,7 @@
     ViewBag.Title = "Index page";
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -41,7 +39,13 @@
                 <h2>@Html.RouteLink("Ajax", new { controller = "_01_Home", action = "Index", area = "_07_Ajax" })</h2>
             </li>
             <li>
-                <h2>@Html.RouteLink("Web Api", new {controller = "WebApi", action = "Index"})</h2>
+                <h2>@Html.RouteLink("Optimization", new { controller = "_01_Home", action = "Index", area = "_08_Optimization" })</h2>
+            </li>
+            <li>
+                <h2>@Html.RouteLink("Web Api", new { controller = "_01_Home", action = "Index", area = "_09_WebApi" })</h2>
+            </li>
+            <li>
+                <h2>@Html.RouteLink("Async Controller", new { controller = "_01_Home", action = "Index", area = "_10_Async" })</h2>
             </li>
             <li>
                 <h2>@Html.RouteLink("Examples", new { controller = "_01_Home", action = "Index", area = "E_30_Examples" })</h2>

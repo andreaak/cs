@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>A_01_BaseInfo</title>
+</head>
+<body>
+    <img src="~/Content/Images/sync_controller.png" width="50%" /><br /><br />
+    <img src="~/Content/Images/sync_controller_code.png" width="50%" /><br /><br />
+    <img src="~/Content/Images/async_controller.png" width="50%" /><br /><br />
+    <img src="~/Content/Images/async_controller_code_mvc3.png" width="50%" /><br /><br />
+    <img src="~/Content/Images/async_controller_code_mvc4.png" width="50%" /><br /><br />
+
+    <h4>Асинхронный контроллер MVC 3</h4>
+    <ul>
+        <li>Класс контроллера должен наследоваться от AsyncController</li>
+        <li>Метод запускающий асинхронные операции &lt;Name&gt;Async</li>
+        <li>Метод возвращающий ответ &lt;Name&gt;Completed</li>
+        <li>AsyncManager.OutstandingOperations - определяет количество асинхронных операций запущенных контроллером.</li>
+    </ul>
+    <h4>Асинхронный контроллер MVC 4</h4>
+    <ul>
+        <li>Метод который должен работать асинхронно должен быть помечен как async</li>
+        <li>Возвращаемый тип метода Task&lt;ActionResult&gt;</li>
+        <li>Длительная операция вызывается через ключевое слово await</li>
+    </ul>
+</body>
+</html>

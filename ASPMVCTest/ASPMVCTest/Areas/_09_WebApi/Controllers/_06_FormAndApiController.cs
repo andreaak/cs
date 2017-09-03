@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace _01_ASPMVCTest.Controllers.WebApi
+namespace _01_ASPMVCTest.Areas._09_WebApi.Controllers
 {
     public class _06_FormAndApiController : ApiController
     {

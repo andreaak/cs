@@ -1,0 +1,96 @@
+﻿@{
+    Layout = null;
+    string urlCode = Url.HttpRouteUrl("DefaultApi", new { controller = "_08_MediaFormatter" });
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>W_08_MediaFormatter</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <h4>Согласование типа содержимого сообщения</h4>
+    Динамическое согласование media типа основано на запросе клиента:
+    <ul>
+        <li>пользователь отправляет заголовок Accept с приемлимыми для него типами</li>
+        <li>сервер отвечает на сообщение с заголовком Content-Type</li>
+        <li>пользователь тоже отправляет Content-Type заголовок, если отправляет данные</li>
+    </ul>
+    <img src="~/Content/Images/data_type.png" />
+    <p>
+        Для того, что бы определить какого типа контент нужно вернуть пользователю,
+        проверяется значения заголовка Accept полученного со стороны клиента.
+        Используя вкладку Composer приложения Fiddler попробуйте отправить запрос
+        с заголовком 'Accept : application/xml' и 'Accept : application/json'
+        проанализируйте разницу между полученными ответами.
+    </p>
+
+    <p>
+        В WebAPI есть несколько MediaTypeFormatter(форматеров), которые позволяют сериализовать и десериализовать
+        данные передающиеся через HTTP в определенном формате. Стандартные форматтеры поддерживают
+        <ul>
+            <li>JSON</li>
+            <li>XML</li>
+            <li>URL Encoded Data</li>
+        </ul>
+        Форматером по умолчанию является JSON форматтер.
+    </p>
+    <p>MediaTypeFormatter - класс позволяющий конвертировать данные полученные через HTTP в .NET типы и наоборот.</p>
+    <ul>
+        <li>Знает о существовании нескольких media типов (text/xml, application/xml)</li>
+        <li>Указывает Web API можно ли читать или записывать данные.</li>
+        <li>Предоставляет поток для записи (response) и чтения данных(request)</li>
+        <li>Может предоставлять логику для сериализациии десериализацииданных.</li>
+        <li>Наследуется от абстрактного класса MediaTypeFormatter.</li>
+    </ul>
+    <p>
+        Для реализации поддержки других типов можно создать класс производный от MediaTypeFormatter
+        и зарегистрировать его как еще один из типов cистемных форматеров.<br />
+        <span class="code">config.Formatters.Add(new BinaryMediaTypeFormatter());</span>
+    </p>
+
+    <button id="button2">Post @urlCode 5</button><br />
+
+    <p id="output"></p>
+
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var url = "@urlCode";
+            var output = document.getElementById("output");
+
+
+            var button2 = document.getElementById("button2");
+            button2.onclick = clickHandlerPost;
+
+            function OnSuccessCall(response) {
+                output.innerHTML = response;
+            }
+
+            function OnErrorCall(response) {;
+                output.innerHTML = response.status + " " + response.statusText;
+            }
+
+            function clickHandlerPost() {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: 'Hello',
+                    //When sending data to the server, use this content type
+                    contentType: "application/octet-stream",
+                    //The type of data that you're expecting back from the server
+                    dataType: "json",
+                    success: OnSuccessCall,
+                    error: OnErrorCall
+                });
+            };
+        });
+    </script>
+</body>
+</html>

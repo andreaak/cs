@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Http;
-using _01_ASPMVCTest.Models;
+using _01_ASPMVCTest.Areas._09_WebApi.Models;
 
-
-namespace _01_ASPMVCTest.Controllers.WebApi
+namespace _01_ASPMVCTest.Areas._09_WebApi.Controllers
 {
     public class _07_ODataController : ApiController
     {

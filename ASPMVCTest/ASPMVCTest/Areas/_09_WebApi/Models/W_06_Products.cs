@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace _01_ASPMVCTest.Models
+namespace _01_ASPMVCTest.Areas._09_WebApi.Models
 {
     public static class W_06_Products
     {

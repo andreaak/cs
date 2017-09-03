@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 
-namespace _01_ASPMVCTest.Controllers.WebApi
+namespace _01_ASPMVCTest.Areas._09_WebApi.Controllers
 {
     public class _03_HttpVerbAttributeController : ApiController
     {

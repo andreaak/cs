@@ -1,0 +1,40 @@
+﻿@model _01_ASPMVCTest.Areas._10_Async.Models.ServicesModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>Index</h2>
+    <h2>@ViewBag.Header</h2>
+    <table>
+        <tr>
+            <th>Последняя новость</th>
+            <td>@Html.DisplayFor(model => model.News.Time)</td>
+            <td>@Html.DisplayFor(model => model.News.Headline)</td>
+        </tr>
+        <tr>
+            <th>Погода в Киеве</th>
+            <td>@Html.DisplayFor(model => model.Weather.Temperature)</td>
+            <td>@Html.DisplayFor(model => model.Weather.AdditionalInformation)</td>
+        </tr>
+        <tr>
+            <th>Затраченное на получение информации время</th>
+            <td style="color: red; font-weight: bold;">@Html.DisplayFor(modelItem => modelItem.ElapsedTime)</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <ol>
+        @foreach (var item in Model.Messages)
+        {
+            <li>@item</li>
+        }
+    </ol>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>W_09_MessageHandlers_BaseInfo</title>
+    <link href="~/Content/My.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        <strong>Message Handler</strong> - это класс, который принимает запрос и формирует ответ.<br />
+        Производный от абстрактного класса HttpMessageHandler.<br />Встроенные обработчики сообщений:
+    </p>
+    <ul>
+        <li>HttpServer- получает запрос от клиента</li>
+        <li>HttpRoutingDispatcher - направляет запросы согласно маршрутизации</li>
+        <li>HttpControllerDispatcher - отправляет запросы к Web API контроллеру</li>
+    </ul>
+    <p>Назначение:</p>
+    <ul>
+        <li>Чтение или изменение HTTP заголовков запроса</li>
+        <li>Добавление заголовков к HTTP ответу</li>
+        <li>Проверка запроса перед передачей его контроллеру</li>
+    </ul>
+    <img src="~/Content/Images/message_handler.png" />
+</body>
+</html>

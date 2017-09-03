@@ -1,4 +1,4 @@
-﻿namespace _01_ASPMVCTest.Models
+﻿namespace _01_ASPMVCTest.Areas._09_WebApi.Models
 {
     public class W_06_Product
     {

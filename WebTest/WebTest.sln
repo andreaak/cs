@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebTest", "http://localhost:2949", "{A209F6C1-1002-4BB4-8FB7-E7DC77EC3322}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -64,6 +64,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_MVC4EXample_TaskManager
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_ASPMVCTest.Tests", "..\ASPMVCTest\TaskManager.Web.Tests\_02_ASPMVCTest.Tests.csproj", "{93B65EDF-9E9A-419D-8488-325F53B33B2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_SlowService", "..\ASPMVCTest\SlowService\_02_SlowService.csproj", "{DABDCB7B-C495-4C4E-9971-DC47C9456CDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,10 @@ Global
 		{93B65EDF-9E9A-419D-8488-325F53B33B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93B65EDF-9E9A-419D-8488-325F53B33B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93B65EDF-9E9A-419D-8488-325F53B33B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DABDCB7B-C495-4C4E-9971-DC47C9456CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DABDCB7B-C495-4C4E-9971-DC47C9456CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DABDCB7B-C495-4C4E-9971-DC47C9456CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DABDCB7B-C495-4C4E-9971-DC47C9456CDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
