@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -99,6 +100,34 @@ namespace _01_ASPMVCTest.Areas._10_Async.Controllers
             model.AddMessage("Завершение метода действия");
 
             ViewBag.Header = "Асинхронный метод действия с параллельными задачами";
+            return View("Display", model);
+        }
+
+        // Если выполнение асинхронных задач не завершится в течении 1 секунды произойдет исключение TimeoutException
+        // Для того что бы таймаут сработал метод действия должен принимать параметр типа CancellationToken
+        [AsyncTimeout(1000)]
+
+        // Для того что бы отображались пользовательские страницы ошибок, в файл web.config нужно добавить
+        // <customErrors mode="On"></customErrors>
+        [HandleError(ExceptionType = typeof(TimeoutException), View = "TimeoutError")]
+        public async Task<ActionResult> A_05_AsyncTimeout(CancellationToken ctk)
+        {
+            ServicesModel model = new ServicesModel();
+            NewsClient newsClient = new NewsClient();
+            WeatherClient weatherClient = new WeatherClient();
+
+            model.AddMessage("Index запущен");
+
+            Task<NewsModel> newsTask = newsClient.GetNewsAsync();
+            Task<WeatherModel> weatherTask = weatherClient.GetWeatherInfoAsync();
+            await Task.WhenAll(newsTask, weatherTask);
+
+            model.News = newsTask.Result;
+            model.Weather = weatherTask.Result;
+
+            model.AddMessage("Index завершен");
+
+
             return View("Display", model);
         }
 

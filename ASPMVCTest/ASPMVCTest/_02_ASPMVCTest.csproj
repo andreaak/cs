@@ -324,7 +324,6 @@
     <Compile Include="Areas\_10_Async\Clients\WeatherClient.cs" />
     <Compile Include="Areas\_10_Async\Controllers\_01_HomeController.cs" />
     <Compile Include="Areas\_10_Async\Controllers\_03_AsyncMVC3Controller.cs" />
-    <Compile Include="Areas\_10_Async\Controllers\_04_AsyncMVC4Controller.cs" />
     <Compile Include="Areas\_10_Async\Models\NewsModel.cs" />
     <Compile Include="Areas\_10_Async\Models\ServicesModel.cs" />
     <Compile Include="Areas\_10_Async\Models\WeatherModel.cs" />
