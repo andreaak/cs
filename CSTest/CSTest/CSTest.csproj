@@ -397,7 +397,7 @@
     <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\spCustomerByName_Result.cs">
       <DependentUpon>ShopDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="21_Database\02_EntityFramework\Test.cs" />
+    <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\Test.cs" />
     <Compile Include="21_Database\03_LinqToSql\ShopDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -427,6 +427,7 @@
     <Folder Include="11_Input Output\" />
     <Folder Include="12_MultiThreading\04_Problems\" />
     <Folder Include="12_MultiThreading\06_ThreadPool\" />
+    <Folder Include="21_Database\02_EntityFramework\02_CodeFirst\" />
     <Folder Include="25_CS_NewFeatures\03_CS6\Setup\" />
   </ItemGroup>
   <ItemGroup>
@@ -436,6 +437,13 @@
     <Content Include="12_MultiThreading\07_AsyncAwait\awaiter.png" />
     <Content Include="AppData\DBScript.sql" />
     <Content Include="AppData\ShopDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AppData\ShopDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AppData\ShopDB_log.ldf">
+      <DependentUpon>ShopDB.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="AppData\ShopDB_log.ldf">
