@@ -4,10 +4,10 @@ using _01_ASPMVCTest.Areas._02_View.Models;
 
 namespace _01_ASPMVCTest.Areas._02_View.Controllers
 {
-    public class _05_HtmlHelperTemplatedMethodsController : Controller
+    public class _06_HtmlHelperTemplatedMethodsController : Controller
     {
         //
-        // GET: /_02_View/05_HtmlHelperTemplatedMethods/
+        // GET: /_02_View/06_HtmlHelperTemplatedMethods/
         public ActionResult Index()
         {
             return View();

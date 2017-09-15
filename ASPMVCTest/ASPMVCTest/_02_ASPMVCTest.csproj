@@ -264,7 +264,7 @@
     <Compile Include="Areas\_02_View\Controllers\_04_HtmlHelperMethodsController.cs" />
     <Compile Include="Areas\_02_View\Controllers\_05_HtmlHelperSelectMethodsController.cs" />
     <Compile Include="Areas\_02_View\Controllers\_10_WebGridController.cs" />
-    <Compile Include="Areas\_02_View\Controllers\_05_HtmlHelperTemplatedMethodsController.cs" />
+    <Compile Include="Areas\_02_View\Controllers\_06_HtmlHelperTemplatedMethodsController.cs" />
     <Compile Include="Areas\_02_View\Controllers\_08_PartialViewsController.cs" />
     <Compile Include="Areas\_02_View\Controllers\_07_LayoutsController.cs" />
     <Compile Include="Areas\_02_View\Controllers\_09_ChildActionsController.cs" />
@@ -504,11 +504,11 @@
     <Content Include="Areas\_02_View\Views\_10_WebGrid\BaseFunctionality.cshtml" />
     <Content Include="Areas\_02_View\Views\_10_WebGrid\WebGridStyles.cshtml" />
     <Content Include="Areas\_02_View\Views\_10_WebGrid\WebGridColumns.cshtml" />
-    <Content Include="Areas\_02_View\Views\_05_HtmlHelperTemplatedMethods\V_02_TemplatedHelperMethod.cshtml" />
-    <Content Include="Areas\_02_View\Views\_05_HtmlHelperTemplatedMethods\Index.cshtml" />
-    <Content Include="Areas\_02_View\Views\_05_HtmlHelperTemplatedMethods\V_03_Editor_Display_ForModel.cshtml" />
-    <Content Include="Areas\_02_View\Views\_05_HtmlHelperTemplatedMethods\V_04_ModelMetadata.cshtml" />
-    <Content Include="Areas\_02_View\Views\_05_HtmlHelperTemplatedMethods\V_05_SpecialTemplate.cshtml" />
+    <Content Include="Areas\_02_View\Views\_06_HtmlHelperTemplatedMethods\V_02_TemplatedHelperMethod.cshtml" />
+    <Content Include="Areas\_02_View\Views\_06_HtmlHelperTemplatedMethods\Index.cshtml" />
+    <Content Include="Areas\_02_View\Views\_06_HtmlHelperTemplatedMethods\V_03_Editor_Display_ForModel.cshtml" />
+    <Content Include="Areas\_02_View\Views\_06_HtmlHelperTemplatedMethods\V_04_ModelMetadata.cshtml" />
+    <Content Include="Areas\_02_View\Views\_06_HtmlHelperTemplatedMethods\V_05_SpecialTemplate.cshtml" />
     <Content Include="Areas\_02_View\Views\Shared\DisplayTemplates\RoleTemplate.cshtml" />
     <Content Include="Areas\_02_View\Views\Shared\EditorTemplates\RoleTemplate.cshtml" />
     <Content Include="Areas\_02_View\Views\_03_HtmlForms\V_02_FormCreation.cshtml" />
@@ -561,7 +561,7 @@
     <Content Include="Areas\_02_View\Views\_05_HtmlHelperSelectMethods\Index.cshtml" />
     <Content Include="Areas\_02_View\Views\_05_HtmlHelperSelectMethods\V_01_BaseInfo.cshtml" />
     <Content Include="Areas\_02_View\Views\_05_HtmlHelperSelectMethods\V_04_ListBox.cshtml" />
-    <Content Include="Areas\_02_View\Views\_05_HtmlHelperTemplatedMethods\V_01_BaseInfo.cshtml" />
+    <Content Include="Areas\_02_View\Views\_06_HtmlHelperTemplatedMethods\V_01_BaseInfo.cshtml" />
     <Content Include="Areas\E_30_Examples\Views\Web.config" />
     <Content Include="Areas\E_30_Examples\Views\_01_Home\Index.cshtml" />
     <Content Include="Areas\E_30_Examples\Views\_02_EF_CodeFirst\Create.cshtml" />
