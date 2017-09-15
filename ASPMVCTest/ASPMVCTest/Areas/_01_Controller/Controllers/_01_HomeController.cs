@@ -34,15 +34,31 @@ namespace _01_ASPMVCTest.Areas._01_Controller.Controllers
         {
             return View();
         }
-        
+
+        [HttpGet] // метод будет вызываться только при GET запросах 
         public ActionResult C_02_TestActions()
         {
             ViewBag.Message = "Get Method";
             return View();
         }
         
-        [HttpPost]
+        [HttpPost] // метод будет вызываться только при POST запросах 
         public ActionResult C_02_TestActions(int id)
+        {
+            ViewBag.Message = string.Format("Post Method: Id = {0}", id);
+            return View();
+        }
+
+
+        [HttpGet] // метод будет вызываться только при GET запросах 
+        public ActionResult C_03_TestActions(int id = -1)
+        {
+            ViewBag.Message = string.Format("Get Method: Id = {0}", id);
+            return View();
+        }
+
+        [HttpPost, ActionName("C_03_TestActions")] // метод будет вызываться только при POST запросах 
+        public ActionResult C_03_TestActions_(int id)
         {
             ViewBag.Message = string.Format("Post Method: Id = {0}", id);
             return View();

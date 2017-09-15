@@ -647,6 +647,7 @@
     <Content Include="Areas\_10_Async\Views\_01_Home\Index.cshtml" />
     <Content Include="Areas\_10_Async\Views\_01_Home\A_01_BaseInfo.cshtml" />
     <Content Include="Areas\_10_Async\Views\Shared\Display.cshtml" />
+    <Content Include="Areas\_01_Controller\Views\_01_Home\C_03_TestActions.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
