@@ -44,9 +44,9 @@ namespace Note.Domain.Common
         private static IDBWrapper GetDbWrapper(IContext context)
         {
             var connectionString = context.Parameters.FirstOrDefault(pr => pr.Name == OptionsUtils.ConnectionStringName);
-            var csValue = connectionString?.GetValue(context, null)?.ToString();
+            var csValue = connectionString?.GetValue(context, null)?.ToString() ?? OptionsUtils.ConnectionString;
             var provider = context.Parameters.FirstOrDefault(pr => pr.Name == OptionsUtils.ProviderName);
-            var prValue = provider?.GetValue(context, null)?.ToString();
+            var prValue = provider?.GetValue(context, null)?.ToString() ?? OptionsUtils.Provider;
 
             if (csValue == null)
             {

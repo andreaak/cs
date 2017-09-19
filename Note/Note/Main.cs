@@ -43,7 +43,7 @@ namespace Note
             rtfWrapper = new RtfWrapper(myRichEditControl);
             treeWrapper = new TreeWrapper(treeList1, rtfWrapper, presenter);
             exportHelper = new ExportHelper(treeWrapper, presenter);
-            Init(false);
+            Refresh(false);
         }
 
         #region BUTTON_HANDLERS
@@ -51,8 +51,7 @@ namespace Note
         private void barButtonConnect_ItemClick(object sender, EventArgs e)
         {
             OptionsUtils.ClearDbData();
-            bool res = presenter.Connect();
-            Init(res);
+            presenter.Connect();
         }
 
         private void barButtonItemAddDir_ItemClick(object sender, EventArgs e)
@@ -246,16 +245,23 @@ namespace Note
             this.spellChecker1.Dictionaries.Add(spellCheckerCustomDictionary);
         }
 
-        private void Init(bool isConnect)
+        public void Refresh(bool isConnect)
         {
-            EnableControls(isConnect);
-            if (isConnect)
+            if (this.InvokeRequired)
             {
-                presenter.Init();
-                rtfWrapper.Clear();
-                treeWrapper.SetDataSource();
-                Text = string.Format("{0} {1}", TITLE, presenter.GetConnectionDescription());
-                notifyIcon.Text = presenter.GetDBFileName();
+                Invoke(new Action<bool>(Refresh), isConnect);
+            }
+            else
+            {
+                EnableControls(isConnect);
+                if (isConnect)
+                {
+                    presenter.Init();
+                    rtfWrapper.Clear();
+                    treeWrapper.SetDataSource();
+                    Text = string.Format("{0} {1}", TITLE, presenter.GetConnectionDescription());
+                    notifyIcon.Text = presenter.GetDBFileName();
+                }                
             }
         }
 

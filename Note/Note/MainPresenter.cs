@@ -58,7 +58,7 @@ namespace Note
             }
         }
 
-        public bool Connect()
+        public void Connect()
         {
             bool dbConnectionOk = false;
             bool showMessage = true;
@@ -70,9 +70,11 @@ namespace Note
                     DialogResult res = new DBDataForm().ShowDialog(view.Form);
                     if (res != DialogResult.OK)
                     {
-                        return false;
+                        view.Refresh(false);
+                        return;
                     }
                 }
+
                 DataManager = ObjectsFactory.Instance.GetService<DatabaseManager>();
                 if (DataManager.IsDBOnline())
                 {
@@ -103,7 +105,7 @@ namespace Note
             {
                 HandleError(showMessage, errorMessage);
             }
-            return dbConnectionOk;
+            view.Refresh(dbConnectionOk);
         }
 
         public string GetDBFileName()
@@ -342,9 +344,16 @@ namespace Note
 
         public void ShowLogs()
         {
-            Logs form = new Logs();
-            form.LoadData(DataManager.Logs);
-            form.Show();
+            try
+            {
+                Logs form = new Logs();
+                form.LoadData(DataManager.Logs);
+                form.Show();
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+            }
         }
 
         private void HandleError(bool showMessage, string errorMessage)
@@ -373,10 +382,7 @@ namespace Note
                     dataManagerLocal = ObjectsFactory.Instance.GetService<DatabaseManager>();
                 }else
                 {
-                    string connectionString = OptionsUtils.GetConnectionString(dataSource);
-                    dataManagerLocal = ObjectsFactory.Instance.GetService<DatabaseManager>(
-                        new KeyValuePair<string, object>(OptionsUtils.ProviderName, OptionsUtils.Provider),
-                        new KeyValuePair<string, object>(OptionsUtils.ConnectionStringName, connectionString));
+                    dataManagerLocal = GetDatabaseManager(dataSource);
                 }
                 if (dataManagerLocal.IsDBOnline())
                 {
@@ -401,6 +407,15 @@ namespace Note
         private IEnumerable<DescriptionWithStatus> GetModifiedDescriptions(DatabaseManager dataManagerLocal)
         {
             return DataManager.GetModifiedDescriptions(dataManagerLocal);
+        }
+
+        private DatabaseManager GetDatabaseManager(string dataSource)
+        {
+            string connectionString = OptionsUtils.GetConnectionString(dataSource);
+            return ObjectsFactory.Instance.GetService<DatabaseManager>(
+                new KeyValuePair<string, object>(OptionsUtils.ProviderName, OptionsUtils.Provider),
+                new KeyValuePair<string, object>(OptionsUtils.ConnectionStringName, connectionString));
+
         }
     }
 }

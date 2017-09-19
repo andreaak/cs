@@ -115,7 +115,7 @@
             this.Controls.Add(this.treeList);
             this.Name = "ItemsList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Changed Items";
+            this.Text = "Changed Items In Other DB";
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).EndInit();
             this.ResumeLayout(false);
 
