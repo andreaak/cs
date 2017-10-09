@@ -1,9 +1,12 @@
 using System;
 using System.Data;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using System.IO;
+using System.Linq;
+using DevExpress.Utils.Serializing;
 using Utils.WorkWithDB;
 using Utils;
 using Utils.ActionWindow;
@@ -145,6 +148,9 @@ namespace GrabDatabase
                     tempDs = new DataSet();
                     DBUtils.GetDatasetFromXML(tmp, tempDs);
                     tempDs.WriteXml(file, XmlWriteMode.WriteSchema);
+
+                    file = string.Format("{1}{0}{2}", Path.DirectorySeparatorChar, dir, name + "_data.sql");
+                    WriteSql(file, tempDs);
                 }
                 catch (Exception)
                 {
@@ -153,6 +159,72 @@ namespace GrabDatabase
                 }
             }
         }
+
+        private void WriteSql(string file, DataSet tempDs)
+        {
+            StreamWriter sw = File.CreateText(file);
+            try
+            {
+                foreach (DataTable table in tempDs.Tables)
+                {
+                    WriteTableSql(sw, table);
+                }
+            }
+            finally
+            {
+                sw.Close();
+            }
+
+        }
+
+        private void WriteTableSql(StreamWriter sw, DataTable table)
+        {
+            sw.WriteLine("---------" + table.TableName + "---------");
+            sw.WriteLine("");
+
+            StringBuilder sb = new StringBuilder();
+            foreach (DataColumn column in table.Columns)
+            {
+                if (sb.Length != 0)
+                {
+                    sb.Append(", ");
+                }
+                sb.Append(column.ColumnName);
+            }
+            sb.Insert(0, "INSERT INTO " + table.TableName + "(");
+            sb.Append(") VALUES ( {0} )");
+            string head = sb.ToString();
+            foreach (DataRow row in table.Rows)
+            {
+                string values = string.Join(", ", row.ItemArray.Select(GetText));
+                string res = string.Format(head, values);
+                sw.WriteLine(res);
+            }
+            sw.WriteLine("");
+        }
+
+        private string GetText(object item)
+        {
+            if (item == DBNull.Value)
+                return "NULL";
+            if (item is string)
+            {
+                return "\'" + item.ToString().Trim() + "\'";
+            }
+
+            if (item is DateTime)
+            {
+                return "CAST(N\'" + Convert.ToString(item, CultureInfo.InvariantCulture).Trim() + "\' AS DateTime )";
+            }
+
+            if (Convert.ToString(item, CultureInfo.InvariantCulture).Contains(","))
+            {
+                return "\'" + Convert.ToString(item, CultureInfo.InvariantCulture).Trim() + "\'";
+            }
+
+            return Convert.ToString(item, CultureInfo.InvariantCulture);
+        }
+
 
         private void SaveGridData(int[] sel, string itemName)
         {
