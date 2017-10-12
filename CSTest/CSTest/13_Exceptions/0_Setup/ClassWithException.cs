@@ -36,7 +36,7 @@ namespace CSTest._13_Exceptions._0_Setup
         public void RecurseMethod()
         {
             int[] arr = new int[10];
-            Debug.WriteLine(arr);
+            //Debug.WriteLine(arr);
             RecurseMethod();
         }
     }

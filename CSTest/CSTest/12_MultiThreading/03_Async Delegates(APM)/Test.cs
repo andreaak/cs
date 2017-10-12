@@ -313,41 +313,5 @@ namespace CSTest._12_MultiThreading
             Callback метод. Thread Id 9
             */
         }
-
-        [Test]
-        public void TestAsyncDelegates10BackgroundWorker()
-        {
-            _02_BackgroundWorker bg = new _02_BackgroundWorker();
-            bg.OnCalculate();
-            Thread.Sleep(2000);
-            /*
-            OnCalculate метод. Thread Id 10
-            OnDoWork метод. Thread Id 9
-            OnWorkCompleted метод. Thread Id 8
-            Result = 3
-            */
-        }
-
-        [Test]
-        public void TestAsyncDelegates11BackgroundWorker()
-        {
-            _02_BackgroundWorker bg = new _02_BackgroundWorker();
-            bg.OnCalculate();
-            Thread.Sleep(500);
-            try
-            {
-                bg.OnCancel();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Exception: " + ex.Message);
-            }
-            /*
-            OnCalculate метод. Thread Id 10
-            OnDoWork метод. Thread Id 9
-            OnWorkCompleted метод. Thread Id 8
-            Result = 3
-            */
-        }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using CSTest._05_Delegates_and_Events._02_Events._01_Theory;
-using CSTest._05_Delegates_and_Events._02_Events._0_Setup;
-using CSTest._05_Delegates_and_Events._02_Events._0_Setup.Accessors;
+﻿using CSTest._05_Delegates_and_Events._02_Events._01_Theory;
 using NUnit.Framework;
 
 namespace CSTest._05_Delegates_and_Events._02_Events

@@ -122,16 +122,18 @@
     <Compile Include="01_Elements CS\02_Variables\_04_sizeof.cs" />
     <Compile Include="04_Class\00_Base\0_Setup\TestClass.cs" />
     <Compile Include="05_Delegates and Events\02_Events\01_TheoryTest.cs" />
-    <Compile Include="05_Delegates and Events\02_Events\04_LambdaTest.cs" />
+    <Compile Include="05_Delegates and Events\03_Lambda\01_LambdaTest.cs" />
     <Compile Include="05_Delegates and Events\02_Events\03_AccessorEventTest.cs" />
-    <Compile Include="05_Delegates and Events\02_Events\0_Setup\04_Lambda.cs" />
     <Compile Include="05_Delegates and Events\02_Events\01_Theory\EventArgExtensions.cs" />
     <Compile Include="05_Delegates and Events\02_Events\01_Theory\03_Fax.cs" />
     <Compile Include="05_Delegates and Events\02_Events\01_Theory\02_MailManager.cs" />
     <Compile Include="05_Delegates and Events\02_Events\01_Theory\02_MailManagerCompiled.cs" />
     <Compile Include="05_Delegates and Events\02_Events\0_Setup\03_AccessorEventSetup.cs" />
     <Compile Include="05_Delegates and Events\02_Events\01_Theory\01_NewMailEventArgs.cs" />
-    <Compile Include="05_Delegates and Events\02_Events\0_Setup\05_ForwardEventWithDefferedSubscriptionForm.cs" />
+    <Compile Include="05_Delegates and Events\03_Lambda\0_Setup\01_Lambda.cs" />
+    <Compile Include="05_Delegates and Events\03_Lambda\0_Setup\02_ForwardEventWithDefferedSubscriptionForm.cs" />
+    <Compile Include="05_Delegates and Events\03_Lambda\0_Setup\TestForm.cs" />
+    <Compile Include="05_Delegates and Events\03_Lambda\0_Setup\TestFormCompiled.cs" />
     <Compile Include="07_Generics\03_ConstraintsTests.cs" />
     <Compile Include="07_Generics\02_CoContrVarianceTests.cs" />
     <Compile Include="10_Collections\01_Collections\Test.cs" />
@@ -154,6 +156,8 @@
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenRegistrationNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\0_Setup\CancellationTokenSourceNET.cs" />
+    <Compile Include="12_MultiThreading\08_WinFormsWPF\_02_BackgroundWorkerTest.cs" />
+    <Compile Include="13_Exceptions\02_FinallyTest.cs" />
     <Compile Include="24_Closure\Test.cs" />
     <Compile Include="25_CS_NewFeatures\01_CS4\01_Lazy\LazyNET.cs" />
     <Compile Include="25_CS_NewFeatures\01_CS4\01_Lazy\Test.cs" />
@@ -206,7 +210,7 @@
     <Compile Include="04_Class\16_Polymorfizm\Test.cs" />
     <Compile Include="05_Delegates and Events\01_Delegates\05_CoContrVarianceTest.cs" />
     <Compile Include="05_Delegates and Events\01_Delegates\0_Setup\TestClass.cs" />
-    <Compile Include="05_Delegates and Events\02_Events\05_ForwardEventWithDefferedSubscriptionTest.cs" />
+    <Compile Include="05_Delegates and Events\03_Lambda\02_ForwardEventWithDefferedSubscriptionTest.cs" />
     <Compile Include="05_Delegates and Events\02_Events\02_EventHandler.cs" />
     <Compile Include="06_Interface\0_Setup\BaseClass.cs" />
     <Compile Include="06_Interface\0_Setup\IDisposablee.cs" />
@@ -321,8 +325,8 @@
     <Compile Include="12_MultiThreading\02_Synchronization\01_User\_11_ManualResetEventSlimTest.cs" />
     <Compile Include="12_MultiThreading\03_Async Delegates%28APM%29\Test.cs" />
     <Compile Include="12_MultiThreading\03_Async Delegates%28APM%29\_01_Base.cs" />
-    <Compile Include="12_MultiThreading\03_Async Delegates%28APM%29\_02_BackgroundWorker.cs" />
-    <Compile Include="12_MultiThreading\05_TPL\01_Task\UIContext.cs" />
+    <Compile Include="12_MultiThreading\08_WinFormsWPF\0_Setup\_02_BackgroundWorker.cs" />
+    <Compile Include="12_MultiThreading\08_WinFormsWPF\0_Setup\UIContext.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_01_CreateTaskTest.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_02_TaskIdTest.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_03_WaitTest.cs" />
@@ -337,11 +341,11 @@
     <Compile Include="12_MultiThreading\07_AsyncAwait\01_TestVoid.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\10_ClassUnderTestReflected.cs" />
     <Compile Include="12_MultiThreading\08_WinFormsWPF\0_Setup\Setup.cs" />
-    <Compile Include="12_MultiThreading\08_WinFormsWPF\Test.cs" />
+    <Compile Include="12_MultiThreading\08_WinFormsWPF\_01_WinFormsWPFTest.cs" />
     <Compile Include="13_Exceptions\0_Setup\ClassWithException.cs" />
-    <Compile Include="13_Exceptions\Test.cs" />
+    <Compile Include="13_Exceptions\01_Test.cs" />
     <Compile Include="14_Garbage Collection\01_DisposeTest.cs" />
-    <Compile Include="14_Garbage Collection\0_Setup\ResourceGobbler.cs" />
+    <Compile Include="14_Garbage Collection\0_Setup\DisposableObject.cs" />
     <Compile Include="21_Database\01_ADO\01_ConnectedLayer\Test.cs" />
     <Compile Include="21_Database\02_EntityFramework\01_DatabaseFirst\Assets.cs">
       <DependentUpon>ShopDB.tt</DependentUpon>

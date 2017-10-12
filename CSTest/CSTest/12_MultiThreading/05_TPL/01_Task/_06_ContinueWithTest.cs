@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using CSTest._12_MultiThreading._08_WinFormsWPF._0_Setup;
 using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._05_TPL._01_Task

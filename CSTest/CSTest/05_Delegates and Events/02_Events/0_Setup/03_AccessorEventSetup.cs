@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup.Accessors
+namespace CSTest._05_Delegates_and_Events._02_Events._0_Setup
 {
     delegate void TestAccessorEventHandler();
 
