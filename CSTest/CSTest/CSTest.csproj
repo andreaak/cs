@@ -121,6 +121,8 @@
     <Compile Include="01_Elements CS\04_TypeConversion\_01_Casting.cs" />
     <Compile Include="01_Elements CS\02_Variables\_04_sizeof.cs" />
     <Compile Include="04_Class\00_Base\0_Setup\TestClass.cs" />
+    <Compile Include="04_Class\17_OperatorOverload\07_CastOperatorsTest.cs" />
+    <Compile Include="04_Class\17_OperatorOverload\0_Setup\07_CastOperatorsSetup.cs" />
     <Compile Include="05_Delegates and Events\02_Events\01_TheoryTest.cs" />
     <Compile Include="05_Delegates and Events\03_Lambda\01_LambdaTest.cs" />
     <Compile Include="05_Delegates and Events\02_Events\03_AccessorEventTest.cs" />
@@ -440,19 +442,9 @@
     <Content Include="12_MultiThreading\01_Thread\ThreadStates.png" />
     <Content Include="12_MultiThreading\07_AsyncAwait\awaiter.png" />
     <Content Include="AppData\DBScript.sql" />
-    <Content Include="AppData\ShopDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AppData\ShopDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="AppData\ShopDB.mdf" />
     <Content Include="AppData\ShopDB_log.ldf">
       <DependentUpon>ShopDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AppData\ShopDB_log.ldf">
-      <DependentUpon>ShopDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
