@@ -121,6 +121,8 @@
     <Compile Include="01_Elements CS\04_TypeConversion\_01_Casting.cs" />
     <Compile Include="01_Elements CS\02_Variables\_04_sizeof.cs" />
     <Compile Include="04_Class\00_Base\0_Setup\TestClass.cs" />
+    <Compile Include="04_Class\17_OperatorOverload\07_CastOperatorsTest.cs" />
+    <Compile Include="04_Class\17_OperatorOverload\0_Setup\07_CastOperatorsSetup.cs" />
     <Compile Include="05_Delegates and Events\02_Events\01_TheoryTest.cs" />
     <Compile Include="05_Delegates and Events\03_Lambda\01_LambdaTest.cs" />
     <Compile Include="05_Delegates and Events\02_Events\03_AccessorEventTest.cs" />
@@ -134,6 +136,9 @@
     <Compile Include="05_Delegates and Events\03_Lambda\0_Setup\02_ForwardEventWithDefferedSubscriptionForm.cs" />
     <Compile Include="05_Delegates and Events\03_Lambda\0_Setup\TestForm.cs" />
     <Compile Include="05_Delegates and Events\03_Lambda\0_Setup\TestFormCompiled.cs" />
+    <Compile Include="06_Interface\0_Setup\_08_CoContrVariance.cs" />
+    <Compile Include="06_Interface\_07_TestVirtualAndNewMethods.cs" />
+    <Compile Include="06_Interface\_08_CoContrVarianceTest.cs" />
     <Compile Include="07_Generics\03_ConstraintsTests.cs" />
     <Compile Include="07_Generics\02_CoContrVarianceTests.cs" />
     <Compile Include="10_Collections\01_Collections\Test.cs" />
@@ -223,7 +228,7 @@
     <Compile Include="06_Interface\_04_InterfaceInheritance.cs" />
     <Compile Include="06_Interface\_05_InterfaceUnion.cs" />
     <Compile Include="06_Interface\_06_AbstractClass.cs" />
-    <Compile Include="06_Interface\_07_InterfaceWithBaseClass.cs" />
+    <Compile Include="06_Interface\0_Setup\_07_InterfaceWithBaseClass.cs" />
     <Compile Include="06_Interface\_20_INotifyPropertyChangedTests.cs" />
     <Compile Include="07_Generics\0_Setup\Base.cs" />
     <Compile Include="07_Generics\0_Setup\Constraints\_09_FirstLevelConstraints.cs" />
@@ -440,19 +445,9 @@
     <Content Include="12_MultiThreading\01_Thread\ThreadStates.png" />
     <Content Include="12_MultiThreading\07_AsyncAwait\awaiter.png" />
     <Content Include="AppData\DBScript.sql" />
-    <Content Include="AppData\ShopDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AppData\ShopDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="AppData\ShopDB.mdf" />
     <Content Include="AppData\ShopDB_log.ldf">
       <DependentUpon>ShopDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AppData\ShopDB_log.ldf">
-      <DependentUpon>ShopDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

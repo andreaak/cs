@@ -165,49 +165,5 @@ namespace CSTest._06_Interface
             instance.Method();
             instance.Method2();
         }
-
-        [Test]
-        public void TestInterface9()
-        {
-            _07_InterfaceWithBaseClass instance = new _07_InterfaceWithBaseClass();
-            instance.Method();
-
-            IInterface7 instance1 = instance;
-            instance1.Method();
-        }
-
-        [Test]
-        public void TestInterface10()
-        {
-            _07_InterfaceWithBaseClass instance = new _07_InterfaceWithBaseClass();
-            instance.Method2();
-
-            IInterface8 instance1 = instance;
-            instance1.Method2();
-
-            instance1.Method3();
-            /*
-            DerivedClass.Method2()
-            BaseClass.Method2()
-            DerivedClass.Method3()
-             */
-        }
-
-        [Test]
-        public void TestInterface11()
-        {
-            _08_InterfaceWithBaseClass instance = new _08_InterfaceWithBaseClass();
-            instance.Method2();
-
-            IInterface8 instance1 = instance;
-            instance1.Method2();
-
-            instance1.Method3();
-            /*
-            DerivedClass.Method2()
-            DerivedClass.Method2()
-            DerivedClass.Method3()
-             */
-        }
     }
 }
