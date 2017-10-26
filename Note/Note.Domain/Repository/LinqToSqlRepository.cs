@@ -441,17 +441,14 @@ namespace Note.Domain.Repository
         private void AddParentDescriptions(IDataRepository repository, int id, List<DescriptionWithStatus> list)
         {
             Description entity = repository.Descriptions.FirstOrDefault(item => item.ID == id);
-            while (entity != null && entity.ParentID > DBConstants.BASE_LEVEL)
+            while (entity != null)
             {
-                Description parent = repository.Descriptions.FirstOrDefault(item => item.ID == entity.ParentID);
-                if (parent != null)
-                {
-                    DescriptionWithStatus desc = new DescriptionWithStatus();
-                    LinqToSqlConverter.Convert(desc, entity);
-                    desc.Status = DataStatus.Parent;
-                    list.Add(desc);
-                }
-                entity = parent;
+                DescriptionWithStatus desc = new DescriptionWithStatus();
+                LinqToSqlConverter.Convert(desc, entity);
+                desc.Status = DataStatus.Parent;
+                list.Add(desc);
+
+                entity = repository.Descriptions.FirstOrDefault(item => item.ID == entity.ParentID);
             }
         }
 
