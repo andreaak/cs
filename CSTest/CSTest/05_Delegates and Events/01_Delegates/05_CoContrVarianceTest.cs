@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using CSTest._05_Delegates_and_Events._01_Delegates._0_Setup;
 using NUnit.Framework;
 
@@ -76,6 +77,33 @@ namespace CSTest._05_Delegates_and_Events._01_Delegates
             Debug.WriteLine("FourthMethod - covariance and contrvariance");
             Debug.WriteLine("In param: " + typeof(TestClassBase));
             return new TestClass();
+        }
+
+        [Test]
+        public void TestDelegateCoContrVariance2FrameworkTypes()
+        {
+            Func<string, object> del = TestMethodBase;
+            Debug.WriteLine(del("___"));
+            del = TestMethodDerived;
+            Debug.WriteLine(del("___"));
+            /*
+            Parameter: System.String
+            System.Object
+            Parameter: System.String
+            TEST
+            */
+        }
+
+        private object TestMethodBase(string p)
+        {
+            Debug.WriteLine("Parameter: " + p.GetType());
+            return new object();
+        }
+
+        private string TestMethodDerived(object p)
+        {
+            Debug.WriteLine("Parameter: " + p.GetType());
+            return "TEST";
         }
     }
 }
