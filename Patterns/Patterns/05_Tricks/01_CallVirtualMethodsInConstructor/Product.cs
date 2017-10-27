@@ -1,4 +1,4 @@
-using System.Diagnostics;
+п»їusing System.Diagnostics;
 
 namespace Patterns._05_Tricks._01_CallVirtualMethodsInConstructor
 {
@@ -14,8 +14,8 @@ namespace Patterns._05_Tricks._01_CallVirtualMethodsInConstructor
 
     public class ConcreteProduct : Product
     {
-        // Внутренний конструктор не позволит клиентам иерархии
-        // создавать объекты напрямую.
+        // Р’РЅСѓС‚СЂРµРЅРЅРёР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РЅРµ РїРѕР·РІРѕР»РёС‚ РєР»РёРµРЅС‚Р°Рј РёРµСЂР°СЂС…РёРё
+        // СЃРѕР·РґР°РІР°С‚СЊ РѕР±СЉРµРєС‚С‹ РЅР°РїСЂВ¤РјСѓСЋ.
         public ConcreteProduct()
         {
             Debug.WriteLine("ConcreteProduct: construction");
@@ -33,8 +33,8 @@ namespace Patterns._05_Tricks._01_CallVirtualMethodsInConstructor
     }
     public class ConcreteProduct2 : IPostConstruction
     {
-        // Внутренний конструктор не позволит клиентам иерархии
-        // создавать объекты напрямую.
+        // Р’РЅСѓС‚СЂРµРЅРЅРёР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РЅРµ РїРѕР·РІРѕР»РёС‚ РєР»РёРµРЅС‚Р°Рј РёРµСЂР°СЂС…РёРё
+        // СЃРѕР·РґР°РІР°С‚СЊ РѕР±СЉРµРєС‚С‹ РЅР°РїСЂВ¤РјСѓСЋ.
         public ConcreteProduct2()
         {
             Debug.WriteLine("ConcreteProduct2: construction");
