@@ -26,7 +26,12 @@ namespace CSTest._01_Elements_CS._02_Variables
             bool res = true;
             //Type of conditional expression cannot be determined because there is no implicit conversion between
             //var a = res ? new A() : new B();
+
             var b = res ? new A() : new C();
+
+            //Type of conditional expression cannot be determined because there is no implicit conversion between 
+            //'CSTest._01_Elements_CS._02_Variables._05_var.C' and 'CSTest._01_Elements_CS._02_Variables._05_var.D'
+            //var c = res ? new C() : new D();
         }
 
         public class A
@@ -36,6 +41,9 @@ namespace CSTest._01_Elements_CS._02_Variables
         { }
 
         public class C : A
+        { }
+
+        public class D : A
         { }
     }
 }
