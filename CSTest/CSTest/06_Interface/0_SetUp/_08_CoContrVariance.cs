@@ -15,7 +15,6 @@ namespace CSTest._06_Interface._0_Setup
         void Show(T obj);
     }
 
-
     // Реализовать интерфейс ICovariance. 
     class CovarianceClass<T> : ICovariance<T>, IContravariance<T>
     {

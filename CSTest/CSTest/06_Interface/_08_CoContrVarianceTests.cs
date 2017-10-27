@@ -5,24 +5,24 @@ using NUnit.Framework;
 namespace CSTest._06_Interface
 {
     [TestFixture]
-    public class _08_CoContrVarianceTest
+    public class _08_CoContrVarianceTests
     {
         [Test]
         public void TestInterfaceCoContrVariance1Covariance()
         {
             // Создать ссылку из интерфейса ICovariance на объект типа CovarianceClass<BaseCoContrClass>.
             // Это вполне допустимо как при наличии ковариантности, так и без нее. 
-            ICovariance<BaseCoContrClass> baseClass = new CovarianceClass<BaseCoContrClass>(new BaseCoContrClass("Alpha #1"));
+            ICovariance<BaseCoContrClass> baseClass = new CovarianceClass<BaseCoContrClass>(new BaseCoContrClass("Base"));
             Debug.WriteLine("Name: "  + baseClass.GetObject().GetName());
 
             //А теперь создать объект CovarianceClass<DerivedCoContrClass> и присвоить его переменной baseClass. 
             // Эта строка кода вполне допустима благодаря ковариантности.
-            baseClass = new CovarianceClass<DerivedCoContrClass>(new DerivedCoContrClass("Beta #1"));
+            baseClass = new CovarianceClass<DerivedCoContrClass>(new DerivedCoContrClass("Derived"));
             Debug.WriteLine("Name: " + baseClass.GetObject().GetName());
 
             /*
-            Name: Alpha #1
-            Name: Beta #1 
+            Name: Base
+            Name: Derived
             */
         }
 
