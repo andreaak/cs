@@ -6,7 +6,6 @@ using NUnit.Framework;
 
 namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
 {
-
     [TestFixture]
     public class Test
     {
@@ -156,18 +155,23 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             */
         }
 
-        //Выполнение запроса, не возвращающего записей. Запрос, не возвращающий набор результатов, обычно называется командным (action query). Основных видов командных запросов два:
-        //- DML-запросы (Data Manipulation Language, язык управления данными). Также называются обновлениями под управлением запросов. они изменяют содержимое БД:
-        //UPDATE Customers  SET  CompanyName  =  'NewConpanyNane' WHERE CustomerlD  =  'ALFKI'
-        //INSERT  INTO  Customers  (CustomerlD,  CompanyName) VALUES('NewID',  'NewCustomer')
-        //DELETE  FROM  Customers  WHERE  CustomerlD  =  'ALFKI'
-        //- DDL-запросы (Data Definition Language, язык определения данных). Эти запросы изменяют структуру БД:
-        //CREATE TABLE  Table1(
-        //Field1  int  NOT  NULL CONSTRAINT  PK_Table1  PRIMARY KEY,
-        //Field2  varchar(32))
-        //ALTER VIEW View1 
-        //AS  SELECT  Field1,  Field2  FROM Table1
-        //DROP  PROCEDURE  StoredProcedura1
+        /*
+        Выполнение запроса, не возвращающего записей. Запрос, не возвращающий набор результатов, 
+        обычно называется командным (action query). Основных видов командных запросов два:
+        - DML-запросы (Data Manipulation Language, язык управления данными). 
+            Также называются обновлениями под управлением запросов. Они изменяют содержимое БД:
+            UPDATE Customers  SET  CompanyName  =  'NewConpanyNane' WHERE CustomerlD  =  'ALFKI'
+            INSERT  INTO  Customers  (CustomerlD,  CompanyName) VALUES('NewID',  'NewCustomer')
+            DELETE  FROM  Customers  WHERE  CustomerlD  =  'ALFKI'
+        
+        - DDL-запросы (Data Definition Language, язык определения данных). Эти запросы изменяют структуру БД:
+            CREATE TABLE  Table1(
+            Field1  int  NOT  NULL CONSTRAINT  PK_Table1  PRIMARY KEY,
+            Field2  varchar(32))
+            ALTER VIEW View1 
+            AS  SELECT  Field1,  Field2  FROM Table1
+            DROP  PROCEDURE  StoredProcedura1
+        */
         [Test]
         public void TestExecuteNonQuery()
         {
@@ -205,7 +209,8 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             }
         }
 
-        //Выполнение запроса, возвращающего одно значение Предположим, вы хотите выполнить запрос и получить одну ячейку (одну запись, одно поле) данных.
+        //Выполнение запроса, возвращающего одно значение Предположим, вы хотите выполнить запрос 
+        //и получить одну ячейку (одну запись, одно поле) данных.
         [Test]
         public void TestExecuteScalar()
         {

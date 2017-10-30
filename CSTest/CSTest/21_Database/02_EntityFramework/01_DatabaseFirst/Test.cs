@@ -5,7 +5,6 @@ using NUnit.Framework;
 
 namespace CSTest._21_Database._02_EntityFramework._01_DatabaseFirst
 {
-
     [TestFixture]
     public class Test
     {

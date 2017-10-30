@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using NUnit.Framework;
 using System.Threading.Tasks;
+using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {

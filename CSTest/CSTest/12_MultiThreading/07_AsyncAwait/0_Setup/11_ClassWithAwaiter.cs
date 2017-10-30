@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CSTest._12_MultiThreading._07_AsyncAwait
+namespace CSTest._12_MultiThreading._07_AsyncAwait._0_Setup
 {
     class _11_ClassWithAwaiter
     {

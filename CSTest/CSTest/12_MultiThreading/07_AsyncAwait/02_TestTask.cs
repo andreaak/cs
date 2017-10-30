@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using System;
+using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {

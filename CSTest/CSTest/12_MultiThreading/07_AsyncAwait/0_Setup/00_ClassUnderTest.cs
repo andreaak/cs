@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
 using System.Net;
-#if CS5
-#endif
 using System.Threading;
 using System.Threading.Tasks;
+#if CS5
+#endif
 
-namespace CSTest._12_MultiThreading._07_AsyncAwait
+namespace CSTest._12_MultiThreading._07_AsyncAwait._0_Setup
 {
     class _00_ClassUnderTest
     {

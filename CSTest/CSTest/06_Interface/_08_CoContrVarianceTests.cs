@@ -13,7 +13,7 @@ namespace CSTest._06_Interface
             // Создать ссылку из интерфейса ICovariance на объект типа CovarianceClass<BaseCoContrClass>.
             // Это вполне допустимо как при наличии ковариантности, так и без нее. 
             ICovariance<BaseCoContrClass> baseClass = new CovarianceClass<BaseCoContrClass>(new BaseCoContrClass("Base"));
-            Debug.WriteLine("Name: "  + baseClass.GetObject().GetName());
+            Debug.WriteLine("Name: " + baseClass.GetObject().GetName());
 
             //А теперь создать объект CovarianceClass<DerivedCoContrClass> и присвоить его переменной baseClass. 
             // Эта строка кода вполне допустима благодаря ковариантности.
@@ -53,6 +53,21 @@ namespace CSTest._06_Interface
             CSTest._06_Interface._0_Setup.DerivedCoContrClass
             CSTest._06_Interface._0_Setup.DerivedCoContrClass
             CSTest._06_Interface._0_Setup.DerivedCoContrClass
+            */
+        }
+
+        [Test]
+        public void TestInterfaceCoContrVariance3RefAndValueType()
+        {
+            ICovariance<object> refType = new CovarianceClass<string>("String");
+            Debug.WriteLine("Name: " + refType.GetObject());
+
+            // Cannot implicitly convert type 'CSTest._06_Interface._0_Setup.CovarianceClass<int>' 
+            // to 'CSTest._06_Interface._0_Setup.ICovariance<object>'
+            //ICovariance<object> valueType = new CovarianceClass<int>(1);
+            //Debug.WriteLine("Name: " + valueType.GetObject());
+
+            /*
             */
         }
     }

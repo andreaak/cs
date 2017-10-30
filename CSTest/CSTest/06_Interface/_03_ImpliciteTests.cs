@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using CSTest._06_Interface._0_Setup;
+﻿using CSTest._06_Interface._0_Setup;
 using NUnit.Framework;
 
 namespace CSTest._06_Interface

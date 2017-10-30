@@ -47,7 +47,7 @@ namespace CSTest._31_Json
             {
                 using (var reader = new StreamReader(stream))
                 {
-                        return reader.ReadToEnd();
+                    return reader.ReadToEnd();
                 }
             }
         }

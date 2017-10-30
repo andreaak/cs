@@ -9,7 +9,7 @@ namespace CSTest._06_Interface._0_Setup
         void Method();
 
         void Method2();
-        
+
         void Method3();
     }
 

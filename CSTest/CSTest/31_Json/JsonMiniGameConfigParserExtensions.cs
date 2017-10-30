@@ -9,7 +9,6 @@ namespace CSTest._31_Json
 {
     public static class JsonMiniGameConfigParserExtensions
     {
-
         public static string CreateJson(this object reels)
         {
             return JsonConvert.SerializeObject(reels);
@@ -91,7 +90,6 @@ namespace CSTest._31_Json
             }
             return default(T);
         }
-
 
         public static T GetDescendantItem<T>(this JToken containerToken, string name)
         {

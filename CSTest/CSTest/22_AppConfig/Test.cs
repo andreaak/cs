@@ -90,7 +90,7 @@ namespace CSTest._22_AppConfig
             Key: dbFile_ Value: Test,Test
             */
         }
-        
+
         [Test]
         public void TestSetKey()
         {

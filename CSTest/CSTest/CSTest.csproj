@@ -258,12 +258,12 @@
     <Compile Include="10_Collections\02_GenericCollections\10_CollectionExtensions\Test.cs" />
     <Compile Include="12_MultiThreading\02_Synchronization\01_User\_08_SemaphoreSlimNET.cs" />
     <Compile Include="12_MultiThreading\05_TPL\02_TaskCompletionSource.cs" />
-    <Compile Include="12_MultiThreading\07_AsyncAwait\05_ClassUnderTest.cs" />
-    <Compile Include="12_MultiThreading\07_AsyncAwait\07_ClassUnderTest.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\0_Setup\05_ClassUnderTest.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\0_Setup\07_ClassUnderTest.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\07_TestCancel.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\06_TestFromResult.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\05_TestWhen.cs" />
-    <Compile Include="12_MultiThreading\07_AsyncAwait\11_ClassWithAwaiter.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\0_Setup\11_ClassWithAwaiter.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\11_TestAwaiter.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\10_TestReflected.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\02_TestTask.cs" />
@@ -343,9 +343,9 @@
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_08_CancelTaskTest.cs" />
     <Compile Include="12_MultiThreading\05_TPL\01_Task\_09_ExceptionTest.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\0_Setup\Setup.cs" />
-    <Compile Include="12_MultiThreading\07_AsyncAwait\00_ClassUnderTest.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\0_Setup\00_ClassUnderTest.cs" />
     <Compile Include="12_MultiThreading\07_AsyncAwait\01_TestVoid.cs" />
-    <Compile Include="12_MultiThreading\07_AsyncAwait\10_ClassUnderTestReflected.cs" />
+    <Compile Include="12_MultiThreading\07_AsyncAwait\0_Setup\10_ClassUnderTestReflected.cs" />
     <Compile Include="12_MultiThreading\08_WinFormsWPF\0_Setup\Setup.cs" />
     <Compile Include="12_MultiThreading\08_WinFormsWPF\_01_WinFormsWPFTest.cs" />
     <Compile Include="13_Exceptions\0_Setup\ClassWithException.cs" />

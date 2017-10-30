@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Threading;
+using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
 using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait

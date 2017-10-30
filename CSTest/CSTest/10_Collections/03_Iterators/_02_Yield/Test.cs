@@ -5,7 +5,7 @@ using System.Linq;
 namespace CSTest._10_Collections._03_Iterators._02_Yield
 {
     [TestFixture]
-    public partial class Test
+    public class Test
     {
         [Test]
         public void TestYield1()
@@ -196,7 +196,6 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
         [Test]
         public void TestYield6Generic()
         {
-
             char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M' };
             _04_YieldGeneric<char> mc = new _04_YieldGeneric<char>(chars);
             mc.IterateEnumerable(10).First();

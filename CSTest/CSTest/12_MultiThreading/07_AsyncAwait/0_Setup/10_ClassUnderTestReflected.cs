@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CSTest._12_MultiThreading._07_AsyncAwait
+namespace CSTest._12_MultiThreading._07_AsyncAwait._0_Setup
 {
     class _10_ClassUnderTestReflected
     {

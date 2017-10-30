@@ -45,7 +45,7 @@ namespace CSTest._06_Interface._0_Setup
         {
             Debug.WriteLine("_042_InterfaceInheritanceSameMethods.Method");
         }
-        
+
         void _042_1_IInterface.Method()
         {
             Debug.WriteLine("IInterface42_1.Method");
