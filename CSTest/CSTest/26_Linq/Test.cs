@@ -10,7 +10,7 @@ namespace CSTest._26_Linq
     public class Test
     {
         [Test]
-        public void TestDeferedExecution()
+        public void TestLinqDeferedExecution()
         {
             int[] a = { 1, 4, 3, 7, 8, 2, 9, 5, 6 };
 
@@ -25,7 +25,7 @@ namespace CSTest._26_Linq
         }
 
         [Test]
-        public void TestNotDeferedExecution()
+        public void TestLinqNotDeferedExecution()
         {
             int[] a = { 1, 4, 3, 7, 8, 2, 9, 5, 6 };
 
@@ -45,7 +45,7 @@ namespace CSTest._26_Linq
         }
 
         [Test]
-        public void TestSelectMany()
+        public void TestLinqSelectMany()
         {
             int[] a = { 1, 2, 3, 4, 5 };
             int[] b = { 6, 7, 8, 9, 10 };
@@ -66,7 +66,7 @@ namespace CSTest._26_Linq
         }
 
         [Test]
-        public void TestDefaultIfEmpty()
+        public void TestLinqDefaultIfEmpty()
         {
             int[] a = { 1, 2, 3, 4, 5 };
             int[] b = { 6, 7, 8, 9, 10 };
@@ -90,7 +90,7 @@ namespace CSTest._26_Linq
         }
 
         [Test]
-        public void Test1()
+        public void TestLinqWhere()
         {
             TestClass[] a =
             {
@@ -159,6 +159,34 @@ namespace CSTest._26_Linq
             6
             1
             77
+            */
+        }
+
+
+        [Test]
+        public void TestLinq2()
+        {
+            int[] a = { 1, 2, 3, 4, 5 };
+
+            var temp = a.Select(x =>
+            {
+                Debug.WriteLine("X");
+                return x * 2;
+            });
+
+            var temp1 = temp.OrderBy(x => x).ToList();
+            var temp2 = temp.OrderByDescending(x => x).ToList();
+            /*
+            X
+            X
+            X
+            X
+            X
+            X
+            X
+            X
+            X
+            X
             */
         }
     }
