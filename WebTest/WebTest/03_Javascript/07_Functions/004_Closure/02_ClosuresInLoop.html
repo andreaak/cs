@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Замыкание или closures</title>
+</head>
+<body>
+    <script>
+        var a = [1, 2, 3, 4, 5];
+        for (var i = 0; i < a.length; i++) {
+
+            a[i] = createfunc(i);
+        }
+        document.writeln(a[2]() + "<br/>");
+
+        function createfunc(i) {
+            return function () {
+                return i;
+            };
+        }
+    </script>
+</body>
+</html>

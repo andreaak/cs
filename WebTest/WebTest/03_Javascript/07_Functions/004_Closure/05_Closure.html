@@ -12,19 +12,27 @@
             width: 200px;
             height: 200px;
             background: grey;
+            padding: 10px;
         }
 
-        .item .item-active {
-            border: 3px solid black;
+        .item {
+            /*border: 3px solid black;*/
+            background: red;
         }
     </style>
     <script>
         window.onload = function () {
 
-            var item = document.querySelector('.items .item');
-
-            item.onclick = function () {
+            var item = document.querySelector('.items');
+            item.onclick = function (e) {
                 console.log(item);
+                e.stopPropagation();
+            }
+
+            item = document.querySelector('.items .item');
+            item.onclick = function (e) {
+                console.log(item);
+                e.stopPropagation();
             }
             //activeItem();//Uncaught ReferenceError: item is not defined
             activeItem2();

@@ -10,7 +10,7 @@
 
             function displayStr() {
                 // вложенная функция имеет доступ к переменной str
-                alert(str);
+                document.writeln(str + "</br>");
             }
 
             displayStr();
@@ -21,7 +21,7 @@
         function makeFunc() {
             var str = "Hello world";
             function displayStr() {
-                alert(str);
+                document.writeln(str);
             }
             // функция возвращается но не запускается.
             return displayStr;
@@ -34,6 +34,7 @@
         */
         var myFunc = makeFunc();
         myFunc();
+
     </script>
 </body>
 </html>
