@@ -1,16 +1,13 @@
 ﻿<!--
-
-    2. Помимо создания объекта через блок инициализации, можно реализовать
+    Помимо создания объекта через блок инициализации, можно реализовать
     создание через специально предусмотренный конструктор Object().
     Конструктор не принимает никаких параметров,
     а перед ним обязательно должно указываться ключевое слово new.
-
 -->
 
 <html>
 <head>
     <title>Обьекты</title>
-
     <script type="text/javascript">
 
         // Создаем обьект с именем point.
@@ -23,15 +20,12 @@
         */
         point.x = 10;
 
-        // Создаем свойство y и присваиваем ему значение.
-        point.y = 15;
-
         // Добавляем к объекту метод.
         point.f = function () {
-            document.write("x = ", point.x, "<br/>y = ", point.y, "<br/>");
+            document.write("x = ", point.x, "<br/>");
         };
 
-        point.f();
+        point.f();//x = 10
 
         // К строковому объекту можно добавить свойство.
         var strObj = new String("Hello");
@@ -69,18 +63,6 @@
 
         var obj = new Object(true);
         document.write(obj.constructor === Boolean, "<br/>");   // true
-
-        /*
-        x = 10
-        y = 15
-        strObj.myProp: 123
-        str.myProp: undefined
-        n.myProp: undefined
-        true
-        true
-        true
-        true
-        */
     </script>
 
 </head>

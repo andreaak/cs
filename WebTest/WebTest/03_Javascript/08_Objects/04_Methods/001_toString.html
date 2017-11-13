@@ -9,10 +9,6 @@
             this.height = h;
         }
 
-        Rectangle.prototype.getArea = function () {
-            return this.width * this.height;
-        }
-
         // переопределение метода toString из Object
         Rectangle.prototype.toString = function () {
             return "Прямоугольник W:" + this.width + " H:" + this.height;
@@ -21,8 +17,8 @@
         var rect1 = new Rectangle(100, 200);
         var rect2 = new Rectangle(400, 300);
 
-        document.write(rect1 + "<br />"); 
-        document.write(rect2.toString() + "<br />");
+        document.write(rect1 + "<br />");// Прямоугольник W:100 H:200
+        document.write(rect2.toString() + "<br />");//Прямоугольник W:400 H:300
 
     </script>
 

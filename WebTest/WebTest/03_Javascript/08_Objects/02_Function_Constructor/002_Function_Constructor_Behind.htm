@@ -1,0 +1,43 @@
+﻿<html>
+<head>
+    <title>Пользовательский конструктор</title>
+    <script type="text/javascript">
+
+        // this - контекст
+        function User(name) {
+            this.name = name;
+            this.say = function () {
+                document.write("Hello! My name is " + this.name + ".");
+            }
+        }
+
+        /*
+        При вызове функции с оператором new происходит следующее
+            1. Создается пустой объект.
+            2. Пустой объект наследует свойства и методы прототипа функции.
+            3. Ссылка на этот объект сохраняется в переменной this.
+            4. В функции-конструкторе добавляются новые свойства и методы в пустой объект.
+            5. В конце функции неявно возвращается объект на который ссылается this.
+
+        function User(name) {
+            // создаться пустой объект
+            // this = {}
+
+            // добавляются свойства и методы
+            this.name = name;
+            this.say = function () {
+                document.write("Hello! My name is " + name + ".");
+            }
+
+            // return this;
+        }
+        */
+        var u = new User("Ivan");
+        u.say();
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

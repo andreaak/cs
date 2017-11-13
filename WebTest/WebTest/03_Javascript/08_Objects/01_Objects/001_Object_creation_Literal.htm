@@ -40,17 +40,17 @@
                 return this;//return instance
             }
         };
-        document.write("instance.propertyA = ", instance.propertyA, "<br/>");
-        document.write("instance.propertyB = ", instance.propertyB, "<br/>");
-        document.write("instance.getType() = ", instance.getType(), "<br/>");
+        document.write("instance.propertyA = ", instance.propertyA, "<br/>");// 222
+        document.write("instance.propertyB = ", instance.propertyB, "<br/>");// 444
+        document.write("instance.getType() = ", instance.getType(), "<br/>");//[object Object]
         console.log(instance.getType());
         document.write("<br/>");
 
         // Присвоение новых значений свойствам.
         instance.propertyA = 333;       // 1 способ.
         instance["propertyB"] = 555;    // 2 способ.
-        document.write("instance.propertyA = ", instance.propertyA, "<br/>");
-        document.write("instance.propertyB = ", instance.propertyB, "<br/>");
+        document.write(instance.propertyA, "<br/>");// 333
+        document.write(instance.propertyB, "<br/>");// 555
         document.write("<br/>");
 
         // во время выполнения программы можно:
@@ -60,42 +60,27 @@
 
         // добавляем к объекту свойство.
         instance.name = "admin";
-        document.write("instance.name = ", instance.name, "<br/>");
+        document.write("instance.name = ", instance.name, "<br/>");// admin
 
         // добавляем метод.
         instance.getName = function () {
             return instance.name;
         }
-        document.write("instance.getName() = ", instance.getName(), "<br/>");
+        document.write("instance.getName() = ", instance.getName(), "<br/>");// admin
 
         // изменение метода.
         instance.getName = function () {
             return "anonymous";
         }
-        document.write("instance.getName() = ", instance.getName(), "<br/>");
+        document.write("instance.getName() = ", instance.getName(), "<br/>");// anonymous
 
         // добавление еще одного свойства.
         instance.newProperty = "Hello world";
-        document.write("instance.newProperty = ", instance.newProperty, "<br/>");
+        document.write("instance.newProperty = ", instance.newProperty, "<br/>");//Hello world
 
         // удаление свойства.
         delete instance.newProperty;
-        document.write("instance.newProperty = ", instance.newProperty, "<br/>");
-
-        /*
-        instance.propertyA = 222
-        instance.propertyB = 444
-        instance.getType() = [object Object]
-
-        instance.propertyA = 333
-        instance.propertyB = 555
-
-        instance.name = admin
-        instance.getName() = admin
-        instance.getName() = anonymous
-        instance.newProperty = Hello world
-        instance.newProperty = undefined
-        */
+        document.write("instance.newProperty = ", instance.newProperty, "<br/>");//undefined
     </script>
 
 </head>

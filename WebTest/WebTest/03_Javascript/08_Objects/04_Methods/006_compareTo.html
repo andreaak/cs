@@ -13,22 +13,9 @@
             return this.width * this.height;
         }
 
-        // переопределение метода toString из Object
-        Rectangle.prototype.toString = function () {
-            return "Прямоугольник W:" + this.width + " H:" + this.height;
-        }
-
         // переопределение метода valueOf из Object
         Rectangle.prototype.valueOf = function () {
             return this.getArea();
-        }
-
-        // метод для проверки равенства объектов
-        Rectangle.prototype.equals = function (that) {
-            if (this.width === that.width && this.height === that.height) {
-                return true;
-            }
-            return false;
         }
 
         // Метод для сравнения объеков.
@@ -46,57 +33,69 @@
                 return 0;
             }
             // или таким способом
-            return this.getArea() - otherObject.getArea();
+            //return this.getArea() - otherObject.getArea();
         }
 
         // объекты имеют одинаковые значения.
         var rect1 = new Rectangle(1000, 20);
-        var rect2 = new Rectangle(1000, 20);
+        var rect2 = new Rectangle(20, 1000);
 
-        // при наличии метода valueOf(), который возвращает простое значение операторы сравнения будут использовать это значение для
-        // определения какой объект больше, а какой меньше
-        // если реализация метода valueOf() не возможна, то в таком случае, рекомендуется реализовать метода compareTo(a)
+        /*
+        при наличии метода valueOf(), который возвращает простое значение
+        операторы сравнения будут использовать это значение для
+        определения какой объект больше, а какой меньше
+        если реализация метода valueOf() не возможна, то в таком случае,
+        рекомендуется реализовать метода compareTo(a)
+        */
         if (rect1 > rect2) {
-            document.write("Объкет rect1 > rect2<br />");
+            document.write("rect1 > rect2<br />");
         }
         if (rect1 < rect2) {
-            document.write("Объкет rect1 < rect2<br />");
+            document.write("rect1 < rect2<br />");
         }
         if (rect1 <= rect2) {
-            document.write("Объкет rect1 <= rect2<br />");
+            document.write("rect1 <= rect2<br />");
         }
         if (rect1 >= rect2) {
-            document.write("Объкет rect1 >= rect2<br />");
+            document.write("rect1 >= rect2<br />");
         }
-        if (rect1 == rect2) {
-            document.write("Объкет rect1 == rect2<br />");
+        if (rect1 === rect2) {
+            document.write("rect1 == rect2<br />");
         }
-        if (rect1 != rect2) {
-            document.write("Объкет rect1 != rect2<br />");
+        if (rect1 !== rect2) {
+            document.write("rect1 != rect2<br />");
         }
+        /*
+        rect1 <= rect2
+        rect1 >= rect2
+        rect1 != rect2
+        */
 
         document.write("<br/><br/>использование compareTo()<br/><br/>");
 
         if (rect1.compareTo(rect2) > 0)/*rect1 > rect2*/ {
-            document.write("Объкет rect1 > rect2<br />");
+            document.write("rect1 > rect2<br />");
         }
         if (rect1.compareTo(rect2) < 0)/*rect1 < rect2*/ {
-            document.write("Объкет rect1 < rect2<br />");
+            document.write("rect1 < rect2<br />");
         }
         if (rect1.compareTo(rect2) <= 0)/*rect1 <= rect2*/ {
-            document.write("Объкет rect1 <= rect2<br />");
+            document.write("rect1 <= rect2<br />");
         }
         if (rect1.compareTo(rect2) >= 0)/*rect1 >= rect2*/ {
-            document.write("Объкет rect1 >= rect2<br />");
+            document.write("rect1 >= rect2<br />");
         }
         if (rect1.compareTo(rect2) == 0)/*rect1 == rect2*/ {
-            document.write("Объкет rect1 == rect2<br />");
+            document.write("rect1 == rect2<br />");
         }
         if (rect1.compareTo(rect2) != 0)/*rect1 != rect2*/ {
-            document.write("Объкет rect1 != rect2<br />");
+            document.write("rect1 != rect2<br />");
         }
-
-
+        /*
+        rect1 <= rect2
+        rect1 >= rect2
+        rect1 == rect2
+        */
     </script>
 </head>
 <body>

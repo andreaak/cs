@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Метод equals</title>
+
+    <script type="text/javascript">
+        function Rectangle(w, h) {
+            this.width = w;
+            this.height = h;
+        }
+
+        // объекты имеют одинаковые значения.
+        var rect1 = new Rectangle(100, 200);
+        var rect2 = new Rectangle(100, 200);
+
+        // оператор сравнения проверяет равенство ссылок а не равенство значений свойств объектов
+        var res = rect1 == rect2;
+        document.write(res + "<br/>");// false
+
+        var rect3 = rect1; // rect1 и rect3 ссылки на один и тот же объект в памяти
+        res = rect3 == rect1;
+        document.write(res);// true
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+    hasOwnProperty метод из Object с его помощью можно проверить
+    существует ли свойство у конкретного объекта не проверяя наличие свойств у прототипа.
+-->
+<head>
+    <title>Метод hasOwnProperty</title>
+
+    <script type="text/javascript">
+        function Rectangle(w, h) {
+            this.width = w;
+            this.height = h;
+        }
+
+        Rectangle.prototype.getArea = function() {
+            return this.width * this.height;
+        }
+
+        Rectangle.prototype.name = "RECTANGLE";
+
+        var rect1 = new Rectangle(100, 200);
+
+        document.write(rect1.hasOwnProperty("width") + "<br />");// true
+        document.write(rect1.hasOwnProperty("name") + "<br />");// false
+    </script>
+</head>
+<body>
+
+</body>
+</html>

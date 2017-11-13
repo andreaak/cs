@@ -28,9 +28,11 @@
             // свойства
             this.width = w;
             this.height = h;
-
-            // Создавая метод в объекте бессмысленно расходуется память, так как
-            // каждый новый объект созданный этой функцией-конструктором будет содержать в себе копию метода.
+            /* 
+            Создавая метод в объекте бессмысленно расходуется память, 
+            так как каждый новый объект созданный этой функцией-конструктором 
+            будет содержать в себе копию метода.
+            */
             //this.getArea = function () {
             //    return this.width * this.height;
             //}
@@ -51,14 +53,11 @@
         var rect = new Rectangle(100, 50);
         var rect2 = new Rectangle(200, 50);
 
-        document.write("Площадь прямоугольника 1: " + rect.getArea() + "<br/>");
-        document.write("Имя прямоугольника 1: " + rect.name + "<br />");
+        document.write(rect.getArea() + "<br/>");//5000
+        document.write(rect.name + "<br />");//
 
-        document.write("Площадь прямоугольника 2: " + rect2.getArea() + "<br/>");
-        document.write("Имя прямоугольника 2: " + rect2.name + "<br />");
-
-        document.write("Name: " + rect.toStr() + "<br/>");
-
+        document.write(rect2.getArea() + "<br/>");//10000
+        document.write(rect2.name + "<br />");//RECTANGLE
         /*
         При попытке смены значения, которое было унаследовано от прототипа,
         в объекте будет создана копия свойства (свойство прототипа не изменится).
@@ -66,33 +65,13 @@
         только через операцию Rectangle.prototype.name
         */
         rect.name = "first rectangle";
-        document.write("После смены имени объекта rect1<br/>");
-        document.write("Имя прямоугольника 1: " + rect.name + "<br />");
-        document.write("Имя прямоугольника 2: " + rect2.name + "<br />");
+        document.write(rect.name + "<br />");//first rectangle
+        document.write(rect2.name + "<br />");//RECTANGLE
 
         Rectangle.prototype.name = "first rectangle";
+        document.write(rect.name + "<br />");//first rectangle
+        document.write(rect2.name + "<br />");//first rectangle
 
-        document.write("После смены прототипа<br/>");
-        document.write("Имя прямоугольника 1: " + rect.name + "<br />");
-        document.write("Имя прямоугольника 2: " + rect2.name + "<br />");
-
-        /*
-        Площадь прямоугольника 1: 5000
-        Имя прямоугольника 1: RECTANGLE
-
-        Площадь прямоугольника 2: 10000
-        Имя прямоугольника 2: RECTANGLE
-
-        Name: RECTANGLE
-
-        После смены имени объекта rect1
-        Имя прямоугольника 1: first rectangle
-        Имя прямоугольника 2: RECTANGLE
-
-        После смены прототипа
-        Имя прямоугольника 1: first rectangle
-        Имя прямоугольника 2: first rectangle
-        */
     </script>
 
 </head>

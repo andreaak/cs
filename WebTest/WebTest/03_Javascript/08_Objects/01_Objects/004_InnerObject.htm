@@ -3,16 +3,13 @@
     в качестве содержимого свойства поместить описание еще одного объекта.
     При обращении к свойствам вложенных объектов необходимо полностью указывать путь,
     например:
-
         human.ocupation.company
-
     - обращаемся к свойству company объекта ocupation, который вложен в объект human
 -->
 
 <html>
 <head>
     <title>Вложенные обьекты</title>
-
     <script type="text/javascript">
 
         var human = {
@@ -27,20 +24,13 @@
             }
         };
 
-        document.write("<p>First name: " + human.firstName);
-        document.write("<p>Second name: " + human.secondName);
-        document.write("<p>Age: " + human.age + " years old");
+        document.write("First name: " + human.firstName + "<br/>");//Alex
+        document.write("Second name: " + human.secondName + "<br/>");//Jazun
+        document.write("Age: " + human.age + " years old" + "<br/>");//27 years old
 
         // Обращение к вложенному объекту.
-        document.write("<p>Company: " + human.occupation.company);
-        document.write("<p>Position: " + human.occupation.position);
-        /*
-        First name: Alex
-        Second name: Jazun
-        Age: 27 years old
-        Company: Microsoft
-        Position: Web Developer
-        */
+        document.write("Company: " + human.occupation.company + "<br/>");//Microsoft
+        document.write("Position: " + human.occupation.position);//Web Developer
     </script>
 
 </head>

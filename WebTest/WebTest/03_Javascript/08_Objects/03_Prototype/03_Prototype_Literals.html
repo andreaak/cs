@@ -1,9 +1,5 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<!--
-
-
--->
 <head>
     <title>Прототип</title>
 
@@ -17,22 +13,16 @@
         }
 
         var base = {
-            name: "Jhon"
+            name: "John"
         };
 
         var derived = {
 
         };
         derived.__proto__ = createObj(base);
-        document.write(derived.name, "<br/>");
-        document.write(derived.hasOwnProperty("name"), "<br/>");
-        document.write(base.hasOwnProperty("name"), "<br/>");
-
-        /*
-        Jhon
-        false
-        true
-        */
+        document.write(derived.name, "<br/>");// John
+        document.write(derived.hasOwnProperty("name"), "<br/>");//false
+        document.write(base.hasOwnProperty("name"), "<br/>");//true
     </script>
 
 </head>

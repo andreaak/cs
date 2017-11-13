@@ -1,5 +1,4 @@
 ﻿<!--
-
     Циклическая конструкция for in, используется для перебора
     элементов массива или перебора свойств объекта.
 
@@ -17,41 +16,57 @@
     <script type="text/javascript">
 
         var house = {
-            roof: "<img src='../../Images/Roof.gif'/><br/>",
-            secondFloor: "<img src='../../Images/SecondFloor.gif'/><br/>",
-            firstFloor: "<img src='../../Images/FirstFloor.gif'/><br/>",
-            basement: "<img src='../../Images/Basement.gif'/><br/>",
-            address: "<p style='color:green'>UK. London. Muswell Hill. N10<hr/>"
+            roof: "Roof",
+            secondFloor: "SecondFloor",
+            firstFloor: "FirstFloor",
+            basement: "Basement",
+            address: "UK. London. Muswell Hill. N10"
         }
-
-        document.write("<br/>");
 
         // Перебор значений свойств в обьекте - house
         for (element in house) {
-            document.write(house[element]);
+            document.write(house[element] + "<br/>");
         }
+        /*
+        Roof
+        SecondFloor
+        FirstFloor
+        Basement
+        UK. London. Muswell Hill. N10
+        */
         document.write("<br/>");
 
         var test = {
-            roof: "roof value",
-            secondFloor: "secondFloor value",
-            firstFloor: "firstFloor value",
-            basement: "basement value"
+            roof: "Roof",
+            secondFloor: "SecondFloor",
+            firstFloor: "FirstFloor",
+            basement: "Basement"
         }
         ///
         for (element in test) {
             document.write("Key: ", element, " Value: ", test[element], "<br/>");
         }
+        /*
+        Key: roof Value: Roof
+        Key: secondFloor Value: SecondFloor
+        Key: firstFloor Value: FirstFloor
+        Key: basement Value: Basement
+        */
         document.write("<br/>");
         ///
         delete (test.secondFloor);
         ///
-        document.write("Without own property<br/>");
+        document.write("Delete secondFloor<br/>");
         for (element in test) {
             document.write("Key: ", element, " Value: ", test[element], "<br/>");
         }
+        /*
+        Key: roof Value: Roof
+        Key: firstFloor Value: FirstFloor
+        Key: basement Value: Basement
+        */
         document.write("<br/>");
-        ///
+
         document.write("With own property<br/>");
         for (element in test) {
             if (test.hasOwnProperty(element)) {
@@ -59,24 +74,23 @@
             }
         }
         document.write("<br/>");
-        ///
+
         document.write("Use for<br/>");
         for (var i = 0; i < test.length; i++) {//test.length = undefined
             document.write(test[i], "<br/>");
         }
         document.write("<br/>");
-        ///
+
         var test2 = {
             items: [
-                { roof: "roof value" },
-                { secondFloor: "secondFloor value" },
-                { firstFloor: "firstFloor value" },
-                { basement: "basement value" }
+                { roof: "Roof" },
+                { secondFloor: "SecondFloor" },
+                { firstFloor: "FirstFloor" },
+                { basement: "Basement" }
             ]
         }
 
-        document.write("Use ordered for<br/>");
-        //Гарантированный порядок вывода через массив
+        document.write("Гарантированный порядок вывода через массив<br/>");
         for (var i = 0; i < test2.items.length; i++) {
             var item = test2.items[i];
             for (element in item) {
@@ -87,28 +101,11 @@
         }
 
         /*
-        Key: roof Value: roof value
-        Key: secondFloor Value: secondFloor value
-        Key: firstFloor Value: firstFloor value
-        Key: basement Value: basement value
-
-        Without own property
-        Key: roof Value: roof value
-        Key: firstFloor Value: firstFloor value
-        Key: basement Value: basement value
-
-        With own property
-        Key: roof Value: roof value
-        Key: firstFloor Value: firstFloor value
-        Key: basement Value: basement value
-
-        Use for
-
-        Use ordered for
-        Key: roof Value: roof value
-        Key: secondFloor Value: secondFloor value
-        Key: firstFloor Value: firstFloor value
-        Key: basement Value: basement value
+        Гарантированный порядок вывода через массив
+        Key: roof Value: Roof
+        Key: secondFloor Value: SecondFloor
+        Key: firstFloor Value: FirstFloor
+        Key: basement Value: Basement
         */
     </script>
 
