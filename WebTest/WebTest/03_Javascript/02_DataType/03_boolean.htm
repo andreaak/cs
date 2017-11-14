@@ -17,22 +17,21 @@
         var bool1 = true;
         var bool2 = false;
 
-        document.write(bool1 + "<br/>");
-        document.write(bool2 + "<br/><hr/>");
+        document.write(bool1 + "<br/>");//true
+        document.write(bool2 + "<br/>");//false
 
         bool1 = 1;
         bool2 = 0;
 
-        document.write(bool1 + "<br/>");
-        document.write(bool2 + "<br/>");
+        document.write(bool1 + "<br/>");//1
+        document.write(bool2 + "<br/>");//0
 
-        /*
-        true
-        false
-        1
-        0
-        */
-
+        var message = " Hello world ! " ;
+        var messageAsBoolean = Boolean(message);
+        document.write(messageAsBoolean + "<br/>");//true
+        if (message) {
+            document.write(message + "<br/>");//Hello world ! 
+        }
     </script>
 
 </head>

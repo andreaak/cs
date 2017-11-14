@@ -1,0 +1,58 @@
+﻿<!--
+
+    Строки - тип данных для представления текста (в строку может входить любой UNICODE символ)
+    строковые литералы нужно заключать в согласованные пары одинарных или двойных кавычек.
+
+    Конкатенация (лат. concatenatio «присоединение цепями; сцепле́ние») — 
+    операция склеивания объектов линейной структуры, обычно строк.
+
+-->
+
+<html>
+<head>
+    <title>Строки, конкатенация</title>
+
+    <script type="text/javascript">
+
+        var string1 = "Hello";
+        var string2 = 'World';
+        //var error = 'World";//синтаксическая ошибка - разные кавычки
+        var text = "This is the letter sigma : \u03a3.";
+        document.write(text + "<br/>");//This is the letter sigma : Σ.
+        var length = text.length;
+        document.write(length + "<br/>");//29
+
+        var string3 = "World\"Test"; //использование кавычки в строке
+        document.write(string3 + "<br/>");//World"Test
+        string3 = 'World"Test'; //использование кавычки в строке
+        document.write(string3 + "<br/>");//World"Test
+
+        var lang = "Java";
+        lang = lang + "Script";//JavaScript
+
+
+        var resString = string1 + string2; // конкатенация значений переменных string1 и string2
+        document.write(resString + "<br/>");//HelloWorld
+
+        var str = "10";
+        var a = 1;
+        // Конкатенация
+        // Произошло неявное преобразование значения типа Number в тип String.
+        // Значение в переменной (a) неявно преобразуется в строку (т.е в значение типа String)
+        // и далее над этой строкой-числом производится операция конкатенации.
+        document.write(str + a + "<br/>");//101
+        document.write(a + str + "<br/>");//110
+
+        // Произошло неявное преобразование значения типа String в тип Number.
+        // Значение в переменной str неявно преобразуется в число (т.е в значение типа Number)
+        // и далее над этим числом производится арифметическая операция.
+        document.write(a + (+str) + "<br/>");//11
+        document.write(str - a + "<br/>");//9
+        document.write(str * "2" + "<br/>");//20
+        document.write(str / "2" + "<br/>");//5
+    </script>
+
+</head>
+<body>
+</body>
+</html>

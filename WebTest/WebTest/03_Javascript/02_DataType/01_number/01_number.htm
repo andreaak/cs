@@ -1,0 +1,59 @@
+﻿<!--
+    Все числа хранятся в формате float64 - 8 байт с плавающей точкой.
+    В этом формате не всегда возможны точные вычисления.
+        Infinity
+        NaN - не число
+        Number.MAX_VALUE - максимально допустимое значение 1.7976931348623157e+308
+        Number.MIN_VALUE - минимально допустимое значение в 5e-324
+        Number.NaN - не число
+        Number.POSITIVE_INFINITY - + бессконечность
+        Number.NEGATIVE_INFINITY - - бессконечность
+-->
+
+<html>
+<head>
+    <title>Number</title>
+
+    <script type="text/javascript">
+
+        var intNum = 10;// целое число
+
+        var octalNum1 = 070;//56 в восьмеричном формате
+        var octalNum2 = 079;//недопустимое восьмеричное значение - интерпретируется как 79
+        var octalNumЗ = 08;//недопустимое восьмеричное значение - интерпретируется как 8
+
+        var hexNum1 = 0xA;// 10 в шестнадцатеричном формате
+        var hexNum2 = 0x1f;// 31 в шестнадцатеричном формате
+
+        var floatNum1 = 1.1;
+        var floatNum2 = 0.1;
+        var floatNumЗ = .1;//допустимо, но не рекомендуется
+
+        var floatNum4 = 1.;// нет разрядов после десятичной точки - интерпретируется как целое число 1
+        var floatNum5 = 10.0;// нет дробной части - интерпретируется как целое число 10
+
+        var floatNumExp = 3.125e7;//31250000
+
+        if (floatNum1 + floatNum2 == 1.2) { // не делайте так!
+            alert("You got 1.2");
+        }
+
+        document.write(Number.NaN + "<br/>");// NaN
+        document.write(Number.MAX_VALUE + "<br/>");//1.7976931348623157e+308
+        document.write(Number.MIN_VALUE + "<br/>");//5e-324
+        document.write(Number.POSITIVE_INFINITY + "<br/>");//Infinity
+        document.write(Number.NEGATIVE_INFINITY + "<br/>");//-Infinity
+
+        var result = 8 / 0;
+        document.write(result + "<br />");//Infinity
+
+        var result = -8 / 0;
+        document.write(result + "<br />");//-Infinity
+
+        var result = Number.МAX_VALUE + Number.МAX_VALUE;
+        document.write(isFinite(result));//false
+    </script>
+</head>
+<body>
+</body>
+</html>

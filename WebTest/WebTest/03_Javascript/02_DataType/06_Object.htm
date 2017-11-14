@@ -1,0 +1,89 @@
+﻿<!--
+    typeof - оператор для получения типа объекта в виде строкового значения// аналог GetType() в C#
+    Оператор typeof может быть удобен для того что бы отличить объект от базового типа.
+-->
+
+<html>
+<head>
+    <title>Пример применения методов</title>
+
+    <script type="text/javascript">
+        var number = 5;
+        document.write(typeof number + "<br/>");//"number"
+
+        var nan = Number.NaN;
+        document.write(typeof nan + "<br/>");//"number"
+
+        var str = "Text";
+        document.write(typeof str + "<br/>");//"string"
+
+        var bool = true;
+        document.write(typeof bool + "<br/>");//"boolean"
+
+        var undef;
+        document.write(typeof undef + "<br/>");//"undefined"
+
+        var nl = null;
+        document.write(typeof nl + "<br/>");//"object"
+
+        var obj = new Object();
+        document.write("Object type: " + typeof obj + "<br/>");//"object"
+
+        var date = new Date();
+        document.write("Date type: " + typeof date + "<br/>");//"object"
+
+        document.write("toString type: " + typeof date.toString + "<br/>");//"function"
+
+        function test() {
+
+        }
+        document.write("function type: " + typeof test + "<br/>");//"function"
+
+        var arr = new Array();
+        document.write("Array type: " + typeof arr + "<br/>");//"object"
+
+        var arr2 = [0, 1];
+        document.write("[] type: " + typeof arr2 + "<br/>");//"object"
+
+        var string = new String();
+        document.write("String type: " + typeof string + "<br/>");//"object"
+
+        var func = new Function();
+        document.write("Function type: " + typeof func + "<br/>");//"function"
+
+        function printMessage(message) {
+            // проверка типа параметра функции
+            if (typeof message != "string") {
+                document.write("Параметр должен быть строкового типа!<br/>");
+            }
+            else {
+                document.write(message + "<br/>");
+            }
+        }
+
+        printMessage(new Array());
+        printMessage("Hello world");
+        /*
+        number
+        number
+        string
+        boolean
+        undefined
+        object
+        Object type: object
+        Date type: object
+        toString type: function
+        function type: function
+        Array type: object
+        [] type: object
+        String type: object
+        Function type: function
+        Параметр должен быть строкового типа!
+        Hello world
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

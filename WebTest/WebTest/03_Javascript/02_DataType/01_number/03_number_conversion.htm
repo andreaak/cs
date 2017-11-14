@@ -1,0 +1,47 @@
+﻿<html>
+<head>
+    <title>Number</title>
+
+    <script type="text/javascript">
+
+        var num1 = Number("Hello world!");//NaN
+        var num2 = Number("");      //0
+        var num3 = Number("000011");//11
+        var num4 = Number(true);    //1
+
+        var num5 = parseInt("1234Blue");//1234
+        var num6 = parseInt("");      //NaN
+        var num7 = parseInt("0xA");   //10 в шестнадцатеричном формате
+        var num8 = parseInt(22.5);    //22
+        var num9 = parseInt("70");    //70 в десятичном формате
+        var num10 = parseInt("0xf");  //15 в шестнадцатеричном формате
+        var num11 = parseInt("G0");    //NaN
+
+
+        //56 (восьмеричное значение) в ECМAScript 3;
+        // 0 (десятичное) в ECМAScript 5
+        var num7 = parseInt("070");//70
+        document.write(num7 + "<br/>");//70
+
+        var num = parseInt("0xAF", 16);//175
+        var num = parseInt("AF", 16);//175
+        var num = parseInt("AF");//NaN
+
+        var num = parseInt("10", 2);//двоичное число 2
+        var num = parseInt("10", 8);//восьмеричное число 8
+        var num = parseInt("10", 10);//десятичное число 10
+        var num = parseInt("10", 16);//шестнадцатеричное число 16
+
+        var num5 = parseFloat("1234Blue");  //1234(целое число)
+        var num6 = parseFloat("");          //NaN
+        var num7 = parseFloat("0xA");       //0
+        var num8 = parseFloat("22.5");      //22.5
+        var num8 = parseFloat("22.34.5");   //22.5
+        var num9 = parseFloat("0908.5");    //908.5
+        var num11 = parseFloat("3.125e7");  //31250000
+    </script>
+
+</head>
+<body>
+</body>
+</html>

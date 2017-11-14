@@ -16,6 +16,10 @@
     <title>Переменная</title>
     <script type="text/javascript">
 
+        var message = "hi";
+        message = 100; //допустимо, но не рекомендуется
+        var message = "hi", found = false, age = 29;
+
         // Создаем переменную с именем - 'а' и присваиваем ей значение - 10.
         var a = 10;
         var b;
@@ -37,6 +41,7 @@
             document.write(g + "<br/>");//44
         }
 
+        document.write(f + "<br/>");//error
         //document.write(g + "<br/>");//error
         test();
 

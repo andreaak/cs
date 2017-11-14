@@ -1,11 +1,9 @@
 ﻿<!--
-
         Null - это тип данных, указывающий на отсутствие объекта.
 
         В JavaScript null не является «ссылкой на несуществующий объект»
         или «нулевым указателем», как в некоторых других языках.
         Null - значение, аналогичное понятиям: «ничего» или «значение неизвестно».
-
 -->
 
 <html>
@@ -15,11 +13,14 @@
     <script type="text/javascript">
 
         var a = null;
+        document.write(a + "<br>"); //null
+        document.write((typeof a) + "<br>"); //object
 
-        document.write(a + "<br>"); /*null*/
-        //document.write(a.test + "<br>"); //Cannot read property 'test' of null
-        //document.write(b); // Uncaught ReferenceError: b is not defined
-       
+        if (a != null) {
+            //какие-то действия с a
+        }
+        document.write((a == undefined) + "<br>"); //true
+
     </script>
 
 </head>

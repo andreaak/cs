@@ -1,0 +1,38 @@
+﻿<!--
+    NaN - это тип данных, когда выражение не может быть приведено к числу.
+        - деление 0 на 0
+        - парсинг строки в число
+
+    isNaN - проверка переменной на NaN
+-->
+
+<html>
+<head>
+    <title>isNaN</title>
+
+    <script type="text/javascript">
+
+        document.write(NaN == NaN);     //false
+        document.write(isNaN(NaN));     //true
+        document.write(isNaN(10));      //false-10 является числом
+        document.write(isNaN("10"));    //false-может быть преобразовано в число 10
+        document.write(isNaN("bluе"));  //true-не может быть преобразовано в число
+        document.write(isNaN(true));    //false-может быть преобразовано в число 1
+
+
+        var с = 8;
+        var string2 = "12b";
+        result = string2 - с;
+        var nan = isNaN(result);
+        document.write("12b - с isNaN " + nan + "<br />");// true
+
+        /*
+        12b - с isNaN 
+        12b - с isNaN true
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

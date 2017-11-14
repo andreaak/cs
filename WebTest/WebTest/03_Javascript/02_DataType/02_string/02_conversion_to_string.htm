@@ -1,0 +1,30 @@
+﻿<html>
+<head>
+    <title>Строки, конкатенация</title>
+
+    <script type="text/javascript">
+
+        var age = 11;
+        var ageAsString = age.toString();//"11"
+        var found = true;
+        var foundAsString = found.toString();//"true"
+
+        var num = 10;
+        document.write(num.toString() + "<br/>");//10
+        document.write(num.toString(2) + "<br/>");//1010
+        document.write(num.toString(8) + "<br/>");//12
+        document.write(num.toString(10) + "<br/>");//10
+        document.write(num.toString(16) + "<br/>");//а
+
+        document.write(String(10) + "<br/>");//10
+        document.write(String(true) + "<br/>");//true
+        document.write(String(null) + "<br/>");//null
+        var value;
+        document.write(String(value) + "<br/>");//10
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

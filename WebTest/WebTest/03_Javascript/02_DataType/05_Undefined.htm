@@ -13,19 +13,20 @@
     <title>Undefined</title>
 
     <script type="text/javascript">
-
         var a;
+        document.write((a == undefined) + "<br/>");//true
+
+        var a = undefined;
+        document.write((a == undefined) + "<br/>");//true
 
         document.write(a + "<br/>"); // undefined
-        //document.write(a.test + "<br/>"); //Uncaught TypeError: Cannot read property 'test' of undefined
-        if (a == undefined)
-            document.write("Undefined value <br/>");
 
-        document.write(b + "<br/>"); // Ошибка!
-        /*
-        undefined
-        Undefined value
-        */
+        //следующая переменная не объявляется
+        //document.write(b + "<br/>"); //Uncaught ReferenceError: b is not defined
+
+        document.write((typeof a) + "<br/>");//undefined
+        document.write((typeof b) + "<br/>");//undefined
+
     </script>
 
 </head>
