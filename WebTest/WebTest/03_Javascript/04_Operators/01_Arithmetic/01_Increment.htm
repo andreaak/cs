@@ -1,0 +1,60 @@
+﻿<!--
+    Инкремент — операция, во многих языках программирования используемая
+    для увеличения значения переменной на единицу.
+
+    Имеется префиксная и постфиксная форма инкремента.
+    Префиксный инкремент выполняется перед использованием переменной.
+    Постфиксный инкремент выполняется после использования переменной.
+-->
+
+<html>
+<head>
+    <title>Деление по модулю</title>
+
+    <script type="text/javascript">
+        var a = 9;
+
+        ++a;
+        document.write(a + "<br />");   //10
+        document.write(++a + "<br />"); //11
+        document.write(a + "<br />");   //11
+
+        a++;
+        document.write(a + "<br />");   //12
+        document.write(a++ + "<br />"); //12
+        document.write(a + "<br />");   //13
+
+        var sn = "2";
+        var s = "z";
+        var b = false;
+        var f = 1.1;
+        var о = {
+            valueOf: function () {
+                return -1;
+            },
+            toString: function () {
+                return "ABC";
+            }
+        };
+
+        var о2 = {
+            valueOf: function () {
+                return "ABC";
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        document.write(++sn + "<br />");//3
+        document.write(++s + "<br />");//NaN
+        document.write(++b + "<br />");//1
+        document.write(--f + "<br />");//0.10000000000000009
+        document.write(--о + "<br />");//-2
+        document.write(о2.toString() + "<br />");//35
+        document.write(--о2 + "<br />");//NaN
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿<html>
+<head>
+    <title>Арифметические операторы</title>
+    <script type="text/javascript">
+        var a = 9;
+        var b = 5;
+        var sn = "55";
+        var sns = "5B";
+        var s = "ABC";
+        var un;
+        var nl = null;
+
+        var o = {
+            valueOf: function () {
+                return -1;
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        var o2 = {
+            valueOf: function () {
+                return "ABC";
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        var o3 = {
+            toString: function () {
+                return "35";
+            }
+        };
+
+        document.write((a + b) + "<br />");//14
+        document.write((Number.MAX_VALUE + a) + "<br />");//1.7976931348623157e+308
+        document.write((NaN + a) + "<br />");//NaN
+
+        document.write((Infinity + a) + "<br />");//Infinity
+        document.write((Infinity + Infinity) + "<br />");//Infinity
+        document.write((-Infinity + -Infinity) + "<br />");//-Infinity
+        document.write((Infinity + -Infinity) + "<br />");//NaN
+        document.write((+0 + +0) + "<br />");//0
+        document.write((-0 + +0) + "<br />");//0
+        document.write((-0 + -0) + "<br />");//0
+        //Если один операнд строковый то происходит конкатенация
+        document.write((a + s) + "<br />");//9ABC
+        document.write((a + sn) + "<br />");//955
+        document.write((a + sns) + "<br />");//95B
+        document.write((o + 2) + "<br />");//1
+        document.write((o2 + 2) + "<br />");//ABC2
+        document.write((o3 + 2) + "<br />");//352
+        document.write((un + 2) + "<br />");//NaN
+        document.write((nl + 2) + "<br />");//2 null преобразуется в 0
+        document.write("<br />");
+
+        document.write((a - b) + "<br />");//4
+        document.write((Number.MIN_VALUE - Number.MAX_VALUE) + "<br />");//-1.7976931348623157e+308
+        document.write((NaN - a) + "<br />");//NaN
+        document.write((a - NaN) + "<br />");//NaN
+        document.write((0 - Infinity) + "<br />");//-Infinity
+        document.write((a - Infinity) + "<br />");//-Infinity
+        document.write((Infinity - a) + "<br />");//Infinity
+        document.write((Infinity - Infinity) + "<br />");//NaN
+        document.write((Infinity - -Infinity) + "<br />");//Infinity
+        document.write((-Infinity - -Infinity) + "<br />");//NaN
+        document.write((+0 - +0) + "<br />");//0
+        document.write((-0 - +0) + "<br />");//0
+        document.write((-0 - -0) + "<br />");//0
+        //Javascript пытается привести строковый операнд к числу
+        document.write((a - s) + "<br />");//NaN
+        document.write((a - sn) + "<br />");//-46
+        document.write((a - sns) + "<br />");//NaN
+        document.write((a - "") + "<br />");//NaN
+        document.write((o - 2) + "<br />");//-3
+        document.write((o2 - 2) + "<br />");//NaN
+        document.write((o3 - 2) + "<br />");//33
+        document.write((un - 2) + "<br />");//NaN
+        document.write((nl - 2) + "<br />");//-2 null преобразуется в 0
+        document.write("<br />");
+
+    </script>
+</head>
+<body>
+</body>
+</html>

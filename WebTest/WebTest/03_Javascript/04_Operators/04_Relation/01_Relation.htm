@@ -1,0 +1,67 @@
+﻿<!--
+        Сравнение строк производиться посимвольно для числовых значений каждого символа из кодировки Unicode.
+        Символ в верхнем регистре считается меньше символа в нижнем регистре.
+        Например: A - code (41 Hex)
+                  a - code (61 Hex)
+-->
+
+<html>
+<head>
+    <title>Операторы отношений</title>
+
+    <script type="text/javascript">
+
+        var a = 10;
+        var b = 20;
+
+        var o = {
+            valueOf: function () {
+                return -1;
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        var o2 = {
+            valueOf: function () {
+                return "ABC";
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        var o3 = {
+            toString: function () {
+                return "35";
+            }
+        };
+
+        document.write((a < b) + "<br />");//true
+        document.write((a > b) + "<br />");//false
+        document.write((a <= b) + "<br />");//true
+        document.write((a >= b) + "<br />");//false
+
+        document.write(("Brick" < "alphabet") + "<br />");//true
+        document.write(("Brick".toLowerCase() < "alphabet".toLowerCase()) + "<br />");//false
+
+        document.write(("23" < "3") + "<br />");//true
+        document.write(("23" < 3) + "<br />");//false
+        document.write(("a" < 3) + "<br />");//false, потому что "а" преобразуется в NaN
+
+        document.write((NaN < 3) + "<br />");//false
+        document.write((NaN >= 3) + "<br />");//false
+
+        document.write((o < 3) + "<br />");//true
+        document.write((o2 < 3) + "<br />");//false
+        document.write((o3 < 3) + "<br />");//false
+        document.write((true < 1) + "<br />");//false
+        document.write((false < 1) + "<br />");//true
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

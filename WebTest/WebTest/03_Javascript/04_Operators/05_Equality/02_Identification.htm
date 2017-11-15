@@ -1,0 +1,71 @@
+﻿<!--
+    Идентичность - требует совпадения типа и значения переменной,
+    когда для равенства достаточно только совпадающих значений.
+
+    Оператор идентичности "===" предназначен для проверки значений двух переменных на идентичность,
+    при этом необходимо помнить о следующих правилах:
+
+        1. если значения имеют разные типы они не идентичны.
+        2. если значения являются числами имеют одинаковые значения и не являются значения NaN - они идентичны.
+        3. если две строки имеют одинаковую длину и содержат одни и те же символы - они идентичны.
+        4. два одинаковых логических значения идентичны.
+-->
+<html>
+<head>
+    <title>Операторы равенства</title>
+    <script type="text/javascript">
+
+        var o = {
+            valueOf: function () {
+                return -1;
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        var o2 = {
+            valueOf: function () {
+                return "ABC";
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        var o3 = {
+            toString: function () {
+                return "35";
+            }
+        };
+
+        document.write((null === undefined) + "<br />");// false
+        document.write(("NaN" === NaN) + "<br />");// false
+        document.write((5 === NaN) + "<br />");// false
+        document.write((NaN === NaN) + "<br />");// false
+        document.write((NaN !== NaN) + "<br />");// true
+        document.write((false === 0) + "<br />");// false
+        document.write((true === 1) + "<br />");// false
+        document.write((true === 2) + "<br />");// false
+        document.write((undefined === 0) + "<br />");// false
+        document.write((null === 0) + "<br />");// false
+        document.write(("5" === 5) + "<br />");// false
+
+        document.write((o === -1) + "<br />");// false
+        document.write((o2 === 35) + "<br />");// false
+        document.write((o3 === 35) + "<br />");// false
+        var o4 = o;
+        document.write((o === o3) + "<br />");// false
+        document.write((o === o4) + "<br />");// true
+
+        var result1 = ("55" == 55);//true-равно благодаря преобразованию
+        var result2 = ("55" === 55);//false-не равно из-за разных типов данных
+
+        var result1 = ("55" != 55);//false-равно благодаря преобразованию
+        var result2 = ("55" !== 55);//true-не равно из-за разных типов данных
+
+    </script>
+</head>
+<body>
+</body>
+</html>

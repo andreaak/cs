@@ -1,0 +1,63 @@
+﻿<html>
+<head>
+    <title>Логические операторы</title>
+
+    <script type="text/javascript">
+
+        var result = true && false;//false
+
+        var found = true;
+        //var result = (found && someUndeclaredVariable);//ошибка
+        //document.write(result + "<br />");//эта строка никогда невыполняется
+
+        var found = false;
+        var result = (found && someUndeclaredVariable);
+        document.write(result + "<br />");//false
+
+        var a = true;
+        var b = false;
+        document.write((a && b) + "<br />");//false
+
+        var o = {
+            toString: function () {
+                return "Object o";
+            }
+        }
+
+        var o2 = {
+            toString: function() {
+                return "Object o2";
+            }
+        }
+
+        document.write((o && o2) + "<br />");//Object o2
+        document.write((o2 && o) + "<br />");//Object o
+
+        document.write((o && a) + "<br />");//true
+        document.write((o && b) + "<br />");//false
+        document.write((a && o) + "<br />");//Object o
+        document.write((b && o) + "<br />");//false
+
+        var c;
+        document.write((a && c) + "<br />");//undefined
+        document.write((b && c) + "<br />");//false
+        document.write((c && a) + "<br />");//undefined
+        document.write((c && b) + "<br />");//undefined
+
+        var d = null;
+        document.write((a && d) + "<br />");//null
+        document.write((b && d) + "<br />");//false
+        document.write((d && a) + "<br />");//null
+        document.write((d && b) + "<br />");//null
+
+        var e = NaN;
+        document.write((a && e) + "<br />");//NaN
+        document.write((b && e) + "<br />");//false
+        document.write((e && a) + "<br />");//NaN
+        document.write((e && b) + "<br />");//NaN
+    </script>
+
+</head>
+<body>
+</body>
+</html>

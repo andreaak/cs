@@ -1,0 +1,68 @@
+﻿<!--
+    Деление c остатком (Деление по модулю) - это операция,
+    при которой возвращаемое значение является остатком от деления.
+-->
+<html>
+<head>
+    <title>UnaryMinusPlus</title>
+
+    <script type="text/javascript">
+        var num = 25;
+        num = +num; //по-nрежнему 25
+
+        var n = 10;
+        var s1 = "01";
+        var s1 = "01";
+        var s2 = "1.1";
+        var s3 = "z";
+        var b = false;
+        var f = 1.1;
+        var o = {
+            valueOf: function () {
+                return -1;
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        var o2 = {
+            valueOf: function () {
+                return "ABC";
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        // не изменяет знака при применении к числовому типу (ничего не происходит).
+        document.write(+n + "<br />");//10
+        // при применении к строковому типу, преобразовывает его в числовой
+        document.write(+s1 + "<br />");//1
+        document.write(+s2 + "<br />");//1.1
+        document.write(+s3 + "<br />");//NaN
+        document.write(+b + "<br />");//0
+        document.write(+f + "<br />");//число не изменяется(1.1)
+        document.write(+o + "<br />");//-1
+        document.write(+o2 + "<br />");//NaN
+
+        var num = 25;
+        num = -num;//-25
+
+        // Операция смены знака на противоположный.
+        document.write(-n + "<br />");//-10
+        // при применении к строковому типу, преобразовывает его в числовой
+        document.write(-s1 + "<br />");//-1
+        document.write(-s2 + "<br />");//-1.1
+        document.write(-s3 + "<br />");//NaN
+        document.write(-b + "<br />");//0
+        document.write(-f + "<br />");//-1.1
+        document.write(-o + "<br />");//-1
+        document.write(-o2 + "<br />");//NaN
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

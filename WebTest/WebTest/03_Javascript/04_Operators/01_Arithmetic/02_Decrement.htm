@@ -1,0 +1,42 @@
+﻿<!--
+
+        Декремент — операция, во многих языках программирования используемая
+        для уменьшения значения переменной на единицу.
+
+        Имеется префиксная и постфиксная форма декремента.
+        Префиксный декремент выполняется перед использованием переменной.
+        Постфиксный декремент выполняется после использования переменной.
+
+-->
+
+<html>
+<head>
+    <title>Декремент</title>
+    <script type="text/javascript">
+
+        var a = 9;
+        --a;
+        document.write(a + "<br />");   //8
+        document.write(--a + "<br />"); //7
+        document.write(a + "<br />");   //7
+
+        a--;
+        document.write(a + "<br />");   //6
+        document.write(a-- + "<br />"); //6
+        document.write(a + "<br />");   //5
+
+        var age = 29;
+        var anotherAge = --age + 2;
+        document.write(age + "<br />");//28
+        document.write(anotherAge + "<br />");//30
+
+        var num1 = 2;
+        var num2 = 20;
+        var num3 = num1-- + num2;//22
+        var num4 = num1 + num2;//21
+
+    </script>
+</head>
+<body>
+</body>
+</html>

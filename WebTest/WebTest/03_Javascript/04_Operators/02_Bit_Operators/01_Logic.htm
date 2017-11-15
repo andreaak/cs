@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+    <title>Bit_Operators</title>
+
+    <script type="text/javascript">
+
+        var num = -18;
+        document.write(num.toString(2) + "<br />");//"-10010"
+
+        var num1 = 25;//00000000000000000000000000011001
+        var num2 = ~num1;//11111111111111111111111111100110
+        document.write(num2 + "<br />");//-26
+
+        //тоже самое
+        var num1 = 25;
+        var num2 = -num1 - 1;
+        document.write(num2 + "<br />");//-26
+
+        var result = 25 & 3;
+        document.write(result);//1
+
+        var result = 25 | 3;
+        document.write(result);//27
+
+        var result = 25 ^ 3;
+        document.write(result);//26
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿<!--
+
+    Оператор равенства "==" предназначен для сравнения значений двух переменных.
+    "==" Пытается привести операнды разных типов к одному типу. Обычно к строке.
+    При этом необходимо помнить о следующих правилах:
+
+            1. если одно значение null а другое undefined - значения равны.
+            2. если одно значение число, а второе строка, то строка преобразоваться в число и производиться сравнение.
+            3. если одно значение true оно преобразуется в 1, если значение false оно преобразоваться в 0.
+
+-->
+
+<html>
+<head>
+    <title>Операторы равенства</title>
+
+    <script type="text/javascript">
+
+        var o = {
+            valueOf: function () {
+                return -1;
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        var o2 = {
+            valueOf: function () {
+                return "ABC";
+            },
+            toString: function () {
+                return "35";
+            }
+        };
+
+        var o3 = {
+            toString: function () {
+                return "35";
+            }
+        };
+
+        document.write((null == undefined) + "<br />");// true
+        document.write(("NaN" == NaN) + "<br />");// false
+        document.write((5 == NaN) + "<br />");// false
+        document.write((NaN == NaN) + "<br />");// false
+        document.write((NaN != NaN) + "<br />");// true
+        document.write((false == 0) + "<br />");// true
+        document.write((true == 1) + "<br />");// true
+        document.write((true == 2) + "<br />");// false
+        document.write((undefined == 0) + "<br />");// false
+        document.write((null == 0) + "<br />");// false
+        document.write(("5" == 5) + "<br />");// true
+
+        document.write((o == -1) + "<br />");// true
+        document.write((o2 == 35) + "<br />");// false
+        document.write((o3 == 35) + "<br />");// true
+        var o4 = o;
+        document.write((o == o3) + "<br />");// false
+        document.write((o == o4) + "<br />");// true
+    </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,75 @@
+﻿<!--
+
+        Логическое ИЛИ (||) - возвращает true,
+        если первый или второй операнд (или оба) равны true.
+
+        Таблица истинности логического ИЛИ (||):
+            true  || true = true
+            false || true = true
+            true  || false = true
+            false || false = false
+
+-->
+
+<html>
+<head>
+    <title>Логические операторы</title>
+
+    <script type="text/javascript">
+        var result = true || false;//true
+
+        var found = true;
+        var result = (found || someUndeclaredVariable);
+        document.write(result + "<br />");//true
+
+        var found = false;
+        //var result = (found || someUndeclaredVariable);//ошибка
+        //document.write(result + "<br />");//эта строка никогда невыполняется
+
+        var a = true;
+        var b = false;
+        document.write((a || b) + "<br />");//true
+
+        var o = {
+            toString: function () {
+                return "Object o";
+            }
+        }
+
+        var o2 = {
+            toString: function () {
+                return "Object o2";
+            }
+        }
+
+        document.write((o || o2) + "<br />");//Object o
+        document.write((o2 || o) + "<br />");//Object o2
+
+        document.write((o || a) + "<br />");//Object o
+        document.write((o || b) + "<br />");//Object o
+        document.write((a || o) + "<br />");//true
+        document.write((b || o) + "<br />");//Object o
+
+        var c;
+        document.write((a || c) + "<br />");//true
+        document.write((b || c) + "<br />");//undefined
+        document.write((c || a) + "<br />");//true
+        document.write((c || b) + "<br />");//false
+
+        var d = null;
+        document.write((a || d) + "<br />");//true
+        document.write((b || d) + "<br />");//null
+        document.write((d || a) + "<br />");//true
+        document.write((d || b) + "<br />");//false
+
+        var e = NaN;
+        document.write((a || e) + "<br />");//true
+        document.write((b || e) + "<br />");//NaN
+        document.write((e || a) + "<br />");//true
+        document.write((e || b) + "<br />");//false
+    </script>
+
+</head>
+<body>
+</body>
+</html>
