@@ -1,0 +1,64 @@
+﻿<!--
+
+            Оператор return указывает на возвращаемое значение функции,
+            которое будет передано при следующей форме вызова:
+
+            переменнная = имя_функции();
+
+-->
+
+<html>
+<head>
+    <title>Оператор return</title>
+
+    <script type="text/javascript">
+
+        function Sum(a, b) {
+            return a + b;
+        }
+
+        function WithoutReturn() {
+        }
+
+        function DoubleReturn() {
+            return 1;
+            return 3;
+        }
+
+        var res = Sum();
+        document.write(res + "<br/>");
+
+        res = Sum(2);
+        document.write(res + "<br/>");
+
+        res = Sum(2, 3);
+        document.write(res + "<br/>");
+
+        res = Sum("test");
+        document.write(res + "<br/>");
+
+        res = Sum("test", "qwerty");
+        document.write(res + "<br/>");
+
+        res = WithoutReturn();
+        document.write(res + "<br/>");
+
+        res = DoubleReturn();
+        document.write(res + "<br/>");
+
+        /*
+        NaN
+        NaN
+        5
+        testundefined
+        testqwerty
+        undefined
+        1
+        */
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

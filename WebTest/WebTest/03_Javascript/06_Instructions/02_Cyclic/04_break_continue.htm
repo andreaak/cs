@@ -1,0 +1,36 @@
+﻿<!--
+
+        Оператор - break.
+
+-->
+
+<html>
+<head>
+    <title>Оператор break</title>
+
+    <script type="text/javascript">
+
+        var num = 0;
+        for (var i = 1; i < 10; i++) {
+            if (i % 5 == 0) {
+                break;
+            }
+            num++;
+        }
+        document.write(num + "<br/>");//4
+
+        var num = 0;
+        for (var i = 1; i < 10; i++) {
+            if (i % 5 == 0) {
+                continue;;
+            }
+            num++;
+        }
+        document.write(num + "<br/>");//8
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -21,6 +21,30 @@
     <title>Функции в JavaScript</title>
 
     <script type="text/javascript">
+        function sayHi(name, message) {
+            document.write("Hello" + name + "" + message);
+        }
+
+        sayHi("Nicholas", "how are you today?");
+
+        function sum(num1, num2) {
+            return num1 + num2;
+        }
+
+        var result = sum(5, 10);
+
+        function sum(num1, num2) {
+            return num1 + num2;
+            alert("Hello world!"); //никогда не выполняется
+        }
+
+        function diff(numl, num2) {
+            if (numl < num2) {
+                return num2 - numl;
+            } else {
+                return numl - num2;
+            }
+        }
 
         var test;
 

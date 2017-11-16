@@ -1,0 +1,55 @@
+﻿<html>
+<head>
+    <title>Циклическая конструкция for</title>
+
+    <script type="text/javascript">
+
+        var count = 10;
+        // for ( Инициализация счетчика итераций; Условие; Изменение счетчика ) { Тело цикла }
+        for (var i = 0; i < count; i++) {
+            document.write(i);
+        }
+        // i - доступен за пределами цикла for.
+        document.write(i);//10
+
+        var count = 10;
+        var i = 0;
+        while (i < count) {
+            document.write(i);
+            i++;
+        }
+
+        var count = 10;
+        var i;
+        for (i = 0; i < count; i++) {
+            document.write(i);
+        }
+
+        for (; ;) { // бесконечный цикл
+            doSomething();
+        }
+
+        var count = 10;
+        var i = 0;
+        for (; i < count ;) {
+            alert(i);
+            i++;
+        }
+
+        //inner For
+        for (var i = 0; i < 10; i++) {
+
+            document.write(i + " : ");
+            // Выводим одну строку из 10 плиток.
+            for (var j = 0; j < 10; j++) {
+                document.write("_" + j);
+            }
+            document.write("<br/>");
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

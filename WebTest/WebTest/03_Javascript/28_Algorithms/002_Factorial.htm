@@ -1,0 +1,25 @@
+﻿<html>
+<head>
+    <title>Факториал</title>
+
+    <script type="text/javascript">
+
+        var input = prompt("Введите число: ");
+        input = parseInt(input);
+
+        function factorial(x) {
+
+            if (x <= 1)
+                return 1;
+
+            return x * factorial(x - 1);
+        }
+
+        document.write("Факториал " + input + "! = " + factorial(input));
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

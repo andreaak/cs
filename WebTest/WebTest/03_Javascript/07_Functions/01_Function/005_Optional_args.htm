@@ -1,0 +1,88 @@
+﻿<!--
+
+        В языке JavaScript при вызове функции количество параметров
+        не обязательно должно совпадать с количеством параметров при объявлении.
+        Параметры, которым при вызове не были переданы значения, будут равны undefined
+
+-->
+
+<html>
+<head>
+    <title>Необязательные аргументы</title>
+
+    <script type="text/javascript">
+
+        var c = 20;
+        var d = 21;
+
+        function Sum2(x1, x2) {
+            document.write("typeof x1: " + typeof (x1) +
+                            " typeof x2: " + typeof (x2));
+            var result = x1 + x2;
+            document.write("<p>Sum2 result: " + result + "<p/>");
+        }
+
+        function print(msg, count) { // Необязательный параметр count.
+
+            if (count == undefined) {
+                count = 3;
+            }
+
+            for (var i = 0; i < count; i++) {
+                document.write("<p>" + msg + "<p/>");
+            }
+
+            document.write("<hr/>");
+        }
+
+        Sum2(); // Не передаем параметров при вызове.
+        Sum2(c);
+        Sum2(c, NaN);
+        Sum2(c, d);
+        Sum2("test");
+        Sum2("test", d);
+        Sum2("test", "qwerty");
+
+        print("hello");
+        print("world", 7);
+
+        /*
+        typeof x1: undefined typeof x2: undefined
+        Sum2 result: NaN
+
+        typeof x1: number typeof x2: undefined
+        Sum2 result: NaN
+
+        typeof x1: number typeof x2: number
+        Sum2 result: NaN
+
+        typeof x1: number typeof x2: number
+        Sum2 result: 41
+
+        typeof x1: string typeof x2: undefined
+        Sum2 result: testundefined
+
+        typeof x1: string typeof x2: number
+        Sum2 result: test21
+
+        typeof x1: string typeof x2: string
+        Sum2 result: testqwerty
+
+        hello
+        hello
+        hello
+
+        world
+        world
+        world
+        world
+        world
+        world
+        world
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿<!--
+
+    Оператор многозначного выбора - switch-case (переключатель).
+    Применяется со строковыми и числовыми переменными.
+    Числовые и строчные значения не равнозначны.
+-->
+
+<html>
+<head>
+    <title>Условная конструкция switch</title>
+
+    <script type="text/javascript">
+
+        var number = 1;
+        // Тип значения выражения селектора и значений постоянных выражений операторов case должны совпадать.
+        switch (number) { // (number) — выражение-селектор.
+            // Если значение выражения-селектора совпадет с одним из значений постоянных выражений,
+            // то выполняется тело оператора case, постоянное выражение которого, совпало с выражением-селектора.
+            case 1:
+                document.write("Один<br/>");   // Ветвь 1
+                break; // Выход из переключателя.
+
+            case 2:
+                document.write("Два<br/>");     // Ветвь 2
+                break; // Выход из переключателя.
+                /*
+                Создаем (необязательный) оператор default, тело которого выполняется в случае,
+                если значение выражения-селектора не совпадет ни с одним из значений постоянных выражений.
+                Если в переключателе отсутствует оператор default,
+                то управление передается за пределы переключателя switch.
+                */
+            default:
+                document.write("Вы ввели значение отличное от 1 и 2.<br/>");  // Ветвь 8
+        }
+
+        var day = "5";
+        //String key
+        switch (day) {
+            case "1"://Проваливание.
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+                document.write("Этот день недели - Рабочий.<br/>");
+                break;
+            case "6":
+            case "7":
+                document.write("Этот день недели - Выходной.<br/>");
+                break;
+            default:
+                document.write("Вы ввели несуществующий день недели.<br/>");
+                break;
+        }
+
+        //Number key
+        var day2 = 6.0;
+        switch (day2) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                document.write("Этот день недели - Рабочий.<br/>");
+                break;
+            case 6:
+            case 7:
+                document.write("Этот день недели - Выходной.<br/>");
+                break;
+            default:
+                document.write("Вы ввели несуществующий день недели.<br/>");
+                break;
+        }
+
+        switch ("hello world!") {
+            case "hello" + " world!":
+                alert("Greeting was found.");
+                break;
+            case "goodbye":
+                alert("Closing was found.");
+                break;
+            default:
+                alert("Unexpected message was found.");
+        }
+
+        var num = 25;
+        switch (true) {
+            case num < 0:
+                alert("Less than 0.");
+                break;
+            case num >= 0 && num <= 10:
+                alert("Between 0 and 10.");
+                break;
+            case num > 10 && num <= 20:
+                alert("Between 10 and 20.");
+                break;
+            default:
+                alert("More than 20.");
+        }
+    </script>
+
+</head>
+<body>
+</body>
+</html>
