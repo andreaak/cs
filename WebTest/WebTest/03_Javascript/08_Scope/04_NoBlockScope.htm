@@ -1,0 +1,40 @@
+﻿<!--
+    Область видимости не ограничивается телом
+    условной или циклической конструкции.
+-->
+
+<html>
+<head>
+    <title>Область видимости внутри конструкций</title>
+
+    <script type="text/javascript">
+
+        if (true) {
+            var color = "blue";
+        }
+        document.write(color + "<br/>");//"blue"
+
+        for (var counter = 0; counter < 3; counter++) {
+            document.write(counter + " ");//0 1 2
+        }
+
+        // counter - счетчик итераций цикла доступна вне тела цикла - for.
+        document.write("<br/>" + counter + "<br/>");//3
+
+        function f() {
+            for (var counter2 = 0; counter2 < 3; counter2++) {
+                document.write(counter2 + " ");//0 1 2
+            }
+            document.write("<br/>" + counter2 + "<br/>");//3
+        }
+        f();
+
+        // Счетчик итераций цикла - counter2, не доступен за пределами тела функции содержащей цикл.
+        //document.write(counter2 + "<br/>");//Uncaught ReferenceError: counter2 is not defined
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

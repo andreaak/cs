@@ -1,0 +1,33 @@
+﻿<!--
+
+    Область видимости - область, в которой переменная доступна для использования.
+
+    В JavaScript есть две области видимости:
+        глобальная - представленная объектом window (если среда выполнения сценария - браузер)
+        локальная - представленна функцией.
+    операторные скобки { и } не создают область видимости как в других языках программирования.
+
+-->
+
+<html>
+<head>
+    <title>Приращение цепочки областей видимости</title>
+
+    <script type="text/javascript">
+
+        function buildUrl() {
+            var qs = "?debug=true";
+            with (location) {
+                var url = href + qs;
+            }
+            return url;
+        }
+
+        document.write(buildUrl() + "<br/>");//http://localhost:2949/03_Javascript/08_Scope/02_IncrementScope.htm?debug=true
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

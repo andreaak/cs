@@ -1,0 +1,43 @@
+﻿<!--
+
+    push() - добавление одного или нескольких элементов в конец массива.
+    (возвращаемое значение - количество элементов в новом массиве)
+
+    pop() - выполняет удаление последнего элемента массива.
+    (возвращаемое значение - удаленный элемент массива)
+
+-->
+
+<html>
+<head>
+    <title>Метод Push()</title>
+
+    <script type="text/javascript">
+
+        var colors = new Array();//создание массива
+
+        var count = colors.push("red", "green");//включение двух элементов
+        document.write(count + "<br />");//2
+        document.write(colors + "<br />");//red, green
+
+        count = colors.push("black");//включение еще одного элемента
+        document.write(colors + "<br />");//red, green, black
+
+        var item = colors.pop();//извлечение последнего элемента
+
+        document.write(item + "<br />");//"black"
+        document.write(colors + "<br />");//red, green
+
+        var colors=["red","blue"];
+        colors.push("brown");
+        colors[3]="black";
+        document.write(colors + "<br />");//red,blue,brown,black
+        var item=colors.pop();
+        document.write(item + "<br />");//"black"
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

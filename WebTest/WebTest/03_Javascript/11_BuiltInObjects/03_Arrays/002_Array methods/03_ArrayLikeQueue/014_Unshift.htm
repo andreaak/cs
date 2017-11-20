@@ -1,0 +1,39 @@
+﻿<!--
+
+    unshift() - добавляет элемент в начало массива.
+
+-->
+
+<html>
+<head>
+    <title>Метод UnShift()</title>
+
+    <script type="text/javascript">
+
+        var arr = [1, 2, 3];
+        document.write(arr + "<br />");//1, 2, 3
+
+        arr.unshift(0);
+        document.write(arr + "<br />");//0, 1, 2, 3
+
+        arr.unshift(-3, -2, -1);
+        document.write(arr + "<br />");//-3, -2, -1, 0, 1, 2, 3
+
+        var colors = new Array();
+        var count = colors.unshift("red", "green");
+        document.write(count + "<br />");//2
+        document.write(colors + "<br />");//red, green
+
+        count = colors.unshift("black");//добавление еще одного элемента
+        document.write(colors + "<br />");//black, red, green
+
+        var item = colors.pop();//извлечение элемента
+        document.write(item + "<br />");//"green"
+        document.write(colors + "<br />");//black, red
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

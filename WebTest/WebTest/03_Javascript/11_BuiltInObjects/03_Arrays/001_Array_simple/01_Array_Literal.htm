@@ -1,0 +1,65 @@
+﻿<!--
+
+    Массив - обьект, проиндексированый набор определенных элементов.
+    В отличии от прочих языков программирования в JavaScript, не обязательно элементами
+    массива должны быть однотипные значения.
+    При создании массива используются [] скобки,
+    внутри которых через запятую перечисляются элементы.
+    Каждый элемент нумеруется индексом по возрастанию от 0.
+
+    [] - это синтаксический сахар который заменяется на вызов new Array().
+
+-->
+
+<html>
+<head>
+    <title>Массивы в JavaScript</title>
+
+    <script type="text/javascript">
+
+        var colors = ["red", "bluе", "green"];//массив с тремя строками
+        var names = [];//пустой массив
+
+        // Одномерный массив из целых чисел размерностью в 5 элементов.
+        var a = [1, 2, 3, 4, 6];
+        document.write(a + "<br />");//1,2,3,4,6
+
+        // Одномерный массив из строковых элементов размерностью в 12 элементов.
+        var b = ["September", "October", "November", "December", "January", "Fabruary", "March", "April", "May", "June", "Jull", "August"];
+        document.write(b + "<br />");//September,October,November,December,January,Fabruary,March,April,May,June,Jull,August
+
+        // Пустой массив размерностью в 3 элемента.
+        //НЕ ДЕЛАЙТЕ ТАК!Создается массив с двумя или тремя элементами
+        var values = [1, 2, ];
+        //НЕ ДЕЛАЙТЕ ТАК!Создается массив с пятью или шестью элементами
+        var options = [, , , , , ];
+        document.write(options);//,,,,
+        document.write("<br />");
+
+        // Одномерный массив из трех элементов разных типов.
+        var d = ["Hello", 34, true];
+        document.write(d + "<br />");//Hello,34,true
+
+        var colors = ["red", "bluе", "green"];//определение массива строк
+        document.write(colors[0] + "<br />");// вывод первого элемента
+        colors[2] = "blасk";// изменение третьего элемента
+        colors[3] = "brown";// добавление четвертого элемента
+
+        if (colors instanceof Array) {
+            //какие-то действия с массивом
+        }
+
+        if (Array.isArray(colors)) {
+            //какие-то действия с массивом
+        }
+
+        var colors = ["red", "blue", "green"];//массив с тремя строками
+        document.write(colors.toString() + "<br />");//red,blue,green
+        document.write(colors.valueOf() + "<br />");//red,blue,green
+        document.write(colors + "<br />");//red,blue,green
+    </script>
+
+</head>
+<body>
+</body>
+</html>

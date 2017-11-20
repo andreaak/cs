@@ -9,12 +9,15 @@
     <script type="text/javascript">
 
         var x = new Array(10);
-        if (x instanceof Array) { // аналог оператора is в C#
-            document.write("x is array");
-        }
-        /*
-        x is array
-        */
+        document.write(x instanceof Array);//true аналог оператора is в C#
+        document.write(person instanceof Object);//относится ли persoп к типу Object?
+        document.write(colors instanceof Array);//относится ли colors к типу Array?
+        document.write(pattern instanceof RegExp);//относится ли pattern к типу RegExp?
+
+
+
+
+
     </script>
 
 </head>

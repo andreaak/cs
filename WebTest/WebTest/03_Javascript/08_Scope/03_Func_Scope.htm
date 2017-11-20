@@ -1,0 +1,57 @@
+﻿<!--
+    Тело функции - локальная область видимости.
+
+    ПРАВИЛО:     
+    Из одной локальной области видимости нельзя обращаться к переменным 
+    находящимся в другой локальной области видимости.
+-->
+
+<html>
+<head>
+    <title>Область видимости функции</title>
+
+    <script type="text/javascript">
+
+
+        function A() {
+            var a = "Локальная переменная - a";
+
+            document.write(a + "<br/>");
+
+            // Попытка обращения к локальной переменной находящейся в локальной области видимости метода B().
+            document.write(b + "<br/>");//Uncaught ReferenceError: b is not defined
+        }
+
+        function B() {
+            var b = "Локальная переменная - b";
+            document.write(b + "<br/>");
+
+            // Попытка обращения к локальной переменной находящейся в локальной области видимости метода A().
+            document.write(a + "<br/>");//ReferenceError: a is not defined
+        }
+
+        A();
+        B();
+
+        var color = "blue";
+        function changeColor() {
+            var anotherColor = "red";
+            function swapColors() {
+                var tempColor = anotherColor;
+                anotherColor = color;
+                color = tempColor;
+                //здесь доступны переменные color, anotherColor и tempColor
+            }
+            //здесь доступны переменные color и anotherColor, но не tempColor
+            swapColors();
+        }
+
+        //здесь доступна только переменная color
+        changeColor();
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

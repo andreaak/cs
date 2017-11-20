@@ -1,0 +1,44 @@
+﻿<!--
+    Массив - обьект, у которого имеется свойство length,
+    это свойство хранит в себе длину массива.
+
+    Свойство length открыто как для чтения так и для записи, 
+    при этом возможно и увеличение длины так и уменьшение длины массива.
+-->
+
+<html>
+<head>
+    <title>Длина массива, свойство length</title>
+
+    <script type="text/javascript">
+
+        var colors = ["red", "blue", "green"];//массив с тремя строками
+        var names = [];//пустой массив
+
+        document.write(colors.length + "<br />");//3
+        document.write(names.length + "<br />");//0
+
+        var colors = ["red", "blue", "green"];//массив с тремя строками
+        colors.length = 2;
+        // Значения всех элементов, которые не попали в новую заданную длину массива, будут утеряны.
+        document.write(colors[2] + "<br />");//undefined
+
+        // Массив увеличил свой размер.
+        var colors = ["red", "blue", "green"];//массив с тремя строками
+        colors.length = 4;
+        document.write(colors[3] + "<br />");//undefined
+
+        var colors = ["red", "blue", "green"];//массив с тремя строками
+        colors[colors.length] = "black";//добавление черного цвета в позиции 3
+        colors[colors.length] = "brown";//добавление коричневого цвета в позиции 4
+
+        var colors = ["red", "blue", "green"];//массив с тремя строками
+        colors[99] = "black";//добавление черного цвета в позиции 99
+        document.write(colors.length + "<br />");//100
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

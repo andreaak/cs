@@ -1,0 +1,27 @@
+﻿<!--
+    shift() - удаляет и возвращает первый элемент массива.
+-->
+
+<html>
+<head>
+    <title>Метод Shift()</title>
+
+    <script type="text/javascript">
+        var colors = new Array();//создание массива
+
+        var count = colors.push("red", "green");//включение двух элементов
+        document.write(count + "<br />");//2
+        document.write(colors + "<br />");//red, green
+
+        count = colors.push("black");//включение еще одного элемента
+        document.write(colors + "<br />");//red, green, black
+
+        var item = colors.shift();//извлечение первого элемента
+        document.write(item + "<br />");//"red"
+        document.write(colors + "<br />");//green, black
+    </script>
+
+</head>
+<body>
+</body>
+</html>

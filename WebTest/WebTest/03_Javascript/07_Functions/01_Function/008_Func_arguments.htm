@@ -12,11 +12,8 @@
     <script type="text/javascript">
 
         function max(a, b, c) {
-
             console.log(arguments);
             var maxValue = Number.NEGATIVE_INFINITY;
-            document.write("Number.NEGATIVE_INFINITY = " + maxValue, "<br/>");
-
             for (var i = 0; i < arguments.length; i++)
                 if (arguments[i] > maxValue)
                     maxValue = arguments[i];
@@ -25,13 +22,34 @@
         }
 
         var res = max(-33, 33, 777, -666, -22, 888);
+        document.write(res, "<br/>");// 888
 
-        document.write("Максимальное значение одного из аргументов функции = ", res, "<br/>");
+        function doAdd(num1, num2) {
+            if (arguments.length == 1) {
+                document.write(num1 + 10, "<br/>");
+            }
+            else if (arguments.length == 2) {
+                document.write(arguments[0] + num2, "<br/>");
+            }
+        }
 
-        /*
-        Number.NEGATIVE_INFINITY = -Infinity
-        Максимальное значение одного из аргументов функции = 888
-        */
+        function doAdd2(num1, num2) {
+            arguments[1] = 10;
+            document.write(arguments[0] + num2, "<br/>");
+            num2 = 33;
+            document.write(arguments[1], "<br/>");
+        }
+
+        doAdd2(5, 20);//15 33
+
+        function addSomeNumber(num) {
+            return num + 100;
+        }
+        function addSomeNumber(num) {
+            return num + 200;
+        }
+        var result = addSomeNumber(100);//300
+
 
     </script>
 

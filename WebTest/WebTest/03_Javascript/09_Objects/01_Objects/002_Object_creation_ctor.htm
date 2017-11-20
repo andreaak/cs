@@ -10,6 +10,41 @@
     <title>Обьекты</title>
     <script type="text/javascript">
 
+        var person = new Object();
+        person.name = "Nicholas";
+        person.age = 29;
+
+
+
+        function displayInfo(args) {
+            var output = "";
+            if (typeof args.name == "string") {
+                output += "Name:" + args.name + "\n";
+            }
+            if (typeof args.age == "number") {
+                output += "Age:" + args.age + "\п";
+            }
+            alert(output);
+        }
+        displayInfo({
+
+            name: "Nicholas",
+            age: 29
+        });
+        displayInfo({
+            name: "Greg"
+        });
+
+        alert(person["name"]);//"Nicholas"
+        alert(person.name);//"Nicholas"
+
+
+        var propertyName = "name";
+        alert(person[propertyName]);//"Nicholas"
+
+        //person["first name"] = "Nicholas";
+
+
         // Создаем обьект с именем point.
         var point = new Object();
 
@@ -63,6 +98,12 @@
 
         var obj = new Object(true);
         document.write(obj.constructor === Boolean, "<br/>");   // true
+
+        var obj1 = new Object();
+        var obj2 = obj1;
+        obj1.name = "Nicholas";
+        alert(obj2.name);//"Nicholas"
+
     </script>
 
 </head>
