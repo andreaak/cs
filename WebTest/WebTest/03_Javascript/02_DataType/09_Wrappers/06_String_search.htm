@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Методы indexOf() и lastIndexOf()</title>
+    <script type="text/javascript">
+        var str = "hello world";
+
+        // indexOf - возвращает индекс первого встречающегося в строке указанного символа.
+        var position = str.indexOf("o");
+        document.write(position + "</br>");//4
+        position = str.indexOf("o", 6);
+        document.write(position + "</br>");//7
+
+        // lastIndexOf - возвращает индекс последнего встречающегося в строке указанного символа.
+        position = str.lastIndexOf("o");
+        document.write(position + "</br>");//7
+        position = str.lastIndexOf("o", 6);
+        document.write(position + "</br>");//4
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿<!--
+    Методы reduce() и reduceRight(). 
+    Оба они перебирают все элементы в массиве, формируя на их основе единственное возвращаемое значение
+-->
+
+<html>
+<head>
+    <title>Метод reduce()</title>
+
+    <script type="text/javascript">
+
+        var values = [1, 2, 3, 4, 5];
+        var sum = values.reduce(function (prev, cur, index, array) {
+            return prev + cur;
+        });
+        document.write(sum + "<br/>");//15
+
+        var values = [1, 2, 3, 4, 5];
+        var sum = values.reduceRight(function (prev, cur, index, array) {
+            return prev + cur;
+        });
+        document.write(sum + "<br/>");//15
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

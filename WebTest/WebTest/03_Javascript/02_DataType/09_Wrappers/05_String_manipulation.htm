@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Методы строк</title>
+    <script type="text/javascript">
+
+        var stringValue = "hello ";
+        var result = stringValue.concat("world");
+        document.write(result + "<br />");//"hello world"
+        document.write(stringValue + "<br />");//"hello"
+
+        var result = stringValue.concat("world", "!");
+        document.write(result + "<br />");//"hello world!"
+
+        var str = "hello world";
+        // substring -  возвращает строку между двумя указанными индексами, не включая верхний индекс.
+        var substr = str.substring(3);
+        document.write(substr + "<br />");//loworld
+        substr = str.substring(3, 6);
+        document.write(substr + "<br />");//low 
+
+        substr = str.substring(-3);
+        document.write(substr + "<br />");//helloworld
+        substr = str.substring(3, -4);
+        document.write(substr + "<br />");//hel 
+
+        // substr - возвращает строку начиная с указанного индекса, указанной длины.
+        substr = str.substr(3);
+        document.write(substr + "<br />");//loworld
+        substr = str.substr(3, 6);
+        document.write(substr + "<br />");//loworl
+
+        substr = str.substr(-3);
+        document.write(substr + "<br />");//rld
+        substr = str.substr(3, -4);
+        document.write(substr + "<br />");//""
+
+        //slice
+        substr = str.slice(3);
+        document.write(substr + "<br />");//loworld
+        substr = str.slice(3, 6);
+        document.write(substr + "<br />");//low
+
+        substr = str.slice(-3);
+        document.write(substr + "<br />");//rld
+        substr = str.slice(3, -4);
+        document.write(substr + "<br />");//low
+
+    </script>
+</head>
+<body>
+</body>
+</html>

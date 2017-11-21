@@ -1,0 +1,23 @@
+﻿
+<html>
+<head>
+    <title>String</title>
+
+    <script type="text/javascript">
+
+        var stringObject = new String("hello world");
+        document.write((typeof stringObject) + "<br />");//object
+
+        var stringValue="hello world";
+        document.write(stringValue.length + "<br />");//"11"
+
+        // добавлять новые свойства и методы можно только к объектам созданым через оператор new
+        stringObject.customProperty = 123;
+        document.write(stringObject.customProperty + "<br />");//123
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

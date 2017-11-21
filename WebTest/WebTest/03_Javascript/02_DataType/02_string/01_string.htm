@@ -17,8 +17,16 @@
         var string1 = "Hello";
         var string2 = 'World';
         //var error = 'World";//синтаксическая ошибка - разные кавычки
+
+        // к объекту a нельзя добавлять новые свойства
+        // так как объект создавался через строковой литерал.
+        string2.ts = 5;
+        document.write(string2.ts + "<br/>");//undefined
+
+        // указание юникод символов явным образом.
         var text = "This is the letter sigma : \u03a3.";
         document.write(text + "<br/>");//This is the letter sigma : Σ.
+
         var length = text.length;
         document.write(length + "<br/>");//29
 
@@ -26,9 +34,6 @@
         document.write(string3 + "<br/>");//World"Test
         string3 = 'World"Test'; //использование кавычки в строке
         document.write(string3 + "<br/>");//World"Test
-
-        var lang = "Java";
-        lang = lang + "Script";//JavaScript
 
 
         var resString = string1 + string2; // конкатенация значений переменных string1 и string2

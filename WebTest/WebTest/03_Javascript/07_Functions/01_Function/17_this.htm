@@ -1,0 +1,24 @@
+﻿<html>
+<head>
+    <title>Функции в JavaScript</title>
+
+    <script type="text/javascript">
+
+        window.color = "red";
+        var o = { color: "blue" };
+
+        function sayColor() {
+            document.write(this.color + "<br />");
+        }
+
+        sayColor();//"red"
+
+        o.sayColor = sayColor;
+        o.sayColor();//"blue"
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

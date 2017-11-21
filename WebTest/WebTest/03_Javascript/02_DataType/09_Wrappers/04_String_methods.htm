@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Методы строк</title>
+    <script type="text/javascript">
+        var str = "hello world";
+
+        // charAt - возвращает символ по указанной позиции.
+        var char = str.charAt(0);
+        document.write(char + "<br />");//h
+
+        document.write(str[0] + "<br />");//h
+
+        char = str.charAt(str.length - 1);
+        document.write(char + "<br />");//d
+
+        char = str.charCodeAt(0);
+        document.write(char + "<br />");//104
+
+        // split - Разбивает строку на подстроки по указанному разделителю и возвращает массив подстрок.
+        var substrs = str.split(" ");
+        document.write(substrs.join("_") + "<br />");
+
+        // toLowerCase() - перевод всех символов в нижний регистр, toUpperCase() - перевод всех символов в верхний регистр.
+        str = "Hello World!!!";
+        str = str.toLowerCase();
+        document.write(str + "<br />");
+
+        str = str.toUpperCase();
+        document.write(str + "<br />");
+    </script>
+</head>
+<body>
+</body>
+</html>

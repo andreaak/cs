@@ -1,0 +1,50 @@
+﻿<html>
+<head>
+    <title>Функции в JavaScript</title>
+
+    <script type="text/javascript">
+
+        function factorial(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * factorial(num - 1);
+            }
+        }
+
+        function factorial(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * arguments.callee(num - 1);
+            }
+        }
+
+        var trueFactorial = factorial;
+        factorial = function () {
+            return 0;
+        };
+        document.write(trueFactorial(5) + "<br />");//120
+        document.write(factorial(5) + "<br />");//0
+
+        function outer() {
+            inner();
+        }
+        function inner() {
+            document.write(inner.caller + "<br />");//function outer() { inner(); }
+        }
+        outer();
+
+        function outer() {
+            inner();
+        }
+        function inner() {
+            document.write(arguments.callee.caller + "<br />");//function outer() { inner(); }
+        }
+        outer();
+    </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿
+<html>
+<head>
+    <title>Number</title>
+
+    <script type="text/javascript">
+
+        var numberObject = new Number(10);
+
+        var num = 10;
+        document.write(num.toString() + "<br/>");//"10"
+        document.write(num.toString(2) + "<br/>");//"1010"
+        document.write(num.toString(8) + "<br/>");//"12"
+        document.write(num.toString(10) + "<br/>");//"10"
+        document.write(num.toString(16) + "<br/>");//"а"
+
+        document.write(num.toFixed(2) + "<br/>");//"10.00"
+
+        var num = 10.005;
+        document.write(num.toFixed(2) + "<br/>");//"10.01"
+
+        var num = 10;
+        document.write(num.toExponential(1) + "<br/>");//"1.0e+1"
+
+        var num = 99;
+        document.write(num.toPrecision(1) + "<br/>");//"1e+2"
+        document.write(num.toPrecision(2) + "<br/>");//"99"
+        document.write(num.toPrecision(3) + "<br/>");//"99.0"
+
+        var numberObject = new Number(10);
+        var numberValue = 10;
+        document.write(typeof numberObject + "<br/>");//"object"
+        document.write(typeof numberValue + "<br/>");//"number"
+        document.write((numberObject instanceof Number) + "<br/>");//true
+        document.write((numberValue instanceof Number) + "<br/>");//false
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

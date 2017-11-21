@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+    <title>Метод indexOf()</title>
+
+    <script type="text/javascript">
+
+        var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+
+        document.write(numbers.indexOf(4) + "<br/>");//3
+        document.write(numbers.lastIndexOf(4) + "<br/>");//5
+        document.write(numbers.indexOf(4, 4) + "<br/>");//5
+        document.write(numbers.lastIndexOf(4, 4) + "<br/>");//3
+
+
+        var person = { name: "Nicholas" };
+        var people = [{ name: "Nicholas" }];
+        var morePeople = [person];
+
+        document.write(people.indexOf(person) + "<br/>");//-1
+        document.write(morePeople.indexOf(person) + "<br/>");//0
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿<!--
+    Метод forEach() - перебор массива
+-->
+
+<html>
+<head>
+    <title>Метод forEach()</title>
+
+    <script type="text/javascript">
+
+        var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+        numbers.forEach(function (item, index, array) {
+            document.write(item * 2 + " ");
+            item = item * 2;
+        });//2 4 6 8 10 8 6 4 2
+        document.write("<br/>");
+        document.write(numbers + "<br/>");//1,2,3,4,5,4,3,2,1
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Date</title>
+</head>
+<body>
+
+    <script type="text/javascript" language="JavaScript">
+        var now = new Date(); // Объект Date с текущей датой и временем.
+        document.write(now + "<br />");//Tue Nov 21 2017 12:58:08 GMT+0200 (FLE Standard Time)
+
+        var date = new Date(5000); // Параметр - количество миллисекунд между нужной датой и полночью 1 января 1970
+        document.write(date + "<br />");//Thu Jan 01 1970 02:00:05 GMT+0200 (FLE Standard Time)
+
+        date = new Date("December 25, 1995 21:46:10");
+        document.write(date + "<br />");//Mon Dec 25 1995 21:46:10 GMT+0200 (FLE Standard Time)
+
+        date = new Date("03/09/2000"); // полночь 9 марта 2000 года
+        document.write(date + "<br />");//Thu Mar 09 2000 00:00:00 GMT+0200 (FLE Standard Time)
+
+        // Date(год, месяц, день, часы, минуты, секунды, мс)
+        date = new Date(2000, 2, 9); // полночь 9 марта 2000 года нумерация месяцев с 0
+        document.write(date + "<br />");//Thu Mar 09 2000 00:00:00 GMT+0200 (FLE Standard Time)
+
+        date = new Date(Date.parse("May 25, 2004"));
+        document.write(date + "<br />");//Tue May 25 2004 00:00:00 GMT+0300 (FLE Daylight Time)
+
+        date = new Date("May 25, 2004");
+        document.write(date + "<br />");//Tue May 25 2004 00:00:00 GMT+0300 (FLE Daylight Time)
+
+        //1 января 2000г., полночь (GMT)
+        date = new Date(Date.UTC(2000, 0));
+        document.write(date + "<br />");//Sat Jan 01 2000 02:00:00 GMT+0200 (FLE Standard Time)
+        //5 мая 2005г., 17:55:55 (GMT)
+        date = new Date(Date.UTC(2005, 4, 5, 17, 55, 55));
+        document.write(date + "<br />");//Thu May 05 2005 20:55:55 GMT+0300 (FLE Daylight Time)
+
+        //1 января 2000г., полночь (GMT)
+        date = new Date(2000, 0);
+        document.write(date + "<br />");//Sat Jan 01 2000 00:00:00 GMT+0200 (FLE Standard Time)
+        //5 мая 2005г., 17:55:55 (GMT)
+        date = new Date(2005, 4, 5, 17, 55, 55);
+        document.write(date + "<br />");//Thu May 05 2005 17:55:55 GMT+0300 (FLE Daylight Time)
+
+        //получение времени начала
+        var start = Date.now();
+        //вызов функции
+        //doSomethiпg();
+        //получение времени окончания
+        var stop = Date.now();
+        var result = stop - start;
+
+        //получение времени начала
+        var start = +new Date();
+        //вызов функции
+        //doSomething();
+        //получение времени окончания
+        var stop = +new Date(),
+        result = stop - start;
+
+        var date1 = new Date(2007, 0, 1);//1 января 2007г.
+        var date2 = new Date(2007, 1, 1);//1 февраля 2007г.
+        document.write((date1 < date2) + "<br />");//true
+        document.write((date1 > date2) + "<br />");//false
+
+    </script>
+
+</body>
+</html>

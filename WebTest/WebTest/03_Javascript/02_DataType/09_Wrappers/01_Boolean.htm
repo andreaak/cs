@@ -1,0 +1,28 @@
+﻿
+<html>
+<head>
+    <title>Boolean</title>
+
+    <script type="text/javascript">
+
+        var booleanObject = new Boolean(true);
+
+        var falseObject = new Boolean(false);
+        var result = falseObject && true;
+        document.write(result + "<br/>");//true
+
+        var falseValue = false;
+        result = falseValue && true;
+        document.write(result + "<br/>");//false
+
+        document.write(typeof falseObject + "<br/>");//object
+        document.write(typeof falseValue + "<br/>");//boolean
+        document.write((falseObject instanceof Boolean) + "<br/>");//true
+        document.write((falseValue instanceof Boolean) + "<br/>");//false
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

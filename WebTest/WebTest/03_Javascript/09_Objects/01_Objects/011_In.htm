@@ -1,0 +1,48 @@
+﻿<!--
+    C помощью ключевого слова in можно проверить наличие свойства 
+    у объекта включая свойства прототипов.
+-->
+
+<html>
+<head>
+    <title>Проверка существования свойства</title>
+
+    <script type="text/javascript">
+
+        var house = {
+            roof: "Roof<br/>",
+            // thirdFloor: отсутствует.
+            secondFloor: "SecondFloor<br/>",
+            firstFloor: "FirstFloor<br/>",
+            basement: "Basement<br/>",
+            address: "UK. London. Muswell Hill. N10"
+        }
+
+        // Строительство дома.
+        document.write(house.roof);
+
+        // ЕСЛИ: В объекте house имеется планировка третьего этажа - thirdFloor,
+        if ("thirdFloor" in house) { // ТО: Строим третий этаж с планировкой - thirdFloor.
+            document.write(house["thirdFloor"]);
+            document.write(house.secondFloor);
+        }
+        else { // Иначе: Строим третий этаж с планировкой - secondFloor.
+            document.write(house["secondFloor"]);
+        }
+
+        document.write(house.firstFloor);
+        document.write(house.basement);
+        document.write(house.address);
+        /*
+        Roof
+        SecondFloor
+        FirstFloor
+        Basement
+        UK. London. Muswell Hill. N10
+        */
+    </script>
+
+</head>
+<body>
+</body>
+</html>

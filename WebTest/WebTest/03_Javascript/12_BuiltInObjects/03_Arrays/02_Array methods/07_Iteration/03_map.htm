@@ -1,0 +1,38 @@
+﻿<!--
+    Метод map() - перебор массива
+-->
+
+<html>
+<head>
+    <title>Метод map()</title>
+
+    <script type="text/javascript">
+
+        var arr = ["September", "October", "November"];
+        document.write(arr + "<br/>");//September,October,November
+
+        var res = arr.map(function (value) {
+            document.write(value + ",");
+        });//September,October,November,
+        document.write("<br/>");
+
+        var res = arr.map(function (value) {
+            return value += "-add";
+        });
+        document.write(res + "<br/>");//September-add,October-add,November-add
+
+        //ES6
+        var res = arr.map(v  => {
+            document.write(v + ",");
+        });//September,October,November,
+        document.write("<br/>");
+
+        var res = arr.map(v  =>  v + "-add");
+        document.write(res + "<br/>");//September-add,October-add,November-add
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>
