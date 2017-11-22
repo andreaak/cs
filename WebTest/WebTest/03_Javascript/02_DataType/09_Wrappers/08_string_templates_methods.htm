@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Метод search()</title>
+    <script type="text/javascript">
+
+        // search() - возвращает индекс первого найденного символа подстроки по шаблону или -1 если подстрока не найдена
+        var text = "Строка 123 для тестирования примера.";
+        var pattern = /\d\d\d/;
+        var firstIndex = text.search(pattern);
+        document.write(firstIndex + "<br />");//7
+
+        // match() - принимает регулярное выражение и возвращает массив с результатами поиска.
+        var text = "1 плюс 2 равно 3";
+        var pattern = /\d/g;// g - глобальный поиск - все вхождения, а не только первое.
+        var res = text.match(pattern);
+        document.write(res + "<br />");//['1', '2', '3']
+
+        var text = "Текст 123 для тестирования примера 123 ";
+        var pattern = /\d\d\d/;
+        var res = text.match(pattern);
+        document.write(res + "<br />");
+
+        var pattern = /\d\d\d/g;
+        var res = text.match(pattern);
+        document.write(res + "<br />");//[123,123]
+
+        // replace() -  производит операцию поиска с заменой.
+        var text = "Строка для 123тести456рования при789мера.";
+        var pattern = /\d\d\d/g; 
+        var result = text.replace(pattern, "");
+        document.write(result + "<br />");//Строка для тестирования примера.
+        var result = text.replace(pattern, "X");
+        document.write(result + "<br />");//Строка для XтестиXрования приXмера.
+
+        var text = "cat, bat, sat, fat";
+        var result = text.replace(/(.at)/g, "word ($1)");
+        document.write(result + "<br />");//word (cat), word (bat), word (sat), word (fat)
+
+        function htmlEscape(text) {
+
+            return text.replace(/[<>"&]/g, function (match, pos, originalText) {
+                switch (match) {
+                    case "<":
+                        return "&lt;";
+                    case ">":
+                        return "&gt;";
+                    case "&":
+                        return "&amp;";
+                    case "\"":
+                        return "&quot;";
+                }
+            });
+        }
+
+        var result = htmlEscape("<pclass=\"greeting\">Helloworld!</p>");
+        write(result);//"&lt;pclass=&quot;greeting&quot;&gt;Helloworld!&lt;/p&gt;";
+
+        // split() - разбивает строку на массив подстрок в соответствии с регулярным выражением.
+        var text = "test-А123test-B123test-C111test-D567";
+        var result = text.split(pattern);
+        write(result);//['test-A', 'test-B', 'test-C', 'test-D']
+        var result = text.split(pattern, 2);
+        write(result);//['test-A', 'test-B']
+
+        function write(result) {
+            document.write(result + "<br />");
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+

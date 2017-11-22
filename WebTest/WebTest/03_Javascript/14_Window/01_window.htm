@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Определение параметров окна</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var color = "red";
+
+        function sayColor() {
+            document.write(window.color + "<br />");
+            document.write(this.color + "<br />");
+        }
+        window.sayColor();//"red" "red" 
+
+
+        var global = function () {
+            return this;
+        }();
+        document.write(global + "<br />");//[object Window]
+    </script>
+</body>
+</html>

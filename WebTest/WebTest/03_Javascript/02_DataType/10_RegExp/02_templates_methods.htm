@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Метод test()</title>
+    <script type="text/javascript">
+
+        /*
+        Метод exec работает точно так же как и метод match типа данных string.
+        Но всегда возвращает только одно значение или null
+        При глобальном поиске (флаг g) метод возвращает найденную подстроку
+        и продолжает поиск далее по строке.
+        */
+        var test = "Строка №2 для тестирования примера 456";
+        var pattern = /\d/g;
+        var res;
+        while ((res = pattern.exec(test)) != null) {
+            document.write("Найдено " + res + " в позиции " + res.index
+                + ". Следующий поиск начнется с индекса " + pattern.lastIndex + "<br />");
+        }
+        /*
+        Найдено 2 в позиции 8. Следующий поиск начнется с индекса 9
+        Найдено 4 в позиции 35. Следующий поиск начнется с индекса 36
+        Найдено 5 в позиции 36. Следующий поиск начнется с индекса 37
+        Найдено 6 в позиции 37. Следующий поиск начнется с индекса 38
+        */
+
+        // Метод test возвращает true если метод exec возвращает не null;
+        var pattern = /\d\d\d/;
+        var input = "hello world";
+        document.write(pattern.test(input) + "<br />");//false
+
+        input = "123";
+        document.write(pattern.test(input) + "<br />");//true
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

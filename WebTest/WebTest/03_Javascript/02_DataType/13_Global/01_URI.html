@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Date</title>
+</head>
+<body>
+
+    <script type="text/javascript" language="JavaScript">
+
+        var uri = "http://www.wrox.com/illegal value.htm#start";
+
+        document.write(encodeURI(uri) + "<br />");//http://www.wrox.com/illegal%20value.htm#start
+        document.write(encodeURIComponent(uri) + "<br />");//http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start
+
+        var uri = "http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start";
+
+        document.write(decodeURI(uri) + "<br />");//http%3A%2F%2Fwww.wrox.com%2Fillegal value.htm%23start
+        document.write(decodeURIComponent(uri) + "<br />");//http://www.wrox.com/illegal value.htm#start
+    </script>
+
+</body>
+</html>

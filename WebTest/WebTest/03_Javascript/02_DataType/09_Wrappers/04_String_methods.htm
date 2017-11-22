@@ -22,12 +22,25 @@
         document.write(substrs.join("_") + "<br />");
 
         // toLowerCase() - перевод всех символов в нижний регистр, toUpperCase() - перевод всех символов в верхний регистр.
-        str = "Hello World!!!";
+        str = "Hello World";
         str = str.toLowerCase();
-        document.write(str + "<br />");
+        document.write(str + "<br />");//hello world
 
         str = str.toUpperCase();
-        document.write(str + "<br />");
+        document.write(str + "<br />");//HELLO WORLD
+
+        str = " hello world ";
+        document.write(str + "<br />");//" hello world "
+        var trimmed = str.trim();
+        document.write(trimmed + "<br />");//"hello world"
+
+        document.write(String.fromCharCode(104, 101, 108, 108, 111) + "<br />");//"hello"
+
+        var stringValue = "yellow";
+        document.write(stringValue.localeCompare("brick") + "<br />");//1
+        document.write(stringValue.localeCompare("yellow") + "<br />");//0
+        document.write(stringValue.localeCompare("zoo") + "<br />");//-1
+
     </script>
 </head>
 <body>
