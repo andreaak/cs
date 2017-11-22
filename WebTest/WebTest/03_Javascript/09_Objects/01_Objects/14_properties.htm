@@ -1,0 +1,147 @@
+﻿<html>
+<head>
+    <title>Свойства</title>
+    <script type="text/javascript">
+
+        var person = {
+            name: "Nicholas"
+        };
+
+        var person = {};
+        Object.defineProperty(person, "name", {
+            writable: false,
+            value: "Nicholas"
+        });
+
+        write(person.name);//"Nicholas"
+        person.name = "Greg";
+        write(person.name);//"Nicholas"
+
+
+        var person = {};
+        Object.defineProperty(person, "name", {
+            configurable: false,
+            value: "Nicholas"
+        });
+
+        write(person.name);//"Nicholas"
+        delete person.name;
+        write(person.name);//"Nicholas"
+
+        var person = {};
+        Object.defineProperty(person, "name", {
+            configurable: false,
+            value: "Nicholas"
+        });
+
+        //возникает ошибка
+        //Object.defineProperty(person, "name", {
+        //    configurable: true,
+        //    value: "Nicholas"
+        //});
+
+
+        var book = {
+            _year: 2004,
+            edition: 1
+        };
+
+        Object.defineProperty(book, "year", {
+            get: function () {
+                return this._year;
+            },
+            set: function (newValue) {
+
+                if (newValue > 2004) {
+                    this._year = newValue;
+                    this.edition += newValue - 2004;
+                }
+            }
+        });
+
+        book.year = 2005;
+        write(book.edition);//2
+
+        var book = {
+            _year: 2004,
+            edition: 1
+        };
+
+        //унаследованные функции доступа
+        book.__defineGetter__("year", function () {
+            return this._year;
+        });
+        book.__defineSetter__("year", function (newValue) {
+            if (newValue > 2004) {
+                this._year = newValue;
+                this.edition += newValue - 2004;
+            }
+        });
+        book.year = 2005;
+        write(book.edition);//2
+
+
+        var book = {};
+        Object.defineProperties(book, {
+            _year: {
+                value: 2004
+            },
+            edition: {
+                value: 1
+            },
+            year: {
+                get: function () {
+                    return this._year;
+                },
+                set: function (newValue) {
+                    if (newValue > 2004) {
+                        this._year = newValue;
+                        this.edition += newValue - 2004;
+                    }
+                }
+            }
+        });
+
+        var book = {};
+        Object.defineProperties(book, {
+            _year: {
+                value: 2004
+            },
+            edition: {
+                value: 1
+            },
+            year: {
+
+                get: function () {
+                    return this._year;
+                },
+                set: function (newValue) {
+
+                    if (newValue > 2004) {
+                    }
+                    this._year = newValue;
+                    this.edition += newValue - 2004;
+                }
+            }
+        });
+
+        var descriptor = Object.getOwnPropertyDescriptor(book, "_year");
+        write(descriptor.value);//2004
+        write(descriptor.configurable);//false
+        write(typeof descriptor.get);//"undefined"
+
+        var descriptor = Object.getOwnPropertyDescriptor(book, "year");
+        write(descriptor.value);//undefined
+        write(descriptor.enumerable);//false
+        write(typeof descriptor.get);//"function"
+
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>
