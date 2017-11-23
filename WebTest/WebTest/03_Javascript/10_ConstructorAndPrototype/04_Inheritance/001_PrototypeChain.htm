@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Цепочка прототипов</title>
+
+    <script>
+        // родительский конструктор
+        function Parent(name) {
+            this.parentProperty = true;
+            //this.name = name || "Adam";
+            this.name = name;
+        }
+
+        // дополнительное поведение добавленное в прототип.
+        Parent.prototype.getParentValue = function () {
+            return this.parentProperty;
+        }
+
+        // дополнительное поведение добавленное в прототип.
+        Parent.prototype.getName = function () {
+            return this.name;
+        }
+
+        //дочерний конструктор.
+        function Child(name) {
+            this.childProperty = false;
+        }
+
+        /*
+        Самый простой способ реализовать наследование -
+        создать объект с помощью родительского конструктора и присвоить
+        его как прототип для дочернего конструктора.
+        */
+        Child.prototype = new Parent();
+
+        Child.prototype.getChildValue = function () {
+            return this.childProperty;
+        };
+
+        var childInstance = new Child();
+        write(childInstance.getParentValue());//true
+        write(childInstance.getChildValue());//false
+
+        write(childInstance.name);//undefined
+        childInstance.name = "Ivan";
+        write(childInstance.getName());//"Ivan"
+
+        write(childInstance instanceof Object);//true;
+        write(childInstance instanceof Parent);//true
+        write(childInstance instanceof Child);//true
+
+        write(Object.prototype.isPrototypeOf(childInstance));//true;
+        write(Parent.prototype.isPrototypeOf(childInstance));//true;
+        write(Child.prototype.isPrototypeOf(childInstance));//true;
+
+
+        //переопределение существующего метода
+        Child.prototype.getParentValue = function () {
+            return false;
+        };
+        var childInstance = new Child();
+        write(childInstance.getParentValue());//false
+
+        //наследование от Parent
+        Child.prototype = new Parent();
+        //попытка добавить новые методы аннулирует предыдущую строку
+        Child.prototype = {
+            getChildValue: function () {
+                return this.childProperty;
+            },
+            someOtherMethod: function () {
+                return false;
+            }
+        };
+        var instance = new Child();
+        //write(instance.getParentValue());//Uncaught TypeError: instance.getParentValue is not a function
+
+        /*
+        Недостатки шаблона:
+        Невозможно передать параметры от дочернего конструктора к родительскому
+        */
+        Child.prototype = new Parent();
+        var childInstance = new Child("Ivan");
+        write(childInstance.getName());//undefined
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+        function SuperType(){
+            this.colors=["red","blue","green"];
+        }
+        function SubType(){
+        }
+        //наследование от SuperType
+        SubType.prototype = new SuperType();
+
+        var instance1 = new SubType();
+        instance1.colors.push("black");
+        write(instance1.colors);//"red,blue,green,black"
+        var instance2 = new SubType();
+        write(instance2.colors);//"red,blue,green,black"
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

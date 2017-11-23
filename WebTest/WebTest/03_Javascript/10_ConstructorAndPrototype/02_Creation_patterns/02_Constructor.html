@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Factory</title>
+    <script type="text/javascript">
+
+        function Person(name, age, job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.sayName = function () {
+                write(this.name);
+            };
+        }
+
+        var person1 = new Person("Nicholas", 29, "SoftwareEпgiпeer");
+        var person2 = new Person("Greg", 27, "Doctor");
+
+        write(person1.constructor == Person);//true
+        write(person2.constructor == Person);//true
+
+        write(person1 instanceof Object);//true
+        write(person1 instanceof Person);//true
+        write(person2 instanceof Object);//true
+        write(person2 instanceof Person);//true
+
+        //вызов в качестве конструктора
+        var person = new Person("Nicholas", 29, "SoftwareEngineer");
+        person.sayName();//"Nicholas"
+
+        //вызов в качестве обычной функции
+        person = Person("Greg", 27, "Doctor");//функция добавляется к window
+        window.sayName();//"Greg"
+        write(person);//undefined
+
+        //вызов в области видимости другого объекта
+        var o = new Object();
+        Person.call(o, "Kristen", 25, "Nurse");
+        o.sayName();//"Kristen"
+
+        function Person(name, age, job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.sayName = new Function("write(this.name)");//логический эквивалент
+        }
+
+        write(person1.sayName == person2.sayName);//false
+
+        function Person(name, age, job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.sayName = sayName;
+        }
+
+        function sayName() {
+            alert(this.name);
+        }
+
+        var person1 = new Person("Nicholas", 29, "SoftwareEпgiпeer");
+        var person2 = new Person("Greg", 27, "Doctor");
+
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>

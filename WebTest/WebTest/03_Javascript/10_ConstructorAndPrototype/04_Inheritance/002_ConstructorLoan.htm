@@ -7,19 +7,20 @@
 
         // родительский конструктор
         function Parent(name) {
-            this.name = name || "Adam";
+            this.name = name;
+            this.colors = ["red", "blue", "green"];
             this.test = function() {
-                
+                return this.name;
             }
         }
 
         // дополнительное поведение добавленное в прототип.
         Parent.prototype.say = function () {
-            document.write("Hello my name is ", this.name, "<br/>");
+            return this.name;
         }
 
         // дочерний конструктор.
-        function Child(name_) {
+        function Child(name) {
             /*
             Вызов конструктора Parent с передачей ссылки на пустой объект, 
             который должна заполнить данная функция конструктор.
@@ -28,22 +29,24 @@
             Parent.apply(this, arguments);
         }
 
+        var childInstance = new Child("Ivan");
+        write(childInstance.test());//Ivan
+        childInstance.colors.push("black");
+        write(childInstance.colors);//red,blue,green,black
 
-        var kid = new Child("Ivan");
-        document.write(kid.name, "<br/>");
-        document.write(kid.test, "<br/>");
-        document.write(kid.say, "<br/>");
+        var childInstance2 = new Child("Ivan");
+        write(childInstance2.colors);//red,blue,green
 
         /*
         Недостатки шаблона:
         Не наследуются свойства и методы прототипа родителя, 
-        вызвать метод say на объекте kid сейчас не возможно.
+        вызвать метод say на объекте childInstance сейчас не возможно.
         */
-        /*
-        Ivan
-        function () { }
-        undefined
-        */
+        write(childInstance.say);//undefined
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
     </script>
 </head>
 <body>

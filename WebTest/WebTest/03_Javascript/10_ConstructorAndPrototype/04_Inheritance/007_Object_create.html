@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Наследование через прототип ECMAScript 5</title>
+</head>
+<body>
+    <script>
+        var base = {
+            name: "Nicholas",
+            friends: ["Shelby", "Court", "Van"]
+        };
+        var anotherPerson = Object.create(base);
+        anotherPerson.name = "Greg";
+        anotherPerson.friends.push("Rob");
+        var yetAnotherPerson = Object.create(base);
+        yetAnotherPerson.name = "Linda";
+        yetAnotherPerson.friends.push("Barbie");
+        write(base.friends);//"Shelby,Court,Van,Rob,Barbie"
+
+        var anotherPerson = Object.create(base, {
+            name: {
+                value: "Greg"
+            },
+            test: {
+                value: function () {
+                    return "Test func";
+                }
+            }
+        });
+        write(anotherPerson.name);//"Greg"
+        write(anotherPerson.test());//"Test func"
+
+        // Shape - superclass
+        function Shape() {
+            this.x = 0;
+            this.y = 0;
+        }
+
+        // superclass method
+        Shape.prototype.move = function (x, y) {
+            this.x += x;
+            this.y += y;
+            write('Shape moved.');
+        };
+
+        // Rectangle - subclass
+        function Rectangle() {
+            Shape.apply(this, arguments); // call super constructor.
+        }
+
+        // subclass extends superclass
+        Rectangle.prototype = Object.create(Shape.prototype);
+        Rectangle.prototype.constructor = Rectangle;
+
+        var rect = new Rectangle();
+
+        write(rect instanceof Rectangle); // true
+        write(rect instanceof Shape); // true
+        rect.move(1, 1); // Outputs, 'Shape moved.'
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</body>
+</html>
+

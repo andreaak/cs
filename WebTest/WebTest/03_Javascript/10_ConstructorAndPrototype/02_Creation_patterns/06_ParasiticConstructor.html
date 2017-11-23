@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Factory</title>
+    <script type="text/javascript">
+
+        function Person(name, age, job) {
+            var o = new Object();
+            o.name = name;
+            o.age = age;
+            o.job = job;
+            o.sayName = function () {
+                write(this.name);
+            };
+            return o;
+        }
+        var friend = new Person("Nicholas", 29, "SoftwareEngineer");
+        friend.sayName();//"Nicholas"
+
+        function SpecialArray() {
+
+            //создание массива
+            var values = new Array();
+
+            //добавление значений
+            values.push.apply(values, arguments);
+
+            //назначение метода
+            values.toPipedString = function () {
+                return this.join("|");
+            };
+
+            //возвращение массива
+            return values;
+        }
+
+        var colors = new SpecialArray("red", "bluе", "green");
+        write(colors.toPipedString());//"red|bluе|green"
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

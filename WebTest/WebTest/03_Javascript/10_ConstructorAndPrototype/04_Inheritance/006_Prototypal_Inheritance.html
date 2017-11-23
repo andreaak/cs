@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Наследование через прототип</title>
+</head>
+<body>
+    <!--Имеется некоторый объект, который можно было бы использовать повторно,
+        необходимо создать второй объект, использующий функциональные возможности первого -->
+
+    <script>
+        // функция создает новый объект, который будет использовать прототип указанного объекта
+        function object(obj) {
+            function F() { }
+            F.prototype = obj;
+            return new F();
+        }
+
+        var base = {
+            name: "Nicholas",
+            friends: ["Shelby", "Court", "Van"]
+        };
+
+        var anotherPerson = object(base);
+        anotherPerson.name = "Greg";
+        anotherPerson.friends.push("Rob");
+
+        var yetAnotherPerson = object(base);
+        yetAnotherPerson.name = "Linda";
+        yetAnotherPerson.friends.push("Barbie");
+        write(base.friends);//"Shelby,Court,Van,Rob,Barbie"
+
+        function Derived() {
+
+        };
+
+        Derived.prototype = object(base);
+
+        var derived = new Derived();
+        write(derived.name);//Nicholas
+        write(derived.hasOwnProperty("name"));//false
+        write(base.hasOwnProperty("name"));// true
+
+        derived.friends.push("Kent");
+        write(base.friends);//Shelby,Court,Van,Rob,Barbie,Kent
+        write(derived.friends);//Shelby,Court,Van,Rob,Barbie,Kent
+
+        write(derived instanceof Derived);//true
+
+        var derived2 = {
+
+        };
+        derived2.__proto__ = object(base);
+        write(derived2.name);//Nicholas
+        derived2.friends.push("ADS");
+        write(base.friends);//Shelby,Court,Van,Rob,Barbie,Kent,ADS
+        write(derived.friends);//Shelby,Court,Van,Rob,Barbie,Kent,ADS
+        write(derived2.friends);//Shelby,Court,Van,Rob,Barbie,Kent,ADS
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</body>
+</html>

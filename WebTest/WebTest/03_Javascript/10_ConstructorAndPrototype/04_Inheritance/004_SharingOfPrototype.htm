@@ -12,38 +12,33 @@
 
         // дополнительное поведение добавленное в прототип.
         Parent.prototype.say = function () {
-            document.write("Hello my name is ", this.name, "<br/>");
+            write(this.name);
         }
 
         function Child(name) {
             Parent.apply(this, arguments);
         }
 
-        inherit(Child, Parent);
-
-        function inherit(child, parent) {
-            child.prototype = parent.prototype;
-        }
+        Child.prototype = Parent.prototype;
 
         var kid = new Child("Ivan");
-        kid.say();
+        kid.say();//Ivan
 
-        Child.prototype.test = function() {
-            document.write("test() <br/>");
+        Child.prototype.test = function () {
+            write("test()");
         }
         var parent = new Parent("Petr");
-        parent.test();
+        parent.test();//test()
         /*
         Недостатки шаблона:
-        Все объекты используют один и тот же прототип, 
-        если один из дочерних объектов поменяет прототип 
+        Все объекты используют один и тот же прототип,
+        если один из дочерних объектов поменяет прототип
         это скажется на всех родительских объектах.
         */
 
-        /*
-        Hello my name is Ivan
-        test() 
-        */
+        function write(result) {
+            document.write(result + "<br/>");
+        }
     </script>
 </head>
 <body>

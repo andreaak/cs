@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Factory</title>
+    <script type="text/javascript">
+
+
+        function Person(name, age, job) {
+            //свойства
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            //методы
+            if (typeof this.sayName != "function") {
+
+                Person.prototype.sayName = function () {
+                    write(this.name);
+                };
+            }
+        }
+
+        var friend = new Person("Nicholas", 29, "SoftwareEngineer");
+        friend.sayName();//Nicholas
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>

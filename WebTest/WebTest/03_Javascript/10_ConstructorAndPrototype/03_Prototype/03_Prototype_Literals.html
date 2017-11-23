@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Прототип</title>
+
+    <script type="text/javascript">
+
+        function Person() {
+        }
+
+        Person.prototype = {
+            name: "Nicholas",
+            age: 29,
+            job: "SoftwareEngineer",
+            sayName: function () {
+                alert(this.name);
+            }
+        };
+
+        var friend = new Person();
+        write(friend instanceof Object);//true
+        write(friend instanceof Person);//true
+        write(friend.constructor == Person);//false
+        write(friend.constructor == Object);//true
+
+        Person.prototype = {
+            constructor: Person,
+            name: "Nicholas",
+            age: 29,
+            job: "SoftwareEngineer",
+            sayName: function () {
+                alert(this.name);
+            }
+        };
+
+        var friend = new Person();
+        write(friend.constructor == Person);//true
+        write(friend.constructor == Object);//false
+
+        Person.prototype = {
+            name: "Nicholas",
+            age: 29,
+            job: "SoftwareEngineer",
+            sayName: function () {
+                alert(this.name);
+            }
+        };
+
+        //восстановление конструктора(только в ECMAScript 5)
+        Object.defineProperty(Person.prototype, "constructor", {
+            enumerable: false,
+            value: Person
+        });
+
+        var friend = new Person();
+        write(friend.constructor == Person);//true
+        write(friend.constructor == Object);//false
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+        //// функция создает новый объект, который будет использовать прототип указанного объекта
+        //function createObj(obj) {
+        //    function F() { }
+        //    F.prototype = obj;
+        //    return new F();
+        //}
+
+        //var base = {
+        //    name: "John"
+        //};
+
+        //var derived = {
+
+        //};
+        //derived.__proto__ = createObj(base);
+        //document.write(derived.name, "<br/>");// John
+        //document.write(derived.hasOwnProperty("name"), "<br/>");//false
+        //document.write(base.hasOwnProperty("name"), "<br/>");//true
+    </script>
+
+</head>
+<body>
+</body>
+</html>

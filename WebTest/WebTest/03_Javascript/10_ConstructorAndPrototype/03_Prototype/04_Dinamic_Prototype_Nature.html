@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Прототип</title>
+
+    <script type="text/javascript">
+
+        function Person() {
+        }
+        var friend = new Person();
+
+        Person.prototype.sayHi = function () {
+            write("hi");
+        };
+        friend.sayHi();//"hi"- все работает!
+
+        var friend = new Person();
+
+        Person.prototype = {
+            constructor: Person,
+            name: "Nicholas",
+            age: 29,
+            job: "SoftwareEngineer",
+            sayName: function () {
+                write(this.name);
+            }
+        };
+        //friend.sayName();//Uncaught TypeError: friend.sayName is not a function
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+
+</head>
+<body>
+</body>
+</html>

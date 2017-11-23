@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+    с помощью ключевого слова in можно проверить наличие свойства
+    у объекта включая свойства прототипов.
+-->
+<head>
+    <title>In</title>
+
+    <script type="text/javascript">
+        function Person() {
+        }
+
+        Person.prototype.name = "Nicholas";
+        Person.prototype.age = 29;
+        Person.prototype.job = "SoftwareEngineer";
+        Person.prototype.sayName = function () {
+            write(this.name);
+        };
+
+        var person1 = new Person();
+        person1.sayName();//"Nicholas"
+        var person2 = new Person();
+        person2.sayName();//"Nicholas"
+
+        write(person1.hasOwnProperty("name"));//false
+        write("name" in person1);//true
+
+        person1.name = "Greg";
+        write(person1.name);//"Greg"-из экземпляра
+        write(person1.hasOwnProperty("name"));//true
+        write("name" in person1);//true
+
+        write(person2.name);//"Nicholas"-изпрототипа
+        write(person2.hasOwnProperty("name"));//false
+        write("name" in person2);//true
+
+        delete person1.name;
+        write(person1.name);//"Nicholas"-изпрототипа
+        write(person1.hasOwnProperty("name"));//false
+        write("name" in person1);//true
+
+        function hasPrototypeProperty(object, name) {
+            return !object.hasOwnProperty(name) && (name in object);
+        }
+
+        var keys = Object.keys(Person.prototype);
+        write(keys);//"name,age,job,sayName"
+        var p1 = new Person();
+        p1.name = "Rob";
+        p1.age = 31;
+        var p1keys = Object.keys(p1);
+        write(p1keys);//"name,age"
+
+        var keys = Object.getOwnPropertyNames(Person.prototype);
+        write(keys);//"constructor,name,age,job,sayName"
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

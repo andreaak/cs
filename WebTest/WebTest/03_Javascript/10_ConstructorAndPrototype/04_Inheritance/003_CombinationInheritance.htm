@@ -7,41 +7,44 @@
 
         // родительский конструктор
         function Parent(name) {
-            this.name = name || "Adam";
-            this.some = "someField";
+            this.name = name;
+            this.colors = ["red", "blue", "green"];
+            this.test = function () {
+                return this.name;
+            }
         }
 
-        // дополнительное поведение добавленное в прототип.
         Parent.prototype.say = function () {
-            document.write("Hello my name is ", this.name, "<br/>");
+            return this.name;
         }
 
         // дочерний конструктор.
         function Child(name) {
             Parent.apply(this, arguments);
         }
+
         Child.prototype = new Parent();
-        document.write("Child.prototype.name: ", Child.prototype.name, "<br/>");
-        document.write("Child.prototype.some: ", Child.prototype.some, "<br/>");
+        write(Child.prototype.name);//undefined
+        write(Child.prototype.colors);//red,blue,green
 
+        var childInstance = new Child("Ivan");
+        write(childInstance.name);//Ivan
+        write(childInstance.test());//Ivan
+        childInstance.colors.push("black");
+        write(childInstance.colors);//red,blue,green,black
+        write(childInstance.say());//Ivan
 
-        var kid = new Child("Ivan");
-        document.write("kid.name: ", kid.name, "<br/>");
-        document.write("kid.some: ", kid.some, "<br/>");
-        kid.say();
+        var childInstance2 = new Child("Ivan");
+        write(childInstance2.colors);//red,blue,green
 
         /*
         Недостатки шаблона:
         Необходимость два раза вызывать родительский конструктор, что снижает эффективность.
         */
 
-        /*
-        Child.prototype.name: Adam
-        Child.prototype.some: someField
-        kid.name: Ivan
-        kid.some: someField
-        Hello my name is Ivan
-        */
+        function write(result) {
+            document.write(result + "<br/>");
+        }
     </script>
 </head>
 <body>

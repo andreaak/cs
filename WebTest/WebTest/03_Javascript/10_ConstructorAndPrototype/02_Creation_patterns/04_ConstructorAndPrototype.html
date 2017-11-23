@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Factory</title>
+    <script type="text/javascript">
+
+        function Person(name, age, job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.friends = ["Shelby", "Court"];
+        }
+
+        Person.prototype = {
+            constructor: Person,
+            sayName: function () {
+                write(this.name);
+            }
+        };
+
+        var person1 = new Person("Nicholas", 29, "SoftwareEngineer");
+        var person2 = new Person("Greg", 27, "Doctor");
+
+        person1.friends.push("Van");
+
+        write(person1.friends);//"Shelby,Court,Van"
+        write(person2.friends);//"Shelby,Court"
+        write(person1.friends === person2.friends);//false
+        write(person1.sayName === person2.sayName);//true
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>

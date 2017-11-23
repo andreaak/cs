@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Factory</title>
+    <script type="text/javascript">
+
+        function Person(name, age, job) {
+            var o = new Object();
+
+            //необязательно:определите здесь закрытые переменные/функции
+
+            //присоединение методов
+            o.sayName = function () {
+                write(this.name);
+            };
+            //возвращение объекта
+            return o;
+        }
+        var friend = new Person("Nicholas", 29, "SoftwareEngineer");
+        friend.sayName();//"Nicholas"
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

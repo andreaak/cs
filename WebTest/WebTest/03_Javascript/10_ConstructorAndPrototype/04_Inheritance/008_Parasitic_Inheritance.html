@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Наследование через прототип</title>
+</head>
+<body>
+    <script>
+        // функция создает новый объект, который будет использовать прототип указанного объекта
+        function object(obj) {
+            function F() { }
+            F.prototype = obj;
+            return new F();
+        }
+
+        function createAnother(original) {
+            var clone = object(original);//создание объекта путем вызова функции
+            clone.sayHi = function () {//расширение возможностей объекта
+                write("hi");
+            };
+            return clone;//возвращение объекта
+        }
+
+        var person = {
+            name: "Nicholas",
+            friends: ["Shelby", "Court", "Van"]
+        };
+        var anotherPerson = createAnother(person);
+        anotherPerson.sayHi();//"hi"
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+        // Паразитное комбинированное наследование
+        function inheritPrototype(subType, superType) {
+            var prototype = object(superType.prototype);//создание объекта
+            prototype.constructor = subType;//расширение объекта
+            subType.prototype = prototype;//назначение объекта
+        }
+
+        function SuperType(name) {
+            this.name = name;
+            this.friends = ["Shelby", "Court", "Van"];
+        }
+
+        SuperType.prototype.sayName = function () {
+            return this.name;
+        };
+
+        function SubType(name, age) {
+            SuperType.call(this, name);
+            this.age = age;
+        }
+
+        function SubType(name, age) {
+            SuperType.call(this, name);
+            this.age = age;
+        }
+
+        inheritPrototype(SubType, SuperType);
+
+        SubType.prototype.sayAge = function () {
+            return this.age;
+        };
+
+        var instance = new SubType("John", 38);
+        write(instance.sayName());//John
+        write(instance.sayAge());//38
+        instance.friends.push("Rob");//Shelby, Court, Van, Rob
+        write(instance.friends);
+
+        var instance2 = new SubType("Michael", 22);
+        write(instance2.sayName());//Michael
+        write(instance2.sayAge());//22
+        write(instance2.friends);// Shelby, Court, Van
+
+    </script>
+</body>
+</html>
