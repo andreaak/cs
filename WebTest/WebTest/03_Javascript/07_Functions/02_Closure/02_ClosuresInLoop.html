@@ -5,6 +5,35 @@
 </head>
 <body>
     <script>
+        function createFunctionsBad() {
+            var result = new Array();
+            for (var i = 0; i < 10; i++) {
+                result[i] = function () {
+                    return i;
+                };
+            }
+            return result;
+        }
+
+        var res = createFunctionsBad();
+        document.writeln(res[2]() + "<br/>");//10
+
+        function createFunctions() {
+            var result = new Array();
+            for (var i = 0; i < 10; i++) {
+                result[i] = function (num) {
+                    return function () {
+                        return num;
+                    };
+                }(i);
+            }
+            return result;
+        }
+
+        var res = createFunctions();
+        document.writeln(res[2]() + "<br/>");//2
+
+
         var a = [1, 2, 3, 4, 5];
         for (var i = 0; i < a.length; i++) {
 

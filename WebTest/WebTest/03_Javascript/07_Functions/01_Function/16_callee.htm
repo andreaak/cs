@@ -27,6 +27,16 @@
         document.write(trueFactorial(5) + "<br />");//120
         document.write(factorial(5) + "<br />");//0
 
+        var factorial = (function f(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * f(num - 1);
+            }
+        });
+
+
+
         function outer() {
             inner();
         }

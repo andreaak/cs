@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Замыкание или closures</title>
+</head>
+<body>
+    <script>
+
+        var name = "The Window";
+        var object = {
+            name: "МуObject",
+            getNameFunc: function () {
+                return function () {
+                    return this.name;
+                };
+            }
+        };
+
+        write(object.getNameFunc()());//"The Window"(в нестрогом режиме)
+
+        var name = "The Window";
+        var object = {
+            name: "Му Object",
+            getNameFunc: function () {
+                var that = this;
+                return function () {
+                    return that.name;
+                };
+            }
+        };
+        write(object.getNameFunc()());//"Му Object"(в нестрогом режиме)
+
+        var name = "The Window";
+        var object = {
+            name: "Му Object",
+            getName: function () {
+                return this.name;
+            }
+        };
+        write(object.getName());//"Му Object"
+        write((object.getName)());//"Му Object"
+        write((object.getName = object.getName)());//"The Window"(в нестрогом режиме)
+
+        function assignHandler() {
+            var element = document.getElementByid("someElemeпt");
+            var id = element.id;
+            element.onclick = function () {
+                write(id);
+            };
+        }
+
+        function assignHandler() {
+            var element = document.getElementByid("someElemeпt");
+            var id = element.id;
+            element.onclick = function () {
+                write(id);
+            };
+            element = null;
+        }
+
+        function outputNumbers(count) {
+
+            for (var i = 0; i < count; i++) {
+                //write(i);
+            }
+            write(i);//5
+        }
+
+        outputNumbers(5);
+
+        function outputNumbers(count) {
+
+            for (var i = 0; i < count; i++) {
+                //write(i);
+            }
+            var i;//повторное объявление переменной
+            write(i);//5
+        }
+        outputNumbers(5);//5
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<html>
+<head>
+    <title>Локальные и глобальные переменные</title>
+
+    <script type="text/javascript">
+
+        (function () {
+            //код блока
+        })();
+
+        var count = 5;
+        outputNumbers(count);
+
+        var someFunction = function () {
+            //код блока
+        };
+        someFunction();
+
+        //function(){
+        //    //код блока
+        //}();//ошибка!
+
+        function outputNumbers(count) {
+            (function () {
+                for (var i = 0; i < count; i++) {
+                    write(i);
+                }
+            })();
+            write(i);//ошибка
+        }
+
+        (function () {
+            var now = new Date();
+            if (now.getMonth() == 0 && now.getDate() == 1) {
+                write("Happy new year!");
+            }
+        })();
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

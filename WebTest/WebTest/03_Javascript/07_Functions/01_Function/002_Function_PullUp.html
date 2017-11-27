@@ -9,7 +9,7 @@
         // window.myfunction = fn; window.foo = fn; window.bar = undefined;
 
         function myfunction() {
-            foo(); 
+            foo(); // foo function
             bar(); // TypeError: bar is not a function
         }
         //with error
@@ -30,10 +30,28 @@
         //without error
         //myfunction();
 
-        /*
-        foo function
-        */
+        //Никогда не делайте этого!
+        if (condition) {
+            function sayHi() {
+                alert("Hi!");
+            }
+        } else {
+            function sayHi() {
+                alert("Yo!");
+            }
+        }
 
+        //все в порядке
+        var sayHi;
+        if (condition) {
+            sayHi = function () {
+                alert("Hi!");
+            };
+        } else {
+            sayHi = function () {
+                alert("Yo!");
+            };
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Возвращаемое конструктором значение</title>
+</head>
+<body>
+    <script>
+
+        var singleton = {
+            name: value,
+            method: function () {
+                //код метода
+            }
+        };
+
+        var singleton = function () {
+            //закрытые переменные и функции
+            var privateVariable = 10;
+
+            function privateFunction() {
+                return false;
+            }
+
+            //привилегированные/открытые методы и свойства
+            return {
+                publicProperty: true,
+                publicMethod: function () {
+                    privateVariable++;
+                    return privateFunction();
+                }
+            };
+        }();
+
+        var application = function () {
+            //закрытые переменные и функции
+            var components = new Array();
+            //инициализация
+            components.push(new BaseComponent());
+            //открытый интерфейс
+            return {
+
+                getComponentCount: function () {
+                    return components.length;
+                },
+                registerComponent: function (component) {
+                    if (typeof component == "object") {
+                        components.push(component);
+                    }
+                }
+            };
+        }();
+
+        var singleton = function () {
+            //закрытые переменные и функции
+            var privateVariable = 10;
+
+            function privateFunction() {
+                return false;
+            }
+
+            //создание объекта
+            var object = new CustomType();
+
+            //добавление привилегированных/открытых свойств и методов
+            object.publicProperty = true;
+
+            object.publicMethod = function () {
+                privateVariable++;
+                return privateFunction();
+            };
+
+            //возвращение объекта
+            return object;
+        }();
+
+        var application = function () {
+            //закрытые переменные и функции
+            var components = new Array();
+            //инициализация
+            components.push(new BaseComponent());
+
+            //создание локальной копии application
+            var арр = new BaseComponent();
+
+            //открытый интерфейс
+            арр.getComponentCount = function () {
+                return components.length;
+            };
+
+            арр.registerComponent = function (component) {
+                if (typeof component == "object") {
+                    components.push(component);
+                }
+            }
+            //возвращение объекта application
+            return app;
+        }();
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</body>
+</html>
