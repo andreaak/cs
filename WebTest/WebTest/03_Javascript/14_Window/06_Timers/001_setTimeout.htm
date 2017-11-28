@@ -5,19 +5,30 @@
     <title>setTimeout()</title>
     <script type="text/javascript">
         window.onload = function () {
-
             // setTimeout - планирует один запуск указанной функции через определенное количество миллисекунд
             // функция showMessage будет запущена через 5 секунд
-            setTimeout(showMessage, 5000)
 
+            //не делайте так!
+            setTimeout("alert('Hello world!')", 1000);
+
+            //предпочтительные способы
+            //первый вариант запуска
+            setTimeout(showMessage, 5000);
             function showMessage() {
                 alert("Hello world");
             }
 
             // второй вариант запуска
-            //setTimeout(function () {
-            //    alert("Hello world");
-            //}, 5000);
+            setTimeout(function () {
+                alert("Hello world!");
+            }, 1000);
+
+            //задание тайм-аута
+            var timeoutid = setTimeout(function () {
+                alert("Helloworld!");
+            }, 1000);
+            //тайм-аут больше не нужен
+            clearTimeout(timeoutid);
         }
     </script>
 </head>
@@ -25,6 +36,3 @@
     <p>Через 5 секунд будет показано сообщение</p>
 </body>
 </html>
-
-
-

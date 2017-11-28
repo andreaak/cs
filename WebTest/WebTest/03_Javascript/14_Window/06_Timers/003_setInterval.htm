@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>setInterval</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            // setInterval - планирование запуска указанной функции с заданным интервалом. 
+            // Планирование и запуск будут происходить многократно.
+            // запускать функцию Count с интервалом в 1 секунду
+
+            //не делайте так!
+            setInterval("alert('Hello world!')", 1000);
+
+            //предпочтительные способы
+            //первый вариант запуска
+            setInterval(showMessage, 5000);
+            function showMessage() {
+                alert("Hello world");
+            }
+
+            //второй вариант запуска
+            setInterval(function () {
+                alert("Hello world!");
+            }, 1000);
+
+            var num = 0;
+            var max = 10;
+            var intervalId = null;
+
+            function incrementNumber() {
+                num++;
+                document.getElementById("output").innerHTML = num;
+                //nри достижении значения max интервал отменяется
+                if (num == max) {
+                    clearInterval(intervalId);
+                    document.getElementById("output").innerHTML = "Done";
+                }
+            }
+            intervalId = setInterval(incrementNumber, 500);
+
+            var num = 0;
+            var max = 10;
+            function incrementNumber2() {
+                num++;
+                document.getElementById("output").innerHTML = num;
+                //если значение max не достигнуто,задается новый тайм-аут
+                if (num < max) {
+                    setTimeout(incrementNumber2, 500);
+                } else {
+                    document.getElementById("output").innerHTML = "Done";
+                }
+            }
+            setTimeout(incrementNumber2, 500);
+        }
+    </script>
+</head>
+<body>
+    <p id="output">0</p>
+</body>
+</html>

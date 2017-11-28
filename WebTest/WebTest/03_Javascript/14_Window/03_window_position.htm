@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Window position</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        var leftPos = (typeof window.screenLeft == "number") ?
+        window.screenLeft : window.screenX;
+
+        var topPos = (typeof window.screenTop == "number") ?
+        window.screenTop : window.screenY;
+
+        //перемещение окна в левый вверхний угол
+        window.moveTo(0, 0);
+        //перемещение окна вниз на 100 пикселей
+        window.moveBy(0, 100);
+        //перемещение окна в позицию(200,300)
+        window.moveTo(200, 300);
+        //перемещение окна влево на 50 пикселей
+        window.moveBy(-50, 0);
+
+        var Geometry = {};
+        // В разных браузерах существуют разноименные методы и свойства выполняющие схожие операции.
+        // Например, для получения координаты X окна браузера в IE нужно использовать свойство screenLeft,
+        // а в Mozilla - screenX.
+        // Для того что бы упростить написание кроссбраузерного кода, разработчики создают специальные объекты
+        // на подобие Geometry в этом примере.
+
+        // screenLeft, screenX, innerWidth - свойства объекта window специфичные для версии браузера.
+        if (window.screenLeft || window.screenLeft == 0) { // для IE
+            Geometry.getWindowX = function () { return window.screenLeft; };
+            Geometry.getWindowY = function () { return window.screenTop; };
+        }
+        else if (window.screenX || window.screenX == 0) { // для Firefox
+            Geometry.getWindowX = function () { return window.screenX; };
+            Geometry.getWindowY = function () { return window.screenY; };
+        }
+        document.write(Geometry.getWindowX() + "<br />");
+        document.write(Geometry.getWindowY() + "<br />");
+    </script>
+</body>
+</html>

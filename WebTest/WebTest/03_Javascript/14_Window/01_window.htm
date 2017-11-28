@@ -1,23 +1,41 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Определение параметров окна</title>
+    <title>Глобальная область видимости</title>
 </head>
 <body>
     <script type="text/javascript">
-        var color = "red";
 
-        function sayColor() {
-            document.write(window.color + "<br />");
-            document.write(this.color + "<br />");
+        var age = 29;
+        function sayAge() {
+            write(this.age);
         }
-        window.sayColor();//"red" "red" 
+        write(window.age);//29
+        sayAge();//29
+        window.sayAge();//29
 
 
-        var global = function () {
-            return this;
-        }();
-        document.write(global + "<br />");//[object Window]
+        var age = 29;
+        window.color = "red";
+
+        //ошибка в IE до версии 9, false во всех остальных браузерах
+        write(delete window.age);//false
+
+        //ошибка в IE до версии 9, true во всех остальных браузерах
+        write(delete window.color);//true
+        write(window.age);//29
+        write(window.color);//undefined
+        
+        //ошибка,потому что переменная oldValue не объявлена
+        //var newValue = oldValue;
+
+        //ошибки нет, потому что выполняется обращение к свойству
+        //newValue получает значение undefined
+        var newValue = window.oldValue;
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
     </script>
 </body>
 </html>

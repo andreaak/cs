@@ -1,0 +1,29 @@
+﻿<!--
+
+        confirm() - [подтвердить], действует похоже на alert, за исключением того,
+        что добавляет кнопку "Отмена" в диалоговое окно.
+        Возвращает true, если нажата кнопка - OK или false , если нажата кнопка - Cancel.
+
+-->
+
+<html>
+<head>
+    <title>Метод prompt()</title>
+
+    <script type="text/javascript">
+
+        var conf = confirm("Вы уверены?");
+
+        document.write(conf);
+
+        if (confirm("Are you sure?")) {
+            alert("I'm so glad you're sure!");
+        } else {
+            alert("I'm sorry to hear you're not sure");
+        }
+    </script>
+
+</head>
+<body>
+</body>
+</html>
