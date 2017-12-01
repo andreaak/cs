@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Visualizator Recognition</title>
+    <script type="text/javascript">
+
+        var client = function () {
+            var engine = {
+                //визуализаторы
+                ie: 0,
+                gecko: 0,
+                webkit: 0,
+                khtml: 0,
+                opera: 0,
+                //конкретная версия
+                ver: null
+
+            }
+            var browser = {
+                //браузеры
+                ie: 0,
+                firefox: 0,
+                safari: 0,
+                konq: 0,
+                opera: 0,
+                chrome: 0,
+                //конкретная версия
+                ver: null
+            };
+            var system = {
+                win: false,
+                mac: false,
+                x11: false
+            };
+
+            //распознавание визуализаторов/платформ/устройств
+            return {
+                engine: engine,
+                browser: browser,
+                system: system
+            };
+        }();
+
+        var р = navigator.platform;
+        system.win = p.indexOf("Win") == 0;
+        system.mac = p.indexOf("Mac") == 0;
+        system.xll = (p.indexOf("X11") == 0) || (p.indexOf("Linux") == 0);
+
+    </script>
+</head>
+<body>
+</body>
+</html>

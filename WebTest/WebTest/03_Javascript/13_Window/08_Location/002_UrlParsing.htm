@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Анализ URL</title>
+    <script type="text/javascript">
+
+        // Функция для чтения данных, которые переданы при GET запросе (в адресной строке).
+        function getQueryString() {
+
+            var args = {};                                  // пустой объект
+            // login=admin password=123
+            var query = location.search.substring(1);       // Получение строки запроса.
+            var pairs = query.split("&");                   // Разделение строки по амперсанду
+
+            for (var i = 0; i < pairs.length; i++) {
+
+                var pos = pairs[i].indexOf('=');            // Проверка пары "name=value"
+                if (pos == -1) {                            // Если не найдено - пропустить
+                    continue;
+                }
+
+                var argname = pairs[i].substring(0, pos);   // Получение имени
+                var value = pairs[i].substring(pos + 1);    // Получение значения
+
+                args[argname] = value;                      // Сохранение как свойства
+
+            }
+
+            return args;
+        }
+
+        // Для теста примера перейдите по URL текущей страницы + ?login=admin&password=123
+        function print() {
+            var args = getQueryString();
+            var e = document.createElement("p");
+
+            e.innerHTML = "Login " + args.login + "<br />";
+            e.innerHTML += "Password " + args.password;
+
+            document.body.appendChild(e);
+        }
+
+        function getQueryStringArgs() {
+            //получение строки запроса без начального вопросительного знака
+            var qs = (location.search.length > 0 ? location.search.substring(1) : "");
+
+            //объект для хранения аргументов
+            var args = {};
+
+            //получение отдельных элементов
+            var items = qs.length ? qs.split("&") : [];
+            var item = null;
+            var name = null;
+            var value = null;
+
+            //запись каждого элемента в объект args
+            for (var i = 0; i < items.length; i++) {
+                item = items[i].split("=");
+                name = decodeURIComponent(item[0]);
+                value = decodeURIComponent(item[1]);
+                if (name.length) {
+                    args[name] = value;
+                }
+            }
+            return args;
+        }
+
+        //предполагается, что указана строка запроса ?q=javascript&num=10
+        var args = getQueryStringArgs();
+        write(args["q"]);//"javascript"
+        write(args["num"]);//"10"
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="Read Query Parameters" onclick="print()" />
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>You won't bе аblе to get back here</title>
+</head>
+<body>
+
+    <р>
+        Еnjоу this page for а second, because you won't bе coming back here.
+    </р>
+    <script type="text/javascript">
+        setTimeout(function () {
+            location.replace("http://www.wrox.com/");
+        }, 1000);
+
+        location.reload();//перезагрузка - возможно, из кэша,
+        location.reload(true);//перезагрузка с сервера
+
+        location.assign("http://www.wrox.com");
+
+        window.location = "http://www.wrox.com";
+        location.href = "http://www.wrox.com";
+
+        //предполагается начальный адрес http://www.wrox.com/WileyCDA/
+        //изменение URL-aдpeca на"http://www.wrox.com/WileyCDA/#section1"
+        location.hash = "#section1";
+        //изменение URL-aдpeca на"http://www.wrox.com/WileyCDA/?q=javascript"
+        location.search = "?q=javascript";
+        //изменение URL-aдpeca на"http://www.yahoo.com/WileyCDA/"
+        location.hostname = "Www.yahoo.com";
+        //изменение URL-aдpeca на"http://www.yahoo.com/mydir/"
+        location.pathname = "mydir";
+        //изменение URL-aдpeca на"http://www.yahoo.com:8080/WileyCDA/
+        location.port = "8080";
+
+
+    </script>
+</body>
+</html>

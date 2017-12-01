@@ -1,0 +1,38 @@
+﻿<!--
+    Объект History - кнопки вперед назад.
+
+ -->
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Объект History</title>
+    <script type="text/javascript">
+        //переход к предыдущей странице
+        history.go(-1);
+        //переход к следующей странице
+        history.go(l);
+        //переход на две страницы вперед
+        history.go(2);
+
+        //переход к ближайшей странице wrox.com
+        history.go("wrox.com");
+        //переход к ближайшей странице nczonline.пet
+        history.go("nczonline.net");
+
+        //возврат на одну страницу
+        history.back();
+        //переход к следующей странице
+        history.forward();
+
+        if (history.length == 0) {
+            //это первая страница в окне пользователя
+        }
+
+
+    </script>
+</head>
+<body>
+</body>
+</html>

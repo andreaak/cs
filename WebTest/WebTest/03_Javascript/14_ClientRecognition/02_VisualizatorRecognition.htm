@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Visualizator Recognition</title>
+    <script type="text/javascript">
+
+        var client = function() {
+            var engine = {
+                //визуализаторы
+                ie: 0,
+                gecko: 0,
+                webkit: 0,
+                khtml: 0,
+                opera: 0,
+                //конкретная версия
+                ver: null
+
+            }
+            //распознавание визуализаторов/платформ/устройств
+            return {
+                engine: engine
+            };
+        }();
+
+        if (client.engine.ie) {//если используется IE, client.engine.ie больше 0
+            //код, специфичный для IE
+        } else if (client.engine.gecko > 1.5) {
+            if (client.engine.ver == "1.8.1") {
+                //код, специфичный для этой версии
+            }
+        }
+
+        if (window.opera) {
+            engine.ver = window.opera.version();
+            engine.opera = parseFloat(engine.ver);
+        }
+
+        var ua = navigator.userAgent;
+        if (window.opera) {
+            engine.ver = window.opera.version();
+            engine.opera = parseFloat(engine.ver);
+        } else if (/AppleWebKit\/(\S+)/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.webkit = parseFloat(engine.ver);
+        }
+
+        var ua = navigator.userAgent;
+        if (window.opera) {
+            engine.ver = window.opera.version();
+            engine.opera = parseFloat(engine.ver);
+        } else if (/AppleWebKit\/(\S+)/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.webkit = parseFloat(engine.ver);
+        } else if (/KHTML\/(\S+)/.test(ua) || /Konqueror\/([^;]+)/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.khtml = parseFloat(engine.ver);
+        }
+
+        var ua = navigator.userAgent;
+        if (window.opera) {
+            engine.ver = window.opera.version();
+            engine.opera = parseFloat(engine.ver);
+        } else if (/AppleWebKit\/(\S+)/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.webkit = parseFloat(engine.ver);
+        } else if (/KHTML\/(\S+)/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.khtml = parseFloat(engine.ver);
+        } else if (/rv:([^\)]+)\)Gecko\/\d{8}/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.gecko = parseFloat(engine.ver);
+        }
+
+        var ua = navigator.userAgent;
+        if (window.opera) {
+            engine.ver = window.opera.version();
+            engine.opera = parseFloat(engine.ver);
+        } else if (/AppleWebKit\/(\S+)/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.webkit = parseFloat(engine.ver);
+        } else if (/KHTML\/(\S+)/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.khtml = parseFloat(engine.ver);
+        } else if (/rv:([^\)]+)\)Gecko\/\d{8}/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.gecko = parseFloat(engine.ver);
+        } else if (/MSIE([^;]+)/.test(ua)) {
+            engine.ver = RegExp["$1"];
+            engine.ie = parseFloat(engine.ver);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

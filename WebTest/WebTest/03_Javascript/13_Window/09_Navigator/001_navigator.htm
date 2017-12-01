@@ -1,0 +1,89 @@
+﻿<!--
+    Объект Navigator содержит информацию о браузере.
+    Объект Navigator поддерживает пять свойств, по которым можно опередить версию браузера.
+        appName - Название веб браузера.
+        appVersion - Номер версии или другая информация о браузере
+        userAgent - строка, которую браузер посылает в HTTP заголовке USER-AGENT
+        appCodeName - Кодовое имя браузера. Для Netscape используется кодовое имя "Mozilla" Для совместимости IE делает то же самое.
+        platform - Аппаратная платформа, на которой работает браузер.
+
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Объект Navigator</title>
+    <script type="text/javascript">
+
+        var browserInfo = "СВЕДЕНЬЯ О БРАУЗЕРЕ:<br/>";
+        for (var propname in navigator) {
+            browserInfo += propname + ": " + navigator[propname] + "<br/>";
+        }
+        write(browserInfo);
+
+        //обнаружение подключаемого модуля - не работает в Internet Explorer
+        function hasPlugin(name) {
+            name = name.tolowerCase();
+            for (var i = 0; i < navigator.plugins.length; i++) {
+                if (navigator.plugins[i].name.toLowerCase().indexOf(name) > -1) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        //обнаружение подключаемого модуля Flash
+        write(hasPlugin("Flash"));
+        //обнаружение подключаемого модуля QuickTime
+        write(hasPlugin("QuickTime"));
+
+        //обнаружение подключаемого модуля в Internet Explorer
+        function hasIEPlugin(name) {
+            try {
+                new ActiveXObject(name);
+                return true;
+            } catch (ех) {
+                return false;
+            }
+        }
+        //обнаружение подключаемого модуля Flash
+        write(hasIEPlugin("ShockwaveFlash.ShockwaveFlash"));
+        //обнаружение подключаемого модуля QuickTime
+        write(hasIEPlugin("QuickTime.QuickTime"));
+
+        //обнаружение подключаемого модуля Flash в любых браузерах
+        function hasFlash() {
+
+            var result = hasPlugin("Flash");
+            if (!result) {
+                result = hasIEPlugin("ShockwaveFlash.ShockwaveFlash");
+            }
+            return result;
+        }
+
+        //обнаружение подключаемого модуля QuickTime в любых браузерах
+        function hasQuickTime() {
+            var result = hasPlugin("QuickТime");
+            if (!result) {
+                result = hasIEPlugin("QuickTime.QuickTime");
+            }
+            return result;
+        }
+        //обнаружение подключаемого модуля Flash
+        write(hasFlash());
+        //обнаружение подключаемого модуля QuickTime
+        write(hasQuickTime());
+
+        navigator.registerContentHandler("application/rss+xml", "http://www.somereader.com?feed;%s", "SomeReader");
+
+        navigator.registerProtocolHandler("mailto",
+            "http://www.somemailclient.com?cmd;%s", "SomeMailClient");
+
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

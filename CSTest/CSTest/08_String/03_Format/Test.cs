@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using NUnit.Framework;
 
 namespace CSTest._08_String._03_Format
@@ -70,6 +71,19 @@ namespace CSTest._08_String._03_Format
             provider: CSTest._08_String._03_Format.TestFormatProvider2
             Result: Start (format was "foobar") End
             */
+        }
+
+        [Test]
+        public void TestFormat5CustomFormatter()
+        {
+            double data = 12345678.9876;
+            string format = "#,##0";
+            string resFormat = string.Format("{{0:{0}}}", format);
+            string res = string.Format(CultureInfo.InvariantCulture, resFormat, data);
+
+            format = "#,###";
+            resFormat = string.Format("{{0:{0}}}", format);
+            res = string.Format(CultureInfo.InvariantCulture, resFormat, data);
         }
     }
 }

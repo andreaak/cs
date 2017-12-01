@@ -10,7 +10,7 @@ namespace CSTest._26_Linq
     public class Test
     {
         [Test]
-        public void TestLinqDeferedExecution()
+        public void TestLinq1DeferedExecution()
         {
             int[] a = { 1, 4, 3, 7, 8, 2, 9, 5, 6 };
 
@@ -25,7 +25,7 @@ namespace CSTest._26_Linq
         }
 
         [Test]
-        public void TestLinqNotDeferedExecution()
+        public void TestLinq2NotDeferedExecution()
         {
             int[] a = { 1, 4, 3, 7, 8, 2, 9, 5, 6 };
 
@@ -66,7 +66,7 @@ namespace CSTest._26_Linq
         }
 
         [Test]
-        public void TestLinqDefaultIfEmpty()
+        public void TestLinq3DefaultIfEmpty()
         {
             int[] a = { 1, 2, 3, 4, 5 };
             int[] b = { 6, 7, 8, 9, 10 };
@@ -90,7 +90,7 @@ namespace CSTest._26_Linq
         }
 
         [Test]
-        public void TestLinqWhere()
+        public void TestLinq4Where()
         {
             TestClass[] a =
             {
@@ -99,7 +99,7 @@ namespace CSTest._26_Linq
                 new TestClass {Code = 3},
             };
 
-            Func<TestClass, bool> first = (x) =>  1 < x.Code;
+            Func<TestClass, bool> first = (x) => 1 < x.Code;
             Func<TestClass, bool> second = (x) => x.Code < 3;
 
             Func<TestClass, bool> res = (x) => first(x) && second(x);
@@ -114,7 +114,7 @@ namespace CSTest._26_Linq
         }
 
         [Test]
-        public void TestLinqGroupBy()
+        public void TestLinq5GroupBy()
         {
             TestClass2[] a =
             {
@@ -138,7 +138,7 @@ namespace CSTest._26_Linq
         }
 
         [Test]
-        public void TestLinqNullable()
+        public void TestLinq6Nullable()
         {
             var items = new List<TestStruct?>()
             {
@@ -151,7 +151,7 @@ namespace CSTest._26_Linq
 
             if (temp.HasValue)
             {
-                
+
             }
 
             Debug.WriteLine("");
@@ -164,7 +164,7 @@ namespace CSTest._26_Linq
 
 
         [Test]
-        public void TestLinq2()
+        public void TestLinq7OrderBy()
         {
             int[] a = { 1, 2, 3, 4, 5 };
 
@@ -187,6 +187,22 @@ namespace CSTest._26_Linq
             X
             X
             X
+            */
+        }
+
+        [Test]
+        public void TestLinq8SequenceEquals()
+        {
+            int[] a = { 1, 2, 3, 4, 5 };
+            int[] b = { 1, 2, 3, 4, 5 };
+            int[] c = { 5, 3, 4, 2, 1 };
+
+            bool res = a.SequenceEqual(b);
+            Debug.WriteLine(res);
+            res = a.SequenceEqual(c);
+            Debug.WriteLine(res);
+            /*
+            false
             */
         }
     }

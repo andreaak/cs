@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Client Recognition</title>
+    <script type="text/javascript">
+
+        if (object.propertyInQuestion) {
+            //использование object.propertyInQuestion
+        }
+
+        function getElement(id) {
+
+            if (document.getElementByid) {
+                return document.getElementByid(id);
+            } else if (document.all) {
+                return document.all[id];
+            } else {
+                throw new Error("Nowaytoretrieveelement!");
+            }
+        }
+
+        function getWindowWidth() {
+            if (document.all) {//предполагается, что используется IE
+                return document.documentElement.clientWidth;//НЕПРАВИЛЬНО!!!
+            } else {
+                return window.innerWidth;
+            }
+        }
+
+        //НЕ ДЕЛАЙТЕ ТАК! Неправильное распознавание возможности -
+        //проверяется только существование элемента
+        function isSortable(object) {
+            return !!object.sort;
+        }
+
+        var result = isSortable({ sort: true });
+
+        //Лучше - код проверяет, является ли sort функцией
+        function isSortable(object) {
+            return typeof object.sort == "function";
+        }
+
+        //работает неправильно в Internet Explorer до версии 8 включительно
+        function hasCreateElement() {
+            return typeof document.createElement == "function";
+        }
+
+        //вызывает ошибку в Internet Explorer
+        var xhr = new ActiveXObject("Microsoft.XMLHttp");
+        if (xhr.open) {//здесь возникает ошибка
+            //какие-то действия
+        }
+
+        function isHostMethod(object, property) {
+            var t = typeof object[property];
+            return t == 'function' ||
+                (!!(t == 'object' && object[property])) ||
+                t == 'unknown';
+        }
+
+        result = isHostMethod(xhr, "open");//true
+        result = isHostMethod(xhr, "foo");//false
+
+        //НЕ ДЕЛАЙТЕ ТАК!Код недостаточно конкретен.
+        var isFirefox = !!(navigator.vendor && navigator.vendorSub);
+        //НЕ ДЕЛАЙТЕ ТАК!Слишком много предположений.
+        var isIE = !!(document.all && document.uniqueId);
+
+        //использует ли браузер подключаемые модули в стиле Netscape?
+        var hasNSPlugins = !!(navigator.plugins && navigator.plugins.length);
+        //поддерживает ли браузер базовые возможности DOM Level 1?
+        var hasDOM1 = !!(document.getElementById && document.createElement &&
+                    document.getElementsByTagName);
+
+        var hasDontEnumQuirk = function () {
+            var о = { toString: function () { } };
+            for (var prop in о) {
+                if (prop == "toString") {
+                    return false;
+                }
+            }
+            return true;
+        }();
+
+        var hasEnumShadowsQuirk = function () {
+            var о = { toString: function () { } };
+            var count = 0;
+            for (var prop in о) {
+                if (prop == "toString") {
+                    count++;
+                }
+            }
+            return (count > 1);
+        }();
+
+        if (isIE6 || isIE7) {//не делайте так!!!
+            //КОД
+        }
+
+        if (ieVer >= 6) {
+            //КОД
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>
