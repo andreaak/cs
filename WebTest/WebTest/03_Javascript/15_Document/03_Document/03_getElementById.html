@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>getElementById</title>
+    <script>
+        // Ненавязчивый JavaScript (Unobtrusive JavaScript) – отделение функциональности страницы от ее структуры.
+        // JavaScript может находиться в отдельных модулях и блоки JavaScript кода не должны появляться в разметке.
+
+        // событие срабатывает после полной загрузки окна.
+        window.onload = function () {
+            // получение элемента со страницы по значению атрибута id
+            var paragraph = document.getElementById("output");
+            var hyperlink = document.getElementById("link");
+
+            paragraph.innerHTML = "HELLO WORLD !!!";
+            hyperlink.innerHTML = "EDUCATION SITE !!!";
+
+            var div = document.getElementById("myDiv");//получение ссылки на <div>
+
+            var div = document.getElementById("mydiv");//·работает только в IE до версии 7 включительно
+        }
+
+    </script>
+</head>
+<body>
+    <p id="output">Hello world</p>
+    <a id="link" href="http://edu.cbsystematics.com">Education site</a>
+    <div id="myDiv">Some text</div>
+
+    <!--script type="text/javascript">
+        // скрипт должен располагаться после элементов HTML, которые в этом скрипте используются.
+        // получение элемента со страницы по значению атрибута id
+        var paragraph = document.getElementById("output");
+        var hyperlink = document.getElementById("link");
+
+        // innerHTML - текст между открывающим и закрывающим тегами.
+        paragraph.innerHTML = "HELLO WORLD !!!";
+        hyperlink.innerHTML = "EDUCATION SITE !!!";
+
+    </!--script-->
+</body>
+</html>

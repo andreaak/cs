@@ -1,0 +1,83 @@
+﻿<!--
+Element – элемент документа
+        attributes
+        childNodes
+        firstChild
+        lastChild
+        nextSibling
+        nodeName
+        nodeType
+        nodeValue
+        ownerDocument
+        parentNode
+        previousSibling
+        tagName – название элемента
+        appendChild()
+        getAttribute() – значение атрибута
+        getElementsByTagName() – список элементов с указанным именем, содержащихся в данном элементе
+        hasChildNodes()
+        insertBefore()
+        removeAttribute() – удаление атрибута
+        removeChild()
+        replaceChild()
+        setAttribute() – установка значения атрибута
+
+    HTMLElement – HTML элемент
+        id – значение атрибута id элемента
+        className – значение атрибута class элемента
+        title – значение атрибута title элемента (текст подсказки)
+        lang – значение атрибута lang элемента (код языка)
+        dir – значение атрибута dir элемента (направление текста)
+        style – доступ к внутристрочным спецификациям стиля для данного элемента
+        blur() – убирает фокус ввода с элемента
+        focus() – передает фокус ввода элементу
+
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Element</title>
+
+    <script type="text/javascript">
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</head>
+<body>
+
+    <div id="myDiv" class="bd" title="Body text" lang="en" dir="ltr">
+        Some text
+    </div>
+
+    <script type="text/javascript">
+
+        var div = document.getElementById("myDiv");
+        write(div.tagName);//"DIV"
+        write(div.tagName == div.nodeName);//true
+
+        if (element.tagName == "div") {//НЕ ДЕЛАЙТЕ ТАК! Возможны ошибки!
+            //какие-то действия
+        }
+        if (element.tagName.toLowerCase() == "div") {//Лучше - работает везде
+            //какие-то действия
+        }
+
+        var div = document.getElementByid("myDiv");
+        write(div.id);//"myDiv"
+        write(div.className);//"bd"
+        write(div.title);//"Bodytext"
+        write(div.lang);//"en"
+        write(div.dir);//"ltr"
+
+        div.id = "someOtherid";
+        div.className = "ft";
+        div.title = "Some other text";
+        div.lang = "fr";
+        div.dir = "rtl";
+
+    </script>
+</body>
+</html>

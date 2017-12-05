@@ -3,7 +3,7 @@
 <head>
     <title>getElementsByName</title>
     <script type="text/javascript">
-        
+
         window.onload = function () {
 
             // обработчик на событие нажатие по кнопке
@@ -19,6 +19,7 @@
                 alert(res);
             }
 
+            var radios = document.getElementsByName("color");
         }
 
     </script>
@@ -29,5 +30,24 @@
     Не знаю<input type="radio" name="answer" value="Не знаю" />
 
     <input id="answerButton" type="button" value="Получить ответ" />
+
+    <fieldset>
+        <legend>Which color do you prefer?</legend>
+        <ul>
+            <li>
+                <input type="radio" value="red" name="color" id="colorRed">
+                <label for="colorRed">Red</label>
+            </li>
+            <li>
+                <input type="radio" value="green" name="color" id="colorGreen">
+                <label for="colorGreen">Green</label>
+            </li>
+            <li>
+                <input type="radio" value="Ьlue" name="color" id="colorBlue">
+                <label for="colorBlue">Blue</label>
+            </li>
+        </ul>
+    </fieldset>
+
 </body>
 </html>

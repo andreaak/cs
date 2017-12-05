@@ -1,0 +1,66 @@
+﻿<!--
+Node – узел документа
+    attributes[] – коллекция атрибутов
+    childNodes[] – коллекция дочерних узлов
+    firstChild – ссылка на первый дочерний узел
+    lastChild – ссылка на последний дочерний узел
+    nextSibling - следующий узел расположенный на одном уровне с текущим
+    nodeName – имя узла
+    nodeType – код типа узла
+    nodeValue – значение узла
+    ownerDocument – ссылка на объект Document
+    parentNode – ссылка на родительский узел
+    previousSibling - предыдущий узел расположенный на одном уровне с текущим
+
+    appendChild() – добавление нового последнего дочернего узла
+    hasChildNodes() – проверка на наличие дочерних узлов
+    insertBefore() – добавление нового дочернего узла перед другим указанным дочерним узлом
+    removeChild() – удаление дочернего узла
+    replaceChild() – замена указанного дочернего узла другим узлом
+
+    cloneNode() – копирование узла и возврат нового. Параметр true копирует вместе с аттрибутами
+
+
+        // Основные типы узлов
+        // Интерфейс           | Константа nodeType            | Значение nodeType
+        // ------------------------------------------------------------------------
+        // Element             | Node.ELEMENT_NODE             | 1
+        // Text                | Node.TEXT_NODE                | 3
+        // Comment             | Node.COMMENT_NODE             | 8
+        // Document            | Node.DOCUMENT_NODE            | 9
+        // ------------------------------------------------------------------------
+
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DOM</title>
+    <script type="text/javascript">
+
+
+
+        var someNode = document.getElementById("list");
+
+        if (someNode.nodeType == Node.ELEMENT_NODE) {//не работает в IE до версии 9
+            alert("Node is an element.");
+        }
+
+        if (someNode.nodeType == 1) {//работает во всех браузерах
+            alert("Node is an element.");
+        }
+
+        if (someNode.nodeType == 1) {
+            value = someNode.nodeName;//имя тега элемента
+        }
+
+    </script>
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+</body>
+</html>

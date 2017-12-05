@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Работа с узлами DOM - Свойства</title>
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            var e = document.getElementById("list");
+            // childNodes - получение всех дочерних узлов.
+            for (var i = 0; i < e.childNodes.length; ++i) {
+                e.childNodes[i].style.color = "red";
+                write(e.childNodes[i].nodeType);
+            }
+
+            var someNode = e;
+
+            var firstChild = someNode.childNodes[0];
+            var secondChild = someNode.childNodes.item(1);
+            var count = someNode.childNodes.length;
+
+            // firstChild - получить первый дочерний узел
+            e.firstChild.style.color = "red";
+
+            // lastChild - получить последний дочерний узел 
+            e.lastChild.style.color = "green";
+
+            //не работаетв IE 8 и более ранних версий
+            var arrayOfNodes = Array.prototype.slice.call(someNode.childNodes, 0);
+
+
+        }
+
+        function convertToArray(nodes) {
+            var array = null;
+
+            try {
+                array = Array.prototype.slice.call(nodes, 0);//и IE9+, и не IE
+            } catch (ех) {
+                array = new Array();
+                for (var i = 0, len = nodes.length; i < len; i++) {
+                    array.push(nodes[i]);
+                }
+            }
+            return array;
+        }
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+    </script>
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+</body>
+</html>

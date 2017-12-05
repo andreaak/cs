@@ -13,12 +13,24 @@
 
             // previousSibling - получение предыдущего узла, который находиться на одном уровне с текущим.
             e.previousSibling.style.color = "green";
+
+            if (e.nextSibling === null) {
+                write("Last node in the parent's childNodes list.");
+            } else if (e.previousSibling === null) {
+                write("First node in the parent's childNodes list.");
+            }
+
+            function write(result) {
+                document.write(result + "<br/>");
+            }
         }
     </script>
 </head>
 <body>
     <ul id="list">
-        <li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
     </ul>
 </body>
 </html>

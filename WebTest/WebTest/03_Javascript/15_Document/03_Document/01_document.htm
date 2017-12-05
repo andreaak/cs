@@ -15,42 +15,51 @@
     createDocumentFragment() – создание пустого узла DocumentFragment
     getElementById() – получение доступа к элементу с указанным идентификатором
     getElementsByTagName() – получение доступа к элементам с указанным названием
-    
-    // При вызове метода document.write() после формирования страницы происходит создание нового документа и удалению содержимого страницы.
-    // Данный метод не следует вызывать в обработчиках событий, что бы не потерять содержимое текущей страницы.
 -->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Методы write() и writeln() объекта document</title>
     <script type="text/javascript">
 
-        function ButtonHandler() {
-            document.write("Hello world");
+        var html = document.documentElement;//получение ссылки на элемент <html>
+        write(html === document.childNodes[0]);//true
+        write(html === document.firstChild);//true
+        
+        var body = document.body;//получение ссылки на элемент <body>
+
+        var doctype = document.doctype;//получение ссылки на элемент <!DOCTYPE>
+
+        //получение заголовка документа
+        var originalTitle = document.title;
+        //задание заголовка документа
+        document.title = "New page title";//новый заголовок страницы
+
+        //получение полного URL-aдpeca
+        var url = document.URL;
+        write(url);//http://localhost:2949/03_Javascript/15_Document/001_Document.htm
+        //получение домена
+        var domain = document.domain;
+        write(domain);//localhost
+        //получение источника ссылки
+        var referrer = document.referrer;
+        write(referrer);
+
+        //страница с сайта p2p.wrox.com
+        document.domain = "wrox.com";//успех
+        document.domain = "nczonline.net";//ошибка!
+
+        //страница с сайта p2p.wrox.com
+        document.domain = "wrox.com";//обобщение-успех
+        document.domain = "p2p.wrox.com";//детализация-ошибка!
+        
+        function write(result) {
+            document.write(result + "<br/>");
         }
 
     </script>
 </head>
 <body>
-
-    <!--Использование метода write-->
-    <p style="padding: 8px; margin: 8px; color: Green; font-weight: bold; border: solid 1px black;">
-        <script type="text/javascript">
-            document.write("hello");
-            document.write(" 1", "-", "2", "-", "3");
-        </script>
-    </p>
-
-    <!--Использование метода writeln-->
-    <pre style="padding: 8px; margin: 8px; color: Green; font-weight: bold; border: solid 1px black;">
-<script type="text/javascript">
-    document.writeln("hello");
-    document.writeln("world");
-</script>
-    </pre>
-
-    <input type="button" value="Кнопка" onclick="ButtonHandler()" />
-
 </body>
 </html>

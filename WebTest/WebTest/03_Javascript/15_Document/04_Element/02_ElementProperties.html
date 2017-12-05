@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Плавное появление</title>
+    <script type="text/javascript">
+        window.addEventListener("load", init, false);
+
+        function init() {
+            var el = document.querySelector('#main');
+            printObject(el);
+        }
+
+        function printObject(obj) {
+            var res = '<ul>';
+            for (i in obj) {
+                res += '<li><b>' + i + '</b>: ' + obj[i] + '</li>';
+            }
+            res += '</ul>';
+            document.write(res);
+        }
+    </script>
+</head>
+<body>
+    <div id="main" class="item">
+    </div>
+</body>
+</html>

@@ -25,6 +25,17 @@
                 }
             }
 
+            var images = document.getElementsByTagName("img");
+            alert(images.length);//количествоизображений
+            alert(images[0].src);//атрибут src первого изображения
+            alert(images.item(0).src);//атрибут src первого изображения
+
+            var myImage = images.namedItem("myImage");
+
+            var myImage = images["myImage"];
+
+            var allElements = document.getElementsByTagName("*");
+
         }
     </script>
 </head>
@@ -37,5 +48,11 @@
     <div>
         <p>HHHHHHH</p>
     </div>
+
+
+    <input type="text" пame="myElement" value="Text field">
+    <div id="myElement">A div</div>
+
+    <img src="myimage.gif" name="myImage">
 </body>
 </html>
