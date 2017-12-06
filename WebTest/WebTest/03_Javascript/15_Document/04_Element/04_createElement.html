@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Create Element</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+        var div = document.createElement("div");
+
+        div.id = "myNewDiv";
+        div.className = "box";
+
+        document.body.appendChild(div);
+
+        //var div = document.createElement("<div id=\"myNewDiv2\" " +
+        //                                "class=\"box\"></div>");
+
+
+        //if (client.browser.ie && client.browser.ie <= 7) {
+
+        //    //создание встроенного тега с атрибутом name
+        //    var iframe = document.createElement("<iframename=\"myframe\">" +
+        //                                        "</iframe>");
+        //    //создание элемента input
+        //    var input = document.createElement("<input type=\"checkbox\">");
+        //    //создание кнопки
+        //    var button = document.createElement("<button type=\"reset\"></button>");
+        //    //создание пары переключателей
+        //    var radiol = document.createElement("<input type=\"radio\"" +
+        //                                        "name=\"choice\"" + "value=\"1\">");
+        //    var radio2 = document.createElement("<input type=\"radio\"" +
+        //                                        "name=\"choice\"" + "value=\"2\">");
+        //}
+    </script>
+</body>
+</html>

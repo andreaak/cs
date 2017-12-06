@@ -49,6 +49,45 @@
         write(div.my_special_attribute);//undefined(за исключением IE)
         write(div.align);//"left"
 
+        div.setAttribute("id", "someOtherId");
+        div.setAttribute("class", "ft");
+        div.setAttribute("title", "Some other text");
+        div.setAttribute("lang", "fr");
+        div.setAttribute("dir", "rtl");
+
+        div.id = "someOtherId";
+        div.align = "left";
+
+        div.mycolor = "red";
+        write(div.getAttribute("mycolor"));//null (кроме Internet Explorer)
+
+        div.removeAttribute("class");
+
+        var id = div.attributes.getNamedItem("id").nodeValue;
+        var id = div.attributes["id"].nodeValue;
+
+        div.attributes["id"].nodeValue = "someOtherId";
+
+        var oldAttr = div.attributes.removeNamedItem("id");
+
+        div.attributes.setNamedItem(newAttr);
+
+        function outputAttributes(element) {
+            var pairs = new Array(),
+            attrName,
+            attrValue,
+            i,
+            len;
+            for (i = 0, len = element.attributes.length; i < len; i++) {
+                attrName = element.attributes[i].nodeName;
+                attrValue = element.attributes[i].nodeValue;
+                if (element.attributes[i].specified) {
+                    pairs.push(attrName + "=\"" + attrValue + "\"");
+                }
+            }
+            return pairs.join("");
+        }
+
     </script>
 </body>
 </html>

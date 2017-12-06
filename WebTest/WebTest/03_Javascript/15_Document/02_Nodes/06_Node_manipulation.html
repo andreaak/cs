@@ -3,6 +3,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Работа с узлами DOM - методы</title>
+
+</head>
+<body>
+    <div id="div1" style="border: solid 1px red; padding: 10px; margin: 10px;">
+        <p id="p4">
+            <!--Comment-->
+            Some Text
+        </p>
+    </div>
+    <input type="button" onclick="deleteNode()" value="Delete" /> <br />
+    <input type="button" onclick="deleteChild()" value="Delete Child" />
+    <ul id="clone">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+
     <script>
         // Методы для работы с DOM
         // appendChild - добавить дочерний элемент
@@ -10,62 +27,66 @@
         // removeChild - удаление элемента
         // replaceChild - замена одного элемента на другой
 
-        window.onload = function() {
-            var div1 = document.getElementById("div1");
-            //Добавление элемента в конец
-            var p1 = document.createElement("p");
-            p1.innerHTML = "Paragraph 1"; //Лучше использовать метод в параграфе 3 вместо innerHTML
-            div1.appendChild(p1);
-            //Вставка элемента в определенную позицию
-            var p2 = document.createElement("p");
-            p2.innerHTML = "Paragraph 2"; //Лучше использовать метод в параграфе 3 вместо innerHTML
-            document.body.insertBefore(p2, div1);
 
-            var p3 = document.createElement("p");
-            var text = document.createTextNode("Paragraph 3");
-            text.data += " Appended";
-            p3.appendChild(text);
-            div1.appendChild(p3);
+        var div1 = document.getElementById("div1");
+        //Добавление элемента в конец
+        var p1 = document.createElement("p");
+        p1.innerHTML = "Paragraph 1"; //Лучше использовать метод в параграфе 3 вместо innerHTML
+        div1.appendChild(p1);
+        //Вставка элемента в определенную позицию
+        var p2 = document.createElement("p");
+        p2.innerHTML = "Paragraph 2"; //Лучше использовать метод в параграфе 3 вместо innerHTML
+        document.body.insertBefore(p2, div1);
 
-            var returnedNode = someNode.appendChild(newNode);
-            alert(returnedNode == newNode); //true
-            alert(someNode.lastChild == newNode); //true
+        var p3 = document.createElement("p");
+        var text = document.createTextNode("Paragraph 3");
+        text.data += " Appended";
+        p3.appendChild(text);
+        div1.appendChild(p3);
 
-            //предполагается, что у someNode несколько дочерних узлов
-            var returnedNode = someNode.appeпdChild(someNode.firstChild);
-            alert(returnedNode == someNode.firstChild); //false
-            alert(returnedNode == someNode.lastChild); //true
+        var someNode = div1;
+        var newNode = p3;
+        var returnedNode = someNode.appendChild(newNode);
+        write(returnedNode == newNode); //true
+        write(someNode.lastChild == newNode); //true
+
+        //предполагается, что у someNode несколько дочерних узлов
+        returnedNode = someNode.appendChild(someNode.firstChild);
+        write(returnedNode == someNode.firstChild); //false
+        write(returnedNode == someNode.lastChild); //true
 
 
-            //вставка узла в качестве последнего дочернего узла
-            returnedNode = someNode.insertBefore(newNode, null);
-            alert(newNode == someNode.lastChild); //true
+        //вставка узла в качестве последнего дочернего узла
+        returnedNode = someNode.insertBefore(newNode, null);
+        write(newNode == someNode.lastChild); //true
 
-            //вставка в качестве первого дочернего узла
-            returnedNode = someNode.insertBefore(newNode, someNode.firstChild);
-            alert(returnedNode == newNode); //true
-            alert(newNode == someNode.firstChild); //true
+        //вставка в качестве первого дочернего узла
+        returnedNode = someNode.insertBefore(newNode, someNode.firstChild);
+        write(returnedNode == newNode); //true
+        write(newNode == someNode.firstChild); //true
 
-            //вставка узла перед последним дочерним узлом
-            returnedNode = someNode.insertBefore(newNode, someNode.lastChild);
-            alert(newNode == someNode.childNodes[someNode.childNodes.length - 2]); //true
+        //вставка узла перед последним дочерним узлом
+        returnedNode = someNode.insertBefore(newNode, someNode.lastChild);
+        write(newNode == someNode.childNodes[someNode.childNodes.length - 2]); //true
 
-            //замена первого дочернего узла
-            var returnedNode = someNode.replaceChild(newNode, someNode.firstChild);
-            //замена последнего дочернего узла
-            returnedNode = someNode.replaceChild(newNode, someNode.lastChild);
+        //замена первого дочернего узла
+        returnedNode = someNode.replaceChild(newNode, someNode.firstChild);
+        //замена последнего дочернего узла
+        returnedNode = someNode.replaceChild(newNode, someNode.lastChild);
 
-            //удаление первого дочернего узла
-            var formerFirstChild = someNode.removeChild(someNode.firstChild);
-            //удаление последнего дочернего узла
-            var formerlastChild = someNode.removeChild(someNode.lastChild);
+        //удаление первого дочернего узла
+        var formerFirstChild = someNode.removeChild(someNode.firstChild);
+        //удаление последнего дочернего узла
+        var formerlastChild = someNode.removeChild(someNode.lastChild);
 
-            var mylist = document.getElementById("clone");
-            var deeplist = mylist.cloneNode(true);
-            alert(deeplist.childNodes.length); //3(IE до версии 9) или 7(другие браузеры)
-            var shallowlist = mylist.cloneNode(false);
-            alert(shallowlist.childNodes.length); //0
+        var mylist = document.getElementById("clone");
+        var deeplist = mylist.cloneNode(true);
+        write(deeplist.childNodes.length); //3(IE до версии 9) или 7(другие браузеры)
+        var shallowlist = mylist.cloneNode(false);
+        write(shallowlist.childNodes.length); //0
 
+        function write(result) {
+            document.write(result + "<br/>");
         }
 
         function deleteNode() {
@@ -80,24 +101,5 @@
                 temp.removeChild(temp.firstChild);
         }
     </script>
-</head>
-<body>
-<div id="div1" style="border: solid 1px red; padding: 10px; margin: 10px;">
-    <p id="p4">
-        <!--Comment-->
-        Some Text
-    </p>
-</div>
-<input type="button" onclick="deleteNode()" value="Delete"/> <br/>
-<input type="button" onclick="deleteChild()" value="Delete Child"/>
-<ul id="clone">
-    <li>item1</li>
-    <li>item2</li>
-    <li>item3</li>
-</ul>
-
 </body>
 </html>
-
-
-

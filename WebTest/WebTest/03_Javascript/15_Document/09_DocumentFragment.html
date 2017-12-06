@@ -1,0 +1,33 @@
+﻿<!DOCTYPE HTML PUBLIC "-//WЗC//DTDHTML4.01//EN" "http://www.w3.org/ТR/html4/strict.dtd">
+
+<html>
+<head>
+    <title>DocumentFragment</title>
+</head>
+<body>
+    <ul id="myList"></ul>
+
+
+    <script type="text/javascript">
+
+        var fragment = document.createDocumentFragment();
+
+        var ul = document.getElementById("myList");
+        var li = null;
+        for (var i = 0; i < 3; i++) {
+
+            li = document.createElement("li");
+            li.appendChild(document.createTextNode("Item" + (i + 1)));
+            fragment.appendChild(li);
+        }
+        ul.appendChild(fragment);
+
+
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+    </script>
+</body>
+</html>

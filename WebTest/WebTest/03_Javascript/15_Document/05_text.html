@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Text</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- элемент пуст - текстового узла нет-->
+    <div></div>
+    <!-- элемент содержит пробел - один текстовый узел -->
+    <div> </div>
+    <!-- элемент содержит текст - один текстовый узел -->
+    <div>Hello World!</div>
+
+    <script type="text/javascript">
+        var div = document.getElementsByTagName("div")[1];
+        var textNode = div.firstChild;//или
+        var textNode = div.childNodes[0];
+
+        div.firstChild.nodeValue = "Some other message";//какой-то другой текст
+
+        var div = document.getElementsByTagName("div")[2];
+        //выводится как "Some &lt;strong&gt;other&lt;/strong&gt; message"
+        div.firstChild.nodeValue = "Some <strong>other</strong> message";
+
+        //Create node
+        var textNode = document.createTextNode("<strong>Hello</strong>world!");
+
+        var element = document.createElement("div");
+        element.className = "box";
+
+        var textNode = document.createTextNode("Hello world!");
+        element.appendChild(textNode);
+
+        var anotherTextNode = document.createTextNode("Yippe!");
+        element.appendChild(anotherTextNode);
+
+        document.body.appendChild(element);//Hello world!Yippe!
+
+        write(element.childNodes.length);//2
+        element.normalize();
+        write(element.childNodes.length);//1
+        write(element.firstChild.nodeValue);//"Hello world!Yippe!"
+
+        var newNode = element.firstChild.splitText(11);
+        write(element.firstChild.nodeValue);//"Hello world"
+        write(newNode.nodeValue);//"!Yippe!"
+        write(element.childNodes.length);//2
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+    </script>
+</body>
+</html>
