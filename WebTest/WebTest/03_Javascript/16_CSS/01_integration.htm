@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <style type="text/css">
+        body {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = "styles.css";
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(link);
+
+        function loadStyles(url) {
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = url;
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(link);
+        }
+
+        loadStyles("styles.css");
+
+        function createStyle() {
+            var style = document.createElement("style");
+            style.type = "text/css";
+            style.appendChild(document.createTextNode("body{background-color:red}"));
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(style);
+        }
+
+        function createStyleIE() {
+            var style = document.createElement("style");
+            style.type = "text/css";
+            try {
+                style.appendChild(document.createTextNode("body{background-color:red}"));
+            } catch (ех) {
+                style.styleSheet.cssText = "body{background-color:red}";
+            }
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(style);
+        }
+
+        function loadStyleString(css) {
+
+            var style = document.createElement("style");
+            style.type = "text/css";
+            try {
+                style.appendChild(document.createTextNode(css));
+            } catch (ех) {
+                style.styleSheet.cssText = css;
+            }
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(style);
+        }
+
+        loadStyleString("body{background-color:red}");
+
+    </script>
+</body>
+</html>

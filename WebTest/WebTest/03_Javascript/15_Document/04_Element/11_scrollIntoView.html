@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>scrollIntoView</title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            //вывод элемента в область просмотра
+            document.forms[0].scrollIntoView();
+
+            //прокрутка тела документа на пять строк
+            document.body.scrollByLines(5);
+            //вывод элемента в область просмотра, если он не виден
+            document.images[0].scrollIntoViewIfNeeded();
+            //прокрутка тела документа на одну страницу в обратную сторону
+            document.body.scrollByPages(-1);
+
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

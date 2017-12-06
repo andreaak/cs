@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>charset</title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            alert(document.charset);//"UTF-16"
+            document.charset = "UTF-8";
+
+            if (document.charset != document.defaultCharset) {
+                //Выбрана пользовательская кодировка
+                alert("Custom characterset being used.");
+            }
+
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

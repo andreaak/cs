@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>NodeList</title>
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <script type="text/javascript">
+
+        var i,
+        len,
+        child = element.firstChild;
+        while (child != element.lastChild) {
+            if (child.nodeType == 1) {//это элемент?
+                processChild(child);
+            }
+            child = child.nextSibling;
+        }
+
+        var i,
+        len,
+        child = element.firstElementChild;
+        while (child != element.lastElementChild) {
+            processChild(child);//уже известно, что это элемент
+            child = child.nextElementSibling;
+        }
+
+    </script>
+</body>
+</html>

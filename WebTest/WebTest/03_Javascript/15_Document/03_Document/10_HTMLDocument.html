@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>getElementsByClassName</title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            if (document.readyState == "complete") {
+                //какие-то действия
+            }
+
+            if (document.compatMode == "CSS1Compat") {
+                alert("Standards mode");//"Стандартный режим"
+            } else {
+                alert("Quirks mode");//"Режим совместимости"
+            }
+
+            var head = document.head || document.getElementsByTagName("head")[0];
+
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

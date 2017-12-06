@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>getElementsByClassName</title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            /*
+            получение всех элементов, относящихся к классам "username" и
+            "current", без учета порядка следования классов
+            */
+            var allCurrentUsernames = document.getElementsByClassName("username current");
+            //получение всех элементов класса "selected" в поддереве myDiv
+            var selected = document.getElementById("myDiv")
+                                    .getElementsByClassName("selected");
+        }
+    </script>
+</head>
+<body>
+
+    <div id="myDiv">A div</div>
+
+</body>
+</html>

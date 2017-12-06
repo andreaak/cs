@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>NodeList</title>
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <script type="text/javascript">
+
+        var divs = document.getElementsByTagName("div"),
+        i,
+        div;
+        for (i = 0; i < divs.length; i++) {
+            div = document.createElement("div");
+            document.body.appendChild(div);
+        }
+
+        var divs = document.getElementsByTagName("div"),
+        i,
+        len,
+        div;
+        for (i = 0, len = divs.length; i < len; i++) {
+            div = document.createElement("div");
+            document.body.appendChild(div);
+        }
+
+
+    </script>
+</body>
+</html>

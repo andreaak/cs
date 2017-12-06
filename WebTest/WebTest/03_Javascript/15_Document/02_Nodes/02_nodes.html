@@ -19,26 +19,21 @@ Node – узел документа
     replaceChild() – замена указанного дочернего узла другим узлом
 
     cloneNode() – копирование узла и возврат нового. Параметр true копирует вместе с аттрибутами
-
-
-        // Основные типы узлов
-        // Интерфейс           | Константа nodeType            | Значение nodeType
-        // ------------------------------------------------------------------------
-        // Element             | Node.ELEMENT_NODE             | 1
-        // Text                | Node.TEXT_NODE                | 3
-        // Comment             | Node.COMMENT_NODE             | 8
-        // Document            | Node.DOCUMENT_NODE            | 9
-        // ------------------------------------------------------------------------
-
 -->
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>DOM</title>
+    <title>Nodes</title>
+
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
     <script type="text/javascript">
-
-
 
         var someNode = document.getElementById("list");
 
@@ -55,12 +50,5 @@ Node – узел документа
         }
 
     </script>
-</head>
-<body>
-    <ul id="list">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-    </ul>
 </body>
 </html>

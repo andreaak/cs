@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>children and contains()</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        var childCount = element.children.length;
+        var firstChild = element.children[0];
+
+        alert(document.documentElement.contains(document.body));//true
+
+        var result = document.documentElement.compareDocumentPosition(document.body);
+        alert(!!(result & 16));
+
+        function contains(refNode, otherNode) {
+            if (typeof refNode.contains == "function" &&
+            (!client.engine.webkit || client.engine.webkit >= 522)) {
+                return refNode.contains(otherNode);
+            } else if (typeof refNode.compareDocumentPosition == "function") {
+                return !!(refNode.compareDocumentPosition(otherNode) & 16);
+            } else {
+                var node = otherNode.parentNode;
+                do {
+                    if (node === refNode) {
+                        return true;
+                    } else {
+                        node = node.parentNode;
+                    }
+                } while (node !== null);
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

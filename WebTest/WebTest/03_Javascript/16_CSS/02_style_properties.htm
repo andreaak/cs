@@ -1,0 +1,89 @@
+﻿<!--
+    Если имя CSS аттрибута содержит дефисы, имя свойства объекта образуеться
+    путем удаления дефисов и перевода в верхний регистр буквы,
+    непосредственно следующей за каждым из них.
+-->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Соглашения об именах CSS атрибутов в JavaScript</title>
+
+</head>
+<body>
+    <div style="width: 200px; height: 200px; background-color: Red;">
+    </div>
+    <div id="myDiv" style="background-color:blue; width:10px; height:25px">
+    </div>
+    <input type="button" value="Сменить цвет" />
+
+
+    <script type="text/javascript">
+
+        var supportsDOM2CSS = document.implementation.hasFeature("CSS", "2.0");
+        var supportsDOM2CSS2 = document.implementation.hasFeature("CSS2", "2.0");
+
+        var myDiv = document.getElementById("myDiv");
+        //задание фонового цвета
+        myDiv.style.backgroundColor = "red";
+        //изменение размеров
+        myDiv.style.width = "100рх";
+        myDiv.style.height = "200рх";
+        //настройка границы
+        myDiv.style.border = "lpx solid blасk";
+
+
+        var button = document.getElementsByTagName("input")[0];
+
+        button.onclick = function () {
+            var div = document.getElementsByTagName("div")[0];
+            // CSS атрибут background-color
+            div.style.backgroundColor = "green";
+        }
+
+        write(myDiv.style.backgroundColor);//"red"
+        write(myDiv.style.width);//"10рх"
+        write(myDiv.style.height);//"25рх"
+
+        myDiv.style.cssText = "background-color:green;width:25px;height:100px;";
+        write(myDiv.style.cssText);//background-color: green; width: 25px; height: 100px;
+
+        for (var i = 0, len = myDiv.style.length; i < len; i++) {
+            write(myDiv.style[i]);//или myDiv.style.item(i)
+        }
+        /*
+        background-color
+        width
+        height
+        */
+
+        var prop, value, i, len;
+        for (i = 0, len = myDiv.style.length; i < len; i++) {
+
+            prop = myDiv.style[i];//или myDiv.style.item(i)
+            value = myDiv.style.getPropertyValue(prop);
+            write(prop + ":" + value);
+        }
+        /*
+        background-color:green
+        width:25px
+        height:100px
+        */
+
+        var prop, value, i, len;
+        for (i = 0, len = myDiv.style.length; i < len; i++) {
+            prop = myDiv.style[i];//или myDiv.style.item(i)
+            value = myDiv.style.getPropertyCSSValue(prop);
+            write(prop + ":" + value.cssText + "(" + value.cssValueType + ")");
+        }
+
+        myDiv.style.removeProperty("border");
+
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+
+    </script>
+</body>
+</html>

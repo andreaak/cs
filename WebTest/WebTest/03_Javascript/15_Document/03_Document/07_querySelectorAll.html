@@ -33,6 +33,51 @@
             for (var i = 0; i < items.length; i++) {
                 items[i].style.color = "green";
             }
+
+            //получение элемента body
+            var body = document.querySelector("body");
+            //получение элемента с идентификатором "myDiv"
+            var myDiv = document.querySelector("#myDiv");
+            //получение первого элемента класса "selected"
+            var selected = document.querySelector(".selected");
+            //получение первого изображения класса "buttoп"
+            var img = document.body.querySelector("img.button");
+
+            //получение всех элементов <em> в <div>(аналог getElementsByTagName("em"))
+            var ems = document.getElementById("myDiv").querySelectorAll("em");
+            //получение всех элементов класса "selected"
+            var selecteds = document.querySelectorAll(".selected");
+            //получение всех элементов <strong> в элементах <р>
+            var strongs = document.querySelectorAll("p strong");
+
+            var i, len, strong;
+            for (i = 0, len = strongs.length; i < len; i++) {
+                strong = strongs[i];//или strongs.item(i)
+                strong.className = "important";
+            }
+
+            if (document.body.matchesSelector("body.page1")) {
+                //true
+            }
+
+            function matchesSelector(element, selector) {
+                if (element.matchesSelector) {
+                    return element.matchesSelector(selector);
+                } else if (element.msMatchesSelector) {
+                    return element.msMatchesSelector(selector);
+                } else if (element.mozMatchesSelector) {
+                    return element.mozMatchesSelector(selector);
+                } else if (element.webkitMatchesSelector) {
+                    return element.webkitMatchesSelector(selector);
+                } else {
+                    throw new Error("Not supported.");
+                }
+            }
+
+            if (matchesSelector(document.body, "body.page1")) {
+                //какие-то действия
+            }
+
         }
     </script>
 </head>

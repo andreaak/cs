@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Computed Styles (Вычесляемые свойства)</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+        }
+
+            div#first {
+                background-color: green;
+            }
+    </style>
+
+    <script>
+        window.onload = function () {
+            //удаление класса "user"
+
+            //сначала получаем список имен классов
+            var classNames = div.className.split(/\s+/);
+
+            //ищем имя удаляемого класса
+            var pos = 1,
+            i,
+            len;
+            for (i = 0, len = classNames.length; i < len; i++) {
+                if (classNames[i] == "user") {
+                    pos = i;
+                    break;
+                }
+            }
+
+            //удаляем имя класса
+            classNames.splice(i, 1);
+
+            //составляем строку из оставшихся имен классов
+            div.className = classNames.join("");
+
+            div.classList.remove("user");
+
+            //удаление класса "disabled"
+            div.classList.remove("disabled");
+            //добавление класса "current"
+            div.classList.add("current");
+
+            //переключение класса "user"
+            div.classList.toggle("user");
+            //идентификация классов элемента
+            if (div.classList.contains("bd")
+                && !div.classList.contains("disabled")) {
+                //какие-то действия
+            }
+            //перебор имен классов
+            for (var i = 0, len = div.classList.length; i < len; i++) {
+                doSomething(div.classList[i]);
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div class="bd user disabled">...</div>
+
+</body>
+</html>

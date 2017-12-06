@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>data attributes</title>
+</head>
+<body>
+    <div id="content">
+        <p>This is а <strong>paragraph</strong> with а list following it.</p>
+        <ul>
+            <li>Item1</li>
+            <li>Item2</li>
+            <li>Item3</li>
+        </ul>
+    </div>
+
+
+    <script type="text/javascript">
+
+        div.innerHTML = "Hello world!";
+
+        div.innerHTML = "Hello & welcome, <b>\"reader\"!</b>";
+
+        div.innerHTML = "<script defer>alert('hi');<\/script>";//не работает
+
+        div.innerHTML = "_<script defer>alert('hi');<\/script>";
+        div.innerHTML = "<div>&nbsp;</div><script defer>alert('hi');<\/script>";
+        div.innerHTML = "<input type=\"hidden\"><script defer>alert('hi');<\/script>";
+
+        div.innerHTML = "<style type=\"text/css\">body {background-color: red; }</style>";
+
+        div.innerHTML = "_<style type=\"text/css\">body {background-color: red; }</style>";
+        div.removeChild(div.firstChild);
+
+        var text = "<а href=\"#\" onclick=\"alert('hi')\">ClickМе</а>";
+        var sanitized = window.toStaticHTML(text);//только Internet Explorer 8
+        alert(sanitized);//"<а href=\"#\">Click Ме</а>"
+
+        for (var i = 0, len = values.length; i < len; i++) {
+            ul.innerHTML += "<li>" + values[i] + "</li>"; //не делайтетак!
+        }
+
+        var itemsHtml = "";
+        for (var i = 0, len = values.length; i < len; i++) {
+            itemsHtml += "<li>" + values[i] + "</li>";
+        }
+        ul.innerHTML = itemsHtml;
+
+    </script>
+</body>
+</html>

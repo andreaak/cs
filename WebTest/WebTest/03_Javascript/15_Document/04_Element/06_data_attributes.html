@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>data attributes</title>
+</head>
+<body>
+    <div id="myDiv" data-appId="12345" data-myname="Nicholas"></div>
+
+    <script type="text/javascript">
+
+        //методы в этом примере используются исключительно для демонстрации
+        var div = document.getElementById("myDiv");
+
+        //получение значений
+        var appId = div.dataset.appId;
+        var myName = div.dataset.myname;
+
+        //задание значений
+        div.dataset.appId = 23456;
+        div.dataset.myname = "Michael";
+
+        //существует ли значение "myname"?
+        if (div.dataset.myname) {
+            alert("Hello," + div.dataset.myname);
+        }
+    </script>
+</body>
+</html>

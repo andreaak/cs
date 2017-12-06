@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>innerText</title>
+</head>
+<body>
+    <div id="content">
+        <p>This is а <strong>paragraph</strong> with а list following it.</p>
+        <ul>
+            <li>Item1</li>
+            <li>Item2</li>
+            <li>Item3</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+
+        var div = document.querySelector("#content");
+
+        //write(div.innerText);//This is а paragraph with а list following it. Item1 Item2 Item3
+
+        //div.innerText = "Hello world!";
+
+        //div.innerText = "Hello & welcome, <b>\"reader\"!</b>";
+
+        //div.innerText = div.innerText;
+
+        function getInnerText(element) {
+
+            return (typeof element.textContent == "string") ?
+                element.textContent : element.innerText;
+        }
+
+        function setInnerText(element, text) {
+            if (typeof element.textContent == "string") {
+                element.textContent = text;
+            } else {
+                element.innerтext = text;
+            }
+        }
+
+        setInnerText(div, "Hello world!");
+        alert(getInnerText(div));//"Hello world!"
+
+        div.outerText = "Hello world!";
+
+        var text = document.createTextNode("Hell oworld!");
+        div.parentNode.replaceChild(text, div);
+
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</body>
+</html>

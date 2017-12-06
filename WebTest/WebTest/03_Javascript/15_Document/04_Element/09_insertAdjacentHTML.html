@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>data attributes</title>
+</head>
+<body>
+    <div id="content">
+        <p>This is а <strong>paragraph</strong> with а list following it.</p>
+        <ul>
+            <li>Item1</li>
+            <li>Item2</li>
+            <li>Item3</li>
+        </ul>
+    </div>
+
+
+    <script type="text/javascript">
+
+        //вставка узла перед элементом на том же уровне
+        element.insertAdjacentHTML("beforebegin", "<p>Helloworld!</p>");
+        //вставка узла в качестве первого дочернего
+        element.insertAdjacentHTML("afterbegin", "<p>Helloworld!c/p>");
+        //вставка узла в качестве последнего дочернего
+        element.insertAdjacentHTML("beforeend", "<p>Helloworld!</p>");
+        //вставка узла после элемента на том же уровне
+        element.insertAdjacentHTML("afterend", "<p>Helloworld!c/p>");
+
+
+    </script>
+</body>
+</html>

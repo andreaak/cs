@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>data attributes</title>
+</head>
+<body>
+    <div id="content">
+        <p>This is а <strong>paragraph</strong> with а list following it.</p>
+        <ul>
+            <li>Item1</li>
+            <li>Item2</li>
+            <li>Item3</li>
+        </ul>
+    </div>
+
+
+    <script type="text/javascript">
+
+        div.outerHTML = "<p>This is а paragraph.</p>";
+
+
+        var р = document.createElement("p");
+        p.appendChild(document.createTextNode("This is а paragraph."));
+        div.parentNode.replaceChild(p, div);
+
+    </script>
+</body>
+</html>

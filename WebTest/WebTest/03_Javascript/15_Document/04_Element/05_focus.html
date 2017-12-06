@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>focus()</title>
+</head>
+<body>
+    <button id="first"></button> <br />
+    <button id="second"></button>
+
+    <script type="text/javascript">
+
+        var button = document.getElementById("second");
+        button.focus();
+        alert(document.activeElement === button);//true
+
+        alert(document.hasFocus());//true
+
+    </script>
+</body>
+</html>
