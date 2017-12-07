@@ -22,6 +22,29 @@
                 e.detachEvent("onclick", handler);
             });
 
+            var btn = document.getElementById("myBtn");
+            btn.attachEvent("onclick", function () {
+                alert("Clicked");
+            });
+
+            var btn = document.getElementById("myBtn");
+            btn.attachEvent("onclick", function () {
+                alert(this === window);//true
+            });
+
+            var btn = document.getElementById("myBtn");
+            btn.attachEvent("onclick", function () {
+                alert("Clicked");
+            });
+            btn.attachEvent("onclick", function () {
+                alert("Hello world!");
+            });
+
+            var btn = document.getElementById("myBtn");
+            btn.attachEvent("onclick", handler);
+            //другой код
+            btn.detachEvent("onclick", handler);
+
             function handler() {
                 alert("Обработчик события");
             }

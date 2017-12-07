@@ -11,35 +11,20 @@
 </head>
 <body>
     <div>
-        <p>
-            Генерация ссылки на действие в другом контроллере.<br />
-            Результат работы метода ActionLink зависит от текущей схемы маршрутизации.<br/>
-            результат: &lt;a href="/_02_Link/A_02_ActionWithoutParameters"&gt;Работа с клиентами&lt;/a&gt;
-        </p>
-        <br />
-
-
         @Html.ActionLink("ActionLink A_02_ActionWithoutParameters", "A_02_ActionWithoutParameters", "_02_Link")
-
         <br />
         <br />
-
         @Html.RouteLink("RouteLink A_02_ActionWithoutParameters", new { controller = "_02_Link", action = "A_02_ActionWithoutParameters" })
-
         <br />
         <br />
-
         @*Передача дополнительных параметров действию*@
         @Html.ActionLink("ActionLink A_02_ActionWithParameters", "A_02_ActionWithParameters", "_02_Link", new { id = "Ivanov-Ivan" }, null)
-
         <br />
         <br />
-
         @*Добавление HTML атрибутов*@
         @Html.ActionLink("ActionLink A_02_ActionWithParameters with style", "A_02_ActionWithParameters", "_02_Link", new { id = "Ivanov-Ivan" }, new { style = "font-size:25px;" })
         <br />
         <br />
-
     </div>
 </body>
 </html>

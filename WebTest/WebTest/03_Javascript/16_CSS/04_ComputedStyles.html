@@ -10,7 +10,7 @@ getComputedStyle - метод позволяет получить доступ �
 
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <title>Computed Styles (Вычесляемые свойства)</title>
 
@@ -24,40 +24,6 @@ getComputedStyle - метод позволяет получить доступ �
                 background-color: green;
             }
     </style>
-
-    <script>
-        window.onload = function () {
-            var div1 = document.getElementById("first"),
-                div2 = document.getElementById("second");
-
-            document.getElementById("btn1").onclick = function () {
-                // прочитать значение backgroundColor не удастся.
-                alert("First div style - " + div1.style.backgroundColor);
-            }
-
-            document.getElementById("btn2").onclick = function () {
-                alert("Second div style - " + div2.style.backgroundColor);
-            }
-
-            document.getElementById("btn3").onclick = function () {
-                alert("First div style - " + getStyle(div1, "backgroundColor"));
-            }
-
-            document.getElementById("btn4").onclick = function () {
-                alert("Second div style - " + getStyle(div2, "backgroundColor"));
-            }
-
-            function getStyle(element, styleName) {
-                if (element.currentStyle) {
-                    // получение доступа к Computed стилям для IE
-                    return element.currentStyle[styleName];
-                }
-                else if (window.getComputedStyle) {
-                    return window.getComputedStyle(element, null)[styleName];
-                }
-            }
-        }
-    </script>
 </head>
 <body>
     <!--
@@ -69,9 +35,36 @@ getComputedStyle - метод позволяет получить доступ �
     <!--Для данного блока установлены inline стили-->
     <div id="second" style="background-color: red"></div>
 
-    <button id="btn1">Get first styles</button>
-    <button id="btn2">Get second styles</button><br />
-    <button id="btn3">Get first computed styles</button>
-    <button id="btn4">Get second computed styles</button>
+    <script>
+        var div1 = document.getElementById("first"),
+            div2 = document.getElementById("second");
+
+        // прочитать значение backgroundColor не удастся.
+        write(div1.style.backgroundColor);//
+        write(div2.style.backgroundColor);//red
+        write(getStyle(div1, "backgroundColor")); //rgb(0, 128, 0)
+        write(getStyle(div2, "backgroundColor")); //rgb(255, 0, 0)
+
+        var computedStyle = document.defaultView.getComputedStyle(div2, null);
+
+        write(computedStyle.backgroundColor);//rgb(255, 0, 0)
+        write(computedStyle.width);//200px
+        write(computedStyle.height);//200рх
+
+
+        function getStyle(element, styleName) {
+            if (element.currentStyle) {
+                // получение доступа к Computed стилям для IE
+                return element.currentStyle[styleName];
+            }
+            else if (window.getComputedStyle) {
+                return window.getComputedStyle(element, null)[styleName];
+            }
+        }
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
 </body>
 </html>

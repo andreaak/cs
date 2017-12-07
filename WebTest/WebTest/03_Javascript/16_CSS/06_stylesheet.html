@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Style Sheets</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+        }
+
+            div#first {
+                background-color: green;
+            }
+    </style>
+</head>
+<body>
+    <div class="bd user disabled">...</div>
+    <script>
+        var supportsDOM2StyleSheets = document.implementation.hasFeature("StyleSheets", "2.0");
+
+        var sheet = null;
+        for (var i = 0, len = document.styleSheets.length; i < len; i++) {
+            sheet = document.styleSheets[i];
+            write(sheet.href);//null
+        }
+
+        function getStyleSheet(element) {
+            return element.sheet || element.styleSheet;
+        }
+
+        //получение таблицы стилей для первого элемента <link/>
+        var link = document.getElementsByTagName("link")[0];
+        var sheet = getStyleSheet(link);
+
+
+        function write(result) {
+            document.write(result + "<br/>");
+        }
+    </script>
+</body>
+</html>

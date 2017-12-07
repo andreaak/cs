@@ -11,7 +11,7 @@
             var p2 = document.getElementById("p2");
             var dv = document.getElementById("dv");
 
-            // обработичк как анонимная функция.
+            // обработчик как анонимная функция.
             p1.onclick = function () {//onclick p1
                 alert("onclick p1");
                 console.log("onclick p1");
@@ -19,15 +19,29 @@
 
             // обработчик как другая функция из этого сценария.
             p2.onclick = clickHandler;//onclick p2 onclick div
+
             //При клике на внутреннем элементе событие всплывает на родительские элементы и его можно обработать
             dv.onclick = function () {
                 alert("onclick div");
                 console.log("onclick div");
             }
+
+            //var btn = document.getElementById("myBtn");
+            //btn.onclick = function () {
+            //    alert("Clicked");
+            //};
+
+            //var btn = document.getElementById("myBtn");
+            //btn.onclick = function () {
+            //    alert(this.id);//"myBtn"
+            //};
+
+            //btn.onclick=null;//удаление обработчика события
+
         }
 
         function clickHandler() {
-            alert("hello");
+            alert("onclick p2");
             console.log("onclick p2");
         }
 
@@ -37,15 +51,15 @@
 <body>
 
     <p id="p1">
-        click me!
+        P1 click!
     </p>
 
     <div id="dv">
         <p>
-            Don't click me!
+            P click!
         </p>
         <p id="p2">
-            click me!
+            P2 click!
         </p>
     </div>
 

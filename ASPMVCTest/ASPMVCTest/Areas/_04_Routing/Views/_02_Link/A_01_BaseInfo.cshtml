@@ -28,5 +28,17 @@
             @@Html.RouteLink(текст ссылки, new { controller = &ldquo; &rdquo;, action = &ldquo; &rdquo;});
         </li>
     </ul>
+    <p>
+        Генерация ссылки на действие в другом контроллере.<br />
+        Результат работы метода ActionLink зависит от текущей схемы маршрутизации.<br />
+        результат: &lt;a href="/_02_Link/A_02_ActionWithoutParameters"&gt;Работа с клиентами&lt;/a&gt;
+    </p>
+
+
+    <p>
+        <strong>Url</strong> - объект, упрощающий создания URL
+        опираясь на настройки системы маршрутизации<br />
+        Генерация URL без окружающей HTML разметки
+    </p>
 </body>
 </html>

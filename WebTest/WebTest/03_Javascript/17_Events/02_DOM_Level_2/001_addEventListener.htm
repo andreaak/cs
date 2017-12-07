@@ -50,6 +50,38 @@
                                      },
                                      false);
             }
+
+
+            var btn = document.getElementById("button1");
+            btn.addEventListener("click", function () {
+                alert(this.id);
+            }, false);
+
+            var btn = document.getElementById("button1");
+            btn.addEventListener("click", function () {
+                alert(this.id);
+            }, false);
+
+            btn.addEventListener("click", function () {
+                alert("Hello world!");
+            }, false);
+
+            var btn = document.getElementById("button1");
+            btn.addEventListener("click", function () {
+                alert(this.id);
+            }, false);
+            //другой код
+            btn.removeEventListener("click", function () {//не сработает!
+                alert(this.id);
+            }, false);
+
+            var btn = document.getElementById("button1");
+            var handler = function () {
+                alert(this.id);
+            };
+            btn.addEventListener("click", handler, false);
+            //другой код
+            btn.removeEventListener("click", handler, false);//все в порядке!
         }
     </script>
 </head>

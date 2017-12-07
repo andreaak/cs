@@ -281,6 +281,7 @@
     <Compile Include="Areas\_03_Model\Models\M_03_ModelWithValidationMetadata.cs" />
     <Compile Include="Areas\_03_Model\Models\MustBeTrueAttribute.cs" />
     <Compile Include="Areas\_04_Routing\Controllers\_02_LinkController.cs" />
+    <Compile Include="Areas\_04_Routing\Controllers\_03_AreasController.cs" />
     <Compile Include="Areas\_05_Filters\Controllers\_01_HomeController.cs" />
     <Compile Include="Areas\_05_Filters\Filters\F_03_ActionFilter.cs" />
     <Compile Include="Areas\_05_Filters\Filters\F_04_ProfileAttribute.cs" />
@@ -537,7 +538,7 @@
     <Content Include="Areas\_00_Base\Views\_01_Home\B_01_BaseInfo.cshtml" />
     <Content Include="Areas\_04_Routing\Views\_01_Home\A_02_DefaultValues.cshtml" />
     <Content Include="Areas\_04_Routing\Views\_02_Link\A_01_BaseInfo.cshtml" />
-    <Content Include="Areas\_04_Routing\Views\_02_Link\A_04_Areas.cshtml" />
+    <Content Include="Areas\_04_Routing\Views\_03_Areas\Index.cshtml" />
     <Content Include="Areas\_02_View\Views\_01_Home\V_02_StronglyTypedView.cshtml" />
     <Content Include="Areas\_02_View\Views\_ViewStart.cshtml" />
     <Content Include="Areas\_02_View\Views\_08_PartialViews\V_01_BaseInfo.cshtml" />
@@ -648,6 +649,7 @@
     <Content Include="Areas\_10_Async\Views\_01_Home\A_01_BaseInfo.cshtml" />
     <Content Include="Areas\_10_Async\Views\Shared\Display.cshtml" />
     <Content Include="Areas\_01_Controller\Views\_01_Home\C_03_TestActions.cshtml" />
+    <Content Include="Areas\_04_Routing\Views\_02_Link\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

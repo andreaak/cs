@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Универсальная обработка событий</title>
-
+    <script src="002_CrossBrowserEventUtil.js"></script>
     <script>
         // В последних версиях IE (>=9 IE) также поддерживается метод addEventListener
         /*if (window.addEventListener)
@@ -11,7 +11,6 @@
             window.attachEvent("onload", init);*/
 
         addCrossBrowserEventListener(window, "load", handler2);//better use JQuery
-
 
         function init() {
             var e = document.getElementById("button");
@@ -31,11 +30,20 @@
             if (element.addEventListener) {
                 element.addEventListener(eventName, handler, false);
             } else if (element.attachEvent) {
-                element.attachEvent("on" + eventName, handler)
+                element.attachEvent("on" + eventName, handler);
             } else {
-                el["on" + eventName] = handler;
+                element["on" + eventName] = handler;
             }
         }
+
+        var btn = document.getElementByid("myBtn");
+        var handler = function () {
+            alert("Clicked");
+        };
+        EventUtil.addHandler(btn, "click", handler);
+        //другойкод
+        EventUtil.removeHandler(btn, "click", handler);
+
     </script>
 
 </head>

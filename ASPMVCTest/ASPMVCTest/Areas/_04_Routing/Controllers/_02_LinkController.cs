@@ -4,6 +4,11 @@ namespace _01_ASPMVCTest.Areas._04_Routing.Controllers
 {
     public class _02_LinkController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult A_01_BaseInfo()
         {
             return View();
@@ -26,11 +31,6 @@ namespace _01_ASPMVCTest.Areas._04_Routing.Controllers
         }
 
         public ActionResult A_03_GenerateUrl()
-        {
-            return View();
-        }
-
-        public ActionResult A_04_Areas()
         {
             return View();
         }

@@ -14,6 +14,8 @@
             // проверка формы.
             alert("validate");
         }
+
+
     </script>
 </head>
 <body>
@@ -23,14 +25,29 @@
     <!--Если обработчик состоит из нескольких инструкций, они должны быть отделены ';'-->
     <input type="button" name="button1" value="Click me" onclick="if (window.counter) counter++; else counter = 1; this.value = counter;" />
 
+    <!--выводит "click"-->
+    <input type="button" value="ClickМе" onclick="alert(event.type)" />
+    <!--выводит "Click Ме"-->
+    <input type="button" value="Click Ме" onclick="alert(this.value)" />
+
+    <!--выводит "Click Ме"-->
+    <input type="button" value="Click Ме" onclick="alert(value)" />
+
     <form>
         <input type="text" name="firstName" />
         <br />
         <!--Если обработчик возвращает false действие отменяется.-->
         <input type="reset" onclick="return confirm('Вы уверены?')" />
-        
+
         <!--Обработчик установлен как функция из тега script-->
         <input type="submit" onclick="validate()" />
     </form>
+
+    <form method="post">
+        <input type="text" name="username" value="" />
+        <input type="button" value="EchoUsername" onclick="alert(username.value)" />
+    </form>
+
+    <input type="button" value="Click Ме" onclick="try { validate(); } catch (ex) { }" />
 </body>
 </html>
