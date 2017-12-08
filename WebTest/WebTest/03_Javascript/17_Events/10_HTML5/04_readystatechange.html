@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>readystatechange</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        EventUtil.addHandler(document, "readystatechange", function (event) {
+            if (document.readyState == "interactive") {
+                alert("Content loaded");
+            }
+        });
+        EventUtil.addHandler(window, "load", function (event) {
+            alert("Window loaded");
+        });
+
+
+        EventUtil.addHandler(document, "readystatechange", function (event) {
+            if (document.readyState == "interactive" ||
+                document.readyState == "complete") {
+                EventUtil.removeHandler(document, "readystatechange",
+                    arguments.callee);
+                alert("Content loaded");
+            }
+        });
+
+        EventUtil.addHandler(window, "load", function () {
+            var script = document.createElement("script");
+
+            EventUtil.addHandler(script, "readystatechange", function (event) {
+                event = EventUtil.getEvent(event);
+
+                var target = EventUtil.getTarget(event);
+                if (target.readyState == "loaded" ||
+                    target.readyState == "complete") {
+                    EventUtil.removeHandler(target, "readystatechange",
+                                            arguments.callee);
+                    alert("Loaded");
+                }
+            });
+            script.src = "example.js";
+            document.body.appendChild(script);
+        });
+
+        EventUtil.addHandler(window, "load", function () {
+            var link = document.createElement("link");
+            link.type = "text/css";
+            link.rel = "stylesheet";
+
+            EventUtil.addHandler(script, "readystatechange", function (event) {
+                event = EventUtil.getEvent(event);
+
+                var target = EventUtil.getTarget(event);
+                if (target.readyState == "loaded" ||
+                    target.readyState == "complete") {
+                    EventUtil.removeHandler(target, "readystatechange",
+                    arguments.callee);
+                    alert("CSS-фaйл загружен");
+                }
+            });
+            link.href = "example.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
+        });
+    </script>
+</body>
+</html>

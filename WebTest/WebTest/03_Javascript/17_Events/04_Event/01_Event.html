@@ -1,0 +1,144 @@
+﻿<!--
+    Интерфейс объекта Event и значения свойств зависят от браузера выполняющего сценарий.
+    На странице не может одновременно произойти несколько событий, все события выстраиваются в очередь,
+    соответственно в момент выполнения сценария может обрабатываться только одно событие,
+    которое доступно через свойство window.event или через первый параметр метода обработчика.
+
+    Свойства объекта события для браузеров поддерживающих стандарт DOM Level 2
+    Интерфейс Event:
+    type - тип события, например “click”
+    target – элемент в котором произошло событие.
+    currentTarget – узел в котором в данный момент обрабатывается событие
+    eventPhase – 1 – этап перехвата, 2 - этап обработки в целевом элементе, 3 - этап всплывания
+    timestamp – дата и время, когда произошло событие.
+    Bubbles – всплывает ли данное событие.
+    Cancelable – связанно ли событие с действием по умолчанию.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Объект Event</title>
+    <script>
+        window.onload = handler;
+
+        // параметр e будет передаваться в IE только при регистрации события через attachEvent
+        function handler(e) {
+            if (!e) {
+                e = window.event; // получение информации о событии в IE
+            }
+            // тело обработчика события
+        }
+
+        function handler2(event) {
+            var e = event || window.event; // второй вариант.
+        }
+
+        window.addEventListener("load", init, false);
+        function init() {
+            var button1 = document.getElementById("button1");
+            button1.addEventListener("click", handler, false);
+        }
+
+        function handler(e) {
+            // тип события
+            var message = "type = " + e.type + "\r\n";
+
+            // узел документа, в котором произошло событие, может не совпадать currentTarget
+            message += "target = " + e.target + "\r\n";
+
+            // узел чей обработчик события работает в данный момент. На этапах перехвата и всплывания значение свойства отличается от target.
+            message += "currentTarget = " + e.currentTarget + "\r\n";
+
+            // число указывающее этап. Одна из констант Event.CAPTURING_PHASE=1, Event.AT_TARGET=2, Event.BUBBLING_PAHSE=3
+            message += "eventPhase = " + e.eventPhase + "\r\n";
+
+            // объект Date, указывающий, когда произошло событие.
+            message += "timeStamp = " + e.timeStamp + "\r\n";
+
+            // true если событие может всплывать по дереву элементов. События blur, focus, load, unload не высплывают.
+            message += "bubbles = " + e.bubbles + "\r\n";
+
+            // true если с этим событие связано действие по умолчанию и его можно отменить с помощью вызова метода preventDefault();
+            message += "cancelable = " + e.cancelable + "\r\n";
+
+            alert(message);
+        }
+
+        //type
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function (event) {
+            alert(event.type);//"click"
+        };
+        btn.addEventListener("click", function (event) {
+            alert(event.type);//"click"
+        }, false);
+        
+        //currentTarget target
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function (event) {
+            alert(event.currentTarget === this);//true
+            alert(event.target === this); //true
+        };
+
+        document.body.onclick = function (event) {
+            alert(event.currentTarget === document.body);//true
+            alert(this === document.body);//true
+            alert(event.target === document.getElementById("myBtn"));//true
+        };
+
+        //type
+        var btn = document.getElementById("myBtn");
+        var handler = function (event) {
+            switch (event.type) {
+                case "click":
+                    alert("Clicked");
+                    break;
+                case "mouseover":
+                    event.target.style.backgroundColor = "red";
+                    break;
+                case "mouseout":
+                    event.target.style.backgroundColor = "";
+                    break;
+            }
+        }
+        btn.onclick = handler;
+        btn.onmouseover = handler;
+        btn.onmouseout = handler;
+
+        //preventDefault()
+        var link = document.getElementById("myLink");
+        link.onclick = function (event) {
+            event.preventDefault();
+        };
+
+        //stopPropagation()
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function (event) {
+            alert("Clicked");
+            event.stopPropagation();
+        };
+        document.body.onclick = function (event) {
+            alert("Body clicked");
+        };
+
+        //eventPhase
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function (event) {
+            alert(event.eventPhase);//2
+        };
+        document.body.addEventListener("click", function (event) {
+            alert(event.eventPhase);//1
+        }, true);
+        document.body.onclick = function (event) {
+            alert(event.eventPhase);//З
+        };
+
+
+    </script>
+</head>
+<body>
+    <input type="button" value="Click Ме" onclick="alert(event.type)">
+    <input type="button" name="button1" value="Click me!" id="button1" />
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>beforeunload</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <script>
+        EventUtil.addHandler(window, "beforeunload", function (event) {
+            event = EventUtil.getEvent(event);
+            var message = "I'm really going to miss you if you go.";
+            event.returnValue = message;
+            return message;
+        });
+
+    </script>
+</body>
+</html>

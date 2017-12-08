@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>contextmenu</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <div id="myDiv">
+        Right click or Ctrl+click me to get а custom context menu.
+        Click anywhere else to get the default context menu.
+    </div>
+    <ul id="myMenu" style="position: absolute; visibility: hidden; background-color: silver">
+        <li><a href="http://www.nczonline.net">Caйт Николаса</a></li>
+        <li><a href="http://www.wrox.com">Caйт Wrox</a></li>
+        <li><a href="http://www.yahoo.com">Yahoo!</a></li>
+    </ul>
+
+    <script>
+        EventUtil.addHandler(window, "load", function (event) {
+            var div = document.getElementById("myDiv");
+
+            EventUtil.addHandler(div, "contextmenu", function (event) {
+                event = EventUtil.getEvent(event);
+                EventUtil.preventDefault(event);
+
+                var menu = document.getElementById("myMenu");
+                menu.style.left = event.clientX + "рх";
+                menu.style.top = event.clientY + "рх";
+                menu.style.visibility = "visible";
+            });
+            EventUtil.addHandler(document, "click", function (event) {
+                document.getElementById("myMenu").style.visibility = "hidden";
+            });
+        });
+    </script>
+</body>
+</html>

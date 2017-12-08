@@ -1,0 +1,94 @@
+﻿<!--
+    Интерфейс объекта события для браузера Internet Explorer:
+    type – тип события
+    srcElement – элемент страницы, в котором произошло событие (эквивалент свойства target)
+    button – зажатая кнопка
+    clientX, clientY – координаты относительно окна браузера
+    offsetX, offsetY –  координаты относительно элемента в котором произошло событие.
+    altKey, ctrlKey, shiftKey – состояние соответствующих клавиш клавиатуры.
+    keyCode – код нажатой клавиши.
+    fromElement, toElement – fromElement указывает для события mouseover элемент в котором находился указатель мыши.  toElement для события mouseout указывает, куда переместился указатель мыши.
+    cancelBubble – предотвращает дальнейшее всплывание события.
+    returnValue – указывает должно ли срабатывать действие по умолчанию связанное с событием.
+-->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Объект Event в IE</title>
+    <style type="text/css">
+        div {
+            background-color: #ceffff;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <p id="output"></p>
+
+    <input type="button" value="ClickМе" onclick="alert(event.type)" />
+    <input type="button" name="button1" value="Click me!" id="myBtn" />
+
+    <script type="text/javascript">
+        var div = document.getElementsByTagName("div")[0];
+        div.attachEvent("onmousemove", handler);
+
+        // Этот метод может выступать для обработчиков события и в браузерах поддерживающих модель DOM level 2
+        function handler(e) {
+            if (!e) e = window.event; // получение информации о событии в IE.
+
+            var message = "";
+            message += "type: " + e.type + "<br />";                    // тип события.
+            message += "srcElement:" + e.srcElement + "<br />";         // отправитель события.
+            message += "button:" + e.button + "<br />";                 // 1 - левая клавиша, 2 - правая клавиша, 4 - средняя.
+            message += "clientX:" + e.clientX + "<br />";               // координаты мыши относительно окна.
+            message += "clientY:" + e.clientY + "<br />";               // координаты мыши относительно окна.
+            message += "offsetX:" + e.offsetX + "<br />";               // координаты относительно элемента в котором произошло событие.
+            message += "offsetY:" + e.offsetY + "<br />";               // координаты относительно элемента в котором произошло событие.
+            message += "altKey:" + e.altKey + "<br />";                 // true если зажата клавиша Alt
+            message += "ctrlKey:" + e.ctrlKey + "<br />";               // true если зажата клавиша Ctrl
+            message += "shiftKey:" + e.shiftKey + "<br />";             // true если зажата клавиша Shift
+            message += "keyCode:" + e.keyCode + "<br />";               // код клавиши для события keydown и keyup или код unicode символа для события keypress
+            message += "cancelBubble:" + e.cancelBubble + "<br />";     // присвоить true для предотвращения "всплывания" события.
+            message += "returnValue:" + e.returnValue + "<br />";       // присвоить false для предотвращения выполнения операции по умолчанию.
+
+            document.getElementById("output").innerHTML = message;
+        }
+
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function () {
+            var event = window.event;
+            alert(event.type);//"click"
+        };
+
+        var btn = document.getElementById("myBtn");
+        btn.attachEvent("onclick", function (event) {
+            alert(event.type);//"click"
+        });
+
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function () {
+            alert(window.event.srcElement === this);//true
+        };
+        btn.attachEvent("onclick", function (event) {
+            alert(event.srcElement === this);//false
+        });
+
+        var link = document.getElementById("mylink");
+        link.onclick = function () {
+            window.event.returnValue = false;
+        };
+
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function () {
+            alert("Clicked");
+            window.event.cancelBubble = true;
+        };
+        document.body.onclick = function () {
+            alert("Body clicked");
+        };
+    </script>
+</body>
+</html>

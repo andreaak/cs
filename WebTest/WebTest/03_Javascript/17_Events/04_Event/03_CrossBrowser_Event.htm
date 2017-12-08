@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Объект Event в IE</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+    <style type="text/css">
+        div {
+            background-color: #ceffff;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.attachEvent("onload", init);
+
+        function init() {
+            var div = document.getElementsByTagName("div")[0];
+            div.attachEvent("onmousemove", handler);
+        }
+
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function (event) {
+            event = EventUtil.getEvent(event);
+        };
+
+
+        btn.onclick = function (event) {
+            event = EventUtil.getEvent(event);
+            var target = EventUtil.getTarget(event);
+        };
+
+
+        var link = document.getElementById("myLink");
+        link.onclick = function (event) {
+            event = EventUtil.getEvent(event);
+            EventUtil.preventDefault(event);
+        };
+
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function (event) {
+            alert("Clicked");
+            event = EventUtil.getEvent(event);
+            EventUtil.stopPropagation(event);
+        };
+        document.body.onclick = function (event) {
+            alert("Body clicked");
+        };
+
+    </script>
+</head>
+<body>
+    <input type="button" value="Click Ме" onclick="alert(event.type)" />
+    <input type="button" name="button1" value="Click me!" id="myBtn" />
+    <a href="#" id="myLink"></a>
+</body>
+</html>

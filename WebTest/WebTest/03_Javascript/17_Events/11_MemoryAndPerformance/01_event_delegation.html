@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Event delegation</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <ul id="mylinks">
+        <li id="goSomewhere">Go somewhere</li>
+        <li id="doSomething">Do something</li>
+        <li id="sayHi">Say hi</li>
+    </ul>
+    <script>
+        var item1 = document.getElementById("goSomewhere");
+        var item2 = document.getElementById("doSomething");
+        var item3 = document.getElementById("sayHi");
+
+        EventUtil.addHandler(item1, "click", function (event) {
+            location.href = "http://www.wrox.com";
+        });
+        EventUtil.addHandler(item2, "click", function (event) {
+            document.title = "I changed the document's title";
+        });
+        EventUtil.addHandler(item3, "click", function (event) {
+            alert("hi");
+        });
+
+        var list = document.getElementById("mylinks");
+
+        EventUtil.addHandler(list, "click", function (event) {
+            event = EventUtil.getEvent(event);
+            var target = EventUtil.getTarget(event);
+
+            switch (target.id) {
+                case "doSomething":
+                    document.title = "I changed the document's title";
+                    break;
+                case "goSomewhere":
+                    location.href = "http://www.wrox.com";
+                    break;
+                case "sayHi":
+                    alert("hi");
+                    break;
+            }
+        });
+        </script>
+</body>
+</html>

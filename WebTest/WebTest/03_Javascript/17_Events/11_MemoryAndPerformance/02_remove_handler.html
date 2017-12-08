@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove handlers</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <div id="myDiv">
+        <input type="button" value="ClickМе" id="myBtn">
+    </div>
+
+    <script type="text/javascript">
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function () {
+            //какие-то действия
+            document.getElementById("myDiv").innerHTML = "Processing...";//Плохо!!!
+        };
+
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function () {
+            //какие-то действия
+            btn.onclick = null;//удаление обработчика события
+            document.getElementById("myDiv").innerHTML = "Processing...";//Плохо!!!
+        };
+    </script>
+
+</body>
+
+</html>

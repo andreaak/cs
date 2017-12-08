@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DOMContentLoaded</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        EventUtil.addHandler(document, "DOMContentLoaded", function (event) {
+            alert("Content loaded");
+        });
+
+        //setТimeout(function () {
+        //    //подключите здесь обработчики событий
+        //}, 0);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Node Removal Events Example</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <ul id="mylist">
+        <li>Item1</li>
+        <li>Item2</li>
+        <li>Item3</li>
+    </ul>
+    <script>
+        var isSupported = document.implementation.hasFeature("MutationEvents", "2.0");
+
+        EventUtil.addHandler(window, "load", function (event) {
+            var list = document.getElementById("myList");
+
+            EventUtil.addHandler(document, "DOMSubtreeModified", function (event) {
+                alert(event.type);
+                alert(event.target);
+            });
+            EventUtil.addHandler(document, "DOMNodeRemoved", function (event) {
+                alert(event.type);
+                alert(event.target);
+                alert(event.relatedNode);
+            });
+            EventUtil.addHandler(list.firstChild, "DOMNodeRemovedFromDocument",
+                function (event) {
+                    alert(event.type);
+                    alert(event.target);
+                });
+            list.parentNode.removeChild(list);
+        });
+
+        EventUtil.addHandler(window, "load", function (event) {
+            var list = document.getElementById("myList");
+            var item = document.createElement("li");
+            item.appendChild(document.createTextNode("Item4"));
+
+            EventUtil.addHandler(document, "DOMSubtreeModified", function (event) {
+                alert(event.type);
+                alert(event.target);
+            });
+            EventUtil.addHandler(document, "DOMNodeInserted", function (event) {
+                alert(event.type);
+                alert(event.target);
+                alert(event.relatedNode);
+            });
+            EventUtil.addHandler(item, "DOMNodeInsertedIntoDocument", function (event) {
+                alert(event.type);
+                alert(event.target);
+            });
+            list.appendChild(item);
+        });
+
+    </script>
+</body>
+</html>

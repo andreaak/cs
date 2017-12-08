@@ -1,0 +1,37 @@
+﻿<!--
+    События окна: 
+    onreset - происходит при сбросе данных формы.
+    onsubmit - происходит перед отправкой формы на сервер(валидация).
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>События клавиатуры</title>
+        <script>
+            window.onload = function () {
+                document.forms[0].addEventListener("submit", function (e) {
+                    alert("Cancel Submit");
+                    e.preventDefault();
+                });
+
+                main.onreset = function (e) {
+                    alert("Cancel Reset");
+                    return false;
+                };
+            }
+        </script>
+    </head>
+    <body id="main">
+        <form action="test.html">
+            Login
+            <input type="text" name="login" />
+            Password
+            <input type="password" name="password" />
+            <br/>
+            <input type="submit" />
+            <br/>
+            <input type="reset" />
+        </form>
+    </body>
+</html>
