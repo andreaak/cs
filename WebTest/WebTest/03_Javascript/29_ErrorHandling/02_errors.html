@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Работа с HTML формой</title>
+
+</head>
+<body>
+    <script>
+        try {
+            //код,который может привести к ошибке
+        } catch (error) {
+            //действия при возникновении ошибки
+        }
+
+        try {
+            window.someNoпexisteпtFuпctioп();
+        } catch (error) {
+            alert("Aп error happeпed!"); //Оповещение об ошибке
+        }
+
+        try {
+            window.someNoпexisteпtFuпctioп();
+        } catch (error) {
+            alert(error.message);
+        }
+
+        function testFinally() {
+            try {
+                return 2;
+            } catch (error) {
+                return 1;
+            } finally {
+                return 0;
+            }
+        }
+    </script>
+</body>
+</html>

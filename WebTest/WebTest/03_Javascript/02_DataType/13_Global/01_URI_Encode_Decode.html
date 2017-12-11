@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>URI</title>
+</head>
+<body>
+    Текст для кодирования <input id="forEncode" /><input id="encodeBtn" type="button" value="Кодировать" />
+    <p id="encodedOutput"></p>
+
+    Текст для декодирования <input id="forDecode" /><input id="decodeBtn" type="button" value="Декодировать" />
+    <p id="decodedOutput"></p>
+
+    <script type="text/javascript" language="JavaScript">
+
+        var uri = "http://www.wrox.com/illegal value.htm#start";
+
+        document.write(encodeURI(uri) + "<br />");//http://www.wrox.com/illegal%20value.htm#start
+        document.write(encodeURIComponent(uri) + "<br />");//http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start
+
+        var uri = "http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start";
+
+        document.write(decodeURI(uri) + "<br />");//http%3A%2F%2Fwww.wrox.com%2Fillegal value.htm%23start
+        document.write(decodeURIComponent(uri) + "<br />");//http://www.wrox.com/illegal value.htm#start
+
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        $("encodeBtn").onclick = function () {
+            // URL кодирование данных
+            var res = encodeURIComponent($("forEncode").value);
+            $("encodedOutput").innerHTML = res;
+        }
+
+        $("decodeBtn").onclick = function () {
+            // URL декодирование данных
+            var res = decodeURIComponent($("forDecode").value);
+            $("decodedOutput").innerHTML = res;
+        }
+    </script>
+</body>
+</html>

@@ -158,10 +158,28 @@ namespace Note.ControlWrapper.DevExpressWrappers
             control.Document.ReplaceAll("-\r\n", "", SearchOptions.None, range);
             control.Document.ReplaceAll("\r\n", " ", SearchOptions.None, range);
             RemoveDoubleWhiteSpace();
+            RemoveSpecialCombinations();
             Paragraph par = control.Document.GetParagraph(range.Start);
             par.Alignment = ParagraphAlignment.Justify;
             par.FirstLineIndentType = ParagraphFirstLineIndent.Indented;
             par.FirstLineIndent = 60.0f;
+        }
+
+        private void RemoveSpecialCombinations()
+        {
+            DocumentRange range = control.Document.Selection;
+            control.Document.ReplaceAll("( ", "(", SearchOptions.None, range);
+            control.Document.ReplaceAll(" )", ")", SearchOptions.None, range);
+            control.Document.ReplaceAll("[ ", "[", SearchOptions.None, range);
+            control.Document.ReplaceAll(" ]", "]", SearchOptions.None, range);
+            control.Document.ReplaceAll("< ", "<", SearchOptions.None, range);
+            control.Document.ReplaceAll(" >", ">", SearchOptions.None, range);
+            control.Document.ReplaceAll("\" ", "\"", SearchOptions.None, range);
+            control.Document.ReplaceAll(" \"", "\"", SearchOptions.None, range);
+            control.Document.ReplaceAll(" ,", ",", SearchOptions.None, range);
+            control.Document.ReplaceAll(" ;", ";", SearchOptions.None, range);
+            control.Document.ReplaceAll(" :", ":", SearchOptions.None, range);
+            control.Document.ReplaceAll(" .", ".", SearchOptions.None, range);
         }
 
         public void ChangeState(bool isNoteNode)

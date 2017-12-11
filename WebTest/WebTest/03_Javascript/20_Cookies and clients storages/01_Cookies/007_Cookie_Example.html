@@ -12,7 +12,7 @@
             }
 
             document.getElementById("saveButton").addEventListener("click", function () {
-                var selectedColor = getCheckedRadioId("color")
+                var selectedColor = getCheckedRadioId("color");
                 document.cookie = "page-color=" + encodeURIComponent(selectedColor) + ";max-age=" + (60 * 60);
                 document.body.style.backgroundColor = selectedColor;
             });

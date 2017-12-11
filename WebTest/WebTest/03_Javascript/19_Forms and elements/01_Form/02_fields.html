@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Работа с HTML формой</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+    <script>
+        window.onload = function () {
+
+            var form = document.getElementById("form1");
+            //получение первого поля формы
+            var field1 = form.elements[0];
+            //получение поля с именем "textbox1"
+            var field2 = form.elements["textbox1"];
+            //получение количества полей
+            var fieldCouпt = form.elements.length;
+
+            var form = document.getElementById("myForm");
+            var colorFields = form.elements["color"];
+            alert(colorFields.length);//3
+            var firstColorField = colorFields[0];
+            var firstFormField = form.elements[0];
+            alert(firstColorField === firstFormField);//true
+
+
+            var form = document.getElementById("myForm");
+            var field = form.elements[0];
+
+            //изменение значения
+            field.value = "Aпother value";
+
+            //проверка значения form
+            alert(field.form === form);//true
+
+            //установка фокуса для поля
+            field.focus();
+
+            //отключение поля
+            field.disabled = true;
+
+            //изменение типа поля(не рекомендуется, но возможно для элементов <iпput>)
+            field.type = "checkbox";
+
+            //предотвращение многократной отправки данных формы
+            EventUtil.addHandler(form, "submit", function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                //получение кнопки отправки
+                var btn = target.elements["submit-btn"];
+
+                //отключение кнопки отправки
+                btn.disabled = true;
+            });
+
+            //methods
+            EventUtil.addHandler(window, "load", function (event) {
+                document.forms[0].elements[0].focus();
+            });
+
+            EventUtil.addHandler(window, "load", function (event) {
+                var element = document.forms[0].elements[0];
+                if (element.autofocus !== true) {
+                    element.focus();
+                    console.log("JS focus");
+                }
+            });
+            document.forms[0].elements[0].blur();
+
+            //events
+            var textbox = document.forms[0].elements[0];
+            EventUtil.addHandler(textbox, "focus", function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+
+                if (target.style.backgroundColor != "red") {
+                    target.style.backgroundColor = "yellow";
+                }
+            });
+
+            EventUtil.addHandler(textbox, "blur", function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+
+                if (/[^\d]/.test(target.value)) {
+                    target.style.backgroundColor = "red";
+                } else {
+                    target.style.backgroundColor = "";
+                }
+            });
+
+            EventUtil.addHandler(textbox, "change", function (event) {
+                event = EventUtil.getEvent(event);
+
+                var target = EventUtil.getTarget(event);
+                if (/[^\d]/.test(target.value)) {
+                    target.style.backgroundColor = "red";
+                } else {
+                    target.style.backgroundColor = "";
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <form method="post" id="myForm">
+        <ul>
+            <li><input type="radio" пame="color" value="red">Red</li>
+            <li><input type="radio" пame="color" value="greeп">Greeп</li>
+            <li><input type="radio" пame="color" value="blue">Blue</li>
+        </ul>
+    </form>
+
+    <input type="text" autofocus>
+
+
+</body>
+</html>

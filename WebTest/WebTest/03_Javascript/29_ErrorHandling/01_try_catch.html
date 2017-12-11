@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Работа с HTML формой</title>
+
+</head>
+<body>
+    <script>
+        new eval();//генерирует ошибку EvalError
+        eval = foo;//генерирует ошибку EvalError
+
+        var items1 = new Array(-20);//генерирует ошибку RangeError
+        var items2 = new Array(Number.MAX_VALUE);//генерирует ошибку RangeError
+        
+        var obj = х;//генерирует ошибку ReferenceError, если переменная х необъявлена
+
+        eval("a ++ b");//генерирует ошибку SyntaxError
+
+        var о = new 10;//генерирует ошибку TypeError
+        alert("name" in true);//генерирует ошибку TypeError
+        Function.prototype.toString.call("name");//генерирует ошибку TypeError
+
+        try {
+            someFunction();
+        } catch (error) {
+            if (error instanceof TypeError) {
+                //обработка ошибок типа TypeError
+            } else if (error instanceof ReferenceError) {
+                //обработка ошибок типа ReferenceError
+            } else {
+                //обработка всех остальных ошибок
+            }
+        }
+
+        throw 12345;
+        throw "Hello world!";
+        throw true;
+        throw { name: "JavaScript" };
+
+        throw new Error("Something bad happened.");
+
+        throw new SyntaxError("");
+        throw new TypeError("");
+        throw new RangeError("");
+        throw new EvalError("");
+        throw new URIError("");
+        throw new ReferenceError("");
+
+        function CustomError(message) {
+            this.name = "CustomError";
+            this.message = message;
+        }
+        CustomError.prototype = new Error();
+        throw new CustomError("My message");//Нестандартное сообщение об ошибке
+
+        function process(values) {
+            if(!(values instanceof Array)){
+                throw new Error("process(): Argument must bе an array.");
+            }
+            values.sort();
+            for (var i = 0, len = values.length; i < len; i++) {
+                if (values[i] > 100) {
+                    return values[i];
+                }
+            }
+            return -1;
+        }
+
+        functionprocess(values){
+            if(!(values instanceof Array)){
+                throw new Error("process(): Argument must bе an array.");
+            }
+            values.sort();
+            for(vari=0,len=values.length;i<len;i++){
+                if(values[i]>100){
+                    returnvalues[i];
+                }
+            }
+            return-1;
+
+
+    </script>
+</body>
+</html>

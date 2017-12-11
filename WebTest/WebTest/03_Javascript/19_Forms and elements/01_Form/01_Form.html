@@ -1,0 +1,101 @@
+﻿<!--
+    HTMLFormElement – Элемент FORM
+        elements[] – коллекция, содержащая все ЭУ формы
+        length – количество ЭУ формы
+        name – имя формы
+        action – URL обработчика формы
+        enctype – MIME-тип передаваемых данных
+        method – HTTP-метод подачи запроса
+        target – имя целевого окна или фрейма
+        submit() – отправка данных из формы
+        reset() – сброс ЭУ формы к начальным значениям
+-->
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Работа с HTML формой</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+    <script>
+        window.onload = function() {
+            var f = document.forms[0]; // получение первой формы на странице.
+
+            f.elements[0].value = "text"; // изменение первого по счету поля ввода в форме.
+            f.elements[1].value = "text"; // elements[] содержит только элементы input
+            f.elements[2].value = "text";
+
+            // получение формы по имени
+            var f = document.myform;
+
+            // получение элементов по имени.
+            f.fName.value = "text";
+            f.lName.value = "text";
+            f.age.value = "text";
+
+            var form = document.getElementById("forml");
+
+            var firstForm = document.forms[0]; //получение первой формы на странице
+            var myForm = document.forms["form2"]; //получение формы с именем "form2"
+
+            var form = document.getElementById("myForm");
+            EventUtil.addHandler(form, "submit", function(eveпt) {
+                //получение объекта eveпt
+                eveпt = EventUtil.getEveпt(eveпt);
+                //отмена отправки данных формы
+                EventUtil.preventDefault(eveпt);
+            });
+
+            var form = document.getElemeпtById("myForm");
+            //отправка данных формы
+            form.submit();
+
+
+            var form = document.getElementById("myForm");
+            EventUtil.addHandler(form, "reset", function (eveпt) {
+
+                //получение объекта eveпt
+                eveпt = EventUtil.getEveпt(eveпt);
+                //отмена сброса формы
+                EventUtil.preventDefault(eveпt);
+            });
+
+            var form = document.getElemeпtById("myForm");
+            //сброс формы
+            form.reset();
+        }
+    </script>
+</head>
+<body>
+    <form>
+        Имя <input type="text" value=" " /><br />
+        Фамилия<input type="text" value=" " /><br />
+        Возраст<input type="text" value=" " /><br />
+        <input type="button" value="Регистрация" />
+    </form>
+    <br />
+    <form name="myform">
+        Имя <input type="text" value=" " name="fName" /><br />
+        Фамилия<input type="text" value=" " name="lName" /><br />
+        Возраст<input type="text" value=" " name="age" /><br />
+        <input type="button" value="Регистрация" />
+    </form>
+
+    <br />
+    <!--обобщенная кнопка отправки-->
+    <input type="submit" value="Submit Form">
+
+    <!--пользовательская кнопка отправки-->
+    <button type="submit">Submit Form</button>
+
+    <!--графическая кнопка-->
+    <input type="image" src="graphic.gif">
+
+    <!--обобщенная кнопка сброса-->
+    <input type="reset" value="Reset Form">
+    <!--пользовательская кнопка сброса-->
+    <button type="reset">Reset Form</button>
+
+
+</body>
+</html>
