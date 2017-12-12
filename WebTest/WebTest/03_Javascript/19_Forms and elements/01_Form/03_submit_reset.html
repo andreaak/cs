@@ -1,0 +1,72 @@
+﻿<!--
+    submit() – отправка данных из формы
+    reset() – сброс ЭУ формы к начальным значениям
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Работа с HTML формой</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+    <script>
+        window.onload = function () {
+            var form = document.getElementById("myForm");
+
+            EventUtil.addHandler(form, "submit", function (event) {
+                //получение объекта eveпt
+                event = EventUtil.getEvent(event);
+                //отмена отправки данных формы
+                EventUtil.preventDefault(event);
+            });
+            //отправка данных формы
+            //form.submit();
+
+            //предотвращение многократной отправки данных формы
+            EventUtil.addHandler(form, "submit", function (event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                //получение кнопки отправки
+                var btn = target.elements["submit-btn"];
+
+                //отключение кнопки отправки
+                btn.disabled = true;
+            });
+
+            EventUtil.addHandler(form, "reset", function (event) {
+                //получение объекта eveпt
+                event = EventUtil.getEvent(event);
+                //отмена сброса формы
+                EventUtil.preventDefault(event);
+            });
+
+            //сброс формы
+            //form.reset();
+        }
+    </script>
+</head>
+<body>
+    <form name="myForm" id="myForm" action="test.html" method="GET">
+        Имя <input type="text" value=" " name="fName" /><br />
+        Фамилия<input type="text" value=" " name="lName" /><br />
+        Возраст<input type="text" value=" " name="age" /><br />
+        <input type="button" value="Регистрация" />
+
+        <br />
+        <!--обобщенная кнопка отправки-->
+        <input type="submit" name="submit-btn" value="Submit Form">
+        <br />
+        <!--пользовательская кнопка отправки-->
+        <button type="submit">Submit Form</button>
+        <br />
+        <!--графическая кнопка-->
+        <input type="image" src="graphic.gif">
+        <br />
+
+        <!--обобщенная кнопка сброса-->
+        <input type="reset" value="Reset Form">
+        <br />
+        <!--пользовательская кнопка сброса-->
+        <button type="reset">Reset Form</button>
+        <br />
+    </form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>required</title>
+</head>
+<body>
+    <form>
+        <input type="email" name="email"><br />
+        <input type="url" name="homepage"><br />
+        <input type="number" min="0" max="100" step="5" name="count" value="4"><br />
+        <input type="text" pattern="\d+" name="count2">
+    </form>
+    <script>
+        var input = document.createElement("input");
+        input.type = "email";
+        var isEmailSupported = (input.type == "email");
+
+        var input = document.querySelector("[type=number]");
+        input.stepUp();//увеличение на 1
+        input.stepUp(5);//увеличение на 5
+        input.stepDown();//уменьшение на 1
+        input.stepDown(10);//уменьшение на 10
+
+        var pattern = document.forms[0].elements["count2"].pattern;
+        var isPatternSupported = "pattern" in document.createElemeпt("input");
+
+    </script>
+</body>
+</html>

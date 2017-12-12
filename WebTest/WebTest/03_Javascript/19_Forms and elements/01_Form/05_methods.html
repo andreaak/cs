@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Работа с HTML формой</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+    <script>
+        window.onload = function () {
+            EventUtil.addHandler(window, "load", function (event) {
+                document.forms[0].elements[0].focus();
+            });
+
+            EventUtil.addHandler(window, "load", function (event) {
+                var element = document.forms[0].elements[0];
+                if (element.autofocus !== true) {
+                    element.focus();
+                    console.log("JS focus");
+                }
+            });
+            document.forms[0].elements[0].blur();
+        }
+    </script>
+</head>
+<body>
+    <form method="post" id="myForm">
+        <input type="text" autofocus>
+    </form>
+</body>
+</html>

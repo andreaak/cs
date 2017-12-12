@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>required</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="username" required>
+
+    </form>
+    <script>
+        var isUsernameRequired = document.forms[0].elements["username"].required;
+        var isRequiredSupported = "required" in document.createElement("input");
+
+    </script>
+</body>
+</html>
