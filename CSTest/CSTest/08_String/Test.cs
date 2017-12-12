@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace CSTest._08_String
 {
@@ -165,10 +166,10 @@ namespace CSTest._08_String
         {
             string temp = "\n John \x00a0 S   \t\n";
 
-            var sep = new[] {' ', '\r', '\n', '\t', '\v', '\f' };
+            var sep = new[] { ' ', '\r', '\n', '\t', '\v', '\f' };
             foreach (var symbol in sep)
             {
-                Debug.WriteLine("Symbol: {0} Value: {1}" , symbol, (int)symbol);
+                Debug.WriteLine("Symbol: {0} Value: {1}", symbol, (int)symbol);
             }
 
             var res = temp.Split(sep);
@@ -282,6 +283,46 @@ namespace CSTest._08_String
             False
             False
             */
+        }
+
+        [Test]
+        public void TestString9Lower()
+        {
+            //for (int i = 'A'; i <= 'Z'; i++)
+            //{
+            //    TestLocalle(((char)i).ToString());
+            //}
+
+            //for (int i = 'a'; i <= 'z'; i++)
+            //{
+            //    TestLocalle(((char)i).ToString());
+            //}
+
+            string CoinsBoost = "COINS";
+
+            string restk = CoinsBoost.ToLower(new CultureInfo("tr-TR", false));
+            Debug.WriteLine(restk);
+            string resinv = CoinsBoost.ToLowerInvariant();
+            Debug.WriteLine(resinv);
+            string res = CoinsBoost.ToLower();
+            Debug.WriteLine(res);
+            //coıns
+            //coins
+            //coins
+        }
+
+        private static void TestLocalle(string temp)
+        {
+            CultureInfo[] cinfo = CultureInfo.GetCultures(CultureTypes.AllCultures & ~CultureTypes.NeutralCultures);
+            foreach (CultureInfo cul in cinfo)
+            {
+                string restk = temp.ToLower(cul);
+                string resinv = temp.ToLowerInvariant();
+                if (restk != resinv)
+                {
+                    Debug.WriteLine($"word:{temp} culture:{cul.EnglishName}");
+                }
+            }
         }
     }
 }

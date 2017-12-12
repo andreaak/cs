@@ -1,5 +1,5 @@
 ﻿<!--
-    Задание стиля с помощью селектор-класса. 
+    Задание стиля с помощью селектор-класса.
     .селектор-класс
     {
         свойство1: значение;
@@ -12,53 +12,46 @@
 -->
 
 <html>
-    <head>
-        <title>Тег style</title>
-        <style type="text/css">
+<head>
+    <title>Тег style</title>
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
 
-            body
-            { 
-                margin:0px; 
-                padding:0px;  
-            }
-             
-            p
-            {
-                font-size: 36px;
-            }
-            
-            div
-            {
-                 background: aqua;
-                 color: green;
-            }
-             
-            .class1
-            {
-                font-size: 20px;
-                color: red;
-            }
+        p {
+            font-size: 36px;
+        }
 
-            span.class1
-            {
-                font-size: 40px;
-                color: blueviolet;
-            }
+        div {
+            background: aqua;
+            color: green;
+        }
 
-        </style>
+        .class1 {
+            font-size: 20px;
+            color: red;
+        }
 
-    </head>
-    <body>
-        <!-- Селектор-класс доминирует над селектром тегом <p>  -->
-        <p class="class1">Простой параграф</p>
-        <p>Еще один простой параграф</p>
-        <!-- Селектор-класс доминирует над селектром тегом <div>  -->
-        <div class="class1" >
-                Также Еще один простой параграф, который находится в блочном элементе
-        </div>
-        <!-- Селектор-Тэг.Селектор-класс доминирует над селектором класса <div>  -->
-        <span class="class1" >
-                Span Element
-        </span>
-    </body>
+        span.class1 {
+            font-size: 40px;
+            color: blueviolet;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Селектор-класс доминирует над селектром тегом <p>  -->
+    <p class="class1">Простой параграф</p>
+    <p>Еще один простой параграф</p>
+    <!-- Селектор-класс доминирует над селектром тегом <div>  -->
+    <div class="class1">
+        Также Еще один простой параграф, который находится в блочном элементе
+    </div>
+    <!-- Селектор-Тэг.Селектор-класс доминирует над селектором класса <div>  -->
+    <span class="class1">
+        Span Element
+    </span>
+</body>
 </html>

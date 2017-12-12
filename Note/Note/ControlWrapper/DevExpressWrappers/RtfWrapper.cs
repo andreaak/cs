@@ -1,4 +1,7 @@
-﻿using DevExpress.Office.Utils;
+﻿using System;
+using System.Text.RegularExpressions;
+using DevExpress.Data.Mask;
+using DevExpress.Office.Utils;
 using DevExpress.XtraRichEdit;
 using DevExpress.XtraRichEdit.API.Native;
 
@@ -75,6 +78,11 @@ namespace Note.ControlWrapper.DevExpressWrappers
         {
             Document doc = control.Document;
             DocumentRange range = control.Document.Selection;
+            SetMethodFormat(doc, range);
+        }
+
+        public void SetMethodFormat(Document doc, DocumentRange range)
+        {
             CharacterProperties cp = doc.BeginUpdateCharacters(range);
             cp.FontName = "Times New Roman";
             cp.FontSize = 12;
@@ -167,19 +175,39 @@ namespace Note.ControlWrapper.DevExpressWrappers
 
         private void RemoveSpecialCombinations()
         {
-            DocumentRange range = control.Document.Selection;
-            control.Document.ReplaceAll("( ", "(", SearchOptions.None, range);
-            control.Document.ReplaceAll(" )", ")", SearchOptions.None, range);
-            control.Document.ReplaceAll("[ ", "[", SearchOptions.None, range);
-            control.Document.ReplaceAll(" ]", "]", SearchOptions.None, range);
-            control.Document.ReplaceAll("< ", "<", SearchOptions.None, range);
-            control.Document.ReplaceAll(" >", ">", SearchOptions.None, range);
-            control.Document.ReplaceAll("\" ", "\"", SearchOptions.None, range);
-            control.Document.ReplaceAll(" \"", "\"", SearchOptions.None, range);
-            control.Document.ReplaceAll(" ,", ",", SearchOptions.None, range);
-            control.Document.ReplaceAll(" ;", ";", SearchOptions.None, range);
-            control.Document.ReplaceAll(" :", ":", SearchOptions.None, range);
-            control.Document.ReplaceAll(" .", ".", SearchOptions.None, range);
+            DocumentRange selection = control.Document.Selection;
+
+            control.Document.ReplaceAll("( ", "(", SearchOptions.None, selection);
+            control.Document.ReplaceAll(" )", ")", SearchOptions.None, selection);
+            control.Document.ReplaceAll("[ ", "[", SearchOptions.None, selection);
+            control.Document.ReplaceAll(" ]", "]", SearchOptions.None, selection);
+            control.Document.ReplaceAll("< ", "<", SearchOptions.None, selection);
+            control.Document.ReplaceAll(" >", ">", SearchOptions.None, selection);
+            control.Document.ReplaceAll("\" ", "\"", SearchOptions.None, selection);
+            control.Document.ReplaceAll(" \"", "\"", SearchOptions.None, selection);
+            control.Document.ReplaceAll(" ,", ",", SearchOptions.None, selection);
+            control.Document.ReplaceAll(" ;", ";", SearchOptions.None, selection);
+            control.Document.ReplaceAll(" :", ":", SearchOptions.None, selection);
+            control.Document.ReplaceAll(" .", ".", SearchOptions.None, selection);
+
+            Regex reg = new Regex(@"<(\w+)>");
+            SetFormating(reg, selection, SetMethodFormat);
+            reg = new Regex(@"</(\w+)>");
+            SetFormating(reg, selection, SetMethodFormat);
+            reg = new Regex(@"<(\w+)\s?/>");
+            SetFormating(reg, selection, SetMethodFormat);
+        }
+
+        private void SetFormating(Regex reg, DocumentRange selection, Action<Document, DocumentRange> act)
+        {
+            var ranges = control.Document.FindAll(reg);
+            foreach (var range in ranges)
+            {
+                if (selection.Start <= range.Start && range.End <= selection.End)
+                {
+                    act(control.Document, range);
+                }
+            }
         }
 
         public void ChangeState(bool isNoteNode)

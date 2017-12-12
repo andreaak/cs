@@ -1,18 +1,17 @@
 ﻿<!--
-    Объединение - уточнение(ужесточение) правил выбора. 
+    Объединение - уточнение(ужесточение) правил выбора.
     Селекторы записываются без пробелов.
     Невозможно объединить между собой универсальный селектор, селекторы Id, псевдоэлементы
     Псевдоэлемент стоит последним.
-    Читается слева направо. 
+    Читается слева направо.
  -->
 
 <!doctype html>
 <html>
-    <head>
+<head>
     <meta charset="utf-8">
     <title>Объединение селекторов</title>
     <style type="text/css">
-    
         /*Объединение tags + id
         p#in{color:#0f0;}
         */
@@ -23,9 +22,17 @@
         */
 
         /*Объединение class + class*/
-        .news{color:#f00;}
-        .last{color:#00f;}
-        .news.last{color:#0f0;}
+        .news {
+            color: #f00;
+        }
+
+        .last {
+            color: #00f;
+        }
+
+        .news.last {
+            color: #0f0;
+        }
         /**/
 
         /*Объединение class + pseudo-class
@@ -60,13 +67,12 @@
         /*Объединение tags + id + class + attributes + pseudo-elements + pseudo-class
         p#in.begin[title][class][id]:first-child:first-letter{color:#0f0;}
         */
-
     </style>
-    </head>
-    <body>
-	    <p id="in" class="begin" title="Подсказка">Содержание p (#in .begin)</p>
-	    <p class="news">Содержание p (.news)</p>
-	    <div class="news">Содержание div (.news)</div>
-	    <p class="news last">Содержание p (.news .last)</p>
-    </body>
+</head>
+<body>
+    <p id="in" class="begin" title="Подсказка">Содержание p (#in .begin)</p>
+    <p class="news">Содержание p (.news)</p>
+    <div class="news">Содержание div (.news)</div>
+    <p class="news last">Содержание p (.news .last)</p>
+</body>
 </html>

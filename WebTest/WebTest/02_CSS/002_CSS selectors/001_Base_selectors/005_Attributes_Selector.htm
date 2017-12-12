@@ -1,5 +1,5 @@
 ﻿<!--
-    Селекторы атрибутов  
+    Селекторы атрибутов
     [title] - выбирает теги с аттрибутом title
     [title="value"]  выбирает теги с аттрибутом title который равен value
     [title~="value"]  выбирает теги с аттрибутом title который содержит полное слово(whole word) value
@@ -11,11 +11,11 @@
 
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Селекторы атрибутов</title>
-        <style type="text/css">
-            /*
+<head>
+    <meta charset="utf-8">
+    <title>Селекторы атрибутов</title>
+    <style type="text/css">
+        /*
             [title]{background:#ccf;}
             [title="Александр Пушкин"]{font-size:3em;}
             [title~="Александр"]{color:#f30;}
@@ -23,34 +23,35 @@
             [title^="Алекс"]{text-transform:uppercase;}
             [title*="ушки"]{font-size:3em;color:#f30;}
             */
-            [href^="http"]{
-	            padding:0 5px 0 20px;
-	            color:#096;
-	            background:url(icon.png) no-repeat 0 -32px;
-            }
-            [href$="pdf"]{
-	            padding:0 5px 0 20px;
-	            background:url(icon.png) no-repeat -32px 0;
-            }
-            [href$="doc"]{
-	            padding:0 5px 0 20px;
-	            background:url(icon.png) no-repeat -16px -16px;
-                color:#f00;
-            }
-            
-        </style>
-    </head>
-    <body>
-	    <p title="">Параграф с пустым title</p>
-	    <p title="Александр Овечкин">Параграф с title "Александр Овечкин"</p>
-	    <p title="Александр Пушкин">Параграф с title "Александр Пушкин"</p>
-        <p title="Пушкин Александр">Параграф с title "Пушкин Александр"</p>
-	    <p title="Александрийский маяк">Параграф с title "Александрийский маяк"</p>
-        <p title="аа пушкир ооо">Параграф с title "аа пушкир ооо"</p>
-	    <p>
-            <a href="http://ya.ru/">Внешняя ссылка</a> 
-            <a href="/docs/1.pdf">файл pdf</a> 
-            <a href="/docs/2.doc">файл doc</a>
-	    </p>
-    </body>
+        [href^="http"] {
+            padding: 0 5px 0 20px;
+            color: #096;
+            background: url(icon.png) no-repeat 0 -32px;
+        }
+
+        [href$="pdf"] {
+            padding: 0 5px 0 20px;
+            background: url(icon.png) no-repeat -32px 0;
+        }
+
+        [href$="doc"] {
+            padding: 0 5px 0 20px;
+            background: url(icon.png) no-repeat -16px -16px;
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <p title="">Параграф с пустым title</p>
+    <p title="Александр Овечкин">Параграф с title "Александр Овечкин"</p>
+    <p title="Александр Пушкин">Параграф с title "Александр Пушкин"</p>
+    <p title="Пушкин Александр">Параграф с title "Пушкин Александр"</p>
+    <p title="Александрийский маяк">Параграф с title "Александрийский маяк"</p>
+    <p title="аа пушкир ооо">Параграф с title "аа пушкир ооо"</p>
+    <p>
+        <a href="http://ya.ru/">Внешняя ссылка</a>
+        <a href="/docs/1.pdf">файл pdf</a>
+        <a href="/docs/2.doc">файл doc</a>
+    </p>
+</body>
 </html>
