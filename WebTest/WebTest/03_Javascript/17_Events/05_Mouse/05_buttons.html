@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>События мыши</title>
+    <script>
+
+        window.onload = function () {
+
+            var EventUtil = {
+
+                //другой код
+                getButton: function (event) {
+
+                    if (document.implementation.hasFeature("MouseEvents", "2.0")) {
+                        return event.button;
+                    } else {
+                        switch (event.button) {
+                            case 0:
+                            case 1:
+                            case 3:
+                            case 5:
+                            case 7:
+                                return 0;
+                            case 2:
+                            case 6:
+                                return 2;
+                            case 4:
+                                return 1;
+                                //другой код
+                        }
+                    }
+                },
+            };
+
+            var div = document.getElementById("myDiv");
+            EventUtil.addHandler(div, "mousedown", function (event) {
+                event = EventUtil.getEvent(event);
+                alert(EventUtil.getButton(event));
+            });
+
+        }
+    </script>
+    <style>
+        div {
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+            float: left;
+            height: 400px;
+            width: 400px;
+        }
+
+        #myDiv {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv"></div>
+</body>
+</html>

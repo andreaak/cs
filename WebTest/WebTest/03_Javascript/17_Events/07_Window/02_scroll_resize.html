@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>События клавиатуры</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+    <script>
+
+        EventUtil.addHandler(window, "resize", function (event) {
+            alert("Resized");
+        });
+
+        EventUtil.addHandler(window, "scroll", function (event) {
+            if (document.compatMode == "CSS1Compat") {
+                alert(document.documentElement.scrollTop);
+            } else {
+                alert(document.body.scrollTop);
+            }
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

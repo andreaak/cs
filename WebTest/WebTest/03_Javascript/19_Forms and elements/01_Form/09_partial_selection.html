@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Работа с HTML формой</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+    <script>
+        window.onload = function () {
+
+            var textbox = document.forms[0].elements["textbox1"];
+
+            textbox.value = "Hello world!";
+
+            //выделение всего текста
+            textbox.setSelectionRange(0, textbox.value.length);//"Hello world!"
+
+            //выделение трех первых символов
+            textbox.setSelectionRange(0, 3);//"Hel"
+
+            //выделение символов с 4 по 6
+            textbox.setSelectionRange(4, 7);//"о w"
+
+
+            textbox.value = "Hello world!";
+            var range = textbox.createTextRange();
+
+            //выделение всего текста
+            range.collapse(true);
+            range.moveStart("character", 0);
+            range.moveEnd("character", textbox.value.length);//"Hello world!"
+            range.select();
+
+
+            //выделение первых трех символов
+            range.collapse(true);
+            range.moveStart("character", 0);
+            range.moveEnd("character", 3);
+            range.select();//"Hel"
+
+            //выделение символов с 4 по 6
+            range.collapse(true);
+            range.moveStart("character", 4);
+            range.moveEnd("character", 3);
+            range.select();//"о w"
+
+            function selectText(textbox, startIndex, stopIndex) {
+                if (textbox.setSelectionRange) {
+                    textbox.setSelectionRange(startIndex, stopIndex);
+                } else if (textbox.createTextRange) {
+                    var range = textbox.createTextRange();
+                    range.collapse(true);
+                    range.moveStart("character", startIndex);
+                    range.moveEnd("character", stopIndex - startIndex);
+                    range.select();
+                }
+
+                textbox.focus();
+            }
+
+            textbox.value = "Hello world!";
+            //выделение всего текста
+            selectText(textbox, 0, textbox.value.length);//"Hello world!"
+
+            //выделение первых трех символов
+            selectText(textbox, 0, 3);//"Hel"
+
+            //выделение символов с 4 по 6
+            selectText(textbox, 4, 7);//"оw"
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="textbox1" size="25" maxlength="50" value="initial value">
+    </form>
+</body>
+</html>

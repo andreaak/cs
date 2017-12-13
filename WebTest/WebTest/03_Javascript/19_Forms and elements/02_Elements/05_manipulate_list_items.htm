@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Типы элементов формы</title>
+</head>
+<body>
+    <form action="test.html" method="post">
+
+        <select name="location" id="selLocation">
+            <option value="Sunnyvale, CA">Sunnyvale</option>
+            <option value="Los Angeles, CA">Los Angeles</option>
+            <option value="Mountain View, CA">Mountain View</option>
+            <option value="">China</option>
+            <option>Australia</option>
+        </select>
+
+    </form>
+
+    <script>
+        var selectbox = document.forms[0].elements["location"];
+
+        var newOption = document.createElement("option");
+        newOption.appendChild(document.createTextNode("Option text"));
+        newOption.setAttribute("value", "Option value");
+        selectbox.appendChild(newOption);
+
+        var newOption = new Option("Option text", "Option value");
+        selectbox.appendChild(newOption);//проблемы в IE до версии 8 включительно
+
+        var newOption = new Option("Option text", "Option value");
+        selectbox.add(newOption, undefined);//оптимальное решение
+
+        selectbox.removeChild(selectbox.options[0]);//удаление первого элемента
+
+        selectbox.remove(0);//удаление первого элемента
+
+        selectbox.options[0] = null;//удаление первого элемента
+
+        function clearSelectbox(selectbox) {
+            for (var i = 0, len = selectbox.optioпs.length; i < len; i++) {
+                selectbox.remove(0);
+            }
+        }
+
+        //
+        var selectbox1 = document.getElementById("selLocationsl");
+        var selectbox2 = document.getElementById("selLocatioпs2");
+        selectbox2.appendChild(selectbox1.options[0]);
+
+        var optionToMove = selectbox.options[1];
+        selectbox.insertBefore(optionToMove,
+                            selectbox.options[optionToMove.index - 1]);
+        //
+        var optionToMove = selectbox.options[1];
+        selectbox.insertBefore(optionToMove,
+                            selectbox.options[optionToMove.index + 2]);
+
+    </script>
+</body>
+</html>

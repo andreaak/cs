@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Event delegation</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <script>
+
+        var btn = document.getElementById("myBtn");
+
+        //создание объекта event
+        var event = document.createEventObject();
+
+        //инициализация объекта event
+        event.screenX = 100;
+        event.screenY = 0;
+        event.clientX = 0;
+        event.clientY = 0;
+        event.ctrlKey = false;
+        event.altKey = false;
+        event.shiftKey = false;
+        event.button = 0;
+
+        //генерирование события
+        btn.fireEvent("onclick", event);
+
+        var textbox = document.getElementById("myTextbox");
+
+        //создание объекта event
+        var event = document.createEventObject();
+
+        //инициализация объекта event
+        event.altKey = false;
+        event.ctrlKey = false;
+        event.shiftKey = false;
+        event.keyCode = 65;
+
+        //генерирование события
+        textbox.fireEvent("onkeypress", event);
+
+    </script>
+</body>
+</html>

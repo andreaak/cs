@@ -21,6 +21,69 @@
             function clear() {
                 document.getElementById("output").innerHTML = "";
             }
+
+            var textbox = document.getElementById("myText");
+            EventUtil.addHandler(textbox, "keyup", function (event) {
+                event = EventUtil.getEvent(event);
+                alert(event.keyCode);
+            });
+
+            var EventUtil = {
+
+                //другой код
+
+                getCharCode: function (event) {
+                    if (typeof event.charCode == "number") {
+                        return event.charCode;
+                    } else {
+                        return event.keyCode;
+                    }
+                },
+
+                //другой код
+            };
+
+            var textbox = document.getElementById("myText");
+            EventUtil.addHandler(textbox, "keypress", function (event) {
+                event = EventUtil.getEvent(event);
+                alert(EventUtil.getCharCode(event));
+            });
+
+            //DOM Level 3
+            var textbox = document.getElementById("myText");
+            EventUtil.addHandler(textbox, "keypress", function (event) {
+                event = EventUtil.getEvent(event);
+                var identifier = event.key || event.keyIdentifier;
+                if (identifier) {
+                    alert(identifier);
+                }
+            });
+
+            var textbox = document.getElementById("myText");
+            EventUtil.addHandler(textbox, "'keypress", function (event) {
+                event = EventUtil.getEvent(event);
+                var loc = event.location || event.keyLocation;
+                if (loc) {
+                    alert(loc);
+                }
+            });
+
+            var textbox = document.getElementById("myText");
+            EventUtil.addHandler(textbox, "keypress", function (event) {
+                event = EventUtil.getEvent(event);
+                if (event.getModifierState) {
+                    alert(event.getModifierState("Shift"));
+                }
+            });
+
+            var textbox = document.getElementById("myText");
+            EventUtil.addHandler(textbox, "textInput", function (event) {
+                event = EventUtil.getEvent(event);
+                alert(event.data);
+            });
+
+
+
         }
     </script>
 </head>

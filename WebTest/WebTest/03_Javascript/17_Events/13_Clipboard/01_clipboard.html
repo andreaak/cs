@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Event delegation</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+
+    <form>
+        <input type="text" id="textbox1" size="25" maxlength="50" value="initial value">
+    </form>
+
+    <script>
+        var textbox = document.forms[0].elements["textbox1"];
+
+        var EventUtil2 = {
+
+            //другой код
+            getClipboardText: function (event) {
+                var clipboardData = (event.clipboardData || window.clipboardData);
+                return clipboardData.getData("text");
+            },
+
+            //другой код
+
+            setClipboardText: function (event, value) {
+                if (event.clipboardData) {
+                    return event.clipboardData.setData("text/plain", value);
+                } else if (window.clipboardData) {
+                    return window.clipboardData.setData("text", value);
+                }
+            },
+            //другой код
+        };
+
+        EventUtil.addHandler(textbox, "paste", function (event) {
+            event = EventUtil.getEvent(event);
+
+            var text = EventUtil2.getClipboardText(event);
+            if (!/^\d*$/.test(text)) {
+                EventUtil.preventDefault(event);
+            }
+        });
+
+
+    </script>
+</body>
+</html>

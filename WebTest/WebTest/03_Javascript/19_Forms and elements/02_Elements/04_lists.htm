@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Типы элементов формы</title>
+</head>
+<body>
+    <form action="test.html" method="post">
+
+        <select name="location" id="selLocation">
+            <option value="Sunnyvale, CA">Sunnyvale</option>
+            <option value="Los Angeles, CA">Los Angeles</option>
+            <option value="Mountain View, CA">Mountain View</option>
+            <option value="">China</option>
+            <option>Australia</option>
+        </select>
+
+    </form>
+
+    <script>
+        var selectbox = document.forms[0].elements["location"];
+
+        //не рекомендуется
+        var text = selectbox.options[0].firstChild.nodeValue;//текст элемента
+        var value = selectbox.options[0].getAttribute("value");//значение элемента
+
+        var selectbox = document.forms[0].elements["location"];
+
+        //предпочтительный вариант
+        var text = selectbox.options[0].text;//текст элемента
+        var value = selectbox.options[0].value;//значение элемента
+
+        var selectedOption = selectbox.options[selectbox.selectedIndex];
+
+        var selectedIndex = selectbox.selectedIndex;
+        varselectedOption = selectbox.options[selectedIndex];
+        alert("Selected index:" + selectedIndex +
+            "\nSelected text:" + selectedOption.text +
+            "\nSelected value:" + selectedOption.value);
+
+        selectbox.options[0].selected = true;
+
+        function getSelectedOptions(selectbox) {
+            var result = new Array();
+            var option = null;
+            for (var i = 0, len = selectbox.options.length; i < len; i++) {
+                option = selectbox.options[i];
+                if (option.selected) {
+                    result.push(option);
+                }
+            }
+            return result;
+        }
+
+        var selectbox = document.getElementById("selLocation");
+        var selectedOptions = getSelectedOptions(selectbox);
+        var message = "";
+
+        for (var i = 0, len = selectedOptions.length; i < len; i++) {
+            message += "Selected index:" + selectedOptions[i].index +
+            "\nSelected text:" + selectedOptions[i].text +
+            "\nSelected value:" + selectedOptions[i].value + "\n\n";
+        }
+        alert(message);
+
+
+    </script>
+</body>
+</html>

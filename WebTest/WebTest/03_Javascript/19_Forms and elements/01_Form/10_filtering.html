@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Работа с HTML формой</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+    <script>
+        var EventUtil2 = {
+
+            //другой код
+
+            getCharCode: function (event) {
+                if (typeof event.charCode == "number") {
+                    return event.charCode;
+                } else {
+                    return event.keyCode;
+                }
+            },
+
+            //другой код
+        };
+
+        window.onload = function () {
+            var textbox = document.forms[0].elements["textbox1"];
+
+            EventUtil.addHandler(textbox, "keypress", function (event) {
+
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                var charCode = EventUtil2.getCharCode(event);
+
+                if (!/\d/.test(String.fromCharCode(charCode)) && charCode > 9) {
+                    EventUtil.preventDefault(event);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="textbox1" size="25" maxlength="50" value="initial value">
+    </form>
+</body>
+</html>

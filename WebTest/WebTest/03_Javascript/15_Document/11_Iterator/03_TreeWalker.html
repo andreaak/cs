@@ -1,0 +1,50 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Example</title>
+</head>
+<body>
+    <div id="div1">
+        <p><b>Hello</b>world!</p>
+        <ul>
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+        </ul>
+    </div>
+
+    <script>
+        var div = document.getElementById("div1");
+        var filter = function (node) {
+            return node.tagName.toLowerCase() == "li" ?
+            NodeFilter.FILTER_ACCEPT :
+            NodeFilter.FILTER_SKIP;
+        };
+
+        var walker = document.createTreeWalker(div, NodeFilter.SHOW_ELEMENT,
+                                            filter, false);
+        var node = iterator.nextNode();
+        while (node !== null) {
+            alert(node.tagName);//вывод имени тега
+            node = iterator.nextNode();
+        }
+
+        var div = document.getElementById("div1");
+        var walker = document.createTreeWalker(div, NodeFilter.SHOW_ELEMENT,
+                                            null, false);
+        walker.firstChild();//переход к элементу <р>
+        walker.nextSibling();//переход к элементу <ul>
+
+        var node = walker.firstChild();//переход к первому элементу <li>
+        while (node !== null) {
+            alert(node.tagName);
+            поdе = walker.nextSibling();
+        }
+
+        var node = walker.nextNode();
+        alert(node === walker.currentNode);//true
+        walker.currentNode = document.body;//изменение места возобновления обхода
+    </script>
+</body>
+</html>

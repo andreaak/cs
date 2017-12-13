@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Event delegation</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <script>
+        var btn = document.getElementById("myBtn");
+
+        //создание объекта event
+        var event = document.createEvent("MouseEvents");
+
+        //инициализация объекта event
+        event.initMouseEvent("click", true, true, document.defaultView,
+                            0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+        //генерирование события
+        btn.dispatchEvent(event);
+    </script>
+</body>
+</html>

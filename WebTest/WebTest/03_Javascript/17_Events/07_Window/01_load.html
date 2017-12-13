@@ -1,0 +1,49 @@
+﻿<!--
+    События окна:
+    onload - происходит при окончании загрузки страницы
+    onunload - происходит перед тем как объект будет выгружен (переход на другое окно или закрытие)
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>События клавиатуры</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+    <script>
+        window.onload = function () {
+            //
+        }
+
+        EventUtil.addHandler(window, "load", function (event) {
+            alert("Loaded!");
+        });
+
+        EventUtil.addHandler(window, "load", function () {
+
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            EventUtil.addHandler(script, "load", function (event) {
+                alert("Loaded");
+            });
+            script.src = "example.js";
+            document.body.appendChild(script);
+        });
+
+        EventUtil.addHandler(window, "load", function () {
+
+            var link = document.createElement("link");
+            link.type = "text/css";
+            link.rel = "stylesheet";
+            EventUtil.addHandler(link, "load", function (event) {
+                alert("css loaded");
+            });
+            link.href = "example.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
