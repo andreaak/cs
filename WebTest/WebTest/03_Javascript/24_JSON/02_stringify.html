@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON.stringify()</title>
+    <script type="text/javascript">
+
+        // Создаем объект JavaScript
+        var student = {
+            name: "Ivan",
+            age: 25,
+            course: "jQuery"
+        };
+
+        // JSON.stringify() - метод для сериализации объекта в JSON
+        var data = JSON.stringify(student); // сериализация
+        alert(data); //{"name":"Ivan","age":25,"course":"jQuery"}
+
+
+        // JSON.parse() - метод для десериализации данных из JSON в JavaScript объект
+        var obj = JSON.parse(data);
+        alert(obj.name + "\r\n" + obj.age + "\r\n" + obj.course);
+
+        var book = {
+            "title": "Professional JavaScript",
+            "authors": [
+            "Nicholas С. Zakas"
+            ],
+            edition: 3,
+            year: 2011
+        };
+        var jsonText = JSON.stringify(book, ["title", "edition"]);
+        alert(jsonText);//{"title":"Professional JavaScript","edition":3}
+
+        var jsonText = JSON.stringify(book, function (key, value) {
+            switch (key) {
+                case "authors":
+                    return value.join(",");
+                case "year":
+                    return 5000;
+                case "edition":
+                    return undefined;
+                default:
+                    return value;
+            }
+        });
+        alert(jsonText);//{"title":"Professional JavaScript","authors":"Nicholas С. Zakas","year":5000}
+
+        var jsonText = JSON.stringify(book, null, 4);
+        alert(jsonText);//
+
+        var jsonText = JSON.stringify(book, null, "--");
+        alert(jsonText);//
+
+    </script>
+</head>
+<body>
+</body>
+</html>

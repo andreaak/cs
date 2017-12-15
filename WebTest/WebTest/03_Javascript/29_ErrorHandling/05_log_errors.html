@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Работа с HTML формой</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <script>
+
+        function logError(sev, msg) {
+            var img = new Image();
+            img.src = "log.php?sev=" + encodeURIComponent(sev) + "&msg=" +
+                                        encodeURIComponent(msg);
+        }
+
+        for (var i = 0, len = mods.length; i < len; i++) {
+            try {
+                mods[i].init();
+            } catch (ех) {
+                logError("non fatal", "Module init failed: " + ex.message);
+            }
+        }
+
+        function sum(num1, num2) {
+            console.log("Entering sum(), arguments are" + num1 + "," + num2);
+
+            console.log("Before calculation");
+            var result = num1 + num2;
+            console.log("After calculation");
+
+            console.log("Exiting sum()");
+            return result;
+        }
+
+        function sum(num1, num2) {
+            opera.postError("Entering sum(), arguments are" + num1 + "," + num2);
+            opera.postError("Before calculation");
+            var result = num1 + num2;
+            opera.postError("After calculation");
+            opera.postError("Exiting sum()");
+            return result;
+        }
+
+
+        function log(message) {
+            if (typeof console == "object") {
+                console.log(message);
+            } else if (typeof opera == "object") {
+                opera.postError(message);
+            } else if (typeof java == "object" && typeof java.lang == "object") {
+                java.lang.System.out.println(message);
+            }
+        }
+
+        function sum(num1, num2) {
+            log("Entering sum(), arguments are" + num1 + "," + num2);
+
+            log("Before calculation");
+            var result = num1 + num2;
+            log("After calculation");
+
+            log("Exiting sum()");
+            return result;
+        }
+
+        function log(message) {
+            var console = document.getElementById("debuginfo");
+            if (console === null) {
+                console = document.createElement("div");
+                console.id = "debuginfo";
+                console.style.background = "#dedede";
+                console.style.border = "lpxsolidsilver";
+                console.style.padding = "5рх";
+                console.style.width = "400рх";
+                console.style.position = "absolute";
+                console.style.right = "0рх";
+                console.style.top = "0рх";
+                document.body.appendChild(console);
+            }
+
+            console.innerHTML += "<р>" + message + "</р>";
+        }
+
+    </script>
+</body>
+</html>

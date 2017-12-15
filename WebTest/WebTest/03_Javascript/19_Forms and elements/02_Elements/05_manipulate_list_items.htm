@@ -19,9 +19,11 @@
     <script>
         var selectbox = document.forms[0].elements["location"];
 
+        //add
         var newOption = document.createElement("option");
         newOption.appendChild(document.createTextNode("Option text"));
         newOption.setAttribute("value", "Option value");
+
         selectbox.appendChild(newOption);
 
         var newOption = new Option("Option text", "Option value");
@@ -30,6 +32,7 @@
         var newOption = new Option("Option text", "Option value");
         selectbox.add(newOption, undefined);//оптимальное решение
 
+        //remove
         selectbox.removeChild(selectbox.options[0]);//удаление первого элемента
 
         selectbox.remove(0);//удаление первого элемента

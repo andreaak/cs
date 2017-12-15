@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Работа с HTML формой</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <script>
+        alert(5 == "5");//true
+        alert(5 === "5");//false
+        alert(1 == true);//true
+        alert(1 === true);//false
+
+        function concat(str1, str2, str3) {
+            var result = str1 + str2;
+            if (str3) { //не делайте так!!!
+                result += str3;
+            }
+            return result;
+        }
+
+        function concat(str1, str2, str3) {
+            var result = str1 + str2;
+            if (typeof str3 == "string") { //правильное сравнение
+                result += str3;
+            }
+            return result;
+        }
+
+        //небезопасная функция - значение, отличное от строки, приводит к ошибке
+        function getQueryString(ur1) {
+            var pos = url.indexOf("?");
+
+            if (pos > -1) {
+                return url.substring(pos + 1);
+            }
+            return "";
+        }
+
+        function getQueryString(url) {
+            if (typeof url == "string") {//более безопасный вариант
+                var pos = url.indexOf("?");
+                if (pos > -1) {
+                    return url.substring(pos + 1);
+                }
+            }
+            return "";
+        }
+
+        //небезопасная функция - значение, отличное от массива, приводит к ошибке
+        function reverseSort(values) {
+            if (values) {//не делайте так!!!
+                values.sort();
+                values.reverse();
+            }
+        }
+
+        //небезопасная функция - значение, отличное от массива, приводит к ошибке
+        function reverseSort(values) {
+            if (values != null) {//не делайте так!!!
+                values.sort();
+                values.reverse();
+            }
+        }
+
+        //небезопасная функция - значение, отличное от массива, приводит к ошибке
+        function reverseSort(values) {
+            if (typeof values.sort == "function") {//не делайте так!!!
+                values.sort();
+                values.reverse();
+            }
+        }
+
+        //безопасная функция - значение, отличное от массива, игнорируется
+        function reverseSort(values) {
+            if (values instanceof Array) { //исправлено
+                values.sort();
+                values.reverse();
+            }
+        }
+
+        function addQueryStringArg(url, name, value) {
+            if (url.indexOf("?") == -1) {
+                url += "?";
+            } else {
+                url += "&";
+            }
+            url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+            return url;
+        }
+
+
+        var url = "http://www.somedomain.com";
+        var newUrl = addQueryStringArg(url, "redir",
+                                        "http://www.someotherdomain.com?a=b&c=d");
+        alert(newUrl);
+
+        for (var i = 0, len = mods.length; i < len; i++) {
+            mods[i].init(); //возможна критичная ошибка
+        }
+
+        for (var i = 0, len = mods.length; i < len; i++) {
+            try {
+                mods[i].init();
+            } catch (ех) {
+                //обработка ошибки
+            }
+        }
+
+    </script>
+</body>
+</html>

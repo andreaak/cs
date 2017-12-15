@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Работа с HTML формой</title>
+    <script src="/03_Javascript/17_Events/03_IE_Events/002_CrossBrowserEventUtil.js"></script>
+</head>
+<body>
+    <script>
+        window.onerror = function (message, url, line) {
+            alert(message);
+        };
+
+        window.onerror = function (message, url, line) {
+            alert(message);
+            return false;
+        };
+
+        var image = new Image();
+        EventUtil.addHandler(image, "load", function (event) {
+            alert("Image loaded!");
+        });
+        EventUtil.addHandler(image, "error", function (event) {
+            alert("Image not loaded!");
+        });
+        image.src = "smilex.gif";//изображение не существует
+
+    </script>
+</body>
+</html>
