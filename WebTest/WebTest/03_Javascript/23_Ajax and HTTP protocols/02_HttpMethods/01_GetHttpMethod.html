@@ -16,6 +16,24 @@
             }
 
             xhr.send();
+
+            xhr.open("get", "example.php?namel=valuel&name2=value2", true);
+
+            function addURLParam(url, name, value) {
+                url += (url.indexOf("?") == -1 ? "?" : "&");
+                url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+                return url;
+            }
+
+            var url = "example.php";
+            //добавление аргументов
+
+            url = addURLParam(url, "name", "Nicholas");
+            url = addURLParam(url, "book", "Professional JavaScript");
+
+            //инициирование запроса
+            xhr.open("get", url, false);
+
         }
     </script>
 </head>

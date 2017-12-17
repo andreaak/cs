@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Web Sockets</title>
+    <script>
+        window.onload = function () {
+
+            var socket = new WebSocket("ws://www.example.com/server.php");
+
+
+            socket.close();
+
+            var socket = new WebSocket("ws://www.example.com/server.php");
+            socket.send("Hello world!");
+
+
+            var message = {
+                time: new Date(),
+                text: "Hello world!",
+                clientId: "asdfp8734rew"
+            };
+            socket.send(JSON.stringify(message));
+
+            socket.onmessage = function (event) {
+                var data = event.data;
+                //какие-то действия с данными
+            };
+
+            var socket = new WebSocket("ws://www.example.com/server.php");
+            socket.onopen = function () {
+                alert("ConnectionestaЫished.");
+            };
+            socket.onerror = function () {
+                alert("Connectionerror.");
+            };
+            socket.onclose = function () {
+                alert("Connectionclosed.");
+            };
+        }
+    </script>
+</head>
+<body>
+    <input id="btnGet" type="button" value="Get Info" />
+    <p id="output"></p>
+</body>
+</html>

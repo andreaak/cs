@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Events</title>
+    <script src="./01_XmlHttpRequest/ajax.js"></script>
+    <script>
+        window.onload = function () {
+
+            var xhr = createXHR();
+            xhr.onload = function () {
+
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    alert(xhr.responseText);
+                } else {
+                    alert("Request was unsuccessful:" + xhr.status);
+                }
+            };
+
+            xhr.onprogress = function (event) {
+                var divStatus = document.getElementByid("status");
+                if (event.lengthComputable) {
+                    divStatus.innerHTML = "Received" + event.position + "of" +
+                    event.totalSize + "bytes";
+                }
+            };
+            xhr.open("get", "altevents.php", true);
+            xhr.send(null);
+        }
+    </script>
+</head>
+<body>
+    <input id="buttonGet" type="button" value="Get Data" />
+    <p id="output"></p>
+</body>
+</html>

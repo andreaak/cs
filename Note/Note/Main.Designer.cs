@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            DevExpress.XtraSpellChecker.OptionsSpelling optionsSpelling2 = new DevExpress.XtraSpellChecker.OptionsSpelling();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraSpellChecker.OptionsSpelling optionsSpelling1 = new DevExpress.XtraSpellChecker.OptionsSpelling();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemAddDir = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemAddNote = new DevExpress.XtraBars.BarButtonItem();
@@ -291,6 +291,7 @@
             this.barButtonItemFind = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemUpload = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemDownload = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemLogs = new DevExpress.XtraBars.BarButtonItem();
             this.headerFooterToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.HeaderFooterToolsRibbonPageCategory();
             this.tableToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.TableToolsRibbonPageCategory();
             this.tableDesignRibbonPage1 = new DevExpress.XtraRichEdit.UI.TableDesignRibbonPage();
@@ -349,7 +350,6 @@
             this.showParagraphFormItem1 = new DevExpress.XtraRichEdit.UI.ShowParagraphFormItem();
             this.showEditStyleFormItem1 = new DevExpress.XtraRichEdit.UI.ShowEditStyleFormItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.barButtonItemLogs = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBorderLineStyle1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBorderLineWeight1)).BeginInit();
@@ -651,7 +651,7 @@
             this.barButtonItemAddDir.Id = 1;
             this.barButtonItemAddDir.Name = "barButtonItemAddDir";
             this.barButtonItemAddDir.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption;
-            this.barButtonItemAddDir.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemAddDir.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemAddDir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAddDir_ItemClick);
             // 
             // barButtonItemAddNote
@@ -1248,7 +1248,7 @@
             this.myRichEditControl.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
             this.myRichEditControl.Size = new System.Drawing.Size(1122, 521);
             this.myRichEditControl.SpellChecker = this.spellChecker1;
-            this.spellChecker1.SetSpellCheckerOptions(this.myRichEditControl, optionsSpelling2);
+            this.spellChecker1.SetSpellCheckerOptions(this.myRichEditControl, optionsSpelling1);
             this.myRichEditControl.TabIndex = 0;
             this.myRichEditControl.Text = "Type Text";
             // 
@@ -1731,7 +1731,7 @@
             this.barButtonItemDelete.Glyph = global::Note.Properties.Resources.Delete;
             this.barButtonItemDelete.Id = 143;
             this.barButtonItemDelete.Name = "barButtonItemDelete";
-            this.barButtonItemDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemDelete.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDelete_ItemClick);
             // 
             // barButtonItemUp
@@ -1740,7 +1740,7 @@
             this.barButtonItemUp.Glyph = global::Note.Properties.Resources._2uparrow;
             this.barButtonItemUp.Id = 144;
             this.barButtonItemUp.Name = "barButtonItemUp";
-            this.barButtonItemUp.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemUp.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemUp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUp_ItemClick);
             // 
             // barButtonItemDown
@@ -1749,7 +1749,7 @@
             this.barButtonItemDown.Glyph = global::Note.Properties.Resources._2downarrow;
             this.barButtonItemDown.Id = 145;
             this.barButtonItemDown.Name = "barButtonItemDown";
-            this.barButtonItemDown.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemDown.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemDown.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDown_ItemClick);
             // 
             // barButtonItemReconnect
@@ -1758,7 +1758,7 @@
             this.barButtonItemReconnect.Glyph = global::Note.Properties.Resources.hibernate;
             this.barButtonItemReconnect.Id = 146;
             this.barButtonItemReconnect.Name = "barButtonItemReconnect";
-            this.barButtonItemReconnect.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemReconnect.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemReconnect.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonConnect_ItemClick);
             // 
             // barButtonItemSaveAll
@@ -1769,7 +1769,7 @@
             this.barButtonItemSaveAll.Id = 147;
             this.barButtonItemSaveAll.ItemClickFireMode = DevExpress.XtraBars.BarItemEventFireMode.Immediate;
             this.barButtonItemSaveAll.Name = "barButtonItemSaveAll";
-            this.barButtonItemSaveAll.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemSaveAll.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemSaveAll.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSaveAll_ItemClick);
             // 
             // pasteItem1
@@ -2405,8 +2405,8 @@
             // barButtonItemHeaderFormat
             // 
             this.barButtonItemHeaderFormat.Caption = "Header Format";
+            this.barButtonItemHeaderFormat.Glyph = global::Note.Properties.Resources.kcmfontinst;
             this.barButtonItemHeaderFormat.Id = 232;
-            this.barButtonItemHeaderFormat.LargeGlyph = global::Note.Properties.Resources.kcmfontinst;
             this.barButtonItemHeaderFormat.Name = "barButtonItemHeaderFormat";
             this.barButtonItemHeaderFormat.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemHeaderFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemHeaderFormat_ItemClick);
@@ -2414,8 +2414,8 @@
             // barButtonItemInfoFormat
             // 
             this.barButtonItemInfoFormat.Caption = "Info \r\nFormat";
+            this.barButtonItemInfoFormat.Glyph = global::Note.Properties.Resources.signature;
             this.barButtonItemInfoFormat.Id = 233;
-            this.barButtonItemInfoFormat.LargeGlyph = global::Note.Properties.Resources.signature;
             this.barButtonItemInfoFormat.Name = "barButtonItemInfoFormat";
             this.barButtonItemInfoFormat.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemInfoFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemInfoFormat_ItemClick);
@@ -2423,19 +2423,19 @@
             // barButtonItemCodeFormat
             // 
             this.barButtonItemCodeFormat.Caption = "Code \r\nFormat";
+            this.barButtonItemCodeFormat.Glyph = global::Note.Properties.Resources.texteffect;
             this.barButtonItemCodeFormat.Id = 234;
-            this.barButtonItemCodeFormat.LargeGlyph = global::Note.Properties.Resources.texteffect;
             this.barButtonItemCodeFormat.Name = "barButtonItemCodeFormat";
             this.barButtonItemCodeFormat.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemCodeFormat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCodeFormat_ItemClick);
             // 
             // barButtonItemConvertDb
             // 
-            this.barButtonItemConvertDb.Caption = "Convert Db";
+            this.barButtonItemConvertDb.Caption = "Normalize";
             this.barButtonItemConvertDb.Glyph = global::Note.Properties.Resources.cdcopy;
             this.barButtonItemConvertDb.Id = 235;
             this.barButtonItemConvertDb.Name = "barButtonItemConvertDb";
-            this.barButtonItemConvertDb.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemConvertDb.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemConvertDb.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemConvertDb_ItemClick);
             // 
             // barButtonItemVacuum
@@ -2503,9 +2503,9 @@
             this.barButtonItemLevelUp.Id = 245;
             this.barButtonItemLevelUp.Name = "barButtonItemLevelUp";
             this.barButtonItemLevelUp.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipItem3.Text = "Level Up";
-            superToolTip3.Items.Add(toolTipItem3);
-            this.barButtonItemLevelUp.SuperTip = superToolTip3;
+            toolTipItem1.Text = "Level Up";
+            superToolTip1.Items.Add(toolTipItem1);
+            this.barButtonItemLevelUp.SuperTip = superToolTip1;
             this.barButtonItemLevelUp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLevelUp_ItemClick);
             // 
             // barButtonItemLevelDown
@@ -2515,9 +2515,9 @@
             this.barButtonItemLevelDown.Id = 246;
             this.barButtonItemLevelDown.Name = "barButtonItemLevelDown";
             this.barButtonItemLevelDown.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipItem4.Text = "Level Down";
-            superToolTip4.Items.Add(toolTipItem4);
-            this.barButtonItemLevelDown.SuperTip = superToolTip4;
+            toolTipItem2.Text = "Level Down";
+            superToolTip2.Items.Add(toolTipItem2);
+            this.barButtonItemLevelDown.SuperTip = superToolTip2;
             this.barButtonItemLevelDown.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLevelDown_ItemClick);
             // 
             // barButtonItemRemoveWhiteSpace
@@ -2531,6 +2531,7 @@
             // barButtonItemCheckNewestEntity
             // 
             this.barButtonItemCheckNewestEntity.Caption = "Check\r\nNewest\r\nEntity";
+            this.barButtonItemCheckNewestEntity.Glyph = global::Note.Properties.Resources.refresh;
             this.barButtonItemCheckNewestEntity.Id = 248;
             this.barButtonItemCheckNewestEntity.Name = "barButtonItemCheckNewestEntity";
             this.barButtonItemCheckNewestEntity.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
@@ -2541,8 +2542,8 @@
             this.barButtonItemSpelling.BindableChecked = true;
             this.barButtonItemSpelling.Caption = "Spelling";
             this.barButtonItemSpelling.Checked = true;
+            this.barButtonItemSpelling.Glyph = global::Note.Properties.Resources.spelling2;
             this.barButtonItemSpelling.Id = 248;
-            this.barButtonItemSpelling.LargeGlyph = global::Note.Properties.Resources.spelling2;
             this.barButtonItemSpelling.Name = "barButtonItemSpelling";
             this.barButtonItemSpelling.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemSpelling.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSpelling_CheckedChanged);
@@ -2550,17 +2551,17 @@
             // barButtonItemFind
             // 
             this.barButtonItemFind.Caption = "Find";
+            this.barButtonItemFind.Glyph = global::Note.Properties.Resources.Search44;
             this.barButtonItemFind.Id = 249;
-            this.barButtonItemFind.LargeGlyph = global::Note.Properties.Resources.Search44;
             this.barButtonItemFind.Name = "barButtonItemFind";
-            this.barButtonItemFind.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButtonItemFind.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemFind.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFind_ItemClick);
             // 
             // barButtonItemUpload
             // 
             this.barButtonItemUpload.Caption = "Upload";
+            this.barButtonItemUpload.Glyph = global::Note.Properties.Resources.Google_Drive_Icon;
             this.barButtonItemUpload.Id = 250;
-            this.barButtonItemUpload.LargeGlyph = global::Note.Properties.Resources.Google_Drive_Icon;
             this.barButtonItemUpload.Name = "barButtonItemUpload";
             this.barButtonItemUpload.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemUpload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpload_ItemClick);
@@ -2568,11 +2569,20 @@
             // barButtonItemDownload
             // 
             this.barButtonItemDownload.Caption = "Download";
+            this.barButtonItemDownload.Glyph = global::Note.Properties.Resources.Google_Drive_Icon_2;
             this.barButtonItemDownload.Id = 251;
-            this.barButtonItemDownload.LargeGlyph = global::Note.Properties.Resources.Google_Drive_Icon_2;
             this.barButtonItemDownload.Name = "barButtonItemDownload";
             this.barButtonItemDownload.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.barButtonItemDownload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDownload_ItemClick);
+            // 
+            // barButtonItemLogs
+            // 
+            this.barButtonItemLogs.Caption = "Logs";
+            this.barButtonItemLogs.Glyph = global::Note.Properties.Resources.paste;
+            this.barButtonItemLogs.Id = 252;
+            this.barButtonItemLogs.Name = "barButtonItemLogs";
+            this.barButtonItemLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItemLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLogs_ItemClick);
             // 
             // headerFooterToolsRibbonPageCategory1
             // 
@@ -3272,14 +3282,6 @@
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "Note";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
-            // 
-            // barButtonItemLogs
-            // 
-            this.barButtonItemLogs.Caption = "Logs";
-            this.barButtonItemLogs.Id = 252;
-            this.barButtonItemLogs.Name = "barButtonItemLogs";
-            this.barButtonItemLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.barButtonItemLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLogs_ItemClick);
             // 
             // Main
             // 

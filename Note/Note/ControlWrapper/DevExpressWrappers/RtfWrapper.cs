@@ -132,10 +132,10 @@ namespace Note.ControlWrapper.DevExpressWrappers
             Document doc = control.Document;
             DocumentRange range = control.Document.Selection;
             CharacterProperties cp = doc.BeginUpdateCharacters(range);
-            cp.FontName = "Courier New";
-            cp.FontSize = 10;
+            cp.FontName = "Consolas";
+            cp.FontSize = 9.5f;
             cp.Bold = false;
-            cp.Italic = true;
+            cp.Italic = false;
             doc.EndUpdateCharacters(cp);
         }
 

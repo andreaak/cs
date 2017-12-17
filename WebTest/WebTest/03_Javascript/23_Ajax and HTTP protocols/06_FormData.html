@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Form Data</title>
+    <script src="./01_XmlHttpRequest/ajax.js"></script>
+    <script>
+        window.onload = function () {
+
+            var data = new FormData();
+            data.append("name", "Nicholas");
+
+            var data = new FormData(document.forms[0]);
+
+            var xhr = createXHR();
+            xhr.onreadystatechange = function () {
+
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                        alert(xhr.responseText);
+                    } else {
+                        alert("Request was unsuccessful:" + xhr.status);
+                    }
+                }
+            };
+
+            xhr.open("post", "postexample.php", true);
+            var form = document.getElementByid("user-info");
+            xhr.send(new FormData(form));
+        }
+    </script>
+</head>
+<body>
+    <p id="output"></p>
+</body>
+</html>

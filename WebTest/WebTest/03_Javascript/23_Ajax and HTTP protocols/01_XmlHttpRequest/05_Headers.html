@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>XMLHttpRequest синхронный запрос</title>
+    <script src="ajax.js"></script>
+    <script>
+        window.onload = function () {
+
+            var xhr = createXHR();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                        alert(xhr.responseText);
+                    } else {
+                        alert("Request was unsuccessful:" + xhr.status);
+                    }
+                }
+            }
+
+            xhr.open("get", "example.php", true);
+            xhr.setRequestHeader("MyHeader", "MyValue");
+            xhr.send(null);
+
+            var myHeader = xhr.getResponseHeader("MyHeader");
+            var allHeaders = xhr.getAllResponseHeaders();
+        }
+    </script>
+</head>
+<body>
+    <input id="btnGet" type="button" value="Get Info" />
+    <p id="output"></p>
+</body>
+</html>

@@ -18,6 +18,26 @@
 
             // отправка запроса с указанием данных.
             xhr.send("a=hello&b=world");
+
+            xhr.open("post", "example.php", true);
+
+            function submitData() {
+                var xhr = createXHR();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                            alert(xhr.responseText);
+                        } else {
+                            alert("Request was unsuccessful:" + xhr.status);
+                        }
+                    }
+                };
+                xhr.open("post", "postexample.php", true);
+                xhr.setRequestHeader("Content-Type",
+                    "application/x-www-form-urlencoded");
+                var form = document.getElementByid("user-info");
+                xhr.send(serialize(form));
+            }
         }
     </script>
 </head>
