@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Safe Type Conversion</title>
+</head>
+<body>
+    <script>
+
+        var handler = {
+            message: "Event handled",
+            handleClick: function (event) {
+                alert(this.message);
+            }
+        };
+
+        var btn = document.getElementById("my-btn");
+        EventUtil.addHandler(btn, "click", handler.handleClick);
+
+        var handler = {
+            message: "Event handled",
+            handleClick: function (event) {
+                alert(this.message);
+            }
+        };
+
+        var btn = document.getElementById("my-btn");
+        EventUtil.addHandler(btn, "click", function (event) {
+            handler.handleClick(event);
+        });
+
+        function bind(fn, context) {
+            return function () {
+                return fn.apply(context, arguments);
+            };
+        }
+
+        var handler = {
+            message: "Event handled",
+            handleClick: function (event) {
+                alert(this.message);
+            }
+        };
+
+        var btn = document.getElementById("my-btn");
+        EventUtil.addHandler(btn, "click", bind(handler.handleClick, handler));
+
+        var handler = {
+            message: "Eventhandled",
+            handleClick: function (event) {
+                alert(this.message + ":" + event.type);
+            }
+        };
+
+        var btn = document.getElementById("my-btn");
+        EventUtil.addHandler(btn, "click", bind(handler.handleClick, handler));
+
+        var handler = {
+            message: "Event handled",
+            handleClick: function (event) {
+                alert(this.message + ":" + event.type);
+            }
+        };
+
+        var btn = document.getElementById("my-btn");
+        EventUtil.addHandler(btn, "click", handler.handleClick.bind(handler));
+
+    </script>
+</body>
+</html>

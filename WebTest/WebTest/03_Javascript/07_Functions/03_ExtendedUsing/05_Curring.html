@@ -5,9 +5,9 @@
 </head>
 <body>
     <script>
-        /* 
+        /*
         частичное применение - передача в функцию не всех аргументов, а только части.
-        процесс, в результате которого появляется новая функция, 
+        процесс, в результате которого появляется новая функция,
         обладающая возможностью частичного применения, называется
         каррированием (curring)
         */
@@ -31,7 +31,7 @@
         // после этого мы запускаем новую функцию и передаем ей значение 20
         var r = add(10)(20); // 30
         document.write(r + "<br />");
-        
+
         var add20 = add(20);
 
         var r1 = add20(1); // 21
@@ -41,7 +41,45 @@
         document.write(r1 + "<br />");
         document.write(r2 + "<br />");
         document.write(r3 + "<br />");
+
+        function add(num1, num2) {
+            return num1 + num2;
+        }
+        function curriedAdd(num2) {
+            return add(5, num2);
+        }
+        alert(add(2, 3));//5
+        alert(curriedAdd(3));//8
+
+        function bind(fn, context) {
+            var args = Array.prototype.slice.call(arguments, 2);
+            return function () {
+                var innerArgs = Array.prototype.slice.call(arguments),
+                finalArgs = args.concat(innerArgs);
+                return fn.apply(context, finalArgs);
+            };
+        }
+
+        var handler = {
+            message: "Event handled",
+            handleClick: function (name, event) {
+                alert(this.message + ":" + name + ":" + event.type);
+            }
+        };
+
+        var btn = document.getElementById("my-btn");
+        EventUtil.addHandler(btn, "click", bind(handler.handleClick, handler, "my-btn"));
+
+        var handler = {
+            message: "Event handled",
+            handleClick: function (name, event) {
+                alert(this.message + ":" + name + ":" + event.type);
+            }
+        };
+
+        var btn = document.getElementById("my-btn");
+        EventUtil.addHandler(btn, "click", handler.handleClick.bind(handler, "my-btn"));
+
     </script>
 </body>
 </html>
-

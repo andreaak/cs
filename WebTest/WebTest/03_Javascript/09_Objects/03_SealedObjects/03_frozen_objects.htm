@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+    <title>Frozen objects</title>
+    <script type="text/javascript">
+
+        var person = { name: "Nicholas" };
+        Object.freeze(person);
+
+        person.age = 29;
+        alert(person.age);//undefined
+
+        delete person.name;
+        alert(person.name);//"Nicholas"
+
+        person.name = "Грег";
+        alert(person.name);//"Nicholas"
+        
+        var person = { name: "Nicholas" };
+        alert(Object.isExtensible(person));//true
+        alert(Object.isSealed(person));//false
+        alert(Object.isFrozen(person));//false
+
+        Object.freeze(person);
+        alert(Object.isExtensible(person));//false
+        alert(Object.isSealed(person));//true
+        alert(Object.isFrozen(person));//true
+        
+    </script>
+</head>
+<body>
+</body>
+</html>

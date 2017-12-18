@@ -36,6 +36,12 @@
             socket.onclose = function () {
                 alert("Connectionclosed.");
             };
+
+            socket.onclose = function (event) {
+                console.log("Was clean?" + event.wasClean +
+                "Code=" + event.code + "Reason=" + event.reason);
+            };
+
         }
     </script>
 </head>

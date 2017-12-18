@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>setTimeout()</title>
+    <script type="text/javascript">
+        
+        window.onload = function () {
+            var btn = document.getElementById("my-btn");
+            btn.onclick = function () {
+                setTimeout(function () {
+                        document.getElementById("message").style.visibility = "visible";
+                    },
+                    250);
+                //другой код
+            };
+
+            //работает только в Firefox
+            setTimeout(function (diff) {
+                if (diff > 0) {
+                    //таймер запоздал
+                } else if (diff < 0) {
+                    //таймер сработал раньше положенного
+                } else {
+                    //таймер был вызван вовремя
+                }
+            }, 250);
+
+            setTimeout(function () {
+                //обработка
+
+                setTimeout(arguments.callee, interval);
+            }, interval);
+
+            setTimeout(function () {
+                var div = document.getElementById("myDiv"),
+                    left = parseInt(div.style.left) + 5;
+                div.style.left = left + "рх";
+                if (left < 200) {
+                    setTimeout(arguments.callee, 50);
+                }
+            }, 50);
+        }
+
+    </script>
+</head>
+<body>
+    <p>Через 5 секунд будет показано сообщение</p>
+</body>
+</html>

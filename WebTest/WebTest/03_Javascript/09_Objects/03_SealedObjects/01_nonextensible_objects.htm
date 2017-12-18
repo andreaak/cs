@@ -1,0 +1,25 @@
+﻿<html>
+<head>
+    <title>Nonextensible objects</title>
+    <script type="text/javascript">
+
+        var person = { name: "Nicholas" };
+        person.age = 29;
+
+        var person = { name: "Nicholas" };
+        Object.preventExtensions(person);
+
+        person.age = 29;
+        alert(person.age);//undefined
+
+        var person = { name: "Nicholas" };
+        alert(Object.isExtensible(person));//true
+
+        Object.preventExtensions(person);
+        alert(Object.isExtensible(person));//false
+
+    </script>
+</head>
+<body>
+</body>
+</html>

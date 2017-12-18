@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Throttle()</title>
+    <script type="text/javascript">
+        window.onload = function() {
+
+            var processor = {
+                timeoutId: null,
+
+                //метод, выполняющий обработку
+                performProcessing: function () {
+                    //кодобработки
+                },
+
+                //метод, инициирующий обработку
+                process: function () {
+                    clearTimeout(this.timeoutId);
+                    var that = this;
+                    this.timeoutId = setTimeout(function () {
+                        that.performProcessing();
+                    }, 100);
+                }
+            };
+
+            //попытка начать обработку
+            processor.process();
+
+            function throttle(method, context) {
+                clearTimeout(method.tid);
+                method.tId = setTimeout(function () {
+                    method.call(context);
+                }, 100);
+            }
+
+            window.onresize = function () {
+                var div = document.getElementById("myDiv");
+                div.style.height = div.offsetWidth + "рх";
+            };
+
+            function resizeDiv() {
+                var div = document.getElementById("myDiv");
+                div.style.height = div.offsetWidth + "рх";
+            }
+
+            window.onresize = function () {
+                throttle(resizeDiv);
+            };
+
+        }
+
+    </script>
+</head>
+<body>
+    <p>Через 5 секунд будет показано сообщение</p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+    <title>Sealed objects</title>
+    <script type="text/javascript">
+
+        var person = { name: "Nicholas" };
+        Object.seal(person);
+
+        person.age = 29;
+        alert(person.age);//undefined
+
+        delete person.name;
+        alert(person.name);//"Nicholas"
+        
+        var person = { name: "Nicholas" };
+        alert(Object.isExtensible(person));//true
+        alert(Object.isSealed(person));//false
+
+        Object.seal(person);
+        alert(Object.isExtensible(person));//false
+        alert(Object.isSealed(person));//true
+        
+    </script>
+</head>
+<body>
+</body>
+</html>

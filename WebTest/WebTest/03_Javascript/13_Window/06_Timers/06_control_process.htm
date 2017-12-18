@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Control Process</title>
+    <script type="text/javascript">
+        window.onload = function() {
+
+            for (var i = 0, len = data.length; i < len; i++) {
+                process(data[i]);
+            }
+
+            setTimeout(function () {
+                //получение следующего элемента и его обработка
+                var item = array.shift();
+                process(item);
+
+                //установка нового тайм-аута при наличии других элементов
+                if (array.length > 0) {
+                    setTimeout(arguments.callee, 100);
+                }
+            }, 100);
+
+            function chunk(array, process, context) {
+                setTimeout(function () {
+                    var item = array.shift();
+                    process.call(context, item);
+
+                    if (array.length > 0) {
+                        setTimeout(arguments.callee, 100);
+                    }
+                }, 100);
+            }
+
+            var data = [12, 123, 1234, 453, 436, 23, 23, 5, 4123, 45, 346, 5634, 2234, 345, 342];
+
+            function printValue(item) {
+                var div = document.getElementById("myDiv");
+                div.innerHTML += item + "<br>";
+            }
+
+            chunk(data, printValue);
+
+            chunk(data.concat(), printValue);
+        }
+
+    </script>
+</head>
+<body>
+    <p>Через 5 секунд будет показано сообщение</p>
+</body>
+</html>
