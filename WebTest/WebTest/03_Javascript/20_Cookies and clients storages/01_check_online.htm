@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Check online</title>
+    <script type="text/javascript">
+        
+        if (navigator.onLine) {
+            //обычный план действий
+        } else {
+            //действия, специфичные для автономного режима
+        }
+
+        EventUtil.addHandler(window, "online", function () {
+            alert("Online");//Режим подключения
+        });
+        EventUtil.addHandler(window, "offline", function () {
+            alert("Offline");//Автономный режим
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

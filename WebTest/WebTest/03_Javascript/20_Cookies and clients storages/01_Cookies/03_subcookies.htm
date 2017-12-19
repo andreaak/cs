@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Вложенные сооkiе</title>
+    <script src="SubCookieUtil.js"></script>
+    <script type="text/javascript">
+
+        /*
+        предполагается, что
+        document.cookie=data=name=Nicholas&book=Professional%20JavaScript
+        получение всех вложенных сооkiе-фрагментов
+        */
+        var data = SubCookieUtil.getAll("data");
+        alert(data.name);//"Nicholas"
+        alert(data.book);//"Professional JavaScript"
+
+        //индивидуальное получение вложенных сооkiе-фрагментов
+        alert(SubCookieUtil.get("data", "name"));//"Nicholas"
+        alert(SubCookieUtil.get("data", "book"));//"Professional JavaScript"
+
+        //предполагается, что
+        //document.cookie=data=name=Nicholas&book=Professional%20JavaScript
+
+        //задание двух вложенных cookie
+        SubCookieUtil.set("data", "name", "Nicholas");
+        SubCookieUtil.set("data", "book", "Professional JavaScript");
+
+        //задание всех вложенных cookie с датой истечения срока действия
+        SubCookieUtil.setAll("data", {
+            name: "Nicholas",
+            book: "Professional JavaScript"
+        }, new Date("January 1,2010"));
+
+        //изменение значения name и даты истечения срока действия cookie
+        SubCookieUtil.set("data", "name", "Майкл", new Date("February 1,2010"));
+
+
+        //удаление вложенного cookie с именем "name"
+        SubCookieUtil.unset("data", "name");
+        //удаление всего cookie
+        SubCookieUtil.unsetAll("data");
+
+    </script>
+</head>
+<body>
+</body>
+</html>

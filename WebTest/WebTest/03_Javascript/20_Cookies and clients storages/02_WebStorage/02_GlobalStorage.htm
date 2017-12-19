@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Сохранение и извлечение данных globalStorage</title>
+    <script type="text/javascript">
+
+        //сохранение значения
+        globalStorage["wrox.com"].name = "Nicholas";
+        //получение значения
+        var name = globalStorage["wrox.com"].name;
+
+        //сохранение значения
+        globalStorage["www.wrox.com"].name = "Nicholas";
+        //получение значения
+        var nаmе = globalStorage["www.wrox.com"].name;
+
+        //сохранение данных с доступом для всех - НЕ ДЕЛАЙТЕ ТАК!
+        globalStorage[""].name = "Nicholas";
+
+        //сохранение данных с доступом только для доменов,
+        //заканчивающихся на .nеt, - НЕ ДЕЛАЙТЕ ТАК!
+        globalStorage["net"].name = "Nicholas";
+
+        globalStorage["www.wrox.com"].name = "Nicholas";
+        globalStorage["www.wrox.com"].book = "Professional JavaScript";
+        globalStorage["www.wrox.com"].removeItem("name");
+        var book = globalStorage["www.wrox.com"].getItem("book");
+
+        globalStorage[location.host].пame = "Nicholas";
+        var book = globalStorage[location.host].getItem("book");
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

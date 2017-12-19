@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function setCookie() {
+            document.cookie = "version=" + encodeURIComponent(document.lastModified);
+        }
+
+        function getCookie() {
+            alert(findCookieValue("test"));
+        }
+
+        // version=123; test=a1; test2=a2
+        function findCookieValue(cookieName) {
+            var allcookies = document.cookie;
+            var pos = allcookies.indexOf(cookieName + "="); // version=
+
+            // Если cookie с указанным именем найден, извлечь его значения.
+            if (pos != -1) {
+                var start = pos + cookieName.length + 1;
+                var end = allcookies.indexOf(";", start);
+
+                if (end == -1) {
+                    end = allcookies.length;
+                }
+
+                var value = allcookies.substring(start, end);
+
+                return decodeURIComponent(value);
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <input type="button" value="Set cookie" onclick="setCookie()" />
+    <input type="button" value="Get cookie" onclick="getCookie()" />
+</body>
+</html>

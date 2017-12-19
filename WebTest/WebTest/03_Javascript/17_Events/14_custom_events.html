@@ -11,38 +11,93 @@
     </form>
 
     <script>
-        var textbox = document.forms[0].elements["textbox1"];
 
-        var EventUtil2 = {
+        function EventTarget() {
+            this.handlers = {};
+        }
 
-            //другой код
-            getClipboardText: function (event) {
-                var clipboardData = (event.clipboardData || window.clipboardData);
-                return clipboardData.getData("text");
+        EventTarget.prototype = {
+            constructor: EventTarget,
+
+            addHandler: function (type, handler) {
+                if (typeof this.handlers[type] == "undefined") {
+                    this.handlers[type] = [];
+                }
+
+                this.handlers[type].push(handler);
             },
 
-            //другой код
-
-            setClipboardText: function (event, value) {
-                if (event.clipboardData) {
-                    return event.clipboardData.setData("text/plain", value);
-                } else if (window.clipboardData) {
-                    return window.clipboardData.setData("text", value);
+            fire: function (event) {
+                if (!event.target) {
+                    event.target = this;
+                }
+                if (this.handlers[event.type] instanceof Array) {
+                    var handlers = this.handlers[event.type];
+                    for (var i = 0, len = handlers.length; i < len; i++) {
+                        handlers[i](event);
+                    }
                 }
             },
-            //другой код
+
+            removeHandler: function (type, handler) {
+                if (this.handlers[type] instanceof Array) {
+                    var handlers = this.handlers[type];
+                    for (var i = 0, len = handlers.length; i < len; i++) {
+                        if (handlers[i] === handler) {
+                            break;
+                        }
+                    }
+                    handlers.splice(i, 1);
+                }
+            }
         };
 
-        EventUtil.addHandler(textbox, "paste", function (event) {
-            event = EventUtil.getEvent(event);
+        function handleMessage(event) {
+            alert("Message received:" + event.message); //получено сообщение
+        }
 
-            var text = EventUtil2.getClipboardText(event);
-            if (!/^\d*$/.test(text)) {
-                EventUtil.preventDefault(event);
-            }
-        });
+        //создание объекта
+        var target = new EventTarget();
 
+        //добавление обработчика событий
+        target.addHandler("message", handleMessage);
+
+        //генерирование события
+        target.fire({ type: "message", message: "Hello world!" });
+
+        //удаление обработчика
+        target.removeHandler("message", handleMessage);
+
+        //вторая попытка - обработчика быть не должно
+        target.fire({ type: "message", message: "Hello world!" });
+
+
+        function Person(name, age) {
+            EventTarget.call(this);
+            this.name = name;
+            this.age = age;
+        }
+
+        inheritPrototype(Person, EventTarget);
+
+        Person.prototype.say = function (message) {
+            this.fire({ type: "message", message: message });
+        };
+
+        function handleMessage(event) {
+            alert(event.target.name + "says:" + event.message);
+        }
+
+        //создание пользователя
+        var person = new Person("Nicholas", 29);
+
+        //добавление обработчика событий
+        person.addHandler("message", handleMessage);
+
+        //вызов метода объекта, генерирующий событие message
+        person.say("Hi there.");
 
     </script>
+
 </body>
 </html>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Сохранение и извлечение данных sessionStorage</title>
+    <script type="text/javascript">
+        function init() {
+            var output = document.getElementById("output");
+            var btn1 = document.getElementById("btn1");
+            var btn2 = document.getElementById("btn2");
+
+            btn1.onclick = function () {
+                window.sessionStorage.setItem("key1", "Test value");
+                // или
+                window.sessionStorage.key2 = "Test value 2";
+                // или
+                window.sessionStorage["key3"] = "Test value 3";
+            }
+
+            btn2.onclick = function () {
+                output.innerHTML = window.sessionStorage.getItem("key1");
+                output.innerHTML += "<br />";
+                output.innerHTML += window.sessionStorage.key2;
+                output.innerHTML += "<br />";
+                output.innerHTML += window.sessionStorage["key3"];
+            }
+        }
+
+        window.addEventListener("load", init, false);
+
+        //сохранение данных с помощью метода
+        sessionStorage.setItem("name", "Nicholas");
+        //сохранение данных с помощью свойства
+        sessionStorage.book = "Professional JavaScript";
+
+
+        //только для IE8
+        sessionStorage.begin();
+        sessionStorage.name = "Nicholas";
+        sessionStorage.book = "Professional JavaScript";
+        sessionStorage.commit();
+
+        //получение данных с помощью метода
+        var nаmе = sessionStorage.getItem("name");
+        //получение данных с помощью свойства
+        var book = sessionStorage.book;
+
+        for (var i = 0, lеn = sessionStorage.length; i < lеn; i++) {
+            var key = sessionStorage.key(i);
+            var value = sessionStorage.getItem(key);
+            alert(key + "=" + value);
+        }
+
+        for (var key in sessionStorage) {
+            var value = sessionStorage.getItem(key);
+            alert(key + " =" + value);
+        }
+
+        //удаление значения с помощью оператора delete - не работает в WebKit
+        delete sessionStorage.name;
+        //удаление значения с помощью метода
+        sessionStorage.removeItem("book");
+
+    </script>
+</head>
+<body>
+    <p>
+        Значения существуют до тех пор, пока открыто окно или вкладка, в котором они сохранены
+    </p>
+    <p>
+        Значения видимы только в окне или вкладке, в которой они были созданы.
+    </p>
+    <input id="btn1" type="button" value="Запись в sessionStorage" />
+    <input id="btn2" type="button" value="Чтение из sessionStorage" />
+    <div id="output">
+    </div>
+</body>
+</html>
