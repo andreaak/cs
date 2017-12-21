@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rest parameters</title>
+</head>
+<body>
+
+    <script>
+
+        function checkArgs(...args) {
+            console.log(args.length);//2
+            console.log(arguments.length);//2
+            console.log(args[0], arguments[0]);//a a
+            console.log(args[1], arguments[1]);//b b
+        }
+        checkArgs("a", "b");
+
+
+    </script>
+</body>
+</html>

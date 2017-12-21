@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Default parameters</title>
+</head>
+<body>
+
+    <script>
+
+        function makeRequest(url, timeout, callback) {
+            timeout = timeout || 2000;
+            callback = callback || function () { };
+            // остальная часть функции
+        }
+
+        function makeRequest(url, timeout, callback) {
+            timeout = (typeof timeout !== "undefined") ? timeout : 2000;
+            callback = (typeof callback !== "undefined") ? callback : function () { };
+            // остальная часть функции
+        }
+
+        function makeRequest(url, timeout = 2000, callback = function() {}) {
+            // остальная часть функции
+        }
+
+        // timeout и callback получат значения по умолчанию 
+        makeRequest("/foo");
+
+        // callback получит значение по умолчанию 
+        makeRequest("/foo", 500);
+
+        // значения по умолчанию не используются 
+        makeRequest("/fоо", 500, function(body) { 
+            doSomething(body);
+        });
+
+        function makeRequest(url, timeout = 2000, callback) {
+            // остальная часть функции
+        }
+
+        // timeout получит значение по умолчанию 
+        makeRequest("/foo", undefined, function(body) { 
+            doSomething(body);
+        });
+
+        // timeout получит значение по умолчанию 
+        makeRequest("/foo");
+
+        // значение по умолчанию для timeout не используется 
+        makeRequest("/foo", null, function(body) { 
+            doSomething(body);
+        });
+
+    </script>
+</body>
+</html>

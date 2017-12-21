@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>name</title>
+</head>
+<body>
+
+    <script>
+
+        function Person(name) {
+            this.name = name;
+        }
+
+        var person = new Person("Nicholas");
+        var notAPerson = Person("Nicholas");
+
+        console.log(person); // "[Object object]" 
+        console.log(notAPerson); // "undefined"
+
+        function Person(name) {
+            if (this instanceof Person) {
+                this.name = name; // с ключевым словом new 
+            } else {
+                throw new Error("You must use new with Person.");
+            }
+        }
+        var person = new Person("Nicholas");
+        var notAPerson = Person("Nicholas"); // вызовет ошибку
+
+        function Person(name) {
+            if (this instanceof Person) {
+                this.name = name;
+            } else {
+                throw new Error("You must use new with Person.");
+            }
+        }
+
+        var person = new Person("Nicholas");
+        var notAPerson = Person.call(person, "Michael"); // работает!
+
+        function Person(name) {
+            if (typeof new.target !== "undefined") {
+                this.name = name;
+            } else {
+                throw new Error("You must use new with Person.");
+            }
+        }
+
+        var person = new Person("Nicholas");
+        var notAPerson = Person.call(person, "Michael"); // ошибка!
+
+        function Person(name) {
+            if (typeof new.target === Person) {
+                this.name = name;
+            } else {
+                throw new Error("You must use new with Person.");
+            }
+        }
+
+        function AnotherPerson(name) {
+            Person.call(this, name);
+        }
+
+        var person = new Person("Nicholas");
+        var anotherPerson = new AnotherPerson("Nicholas"); // ошибка!
+
+    </script>
+</body>
+</html>

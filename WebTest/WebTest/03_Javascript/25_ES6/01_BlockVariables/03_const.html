@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>const</title>
+</head>
+<body>
+
+    <script>
+
+        // допустимая константа 
+        const maxItems = 30;
+
+        // синтаксическая ошибка: отсутствует значение для инициализации 
+        const name;
+
+        if (condition) {
+            const maxItems = 5;
+            // прочий код
+        }
+        // константа maxItems здесь недоступна
+
+        var message = "Hello!"; 
+        let age = 25;
+
+        // оба следующих объявления вызовут ошибку 
+        const message = "Goodbye!"; 
+        const age = 30;
+
+        const maxItems = 5;
+        // вызовет ошибку 
+        maxItems = 6;
+
+
+        const person = {
+            name: "Nicholas"
+        };
+
+        // работает 
+        person.name = "Greg";
+
+        // вызовет ошибку 
+        person = {
+            name: "Greg"
+        };
+
+    </script>
+</body>
+</html>

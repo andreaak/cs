@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>var</title>
+</head>
+<body>
+
+    <script>
+
+        var message = tag`Hello world`;
+
+        function tag(literals, ...substitutions) {
+            // вернуть строку
+        }
+
+        function passthru(literals, ...substitutions) {
+            let result = "";
+            // цикл по количеству элементов в массиве substitution 
+            for (let i = 0; i < substitutions.length; i++) {
+                result += literals[i];
+                result += substitutions[i];
+            }
+            // добавить последний литерал
+            result += literals[literals.length - 1];
+            return result;
+        }
+
+        var count = 10,
+            price = 0.25,
+            message = passthru`${count} items cost $${(count * price).toFixed(2)}.`;
+
+        console.log(message); // "10 items cost $2.50."
+
+        let message1 = `Multiline\nstring`,
+            message2 = String.raw`Multiline\nstring`; 
+        console.log(message1); // "Multiline 
+                               // string"
+        console.log(message2); // "Multiline\\nstring"
+
+        function raw(literals, ...substitutions) {
+            let result = "";
+
+            // цикл по количеству элементов в массиве substitution 
+            for (let i = 0; i < substitutions.length; i++) {
+                // использовать необработанные значения 
+                result += literals.raw[i];
+                result += substitutions[i];
+        }
+
+            // добавить последний литерал
+            result += literals.raw[literals.length - 1];
+            return result;
+        }
+
+        var message = raw`Multiline\nstring`;
+        console.log(message); // "Multiline\\nstring"
+        console.log(message.length); // 17
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>let</title>
+</head>
+<body>
+
+    <script>
+
+        function getValue(condition) {
+            if (condition) {
+                let value = "blue";
+                //прочий код
+                return value;
+            } else {
+                //переменная value не существует здесь
+
+                return null;
+            }
+            //переменная value не существует здесь
+        }
+
+        var count = 30;
+        //let count = 40; // вызовет ошибку
+
+        var count = 30;
+        if (condition) {
+            // не вызовет ошибку 
+            let count = 40;
+            // прочий код
+        }
+
+        for (var i = 0; i < 10; i++) {
+            process(items[i]);
+        }
+        // переменная i все еще доступна здесь 
+        console.log(i); // 10
+
+        for (let i = 0; i < 10; i++) {
+            process(items[i]);
+        }
+        // переменная i недоступна здесь - вызовет ошибку 
+        console.log(i);
+    </script>
+</body>
+</html>

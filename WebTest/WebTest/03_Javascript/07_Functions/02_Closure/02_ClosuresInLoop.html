@@ -18,6 +18,19 @@
         var res = createFunctionsBad();
         document.writeln(res[2]() + "<br/>");//10
 
+        function createFunctionsES6() {
+            var result = new Array();
+            for (let j = 0; j < 10; j++) {
+                result[j] = function () {
+                    return j;
+                };
+            }
+            return result;
+        }
+
+        var res = createFunctionsES6();
+        document.writeln(res[2]() + "<br/>");//2
+
         function createFunctions() {
             var result = new Array();
             for (var i = 0; i < 10; i++) {

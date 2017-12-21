@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>var</title>
+</head>
+<body>
+
+    <script>
+
+        var message = `Hello world!`;
+        console.log(message); // "Hello world!"
+        console.log(typeof message); // "string" 
+        console.log(message.length); // 12
+
+        var message = `\`Hello\` world!`;
+        console.log(message); // "`Hello` world!"
+        console.log(typeof message); // "string" 
+        console.log(message.length); // 14
+
+        var message2 = "Multiline \n\ string";
+        console.log(message2); // "Multiline 
+                               // string"
+
+        var message = [
+            "Multiline ",
+            "string"
+        ].join("\n");
+
+        var message = "Multiline \n" +
+        "string";
+
+        var message = `Multiline 
+        string`;
+        console.log(message); // "Multiline 
+                              // string"
+        console.log(message.length); // 16
+
+        var message = `Multiline
+                      string`;
+        console.log(message); // "Multiline
+                              // string"
+        console.log(message.length); // 31
+
+        let html = `
+        <div>
+            <h1>Title</h1>
+        </div>`
+            .trim();
+
+        var message = `Multiline\nstring`;
+        console.log(message); // "Multiline 
+                              // string"
+        console.log(message.length); // 16
+
+    </script>
+</body>
+</html>

@@ -18,6 +18,25 @@
                 worker.postMessage("");
             }
         }
+
+        //код страницы
+        var data = [23, 4, 7, 9, 2, 14, 6, 651, 87, 41, 7798, 24],
+        worker = new Worker("WebWorkerExample01.js");
+
+        worker.onmessage = function (event) {
+            var data = event.data;
+            //какие-то действия с итоговым массивом
+        };
+
+        //отправка массива рабочему веб-потоку для сортировки
+        worker.postMessage(data);
+
+        //внутренний код рабочего веб-потока
+        self.close();
+
+        //внутренний код рабочего веб-потока
+        importScripts("filel.js", "file2.js");
+
     </script>
 
 </head>

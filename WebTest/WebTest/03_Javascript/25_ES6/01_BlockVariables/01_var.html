@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>var</title>
+</head>
+<body>
+
+    <script>
+
+        function getValue(condition) {
+            if (condition) {
+                var value = "blue";
+                //прочий код
+                return value;
+            } else {
+                //переменная value существует здесь и имеет значение undefined
+
+                return null;
+            }
+            //переменная value существует здесь и имеет значение undefined
+        }
+
+        function getValueCompiled(condition) {
+            var value;
+            if (condition) {
+                value = "blue";
+                //прочий код
+                return value;
+            } else {
+                return null;
+            }
+        }
+
+    </script>
+</body>
+</html>

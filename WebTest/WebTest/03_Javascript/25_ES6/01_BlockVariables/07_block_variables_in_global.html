@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>global</title>
+</head>
+<body>
+
+    <script>
+
+        // в браузере
+        var RegExp1 = "Hello!";
+        console.log(window.RegExp); // "Hello!"
+
+        var ncz1 = "Hi!";
+        console.log(window.ncz); // "Hi!"
+
+        //в браузере
+        let RegExp = "Hello!";
+        console.log(RegExp); // "Hello!"
+        console.log(window.RegExp === RegExp); // false
+
+        const ncz = "Hi!";
+        console.log(ncz);// "Hi!"
+        console.log("ncz" in window);// false
+
+    </script>
+</body>
+</html>

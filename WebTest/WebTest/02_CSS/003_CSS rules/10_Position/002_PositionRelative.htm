@@ -17,8 +17,16 @@
             height: 150px;
         }
 
+        .out2 {
+            height: 300px;
+        }
+
+        .out3 {
+            width: 500px;
+        }
+
         .out {
-            border: 1px dashed black;
+            border: 3px solid black;
             margin: 20px;
             background-color: antiquewhite;
         }
@@ -41,19 +49,28 @@
             border: 1px solid black;
             z-index: 5;
             left: 20px;
+            top: 10px;
             position: relative;
+        }
+        
+        .relative3 {
+            width: 800px;
+            height: 800px;
         }
     </style>
 </head>
 <body>
     <div class="out">
-        <div class="static"><br /><br />In Its Place</div>
+        <div class="static"><br /><br />Static</div>
     </div>
-    <div class="out">
-        <div class="relative2"><br /><br />left:20px;</div>
+    <div class="out out2">
+        <div class="relative2">
+            Relative: Элемент остается в нормальном потоке.<br />top:10px;<br />left:20px;
+        </div>
+        <div class="static"><br />Static Все элементы считают что он стоит на своем месте.</div>
     </div>
-    <div class="out">
-        <div class="relative1"><br /><br />top:30px;<br /> left:30px;</div>
+    <div class="out out3">
+        <span class="relative1 relative3">Для строчных элементов ширина и высота игнорируются</span>
     </div>
 </body>
 </html>

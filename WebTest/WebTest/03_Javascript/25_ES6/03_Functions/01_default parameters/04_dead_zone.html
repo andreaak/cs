@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Default parameters</title>
+</head>
+<body>
+
+    <script>
+
+        function getValue(value) { 
+            return value + 5;
+        }
+
+        function add(first, second = getValue(first)) { 
+            return first + second;
+        }
+
+        console.log(add(1, 1)); // 2 
+        console.log(add(1)); // 7
+
+        // Представление вызова add(1, 1) в коде на JavaScript 
+        let first = 1; 
+        let second = 1;
+
+        // Представление вызова add(1) в коде на JavaScript 
+        let first = 1;
+        let second = getValue(first);
+
+        function add(first = second, second) { 
+            return first + second;
+        }
+        console.log(add(1, 1)); // 2
+        console.log(add(undefined, 1)); // вызовет ошибку
+
+        
+        // Представление вызова add(1, 1) в коде на JavaScript 
+        let first = 1; 
+        let second = 1;
+
+        // Представление вызова add(undefined, 1) в коде на JavaScript 
+        let first = second; 
+        let second = 1;
+
+    </script>
+</body>
+</html>

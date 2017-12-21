@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Default parameters</title>
+</head>
+<body>
+
+    <script>
+
+        function mixArgs(first, second) {
+            console.log(first === arguments[0]); //true
+            console.log(second === arguments[1]); //true
+            first = "c"; 
+            second = "d";
+            console.log(first === arguments[0]); //true
+            console.log(second === arguments[1]); //true
+        }
+        mixArgs("a", "b");
+        
+        function mixArgsStrict(first, second) {
+            "use strict";
+
+            console.log(first === arguments[0]); //true
+            console.log(second === arguments[1]); //true
+            first = "c"; 
+            second = "d";
+            console.log(first === arguments[0]); //false
+            console.log(second === arguments[1]); //false
+        }
+        mixArgsStrict("a", "b");
+
+        function mixArgs2(first, second = "b") {
+            console.log(arguments.length); //1
+            console.log(first === arguments[0]); //true
+            console.log(second === arguments[1]); //false
+            first = "c"; 
+            second = "d";
+            console.log(first === arguments[0]); //false
+            console.log(second === arguments[1]); //false
+        }
+        mixArgs2("a");
+    </script>
+</body>
+</html>

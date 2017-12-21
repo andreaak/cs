@@ -34,19 +34,25 @@
         document.write(window.a === a, "<br/>");//true
 
         function test() {
-            var f = 66;
-            document.write(f + "<br/>");//66
+            var inFunction = 66;
+            document.write(inFunction + "<br/>");//66
             // Возможно создание переменной без использования ключевого слова - var
             g = 44;//если переменная создается без var то она объявляется как глобальная;
             document.write(g + "<br/>");//44
         }
 
-        document.write(f + "<br/>");//error
+        //document.write(inFunction + "<br/>");//error
         //document.write(g + "<br/>");//error
         test();
 
         document.write(g + "<br/>");//44
-        //document.write(f + "<br/>");//error
+        //document.write(inFunction + "<br/>");//error
+
+        //объявления переменных всплывают
+        document.write(h + "<br/>");//undefined
+        var h = 5;
+        document.write(h + "<br/>");//44
+
     </script>
 </head>
 <body>

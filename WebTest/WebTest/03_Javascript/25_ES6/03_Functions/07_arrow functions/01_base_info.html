@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Arrow functions</title>
+</head>
+<body>
+
+    <script>
+
+        var reflect = value => value;
+
+        // фактически эквивалентна следующей функции: 
+        var reflect = function(value) { 
+            return value;
+        };
+
+        let sum = (num1, num2) => num1 + num2;
+
+        // фактически эквивалентна следующей функции: 
+        sum = function(num1, num2) { 
+            return num1 + num2;
+        };
+
+        let getName = () => "Nicholas";
+
+        // фактически эквивалентна следующей функции: 
+        getName = function () {
+            return "Nicholas";
+        };
+
+        let sum2 = (num1, num2) => {
+            return num1 + num2;
+        };
+
+        // фактически эквивалентна следующей функции: 
+        sum = function (num1, num2) {
+            return num1 + num2;
+        };
+
+        let doNothing = () => { };
+
+        // фактически эквивалентна следующей функции: 
+        doNothing = function () { };
+
+        let getTempItem = id => ({ id: id, name: "Temp" });
+
+        // фактически эквивалентна следующей функции: 
+        getTempItem = function (id) {
+            return {
+                id: id, name: "Temp"
+            };
+        };
+
+    </script>
+</body>
+</html>

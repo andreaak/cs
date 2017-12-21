@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>let</title>
+</head>
+<body>
+
+    <script>
+
+        var funcs = [];
+        for (var i = 0; i < 10; i++) {
+            funcs.push(function () {
+                console.log(i);
+            });
+        }
+
+        funcs.forEach(function (func) {
+            func(); // десять раз выведет число "10"
+        });
+
+        var funcs = [];
+        for (var i = 0; i < 10; i++) {
+            funcs.push((function (value) {
+                return function () {
+                    console.log(value);
+                }
+            }(i)));
+        }
+
+        funcs.forEach(function (func) {
+            func(); // выведет 0, 1, 2, ..., 9
+        });
+
+        var funcs = [];
+        for (let i = 0; i < 10; i++) {
+            funcs.push(function () {
+                console.log(i);
+            });
+        }
+
+        funcs.forEach(function (func) {
+            func(); // выведет 0, 1, 2, 9
+        });
+
+        var funcs = [],
+            object = {
+                a: true,
+                b: true,
+                c: true
+            };
+
+        for (let key in object) {
+            funcs.push(function () {
+                console.log(key);
+            });
+        }
+
+        funcs.forEach(function (func) {
+            func(); // выведет "а", затем "b", затем "c"
+        });
+
+    </script>
+</body>
+</html>

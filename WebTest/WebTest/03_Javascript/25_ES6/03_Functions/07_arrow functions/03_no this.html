@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Arrow functions</title>
+</head>
+<body>
+
+    <script>
+
+        let PageHandler = {
+            id: "123456",
+
+            init: function () {
+                document.addEventListener("click", function (event) {
+                    this.doSomething(event.type); // ошибка 
+                }, false);
+            },
+
+            doSomething: function (type) {
+                console.log("Handling " + type + " for " + this.id);
+            }
+        };
+
+        let PageHandler = {
+            id: "123456",
+
+            init: function () {
+                document.addEventListener("click", (function (event) {
+                    this.doSomething(event.type); // ошибки нет 
+                }).bind(this), false);
+            },
+
+            doSomething: function (type) {
+                console.log("Handling " + type + " for " + this.id);
+            }
+        };
+
+        let PageHandler = {
+            id: "123456",
+
+            init: function() {
+                document.addEventListener("click",
+                        event => this.doSomething(event.type), false);
+            },
+
+            doSomething: function(type) {
+                console.log("Handling " + type + " for " + this.id);
+            }
+        };
+
+        var МуТуре = () => {},
+            object = new MyType(); // ошибка - стрелочные функции нельзя вызывать с ключевым словом 'new'
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>name</title>
+</head>
+<body>
+
+    <script>
+
+        function doSomething() {
+            return doSomethingElse(); // хвостовой вызов
+        }
+
+        "use strict";
+        function doSomething() {
+            // оптимизируется 
+            return doSomethingElse();
+        }
+
+        "use strict";
+        function doSomething() {
+            // не оптимизируется - отсутствует оператор return 
+            doSomethingElse();
+        }
+
+        "use strict";
+        function doSomething() {
+            // не оптимизируется - после вызова выполняется операция сложения 
+            return 1 + doSomethingElse();
+        }
+
+        "use strict";
+        function doSomething() {
+            // не оптимизируется - вызов выполняется не последним
+            var result = doSomethingElse();
+            return result;
+        }
+
+        "use strict";
+        function doSomething() {
+            var num = 1,
+                func = () => num;
+            // не оптимизируется - функция образует замыкание 
+            return func();
+        }
+
+    </script>
+</body>
+</html>

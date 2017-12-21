@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>dead zone</title>
+</head>
+<body>
+
+    <script>
+
+        if (condition) {
+            console.log(typeof value); // вызовет ошибку 
+            let value = "blue";
+        }
+
+        console.log(typeof value); // "undefined"
+        if (condition) {
+            let value = "blue";
+        }
+
+    </script>
+</body>
+</html>

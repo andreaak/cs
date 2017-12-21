@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>var</title>
+</head>
+<body>
+
+    <script>
+
+        let msg = "Hello world!";
+        console.log(msg.startsWith("Hello")); // true 
+        console.log(msg.endsWith("!")); // true
+        console.log(msg.includes("o")); // true
+
+        console.log(msg.startsWith("o")); // false 
+        console.log(msg.endsWith("world!")); // true
+        console.log(msg.includes("x")); // false
+
+        console.log(msg.startsWith("o", 4)); // true
+        console.log(msg.endsWith("o", 8)); // true
+        console.log(msg.includes("o", 8)); // false
+
+        console.log("x".repeat(3)); // "ххх" 
+        console.log("hello".repeat(2)); // "hellohello" 
+        console.log("abc".repeat(4)); // "abcabcabcabc"
+
+        // отступ с определенным количеством пробелов 
+        let indent = " ".repeat(4),
+            indentLevel = 0;
+
+        // всякий раз, когда нужно увеличить отступ 
+        let newIndent = indent.repeat(++indentLevel);
+
+    </script>
+</body>
+</html>
