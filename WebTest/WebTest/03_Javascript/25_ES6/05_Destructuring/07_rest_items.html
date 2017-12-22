@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Destructuring</title>
+</head>
+<body>
+
+    <script>
+
+        let colors = [ "red", "green", "blue" ];
+        let [ firstColor, ...restColors] = colors;
+
+        console.log(firstColor);//"red"
+        console.log(restColors.length);//2
+        console.log(restColors[0]);//"green"
+        console.log(restColors[1]);//"blue"
+
+        // клонирование массивов в ECMAScript 5 
+        var colors = [ "red", "green", "blue" ]; 
+        var clonedColors = colors.concat();
+        console.log(clonedColors); // "[red,green,blue]"
+
+
+        // клонирование массивов в ECMAScript 6 
+        let colors = [ "red", "green", "blue" ]; 
+        let [ ...clonedColors ] = colors;
+        console.log(clonedColors); // "[red,green,blue]"
+
+    </script>
+</body>
+</html>

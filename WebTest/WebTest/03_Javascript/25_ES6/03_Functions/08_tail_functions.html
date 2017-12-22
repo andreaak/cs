@@ -45,6 +45,24 @@
             return func();
         }
 
+        function factorial(n) {
+            if (n <= 1) {
+                return 1;
+            } else {
+                // не оптимизируется - после вызова выполняется операция умножения 
+                return n * factorial(n - 1);
+            }
+        }
+
+        function factorial(n, p = 1) {
+            if (n <= 1) { return 1 * p;
+            } else {
+                let result = n * p;
+                // оптимизируется
+                return factorial(n - 1, result);
+            }
+        }
+
     </script>
 </body>
 </html>

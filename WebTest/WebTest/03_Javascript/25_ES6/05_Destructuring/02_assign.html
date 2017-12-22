@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Destructuring</title>
+</head>
+<body>
+
+    <script>
+
+        let node = {
+            type: "Identifier",
+            name: "foo"
+        },
+        type = "Literal", 
+        name = 5;
+
+        // присвоить другие значения, используя деструктуризацию 
+        ({ type, name } = node);
+
+        console.log(type); // "Identifier" 
+        console.log(name); // "foo"
+
+        let node = {
+            type: "Identifier",
+            name: "foo"
+        },
+        type = "Literal", 
+        name = 5;
+
+        function outputInfo(value) {
+            console.log(value === node); // true
+        }
+        outputInfo({ type, name } = node); 
+
+        console.log(type); // "Identifier" 
+        console.log(name); // "foo" 
+
+    </script>
+</body>
+</html>

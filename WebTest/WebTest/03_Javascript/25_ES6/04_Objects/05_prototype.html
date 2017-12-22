@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Prototype</title>
+</head>
+<body>
+
+    <script>
+
+        let person = {
+            getGreeting() {
+                return "Hello";
+            }
+        };
+
+        let dog = {
+            getGreeting() {
+                return "Woof";
+            }
+        };
+
+        // прототип - person
+        let friend = Object.create(person);
+        console.log(friend.getGreeting());//"Hello"
+
+        console.log(Object.getPrototypeOf(friend) === person); // true
+
+        // сменить прототип на dog
+        Object.setPrototypeOf(friend, dog);
+        console.log(friend.getGreeting()); // "Woof"
+        console.log(Object.getPrototypeOf(friend) === dog); // true
+
+    </script>
+</body>
+</html>

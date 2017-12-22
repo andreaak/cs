@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Prototype</title>
+</head>
+<body>
+
+    <script>
+
+        let person = {
+            getGreeting() {
+                return "Hello";
+            }
+        };
+
+        let dog = {
+            getGreeting() {
+                return "Woof";
+            }
+        };
+
+        let friend = {
+            getGreeting() {
+                return Object.getPrototypeOf(this).getGreeting.call(this) + ", hi!";
+            }
+        };
+
+        // сменить прототип на person
+        Object.setPrototypeOf(friend, person);
+        console.log(friend.getGreeting()); // "Hello, hi!
+        console.log(Object.getPrototypeOf(friend) === person); // true
+
+        // сменить прототип на dog
+        Object.setPrototypeOf(friend, dog);
+        console.log(friend.getGreeting()); // "Woof, hi!"
+        console.log(Object.getPrototypeOf(friend) === dog); // true
+
+        friend = {
+            getGreeting() {
+                // в предыдущем примере ту же операцию выполняла инструкция:
+                // Object.getPrototypeOf(this).getGreeting.call(this) 
+                return super.getGreeting() + ", hi!";
+            }
+        };
+
+        friend = {
+            getGreeting: function() {
+                // синтаксическая ошибка
+                return super.getGreeting() + ", hi!";
+            }
+        };
+
+        person = {
+            getGreeting() {
+                return "Hello";
+            }
+        };
+
+        // прототип - person 
+        friend = {
+            getGreeting() {
+                return Object.getPrototypeOf(this).getGreeting.call(this) + ", hi!";
+            }
+        };
+        Object.setPrototypeOf(friend, person);
+
+        // прототип - friend
+        let relative = Object.create(friend);
+
+        console.log(person.getGreeting()); // "Hello"
+        console.log(friend.getGreetingO); // "Hello, hi!"
+        console.log(relative.getGreeting()); // ошибка!
+
+        person = {
+            getGreeting() {
+                return "Hello";
+            }
+        };
+
+        // прототип - person 
+        friend = {
+            getGreeting() {
+                return super.getGreeting() + ", hi!";
+            }
+        };
+        Object.setPrototypeOf(friend, person);
+
+        // прототип - friend
+        relative = Object.create(friend);
+
+        console.log(person.getGreeting()); // "Hello" 
+        console.log(friend.getGreeting()); // "Hello, hi!" 
+        console.log(relative.getGreeting()); // "Hello, hi!"
+
+    </script>
+</body>
+</html>

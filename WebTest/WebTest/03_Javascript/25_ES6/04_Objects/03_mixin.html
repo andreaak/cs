@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>mixin</title>
+</head>
+<body>
+
+    <script>
+
+        function mixin(receiver, supplier) {
+            Object.keys(supplier).forEach(function (key) {
+                receiver[key] = supplier[key];
+            });
+            return receiver;
+        }
+
+        function EventTarget() { /*...*/ }
+        EventTarget.prototype = {
+            constructor: EventTarget,
+            emit: function () { /*...*/ },
+            on: function () { /*...*/ }
+        };
+
+        var myObject = {};
+        mixin(myObject, EventTarget.prototype);
+
+        myObject.emit("somethingChanged");
+
+        function EventTarget() { /*...*/ }
+        EventTarget.prototype = {
+            constructor: EventTarget,
+            emit: function () { /*...*/ },
+            on: function () { /*...*/ }
+        }
+
+        var myObject = {}
+        Object.assign(myObject, EventTarget.prototype);
+
+        myObject.emit("somethingChanged");
+
+        var receiver = {};
+
+        Object.assign(receiver,
+            {
+                type: "js",
+                name: "file.js"
+            },
+            {
+                type: "css"
+            }
+        );
+
+        console.log(receiver.type); // "css" 
+        console.log(receiver.name); // "file.js"
+
+        var receiver = {},
+            supplier = {
+                get name() {
+                    return "file.js";
+                }
+            };
+        Object.assign(receiver, supplier);
+
+        var descriptor = Object.getOwnPropertyDescriptor(receiver, "name");
+
+        console.log(descriptor.value); // "file.js" 
+        console.log(descriptor.get); // undefined
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Destructuring</title>
+</head>
+<body>
+
+    <script>
+
+        let colors = [ "red", "green", "blue" ];
+        let [ firstColor, secondColor ] = colors;
+        console.log(firstColor); // "red"
+        console.log(secondColor); // "green"
+
+        let colors = [ "red", "green", "blue" ];
+        let [ , , thirdColor ] = colors;
+        console.log(thirdColor); // "blue"
+
+        let colors = [ "red", "green", "blue" ],
+            firstColor = "black",
+            secondColor = "purple";
+
+        [ firstColor, secondColor ] = colors;
+        console.log(firstColor); // "red"
+        console.log(secondColor); // "green"
+
+
+        // обмен значений переменных в ECMAScript 5
+        let а = 1,
+            b = 2,
+            tmp;
+        tmp = а;
+        а = b;
+        b = tmp;
+        console.log(a); // 2
+        console.log(b); // 1
+
+        // обмен значений переменных в ECMAScript 6
+        let а = 1,
+            b = 2;
+
+        [ а, b ] = [ b, а ];
+
+        console.log(a); // 2
+        console.log(b); // 1
+
+        let colors = [ "red" ];
+        let [ firstColor, secondColor = "green" ] = colors;
+        console.log(firstColor); // "red"
+        console.log(secondColor); // "green"
+
+        let colors = [ "red", [ "green", "lightgreen" ], "blue" ];
+        // позднее
+        let [ firstColor, [ secondColor ] ] = colors;
+        console.log(firstColor); // "red"
+        console.log(secondColor); // "green"
+
+    </script>
+</body>
+</html>

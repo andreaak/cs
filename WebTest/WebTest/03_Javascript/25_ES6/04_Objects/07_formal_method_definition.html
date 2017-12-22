@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Prototype</title>
+</head>
+<body>
+
+    <script>
+
+        let person = {
+            // метод 
+            getGreeting() {
+                return "Hello";
+            }
+        };
+
+        //не метод
+        function shareGreeting() {
+            return "Hi!";
+        }
+
+        let person = {
+            getGreeting() { return "Hello";
+            }
+        };
+
+        // прототип - person 
+        let friend = {
+            getGreeting() {
+                return super.getGreeting() + ", hi!";
+            }
+        };
+        Object.setPrototypeOf(friend, person);
+
+        console.log(friend.getGreeting()); // "Hello, hi!"
+
+    </script>
+</body>
+</html>

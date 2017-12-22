@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Destructuring</title>
+</head>
+<body>
+
+    <script>
+
+        let node = {
+            type: "Identifier",
+            name: "foo"
+        };
+
+        let { type: localType, name: localName } = node;
+        console.log(localType); // "Identifier" 
+        console.log(localName); // "foo"'
+
+        let node = {
+            type: "Identifier"
+        };
+
+        let { type: localType, name: localName = "bar" } = node;
+        console.log(localType); // "Identifier"
+        console.log(localName); // "bar"
+
+    </script>
+</body>
+</html>

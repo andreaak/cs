@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Destructuring</title>
+</head>
+<body>
+
+    <script>
+
+        // свойства в options представляют дополнительные параметры 
+        function setCookie(name, value, options) {
+            options = options || {};
+            let secure = options.secure,
+                path = options.path,
+                domain = options.domain,
+                expires = options.expires;
+            // код, настраивающий cookie
+        }
+
+        // третий аргумент отображается в параметр options 
+        setCookie("type", "js", {
+            secure: true,
+            expires: 60000
+        });
+
+
+        function setCookie(name, value, { secure, path, domain, expires }) {
+            // код, настраивающий cookie
+        }
+
+        setCookie("type", "js", {
+            secure: true, 
+            expires: 60000
+        });
+
+        // ошибка!
+        setCookie("type", "js");
+
+        function setCookie(name, value, options) {
+            let { secure, path, domain, expires } = options;
+
+            // код, настраивающий cookie
+        }
+
+        function setCookie(name, value, { secure, path, domain, expires } = {}) {
+            // пустая
+        }
+
+        function setCookie(name, value,
+            {
+                secure = false, 
+                path = "/",
+                domain = "example.com",
+                expires = new Date(Date.now() + 360000000)
+            } = {}
+        ) {
+            // пустая
+        }
+
+    </script>
+</body>
+</html>

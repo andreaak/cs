@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Strings</title>
+</head>
+<body>
+
+    <script>
+
+        function createPerson(name, age) {
+            return {
+                name: name,
+                age: age
+            };
+        }
+
+        function createPerson(name, age) {
+            return {
+                name,
+                age
+            };
+        }
+
+        var person = {
+            name: "Nicholas",
+            sayName: function () {
+                console.log(this.name);
+            }
+        };
+
+        var person = {
+            name: "Nicholas",
+            sayName() {
+                console.log(this.name);
+            }
+        };
+
+        var person = {},
+            lastName = "last name";
+        person["first name"] = "Nicholas";
+        person[lastName] = "Zakas";
+        console.log(person["first name"]); // "Nicholas"
+        console.log(person[lastName]); // "Zakas"
+
+        var person = {
+            "first name": "Nicholas"
+        };
+        console.log(person["first name"]); // "Nicholas"
+
+        let lastName = "last name";
+        let person = {
+            "first name": "Nicholas",
+            [lastName]: "Zakas"
+        };
+
+        console.log(person["first name"]); // "Nicholas" 
+        console.log(person[lastName]); // "Zakas"
+
+        var suffix = " name"; 
+        var person = {
+            ["first" + suffix]: "Nicholas",
+            ["last" + suffix]: "Zakas"
+        };
+
+        console.log(person["first name"]); // "Nicholas" 
+        console.log(person["last name"]); // "Zakas"
+
+    </script>
+</body>
+</html>

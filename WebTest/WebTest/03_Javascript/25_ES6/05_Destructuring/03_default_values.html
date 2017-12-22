@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Destructuring</title>
+</head>
+<body>
+
+    <script>
+
+        let node = {
+            type: "Identifier", 
+            name: "foo"
+        };
+        let { type, name, value } = node;
+        console.log(type); // "Identifier" 
+        console.log(name); // "foo" 
+        console.log(value); // undefined
+
+        let node = {
+            type: "Identifier", 
+            name: "foo"
+        };
+
+        let { type, name, value = true } = node;
+
+        console.log(type); // "Identifier" 
+        console.log(name); // "foo" 
+        console.log(value); // true
+
+    </script>
+</body>
+</html>
