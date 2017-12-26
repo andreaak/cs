@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Collections</title>
+</head>
+<body>
+
+    <script>
+        var set = Object.create(null);
+        set.foo = true;
+        // проверка наличия 
+        if (set.foo) {
+            // код для выполнения
+        }
+
+        var map = Object.create(null);
+        map.foo = "bar";
+
+        // извлечь значение 
+        var value = map.foo;
+        console.log(value); // "bar"
+
+        var map = Object.create(null);
+        map[5] = "foo";
+        console.log(map["5"]); // "foo"
+
+        var map = Object.create(null),
+            key1 = {},
+            key2 = {};
+        map[key1] = "foo";
+
+        console.log(map[key2]); // "foo"
+
+
+        var map = Object.create(null);
+        map.count = 1;
+
+        // Что здесь проверяется? Присутствие ключа "count"
+        // или неравенство значения нулю? 
+        if (map.count) {
+            // код для выполнения
+        }
+
+    </script>
+</body>
+</html>

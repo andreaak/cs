@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+        function PersonType(name) {
+            this.name = name;
+        }
+
+        PersonType.prototype.sayName = function () {
+            console.log(this.name);
+        };
+
+        var person = new PersonType("Nicholas");
+        person.sayName(); // выведет "Nicholas"
+
+        console.log(person instanceof PersonType); // true
+        console.log(person instanceof Object); // true
+    </script>
+</body>
+</html>

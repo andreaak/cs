@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Iterators</title>
+</head>
+<body>
+
+    <script>
+
+        // генератор
+        function *createIterator() {
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+
+        // генераторы вызываются как обычные функции,
+        //но возвращают итераторы
+        var iterator = createIterator();
+
+        console.log(iterator.next().value); // 1
+        console.log(iterator.next().value); // 2
+        console.log(iterator.next().value); // 3
+
+        function *createIterator2(items) {
+            for (let i = 0; i < items.length; i++) {
+                yield items[i];
+            }
+        }
+
+        var iterator = createIterator2([1, 2, 3]);
+
+        console.log(iterator.next()); // "{value: 1, done: false }"
+        console.log(iterator.next()); // "{value: 2, done: false }"
+        console.log(iterator.next()); // "{value: 3, done: false }"
+        console.log(iterator.next()); // "{value: undefined, done: true }"
+
+        // любой последующий вызов
+        console.log(iterator.next()); // "{value: undefined, done: true }"
+
+        //function *createIterator(items) {
+        //    items.forEach(function(item) {
+        //        // синтаксическая ошибка
+        //        yield item + 1;
+        //    });
+        //}
+
+        let createIterator3 = function *(items) {
+            for (let i = 0; i < items.length; i++) {
+                yield items[i];
+            }
+        };
+
+        var iterator = createIterator3([1, 2, 3]);
+        console.log(iterator.next()); // "{value: 1, done: false }"
+        console.log(iterator.next()); // "{value: 2, done: false }"
+        console.log(iterator.next()); // "{value: 3, done: false }"
+        console.log(iterator.next()); // "{value: undefined, done: true }"
+
+        // любой последующий вызов
+        console.log(iterator.next()); // "{value: undefined, done: true }"
+
+
+        let o = {
+            createIterator: function *(items) {
+                for (let i = 0; i < items.length; i++) {
+                    yield items[i];
+                }
+            }
+            };
+        iterator = o.createIterator([1, 2, 3]);
+
+
+        let o2 = {
+            *createIterator(items) {
+                for (let i = 0; i < items.length; i++) {
+                    yield items[i];
+                }
+            }
+        };
+        iterator = o2.createIterator([1, 2, 3]);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        class CustomHTMLElement {
+            constructor(element) {
+                this.element = element;
+            }
+
+            get html() {
+                return this.element.innerHTML;
+            }
+
+            set html(value) {
+                this.element.innerHTML = value;
+            }
+        }
+
+        var descriptor = Object.getOwnPropertyDescriptor(CustomHTMLElement.prototype, "html");
+        console.log("get" in descriptor); // true
+        console.log("set" in descriptor); // true
+        console.log(descriptor.enumerable); // false
+
+        // прямой эквивалент предыдущего примера
+        let CustomHTMLElement_ = (function() {
+            "use strict";
+            const CustomHTMLElement = function(element) {
+                // гарантировать возможность вызова функции
+                // только с ключевым словом new
+                if (typeof new.target === "undefined") {
+                    throw new Error("Constructor must be called with new.");
+                }
+                this.element = element;
+            }
+
+            Object.defineProperty(CustomHTMLElement.prototype, "html", {
+                enumerable: false,
+                configurable: true,
+                get: function() {
+                    return this.element.innerHTML;
+                },
+                set: function(value) {
+                    this.element.innerHTML = value;
+                }
+            });
+
+            return CustomHTMLElement;
+        }());
+
+    </script>
+</body>
+</html>

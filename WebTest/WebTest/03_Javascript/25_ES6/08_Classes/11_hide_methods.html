@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        class Square extends Rectangle {
+            constructor(length) {
+                super(length, length);
+            }
+
+            // переопределение и затенение Rectangle.prototype.getArea()
+            getArea() {
+                return this.length * this.length;
+            }
+        }
+
+        class Square extends Rectangle {
+            constructor(length) {
+                super(length, length);
+            }
+
+            // переопределение и затенение Rectangle.prototype.getArea()
+            getArea() {
+                return super.getArea();
+            }
+        }
+
+    </script>
+</body>
+</html>

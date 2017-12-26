@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        // поведение встроенного массива 
+        var colors = [];
+        colors[0] = "red";
+        console.log(colors.length); // 1
+
+        colors.length = 0;
+        console.log(colors[0]); // undefined
+
+        // попытка унаследовать массив в ES5 
+        function MyArray() {
+            Array.apply(this, arguments);
+        }
+
+        MyArray.prototype = Object.create(Array.prototype, {
+            constructor: {
+                value: MyArray,
+                writable: true,
+                configurable: true,
+                enumerable: true
+            }
+        });
+
+        var colors = new MyArray();
+        colors[0] = "red";
+        console.log(colors.length); // 0
+
+        colors.length = 0;
+        console.log(colors[0]); // "red"
+
+        class MyArray extends Array {
+            // пустой
+        }
+        var colors = new MyArray();
+        colors[0] = "red";
+        console.log(colors.length); // 1
+
+        colors.length = 0;
+        console.log(colors[0]); // undefined
+
+    </script>
+</body>
+</html>

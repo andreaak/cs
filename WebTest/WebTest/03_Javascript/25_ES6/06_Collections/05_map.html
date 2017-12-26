@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Collections</title>
+</head>
+<body>
+
+    <script>
+
+        let map = new Map();
+        map.set("title", "Understanding ECMAScript 6");
+        map.set("year", 2016);
+        console.log(map.get("title")); // "Understanding ECMAScript 6"
+        console.log(map.get("year")); // 2016
+
+        map = new Map(),
+            key1 = {},
+            key2 = {};
+
+        map.set(key1, 5);
+        map.set(key2, 42);
+
+        console.log(map.get(key1)); // 5
+        console.log(map.get(key2)); // 42
+
+        map = new Map();
+        map.set("name", "Nicholas");
+        map.set("age", 25);
+
+        console.log(map.size); // 2
+
+        console.log(map.has("name")); // true
+        console.log(map.get("name")); // "Nicholas
+
+        console.log(map.has("age")); // true
+        console.log(map.get("age")); // 25
+
+        map.delete("name");
+        console.log(map.has("name")); // false
+        console.log(map.get("name")); // undefined
+        console.log(map.size); // 1
+
+        map.clear();
+        console.log(map.has("name")); // false
+        console.log(map.get("name")); // undefined
+        console.log(map.has("age")); // false
+        console.log(map.get("age")); // undefined
+        console.log(map.size); // 0
+
+        map = new Map([["name", "Nicholas"], ["age", 25]]);
+        console.log(map.has("name")); // true
+        console.log(map.get("name")); // "Nicholas"
+        console.log(map.has("age")); // true
+        console.log(map.get("age")); // 25
+        console.log(map.size); // 2
+
+        map = new Map([["name", "Nicholas"], ["age", 25]]);
+        map.forEach(function (value, key, ownerMap) {
+            console.log(key + " " + value);
+            console.log(ownerMap === map);
+        });
+
+    </script>
+</body>
+</html>

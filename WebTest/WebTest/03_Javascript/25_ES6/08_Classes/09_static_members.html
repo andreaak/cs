@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        function PersonType(name) {
+            this.name = name;
+        }
+
+        // статический метод
+        PersonType.create = function (name) {
+            return new PersonType(name);
+        };
+
+        // метод экземпляра
+        PersonType.prototype.sayName = function () {
+            console.log(this.name);
+        };
+
+        var person = PersonType.create("Nicholas");
+
+        class PersonClass {
+
+            // эквивалент конструктора PersonType
+            constructor(name) {
+                this.name = name;
+            }
+
+            // эквивалент PersonType.prototype.sayName
+            sayName() {
+                console.log(this.name);
+            }
+
+            // эквивалент PersonType.create
+            static create(name) {
+                return new PersonClass(name);
+            }
+        }
+
+        person = PersonClass.create("Nicholas");
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        class Rectangle {
+            constructor( length, width) {
+                console.log(new.target === Rectangle); 
+                this.length = length; 
+                this.width = width;
+            }
+        }
+
+        // new.target - это Rectangle
+        var obj = new Rectangle(3, 4); // выведет true
+
+        class Rectangle {
+            constructor(length, width) {
+                console.log(new.target === Rectangle); 
+                this.length = length; 
+                this.width = width;
+            }
+        }
+
+        class Square extends Rectangle { 
+            constructor(length) {
+                super(length, length);
+            }
+        }
+
+        // new.target - это Square
+        var obj = new Square(3); // выведет false
+
+        // абстрактный базовый класс 
+        class Shape {
+            constructor() {
+                if (new.target === Shape) {
+                    throw new Error("This class cannot be instantiated directly.");
+                }
+            }
+        }
+
+        class Rectangle extends Shape {
+            constructor(length, width) {
+                super();
+                this.length = length;
+                this.width = width;
+            }
+        }
+
+        var x = new Shape(); // вызовет ошибку
+        var у = new Rectangle(3, 4); // нет ошибки
+        console.log(y instanceof Shape); // true
+
+    </script>
+</body>
+</html>

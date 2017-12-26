@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        class PersonClass {
+            // эквивалент конструктора PersonType
+            constructor(name) {
+                this.name = name;
+            }
+
+            // эквивалент метода PersonType.prototype.sayName
+            sayName() {
+                console.log(this.name);
+            }
+        }
+
+        let person = new PersonClass("Nicholas");
+
+        person.sayName(); // выведет "Nicholas"
+
+        console.log(person instanceof PersonClass); // true
+        console.log(person instanceof Object); // true
+
+        console.log(typeof PersonClass); //"function"
+        console.log(typeof PersonClass.prototype.sayName); //"function"
+
+
+        // прямой эквивалент PersonClass 
+        let PersonType2 = (function() {
+            "use strict";
+
+            const PersonType2 = function(name) {
+                // гарантировать возможность вызова функции 
+                // только с ключевым словом new 
+                if (typeof new.target === "undefined") {
+                    throw new Error("Constructor must be called with new.");
+                }
+                this.name = name;
+            }
+
+            Object.defineProperty(PersonType2.prototype, "sayName", { 
+                value: function() {
+                    // гарантировать невозможность вызова метода
+                    //с ключевым словом new
+                    if (typeof new.target !== "undefined") {
+                        throw new Error("Method cannot be called with new.");
+                    }
+                    console.log(this.name);
+                },
+                enumerable: false, 
+                writable: true, 
+                configurable: true
+            });
+            return PersonType2;
+        }());
+
+
+        class Foo {
+            constructor() {
+                Foo = "bar"; // возбудит ошибку во время выполнения...
+            }
+        }
+
+        // но после объявления класса это допустимо 
+        Foo = "baz";
+
+    </script>
+</body>
+</html>

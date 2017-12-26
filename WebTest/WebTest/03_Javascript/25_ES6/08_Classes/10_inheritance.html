@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        function Rectangle(length, width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        Rectangle.prototype.getArea = function () {
+            return this.length * this.width;
+        };
+
+        function Square(length) {
+            Rectangle.call(this, length, length);
+        }
+
+        Square.prototype = Object.create(Rectangle.prototype, {
+            constructor: {
+                value: Square,
+                enumerable: true,
+                writable: true,
+                configurable: true
+            }
+        });
+
+        var square = new Square(3);
+
+        console.log(square.getArea()); // 9
+        console.log(square instanceof Square); // true 
+        console.log(square instanceof Rectangle); // true
+
+        class Rectangle_ {
+            constructor(length, width) {
+                this.length = length;
+                this.width = width;
+            }
+
+            getArea() {
+                return this.length * this.width;
+            }
+        }
+
+        class Square_ extends Rectangle_ {
+            constructor(length) {
+                // эквивалент Rectangle.call(this, length, length) 
+                super(length, length);
+            }
+        }
+
+        var square = new Square(3);
+
+        console.log(square.getArea()); // 9
+        console.log(square instanceof Square); // true 
+        console.log(square instanceof Rectangle); // true
+
+        class Square extends Rectangle {
+            // конструктор не определен
+        }
+
+        // эквивалентный класс 
+        class Square extends Rectangle { 
+            constructor(...args) { 
+                super(...args);
+            }
+        }
+
+    </script>
+</body>
+</html>

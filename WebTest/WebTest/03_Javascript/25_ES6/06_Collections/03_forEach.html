@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Collections</title>
+</head>
+<body>
+
+    <script>
+
+        let set = new Set([1, 2]);
+        set.forEach(function (value, key, ownerSet) {
+            console.log(key + " " + value);
+            console.log(ownerSet === set);
+        });
+
+        set = new Set([1, 2]);
+        let processor = {
+            output(value) {
+                console.log(value);
+
+            },
+            process(dataSet) {
+                dataSet.forEach(function (value) {
+                    this.output(value);
+                }, this);
+            }
+        };
+
+        processor.process(set);
+
+        set = new Set([1, 2]);
+        processor = {
+            output(value) {
+                console.log(value);
+            },
+            process(dataSet) {
+                dataSet.forEach(value => this.output(value));
+            }
+        };
+        processor.process(set);
+
+        set = new Set([l, 2, 3, 3, 3, 4, 5]), 
+            array = [...set];
+        console.log(array); // [1,2,3,4,5]
+
+        function eliminateDuplicates(items) {
+            return [...new Set(items)];
+        }
+        let numbers = [1, 2, 3, 3, 3, 4, 5],
+        noDuplicates = eliminateDuplicates(numbers);
+        console.log(noDuplicates); // [1,2,3,4,5]
+
+    </script>
+</body>
+</html>

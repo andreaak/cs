@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Iterators</title>
+</head>
+<body>
+
+    <script>
+
+        function *createIterator() {
+            let first = yield 1;
+            let second = yield first + 2; // вернет 4 + 2 и возбудит ошибку 
+            yield second + 3; // никогда не будет выполнена
+        }
+
+        let iterator = createIterator();
+
+        console.log(iterator.next()); // "{ value: 1, done: false }"
+        console.log(iterator.next(4)); // "{ value: б, done: false }"
+        console.log(iterator.throw(new Error("Boom"))); // ошибка, возбужденная генератором
+
+        function *createIterator2() { 
+            let first = yield 1; 
+            let second;
+
+            try {
+                second = yield first + 2; // вернет 4 + 2 и возбудит ошибку
+            } catch (ex) {
+                second = 6; // в случае ошибки присваивает другое значение
+            }
+            yield second + 3;
+        }
+
+        let iterator = createIterator2();
+
+        console.log(iterator.next()); // "{ value: 1, done: false }"
+        console.log(iterator.next(4)); // "{ value: 6, done: false }"
+        console.log(iterator.throw(new Error("Boom"))); // "{ value: 9, done: false }"
+        console.log(iterator.next()); // "{ value: undefined, done: true }"
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        let PersonClass = class {
+            // эквивалент конструктора PersonType 
+            constructor(name) {
+                this.name = name;
+            }
+
+            // эквивалент PersonType.prototype.sayName 
+            sayName() {
+                console.log(this.name);
+            }
+        }
+
+        let person = new PersonClass("Nicholas");
+        person.sayName(); // выведет "Nicholas"
+
+        console.log(person instanceof PersonClass); // true
+        console.log(person instanceof Object); // true
+
+        console.log(typeof PersonClass);// "function"
+        console.log(typeof PersonClass.prototype.sayName);// "function"
+
+    </script>
+</body>
+</html>

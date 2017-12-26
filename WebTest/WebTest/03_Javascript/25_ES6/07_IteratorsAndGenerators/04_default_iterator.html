@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Iterators</title>
+</head>
+<body>
+
+    <script>
+
+        let values = [1, 2, 3];
+        let iterator = values[Symbol.iterator]();
+
+        console.log(iterator.next());// "{ value: 1, done: false }"
+        console.log(iterator.next());// "{ value: 2, done: false }"
+        console.log(iterator.next());// "{ value: 3, done: false }"
+        console.log(iterator.next());// "{ value: undefined, done: true }"
+
+        function isIterable(object) {
+            return typeof object[Symbol.iterator] === "function";
+        }
+
+        console.log(isIterable([l, 2, 3])); // true
+        console.log(isIterable("Hello")); // true
+        console.log(isIterable(new Map())); // true
+        console.log(isIterable(new Set())); // true
+        console.log(isIterable(new WeakMap())); // false 
+        console.log(isIterable(new WeakSet())); // false
+
+        let collection = { 
+            items: [],
+            *[Symbol.iterator]() {
+                for (let item of this.items) { 
+                    yield item;
+                }
+            }
+        };
+        collection.items.push(1); 
+        collection.items.push(2); 
+        collection.items.push(3);
+
+        for (let x of collection) { 
+            console.log(x);
+        }
+
+
+    </script>
+</body>
+</html>

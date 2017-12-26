@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Iterators</title>
+</head>
+<body>
+
+    <script>
+
+        let colors = ["red", "green", "blue"];
+        let tracking = new Set([1234, 5678, 9012]);
+        let data = new Map();
+
+        data.set("title", "Understanding ECMAScript 6");
+        data.set("fоrmat", "ebook");
+
+        for (let entry of colors.entries()) {
+            console.log(entry);
+        }
+
+        for (let entry of tracking.entries()) {
+            console.log(entry);
+        }
+
+        for (let entry of data.entries()) {
+            console.log(entry);
+        }
+
+        colors = ["red", "green", "blue"];
+        tracking = new Set([1234, 5678, 9012]);
+
+        data = new Map();
+        data.set("title", "Understanding ECMAScript 6");
+        data.set("format", "ebook");
+
+        for (let value of colors.values()) {
+            console.log(value);
+        }
+
+        for (let value of tracking.values()) {
+            console.log(value);
+        }
+
+        for (let value of data.values()) {
+            console.log(value);
+        }
+
+        colors = ["red", "green", "blue"];
+        tracking = new Set([1234, 5678, 9012]);
+
+        data = new Map();
+        data.set("title", "Understanding ECMAScript 6");
+        data.set("format", "ebook");
+
+        for (let key of colors.keys()) {
+            console.log(key);
+        }
+
+        for (let key of tracking.keys()) {
+            console.log(key);
+        }
+
+        for (let key of data.keys()) {
+            console.log(key);
+        }
+
+
+        colors = ["red", "green", "blue"];
+        tracking = new Set([1234, 5678, 9012]);
+
+        data = new Map();
+        data.set("title", "Understanding ECMAScript 6");
+        data.set("format", "print");
+
+        // действует так же, как при использовании colors.values()
+        for (let value of colors) {
+            console.log(value);
+        }
+
+        // действует так же, как при использовании tracking.values()
+        for (let num of tracking) {
+            console.log(num);
+        }
+
+        // действует так же, как при использовании data.entries()
+        for (let entry of data) {
+            console.log(entry);
+        }
+
+        data = new Map();
+        data.set("title", "Understanding ECMAScript 6");
+        data.set("format", "ebook");
+        // действует так же, как при использовании data.entries()
+        for (let [key, value] of data) {
+            console.log(key + "=" + value);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        function createObject(classDef) {
+            return new classDef();
+        }
+
+        let obj = createObject(class {
+            sayHi() {
+                console.log("Hi!");
+            }
+        });
+        obj.sayHi(); // "Hi!"
+
+        let person = new class {
+            constructor(name) {
+                this.name = name;
+            }
+            sayName() {
+                console.log(this.name);
+            }
+        }("Nicholas");
+        person.sayName(); // "Nicholas"
+
+    </script>
+</body>
+</html>

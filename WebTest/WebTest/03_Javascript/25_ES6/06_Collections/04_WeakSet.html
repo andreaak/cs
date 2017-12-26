@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Collections</title>
+</head>
+<body>
+
+    <script>
+
+        let set = new Set(),
+            key = {};
+
+        set.add(key);
+        console.log(set.size); // 1
+
+        // удалить оригинальную ссылку 
+        key = null;
+
+        console.log(set.size); // 1
+
+        // извлечь оригинальную ссылку обратно 
+        key = [...set][0];
+
+        set = new WeakSet(),
+            key = {};
+        // добавить объект в множество 
+        set.add(key);
+
+        console.log(set.has(key)); // true 
+
+        set.delete(key);
+        console.log(set.has(key)); // false
+
+        let key1 = {}, 
+            key2 = {},
+            set = new WeakSet([key1, key2]);
+
+        console.log(set.has(key1)); // true 
+        console.log(set.has(key2)); // true
+
+
+        set = new WeakSet(), 
+            key = {};
+
+        // добавить объект в множество 
+        set.add(key);
+        console.log(set.has(key)); // true
+
+        // удалить последнюю строгую ссылку на key 
+        // (ссылка также будет удалена из множества) 
+        key = null;
+
+    </script>
+</body>
+</html>

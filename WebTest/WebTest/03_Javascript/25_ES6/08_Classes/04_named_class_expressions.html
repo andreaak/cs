@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        let PersonClass = class PersonClass2 {
+            // эквивалент конструктора PersonType
+            constructor(name) {
+                this.name = name;
+            }
+
+            // эквивалент PersonType.prototype.sayName
+            sayName() {
+                console.log(this.name);
+            }
+        }
+        console.log(typeof PersonClass); // "function"
+        console.log(typeof PersonClass2); // "undefined"
+
+        // прямой эквивалент именованного класса-выражения PersonClass
+        let PersonClass_ = (function() {
+            "use strict";
+
+            const PersonClass2 = function(name) {
+                // гарантировать возможность вызова функции
+                // только с ключевым словом new
+                if (typeof new.target === "undefined") {
+                    throw new Error("Constructor must be called with new.");
+                }
+                this.name = name;
+            }
+
+            Object.defineProperty(PersonClass2.prototype, "sayName", {
+                value: function() {
+                    // гарантировать невозможность вызова метода
+                    //с ключевым словом new
+                    if (typeof new.target !== "undefined") {
+                        throw new Error("Method cannot be called with new.");
+                    }
+                    console.log(this.name);
+                },
+                enumerable: false, writable: true,
+                configurable: true
+            });
+            return PersonClass2;
+        }());
+
+    </script>
+</body>
+</html>

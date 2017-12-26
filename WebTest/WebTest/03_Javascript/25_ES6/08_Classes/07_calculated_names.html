@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+</head>
+<body>
+
+    <script>
+
+        let methodName = "sayName";
+
+        class PersonClass {
+            constructor(name) {
+                this.name = name;
+            }
+            [methodName]() {
+                console.log(this.name);
+            }
+        };
+
+        let me = new PersonClass("Nicholas");
+        me.sayName(); // "Nicholas"
+
+        let propertyName = "html";
+
+        class CustomHTMLElement {
+
+            constructor(element) {
+                this.element = element;
+            }
+
+            get[propertyName]() {
+                return this.element.innerHTML;
+            }
+
+            set[propertyName](value) {
+                this.element.innerHTML = value;
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Collections</title>
+</head>
+<body>
+
+    <script>
+        let set = new Set();
+        set.add(5);
+        set.add("5");
+        console.log(set.size); // 2
+
+
+
+        set = new Set(), 
+            key1 = {}, 
+            key2 = {};
+        set.add(key1); 
+        set.add(key2);
+        console.log(set.size); // 2
+
+        set = new Set();
+        set.add(5);
+        set.add("5");
+        set.add(5); // повторяющееся значение - игнорируется 
+        console.log(set.size); // 2
+
+        set = new Set([1, 2, 3, 4, 5, 5, 5, 5]);
+        console.log(set.size); // 5
+
+        set = new Set();
+        set.add(5);
+        set.add("5");
+        console.log(set.has(5)); // true 
+        console.log(set.has(6)); // false
+
+        let set = new Set();
+        set.add(5);
+        set.add("5");
+
+        console.log(set.has(5)); // true
+
+        set.delete(5);
+
+        console.log(set.has(5)); // false
+        console.log(set.size); // 1
+
+        set.clear();
+
+        console.log(set.has("5")); // false
+        console.log(set.size); // 0
+
+    </script>
+</body>
+</html>
