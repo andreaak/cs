@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Modules</title>
+</head>
+<body>
+
+    <script>
+
+        function sum(num1, num2) { 
+            return num1 + num2;
+        }
+        export { sum as add };
+
+        import { add } from "./example.js";
+
+        import { add as sum } from "./example.js"; 
+        console.log(typeof add); // "undefined"
+        console.log(sum(1, 2)); // 3
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promise</title>
+</head>
+<body>
+
+    <script>
+
+        let p1 = new Promise(function (resolve, reject) {
+            resolve(42);
+        });
+
+        p1.then(function (value) {
+            throw new Error("Boom!");
+        }).catch(function (error) {
+            console.log(error.message); // "Boom!"
+        });
+
+        let p1 = new Promise(function (resolve, reject) {
+            throw new Error("Explosion!");
+        });
+
+        p1.catch(function (error) {
+            console.log(error.message); // "Explosion!"
+            throw new Error("Boom!");
+        }).catch(function (error) {
+            console.log(error.message); // "Boom!”
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promise</title>
+</head>
+<body>
+
+    <script>
+
+        let fs = require("fs");
+
+        function run(taskDef) {
+
+            // создать итератор
+            let task = taskDef();
+
+            // запустить задание
+            let result = task.next();
+
+            // рекурсивная функция, выполняющая итерации
+            (function step() {
+                // если работа продолжается
+                if (!result.done) {
+
+                    // создать установившийся объект Promise
+                    let promise = Promise.resolve(result.value);
+                    promise.then(function(value) {
+                        result = task.next(value);
+                        step();
+                    })
+                        .catch(function(error) {
+                            result = task.throw(error);
+                            step();
+                        });
+                }
+            }());
+        }
+
+        // определение функции для использования
+        // с инструментом запуска заданий
+        function readFile(filename) {
+            return new Promise(function(resolve, reject) {
+                fs.readFile(filename, function(err, contents) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(contents);
+                    }
+                });
+            });
+        }
+
+        // запустить задание
+        run(function*() {
+            let contents = yield readFile("config.json");
+            //doSomethingWith(contents);
+            console.log("Done");
+        });
+
+    </script>
+</body>
+</html>

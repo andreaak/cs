@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promise</title>
+</head>
+<body>
+
+    <script>
+
+        let rejected = Promise.reject(42);
+
+        // в этой точке ошибка не обработана
+
+        // немного позднее...
+        rejected.catch(function (value) {
+            // теперь ошибка обработана
+            console.log(value);
+        });
+
+    </script>
+</body>
+</html>

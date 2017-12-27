@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Array</title>
+</head>
+<body>
+
+    <script>
+
+        let buffer = new ArrayBuffer(10),
+        view1 = new Int8Array(buffer),
+        view2 = new Int8Array(buffer, 5, 2);
+        console.log(view1.buffer === buffer); // true
+        console.log(view2.buffer === buffer); // true
+        console.log(view1.byteOffset); // 0
+        console.log(view2.byteOffset); // 5
+        console.log(view1.byteLength); // 10
+        console.log(view2.byteLength); // 2
+
+        let ints = new Int16Array(2);
+        floats = new Float32Array(5);
+
+        console.log(ints.byteLength); // 4
+        console.log(ints.length); // 2
+
+        console.log(floats.byteLength); // 20
+        console.log(floats.length); // 5
+
+
+        let ints1 = new Int16Array([25, 50]),
+            ints2 = new Int32Array(ints1);
+
+        console.log(ints1.buffer === ints2.buffer); // false
+        console.log(ints1.byteLength);// 4
+        console.log(ints1.length);// 2
+
+        console.log(ints1[0]);// 25
+        console.log(ints1[l]);// 50
+
+        console.log(ints2.byteLength);// 8
+        console.log(ints2.length);// 2
+        console.log(ints2[0]);// 25
+        console.log(ints2[l]);// 50
+
+        console.log(UInt8Array.BYTES_PER_ELEMENT); // 1
+        console.log(UInt16Array.BYTES_PER_ELEMENT); // 2
+        ints = new Int8Array(5);
+        console.log(ints.BYTES_PER_ELEMENT); // 1
+
+
+        ints = new Int16Array([25, 50]);
+        console.log(ints instanceof Array); // false
+        console.log(Array.isArray(ints)); // false
+
+
+        ints = new Int16Array([25, 50, 75, 100]),
+        subintsl = ints.subarray(),
+        subints2 = ints.subarray(2),
+        subints3 = ints.subarray(l, 3);
+        console.log(subintsl.toString()); // 25,50,75,100
+        console.log(subints2.toString()); // 75,100
+        console.log(subints3.toString()); // 50,75
+
+    </script>
+</body>
+</html>

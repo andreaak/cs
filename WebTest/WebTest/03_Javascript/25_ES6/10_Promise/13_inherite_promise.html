@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promise</title>
+</head>
+<body>
+
+    <script>
+
+        class MyPromise extends Promise {
+            // использовать конструктор по умолчанию
+            success(resolve, reject) {
+                return this.then(resolve, reject);
+            }
+            failure(reject) {
+                return this.catch(reject);
+            }
+        }
+
+        let promise = new MyPromise(function (resolve, reject) {
+            resolve(42);
+        });
+
+        promise.success(function (value) {
+            console.log(value); // 42
+        }).failure(function (value) {
+            console.log(value);
+        });
+
+        let p1 = new Promise(function (resolve, reject) {
+            resolve(42);
+        });
+
+        let p2 = MyPromise.resolve(p1);
+        p2.success(function (value) {
+            console.log(value); // 42
+        });
+
+        console.log(p2 instanceof MyPromise); // true
+
+    </script>
+</body>
+</html>

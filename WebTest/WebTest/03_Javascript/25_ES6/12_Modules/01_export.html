@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Modules</title>
+</head>
+<body>
+
+    <script>
+
+        // экспортировать данные 
+        export var color = "red"; 
+        export let name = "Nicholas"; 
+        export const magicNumber = 7;
+
+        // экспортировать функцию 
+        export function sum(num1, num2) { 
+            return num1 + num1;
+        }
+
+        // экспортировать класс
+        export class Rectangle {
+            constructor(length, width) { 
+                this.length = length; 
+                this.width = width;
+            }
+        }
+
+        // эта функция доступна только внутри модуля 
+        function subtract(num1, num2) { 
+            return num1 - num2;
+        }
+
+        // определить функцию... 
+        function multiply(num1, num2) { 
+            return num1 * num2;
+        }
+
+        // ...и экспортировать ее 
+        export multiply;
+
+    </script>
+</body>
+</html>

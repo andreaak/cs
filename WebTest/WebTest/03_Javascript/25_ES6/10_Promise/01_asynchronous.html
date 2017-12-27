@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promice</title>
+</head>
+<body>
+
+    <script>
+
+        let button = document.getElementById("my-btn");
+        button.onclick = function (event) {
+            console.log("Clicked");
+        };
+
+        readFile("example.txt", function (err, contents) {
+            if (err) {
+                throw err;
+            }
+            console.log(contents);
+        });
+
+        console.log("Hi!");
+
+        readFile("example.txt", function (err, contents) {
+            if (err) {
+                throw err;
+            }
+
+            writeFile("example.txt", function (err) {
+                if (err) {
+                    throw err;
+                }
+                console.log("File was written!");
+            });
+        });
+
+        method1(function (err, result) {
+
+            if (err) {
+                throw err;
+            }
+
+            method2(function (err, result) {
+
+                if (err) {
+                    throw err;
+                }
+
+                method3(function (err, result) {
+
+                    if (err) {
+                        throw err;
+                    }
+
+                    method4(function (err, result) {
+
+                        if (err) {
+                            throw err;
+                        }
+
+                        method5(result);
+                    });
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>

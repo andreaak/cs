@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promise</title>
+</head>
+<body>
+
+    <script>
+
+        let rejected;
+
+        window.onunhandledrejection = function (event) {
+            console.log(event.type); // "unhandledrejection"
+            console.log(event.reason.message); // "Explosion!"
+            console.log(rejected === event.promise); // true
+        };
+
+        window.onrejectionhandled = function (event) {
+            console.log(event.type); // "rejectionhandled"
+            console.log(event.reason.message); // "Explosion!"
+            console.log(rejected === event.promise); // true
+        };
+
+        rejected = Promise.reject(new Error("Explosion!"));
+
+        let possiblyUnhandledRejections = new Map();
+
+        // добавить в ассоциативный массив вновь появившийся необработанный отказ
+        window.onunhandledrejection = function (event) {
+            possiblyUnhandledRejections.set(event.promise, event.reason);
+        };
+
+        window.onrejectionhandled = function (event) {
+            possiblyUnhandledRejections.delete(event.promise);
+        };
+
+        setInterval(function () {
+            possiblyUnhandledRejections.forEach(function (reason, promise) {
+                console.log(reason.message ? reason.message : reason);
+
+                // обработать отказы
+                handleRejection(promise, reason);
+            });
+
+            possiblyUnhandledRejections.clear();
+        }, 60000);
+
+    </script>
+</body>
+</html>

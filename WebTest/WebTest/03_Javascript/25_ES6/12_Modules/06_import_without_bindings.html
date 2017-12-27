@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Modules</title>
+</head>
+<body>
+
+    <script>
+
+        // модуль, ничего не экспортирующий и не импортирующий
+        Array.prototype.pushAll = function(items) {
+
+            // аргумент items должен быть массивом
+            if (!Array.isArray(items)) {
+                throw new TypeError("Argument must be an array.");
+            }
+
+            // использовать встроенный метод push() и оператор расширения
+            return this.push(...items);
+        };
+
+        import "./example.js";
+        let colors = ["red", "green", "blue"];
+        let items = [];
+        items.pushAll(colors);
+
+    </script>
+
+</body>
+</html>

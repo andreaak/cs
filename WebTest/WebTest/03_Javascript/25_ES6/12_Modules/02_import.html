@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Modules</title>
+</head>
+<body>
+
+    <script>
+
+        import { identifier1, identifier2 } from "./example.js";
+        console.log(identifier1);
+        console.log(identifier2);
+
+        // импортировать единственный идентификатор 
+        import { sum } from "./example.js";
+        console.log(sum(1, 2)); // 3
+        sum = 1; // вызовет ошибку
+
+        // импортировать несколько привязок
+        import { sum, multiply, magicNumber } from "./example.js"; 
+        console.log(sum(1, magicNumber)); // 8
+        console.log(multiply(1, 2)); // 2
+
+        // импортировать все
+        import * as example from "./example.js";
+        console.log(example.sum(1, example.magicNumber)); // 8
+        console.log(example.multiply(1, 2)); // 2
+
+        import { sum } from "./example.js"; 
+        import { multiply } from "./example.js"; 
+        import { magicNumber } from "./example.js";
+
+
+        function tryImport() {
+            import flag from "./example.js"; // синтаксическая ошибка
+        }
+
+        export var name = "Nicholas"; 
+        export function setName(newName) { 
+            name = newName;
+        }
+
+        import { name, setName } from "./example.js";
+
+        console.log(name); // "Nicholas"
+        setName("Greg");
+        console.log(name); // "Greg"
+
+        name = "Nicholas"; // вызовет ошибку
+
+    </script>
+</body>
+</html>

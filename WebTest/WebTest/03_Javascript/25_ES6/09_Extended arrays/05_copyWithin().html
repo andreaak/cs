@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Array</title>
+</head>
+<body>
+
+    <script>
+
+        let numbers = [1, 2, 3, 4];
+
+        // вставить значения в массив, начиная с индекса 2,
+        // копировать значения из массива, начиная с индекса 0 
+        numbers.copyWithin(2, 0);
+
+        console.log(numbers.toString()); // 1,2,1,2
+
+        numbers = [1, 2, 3, 4];
+        // вставить значения в массив, начиная с индекса 2,
+        // копировать значения из массива, начиная с индекса 0 
+        // copy values from array starting at index 0
+        // остановить копирование по достижении индекса 1 
+        numbers.copyWithin(2, 0, 1);
+
+        console.log(numbers.toString()); // 1,2,1,4
+
+    </script>
+</body>
+</html>

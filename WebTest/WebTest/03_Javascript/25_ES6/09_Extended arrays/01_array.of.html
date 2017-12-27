@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Array</title>
+</head>
+<body>
+
+    <script>
+
+        let items = new Array(2);
+        console.log(items.length); // 2
+        console.log(items[0]); // undefined
+        console.log(items[1]);// undefined
+
+        items = new Array("2");
+        console.log(items.length); // 1
+        console.log(items[0]);// "2"
+
+        items = new Array(1, 2);
+        console.log(items.length); // 2
+        console.log(items[0]); // 1
+        console.log(items[1]);// 2
+
+        items = new Array(3, "2");
+        console.log(items.length); // 2
+        console.log(items[0]); // 3
+        console.log(items[1]);// "2"
+
+        items = Array.of(1, 2);
+        console.log(items.length); // 2 
+        console.log(items[0]); // 1 
+        console.log(items[l]); // 2
+
+        items = Array.of(2);
+        console.log(items.length); // 1 
+        console.log(items[0]); // 2
+
+        items = Array.of("2");
+        console.log(items.length); // 1
+        console.log(items[0]); // "2"
+
+
+        function createArray(arrayCreator, value) {
+            return arrayCreator(value);
+        }
+        items = createArray(Array.of, value);
+
+    </script>
+</body>
+</html>

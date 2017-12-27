@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promise</title>
+</head>
+<body>
+
+    <script>
+
+        let promise = Promise.resolve(42);
+        promise.then(function (value) {
+            console.log(value); // 42
+        });
+
+        promise = Promise.reject(42);
+        promise.catch(function (value) {
+            console.log(value); // 42
+        });
+
+        let thenable = {
+            then: function (resolve, reject) {
+                resolve(42);
+            }
+        };
+
+        thenable = {
+            then: function (resolve, reject) {
+                resolve(42);
+            }
+        };
+
+        let p1 = Promise.resolve(thenable);
+        p1.then(function (value) {
+            console.log(value); // 42
+        });
+
+        thenable = {
+            then: function (resolve, reject) {
+                reject(42);
+            }
+        };
+
+        p1 = Promise.resolve(thenable);
+        p1.catch(function (value) {
+            console.log(value); // 42
+        });
+
+    </script>
+</body>
+</html>

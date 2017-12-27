@@ -120,12 +120,15 @@
 
         let fs = require("fs");
 
+        // определение функции для использования 
+        // с инструментом запуска заданий
         function readFile(filename) { 
             return function(callback) {
                 fs.readFile(filename, callback);
             };
         }
 
+        // запустить задание
         run(function*() {
             let contents = yield readFile("config.json"); 
             doSomethingWith(contents); 

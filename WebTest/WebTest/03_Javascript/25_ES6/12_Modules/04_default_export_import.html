@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Modules</title>
+</head>
+<body>
+
+    <script>
+
+        export default function(num1, num2) { 
+            return num1 + num2;
+        }
+
+        function sum(num1, num2) { 
+            return num1 + num2;
+        }
+        export default sum;
+
+        function sum(num1, num2) { 
+            return num1 + num2;
+        }
+        export { sum as default };
+
+        // импортировать значение по умолчанию 
+        import sum from "./example.js";
+        console.log(sum(1, 2)); // 3
+
+        export let color = "red";
+
+        export default function(num1, num2) { 
+            return num1 + num2;
+        }
+
+        import sum, { color } from "./example.js";
+        console.log(sum(1, 2)); // 3
+        console.log(color); // "red"
+
+        import { default as sum, color } from "./example.js";
+        console.log(sum(1, 2)); // 3
+        console.log(color); // "red"
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Array</title>
+</head>
+<body>
+
+    <script>
+
+        function makeArray(arrayLike) {
+            var result = [];
+
+            for (var i = 0, len = arrayLike.length; i < len; i++) {
+                result.push(arrayLike[i]);
+            }
+            return result;
+        }
+
+        function doSomething() {
+            var args = makeArray(arguments);
+            // использовать args
+        }
+
+        function makeArray(arrayLike) {
+            return Array.prototype.slice.call(arrayLike);
+        }
+
+        function doSomething() {
+            var args = makeArray(arguments);
+            // использовать args
+        }
+
+        function doSomething() {
+            var args = Array.from(arguments);
+            // использовать args
+        }
+
+        function translate() {
+            return Array.from(arguments, (value) => value + 1);
+        }
+
+        let numbers = translate(1, 2, 3);
+        console.log(numbers); // 2,3,4
+
+        let helper = { diff: 1,
+            add(value) {
+                return value + this.diff;
+            }
+        };
+
+        function translate() {
+            return Array.from(arguments, helper.add, helper);
+        }
+
+        numbers = translate(1, 2, 3);
+        console.log(numbers); // 2,3,4
+
+        numbers = {
+            *[Symbol.iterator]() { 
+                yield 1; 
+                yield 2; 
+                yield 3;
+            }
+        };
+
+        let numbers2 = Array.from(numbers, (value) => value + 1); 
+        console.log(numbers2); // 2,3,4
+
+    </script>
+</body>
+</html>

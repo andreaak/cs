@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promice</title>
+</head>
+<body>
+
+    <script>
+
+        // readFile "обещает" (promises) завершить выполнение
+        //в некоторый момент в будущем
+        let promise = readFile("example.txt");
+
+        promise.then(function (contents) {
+            // выполнено 
+            console.log(contents);
+        }, function (err) {
+            // отклонено
+            console.error(err.message);
+        });
+
+        promise.then(function (contents) {
+            // выполнено 
+            console.log(contents);
+        });
+
+        promise.then(null, function (err) {
+            // отклонено
+            console.error(err.message);
+        });
+
+        promise.catch(function (err) {
+            // отклонено
+            console.error(err.message);
+        });
+
+        // то же самое:
+        promise.then(null, function (err) {
+            // отклонено
+            console.error(err.message);
+        });
+
+        promise = readFile("example.txt");
+
+        // первоначальный обработчик успешного завершения 
+        promise.then(function (contents) {
+            console.log(contents);
+
+            // добавить еще один обработчик 
+            promise.then(function (contents) {
+                console.log(contents);
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Promise</title>
+</head>
+<body>
+
+    <script>
+
+        let p1 = new Promise(function (resolve, reject) {
+            resolve(42);
+        });
+
+        let p2 = new Promise(function (resolve, reject) {
+            resolve(43);
+        });
+
+        p1.then(function (value) {
+            // первый обработчик успешного выполнения
+            console.log(value); // 42
+            return p2;
+        })
+            .then(function (value) {
+                // второй обработчик успешного выполнения
+                console.log(value); // 43
+            });
+
+
+        p1 = new Promise(function (resolve, reject) {
+            resolve(42);
+        });
+
+        p2 = new Promise(function (resolve, reject) {
+            resolve(43);
+        });
+
+        let p3 = p1.then(function (value) {
+            // первый обработчик успешного выполнения
+            console.log(value); // 42
+            return p2;
+        });
+
+        p3.then(function (value) {
+            // второй обработчик успешного выполнения
+            console.log(value); // 43
+        });
+
+
+        p1 = new Promise(function (resolve, reject) {
+            resolve(42);
+        });
+        p2 = new Promise(function (resolve, reject) {
+            reject(43);
+        });
+        pl.then(function (value) {
+            // первый обработчик успешного выполнения
+            console.log(value); // 42
+            return p2;
+        }).then(function (value) {
+            // второй обработчик успешного выполнения
+            console.log(value); // не будет вызван
+        });
+
+
+        p1 = new Promise(function (resolve, reject) {
+            resolve(42);
+        });
+
+        p2 = new Promise(function (resolve, reject) {
+            reject(43);
+        });
+
+        p1.then(function (value) {
+            // первый обработчик успешного выполнения
+            console.log(value); // 42
+            return p2;
+        }).catch(function (value) {
+            // обработчик отказа
+            console.log(value); // 43
+        });
+
+
+        p1 = new Promise(function (resolve, reject) {
+            resolve(42);
+        });
+
+        p1.then(function (value) {
+            console.log(value); // 42
+
+            // Создать новый объект Promise
+            let p2 = new Promise(function (resolve, reject) {
+                resolve(43);
+            });
+
+            return p2;
+        }).then(function (value) {
+            console.log(value); // 43
+        });
+
+    </script>
+</body>
+</html>

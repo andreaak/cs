@@ -8,129 +8,82 @@
 
     <script>
 
-        let fs = require("fs");
-        fs.readFile("config.json", function (err, contents) {
-            if (err) {
-                throw err;
+        function *createNumberIterator() {
+            yield 1;
+            yield 2;
+        }
+
+        function *createColorIterator() {
+            yield "red";
+            yield "green";
+        }
+
+        function *createCombinedIterator() {
+            yield *createNumberIterator();
+            yield *createColorIterator();
+            yield true;
+        }
+
+        var iterator = createCombinedIterator();
+
+        console.log(iterator.next()); // "{ value: 1, done: false }"
+        console.log(iterator.next()); // "{ value: 2, done: false }"
+        console.log(iterator.next()); // "{ value: "red", done: false }"
+        console.log(iterator.next()); // "{ value: "green”, done: false }"
+        console.log(iterator.next()); // "{ value: true, done: false }"
+        console.log(iterator.next()); // "{ value: undefined, done: true }"
+
+        function *createNumberIterator() {
+            yield 1;
+            yield 2;
+            return 3;
+        }
+
+        function *createRepeatingIterator(count) {
+            for (let i=0; i < count; i++) {
+                yield "repeat";
             }
-            doSomethingWith(contents);
-            console.log("Done");
-        });
+        }
 
-        function run(taskDef) {
-            // создать итератор
-            let task = taskDef();
+        function CreateCombinedIterator() {
+            let result = yield *createNumberIterator();
+            yield *createRepeatingIterator(result);
+        }
+        var iterator = createCombinedIterator();
 
-            // запустить задание
-            let result = task.next();
+        console.log(iterator.next()); // "{ value: 1, done: false }"
+        console.log(iterator.next()); // "{ value: 2, done: false }"
+        console.log(iterator.next()); // "{ value: "repeat", done: false }"
+        console.log(iterator.next()); // "{ value: "repeat", done: false }"
+        console.log(iterator.next()); // "{ value: "repeat", done: false }"
+        console.log(iterator.next()); // "{ value: undefined, done: true }"
 
-            // рекурсивная функция, продолжающая вызывать next()
-            function step() {
+        function *createNumberIterator() {
+            yield 1;
+            yield 2;
+            return 3;
+        }
 
-                // если работа продолжается
-                if (!result.done) {
-                    result = task.next();
-                    step();
-                }
+        function *createRepeatingIterator(count) {
+            for (let i=0; i < count; i++) {
+                yield "repeat";
             }
-            // запустить обработку
-            step();
         }
 
-        run(function*() {
-            console.log(1);
-            yield;
-            console.log(2);
-            yield;
-            console.log(3);
-        });
-
-        function run(taskDef) {
-            // создать итератор 
-            let task = taskDef();
-
-            // запустить задание 
-            let result = task.next();
-
-            // рекурсивная функция, продолжающая вызывать next() 
-            function step() {
-                // если работа продолжается 
-                if (!result.done) {
-                    result = task.next(result.value); 
-                    step();
-                }
-            }
-            // запустить обработку 
-            step();
+        function CreateCombinedIterator() {
+            let result = yield CreateNumberIterator();
+            yield result;
+            yield CreateRepeatingIterator(result);
         }
 
-        run(function*() {
-            let value = yield 1; 
-            console.log(value); // 1
-            value = yield value + 3; 
-            console.log(value); // 4
-        });
-
-
-        function fetchData() {
-            return function(callback) { 
-                callback(null, "Hi!");
-            };
-        }
-
-        function fetchData() {
-            return function(callback) { 
-                setTimeout(function() {
-                    callback(null, "Hi!");
-                }, 50);
-            };
-        }
-
-        function run(taskDef) {
-            // создать итератор 
-            let task = taskDef();
-
-            // запустить задание 
-            let result = task.next();
-
-            // рекурсивная функция, продолжающая вызывать next() 
-            function step() {
-
-                // если работа продолжается 
-                if (!result.done) {
-                    if (typeof result.value === "function") {
-                        result.value(function(err, data) {
-                            if (err) {
-                                result = task.throw(err);
-                                return;
-                            }
-                            result = task.next(data);
-                            step();
-                        });
-                    } else {
-                        result = task.next(result.value);
-                        step();
-                    }
-                }
-            }
-
-            // запустить обработку 
-            step();
-        }
-
-        let fs = require("fs");
-
-        function readFile(filename) { 
-            return function(callback) {
-                fs.readFile(filename, callback);
-            };
-        }
-
-        run(function*() {
-            let contents = yield readFile("config.json"); 
-            doSomethingWith(contents); 
-            console.log("Done");
-        });
+        var iterator = createCombinedIterator();
+        console.log(iterator.next()); // "{ value: 1, done: false }"
+        console.log(iterator.next()); // "{ value: 2, done: false }"
+        console.log(iterator.next()); // "{ value: 3, done: false }"
+        console.log(iterator.next()); // "{ value: "repeat", done: false }"
+        console.log(iterator.next()); // "{ value: "repeat", done: false }"
+        console.log(iterator.next()); // "{ value: "repeat", done: false }"
+        console.log(iterator.next()); // "{ value: undefined, done: true }"
 
     </script>
 </body>

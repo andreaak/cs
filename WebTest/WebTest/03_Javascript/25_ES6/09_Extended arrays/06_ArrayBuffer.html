@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Array</title>
+</head>
+<body>
+
+    <script>
+
+        let buffer = new ArrayBuffer(10); // выделит 10 байт 
+        console.log(buffer.byteLength); // 10
+
+        let buffer2 = buffer.slice(4, 6); 
+        console.log(buffer2.byteLength); // 2
+
+    </script>
+</body>
+</html>
