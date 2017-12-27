@@ -30,11 +30,20 @@
     </script>
 
     <!-- порядок выполнения этих модулей не гарантируется -->
-    <script type="module" async src="module1.js"></script>
-    <script type="module" async src="module2.js"></script>
+    <script type="module" async src="module1.js">
+    </script>
+    <script type="module" async src="module2.js">
+    </script>
 
-    // загрузить script.js как сценарий
-    let worker = new Worker("script.js");
+    <script>
+        // загрузить script.js как сценарий
+        let worker = new Worker("script.js");
+
+        // загрузить module.js как модуль
+        let worker = new Worker("module.js", { type: "module" });
+
+    </script>
+
 
 </body>
 </html>
