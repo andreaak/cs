@@ -8,7 +8,8 @@
     <script>
 
         let target = {
-            name: "target", value: 42
+            name: "target",
+            value: 42
         };
 
         Object.defineProperty(target, "name", { configurable: false });
@@ -25,6 +26,37 @@
         console.log(result2); // false
 
         console.log("name" in target); // true
+
+        let target = {
+            name: "target",
+            value: 42
+        };
+
+        let proxy = new Proxy(target, {
+            deleteProperty(trapTarget, key) {
+                if (key === "value") {
+                    return false;
+                } else {
+                    return Reflect.deleteProperty(trapTarget, key);
+                }
+            }
+        });
+
+        // попытаться удалить свойство proxy.value
+        console.log("value" in proxy); // true
+
+        let result1 = delete proxy.value;
+        console.log(result1); // false
+
+        console.log("value" in proxy); // true
+
+        // попытаться удалить свойство proxy.name
+        console.log("name" in proxy); // true
+
+        let result2 = delete proxy.name;
+        console.log(result2); // true
+
+        console.log("name" in proxy); // false
 
     </script>
 </body>
