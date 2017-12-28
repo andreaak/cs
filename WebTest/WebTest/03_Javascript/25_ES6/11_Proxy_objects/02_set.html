@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Proxy</title>
+</head>
+<body>
+    <script>
+
+        let target = {
+            name: "target"
+        };
+
+        let proxy = new Proxy(target, {
+            set(trapTarget, key, value, receiver) {
+
+                // игнорировать существующие свойства объекта,
+                // на которые действие ловушки не распространяется
+                if (!trapTarget.hasOwnProperty(key)) {
+                    if (isNaN(value)) {
+                        throw new TypeError("Property must be a number.");
+                    }
+                }
+
+                // добавить свойство
+                return Reflect.set(trapTarget, key, value, receiver);
+            }
+        });
+
+        // добавление нового свойства
+        proxy.count = 1;
+        console.log(proxy.count); // 1
+        console.log(target.count); // 1
+
+        // свойству name можно присвоить строку,
+        // потому что оно уже существует
+        proxy.name = "proxy";
+        console.log(proxy.name); // "proxy”
+        console.log(target.name); // "proxy"
+
+        // следующая операция вызовет ошибку
+        proxy.anotherName = "proxy";
+
+    </script>
+</body>
+</html>

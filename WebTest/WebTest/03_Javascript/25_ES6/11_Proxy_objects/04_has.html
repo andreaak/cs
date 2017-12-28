@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Proxy</title>
+</head>
+<body>
+    <script>
+
+        let target = { 
+            value: 42
+        }
+
+        console.log("value" in target); // true 
+        console.log("toString" in target); // true
+
+        let target = {
+            name: "target", 
+            value: 42
+        };
+
+        let proxy = new Proxy(target, { 
+            has(trapTarget, key) {
+                if (key === "value") { 
+                    return false;
+                } else {
+                    return Reflect.has(trapTarget, key);
+                }
+            }
+        });
+
+        console.log("value" in proxy); // false 
+        console.log("name" in proxy); // true 
+        console.log("toString" in proxy); // true
+
+    </script>
+</body>
+</html>

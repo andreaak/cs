@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Proxy</title>
+</head>
+<body>
+    <script>
+
+        let target = {
+            name: "target", value: 42
+        };
+
+        Object.defineProperty(target, "name", { configurable: false });
+
+        console.log("value" in target); // true
+
+        let result1 = delete target.value;
+        console.log(result1); // true
+
+        console.log("value" in target); // false
+
+        // примечание: следующая строка вызовет ошибку в строгом режиме
+        let result2 = delete target.name;
+        console.log(result2); // false
+
+        console.log("name" in target); // true
+
+    </script>
+</body>
+</html>

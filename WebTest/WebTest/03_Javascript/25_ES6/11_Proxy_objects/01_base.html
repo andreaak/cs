@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Proxy</title>
+</head>
+<body>
+    <script>
+
+        let colors = ["red", "green", "blue"];
+        console.log(colors.length); // 3 
+        colors[3] = "black";
+        console.log(colors.length); // 4
+
+        console.log(colors[3]); // "black"
+        colors.length = 2;
+        console.log(colors.length); // 2
+        console.log(colors[3]); // undefined
+        console.log(colors[2]); // undefined
+        console.log(colors[1]); // "green"
+
+        let target = {};
+
+        let proxy = new Proxy(target, {});
+
+        proxy.name = "proxy";
+        console.log(proxy.name); // "proxy"
+        console.log(target.name); // "proxy"
+
+        target.name = "target";
+        console.log(proxy.name); // "target"
+        console.log(target.name); // "target"
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Proxy</title>
+</head>
+<body>
+    <script>
+
+        let target = {};
+        console.log(target.name); // undefined
+
+        let proxy = new Proxy({}, {
+            get(trapTarget, key, receiver) {
+                if (!(key in receiver)) {
+                    throw new TypeError("Property " + key + " doesn't exist.");
+                }
+
+                return Reflect.get(trapTarget, key, receiver);
+            }
+        });
+
+        // допускается добавление свойств
+        proxy.name = "proxy";
+        console.log(proxy.name); // "proxy"
+
+        // обращение к несуществующему свойству вызывает ошибку
+        console.log(proxy.nme); // throws an error
+
+    </script>
+</body>
+</html>
