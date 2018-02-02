@@ -33,4 +33,4 @@ packages/
 .vs/
 Debug
 ipch
-*.VC.db
+*.VC.*

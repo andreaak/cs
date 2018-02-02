@@ -9,20 +9,35 @@
 #include <TestResultCollector.h>
 #include <BriefTestProgressListener.h>
 
+#include "MoneyTest.h"
+#include "_02_TypesTest.h"
+#include "_05_PointersTest.h"
+
 int main(int argc, char* argv[])
 {
-	// Get the top level suite from the registry
-	CppUnit::Test *suite = CppUnit::TestFactoryRegistry::getRegistry().makeTest();
+	//// Get the top level suite from the registry
+	//CppUnit::Test *suite = CppUnit::TestFactoryRegistry::getRegistry().makeTest();
 
-	// Adds the test to the list of test to run
+	//// Adds the test to the list of test to run
+	//CppUnit::TextUi::TestRunner runner;
+	//runner.addTest(suite);
+
+	//// Change the default outputter to a compiler error format outputter
+	//runner.setOutputter(new CppUnit::CompilerOutputter(&runner.result(),
+	//	std::cerr));
+	//// Run the tests.
+	//bool wasSucessful = runner.run();
+
 	CppUnit::TextUi::TestRunner runner;
-	runner.addTest(suite);
 
-	// Change the default outputter to a compiler error format outputter
-	runner.setOutputter(new CppUnit::CompilerOutputter(&runner.result(),
-		std::cerr));
-	// Run the tests.
+	//runner.addTest(MoneyTest::suite());
+	//runner.addTest(_02_TypesTest::suite());
+	runner.addTest(_05_PointersTest::suite());
+
+
 	bool wasSucessful = runner.run();
+
+
 
 	//// Return error code 1 if the one of test failed.
 	//return wasSucessful ? 0 : 1;
