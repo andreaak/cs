@@ -31,3 +31,6 @@ TestResults/
 packages/
 /Note/Note/Properties/*.licx
 .vs/
+Debug
+ipch
+*.VC.db
