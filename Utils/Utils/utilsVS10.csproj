@@ -133,7 +133,7 @@
     </Reference>
     <Reference Include="System.Data.SQLite, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dll\System.Data.SQLite.dll</HintPath>
+      <HintPath>3dParty\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -317,7 +317,9 @@
     <None Include="Google\client_id.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="WorkWithDB\DbStructureDataset.xsc">
       <DependentUpon>DbStructureDataset.xsd</DependentUpon>
     </None>

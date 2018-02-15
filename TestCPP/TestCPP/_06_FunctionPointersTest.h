@@ -2,7 +2,7 @@
 
 #include <cppunit/extensions/HelperMacros.h>
 
-class _05_PointersTest : public CppUnit::TestFixture
+class _06_FunctionPointersTest : public CppUnit::TestFixture
 {
 	/*
 	CPPUNIT_TEST_SUITE declares that our Fixture's test suite.
@@ -10,25 +10,16 @@ class _05_PointersTest : public CppUnit::TestFixture
 	setUp() and tearDown() are use to setUp/tearDown some fixtures. We are not using any for now.
 	*/
 
-	CPPUNIT_TEST_SUITE(_05_PointersTest);
+	CPPUNIT_TEST_SUITE(_06_FunctionPointersTest);
 	CPPUNIT_TEST(testPointer);
-	CPPUNIT_TEST(testVoidPointer);
-	CPPUNIT_TEST(testChangeConst);
-	CPPUNIT_TEST(testIncrementPointer);
-	CPPUNIT_TEST(testDiffPointer);
-	CPPUNIT_TEST(testPointersInteraction);
+	CPPUNIT_TEST(testTransferPointer);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
 
 	void testPointer();
-	void testVoidPointer();
-	void testChangeConst();
-	void testIncrementPointer();
-	void testDiffPointer();
-	void testPointersInteraction();
-
+	void testTransferPointer();
 };
 
 // Registers the fixture into the 'registry'
-//CPPUNIT_TEST_SUITE_REGISTRATION(_05_PointersTest);
+//CPPUNIT_TEST_SUITE_REGISTRATION(_06_FunctionPointersTest);

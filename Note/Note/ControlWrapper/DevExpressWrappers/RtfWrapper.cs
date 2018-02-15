@@ -147,36 +147,75 @@ namespace Note.ControlWrapper.DevExpressWrappers
 
         public void RemoveDoubleWhiteSpace()
         {
-            DocumentRange range = control.Document.Selection;
-            //Regex reg = new Regex("  ");
-            control.Document.ReplaceAll("  ", " ", SearchOptions.None, range);
-            control.Document.ReplaceAll("( )", "()", SearchOptions.None, range);
-            control.Document.ReplaceAll(" () ", "() ", SearchOptions.None, range);
-            control.Document.ReplaceAll("—", "-", SearchOptions.None, range);
+            RemoveSpecialCombinations();
+            RemoveDoubleWhiteSpace_();
+            FormatParagraphs();
         }
 
         public void RemoveLineBreak()
         {
-            DocumentRange range = control.Document.Selection;
-            //Regex reg = new Regex(@"\r\n");
-            char ch = '\u00AD';
-            control.Document.ReplaceAll("\t", "", SearchOptions.None, range);
-            control.Document.ReplaceAll(ch.ToString(), "-", SearchOptions.None, range);
-            control.Document.ReplaceAll("- \r\n", "", SearchOptions.None, range);
-            control.Document.ReplaceAll("-\r\n", "", SearchOptions.None, range);
-            control.Document.ReplaceAll("\r\n", " ", SearchOptions.None, range);
-            RemoveDoubleWhiteSpace();
+            DocumentRange selection = control.Document.Selection;
+
+            control.Document.ReplaceAll("- \r\n", "", SearchOptions.None, selection);
+            control.Document.ReplaceAll("-\r\n", "", SearchOptions.None, selection);
+            control.Document.ReplaceAll("\r\n", " ", SearchOptions.None, selection);
+            control.Document.ReplaceAll("\t", "", SearchOptions.None, selection);
+
             RemoveSpecialCombinations();
-            Paragraph par = control.Document.GetParagraph(range.Start);
+            string pattern = @"\p{Cc}";
+
+            Regex myRegEx = new Regex(pattern);
+            control.Document.ReplaceAll(myRegEx, " ", selection);
+            RemoveDoubleWhiteSpace_();
+
+            FormatParagraphs();
+            FormatParagraph();
+            FormatText();
+        }
+
+        private void RemoveDoubleWhiteSpace_()
+        {
+            DocumentRange selection = control.Document.Selection;
+
+            control.Document.ReplaceAll("  ", " ", SearchOptions.None, selection);
+        }
+
+        private void FormatParagraphs()
+        {
+            Document doc = control.Document;
+            DocumentRange range = control.Document.Selection;
+            ParagraphProperties par = doc.BeginUpdateParagraphs(range);
+            par.FirstLineIndentType = ParagraphFirstLineIndent.Indented;
+            par.LeftIndent = 0;
+            par.RightIndent = 0;
+            par.FirstLineIndent = 0.0f;
+            par.SpacingAfter = 0;
+            par.SpacingBefore = 0;
+            par.LineSpacingType = ParagraphLineSpacing.Single;
             par.Alignment = ParagraphAlignment.Justify;
+            doc.EndUpdateParagraphs(par);
+        }
+
+        private void FormatParagraph()
+        {
+            Document doc = control.Document;
+            DocumentRange range = control.Document.Selection;
+            ParagraphProperties par = doc.BeginUpdateParagraphs(range);
             par.FirstLineIndentType = ParagraphFirstLineIndent.Indented;
             par.FirstLineIndent = 60.0f;
+            par.Alignment = ParagraphAlignment.Justify;
+            doc.EndUpdateParagraphs(par);
         }
+
+        
 
         private void RemoveSpecialCombinations()
         {
             DocumentRange selection = control.Document.Selection;
 
+            control.Document.ReplaceAll("( )", "()", SearchOptions.None, selection);
+            control.Document.ReplaceAll(" () ", "() ", SearchOptions.None, selection);
+            control.Document.ReplaceAll("—", "-", SearchOptions.None, selection);
             control.Document.ReplaceAll("( ", "(", SearchOptions.None, selection);
             control.Document.ReplaceAll(" )", ")", SearchOptions.None, selection);
             control.Document.ReplaceAll("[ ", "[", SearchOptions.None, selection);
@@ -189,6 +228,13 @@ namespace Note.ControlWrapper.DevExpressWrappers
             control.Document.ReplaceAll(" ;", ";", SearchOptions.None, selection);
             control.Document.ReplaceAll(" :", ":", SearchOptions.None, selection);
             control.Document.ReplaceAll(" .", ".", SearchOptions.None, selection);
+            control.Document.ReplaceAll('\u00AD'.ToString(), "-", SearchOptions.None, selection);
+            control.Document.ReplaceAll('\u000B'.ToString(), "\n", SearchOptions.None, selection);
+        }
+
+        private void FormatText()
+        {
+            DocumentRange selection = control.Document.Selection;
 
             Regex reg = new Regex(@"<(\w+)>");
             SetFormating(reg, selection, SetMethodFormat);

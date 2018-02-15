@@ -12,6 +12,7 @@
 #include "MoneyTest.h"
 #include "_02_TypesTest.h"
 #include "_05_PointersTest.h"
+#include "_06_FunctionPointersTest.h"
 
 int main(int argc, char* argv[])
 {
@@ -31,13 +32,11 @@ int main(int argc, char* argv[])
 	CppUnit::TextUi::TestRunner runner;
 
 	//runner.addTest(MoneyTest::suite());
-	//runner.addTest(_02_TypesTest::suite());
+	runner.addTest(_02_TypesTest::suite());
 	runner.addTest(_05_PointersTest::suite());
-
+	runner.addTest(_06_FunctionPointersTest::suite());
 
 	bool wasSucessful = runner.run();
-
-
 
 	//// Return error code 1 if the one of test failed.
 	//return wasSucessful ? 0 : 1;

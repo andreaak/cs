@@ -165,6 +165,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="_02_TypesTest.h" />
     <ClInclude Include="_05_PointersTest.h" />
+    <ClInclude Include="_06_FunctionPointersTest.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Helper.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="TestCPP.cpp" />
     <ClCompile Include="_02_TypesTest.cpp" />
     <ClCompile Include="_05_PointersTest.cpp" />
+    <ClCompile Include="_06_FunctionPointersTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -4,6 +4,8 @@
 
 void _02_TypesTest::testSize()
 {
+	debugOutput("_02_TypesTest::testSize()");
+
 	short sh = 5;
 	int i = 8;
 	long l = 56;

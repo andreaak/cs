@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Helper.h" 
 #include "_05_PointersTest.h"
 
@@ -115,4 +115,26 @@ void _05_PointersTest::testDiffPointer()
 
 	s = "diff: " + std::to_string(diff);
 	debugOutput(s);//diff: 1
+}
+
+void _05_PointersTest::testPointersInteraction()
+{
+	debugOutput("_05_PointersTest::testPointersInteraction()");
+
+	short a = 5;
+	short *psh = &a;
+	
+	short b = 26;
+	short *psh2 = &b;
+
+	auto s = "*psh: " + std::to_string(*psh);
+	debugOutput(s);//*psh: 5
+
+	s = "*psh2: " + std::to_string(*psh2);
+	debugOutput(s);//*psh2: 26
+
+	*psh = *psh2;//Адрес не присваивается, а меняется содержимое переменных
+
+	s = "*psh: " + std::to_string(*psh);
+	debugOutput(s);//*psh: 26
 }
