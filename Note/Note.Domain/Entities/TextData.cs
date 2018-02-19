@@ -16,7 +16,7 @@ namespace Note.Domain.Entities
             set;
         }
 
-        public string EditValue
+        public string RtfText
         {
             get;
             set;

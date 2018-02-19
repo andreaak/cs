@@ -342,7 +342,7 @@ namespace Note.Domain.Repository
                 if (baseData != null
                     && IsCanCompare(baseData.ModDate, comparedData.ModDate)
                     && (string.IsNullOrEmpty(baseData.ModDate) || comparedData.ModDate > DateConverter.Convert(baseData.ModDate))
-                    && baseData.Data != comparedData.EditValue)
+                    && baseData.Data != comparedData.RtfText)
                 {
                     var comparedItem = comparedRepository.Descriptions.FirstOrDefault(item => item.ID == comparedData.ID);
                     if (comparedItem != null)
@@ -359,7 +359,7 @@ namespace Note.Domain.Repository
                 if (baseData != null
                     && !string.IsNullOrEmpty(baseData.ModDate)
                     && comparedData.ModDate < DateConverter.Convert(baseData.ModDate)
-                    && baseData.Data != comparedData.EditValue)
+                    && baseData.Data != comparedData.RtfText)
                 {
                     var comparedItem = comparedRepository.Descriptions.FirstOrDefault(item => item.ID == comparedData.ID);
                     if (comparedItem != null)

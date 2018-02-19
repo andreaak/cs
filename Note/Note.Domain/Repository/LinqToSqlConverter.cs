@@ -29,7 +29,7 @@ namespace Note.Domain.Repository
             return new TextData
             {
                 ID = item.ID,
-                EditValue = item.Data,
+                RtfText = item.Data,
                 PlainText = item.TextData,
                 HtmlText = item.HtmlData,
                 ModDate = DateConverter.Convert(item.ModDate),

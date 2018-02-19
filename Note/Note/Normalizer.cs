@@ -12,16 +12,16 @@ namespace Note
         {
             var items = dataManager.GetTextData().Where(item => 
                                                         (string.IsNullOrEmpty(item.HtmlText) || string.IsNullOrEmpty(item.PlainText))
-                                                        && !string.IsNullOrEmpty(item.EditValue));
+                                                        && !string.IsNullOrEmpty(item.RtfText));
 
 
 
             foreach (var item in items)
             {
-                control.RtfText = item.EditValue;
+                control.RtfText = item.RtfText;
                 string plainText = control.Text;
                 string htmlText = control.HtmlText;
-                dataManager.UpdateTextData(item.ID, item.EditValue, plainText, htmlText);
+                dataManager.UpdateTextData(item.ID, item.RtfText, plainText, htmlText);
             }
         }
     }
