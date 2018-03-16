@@ -12,7 +12,7 @@
                         Executed="Convert_Executed" CanExecute="Convert_CanExecute"/>
             </Button.CommandBindings>
         </Button>
-            <ComboBox HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="220" Name="comboSrcEncoding"
+        <ComboBox HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="220" Name="comboSrcEncoding"
             ItemsSource="{Binding ViewModelConverter.Encodings}" 
             DisplayMemberPath="DisplayName" 
             SelectedValuePath="Name" 
@@ -22,6 +22,16 @@
             DisplayMemberPath="DisplayName" 
             SelectedValuePath="Name" 
             SelectedValue="{Binding ViewModelConverter.DstEncodingName}" />
+        
+        <Button Content="Open CSV" HorizontalAlignment="Left" Margin="11,125,0,0" VerticalAlignment="Top" Width="75" x:Name="buttonOpenCsv" Tag="buttonOpenCsv" ToolTip="Open CSV" Click="buttonOpenCsv_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="91,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" x:Name="textBoxDirectoryCSV" 
+            Text="{Binding Text, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <Button Content="Convert To XML" Command="Save" HorizontalAlignment="Left" Margin="11,161,0,0" VerticalAlignment="Top" Width="97" x:Name="buttonConvertToXml">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="ConvertToXML_Executed" CanExecute="ConvertToXML_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
 
     </Grid>
 </Window>

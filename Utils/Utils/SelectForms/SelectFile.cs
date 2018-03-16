@@ -22,7 +22,7 @@ namespace Utils
             }
             oFileDlg.Filter = extension;
 
-            if (initialDirectory != "")
+            if (!string.IsNullOrEmpty(initialDirectory))
             {
                 oFileDlg.InitialDirectory = initialDirectory;
             }

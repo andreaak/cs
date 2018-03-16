@@ -11,6 +11,21 @@
 </head>
 <body>
 
+    <p>
+        В WebAPI есть несколько MediaTypeFormatter (форматеров),
+        которые позволяют сериализовать и десириализовать
+        данные передающиеся через HTTP в определенном формате.
+        Стандартные форматтеры поддерживают JSON, XML, URL Encoded Data.
+        Форматером по умолчанию является JSON форматтер.
+    </p>
+    <p>
+        Для того, что бы определить какого типа контент нужно вернуть пользователю,
+        проверяется значения заголовка Accept полученного со стороны клиента.
+        Используя вкладку Composer приложения Fiddler попробуйте отправить запрос
+        с заголовком 'Accept : application/xml' и 'Accept : application/json'
+        проанализируйте разницу между полученными ответами.
+    </p>
+
     <button id="button1">Json</button><br /><br />
     <button id="button2">Xml</button><br /><br />
     <button id="button3">Text</button><br />
@@ -65,7 +80,7 @@
                     //The type of data that you're expecting back from the server
                     dataType: "xml",
                     success: function (xml) {
-                        output.innerHTML = $(xml).find("string").text(function(i, txt) {
+                        output.innerHTML = $(xml).find("string").text(function (i, txt) {
                             return txt + " ";
                         }).text();
                     },

@@ -1,18 +1,36 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextConverter", "TextConverter\TextConverter.csproj", "{ADBAAC98-B775-4B90-B291-C6C8201BFD9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "utilsVS10", "..\Utils\Utils\utilsVS10.csproj", "{724DA50C-C404-4A3A-8583-FBC2F4FB9963}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{ADBAAC98-B775-4B90-B291-C6C8201BFD9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ADBAAC98-B775-4B90-B291-C6C8201BFD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBAAC98-B775-4B90-B291-C6C8201BFD9C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ADBAAC98-B775-4B90-B291-C6C8201BFD9C}.Debug|x64.Build.0 = Debug|Any CPU
 		{ADBAAC98-B775-4B90-B291-C6C8201BFD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADBAAC98-B775-4B90-B291-C6C8201BFD9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADBAAC98-B775-4B90-B291-C6C8201BFD9C}.Release|x64.ActiveCfg = Release|Any CPU
+		{ADBAAC98-B775-4B90-B291-C6C8201BFD9C}.Release|x64.Build.0 = Release|Any CPU
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Debug|x64.ActiveCfg = Debug|x64
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Debug|x64.Build.0 = Debug|x64
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Release|x64.ActiveCfg = Release|x64
+		{724DA50C-C404-4A3A-8583-FBC2F4FB9963}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
