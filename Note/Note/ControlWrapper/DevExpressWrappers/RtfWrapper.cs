@@ -188,7 +188,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             par.FirstLineIndentType = ParagraphFirstLineIndent.Indented;
             par.LeftIndent = 0;
             par.RightIndent = 0;
-            par.FirstLineIndent = 0.0f;
+            //par.FirstLineIndent = 0.0f;
             par.SpacingAfter = 0;
             par.SpacingBefore = 0;
             par.LineSpacingType = ParagraphLineSpacing.Single;

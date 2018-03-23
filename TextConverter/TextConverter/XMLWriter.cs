@@ -12,6 +12,7 @@ namespace TextConverter
         {
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
+            settings.Encoding = new UTF8Encoding(false);
 
             using (XmlWriter writer = XmlWriter.Create(path, settings))
             {
