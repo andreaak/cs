@@ -41,6 +41,10 @@
         document.write(stringValue.localeCompare("yellow") + "<br />");//0
         document.write(stringValue.localeCompare("zoo") + "<br />");//-1
 
+        var stringValue = "yellow/ red/ green/ blue";
+        document.write(stringValue.replace(' ', '') + "<br />");//yellow/red/ green/ blue
+        document.write(stringValue.replace(/ /g, '') + "<br />");//yellow/red/green/blue
+
     </script>
 </head>
 <body>
