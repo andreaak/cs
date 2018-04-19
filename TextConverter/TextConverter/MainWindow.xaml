@@ -3,33 +3,103 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Text Converter" Height="350" Width="525" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Open..." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Name="buttonOpen" Tag="buttonOpen" ToolTip="Open" Click="ButtonOpen_Click"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="90,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Name="textBoxDirectory" 
-                 Text="{Binding Text, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
-        <Button Content="Convert" Command="Save" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Width="75" Name="buttonConvert">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Button Grid.Row="0" Grid.Column="0" Content="Open..." HorizontalAlignment="Left" 
+                Margin="5,5,5,5" VerticalAlignment="Top" Width="75" Name="buttonOpen" Tag="buttonOpen" 
+                ToolTip="Open" Click="ButtonOpen_Click"/>
+        <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Height="22" 
+                 Margin="5,5,5,5" TextWrapping="Wrap" VerticalAlignment="Top" Width="370" Name="textBoxDirectory" 
+                 Text="{Binding Text, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Grid.ColumnSpan="2"/>
+        <Button Grid.Row="1" Grid.Column="0" Content="Convert" Command="Save" HorizontalAlignment="Left" 
+                Margin="5,5,5,5" VerticalAlignment="Top" Width="75" Name="buttonConvert">
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
                         Executed="Convert_Executed" CanExecute="Convert_CanExecute"/>
             </Button.CommandBindings>
         </Button>
-        <ComboBox HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="220" Name="comboSrcEncoding"
-            ItemsSource="{Binding ViewModelConverter.Encodings}" 
-            DisplayMemberPath="DisplayName" 
-            SelectedValuePath="Name" 
-            SelectedValue="{Binding ViewModelConverter.SrcEncodingName}" />
-        <ComboBox HorizontalAlignment="Left" Margin="287,49,0,0" VerticalAlignment="Top" Width="220" Name="comboDstEncoding"
-            ItemsSource="{Binding ViewModelConverter.Encodings}" 
-            DisplayMemberPath="DisplayName" 
-            SelectedValuePath="Name" 
-            SelectedValue="{Binding ViewModelConverter.DstEncodingName}" />
-        
-        <Button Content="Open CSV" HorizontalAlignment="Left" Margin="11,125,0,0" VerticalAlignment="Top" Width="75" x:Name="buttonOpenCsv" Tag="buttonOpenCsv" ToolTip="Open CSV" Click="buttonOpenCsv_Click"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="91,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" x:Name="textBoxDirectoryCSV" 
+
+        <ComboBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" 
+                    Margin="5,5,5,5" VerticalAlignment="Top" Width="220" Name="comboSrcEncoding"
+                    ItemsSource="{Binding ViewModelConverter.Encodings}" 
+                    DisplayMemberPath="DisplayName" 
+                    SelectedValuePath="Name" 
+                    SelectedValue="{Binding ViewModelConverter.SrcEncodingName}" />
+        <ComboBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" 
+                    Margin="5,5,5,5" VerticalAlignment="Top" Width="220" Name="comboDstEncoding"
+                    ItemsSource="{Binding ViewModelConverter.Encodings}" 
+                    DisplayMemberPath="DisplayName" 
+                    SelectedValuePath="Name" 
+                    SelectedValue="{Binding ViewModelConverter.DstEncodingName}" />
+
+        <!--Word for cards-->
+        <Button Grid.Row="3" Grid.Column="0" Content="Open Word CSV" HorizontalAlignment="Left" 
+                Margin="5,5,5,5" VerticalAlignment="Top" 
+                Width="96" x:Name="buttonWordOpenCsv" Tag="buttonWordOpenCsv" ToolTip="Open Words in CSV file" 
+                Click="buttonOpenWordCsv_Click"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" 
+                 Margin="5,5,5,5" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="370" x:Name="textBoxFileWordCSV" 
             Text="{Binding Text, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
-        <Button Content="Convert To XML" Command="Save" HorizontalAlignment="Left" Margin="11,161,0,0" VerticalAlignment="Top" Width="97" x:Name="buttonConvertToXml">
+        <Button Grid.Row="4" Grid.Column="0" Content="Convert Word To XML" Command="Save" HorizontalAlignment="Left" 
+                Margin="5,4.6,0,0" VerticalAlignment="Top" Width="120" x:Name="buttonConvertToXml">
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
-                    Executed="ConvertToXML_Executed" CanExecute="ConvertToXML_CanExecute"/>
+                    Executed="ConvertWordToXML_Executed" CanExecute="ConvertWordToXML_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+
+        <!--Irregular verbs for cards-->
+        <Button Grid.Row="5" Grid.Column="0" Content="Open Verb CSV" HorizontalAlignment="Left" 
+                Margin="5,5,5,5" VerticalAlignment="Top" 
+                Width="96" x:Name="buttonOpenVerbCsv" Tag="buttonOpenVerbCsv" ToolTip="Open CSV" 
+                Click="buttonOpenVerbCsv_Click"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" 
+                 Margin="5,5,5,5" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="370" x:Name="textBoxFileVerbCSV" 
+            Text="{Binding VerbText, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <Button Grid.Row="6" Grid.Column="0" Content="Convert Verb To XML" Command="Save" HorizontalAlignment="Left" 
+                Margin="5,5,5,5" 
+                VerticalAlignment="Top" Width="120" x:Name="buttonConvertVerbToXml">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="ConvertVerbToXML_Executed" CanExecute="ConvertVerbToXML_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+
+        <!--Sounds for cards-->
+        <Button Grid.Row="7" Grid.Column="0" Content="Open Sounds List" HorizontalAlignment="Left" 
+                Margin="5,5,5,5" VerticalAlignment="Top" 
+                Width="96" x:Name="buttonOpenSoundsFile" Tag="buttonOpenSoundsFile" ToolTip="Open CSV" 
+                Click="buttonOpenSoundsFile_Click"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" 
+                 Margin="5,5,5,5" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="370" x:Name="textBoxFileSounds" 
+            Text="{Binding SoundsText, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <Button Grid.Row="8" Grid.Column="0" Content="Download Sounds" Command="Save" HorizontalAlignment="Left" 
+                Margin="5,5,5,5" 
+                VerticalAlignment="Top" Width="120" x:Name="buttonDownloadSounds">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="DownloadSounds_Executed" CanExecute="DownloadSounds_CanExecute"/>
             </Button.CommandBindings>
         </Button>
 

@@ -4,17 +4,21 @@
 
 <html>
 <head>
-    <title>Метод forEach()</title>
+    <title>Метод reduce()</title>
 
     <script type="text/javascript">
 
-        var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
-        numbers.forEach(function (item, index, array) {
-            document.write(item * 2 + " ");
-            item = item * 2;
-        });//2 4 6 8 10 8 6 4 2
-        document.write("<br/>");
-        document.write(numbers + "<br/>");//1,2,3,4,5,4,3,2,1
+        var values = [1, 2, 3, 4, 5];
+        var sum = values.reduce(function (prev, cur, index, array) {
+            return prev + cur;
+        });
+        document.write(sum + "<br/>");//15
+
+        var values = [1, 2, 3, 4, 5];
+        var sum = values.reduceRight(function (prev, cur, index, array) {
+            return prev + cur;
+        });
+        document.write(sum + "<br/>");//15
 
     </script>
 

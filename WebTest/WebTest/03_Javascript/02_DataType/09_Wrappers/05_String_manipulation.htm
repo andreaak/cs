@@ -4,6 +4,7 @@
     <title>Методы строк</title>
     <script type="text/javascript">
 
+        // concat -  возвращает соединение двух строк.
         var stringValue = "hello ";
         var result = stringValue.concat("world");
         document.write(result + "<br />");//"hello world"
@@ -12,8 +13,8 @@
         var result = stringValue.concat("world", "!");
         document.write(result + "<br />");//"hello world!"
 
-        var str = "hello world";
         // substring -  возвращает строку между двумя указанными индексами, не включая верхний индекс.
+        var str = "hello world";
         var substr = str.substring(3);
         document.write(substr + "<br />");//loworld
         substr = str.substring(3, 6);

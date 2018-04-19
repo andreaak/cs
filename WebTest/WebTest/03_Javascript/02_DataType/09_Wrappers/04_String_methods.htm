@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Методы строк</title>
@@ -21,26 +21,31 @@
         var substrs = str.split(" ");
         document.write(substrs.join("_") + "<br />");
 
-        // toLowerCase() - перевод всех символов в нижний регистр, toUpperCase() - перевод всех символов в верхний регистр.
+        // toLowerCase() - перевод всех символов в нижний регистр
         str = "Hello World";
         str = str.toLowerCase();
         document.write(str + "<br />");//hello world
 
+        // toUpperCase() - перевод всех символов в верхний регистр.
         str = str.toUpperCase();
         document.write(str + "<br />");//HELLO WORLD
 
+        // trim() - удаление пробельных символов.
         str = " hello world ";
         document.write(str + "<br />");//" hello world "
         var trimmed = str.trim();
         document.write(trimmed + "<br />");//"hello world"
 
+        // fromCharCode() - получение строки из кодов символов.
         document.write(String.fromCharCode(104, 101, 108, 108, 111) + "<br />");//"hello"
 
+        // localeCompare() - сравнение срок.
         var stringValue = "yellow";
         document.write(stringValue.localeCompare("brick") + "<br />");//1
         document.write(stringValue.localeCompare("yellow") + "<br />");//0
         document.write(stringValue.localeCompare("zoo") + "<br />");//-1
 
+        // replace() - замена в строках.
         var stringValue = "yellow/ red/ green/ blue";
         document.write(stringValue.replace(' ', '') + "<br />");//yellow/red/ green/ blue
         document.write(stringValue.replace(/ /g, '') + "<br />");//yellow/red/green/blue

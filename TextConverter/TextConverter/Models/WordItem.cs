@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TextConverter
+namespace TextConverter.Models
 {
     public class WordItem
     {
@@ -11,7 +11,7 @@ namespace TextConverter
 
         public void AddItem(string lang, string value)
         {
-            if(lang.EndsWith(TranscriptionSuffix))
+            if (lang.EndsWith(TranscriptionSuffix))
             {
                 trans[lang.Replace(TranscriptionSuffix, "")] = value;
             }

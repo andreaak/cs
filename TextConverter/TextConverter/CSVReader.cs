@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using TextConverter.Models;
+using System.Linq;
 
 namespace TextConverter
 {
@@ -7,7 +9,7 @@ namespace TextConverter
     {
         public static readonly string[] Items = { "ru", "en", "en_tr", "de" };
 
-        public static IList<WordItem> Read(string path)
+        public static IList<WordItem> ReadWords(string path)
         {
             var lines = File.ReadAllLines(path);
             IList<WordItem> words = new List<WordItem>();
@@ -21,6 +23,30 @@ namespace TextConverter
                     word.AddItem(Items[i], items[i]);
                 }
 
+                words.Add(word);
+            }
+
+            return words;
+        }
+
+        public static IList<EnVerbItem> ReadVerbs(string path)
+        {
+            var lines = File.ReadAllLines(path);
+            IList<EnVerbItem> words = new List<EnVerbItem>();
+
+            foreach (string line in lines)
+            {
+                var items = line.Split(new char[] { ',', ';' }, System.StringSplitOptions.RemoveEmptyEntries);
+                EnVerbItem word = new EnVerbItem
+                {
+                    Infinitive = items.ElementAtOrDefault(0),
+                    InfinitiveTranscription = items.ElementAtOrDefault(2),
+                    PastSimple = items.ElementAtOrDefault(3),
+                    PastSimpleTranscription = items.ElementAtOrDefault(4),
+                    PastPaticiple = items.ElementAtOrDefault(5),
+                    PastPaticipleTranscription = items.ElementAtOrDefault(6),
+                    Translation = items.ElementAtOrDefault(7),
+                };
                 words.Add(word);
             }
 
