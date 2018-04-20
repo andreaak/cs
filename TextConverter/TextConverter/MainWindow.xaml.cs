@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Forms;
+using TextConverter.Models;
 using Utils;
 
 namespace TextConverter
@@ -58,7 +61,6 @@ namespace TextConverter
 
         private void ButtonOpen_Click(object sender, RoutedEventArgs e)
         {
-            DownloadFiles(new string[] { "trust", "hello", "trrr"});
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
             {
                 dlg.Description = Description;
@@ -123,7 +125,7 @@ namespace TextConverter
 
             if (SelectFile.SaveFile("Save XML", "", ref path, extensions))
             {
-                var words = CSVReader.ReadWords(textBoxFileWordCSV.Text);
+                var words = CSVHelper.ReadWords(textBoxFileWordCSV.Text);
                 XMLWriteHelper.WriteWords(path, words);
             }
 
@@ -178,7 +180,7 @@ namespace TextConverter
 
             if (SelectFile.SaveFile("Save XML", "", ref path, extensions))
             {
-                var words = CSVReader.ReadVerbs(textBoxFileVerbCSV.Text);
+                var words = CSVHelper.ReadVerbs(textBoxFileVerbCSV.Text);
                 XMLWriteHelper.WriteVerbs(path, words);
             }
 
@@ -225,31 +227,204 @@ namespace TextConverter
         private void DownloadSounds_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             var files = File.ReadAllLines(textBoxFileSounds.Text);
-            DownloadFiles(files);
+            DownloadSounds(files);
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
-        private void DownloadFiles(IList<string> files)
+        private void DownloadSounds(IList<string> files)
         {
             using (var web = new WebClient())
             {
                 foreach (var file in files)
                 {
                     string normalized = file.Trim().ToLower();
-                    string res = string.Format("http://wooordhunt.ru/data/sound/word/us/mp3/{0}.mp3", normalized);
-                    var bt = web.DownloadData(res);
-                    if (bt.Length < 4 ||
-                        (bt[0] == 60 && bt[1] == 33 && bt[2] == 68 && bt[3] == 79)) //html page
+                    if (IsFileExist(normalized))
                     {
                         continue;
                     }
-                    string output = "Sounds/" + normalized + ".mp3";
-                    if(!File.Exists(output))
+
+                    try
                     {
-                        File.WriteAllBytes(output, bt);
+                        if (DownloadSound(web, normalized, CSVHelper.Us))
+                        {
+                            DownloadSound(web, normalized, CSVHelper.Uk);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        label.Content = ex.Message;
                     }
                 }
             }
+        }
+
+        private bool DownloadSound(WebClient web, string normalized, string lang)
+        {
+            string res = string.Format("http://wooordhunt.ru/data/sound/word/{0}/mp3/{1}.mp3",
+                                lang, normalized);
+            var bt = web.DownloadData(res);
+            if (IsError(bt)) //html page
+            {
+                return false;
+            }
+            string output = "Sounds/" + normalized + "_" + lang + ".mp3";
+            File.WriteAllBytes(output, bt);
+            return true;
+        }
+
+        private bool IsFileExist(string normalized)
+        {
+            string outputUs = "Sounds/" + normalized + "_us" + ".mp3";
+            string outputEn = "Sounds/" + normalized + "_uk" + ".mp3";
+            return File.Exists(outputUs) && File.Exists(outputEn);
+        }
+
+        private bool IsError(byte[] bt)
+        {
+            return bt.Length < 4 ||
+                   (bt[0] == 60 && bt[1] == 33 && bt[2] == 68 && bt[3] == 79);//html page
+        }
+
+        private void DownloadTranscription_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = !string.IsNullOrEmpty(textBoxFileSounds.Text)
+                && File.Exists(textBoxFileSounds.Text);
+        }
+
+        private void DownloadTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            var files = File.ReadAllLines(textBoxFileSounds.Text);
+            var words = DownloadTranscriptions(files);
+            XMLWriteHelper.WriteWords("files.xml", words);
+            System.Windows.MessageBox.Show("Done", "Operation Status");
+        }
+
+        private List<WordItem> DownloadTranscriptions(IList<string> files)
+        {
+            List<WordItem> words = new List<WordItem>();
+            using (var web = new WebClient())
+            {
+                web.Encoding = Encoding.UTF8;
+
+                for (int i = 0; i < files.Count - 1; )
+                {
+                    string en = files[i++];
+                    string ru = files[i++];
+                    string normalized = en.Trim().ToLower();
+
+                    string tr = DownloadTranscription(web, normalized);
+
+                    if (string.IsNullOrEmpty(tr))
+                    {
+                        continue;
+                    }
+                    var item = new WordItem();
+                    item.AddItem(CSVHelper.Ru, ru);
+                    item.AddItem(CSVHelper.En, en);
+                    item.AddItem(CSVHelper.EnTr, tr);
+                    words.Add(item);
+                }
+            }
+            return words;
+        }
+
+        private void DownloadVerbTranscription_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = !string.IsNullOrEmpty(textBoxFileSounds.Text)
+                && File.Exists(textBoxFileSounds.Text);
+        }
+
+        private void DownloadVerbTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            var verbs = CSVHelper.ReadVerbs(textBoxFileSounds.Text);
+            DownloadTranscriptions(verbs);
+            XMLWriteHelper.WriteVerbs("irregular.xml", verbs);
+            CSVHelper.WriteVerbs("irregular.csv", verbs);
+            System.Windows.MessageBox.Show("Done", "Operation Status");
+        }
+
+        private void DownloadTranscriptions(IList<EnVerbItem> verbs)
+        {
+            using (var web = new WebClient())
+            {
+                web.Encoding = Encoding.UTF8;
+
+                foreach (var verb in verbs)
+                {
+                    if(string.IsNullOrEmpty(verb.InfinitiveTranscription))
+                    {
+                        var temps = GetWords(verb.Infinitive);
+                        verb.InfinitiveTranscription = DownloadTranscription(web, temps);
+                    }
+                    if (string.IsNullOrEmpty(verb.PastSimpleTranscription))
+                    {
+                        var temps = GetWords(verb.PastSimple);
+                        verb.PastSimpleTranscription = DownloadTranscription(web, temps);
+                    }
+                    if (string.IsNullOrEmpty(verb.PastPaticipleTranscription))
+                    {
+                        var temps = GetWords(verb.PastPaticiple);
+                        verb.PastPaticipleTranscription = DownloadTranscription(web, temps);
+                    }
+                }
+            }
+        }
+
+        private string[] GetWords(string item)
+        {
+            return item.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        private string DownloadTranscription(WebClient web, string[] items)
+        {
+            StringBuilder res = new StringBuilder();
+            foreach (var item in items)
+            {
+                string normalized = item.Trim().ToLower();
+                string tr = DownloadTranscription(web, normalized);
+                if (res.Length != 0)
+                {
+                    res.Append("/ ");
+                }
+                res.Append(tr);
+            }
+            return res.ToString();
+        }
+
+        private string DownloadTranscription(WebClient web, string normalized)
+        {
+            string tr = null;
+            try
+            {
+                string res = string.Format("http://wooordhunt.ru/word/{0}", normalized);
+                var html = web.DownloadString(res);
+                tr = ParseTranscription(html, normalized, CSVHelper.Uk);
+            }
+            catch (Exception ex)
+            {
+                label.Content = ex.Message;
+            }
+            return tr;
+        }
+
+        private string ParseTranscription(string html, string normalized, string lang)
+        {
+            const string usPattern = "<span title=\"американская транскрипция слова {0}\" class=\"transcription\">";
+            const string ukPattern = "<span title=\"британская транскрипция слова {0}\" class=\"transcription\">";
+            string startPattern = lang == "us" ? usPattern : ukPattern;
+            string search = string.Format(startPattern, normalized);
+            int startIndex = html.IndexOf(search, StringComparison.OrdinalIgnoreCase);
+            if (startIndex < 0)
+            {
+                return string.Empty;
+            }
+            startIndex += search.Length;
+
+            string endPattern = "</span>";
+            int endIndex = html.IndexOf(endPattern, startIndex, StringComparison.OrdinalIgnoreCase);
+            string output = "[" + html.Substring(startIndex, endIndex - startIndex)
+                .Replace("|", "").Trim() + "]";
+            return output;
         }
     }
 }

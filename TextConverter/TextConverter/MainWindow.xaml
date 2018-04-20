@@ -102,6 +102,24 @@
                     Executed="DownloadSounds_Executed" CanExecute="DownloadSounds_CanExecute"/>
             </Button.CommandBindings>
         </Button>
+        <Button Grid.Row="8" Grid.Column="1" Content="Download Transcriptions" Command="Save" HorizontalAlignment="Left" 
+                Margin="5,5,5,5" 
+                VerticalAlignment="Top" Width="135" x:Name="buttonDownloadTranscriptions">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="DownloadTranscription_Executed" CanExecute="DownloadTranscription_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+        <Button Grid.Row="8" Grid.Column="2" Content="Download Verb Transcriptions" Command="Save" HorizontalAlignment="Left" 
+                Margin="5,5,5,5"  
+                VerticalAlignment="Top" Width="169" x:Name="buttonDownloadVerbTranscriptions">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="DownloadVerbTranscription_Executed" CanExecute="DownloadVerbTranscription_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+        <Label Grid.Row="9" Grid.Column="2" x:Name="label" Content="" HorizontalAlignment="Left" 
+               Margin="5,5,5,5" Height="22" VerticalAlignment="Top" FontSize="10"/>
 
     </Grid>
 </Window>

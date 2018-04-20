@@ -22,7 +22,7 @@ namespace TextConverter
                 {
                     writer.WriteStartElement("word");
 
-                    foreach (var lang in CSVReader.Items)
+                    foreach (var lang in CSVHelper.Items)
                     {
                         string value = word.GetItem(lang);
                         if(!string.IsNullOrEmpty(value))
@@ -54,16 +54,16 @@ namespace TextConverter
                 {
                     writer.WriteStartElement("verb");
 
-                    writer.WriteElementString("infinitive", word.Infinitive);
-                    writer.WriteElementString("infinitive_tr", word.Infinitive);
+                    writer.WriteElementString("infinitive", word.Infinitive.Trim());
+                    writer.WriteElementString("infinitive_tr", word.InfinitiveTranscription.Trim());
 
-                    writer.WriteElementString("pastSimple", word.PastSimple);
-                    writer.WriteElementString("pastSimple_tr", word.PastSimpleTranscription);
+                    writer.WriteElementString("pastSimple", word.PastSimple.Trim());
+                    writer.WriteElementString("pastSimple_tr", word.PastSimpleTranscription.Trim());
 
-                    writer.WriteElementString("pastParticiple", word.PastPaticiple);
-                    writer.WriteElementString("pastParticiple_tr", word.PastPaticipleTranscription);
+                    writer.WriteElementString("pastParticiple", word.PastPaticiple.Trim());
+                    writer.WriteElementString("pastParticiple_tr", word.PastPaticipleTranscription.Trim());
 
-                    writer.WriteElementString("translation", word.Translation);
+                    writer.WriteElementString("translation", word.Translation.Trim());
 
                     writer.WriteEndElement();
                 }
