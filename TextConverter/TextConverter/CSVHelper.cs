@@ -25,7 +25,7 @@ namespace TextConverter
             {
                 WordItem word = new WordItem();
                 var items = line.Split(',', ';');
-                for (int i = 0; i < items.Length; i++)
+                for (int i = 0; i < Items.Length && i < items.Length; i++)
                 {
                     word.AddItem(Items[i], items[i]);
                 }

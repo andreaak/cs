@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Forms;
@@ -16,8 +18,12 @@ namespace TextConverter
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const string OutputSounds = "Sounds/{1}/{0}_{1}.mp3";
+
         public static DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(MainWindow), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
         public static DependencyProperty DescriptionProperty = DependencyProperty.Register("Description", typeof(string), typeof(MainWindow), new PropertyMetadata(null));
+
+        private SynchronizationContext _uiSyncContext;
 
         public string Text
         {
@@ -57,6 +63,7 @@ namespace TextConverter
             viewModelConverter = new ViewModelConvert();
             DataContext = this;
             InitializeComponent();
+            _uiSyncContext = SynchronizationContext.Current;
         }
 
         private void ButtonOpen_Click(object sender, RoutedEventArgs e)
@@ -111,11 +118,21 @@ namespace TextConverter
         private void ConvertWordToXML_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = !string.IsNullOrEmpty(textBoxFileWordCSV.Text)
-                && File.Exists(textBoxFileWordCSV.Text);
+                /*&& File.Exists(textBoxFileWordCSV.Text)*/;
         }
 
         private void ConvertWordToXML_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
+            if(Directory.Exists(textBoxFileWordCSV.Text))
+            {
+                foreach (string file in Directory.EnumerateFiles(textBoxFileWordCSV.Text, "*.csv", SearchOption.TopDirectoryOnly))
+                {
+                    var words = CSVHelper.ReadWords(file);
+                    XMLWriteHelper.WriteWords(textBoxFileWordCSV.Text+ Path.DirectorySeparatorChar + "lesson_" + Path.GetFileNameWithoutExtension(file) + ".xml", words);
+                }
+                return;
+            }
+
             string path = "";
             string[] extensions = new string[]
             {
@@ -224,38 +241,42 @@ namespace TextConverter
                 && File.Exists(textBoxFileSounds.Text);
         }
 
-        private void DownloadSounds_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private async void DownloadSounds_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             var files = File.ReadAllLines(textBoxFileSounds.Text);
-            DownloadSounds(files);
+            await DownloadSoundsAsync(files);
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
-        private void DownloadSounds(IList<string> files)
+        private Task DownloadSoundsAsync(IList<string> files)
         {
-            using (var web = new WebClient())
+            return Task.Factory.StartNew(() =>
             {
-                foreach (var file in files)
+                using (var web = new WebClient())
                 {
-                    string normalized = file.Trim().ToLower();
-                    if (IsFileExist(normalized))
+                    for (int i = 0; i < files.Count; i += 2)
                     {
-                        continue;
-                    }
+                        string normalized = files[i].Trim().ToLower();
 
-                    try
-                    {
-                        if (DownloadSound(web, normalized, CSVHelper.Us))
+                        try
                         {
-                            DownloadSound(web, normalized, CSVHelper.Uk);
+                            _uiSyncContext.Post(state => labelInfo.Content = normalized, null);
+                            if (!IsFileExist(normalized, CSVHelper.Us))
+                            {
+                                DownloadSound(web, normalized, CSVHelper.Us);
+                            }
+                            if (!IsFileExist(normalized, CSVHelper.Uk))
+                            {
+                                DownloadSound(web, normalized, CSVHelper.Uk);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            _uiSyncContext.Post(state => labelError.Content = ex.Message, null);
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        label.Content = ex.Message;
-                    }
                 }
-            }
+            });
         }
 
         private bool DownloadSound(WebClient web, string normalized, string lang)
@@ -267,16 +288,15 @@ namespace TextConverter
             {
                 return false;
             }
-            string output = "Sounds/" + normalized + "_" + lang + ".mp3";
-            File.WriteAllBytes(output, bt);
+
+            string dest = string.Format(OutputSounds, normalized, lang);
+            File.WriteAllBytes(dest, bt);
             return true;
         }
 
-        private bool IsFileExist(string normalized)
+        private bool IsFileExist(string normalized, string lang)
         {
-            string outputUs = "Sounds/" + normalized + "_us" + ".mp3";
-            string outputEn = "Sounds/" + normalized + "_uk" + ".mp3";
-            return File.Exists(outputUs) && File.Exists(outputEn);
+            return File.Exists(string.Format(OutputSounds, normalized, lang));
         }
 
         private bool IsError(byte[] bt)
@@ -306,7 +326,7 @@ namespace TextConverter
             {
                 web.Encoding = Encoding.UTF8;
 
-                for (int i = 0; i < files.Count - 1; )
+                for (int i = 0; i < files.Count - 1;)
                 {
                     string en = files[i++];
                     string ru = files[i++];
@@ -351,7 +371,7 @@ namespace TextConverter
 
                 foreach (var verb in verbs)
                 {
-                    if(string.IsNullOrEmpty(verb.InfinitiveTranscription))
+                    if (string.IsNullOrEmpty(verb.InfinitiveTranscription))
                     {
                         var temps = GetWords(verb.Infinitive);
                         verb.InfinitiveTranscription = DownloadTranscription(web, temps);
@@ -402,7 +422,7 @@ namespace TextConverter
             }
             catch (Exception ex)
             {
-                label.Content = ex.Message;
+                labelError.Content = ex.Message;
             }
             return tr;
         }

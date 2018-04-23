@@ -118,7 +118,9 @@
                     Executed="DownloadVerbTranscription_Executed" CanExecute="DownloadVerbTranscription_CanExecute"/>
             </Button.CommandBindings>
         </Button>
-        <Label Grid.Row="9" Grid.Column="2" x:Name="label" Content="" HorizontalAlignment="Left" 
+        <Label Grid.Row="9" Grid.Column="1" x:Name="labelInfo" Content="" HorizontalAlignment="Left" 
+               Margin="5,5,5,5" Height="22" VerticalAlignment="Top" FontSize="10"/>
+        <Label Grid.Row="9" Grid.Column="2" x:Name="labelError" Content="" HorizontalAlignment="Left" 
                Margin="5,5,5,5" Height="22" VerticalAlignment="Top" FontSize="10"/>
 
     </Grid>
