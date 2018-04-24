@@ -66,6 +66,22 @@
                     Executed="ConvertWordToXML_Executed" CanExecute="ConvertWordToXML_CanExecute"/>
             </Button.CommandBindings>
         </Button>
+        <Button Grid.Row="4" Grid.Column="1" Content="Download En Transcriptions" Command="Save" HorizontalAlignment="Left" 
+                Margin="5.4,5,0,0" 
+                VerticalAlignment="Top" Width="135" x:Name="buttonDownloadWordTranscriptions">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="ConvertWordToXMLAndDownloadUkWordTranscription_Executed" CanExecute="ConvertWordToXML_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+        <Button Grid.Row="4" Grid.Column="2" Content="Download Us Transcriptions" Command="Save" HorizontalAlignment="Left" 
+                Margin="5,5,0,0" 
+                VerticalAlignment="Top" Width="152" x:Name="buttonDownloadWordUsTranscriptions">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="ConvertWordToXMLAndDownloadUsWordTranscription_Executed" CanExecute="ConvertWordToXML_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
 
         <!--Irregular verbs for cards-->
         <Button Grid.Row="5" Grid.Column="0" Content="Open Verb CSV" HorizontalAlignment="Left" 
@@ -82,6 +98,22 @@
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
                     Executed="ConvertVerbToXML_Executed" CanExecute="ConvertVerbToXML_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+        <Button Grid.Row="6" Grid.Column="1" Content="Download En Transcriptions" Command="Save" HorizontalAlignment="Left" 
+                Margin="5.4,5,0,0"  
+                VerticalAlignment="Top" Width="135" x:Name="buttonDownloadVerbTranscriptions">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="ConvertVerbToXMLAndDownloadUkVerbTranscription_Executed" CanExecute="ConvertVerbToXML_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+        <Button Grid.Row="6" Grid.Column="2" Content="Download Us Transcriptions" Command="Save" HorizontalAlignment="Left" 
+                Margin="5,5,0,0"  
+                VerticalAlignment="Top" Width="152" x:Name="buttonDownloadUsVerbTranscriptions">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="ConvertVerbToXMLAndDownloadUsVerbTranscription_Executed" CanExecute="ConvertVerbToXML_CanExecute"/>
             </Button.CommandBindings>
         </Button>
 
@@ -102,20 +134,30 @@
                     Executed="DownloadSounds_Executed" CanExecute="DownloadSounds_CanExecute"/>
             </Button.CommandBindings>
         </Button>
-        <Button Grid.Row="8" Grid.Column="1" Content="Download Transcriptions" Command="Save" HorizontalAlignment="Left" 
-                Margin="5,5,5,5" 
-                VerticalAlignment="Top" Width="135" x:Name="buttonDownloadTranscriptions">
+        <Button Grid.Row="8" Grid.Column="1" Content="Download Word Sounds" Command="Save" HorizontalAlignment="Left" 
+                Margin="5.4,5,0,0" 
+                VerticalAlignment="Top" Width="135" x:Name="buttonDownloadWordSounds">
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
-                    Executed="DownloadTranscription_Executed" CanExecute="DownloadTranscription_CanExecute"/>
+                    Executed="DownloadWordSounds_Executed" CanExecute="DownloadSounds_CanExecute"/>
             </Button.CommandBindings>
         </Button>
-        <Button Grid.Row="8" Grid.Column="2" Content="Download Verb Transcriptions" Command="Save" HorizontalAlignment="Left" 
-                Margin="5,5,5,5"  
-                VerticalAlignment="Top" Width="169" x:Name="buttonDownloadVerbTranscriptions">
+        <Button Grid.Row="8" Grid.Column="2" Content="Download Verb Sounds" Command="Save" HorizontalAlignment="Left" 
+                Margin="5.4,5,0,0" 
+                VerticalAlignment="Top" Width="135" x:Name="buttonDownloadVerbSounds">
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
-                    Executed="DownloadVerbTranscription_Executed" CanExecute="DownloadVerbTranscription_CanExecute"/>
+                    Executed="DownloadVerbSounds_Executed" CanExecute="DownloadSounds_CanExecute"/>
+            </Button.CommandBindings>
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="0" Content="Combine Ru En " Command="Save" HorizontalAlignment="Left" 
+                Margin="5,5,5,5" 
+                VerticalAlignment="Top" Width="135" x:Name="buttonDownloadTranscriptions" 
+                ToolTip="Combine Ru En and download transcription">
+            <Button.CommandBindings>
+                <CommandBinding Command="Save"
+                    Executed="DownloadPlainListTranscription_Executed" CanExecute="DownloadSounds_CanExecute"/>
             </Button.CommandBindings>
         </Button>
         <Label Grid.Row="9" Grid.Column="1" x:Name="labelInfo" Content="" HorizontalAlignment="Left" 
