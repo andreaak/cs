@@ -70,13 +70,13 @@ namespace TextConverter
             foreach (var item in items)
             {
 
-                string output = item.Infinitive + separator
+                string output = item.Infinitive.Trim().ToLowerInvariant() + separator
                     + item.InfinitiveTranscription + separator
-                    + item.PastSimple + separator
+                    + item.PastSimple.Trim().ToLowerInvariant() + separator
                     + item.PastSimpleTranscription + separator
-                    + item.PastPaticiple + separator
+                    + item.PastPaticiple.Trim().ToLowerInvariant() + separator
                     + item.PastPaticipleTranscription + separator
-                    + item.Translation + "\n";
+                    + item.Translation.Trim().ToLowerInvariant() + "\n";
                 File.AppendAllText(path, output);
             }
         }

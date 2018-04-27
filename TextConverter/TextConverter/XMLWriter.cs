@@ -54,16 +54,16 @@ namespace TextConverter
                 {
                     writer.WriteStartElement("verb");
 
-                    writer.WriteElementString("infinitive", word.Infinitive.Trim());
+                    writer.WriteElementString("infinitive", word.Infinitive.Trim().ToLowerInvariant());
                     writer.WriteElementString("infinitive_tr", word.InfinitiveTranscription.Trim());
 
-                    writer.WriteElementString("pastSimple", word.PastSimple.Trim());
+                    writer.WriteElementString("pastSimple", word.PastSimple.Trim().ToLowerInvariant());
                     writer.WriteElementString("pastSimple_tr", word.PastSimpleTranscription.Trim());
 
-                    writer.WriteElementString("pastParticiple", word.PastPaticiple.Trim());
+                    writer.WriteElementString("pastParticiple", word.PastPaticiple.Trim().ToLowerInvariant());
                     writer.WriteElementString("pastParticiple_tr", word.PastPaticipleTranscription.Trim());
 
-                    writer.WriteElementString("translation", word.Translation.Trim());
+                    writer.WriteElementString("translation", word.Translation.Trim().ToLowerInvariant());
 
                     writer.WriteEndElement();
                 }

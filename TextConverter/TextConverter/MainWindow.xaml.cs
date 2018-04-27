@@ -295,8 +295,7 @@ namespace TextConverter
             Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
 
             var files = File.ReadAllLines(textBoxFileSounds.Text);
-            var words = viewModelConverter.CombineRuEnAndDownloadPlainListTranscriptions(files, errorAction, DefaultLanguage);
-            XMLWriteHelper.WriteWords("files.xml", words);
+            viewModelConverter.CombineRuEnAndDownloadPlainListTranscriptions(textBoxFileSounds.Text, errorAction, DefaultLanguage);
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 

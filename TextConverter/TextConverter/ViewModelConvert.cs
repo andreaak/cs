@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using TextConverter.Models;
 using Utils;
@@ -174,11 +173,11 @@ namespace TextConverter
 
                 foreach (var word in words)
                 {
-                    string normalized = word.GetItem(CSVHelper.En).Trim().ToLower();
-                    string trExisted = word.GetItem(CSVHelper.EnTr).Trim().ToLower();
+                    string normalized = GetNormalized(word.GetItem(CSVHelper.En));
+                    string trExisted = GetNormalized(word.GetItem(CSVHelper.EnTr));
 
                     string tr;
-                    if (normalized.Contains(" "))
+                    if (IsMultiWord(normalized))
                     {
                         tr = DownloadMultiWordsTranscription(errorAction, web, normalized, region);
                     }
@@ -202,14 +201,14 @@ namespace TextConverter
 
                 foreach (var word in words)
                 {
-                    string normalized = word.GetItem(CSVHelper.En).Trim().ToLower();
-                    string trExisted = word.GetItem(CSVHelper.EnTr).Trim().ToLower();
+                    string normalized = GetNormalized(word.GetItem(CSVHelper.En));
+                    string trExisted = GetNormalized(word.GetItem(CSVHelper.EnTr));
                     if (!string.IsNullOrEmpty(trExisted))
                     {
                         continue;
                     }
                     string tr;
-                    if (normalized.Contains(" ") || normalized.Contains("-"))
+                    if (IsMultiWord(normalized))
                     {
                         tr = DownloadMultiWordsTranscription(errorAction, web, normalized, region);
                     }
@@ -225,20 +224,24 @@ namespace TextConverter
             }
         }
 
+        private bool IsMultiWord(string normalized)
+        {
+            return normalized.Contains(" ") || normalized.Contains("-");
+        }
+
         private string DownloadMultiWordsTranscription(Action<string> errorAction, WebClient web, string normalized, string region)
         {
-            var wrds = normalized.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var words = normalized.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             StringBuilder sb = new StringBuilder();
             bool isBrackets = false;
-            foreach (var wrd in wrds)
+            foreach (var word in words)
             {
-                ProcessWord(web, sb, wrd, ref isBrackets, errorAction, region);
+                ProcessWord(web, sb, GetNormalized(word), ref isBrackets, errorAction, region);
             }
             sb.Insert(0, "[");
             sb.Append("]");
             return sb.ToString();
         }
-
 
         private void ProcessWord(WebClient web, StringBuilder sb, string wrd, ref bool isBrackets,
             Action<string> errorAction, string region)
@@ -273,10 +276,10 @@ namespace TextConverter
             {
                 if (wrd.Contains("-"))
                 {
-                    var wrds = wrd.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (var item in wrds)
+                    var words = wrd.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var word in words)
                     {
-                        ProcessWord(web, sb, item, ref isBrackets, errorAction, region);
+                        ProcessWord(web, sb, GetNormalized(word), ref isBrackets, errorAction, region);
                     }
                 }
                 else
@@ -285,7 +288,6 @@ namespace TextConverter
                 }
             }
         }
-
 
         private void ConvertWordsFromCSVToXML(string directory, string region = null, Action<IList<WordItem>> action = null)
         {
@@ -325,7 +327,6 @@ namespace TextConverter
             }
         }
 
-
         private void DownloadTranscriptions(IList<EnVerbItem> verbs, Action<string> errorAction, string region)
         {
             using (var web = new WebClient())
@@ -334,82 +335,92 @@ namespace TextConverter
 
                 foreach (var verb in verbs)
                 {
-                    if (string.IsNullOrEmpty(verb.InfinitiveTranscription))
+                    //if (string.IsNullOrEmpty(verb.InfinitiveTranscription))
                     {
-                        var temps = GetWords(verb.Infinitive);
-                        verb.InfinitiveTranscription = DownloadMultiWordsTranscription(web, temps, errorAction, region);
+                        //var temps = GetWords(verb.Infinitive);
+                        verb.InfinitiveTranscription = DownloadMultiVerbTranscription(web, verb.Infinitive, errorAction, region);
                     }
-                    if (string.IsNullOrEmpty(verb.PastSimpleTranscription))
+                    //if (string.IsNullOrEmpty(verb.PastSimpleTranscription))
                     {
-                        var temps = GetWords(verb.PastSimple);
-                        verb.PastSimpleTranscription = DownloadMultiWordsTranscription(web, temps, errorAction, region);
+                        //var temps = GetWords(verb.PastSimple);
+                        verb.PastSimpleTranscription = DownloadMultiVerbTranscription(web, verb.PastSimple, errorAction, region);
                     }
-                    if (string.IsNullOrEmpty(verb.PastPaticipleTranscription))
+                    //if (string.IsNullOrEmpty(verb.PastPaticipleTranscription))
                     {
-                        var temps = GetWords(verb.PastPaticiple);
-                        verb.PastPaticipleTranscription = DownloadMultiWordsTranscription(web, temps, errorAction, region);
+                        //var temps = GetWords(verb.PastPaticiple);
+                        verb.PastPaticipleTranscription = DownloadMultiVerbTranscription(web, verb.PastPaticiple, errorAction, region);
                     }
                 }
             }
         }
 
-        private string[] GetWords(string item)
+        private string DownloadMultiVerbTranscription(WebClient web, string verbs, Action<string> errorAction, string region)
         {
-            return item.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-        }
-
-        private string DownloadMultiWordsTranscription(WebClient web, string[] verbs, Action<string> errorAction, string region)
-        {
-            StringBuilder res = new StringBuilder();
-            foreach (var verb in verbs)
+            string normalized = GetNormalized(verbs);
+            string tr;
+            if (IsMultiWord(normalized))
             {
-                string normalized = verb.Trim().ToLower();
-                string tr = DownloadTranscription(web, normalized, ParseTranscription, errorAction, region);
-                if (res.Length != 0)
-                {
-                    res.Append("/ ");
-                }
-                if (string.IsNullOrEmpty(tr))
-                {
-                    res.Append($"<{normalized}> ");
-                }
-                else
-                {
-                    res.Append(tr);
-                }
+                tr = DownloadMultiWordsTranscription(errorAction, web, normalized, region);
             }
-            return res.ToString();
+            else
+            {
+                tr = DownloadTranscription(web, normalized, ParseTranscription, errorAction, region);
+            }
+            return tr;
+        }
+
+        private string GetNormalized(string word)
+        {
+            return word.Trim().ToLower();
         }
 
         //Plain List Transcription
 
-        public List<WordItem> CombineRuEnAndDownloadPlainListTranscriptions(IList<string> words, Action<string> errorAction, string region)
+        public void CombineRuEnAndDownloadPlainListTranscriptions(string path, Action<string> errorAction, string region)
         {
-            List<WordItem> wordItems = new List<WordItem>();
-            using (var web = new WebClient())
+            string outputFilePath = "";
+            string[] extensions = new string[]
             {
-                web.Encoding = Encoding.UTF8;
+                "XML Files (*.xml)|*.xml|",
+                "All Files (*.*)|*.*"
+            };
 
-                for (int i = 0; i < words.Count - 1;)
+            if (SelectFile.SaveFile("Save XML", "", ref outputFilePath, extensions))
+            {
+                var words = File.ReadAllLines(path);
+
+                List<WordItem> wordItems = new List<WordItem>();
+                using (var web = new WebClient())
                 {
-                    string en = words[i++];
-                    string ru = words[i++];
-                    string normalized = en.Trim().ToLower();
+                    web.Encoding = Encoding.UTF8;
 
-                    string tr = DownloadTranscription(web, normalized, ParseTranscription, errorAction, region);
-
-                    if (string.IsNullOrEmpty(tr))
+                    for (int i = 0; i < words.Length - 1;)
                     {
-                        continue;
+                        string en = words[i++];
+                        string ru = words[i++];
+                        string normalized = GetNormalized(en);
+
+                        string tr;
+                        if (IsMultiWord(normalized))
+                        {
+                            tr = DownloadMultiWordsTranscription(errorAction, web, normalized, region);
+                        }
+                        else
+                        {
+                            tr = DownloadTranscription(web, normalized, ParseTranscription, errorAction, region);
+                        }
+
+                        var item = new WordItem();
+                        item.AddItem(CSVHelper.Ru, ru);
+                        item.AddItem(CSVHelper.En, en);
+                        if ()
+                            item.AddItem(CSVHelper.EnTr, tr);
+                        wordItems.Add(item);
                     }
-                    var item = new WordItem();
-                    item.AddItem(CSVHelper.Ru, ru);
-                    item.AddItem(CSVHelper.En, en);
-                    item.AddItem(CSVHelper.EnTr, tr);
-                    wordItems.Add(item);
                 }
+
+                XMLWriteHelper.WriteWords(outputFilePath, wordItems);
             }
-            return wordItems;
         }
 
         // Other
@@ -433,22 +444,12 @@ namespace TextConverter
 
         private string ParseTranscription(string html, string normalized, string region)
         {
-            const string usPattern = "<span title=\"американская транскрипция слова {0}\" class=\"transcription\">";
-            const string ukPattern = "<span title=\"британская транскрипция слова {0}\" class=\"transcription\">";
-            string startPattern = region == "us" ? usPattern : ukPattern;
-            string search = string.Format(startPattern, normalized);
-            int startIndex = html.IndexOf(search, StringComparison.OrdinalIgnoreCase);
-            if (startIndex < 0)
+            string transcription = ParseTranscriptionWithoutBrackets(html, normalized, region);
+            if (string.IsNullOrEmpty(transcription))
             {
                 return string.Empty;
             }
-            startIndex += search.Length;
-
-            string endPattern = "</span>";
-            int endIndex = html.IndexOf(endPattern, startIndex, StringComparison.OrdinalIgnoreCase);
-            string output = "[" + html.Substring(startIndex, endIndex - startIndex)
-                .Replace("|", "").Trim() + "]";
-            return output;
+            return "[" + transcription + "]";
         }
 
         private string ParseTranscriptionWithoutBrackets(string html, string normalized, string region)
@@ -484,7 +485,7 @@ namespace TextConverter
                 {
                     for (int i = 0; i < files.Length; i += 2)
                     {
-                        string normalized = files[i].Trim().ToLower();
+                        string normalized = GetNormalized(files[i]);
 
                         DownloadSounds(web, normalized, infoAction, errorAction, OutputWordsSounds);
                     }
@@ -504,7 +505,7 @@ namespace TextConverter
                 {
                     foreach (var word in words)
                     {
-                        string normalized = word.GetItem(CSVHelper.En).Trim().ToLower();
+                        string normalized = GetNormalized(word.GetItem(CSVHelper.En));
 
                         DownloadSounds(web, normalized, infoAction, errorAction, OutputWordsSounds);
                     }
@@ -532,12 +533,12 @@ namespace TextConverter
             });
         }
 
-        private void DownloadVerbSounds(WebClient web, string verb, Action<string> infoAction, Action<string> errorAction)
+        private void DownloadVerbSounds(WebClient web, string verbsCombined, Action<string> infoAction, Action<string> errorAction)
         {
-            var normalizedVerbs = verb.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var item in normalizedVerbs)
+            var verbs = verbsCombined.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var verb in verbs)
             {
-                DownloadSounds(web, item.Trim().ToLower(), infoAction, errorAction, OutputVerbsSounds);
+                DownloadSounds(web, GetNormalized(verb), infoAction, errorAction, OutputVerbsSounds);
             }
         }
 
