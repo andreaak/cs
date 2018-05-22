@@ -80,5 +80,27 @@ namespace TextConverter
                 File.AppendAllText(path, output);
             }
         }
+
+        public static void WriteWords(string path, IList<WordItem> items)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            string separator = ",";
+            foreach (var item in items)
+            {
+
+                string output = "";
+
+                foreach (var language in Items)
+                {
+                    string value = item.GetItem(language).Trim().ToLowerInvariant();
+                    output += (value + separator);
+                }
+                output += "\n";
+                File.AppendAllText(path, output);
+            }
+        }
     }
 }

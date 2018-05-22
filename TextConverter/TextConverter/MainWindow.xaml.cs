@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Forms;
-using TextConverter.Models;
 using Utils;
 
 namespace TextConverter
@@ -19,6 +14,7 @@ namespace TextConverter
     public partial class MainWindow : Window
     {
         private const string DefaultLanguage = CSVHelper.Uk;
+        private const string DefaultSoundFormat = "mp3";
 
         public static DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(MainWindow), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
         public static DependencyProperty DescriptionProperty = DependencyProperty.Register("Description", typeof(string), typeof(MainWindow), new PropertyMetadata(null));
@@ -123,25 +119,30 @@ namespace TextConverter
                 /*&& File.Exists(textBoxFileWordCSV.Text)*/;
         }
 
-        private void ConvertWordToXML_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private async void ConvertWordToXML_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            viewModelConverter.ConvertWordToXml(textBoxFileWordCSV.Text);
+            Action<string> infoAction = (info) => _uiSyncContext.Post(state => labelInfo.Content = info, null);
+            Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
+
+            await viewModelConverter.ConvertWordToXmlAsync(textBoxFileWordCSV.Text, infoAction, errorAction);
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
-        private void ConvertWordToXMLAndDownloadUkWordTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private async void ConvertWordToXMLAndDownloadUkWordTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
+            Action<string> infoAction = (info) => _uiSyncContext.Post(state => labelInfo.Content = info, null);
             Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
 
-            viewModelConverter.ConvertWordToXmlAndDownloadTranscription(textBoxFileWordCSV.Text, errorAction, CSVHelper.Uk);
+            await viewModelConverter.ConvertWordToXmlAndDownloadTranscriptionAsync(textBoxFileWordCSV.Text, CSVHelper.Uk, infoAction, errorAction);
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
-        private void ConvertWordToXMLAndDownloadUsWordTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private async void ConvertWordToXMLAndDownloadUsWordTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
+            Action<string> infoAction = (info) => _uiSyncContext.Post(state => labelInfo.Content = info, null);
             Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
 
-            viewModelConverter.ConvertWordToXmlAndDownloadTranscription(textBoxFileWordCSV.Text, errorAction, CSVHelper.Us);
+            await viewModelConverter.ConvertWordToXmlAndDownloadTranscriptionAsync(textBoxFileWordCSV.Text, CSVHelper.Us, infoAction, errorAction);
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
@@ -202,20 +203,22 @@ namespace TextConverter
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
-        private void ConvertVerbToXMLAndDownloadUkVerbTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private async void ConvertVerbToXMLAndDownloadUkVerbTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
+            Action<string> infoAction = (info) => _uiSyncContext.Post(state => labelInfo.Content = info, null);
             Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
 
-            viewModelConverter.ConvertVerbToXMLAndDownloadVerbTranscription(textBoxFileVerbCSV.Text, errorAction, CSVHelper.Uk);
+            await viewModelConverter.ConvertVerbToXMLAndDownloadVerbTranscriptionAsync(textBoxFileVerbCSV.Text, CSVHelper.Uk, infoAction, errorAction);
 
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
-        private void ConvertVerbToXMLAndDownloadUsVerbTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private async void ConvertVerbToXMLAndDownloadUsVerbTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
+            Action<string> infoAction = (info) => _uiSyncContext.Post(state => labelInfo.Content = info, null);
             Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
 
-            viewModelConverter.ConvertVerbToXMLAndDownloadVerbTranscription(textBoxFileVerbCSV.Text, errorAction, CSVHelper.Us);
+            await viewModelConverter.ConvertVerbToXMLAndDownloadVerbTranscriptionAsync(textBoxFileVerbCSV.Text, CSVHelper.Us, infoAction, errorAction);
 
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
@@ -264,7 +267,7 @@ namespace TextConverter
             Action<string> infoAction = (info) => _uiSyncContext.Post(state => labelInfo.Content = info, null);
             Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
 
-            await viewModelConverter.DownloadSoundsAsync(textBoxFileSounds.Text, infoAction, errorAction);
+            await viewModelConverter.DownloadSoundsAsync(textBoxFileSounds.Text, DefaultSoundFormat, infoAction, errorAction);
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
@@ -273,7 +276,7 @@ namespace TextConverter
             Action<string> infoAction = (info) => _uiSyncContext.Post(state => labelInfo.Content = info, null);
             Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
 
-            await viewModelConverter.DownloadWordsSoundsAsync(textBoxFileSounds.Text, infoAction, errorAction);
+            await viewModelConverter.DownloadWordsSoundsAsync(textBoxFileSounds.Text, DefaultSoundFormat, infoAction, errorAction);
             System.Windows.MessageBox.Show("Done", "Operation Status");
 
         }
@@ -284,18 +287,19 @@ namespace TextConverter
             Action<string> infoAction = (info) => _uiSyncContext.Post(state => labelInfo.Content = info, null);
             Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
 
-            await viewModelConverter.DownloadVerbsSoundsAsync(textBoxFileSounds.Text, infoAction, errorAction);
+            await viewModelConverter.DownloadVerbsSoundsAsync(textBoxFileSounds.Text, DefaultSoundFormat, infoAction, errorAction);
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
         // Other 
 
-        private void DownloadPlainListTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private async void DownloadPlainListTranscription_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
+            Action<string> infoAction = (info) => _uiSyncContext.Post(state => labelInfo.Content = info, null);
             Action<string> errorAction = (error) => _uiSyncContext.Post(state => labelError.Content = error, null);
 
             var files = File.ReadAllLines(textBoxFileSounds.Text);
-            viewModelConverter.CombineRuEnAndDownloadPlainListTranscriptions(textBoxFileSounds.Text, errorAction, DefaultLanguage);
+            await viewModelConverter.CombineRuEnAndDownloadPlainListTranscriptionsAsync(textBoxFileSounds.Text, DefaultLanguage,infoAction, errorAction);
             System.Windows.MessageBox.Show("Done", "Operation Status");
         }
 
