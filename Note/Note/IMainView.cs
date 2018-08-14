@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Note
 {
@@ -7,5 +8,7 @@ namespace Note
         Form Form { get; }
 
         void Refresh(bool res);
+
+        void OnChanged(); 
     }
 }

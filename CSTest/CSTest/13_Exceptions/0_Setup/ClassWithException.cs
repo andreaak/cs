@@ -7,7 +7,7 @@ namespace CSTest._13_Exceptions._0_Setup
     {
         public void MyMethod()
         {
-            Exception exception = new Exception("Мое исключение");
+            Exception exception = new ApplicationException("Мое исключение");
 
             exception.HelpLink = "http://MyCompany.com/ErrorService";
             exception.Data.Add("Причина исключения: ", "Тестовое исключение");

@@ -11,6 +11,7 @@ using Utils;
 using Utils.ActionWindow;
 using Utils.WorkWithDB;
 using Utils.Google;
+using System.IO;
 
 namespace Note
 {
@@ -138,7 +139,9 @@ namespace Note
         {
             try
             {
-                return DataManager.Insert(parentId, description, type);
+                var res = DataManager.Insert(parentId, description, type);
+                view.OnChanged();
+                return res;
             }
             catch (Exception ex)
             {
@@ -152,6 +155,7 @@ namespace Note
             try
             {
                 DataManager.Delete(id);
+                view.OnChanged();
             }
             catch (Exception ex)
             {
@@ -181,7 +185,9 @@ namespace Note
         {
             try
             {
-                return DataManager.UpdateTextData(id, editValue, plainText, htmlText);
+                var res = DataManager.UpdateTextData(id, editValue, plainText, htmlText);
+                view.OnChanged();
+                return res;
             }
             catch (Exception ex)
             {
@@ -194,7 +200,9 @@ namespace Note
         {
             try
             {
-                return DataManager.UpdateDescription(id, description);
+                var res = DataManager.UpdateDescription(id, description);
+                view.OnChanged();
+                return res;
             }
             catch (Exception ex)
             {
@@ -248,7 +256,9 @@ namespace Note
         {
             try
             {
-                return DataManager.ChangeLevel(position, parentId, id, direction);
+                var res = DataManager.ChangeLevel(position, parentId, id, direction);
+                view.OnChanged();
+                return res;
             }
             catch (Exception ex)
             {
@@ -274,7 +284,9 @@ namespace Note
         {
             try
             {
-                return DataManager.Move(position, parentId, id, direction);
+                var res = DataManager.Move(position, parentId, id, direction);
+                view.OnChanged();
+                return res;
             }
             catch (Exception ex)
             {
@@ -300,11 +312,39 @@ namespace Note
             }
         }
 
+        public bool IsNewForUpload()
+        {
+            GoogleDriveHelper helper = new GoogleDriveHelper();
+            helper.Init();
+            DateTime remoteDate;
+            if (!helper.TryGetModificationDate(OptionsUtils.DbPath, Options.DbDirectory, out remoteDate))
+            {
+                return false;
+            }
+
+            var fileDate = File.GetLastWriteTime(OptionsUtils.DbPath);
+            return remoteDate < fileDate;
+        }
+
+        public bool IsNewForDownload()
+        {
+            GoogleDriveHelper helper = new GoogleDriveHelper();
+            helper.Init();
+            DateTime remoteDate;
+            if (!helper.TryGetModificationDate(OptionsUtils.DbPath, Options.DbDirectory, out remoteDate))
+            {
+                return false;
+            }
+            var fileDate = File.GetLastWriteTime(OptionsUtils.DbPath);
+            return remoteDate > fileDate;
+        }
+
         public void UploadToGoogleDrive()
         {
             GoogleDriveHelper helper = new GoogleDriveHelper();
             helper.Init();
             helper.UploadOrUpdateFile(OptionsUtils.DbPath, Options.DbDirectory);
+            view.OnChanged();
         }
 
         public void DownloadFromGoogleDrive()

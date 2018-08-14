@@ -11,8 +11,11 @@ namespace CSTest._01_Elements_CS._02_Variables
         {
             // Неявно типизированная локальная переменная.
             var myVar = 7;
-
             Debug.WriteLine(myVar);
+
+            // Следующий оператор не может быть скомпилирован,
+            // поскольку переменная myVar имеет тип int и ей нельзя присвоить десятичное значение.
+            //myVar = 12.2m; // Ошибка!
 
             // Неявно типизированные локальные переменные не допускают множественного объявления.
             // var a = 1, b = 2, c = 3;
@@ -27,7 +30,7 @@ namespace CSTest._01_Elements_CS._02_Variables
             //Type of conditional expression cannot be determined because there is no implicit conversion between
             //var a = res ? new A() : new B();
 
-            var b = res ? new A() : new C();
+            //var b = res ? new A() : new C();
 
             //Type of conditional expression cannot be determined because there is no implicit conversion between 
             //'CSTest._01_Elements_CS._02_Variables._05_var.C' and 'CSTest._01_Elements_CS._02_Variables._05_var.D'

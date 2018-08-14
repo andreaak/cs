@@ -59,7 +59,12 @@ namespace Utils.Google
                 return false;
             }
 
-            return DownloadFile(file, saveTo, backup);
+            bool res = DownloadFile(file, saveTo, backup);
+            if(res)
+            {
+                new System.IO.FileInfo(fileName).LastWriteTime = file.ModifiedDate.GetValueOrDefault();
+            }
+            return res;
         }
 
         /// <summary>
@@ -119,6 +124,26 @@ namespace Utils.Google
                     UpdateFile(fileName, directory.Id, file.Id) :
                     UploadFile(fileName, directory.Id);
             return res != null;
+        }
+
+        public bool TryGetModificationDate(string fileName, string dirName, out DateTime date)
+        {
+            var directory = GetDirectories(dirName).FirstOrDefault();
+            if (directory == null)
+            {
+                date = new DateTime();
+                return false;
+            }
+
+            var file = GetFilesInDirectory(dirName).FirstOrDefault(item => item.Title == System.IO.Path.GetFileName(fileName));
+            if (file == null || !file.ModifiedDate.HasValue)
+            {
+                date = new DateTime();
+                return false;
+            }
+
+            date = file.ModifiedDate.Value;
+            return true;
         }
 
         /// <summary>

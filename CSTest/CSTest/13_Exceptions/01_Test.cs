@@ -97,10 +97,12 @@ namespace CSTest._13_Exceptions
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e);
+                Debug.WriteLine("GetType(): " + e.GetType());
+                Debug.WriteLine("Message: " + e.Message);
                 Debug.WriteLine("Имя члена:               {0}", e.TargetSite);
                 Debug.WriteLine("Класс определяющий член: {0}", e.TargetSite.DeclaringType);
                 Debug.WriteLine("Тип члена:               {0}", e.TargetSite.MemberType);
-                Debug.WriteLine("Message:                 " + e.Message);
                 Debug.WriteLine("Source:                  " + e.Source);
                 Debug.WriteLine("HelpLink:               " + e.HelpLink);
                 Debug.WriteLine("StackTrace:                   " + e.StackTrace);
@@ -112,17 +114,20 @@ namespace CSTest._13_Exceptions
             }
 
             /*
-            Exception thrown: 'System.Exception' in CSTest.dll
+            System.ApplicationException: Мое исключение
+               at CSTest._13_Exceptions._0_Setup.ClassWithException.MyMethod() in D:\My\cs\CSTest\CSTest\13_Exceptions\0_Setup\ClassWithException.cs:line 16
+               at CSTest._13_Exceptions._01_Test.TestExceptions3ExceptionProperties() in D:\My\cs\CSTest\CSTest\13_Exceptions\01_Test.cs:line 96
+            GetType(): System.ApplicationException
+            Message: Мое исключение
             Имя члена:               Void MyMethod()
             Класс определяющий член: CSTest._13_Exceptions._0_Setup.ClassWithException
             Тип члена:               Method
-            Message:                 Мое исключение
             Source:                  CSTest
             HelpLink:               http://MyCompany.com/ErrorService
-            StackTrace:                   at CSTest._13_Exceptions._0_Setup.ClassWithException.MyMethod() in D:\My\cs\CSTest\CSTest\13_Exceptions\0_Setup\ClassWithException.cs:line 16
-                                        at CSTest._13_Exceptions.Test.TestExceptions3() in D:\My\cs\CSTest\CSTest\13_Exceptions\Test.cs:line 97
+            StackTrace:                      at CSTest._13_Exceptions._0_Setup.ClassWithException.MyMethod() in D:\My\cs\CSTest\CSTest\13_Exceptions\0_Setup\ClassWithException.cs:line 16
+               at CSTest._13_Exceptions._01_Test.TestExceptions3ExceptionProperties() in D:\My\cs\CSTest\CSTest\13_Exceptions\01_Test.cs:line 96
             Причина исключения:  : Тестовое исключение
-            Время возникновения исключения:  : 10/27/2016 11:58:40
+            Время возникновения исключения:  : 06/18/2018 13:04:38
             */
         }
 

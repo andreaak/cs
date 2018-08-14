@@ -13,6 +13,7 @@ using Note.ExportData;
 using Note.Properties;
 using Utils;
 using Utils.ActionWindow;
+using System.Drawing;
 
 namespace Note
 {
@@ -214,6 +215,7 @@ namespace Note
             string headerText = "Upload database";
             Action action = () => presenter.UploadToGoogleDrive();
             CancelFormEx.ShowProgressWindow(action, headerText);
+            CheckNewForUploadOrDownload();
         }
 
         private void barButtonItemDownload_ItemClick(object sender, ItemClickEventArgs e)
@@ -225,6 +227,7 @@ namespace Note
             Action action = () => presenter.DownloadFromGoogleDrive();
             CancelFormEx.ShowProgressWindow(action, headerText);
             presenter.CheckBackupedFile();
+            CheckNewForUploadOrDownload();
         }
 
         private void barButtonItemLogs_ItemClick(object sender, ItemClickEventArgs e)
@@ -271,8 +274,27 @@ namespace Note
             {
                 item.Enabled = isEnable;
             }
+            if(isEnable)
+            {
+                CheckNewForUploadOrDownload();
+            }
             treeWrapper.Enabled = isEnable;
             rtfWrapper.Enabled = isEnable;
+        }
+
+        private void CheckNewForUploadOrDownload()
+        {
+            bool isNew = presenter.IsNewForUpload();
+            var color = isNew ? Color.LawnGreen : Color.Empty;
+            barButtonItemUpload.ItemAppearance.Normal.BackColor =
+            barButtonItemUpload.ItemAppearance.Hovered.BackColor =
+            barButtonItemUpload.ItemAppearance.Pressed.BackColor = color;
+
+            isNew = presenter.IsNewForDownload();
+            color = isNew ? Color.LawnGreen : Color.Empty;
+            barButtonItemDownload.ItemAppearance.Normal.BackColor =
+            barButtonItemDownload.ItemAppearance.Hovered.BackColor =
+            barButtonItemDownload.ItemAppearance.Pressed.BackColor = color;
         }
 
         private IEnumerable<BarItem> GetBarButtons()
@@ -327,6 +349,11 @@ namespace Note
                     DisplayMessage.ShowError(ex.Message);
                 }
             }
+        }
+
+        public void OnChanged()
+        {
+            CheckNewForUploadOrDownload();
         }
 
         #region DISPLAY

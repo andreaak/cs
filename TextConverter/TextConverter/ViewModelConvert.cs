@@ -501,7 +501,7 @@ namespace TextConverter
                 HashSet<string> notFinded = new HashSet<string>();
                 using (var web = new WebClient())
                 {
-                    for (int i = 0; i < files.Length; i += 2)
+                    for (int i = 0; i < files.Length; i += 1)
                     {
                         var words = files[i].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
                         foreach (var word in words)
@@ -603,7 +603,8 @@ namespace TextConverter
                 return false;
             }
 
-            string dest = string.Format(destination, normalized, region, normalized[0], soundFormat);
+            string dest = DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + 
+                        string.Format(destination, normalized, region, normalized[0], soundFormat);
             string folder = Path.GetDirectoryName(dest);
             if (!Directory.Exists(folder))
             {
