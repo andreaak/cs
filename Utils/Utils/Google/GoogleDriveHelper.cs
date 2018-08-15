@@ -62,7 +62,7 @@ namespace Utils.Google
             bool res = DownloadFile(file, saveTo, backup);
             if(res)
             {
-                new System.IO.FileInfo(fileName).LastWriteTime = file.ModifiedDate.GetValueOrDefault();
+                Synchronize(fileName, file);
             }
             return res;
         }
@@ -120,10 +120,19 @@ namespace Utils.Google
 
             var file = GetFilesInDirectory(dirName).FirstOrDefault(item => item.Title == System.IO.Path.GetFileName(fileName));
 
-            var res = file != null ?
+            var newFile = file != null ?
                     UpdateFile(fileName, directory.Id, file.Id) :
                     UploadFile(fileName, directory.Id);
-            return res != null;
+            if (newFile != null)
+            {
+                Synchronize(fileName, newFile);
+            }
+            return newFile != null;
+        }
+
+        private void Synchronize(string fileName, File remote)
+        {
+            new System.IO.FileInfo(fileName).LastWriteTime = remote.ModifiedDate.GetValueOrDefault();
         }
 
         public bool TryGetModificationDate(string fileName, string dirName, out DateTime date)

@@ -323,7 +323,7 @@ namespace Note
             }
 
             var fileDate = File.GetLastWriteTime(OptionsUtils.DbPath);
-            return remoteDate < fileDate;
+            return Compare(remoteDate, fileDate) < 0;
         }
 
         public bool IsNewForDownload()
@@ -336,7 +336,14 @@ namespace Note
                 return false;
             }
             var fileDate = File.GetLastWriteTime(OptionsUtils.DbPath);
-            return remoteDate > fileDate;
+            return Compare(remoteDate, fileDate) > 0;
+        }
+
+        private int Compare(DateTime date1, DateTime date2)
+        {
+            var dateNorm1 = new DateTime(date1.Year, date1.Month, date1.Day, date1.Hour, date1.Minute, 0);
+            var dateNorm2 = new DateTime(date2.Year, date2.Month, date2.Day, date2.Hour, date2.Minute, 0);
+            return dateNorm1.CompareTo(dateNorm2);
         }
 
         public void UploadToGoogleDrive()
@@ -420,7 +427,8 @@ namespace Note
                         return false;
                     }
                     dataManagerLocal = ObjectsFactory.Instance.GetService<DatabaseManager>();
-                }else
+                }
+                else
                 {
                     dataManagerLocal = GetDatabaseManager(dataSource);
                 }
@@ -455,7 +463,6 @@ namespace Note
             return ObjectsFactory.Instance.GetService<DatabaseManager>(
                 new KeyValuePair<string, object>(OptionsUtils.ProviderName, OptionsUtils.Provider),
                 new KeyValuePair<string, object>(OptionsUtils.ConnectionStringName, connectionString));
-
         }
     }
 }
