@@ -3,9 +3,9 @@
 <head>
     <title>Basic Controller</title>
 
-    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
-    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="../../00_Libraries/angular.js"></script>
+    <link href="../../00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../00_Libraries/bootstrap.css" rel="stylesheet" />
 
     <script>
         angular.module("exampleApp", [])
@@ -33,8 +33,9 @@
         <div class="panel-body">
             <label class="h4">Select a City:</label>
             <!--
-                когда пользователь выбирает элемент то содержимое этого элемента благодаря ng-model записывается в свойство city
-                после чего обновляются привязки и функция getCountry вызывается с новым значением в качестве параметра
+            когда пользователь выбирает элемент то содержимое этого элемента благодаря ng-model
+            записывается в свойство city после чего обновляются привязки
+            и функция getCountry вызывается с новым значением в качестве параметра
             -->
             <select ng-options="city for city in cities" ng-model="city"></select>
         </div>

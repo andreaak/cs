@@ -4,9 +4,9 @@
 
     <title>Showing an error message</title>
 
-    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
-    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="../../00_Libraries/angular.js"></script>
+    <link href="../../00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../00_Libraries/bootstrap.css" rel="stylesheet" />
 
     <script>
         angular.module("sampleApp", [])
@@ -18,7 +18,8 @@
 
                 $scope.message = "Ready";
 
-                // Для многих элементов форм ошибки могут быть одинаковыми, для того чтобы избавиться от дублирования кода
+                // Для многих элементов форм ошибки могут быть одинаковыми, 
+                // для того чтобы избавиться от дублирования кода
                 // можно использовать методы подобные getError
                 $scope.getError = function (error) {
                     if (angular.isDefined(error)) {
@@ -76,8 +77,9 @@
                     <input name="userEmail" type="email" class="form-control" required ng-model="newUser.email">
 
                     <!--
-                        Если userName был изменен myForm.userEmail.$dirty == true и его формат не правильный myForm.userEmail.$invalid == true
-                        Отобразить div в котором вывести сообщение соответствующее типу ошибки
+                    Если userName был изменен myForm.userEmail.$dirty == true
+                    и его формат не правильный myForm.userEmail.$invalid == true
+                    Отобразить div в котором вывести сообщение соответствующее типу ошибки
                     -->
                     <div class="error" ng-show="myForm.userEmail.$invalid && myForm.userEmail.$dirty">
                         {{getError(myForm.userEmail.$error)}}

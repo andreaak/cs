@@ -31,13 +31,13 @@ namespace GrabDatabase
 
         private void barButtonConnect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Connect(true);
+            Connect();
         }
 
         private void barButtonItemSelectConnection_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OptionsUtils.ClearDbData();
-            Connect(true);
+            Connect();
         }
 
         #endregion
@@ -259,9 +259,9 @@ namespace GrabDatabase
 
         #region UTILS
 
-        private bool Connect(bool isReconnect = false)
+        private bool Connect()
         {
-            if (isReconnect && !Reconnect())
+            if (!Reconnect())
             {
                 return false;
             }
@@ -297,8 +297,9 @@ namespace GrabDatabase
         {
             try
             {
-                DialogResult res = new DBDataForm().ShowDialog(this);
-                return res == DialogResult.OK;
+                //DialogResult res = new DBDataForm().ShowDialog(this);
+                //return res == DialogResult.OK;
+                return OptionsUtils.DBHelper.Initialize();
             }
             catch (OperationCanceledException)
             {

@@ -6,9 +6,9 @@
         angular.isDefined - функция, которая позволяет проверить наличие свойства объекта.
     -->
 
-    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
-    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="../../00_Libraries/angular.js"></script>
+    <link href="../../00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../00_Libraries/bootstrap.css" rel="stylesheet" />
 
     <script>
         angular.module("sampleApp", [])
@@ -56,8 +56,10 @@
                         <option>Low</option>
                     </select>
                 </div>
-                <!-- При введении значений в поля action и priority angular автоматически создает объект task
-                    и устанавливает для него свойства. -->
+                <!--
+                При введении значений в поля action и priority
+                angular автоматически создает объект task и устанавливает для него свойства.
+                -->
                 <button class="btn btn-primary btn-block" ng-click="addTask(task)">Add</button>
             </div>
         </div>

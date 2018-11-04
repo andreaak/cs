@@ -3,21 +3,22 @@
 <head>
     <title>ng-switch</title>
 
-    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
-    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="../../../00_Libraries/angular.js"></script>
+    <link href="../../../00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../../00_Libraries/bootstrap.css" rel="stylesheet" />
     <script src="app.js"></script>
 
 </head>
 <body ng-controller="SampleAppCtrl">
 
     <div class="container">
-        Шаблон 
+        Шаблон
         <select ng-model="mode" ng-options="item.display for item in options track by item.value"></select>
 
-        <!-- 
-            ng-switch - директива используется для переключения структуры DOM на основе выражения. В отличии от ng-include данная
-            директива не прозводит загрузку с сервера данных, а делает видимым один из элементов, который есть в DOM 
+        <!--
+        ng-switch - директива используется для переключения структуры DOM на основе выражения.
+        В отличии от ng-include данная директива не прозводит загрузку с сервера данных,
+        а делает видимым один из элементов, который есть в DOM
         -->
 
         <div ng-if="false">asdasdsad</div>

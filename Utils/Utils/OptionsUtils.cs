@@ -8,6 +8,7 @@ using System.Threading;
 using Utils.WorkWithDB;
 using System.Data.SQLite;
 using System.IO;
+using Utils.WorkWithDB.Helpers;
 
 namespace Utils
 {
@@ -89,43 +90,32 @@ namespace Utils
             }
         }
 
-        private static string provider = null;
         public static string Provider
         {
             get
             {
-                if (provider == null)
-                {
-                    if (!string.IsNullOrEmpty(ConnectionName))
-                    {
-                        provider = ConfigurationManager.ConnectionStrings[connectionName].ProviderName;
-                    }
-                }
-                return provider;
+                return DBHelper.Provider;
             }
-            set { provider = value; }
+            set
+            {
+                DBHelper.Provider = value;
+            }
         }
 
-        private static SQLiteConnectionStringBuilder builder;
         public static string ConnectionString
         {
             get
             {
-                if (builder == null)
-                {
-                    if (!string.IsNullOrEmpty(ConnectionName))
-                    {
-                        string connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
-                        builder = new SQLiteConnectionStringBuilder(connectionString);
-                    }
-                }
-                return builder?.ConnectionString;
+                return DBHelper.ConnectionString;
             }
             set
             {
-                builder = string.IsNullOrEmpty(value) ? null : new SQLiteConnectionStringBuilder(value);
+                DBHelper.ConnectionString = value;
             }
         }
+
+        private static IDBHelper dbhelper;
+        public static IDBHelper DBHelper => dbhelper ?? (dbhelper = DBHelperFactory.GetHelper(ConnectionName));
 
         public static string GetConnectionString(string dataSource)
         {
@@ -134,22 +124,12 @@ namespace Utils
             return builder.ConnectionString;
         }
 
-        public static string DbPath
-        {
-            get
-            {
-                FileInfo file = new FileInfo(builder.DataSource);
-                return file.Exists ?
-                        file.FullName :
-                        Environment.CurrentDirectory + Path.DirectorySeparatorChar + builder.DataSource;
-            }
-        }
+        public static string DbPath => DBHelper.DbPath;
 
         public static void ClearDbData()
         {
-            OptionsUtils.Provider = null;
             OptionsUtils.ConnectionName = null;
-            builder = null;
+            dbhelper = null;
         }
 
         private static string GetConnectionName()

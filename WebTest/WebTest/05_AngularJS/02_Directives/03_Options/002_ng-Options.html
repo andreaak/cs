@@ -3,10 +3,9 @@
 <head>
     <title>ng-options</title>
 
-    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
-
-    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
+    <script src="../../00_Libraries/angular.js"></script>
+    <link href="../../00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../00_Libraries/bootstrap.css" rel="stylesheet" />
 
     <script>
         var app = angular.module("SampleApp", []);
@@ -15,7 +14,7 @@
             $scope.items = [{ prop1: "item 1", prop2: 1 },
                 { prop1: "item 2", prop2: 2 },
                 { prop1: "item 3", prop2: 3 }];
-            $scope.selected1 = $scope.items[0];
+            $scope.selected1 = $scope.items[1];
         });
     </script>
 
@@ -30,7 +29,7 @@
     -->
 
     <select ng-model="selected1"
-            ng-options="item.prop1 for item in items track by item.prop2"></select>
+            ng-options="item.prop1 for item in items"></select>
 
     <br />
     <br />

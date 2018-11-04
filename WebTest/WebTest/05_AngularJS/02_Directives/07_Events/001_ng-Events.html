@@ -3,17 +3,17 @@
 <head>
     <title>Events list</title>
     <!-- 
-        AngularJS предоставляет множество оберток над стандартными событиями JavaScript 
-        которые позволяют обрабатывать эти же события в приложении angular. 
-        Но в AngularJS не предусмотрена событийная модель DOM level 2 что может показаться странным, 
-        так что здесь придётся задавать обработчики на события прямо в разметке. 
-        <button ng-click=“handler($event)”>
-        Так же angular предоставляет вам возможность создавать свои директивы для обработки событий.
+    AngularJS предоставляет множество оберток над стандартными событиями JavaScript 
+    которые позволяют обрабатывать эти же события в приложении angular. 
+    Но в AngularJS не предусмотрена событийная модель DOM level 2 что может показаться странным, 
+    так что здесь придётся задавать обработчики на события прямо в разметке. 
+    <button ng-click="handler($event)">
+    Так же angular предоставляет вам возможность создавать свои директивы для обработки событий.
     -->
     
-    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
-    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="../../00_Libraries/angular.js"></script>
+    <link href="../../00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../00_Libraries/bootstrap.css" rel="stylesheet" />
     <script>
         var module = angular.module("SampleApp", []);
         module.controller("SampleAppCtrl", function ($scope) {

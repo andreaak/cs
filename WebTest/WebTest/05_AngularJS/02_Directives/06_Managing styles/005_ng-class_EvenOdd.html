@@ -2,11 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="SampleApp">
 <head>
     <title>ng-class even &amp; ng-class-odd</title>
-    <!-- ng-class-even и ng-class-odd директивы работают в связке с ng-repeat и позволяют устанавливать определенные классы на четные и нечетные строки-->
+    <!--
+    ng-class-even и ng-class-odd директивы работают в связке с ng-repeat
+    и позволяют устанавливать определенные классы на четные и нечетные строки
+    -->
 
-    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
-    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="../../00_Libraries/angular.js"></script>
+    <link href="../../00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../00_Libraries/bootstrap.css" rel="stylesheet" />
 
     <script>
         var app = angular.module("SampleApp", []);
@@ -35,8 +38,8 @@
 <body ng-controller="SampleAppCtrl">
     <div class="container">
         <ul>
-            <li ng-repeat="item in items" 
-                ng-class-even="class1" 
+            <li ng-repeat="item in items"
+                ng-class-even="class1"
                 ng-class-odd="class2">{{item}}</li>
         </ul>
     </div>

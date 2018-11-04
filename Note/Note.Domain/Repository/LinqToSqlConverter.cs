@@ -61,20 +61,43 @@ namespace Note.Domain.Repository
             item.ModDate = DateConverter.Convert(entity.ModDate);
         }
 
-        internal static IList<LogData> Convert(IEnumerable<DataLog> table)
+        internal static IList<LogData> Convert(IEnumerable<DataLog> table, NoteDataContext dataContext)
         {
-            return table.Select(Convert).ToList();
+            return table.Select(item => Convert(item, dataContext)).ToList();
         }
 
-        public static LogData Convert(DataLog item)
+        public static LogData Convert(DataLog item, NoteDataContext dataContext)
         {
             return new LogData
             {
                 EntityID = item.EntityID,
                 Operation = item.Operation,
-                EntityDescription = item.EntityDescription,
+                EntityDescription = GetDescription(item.EntityID, dataContext, item.EntityDescription),
                 ModDate = DateConverter.Convert(item.ModDate),
             };
+        }
+
+        private static string GetDescription(int entityId, NoteDataContext dataContext, string description)
+        {
+            List<string> descriptions = new List<string>();
+
+            int parentId = entityId;
+            while(parentId != Concrete.DBConstants.BASE_LEVEL)
+            {
+                var entity = dataContext.Entity.FirstOrDefault(item => item.ID == parentId);
+                if(entity == null)
+                {
+                    break;
+                }
+                descriptions.Add(entity.Description);
+                parentId = entity.ParentID;
+            }
+            if(descriptions.Count == 0)
+            {
+                return description;
+            }
+
+            return string.Join("/", descriptions.Reverse<string>());
         }
 
         public static void Convert(Description item, Description entity)

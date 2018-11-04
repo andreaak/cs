@@ -61,7 +61,7 @@ namespace Note.Domain.Repository
         {
             get
             {
-                return LinqToSqlConverter.Convert(dataContext.DataLog);
+                return LinqToSqlConverter.Convert(dataContext.DataLog, dataContext);
             }
         }
 

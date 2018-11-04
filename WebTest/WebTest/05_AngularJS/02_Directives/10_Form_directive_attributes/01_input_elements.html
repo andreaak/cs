@@ -6,12 +6,13 @@
     ng-minlength устанавливает минимальное колличество символов для того чтобы данные введенные в элемент считались валидными
     ng-maxlength устанавливает максимальное колличество символов для того чтобы данные введенные в элемент считались валидными
     ng-pattern устанавливает регулярное выражение, соответствуя которому данные будут считатся валидными
-    ng-required устанавливает обязательность введения данных для элемента-->
+    ng-required устанавливает обязательность введения данных для элемента
+ -->
 <head>
     <title>Form directive attributes</title>
-    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
-    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="../../00_Libraries/angular.js"></script>
+    <link href="../../00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../00_Libraries/bootstrap.css" rel="stylesheet" />
     <script>
         angular.module("studyModule", [])
         .controller("studyCtrl", function ($scope) {
@@ -28,8 +29,11 @@
                     <div class="form-group">
                         <label class="h3">Text:</label>
                         <input name="sample" class="form-control" ng-model="inputValue" ng-required="requireValue" ng-minlength="3" ng-maxlength="10" ng-pattern="matchPattern" />
-                        <!--Обратите внимание что для элементов input у которых атрибут type равен email, url, number
-                не нужно указывать ng-pattern так как angular уже использует его для проверки на валидность содержимое элемента-->
+                        <!--
+                        Обратите внимание что для элементов input у которых атрибут type равен email, url, number
+                        не нужно указывать ng-pattern так как angular уже использует его
+                        для проверки на валидность содержимое элемента
+                        -->
                     </div>
                 </div>
                 <div class="panel-body">

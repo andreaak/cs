@@ -231,6 +231,7 @@
     </Compile>
     <Compile Include="WorkWithDB\DBUtils.cs" />
     <Compile Include="WorkWithDB\Connections\DBParameter.cs" />
+    <Compile Include="WorkWithDB\Helpers\SqlLiteHelper.cs" />
     <Compile Include="WorkWithDB\SelectConnection.cs">
       <SubType>Form</SubType>
     </Compile>

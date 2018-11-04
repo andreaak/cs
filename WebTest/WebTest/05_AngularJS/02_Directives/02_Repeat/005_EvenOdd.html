@@ -3,9 +3,9 @@
 <head>
     <title>Built in variables</title>
 
-    <script src="/05_AngularJS/00_Libraries/angular.js"></script>
-    <link href="/05_AngularJS/00_Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/05_AngularJS/00_Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="../../00_Libraries/angular.js"></script>
+    <link href="../../00_Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../../00_Libraries/bootstrap.css" rel="stylesheet" />
 
     <script>
         var app = angular.module("SampleApp", []);
@@ -41,8 +41,10 @@
                 </tr>
             </thead>
 
-            <!-- Переменная $even содержит значение true если элемент четный, иначе false.
-                 Переменная $odd содержит значение true если элемент нечетный, иначе false-->
+            <!--
+            Переменная $even содержит значение true если элемент четный, иначе false.
+            Переменная $odd содержит значение true если элемент нечетный, иначе false
+            -->
             <tr ng-repeat="item in items" ng-class="$even ? 'class1' : 'class2'">
                 <td>{{$index+1}}</td>
                 <td>{{item.name}}</td>

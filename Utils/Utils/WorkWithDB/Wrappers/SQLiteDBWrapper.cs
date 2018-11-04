@@ -119,8 +119,8 @@ namespace Utils.WorkWithDB.Wrappers
                 throw new Exception("Wrong Connection String");
             }
 
-            if (!File.Exists(System.Windows.Forms.Application.StartupPath + Path.DirectorySeparatorChar + file)
-                && !File.Exists(file))
+            if (!File.Exists(file)
+                &&!File.Exists(System.Windows.Forms.Application.StartupPath + Path.DirectorySeparatorChar + file))
             {
                 throw new DbFileNotExistException();
             }

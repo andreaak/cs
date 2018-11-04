@@ -68,8 +68,10 @@ namespace Note
             {
                 if (OptionsUtils.ConnectionName == OptionsUtils.Other)
                 {
-                    DialogResult res = new DBDataForm().ShowDialog(view.Form);
-                    if (res != DialogResult.OK)
+                    //DialogResult res = new DBDataForm().ShowDialog(view.Form);
+                    //if (res != DialogResult.OK)
+                    bool res = OptionsUtils.DBHelper.Initialize();
+                    if(!res)
                     {
                         view.Refresh(false);
                         return;
