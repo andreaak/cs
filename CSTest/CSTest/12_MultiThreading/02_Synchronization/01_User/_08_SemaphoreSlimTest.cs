@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CSTest._12_MultiThreading._02_Synchronization._01_User
@@ -59,6 +60,8 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
             }
 
             // Delay.
+            Thread.Sleep(1000);
+            Debug.WriteLine("Сброс");
             Thread.Sleep(3000);
             /*
             Поток 9 начал работу.
@@ -135,15 +138,100 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
             */
         }
 
+        [Test]
+        // SemaphoreSlim  - легковесный класс-семафор, который не использует объекты синхронизации ядра.
+        public void TestSemaphoreSlim5()
+        {
+            slim = new SemaphoreSlim(0, 1);
+            Task[] tasks = 
+            {
+                Task.Run(async () => await FunctionAsync(500)),
+                Task.Run(async () => await FunctionAsync(500)),
+                Task.Run(async () => await FunctionAsync(500))
+            };
+
+            // Delay.
+            Thread.Sleep(3000);
+            Debug.WriteLine("Сброс");
+            slim.Release();
+            Task.WaitAll(tasks);
+            // Delay.
+            //Thread.Sleep(3000);
+
+            /*
+            Поток 10 начал работу.
+            Поток 9 начал работу.
+            Поток 11 начал работу.
+            Сброс
+            Поток 9 в критической секции.
+            Поток 9 закончил работу.
+
+            Поток 10 в критической секции.
+            Поток 10 закончил работу.
+
+            Поток 9 в критической секции.
+            Поток 9 закончил работу.
+            */
+        }
+
+        [Test]
+        // SemaphoreSlim  - легковесный класс-семафор, который не использует объекты синхронизации ядра.
+        public void TestSemaphoreSlim6()
+        {
+            slim = new SemaphoreSlim(1, 1);
+            Task[] tasks =
+            {
+                Task.Run(async () => await FunctionAsync(500)),
+                Task.Run(async () => await FunctionAsync(500)),
+                Task.Run(async () => await FunctionAsync(500))
+            };
+
+            // Delay.
+            Thread.Sleep(1000);
+            Debug.WriteLine("Wait");
+            Task.WaitAll(tasks);
+            /*
+            Поток 10 начал работу.
+            Поток 11 начал работу.
+            Поток 9 начал работу.
+            Поток 10 в критической секции.
+            Поток 10 закончил работу.
+
+            Поток 9 в критической секции.
+            Wait
+            Поток 9 закончил работу.
+
+            Поток 10 в критической секции.
+            Поток 10 закончил работу.
+            */
+        }
+
         static void Function(object delay)
         {
+            Debug.WriteLine("Поток {0} начал работу.", Thread.CurrentThread.ManagedThreadId);
             slim.Wait();
 
-            Debug.WriteLine("Поток {0} начал работу.", Thread.CurrentThread.ManagedThreadId);
+            Debug.WriteLine("Поток {0} в критической секции.", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep((int)delay);
             Debug.WriteLine("Поток {0} закончил работу.\n", Thread.CurrentThread.ManagedThreadId);
 
             slim.Release();
+        }
+
+        static async Task FunctionAsync(int delay)
+        {
+            Debug.WriteLine("Поток {0} начал работу.", Thread.CurrentThread.ManagedThreadId);
+            await slim.WaitAsync();
+            try
+            {
+                Debug.WriteLine("Поток {0} в критической секции.", Thread.CurrentThread.ManagedThreadId);
+                Thread.Sleep(delay);
+                Debug.WriteLine("Поток {0} закончил работу.\n", Thread.CurrentThread.ManagedThreadId);
+            }
+            finally
+            {
+                slim.Release();
+            }
         }
     }
 }

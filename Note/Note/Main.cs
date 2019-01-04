@@ -51,7 +51,6 @@ namespace Note
 
         private void barButtonConnect_ItemClick(object sender, EventArgs e)
         {
-            OptionsUtils.ClearDbData();
             presenter.Connect();
         }
 

@@ -1,12 +1,38 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
+using System.Linq;
 using TextConverter.Models;
+using static TextConverter.Models.WordItem;
 
 namespace TextConverter
 {
-    public class XMLWriteHelper
+    public class XMLHelper
     {
+        public static IList<WordItem> ReadWords(string path)
+        {
+            var xml = XDocument.Load(path);
+            var res = xml.Root.Descendants("word").Select(CreateItem).ToArray();
+            return res;
+        }
+
+        private static WordItem CreateItem(XElement element)
+        {
+            var item = new WordItem();
+            foreach (var name in Items)
+            {
+                var value = element.Element(name)?.Value;
+                if (!string.IsNullOrEmpty(value))
+                {
+                    item.AddItem(name, value);
+                }
+               
+            }
+            item.RankFile = element.Element(RankTag)?.Value;
+            return item;
+        }
+
         public static void WriteWords(string path, IList<WordItem> words)
         {
             XmlWriterSettings settings = new XmlWriterSettings();
@@ -21,11 +47,15 @@ namespace TextConverter
                 foreach (WordItem word in words)
                 {
                     writer.WriteStartElement("word");
+                    if(!string.IsNullOrEmpty(word.RankFile))
+                    {
+                        writer.WriteElementString(RankTag, word.RankFile);
+                    }
 
-                    foreach (var lang in CSVHelper.Items)
+                    foreach (var lang in Items)
                     {
                         string value = word.GetItem(lang);
-                        if(!string.IsNullOrEmpty(value))
+                        if (!string.IsNullOrEmpty(value))
                         {
                             writer.WriteElementString(lang, value);
                         }

@@ -64,24 +64,37 @@ namespace Note
             bool dbConnectionOk = false;
             bool showMessage = true;
             string errorMessage = null;
+            OptionsUtils.ClearDbData();
+
             try
             {
-                if (OptionsUtils.ConnectionName == OptionsUtils.Other)
+
+                string name = OptionsUtils.ConnectionName;
+                if (name == OptionsUtils.Other)
                 {
-                    //DialogResult res = new DBDataForm().ShowDialog(view.Form);
-                    //if (res != DialogResult.OK)
                     bool res = OptionsUtils.DBHelper.Initialize();
                     if(!res)
                     {
-                        view.Refresh(false);
-                        return;
+                        throw new OperationCanceledException();
                     }
                 }
-
-                DataManager = ObjectsFactory.Instance.GetService<DatabaseManager>();
-                if (DataManager.IsDBOnline())
+                else if (name == OptionsUtils.New)
                 {
-                    dbConnectionOk = DataManager.IsProperDB || DataManager.CreateDb();
+                    DialogResult res = new DBDataForm().ShowDialog(view.Form);
+                    if (res != DialogResult.OK)
+                    {
+                        throw new OperationCanceledException();
+                    }
+                    DataManager = ObjectsFactory.Instance.GetService<DatabaseManager>();
+                    dbConnectionOk = DataManager.CreateDb();
+                }
+                else
+                {
+                    DataManager = ObjectsFactory.Instance.GetService<DatabaseManager>();
+                    if (DataManager.IsDBOnline())
+                    {
+                        dbConnectionOk = DataManager.IsProperDB || DataManager.CreateDb();
+                    }
                 }
             }
             catch (DbFileNotExistException)
@@ -90,13 +103,41 @@ namespace Note
             }
             catch (OperationCanceledException)
             {
-                if (DataManager == null)
+                OptionsUtils.RestoreDbData();
+                //if (DataManager == null)
+                //{
+                //    showMessage = false;
+                //}
+                //else
+                //{
+                //    dbConnectionOk = true;
+                //}
+                return;
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+
+            if (!dbConnectionOk)
+            {
+                HandleError(showMessage, errorMessage);
+            }
+            view.Refresh(dbConnectionOk);
+        }
+
+        public void ConnectAfterDownload()
+        {
+            bool dbConnectionOk = false;
+            bool showMessage = true;
+            string errorMessage = null;
+            try
+            {
+
+                DataManager = ObjectsFactory.Instance.GetService<DatabaseManager>();
+                if (DataManager.IsDBOnline())
                 {
-                    showMessage = false;
-                }
-                else
-                {
-                    dbConnectionOk = true;
+                    dbConnectionOk = DataManager.IsProperDB || DataManager.CreateDb();
                 }
             }
             catch (Exception ex)
@@ -362,7 +403,7 @@ namespace Note
             helper.Init();
             if (helper.DownloadFile(OptionsUtils.DbPath, Options.DbDirectory, OptionsUtils.DbPath, BackupFile))
             {
-                Connect();
+                ConnectAfterDownload();
             }
         }
 

@@ -2,20 +2,12 @@
 using System.IO;
 using TextConverter.Models;
 using System.Linq;
+using static TextConverter.Models.WordItem;
 
 namespace TextConverter
 {
     class CSVHelper
     {
-        public const string Us = "us";
-        public const string Uk = "uk";
-
-        public const string Ru = "ru";
-        public const string En = "en";
-        public const string EnTr = "en_tr";
-        public const string De = "de";
-        public static readonly string[] Items = { Ru, En, EnTr, De };
-
         public static IList<WordItem> ReadWords(string path)
         {
             var lines = File.ReadAllLines(path);
@@ -25,7 +17,8 @@ namespace TextConverter
             {
                 WordItem word = new WordItem();
                 var items = line.Split(',', ';');
-                for (int i = 0; i < Items.Length && i < items.Length; i++)
+                word.RankFile = items[0];
+                for (int i = 1; i < Items.Length && i < items.Length; i++)
                 {
                     word.AddItem(Items[i], items[i]);
                 }
@@ -34,6 +27,29 @@ namespace TextConverter
             }
 
             return words;
+        }
+
+        public static void WriteWords(string path, IList<WordItem> items)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            string separator = ",";
+            foreach (var item in items)
+            {
+
+                string output = "";
+                output += (item.RankFile + separator);
+
+                foreach (var language in Items)
+                {
+                    string value = (item.GetItem(language) ?? "").Trim().ToLowerInvariant();
+                    output += (value + separator);
+                }
+                output += "\n";
+                File.AppendAllText(path, output);
+            }
         }
 
         public static IList<EnVerbItem> ReadVerbs(string path)
@@ -77,28 +93,6 @@ namespace TextConverter
                     + item.PastPaticiple.Trim().ToLowerInvariant() + separator
                     + item.PastPaticipleTranscription + separator
                     + item.Translation.Trim().ToLowerInvariant() + "\n";
-                File.AppendAllText(path, output);
-            }
-        }
-
-        public static void WriteWords(string path, IList<WordItem> items)
-        {
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-            }
-            string separator = ",";
-            foreach (var item in items)
-            {
-
-                string output = "";
-
-                foreach (var language in Items)
-                {
-                    string value = item.GetItem(language).Trim().ToLowerInvariant();
-                    output += (value + separator);
-                }
-                output += "\n";
                 File.AppendAllText(path, output);
             }
         }

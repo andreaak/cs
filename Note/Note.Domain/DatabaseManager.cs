@@ -42,7 +42,7 @@ namespace Note.Domain
 
         public bool CreateDb()
         {
-            string message = string.Format(Resources.DatabaseCreationQuestion, Environment.NewLine, GetDBFileName());
+            string message = string.Format(Resources.DatabaseCreationQuestion, GetDBFileName());
             if (DisplayMessage.ShowWarningYesNO(message) == DialogResult.Yes)
             {
                 string fileFullName = Application.StartupPath + Path.DirectorySeparatorChar + GetDBFileName();

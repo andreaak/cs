@@ -101,29 +101,28 @@ namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
         // Объект для блокировки.
         private static readonly object block = new object();
 
-        
-        public static void Function2()
+        public static void FunctionCommonLockObject_1()
         {
             for (uint i = 0; i < 3; ++i)
             {
                 lock (block)
                 {
-                    Debug.WriteLine("Начало блокировки Function2");
+                    Debug.WriteLine("Начало блокировки FunctionCommonLockObject_1");
                     Thread.Sleep(200);
-                    Debug.WriteLine("Конец блокировки Function2");
+                    Debug.WriteLine("Конец блокировки FunctionCommonLockObject_1\n");
                 }
             }
         }
 
-        public static void Function3()
+        public static void FunctionCommonLockObject_2()
         {
             for (uint i = 0; i < 3; ++i)
             {
                 lock (block)
                 {
-                    Debug.WriteLine("Начало блокировки Function3");
+                    Debug.WriteLine("Начало блокировки FunctionCommonLockObject_2");
                     Thread.Sleep(200);
-                    Debug.WriteLine("Конец блокировки Function3");
+                    Debug.WriteLine("Конец блокировки FunctionCommonLockObject_2\n");
                 }
             }
         }
@@ -132,7 +131,7 @@ namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
         // Нельзя использовать объекты блокировки структурного типа.
         // blockStruct - не может быть структурным.
         static private int blockStruct = 0;
-        public static void FunctionWithError()
+        public static void FunctionWithStructLockObject()
         {
             for (int i = 0; i < 50; ++i)
             {

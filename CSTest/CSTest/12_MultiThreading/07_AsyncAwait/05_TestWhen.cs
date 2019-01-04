@@ -5,6 +5,8 @@ using System.Threading;
 using NUnit.Framework;
 using System.Threading.Tasks;
 using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
+using System;
+using System.Runtime.ExceptionServices;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {
@@ -246,7 +248,265 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Downloads complete.
             */
         }
+
+        [Test]
+        public async void TestAsyncAwait15_WhenAll()
+        {
+            var mc = new _05_ClassUnderTest();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            var tasks = new[] { 100, 200, 300, 400, 500 }
+                .Select(item => Task.Run(async () => await mc.OperationWithResultAsync(item).WaitOrCancel(cts.Token).ConfigureAwait(false), cts.Token)).ToList();
+
+            await Task.WhenAll(tasks);
+
+            Debug.WriteLine("After tasks await");
+
+            /*
+            Task 200 started
+            Task 100 started
+            Task 300 started
+            Task 400 started
+            Task 500 started
+            Task 100 completed
+            Task 200 completed
+            Task 300 completed
+            The thread 0x292c has exited with code 0 (0x0).
+            Task 400 completed
+            Task 500 completed
+            After tasks await
+            */
+        }
+
+        [Test]
+        public async void TestAsyncAwait16_WhenAll_Canceled()
+        {
+            var mc = new _05_ClassUnderTest();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            var tasks = new[] { 100, 200, 300, 400, 500 }
+                .Select(item => Task.Run(async () => await mc.OperationWithResultAsync(item).WaitOrCancel(cts.Token).ConfigureAwait(false))).ToList();
+
+            cts.CancelAfter(1000);
+
+            try
+            {
+                await Task.WhenAll(tasks);
+            }
+            catch (OperationCanceledException)
+            {
+
+                Debug.WriteLine("Operatons canceled");
+            }
+
+            Debug.WriteLine("After tasks await");
+
+            /*
+            Task 100 started
+            Task 300 started
+            Task 200 started
+            Task 400 started
+            Task 500 started
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Operatons canceled
+            After tasks await
+            */
+        }
+
+        [Test]
+        public void TestAsyncAwait19_WhenAll_Canceled()
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            try
+            {
+                var task = Task.Run(async () => await Test19CancelAsync(cts).ConfigureAwait(false));
+                task.Wait();
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.WriteLine("Operatons canceled");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                var e = ParseAggregateException(ex);
+                Debug.WriteLine(e.ToString());
+            }
+            Debug.WriteLine("After tasks await");
+
+            /*
+            Task 100 started
+            Task 150 started
+            Task 200 started
+            Task 250 started
+            Task 300 started
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            Exception thrown: 'System.AggregateException' in mscorlib.dll
+            System.AggregateException: One or more errors occurred. ---> System.Threading.Tasks.TaskCanceledException: A task was canceled.
+               --- End of inner exception stack trace ---
+               at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+               at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+               at System.Threading.Tasks.Task.Wait()
+               at CSTest._12_MultiThreading._07_AsyncAwait._05_TestWhen.TestAsyncAwait19_WhenAll_Canceled() in D:\Projects\CS\CSTest\CSTest\12_MultiThreading\07_AsyncAwait\05_TestWhen.cs:line 403
+            ---> (Inner Exception #0) System.Threading.Tasks.TaskCanceledException: A task was canceled.<---
+            */
+        }
+
+        [Test]
+        public void TestAsyncAwait20_HandleTask()
+        {
+            var mc = new _05_ClassUnderTest();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            int item = 100;
+            HandleTask(async () => await mc.OperationWithResultAsync(item).ConfigureAwait(false));
+            Debug.WriteLine("After tasks await");
+
+            /*
+            Task 100 started
+            Task 100 completed
+            After tasks await
+            */
+        }
+
+        [Test]
+        public void TestAsyncAwait21_HandleTask()
+        {
+            var mc = new _05_ClassUnderTest();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            int item = 100;
+            HandleTask(async () => await mc.OperationAsync(item).ConfigureAwait(false));
+            Debug.WriteLine("After tasks await");
+
+            /*
+            Task 100 started
+            Task 100 completed
+            After tasks await
+            */
+        }
+
+        [Test]
+        public void TestAsyncAwait22_HandleTask()
+        {
+            var mc = new _05_ClassUnderTest();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            int item = 100;
+            HandleTask(() => mc.OperationWithResultAsync(item));
+            Debug.WriteLine("After tasks await");
+
+            /*
+
+            */
+        }
+
+        private async Task Test19CancelAsync(CancellationTokenSource cts)
+        {
+            var mc = new _05_ClassUnderTest();
+
+            var tasks = new[] { 100, 150, 200, 250, 300 }
+                .Select(async (item) => await mc.OperationWithResultAsync(item).WaitOrCancel(cts.Token).ConfigureAwait(false)).ToList();
+
+            cts.CancelAfter(1000);
+
+            await Task.WhenAll(tasks);
+        }
+
+        public static Task<T> HandleTask<T>(Func<Task<T>> func)
+        {
+            var task = Task.Run(async () => await func());
+            try
+            {
+                task.Wait();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return task;
+        }
+
+        public static void HandleTask(Func<Task> func)
+        {
+            var task = Task.Run(async () => await func());
+            try
+            {
+                task.Wait();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static Exception ParseAggregateException(Exception ex)
+        {
+            var result = ex;
+            var exception = ex as AggregateException;
+            if (exception != null)
+            {
+                try
+                {
+                    exception.Handle(innerEx =>
+                    {
+                        if (innerEx is OperationCanceledException)
+                        {
+                            return true;
+                        }
+                        ExceptionDispatchInfo.Capture(innerEx).Throw();
+                        //Note: this throw won't get called, if we don't put something here the compiler complains because
+                        //it doesn't know that the above line will throw
+                        throw innerEx;
+                    });
+                }
+                catch (Exception innerEx)
+                {
+                    result = innerEx;
+                }
+            }
+            return result;
+        }
+    }
+
+    public static class TaskExtensions
+    {
+        public static async Task<T> WaitOrCancel<T>(this Task<T> task, CancellationToken token)
+        {
+            var finishedTask = await Task.WhenAny(task, token.WhenCanceled());
+            if(finishedTask != task)
+            {
+                token.ThrowIfCancellationRequested();
+            }
+
+            return await task;
+        }
+
+        public static Task WhenCanceled(this CancellationToken cancellationToken)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            cancellationToken.Register(s => ((TaskCompletionSource<bool>)s).SetResult(true), tcs);
+            return tcs.Task;
+        }
     }
 
 #endif
 }
+

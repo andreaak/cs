@@ -8,18 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using TextConverter.Models;
 using Utils;
+using static TextConverter.DownloadHelper;
+using static TextConverter.Models.WordItem;
 
 namespace TextConverter
 {
+    public enum DownloadStatus
+    {
+        Force,
+        OnlyNotExist
+    }
+
     public class ViewModelConvert
     {
         public static string[] extensions = { ".txt", ".htm", ".html", ".css", ".js", ".cs", ".java" };
         public static readonly string[] separators = new string[] { "(", ")", "/", "-" };
         public event PropertyChangedEventHandler PropertyChanged;
-        private const string OutputWordsSounds = "Sounds/{1}_{3}/{2}_{1}/{0}_{1}.{3}";
-        private const string OutputVerbsSounds = "Sounds/Irregular/{1}_{3}/{2}_{1}/{0}_{1}.{3}";
-        //private const string SoundDestination = "http://wooordhunt.ru/data/sound/word/{0}/mp3/{1}.mp3";
-        private const string SoundDestination = "http://wooordhunt.ru/data/sound/word/{0}/{2}/{1}.{2}";
 
         public EncodingInfo[] Encodings
         {
@@ -129,13 +133,13 @@ namespace TextConverter
 
         #endregion
 
-        // Words
+        // Words CSV -> XML
 
-        public async Task ConvertWordToXmlAsync(string path, Action<string> infoAction, Action<string> errorAction)
+        public async Task ConvertFromCSVToXmlAsync(string path, Action<string> infoAction, Action<string> errorAction)
         {
             if (Directory.Exists(path))
             {
-                await ConvertWordsFromCSVToXMLAsync(path, null, false, infoAction, errorAction);
+                await ConvertFilesCSVToXMLAsync(path, null, DownloadStatus.OnlyNotExist, infoAction, errorAction);
             }
             else
             {
@@ -148,27 +152,62 @@ namespace TextConverter
 
                 if (SelectFile.SaveFile("Save XML", "", ref outputFilePath, extensions))
                 {
-                    var words = CSVHelper.ReadWords(path);
-                    //await DownloadWordsTranscriptionAsync(words, null, infoAction, errorAction);
-                    XMLWriteHelper.WriteWords(outputFilePath, words);
+                    await ConvertFileCSVToXMLAsync(path, outputFilePath, null, DownloadStatus.OnlyNotExist, infoAction, errorAction);
                 }
             }
         }
 
-        public async Task ConvertWordToXmlAndDownloadTranscriptionAsync(string path, string region, 
+        public async Task ConvertFromCSVToXmlAndDownloadTranscriptionAsync(string path, string region,
             Action<string> infoAction, Action<string> errorAction)
         {
             if (Directory.Exists(path))
             {
-                await ConvertWordsFromCSVToXMLAsync(path, region, true, infoAction, errorAction);
+                await ConvertFilesCSVToXMLAsync(path, region, DownloadStatus.Force, infoAction, errorAction);
             }
             else
             {
-                await ConvertWordFromCSVToXMLAsync(path, region, true, infoAction, errorAction);
+                await ConvertFileCSVToXMLAsync(path, region, DownloadStatus.Force, infoAction, errorAction);
             }
         }
 
-        private async Task DownloadWordsTranscriptionForceAsync(IList<WordItem> words, string region, 
+        private async Task ConvertFilesCSVToXMLAsync(string directory, string region, DownloadStatus isLoadTranscription,
+            Action<string> infoAction, Action<string> errorAction)
+        {
+            var files = Directory.EnumerateFiles(directory, "*.csv", SearchOption.TopDirectoryOnly).ToArray();
+            foreach (string filePath in files)
+            {
+                await ConvertFileCSVToXMLAsync(filePath, region, isLoadTranscription, infoAction, errorAction);
+            }
+            return;
+        }
+
+        private async Task ConvertFileCSVToXMLAsync(string filePath, string region, DownloadStatus isLoadTranscription,
+           Action<string> infoAction, Action<string> errorAction)
+        {
+            string suffix = string.IsNullOrEmpty(region) ? "" : $"_{region}";
+            string outputFilePath = Path.GetDirectoryName(filePath) + Path.DirectorySeparatorChar
+                + "lesson_" + Path.GetFileNameWithoutExtension(filePath) + suffix + ".xml";
+            await ConvertFileCSVToXMLAsync(filePath, outputFilePath, region, isLoadTranscription, infoAction, errorAction);
+        }
+
+        private async Task ConvertFileCSVToXMLAsync(string filePath, string outputFilePath, string region, DownloadStatus isLoadTranscription,
+            Action<string> infoAction, Action<string> errorAction)
+        {
+            var words = CSVHelper.ReadWords(filePath);
+            if (isLoadTranscription == DownloadStatus.Force)
+            {
+                await DownloadWordsTranscriptionForceAsync(words, region, infoAction, errorAction);
+            }
+            else if (isLoadTranscription == DownloadStatus.OnlyNotExist)
+            {
+                await DownloadWordsTranscriptionAsync(words, region, infoAction, errorAction);
+            }
+
+            XMLHelper.WriteWords(outputFilePath, words);
+            CSVHelper.WriteWords(outputFilePath + ".csv", words);
+        }
+
+        private async Task DownloadWordsTranscriptionForceAsync(IList<WordItem> words, string region,
             Action<string> infoAction, Action<string> errorAction)
         {
             using (var web = new WebClient())
@@ -177,22 +216,30 @@ namespace TextConverter
 
                 foreach (var word in words)
                 {
-                    string normalized = GetNormalized(word.GetItem(CSVHelper.En));
+                    string normalized = GetNormalized(word.GetItem(En));
                     infoAction?.Invoke(normalized);
-                    string trExisted = GetNormalized(word.GetItem(CSVHelper.EnTr));
+                    string trExisted = GetNormalized(word.GetItem(EnTr));
 
+                    bool isMultiWord = IsMultiWord(normalized);
+                    string html = null;
+                    if (string.IsNullOrEmpty(word.RankFile) && !isMultiWord)
+                    {
+                        html = await DownloadHtmlAsync(web, normalized, errorAction);
+                        word.Rank = ParseRank(html, normalized);
+                    }
                     string tr;
-                    if (IsMultiWord(normalized))
+                    if (isMultiWord)
                     {
                         tr = await DownloadMultiWordsTranscriptionAsync(web, normalized, region, errorAction);
                     }
                     else
                     {
-                        tr = await DownloadTranscriptionAsync(web, normalized, ParseTranscription, errorAction, region);
+                        html = (html ?? await DownloadHtmlAsync(web, normalized, errorAction));
+                        tr = ParseTranscription(html, normalized, region);
                     }
                     if (!string.IsNullOrEmpty(tr) && trExisted != tr)
                     {
-                        word.AddItem(CSVHelper.EnTr, tr);
+                        word.AddItem(EnTr, tr);
                     }
                 }
             }
@@ -206,33 +253,38 @@ namespace TextConverter
 
                 foreach (var word in words)
                 {
-                    string normalized = GetNormalized(word.GetItem(CSVHelper.En));
+                    string normalized = GetNormalized(word.GetItem(En));
                     infoAction?.Invoke(normalized);
-                    string trExisted = GetNormalized(word.GetItem(CSVHelper.EnTr));
+
+                    bool isMultiWord = IsMultiWord(normalized);
+                    string html = null;
+                    if (string.IsNullOrEmpty(word.RankFile) && !isMultiWord)
+                    {
+                        html = await DownloadHtmlAsync(web, normalized, errorAction);
+                        word.Rank = ParseRank(html, normalized);
+                    }
+
+                    string trExisted = GetNormalized(word.GetItem(EnTr));
                     if (!string.IsNullOrEmpty(trExisted))
                     {
                         continue;
                     }
                     string tr;
-                    if (IsMultiWord(normalized))
+                    if (isMultiWord)
                     {
                         tr = await DownloadMultiWordsTranscriptionAsync(web, normalized, region, errorAction);
                     }
                     else
                     {
-                        tr = await DownloadTranscriptionAsync(web, normalized, ParseTranscription, errorAction, region);
+                        html = (html ?? await DownloadHtmlAsync(web, normalized, errorAction));
+                        tr = ParseTranscription(html, normalized, region);
                     }
                     if (!string.IsNullOrEmpty(tr))
                     {
-                        word.AddItem(CSVHelper.EnTr, tr);
+                        word.AddItem(EnTr, tr);
                     }
                 }
             }
-        }
-
-        private bool IsMultiWord(string normalized)
-        {
-            return normalized.Contains(" ") || normalized.Contains("-");
         }
 
         private async Task<string> DownloadMultiWordsTranscriptionAsync(WebClient web, string normalized, string region, Action<string> errorAction)
@@ -247,6 +299,11 @@ namespace TextConverter
             sb.Insert(0, "[");
             sb.Append("]");
             return sb.ToString();
+        }
+
+        private bool IsMultiWord(string normalized)
+        {
+            return normalized.Contains(" ") || normalized.Contains("-");
         }
 
         private async Task ProcessWordAsync(WebClient web, StringBuilder sb, string wrd, Brackets brackets, string region, Action<string> errorAction)
@@ -294,30 +351,6 @@ namespace TextConverter
             }
         }
 
-        private async Task ConvertWordsFromCSVToXMLAsync(string directory, string region, bool isLoadTranscription, 
-            Action<string> infoAction, Action<string> errorAction)
-        {
-            foreach (string filePath in Directory.EnumerateFiles(directory, "*.csv", SearchOption.TopDirectoryOnly))
-            {
-                await ConvertWordFromCSVToXMLAsync(filePath, region, isLoadTranscription, infoAction, errorAction);
-            }
-            return;
-        }
-
-        private async Task ConvertWordFromCSVToXMLAsync(string filePath, string region, bool isLoadTranscription, Action<string> infoAction, Action<string> errorAction)
-        {
-            var words = CSVHelper.ReadWords(filePath);
-            if(isLoadTranscription)
-            {
-                await DownloadWordsTranscriptionForceAsync(words, region, infoAction, errorAction);
-            }
-            string suffix = string.IsNullOrEmpty(region) ? "" : $"_{region}";
-            string outputFilePath = Path.GetDirectoryName(filePath) + Path.DirectorySeparatorChar
-                + "lesson_" + Path.GetFileNameWithoutExtension(filePath) + suffix + ".xml";
-            XMLWriteHelper.WriteWords(outputFilePath, words);
-            CSVHelper.WriteWords(outputFilePath + ".csv", words);
-        }
-
         //Verb
 
         public async Task ConvertVerbToXMLAndDownloadVerbTranscriptionAsync(string path, string region,
@@ -334,7 +367,7 @@ namespace TextConverter
             {
                 var verbs = CSVHelper.ReadVerbs(path);
                 await DownloadTranscriptionsAsync(verbs, region, infoAction, errorAction);
-                XMLWriteHelper.WriteVerbs(outputFilePath, verbs);
+                XMLHelper.WriteVerbs(outputFilePath, verbs);
                 CSVHelper.WriteVerbs(outputFilePath + ".csv", verbs);
             }
         }
@@ -385,10 +418,7 @@ namespace TextConverter
             return tr;
         }
 
-        private string GetNormalized(string word)
-        {
-            return word.Trim().ToLower();
-        }
+
 
         //Plain List Transcription
 
@@ -428,66 +458,71 @@ namespace TextConverter
                         }
 
                         var item = new WordItem();
-                        item.AddItem(CSVHelper.Ru, ru);
-                        item.AddItem(CSVHelper.En, en);
+                        item.AddItem(Ru, ru);
+                        item.AddItem(En, en);
                         if (!string.IsNullOrEmpty(tr))
                         {
-                            item.AddItem(CSVHelper.EnTr, tr);
+                            item.AddItem(EnTr, tr);
                         }
                         wordItems.Add(item);
                     }
                 }
 
-                XMLWriteHelper.WriteWords(outputFilePath, wordItems);
+                XMLHelper.WriteWords(outputFilePath, wordItems);
             }
         }
 
-        // Other
-
-        private async Task<string> DownloadTranscriptionAsync(WebClient web, string normalized,
-            Func<string, string, string, string> parseAction, Action<string> errorAction, string region)
+        public async Task DownloadPopularityListAsync(string path, string region, Action<string> infoAction, Action<string> errorAction)
         {
-            string tr = null;
-            try
+            string outputFilePath = "";
+            string[] extensions = new string[]
             {
-                string res = string.Format("http://wooordhunt.ru/word/{0}", normalized);
-                var html = await web.DownloadStringTaskAsync(res);
-                tr = parseAction(html, normalized, region);
-            }
-            catch (Exception ex)
-            {
-                errorAction?.Invoke(ex.Message);
-            }
-            return tr;
-        }
+                "XML Files (*.xml)|*.xml|",
+                "All Files (*.*)|*.*"
+            };
 
-        private string ParseTranscription(string html, string normalized, string region)
-        {
-            string transcription = ParseTranscriptionWithoutBrackets(html, normalized, region);
-            if (string.IsNullOrEmpty(transcription))
+            if (SelectFile.SaveFile("Save XML", "", ref outputFilePath, extensions))
             {
-                return string.Empty;
-            }
-            return "[" + transcription + "]";
-        }
+                var words = File.ReadAllLines(path);
 
-        private string ParseTranscriptionWithoutBrackets(string html, string normalized, string region)
-        {
-            const string usPattern = "<span title=\"американская транскрипция слова {0}\" class=\"transcription\">";
-            const string ukPattern = "<span title=\"британская транскрипция слова {0}\" class=\"transcription\">";
-            string startPattern = region == "us" ? usPattern : ukPattern;
-            string search = string.Format(startPattern, normalized);
-            int startIndex = html.IndexOf(search, StringComparison.OrdinalIgnoreCase);
-            if (startIndex < 0)
-            {
-                return string.Empty;
-            }
-            startIndex += search.Length;
+                List<WordItem> wordItems = new List<WordItem>();
+                using (var web = new WebClient())
+                {
+                    web.Encoding = Encoding.UTF8;
 
-            string endPattern = "</span>";
-            int endIndex = html.IndexOf(endPattern, startIndex, StringComparison.OrdinalIgnoreCase);
-            string output = html.Substring(startIndex, endIndex - startIndex).Replace("|", "").Trim();
-            return output;
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        var word = words[i].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                        string normalized = GetNormalized(word[0]);
+                        int popularity = int.Parse(word[1]);
+
+                        infoAction?.Invoke(normalized);
+
+                        string html = await DownloadHtmlAsync(web, normalized, errorAction);
+                        string tr = ParseTranscription(html, normalized, region);
+                        string ru = ParseRu(html, normalized, region);
+
+                        var item = new WordItem();
+                        item.Rank = popularity;
+                        item.AddItem(Ru, ru);
+                        item.AddItem(En, normalized);
+                        if (!string.IsNullOrEmpty(tr))
+                        {
+                            item.AddItem(EnTr, tr);
+                        }
+                        wordItems.Add(item);
+                    }
+                }
+
+                for (int i = 0; i < 26; i++)
+                {
+                    char ch = (char)((int)'a' + i);
+                    var items = wordItems.Where(item => item.GetItem(En).StartsWith(ch.ToString())).ToArray();
+                    string filePath = Path.GetDirectoryName(outputFilePath) + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(outputFilePath) + "_" + ch + ".xml";
+                    XMLHelper.WriteWords(filePath, items);
+                }
+                
+            }
         }
 
         //Sound
@@ -507,12 +542,12 @@ namespace TextConverter
                         foreach (var word in words)
                         {
                             string normalized = GetNormalized(word);
-                            if(notFinded.Contains(normalized))
+                            if (notFinded.Contains(normalized))
                             {
                                 continue;
                             }
-                            bool res = DownloadSounds(web, normalized, OutputWordsSounds, soundFormat, infoAction, errorAction);
-                            if(!res)
+                            bool res = DownloadHelper.DownloadWordsSounds(web, normalized, soundFormat, infoAction, errorAction);
+                            if (!res)
                             {
                                 notFinded.Add(normalized);
                             }
@@ -522,7 +557,7 @@ namespace TextConverter
             });
         }
 
-        public Task DownloadWordsSoundsAsync(string wordListFilePath, string soundFormat, 
+        public Task DownloadWordsSoundsAsync(string wordListFilePath, string soundFormat,
                     Action<string> infoAction, Action<string> errorAction)
         {
             return Task.Factory.StartNew(() =>
@@ -533,9 +568,9 @@ namespace TextConverter
                 {
                     foreach (var word in words)
                     {
-                        string normalized = GetNormalized(word.GetItem(CSVHelper.En));
+                        string normalized = GetNormalized(word.GetItem(En));
 
-                        DownloadSounds(web, normalized, OutputWordsSounds, soundFormat, infoAction, errorAction);
+                        DownloadHelper.DownloadWordsSounds(web, normalized, soundFormat, infoAction, errorAction);
                     }
                 }
             });
@@ -552,77 +587,85 @@ namespace TextConverter
                 {
                     foreach (var verb in verbs)
                     {
-                        DownloadVerbSounds(web, verb.Infinitive, soundFormat, infoAction, errorAction);
-                        DownloadVerbSounds(web, verb.PastSimple, soundFormat, infoAction, errorAction);
-                        DownloadVerbSounds(web, verb.PastPaticiple, soundFormat, infoAction, errorAction);
+                        DownloadHelper.DownloadVerbSounds(web, verb.Infinitive, soundFormat, infoAction, errorAction);
+                        DownloadHelper.DownloadVerbSounds(web, verb.PastSimple, soundFormat, infoAction, errorAction);
+                        DownloadHelper.DownloadVerbSounds(web, verb.PastPaticiple, soundFormat, infoAction, errorAction);
                     }
                 }
             });
         }
 
-        private void DownloadVerbSounds(WebClient web, string verbsCombined, string soundFormat, Action<string> infoAction, Action<string> errorAction)
+        // Words XML -> CSV
+
+        public async Task ConvertFromXMLToCSVAsync(string path, Action<string> infoAction, Action<string> errorAction)
         {
-            var verbs = verbsCombined.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var verb in verbs)
+            if (Directory.Exists(path))
             {
-                DownloadSounds(web, GetNormalized(verb), OutputVerbsSounds, soundFormat, infoAction, errorAction);
+                await ConvertFilesXMLToCSVAsync(path, null, DownloadStatus.OnlyNotExist, infoAction, errorAction);
+            }
+            else
+            {
+                string outputFilePath = "";
+                string[] extensions = new string[]
+                {
+                "XML Files (*.csv)|*.csv|",
+                "All Files (*.*)|*.*"
+                };
+
+                if (SelectFile.SaveFile("Save csv", "", ref outputFilePath, extensions))
+                {
+                    await ConvertFileXMLToCSVAsync(path, outputFilePath, null, DownloadStatus.OnlyNotExist, infoAction, errorAction);
+                }
             }
         }
 
-        private bool DownloadSounds(WebClient web, string normalized, string destination, string soundFormat, 
+        public async Task ConvertFromXMLToCsvAndDownloadTranscriptionAsync(string path, string region,
             Action<string> infoAction, Action<string> errorAction)
         {
-            bool res = true;
-            try
+            if (Directory.Exists(path))
             {
-                infoAction(normalized);
-                if (!IsWordFileExist(normalized, CSVHelper.Us, destination, soundFormat))
-                {
-                    res = DownloadSound(web, normalized, CSVHelper.Us, destination, soundFormat);
-                }
-                if (!IsWordFileExist(normalized, CSVHelper.Uk, destination, soundFormat))
-                {
-                    res = DownloadSound(web, normalized, CSVHelper.Uk, destination, soundFormat);
-                }
+                await ConvertFilesXMLToCSVAsync(path, region, DownloadStatus.Force, infoAction, errorAction);
             }
-            catch (Exception ex)
+            else
             {
-                errorAction(ex.Message);
-                res = false;
+                await ConvertFileXMLToCSVAsync(path, region, DownloadStatus.Force, infoAction, errorAction);
             }
-            return res;
         }
 
-        private bool DownloadSound(WebClient web, string normalized, string region, 
-            string destination, string soundFormat)
+        private async Task ConvertFilesXMLToCSVAsync(string directory, string region, DownloadStatus isLoadTranscription,
+                            Action<string> infoAction, Action<string> errorAction)
         {
-            string res = string.Format(SoundDestination, region, normalized, soundFormat);
-            var bt = web.DownloadData(res);
-            if (IsError(bt)) //html page
+            var files = Directory.EnumerateFiles(directory, "*.xml", SearchOption.TopDirectoryOnly).ToArray();
+            foreach (string filePath in files)
             {
-                return false;
+                await ConvertFileXMLToCSVAsync(filePath, region, isLoadTranscription, infoAction, errorAction);
             }
-
-            string dest = DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + 
-                        string.Format(destination, normalized, region, normalized[0], soundFormat);
-            string folder = Path.GetDirectoryName(dest);
-            if (!Directory.Exists(folder))
-            {
-                Directory.CreateDirectory(folder);
-            }
-            File.WriteAllBytes(dest, bt);
-            return true;
+            return;
         }
 
-        private bool IsWordFileExist(string normalized, string region, string destination, string soundFormat)
+        private async Task ConvertFileXMLToCSVAsync(string filePath, string region, DownloadStatus isLoadTranscription,
+            Action<string> infoAction, Action<string> errorAction)
         {
-            return File.Exists(string.Format(destination, normalized, region, normalized[0], soundFormat));
+            string suffix = string.IsNullOrEmpty(region) ? "" : $"_{region}";
+            string outputFilePath = Path.GetDirectoryName(filePath) + Path.DirectorySeparatorChar
+                + "lesson_" + Path.GetFileNameWithoutExtension(filePath) + suffix + ".csv";
+            await ConvertFileXMLToCSVAsync(filePath, outputFilePath, region, isLoadTranscription, infoAction, errorAction);
         }
 
-        private bool IsError(byte[] bt)
+        private async Task ConvertFileXMLToCSVAsync(string filePath, string outputFilePath, string region, DownloadStatus isLoadTranscription,
+            Action<string> infoAction, Action<string> errorAction)
         {
-            return bt.Length < 4 ||
-                   (bt[0] == 60 && bt[1] == 33 && bt[2] == 68 && bt[3] == 79);//html page
+            var words = XMLHelper.ReadWords(filePath);
+            if (isLoadTranscription == DownloadStatus.Force)
+            {
+                await DownloadWordsTranscriptionForceAsync(words, region, infoAction, errorAction);
+            }
+            else if (isLoadTranscription == DownloadStatus.OnlyNotExist)
+            {
+                await DownloadWordsTranscriptionAsync(words, region, infoAction, errorAction);
+            }
+            CSVHelper.WriteWords(outputFilePath, words);
+            XMLHelper.WriteWords(outputFilePath + ".xml", words);
         }
     }
 

@@ -79,26 +79,30 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
         [Test]
         public void TestLock3()
         {
-            new Thread(_02_LockThreadUtils.Function2).Start();
+            new Thread(_02_LockThreadUtils.FunctionCommonLockObject_1).Start();
 
-            new Thread(_02_LockThreadUtils.Function3).Start();
+            new Thread(_02_LockThreadUtils.FunctionCommonLockObject_2).Start();
 
             Thread.Sleep(2000);
             /*
             Начало блокировки Function2
             Конец блокировки Function2
+
             Начало блокировки Function3
             Конец блокировки Function3
+
             Начало блокировки Function2
             Конец блокировки Function2
+
             Начало блокировки Function3
             Конец блокировки Function3
+
             Начало блокировки Function2
             Конец блокировки Function2
-            The thread '<No Name>' (0x1680) has exited with code 0 (0x0).
+
             Начало блокировки Function3
+            The thread 0x13e8 has exited with code 0 (0x0).
             Конец блокировки Function3
-            The thread '<No Name>' (0x1edc) has exited with code 0 (0x0).
             */
         }
 
@@ -106,9 +110,9 @@ namespace CSTest._12_MultiThreading._02_Synchronization._01_User
         // Lock - не принимает типов значений, а только ссылочные.
         public void TestLock4()
         {
-            Thread[] threads = { new Thread(_02_LockThreadUtils.FunctionWithError), 
-                                   new Thread(_02_LockThreadUtils.FunctionWithError), 
-                                   new Thread(_02_LockThreadUtils.FunctionWithError) };
+            Thread[] threads = { new Thread(_02_LockThreadUtils.FunctionWithStructLockObject), 
+                                   new Thread(_02_LockThreadUtils.FunctionWithStructLockObject), 
+                                   new Thread(_02_LockThreadUtils.FunctionWithStructLockObject) };
 
             foreach (Thread t in threads)
             {

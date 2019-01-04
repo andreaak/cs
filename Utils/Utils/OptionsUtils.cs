@@ -15,6 +15,7 @@ namespace Utils
     public class OptionsUtils
     {
         public const string Other = "OTHER";
+        public const string New = "NEW";
         public const string ProviderName = "provider";
         public const string ConnectionStringName = "conString";
         static OptionsUtils instance;
@@ -73,6 +74,7 @@ namespace Utils
             culture = OptionsUtils.Culture;
         }
 
+        private static string previousConnectionName;
         private static string connectionName;
         public static string ConnectionName
         {
@@ -128,12 +130,20 @@ namespace Utils
 
         public static void ClearDbData()
         {
-            OptionsUtils.ConnectionName = null;
+            previousConnectionName = connectionName;
+            ConnectionName = null;
             dbhelper = null;
         }
 
-        private static string GetConnectionName()
+        public static void RestoreDbData()
         {
+            ConnectionName = previousConnectionName;
+        }
+
+        public static string GetConnectionName()
+        {
+            string name;
+
             Dictionary<string, ConnectionStringSettings> connectionStrings = new Dictionary<string, ConnectionStringSettings>();
             foreach (ConnectionStringSettings item in ConfigurationManager.ConnectionStrings)
             {
@@ -146,7 +156,7 @@ namespace Utils
             System.Windows.Forms.DialogResult result = form.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(form.ConnectionName))
             {
-                ConnectionName = form.ConnectionName;
+                name = form.ConnectionName;
             }
             else if (result == System.Windows.Forms.DialogResult.Cancel)
             {
@@ -154,9 +164,9 @@ namespace Utils
             }
             else
             {
-                ConnectionName = string.Empty;
+                name = string.Empty;
             }
-            return ConnectionName;
+            return name;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -20,6 +22,13 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
                 Thread.Sleep(interval);
                 Debug.WriteLine("В методе MyTask() #" + Task.CurrentId + ", подсчет равен " + count);
             }
+            Debug.WriteLine("MyTask №" + Task.CurrentId + " завершен");
+        }
+
+        static void MyTask2(object parameter)
+        {
+            Debug.WriteLine("MyTask() №" + Task.CurrentId + " запущен");
+            Thread.Sleep((int)(parameter));
             Debug.WriteLine("MyTask №" + Task.CurrentId + " завершен");
         }
 
@@ -136,7 +145,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
         }
 
         [Test]
-        public void TestTaskWait2All()
+        public void TestTask_WaitAll_1()
         {
             Debug.WriteLine("Основной поток запущен.");
 
@@ -182,6 +191,38 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             В методе MyTask() #2, подсчет равен 8
             В методе MyTask() #2, подсчет равен 9
             MyTask №2 завершен
+            Основной поток завершен.
+            */
+        }
+
+        [Test]
+        public void TestTask_WaitAll_2()
+        {
+            Debug.WriteLine("Основной поток запущен.");
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            Task[] tasks = { new Task(MyTask2, 2000), new Task(MyTask2, 3000) };
+
+            Debug.WriteLine("Идентификатор задачи task1: " + tasks[0].Id);
+            Debug.WriteLine("Идентификатор задачи task2: " + tasks[1].Id);
+
+            cts.CancelAfter(1000);
+            try
+            {
+                Task.WaitAll(tasks.ToArray(), cts.Token);
+            }
+            catch (OperationCanceledException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            Debug.WriteLine("Основной поток завершен.");
+
+            /*
+            Основной поток запущен.
+            Идентификатор задачи task1: 1
+            Идентификатор задачи task2: 2
+            Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
+            The operation was canceled.
             Основной поток завершен.
             */
         }

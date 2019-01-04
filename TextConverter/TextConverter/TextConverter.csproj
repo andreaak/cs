@@ -64,10 +64,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CSVHelper.cs" />
+    <Compile Include="DownloadHelper.cs" />
     <Compile Include="Models\EnVerbItem.cs" />
     <Compile Include="ViewModelConvert.cs" />
     <Compile Include="Models\WordItem.cs" />
-    <Compile Include="XMLWriter.cs" />
+    <Compile Include="XMLHelper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
