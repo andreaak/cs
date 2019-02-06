@@ -63,12 +63,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CSVHelper.cs" />
-    <Compile Include="DownloadHelper.cs" />
+    <Compile Include="Helpers\CSVHelper.cs" />
+    <Compile Include="Converters\CSVtoXMLVerbConverter.cs" />
+    <Compile Include="Converters\CSVtoXMLWordConverter.cs" />
+    <Compile Include="Helpers\DownloadHelper.cs" />
+    <Compile Include="Converters\IWordConverter.cs" />
     <Compile Include="Models\EnVerbItem.cs" />
+    <Compile Include="Converters\TXTtoXMLWordConverter.cs" />
+    <Compile Include="Converters\TXTWithRanktoXMLWordConverter.cs" />
     <Compile Include="ViewModelConvert.cs" />
     <Compile Include="Models\WordItem.cs" />
-    <Compile Include="XMLHelper.cs" />
+    <Compile Include="Converters\WordConverter.cs" />
+    <Compile Include="Models\WordData.cs" />
+    <Compile Include="Helpers\XMLHelper.cs" />
+    <Compile Include="Converters\XMLtoCSVWordConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -117,6 +125,7 @@
       <Name>utilsVS10</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

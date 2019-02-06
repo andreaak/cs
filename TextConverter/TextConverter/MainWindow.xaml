@@ -17,6 +17,9 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -60,96 +63,42 @@
                 Click="buttonOpenWordCsv_Click" Height="20"/>
         <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" 
                  Margin="5,5,0,0" TextWrapping="Wrap" 
-                 VerticalAlignment="Top" Width="370" x:Name="textBoxFileWordCSV" 
-            Text="{Binding Text, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
-        <Button Grid.Row="4" Grid.Column="0" Content="Convert CSV -> XML" Command="Save" HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" Width="370" x:Name="textBoxPath" 
+            Text="{Binding Path, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <Button Grid.Row="4" Grid.Column="0" Content="Open XML" HorizontalAlignment="Left" 
+                Margin="5,5,0,0" VerticalAlignment="Top" 
+                Width="115" x:Name="buttonWordOpenXml" Tag="buttonWordOpenXml" ToolTip="Open Words in XML file" 
+                Click="buttonOpenWordXml_Click" Height="20"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Convert CSV -> XML" Command="Save" HorizontalAlignment="Left" 
                 Margin="5,5,0,0" VerticalAlignment="Top" Width="120" x:Name="buttonConvertToXml" Height="20">
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
                     Executed="ConvertFromCSVToXml_Executed" CanExecute="ConvertFromCSVToXml_CanExecute"/>
             </Button.CommandBindings>
         </Button>
-        <Button Grid.Row="4" Grid.Column="1" Content="Download En Transcriptions" Command="Save" HorizontalAlignment="Left" 
-                Margin="5,5,0,0" 
-                VerticalAlignment="Top" Width="148" x:Name="buttonDownloadWordTranscriptions" Height="20">
+        <Button Grid.Row="4" Grid.Column="2" Content="Convert XML -> CSV" Command="Save" HorizontalAlignment="Left" 
+                Margin="5,5,0,0" VerticalAlignment="Top" Width="120" Height="20">
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
-                    Executed="ConvertFromCSVToXmlAndDownloadUkWordTranscription_Executed" CanExecute="ConvertFromCSVToXml_CanExecute"/>
-            </Button.CommandBindings>
-        </Button>
-        <Button Grid.Row="4" Grid.Column="2" Content="Download Us Transcriptions" Command="Save" HorizontalAlignment="Left" 
-                Margin="5,5,0,0" 
-                VerticalAlignment="Top" Width="152" x:Name="buttonDownloadWordUsTranscriptions" Height="20">
-            <Button.CommandBindings>
-                <CommandBinding Command="Save"
-                    Executed="ConvertFromCSVToXmlAndDownloadUsWordTranscription_Executed" CanExecute="ConvertFromCSVToXml_CanExecute"/>
-            </Button.CommandBindings>
-        </Button>
-
-        <!--Word for cards XML -> CSV -->
-        <Button Grid.Row="5" Grid.Column="0" Content="Open XML" HorizontalAlignment="Left" 
-                Margin="5,5,0,0" VerticalAlignment="Top" 
-                Width="115" x:Name="buttonWordOpenXml" Tag="buttonWordOpenXml" ToolTip="Open Words in XML file" 
-                Click="buttonOpenWordXml_Click" Height="20"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" 
-                 Margin="5,5,0,0" TextWrapping="Wrap" 
-                 VerticalAlignment="Top" Width="370" x:Name="textBoxFileWordXml" 
-            Text="{Binding Text, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
-        <Button Grid.Row="6" Grid.Column="0" Content="Convert XML -> CSV" Command="Save" HorizontalAlignment="Left" 
-                Margin="5,5,0,0" VerticalAlignment="Top" Width="120" x:Name="buttonConvertToCsv" Height="20">
-            <Button.CommandBindings>
-                <CommandBinding Command="Save"
-                    Executed="ConvertWordToCSV_Executed" CanExecute="ConvertWordToCSV_CanExecute"/>
-            </Button.CommandBindings>
-        </Button>
-        <Button Grid.Row="6" Grid.Column="1" Content="Download En Transcriptions" Command="Save" HorizontalAlignment="Left" 
-                Margin="5,5,0,0" 
-                VerticalAlignment="Top" Width="148" x:Name="buttonDownloadWordCSVTranscriptions" Height="20">
-            <Button.CommandBindings>
-                <CommandBinding Command="Save"
-                    Executed="ConvertWordToCSVAndDownloadUkWordTranscription_Executed" CanExecute="ConvertWordToCSV_CanExecute"/>
-            </Button.CommandBindings>
-        </Button>
-        <Button Grid.Row="6" Grid.Column="2" Content="Download Us Transcriptions" Command="Save" HorizontalAlignment="Left" 
-                Margin="5,5,0,0" 
-                VerticalAlignment="Top" Width="152" x:Name="buttonDownloadWordUsCSVTranscriptions" Height="20">
-            <Button.CommandBindings>
-                <CommandBinding Command="Save"
-                    Executed="ConvertWordToCSVAndDownloadUsWordTranscription_Executed" CanExecute="ConvertWordToCSV_CanExecute"/>
+                    Executed="ConvertFromXmlToCSV_Executed" CanExecute="ConvertFromXmlToCSV_CanExecute"/>
             </Button.CommandBindings>
         </Button>
 
         <!--Irregular verbs for cards-->
-        <Button Grid.Row="7" Grid.Column="0" Content="Open Verb CSV" HorizontalAlignment="Left" 
+        <Button Grid.Row="6" Grid.Column="0" Content="Open Verb CSV" HorizontalAlignment="Left" 
                 Margin="5,5,0,0" VerticalAlignment="Top" 
                 Width="120" x:Name="buttonOpenVerbCsv" Tag="buttonOpenVerbCsv" ToolTip="Open CSV" 
                 Click="buttonOpenVerbCsv_Click" Height="20"/>
-        <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" 
+        <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="22" 
                  Margin="5,5,0,0" TextWrapping="Wrap" 
                  VerticalAlignment="Top" Width="370" x:Name="textBoxFileVerbCSV" 
             Text="{Binding VerbText, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
-        <Button Grid.Row="8" Grid.Column="0" Content="Convert Verb To XML" Command="Save" HorizontalAlignment="Left" 
+        <Button Grid.Row="7" Grid.Column="0" Content="Convert Verb To XML" Command="Save" HorizontalAlignment="Left" 
                 Margin="5,5,0,0" 
                 VerticalAlignment="Top" Width="120" x:Name="buttonConvertVerbToXml" Height="20">
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
                     Executed="ConvertVerbToXML_Executed" CanExecute="ConvertVerbToXML_CanExecute"/>
-            </Button.CommandBindings>
-        </Button>
-        <Button Grid.Row="8" Grid.Column="1" Content="Download En Transcriptions" Command="Save" HorizontalAlignment="Left" 
-                Margin="5,5,0,0"  
-                VerticalAlignment="Top" Width="148" x:Name="buttonDownloadVerbTranscriptions" Height="20">
-            <Button.CommandBindings>
-                <CommandBinding Command="Save"
-                    Executed="ConvertVerbToXMLAndDownloadUkVerbTranscription_Executed" CanExecute="ConvertVerbToXML_CanExecute"/>
-            </Button.CommandBindings>
-        </Button>
-        <Button Grid.Row="8" Grid.Column="2" Content="Download Us Transcriptions" Command="Save" HorizontalAlignment="Left" 
-                Margin="5,5,0,0"  
-                VerticalAlignment="Top" Width="152" x:Name="buttonDownloadUsVerbTranscriptions" Height="20">
-            <Button.CommandBindings>
-                <CommandBinding Command="Save"
-                    Executed="ConvertVerbToXMLAndDownloadUsVerbTranscription_Executed" CanExecute="ConvertVerbToXML_CanExecute"/>
             </Button.CommandBindings>
         </Button>
 
@@ -162,7 +111,7 @@
                  Margin="5,5,0,0" TextWrapping="Wrap" 
                  VerticalAlignment="Top" Width="370" x:Name="textBoxFileSounds" 
             Text="{Binding SoundsText, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
-        <Button Grid.Row="10" Grid.Column="0" Content="Download Sounds" Command="Save" HorizontalAlignment="Left" 
+        <Button Grid.Row="10" Grid.Column="0" Content="Download List Sounds" Command="Save" HorizontalAlignment="Left" 
                 Margin="5,5,0,0" 
                 VerticalAlignment="Top" Width="120" x:Name="buttonDownloadSounds" Height="20">
             <Button.CommandBindings>
@@ -187,30 +136,44 @@
             </Button.CommandBindings>
         </Button>
 
-        <Button Grid.Row="11" Grid.Column="0" Content="Combine Ru En " Command="Save" HorizontalAlignment="Left" 
+        <Button Grid.Row="12" Grid.Column="0" Content="Parse Ru En words" Command="Save" HorizontalAlignment="Left" 
                 Margin="5,5,0,0" 
                 VerticalAlignment="Top" Width="120" x:Name="buttonDownloadTranscriptions" 
                 ToolTip="Combine Ru En and download transcription" Height="20">
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
-                    Executed="DownloadPlainListTranscription_Executed" CanExecute="DownloadSounds_CanExecute"/>
+                    Executed="CombineRuEnAndDownloadTranscriptions_Executed" CanExecute="DownloadSounds_CanExecute"/>
             </Button.CommandBindings>
         </Button>
 
-        <Button Grid.Row="11" Grid.Column="1" Content="Parse Words Popularity" Command="Save" HorizontalAlignment="Left" 
+        <Button Grid.Row="12" Grid.Column="1" Content="Parse Words" Command="Save" HorizontalAlignment="Left" 
                 Margin="5,5,0,0" 
-                VerticalAlignment="Top" Width="135" x:Name="buttonParseWordsWithPopularity" 
+                VerticalAlignment="Top" Width="148" x:Name="buttonParseWordsWithPopularity" 
                 ToolTip="Combine Ru En and download transcription" Height="20">
             <Button.CommandBindings>
                 <CommandBinding Command="Save"
-                    Executed="DownloadPopularityList_Executed" CanExecute="DownloadSounds_CanExecute"/>
+                    Executed="DownloadList_Executed" CanExecute="DownloadSounds_CanExecute"/>
             </Button.CommandBindings>
         </Button>
+        <ComboBox  Grid.Row="13" Grid.Column="0" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding Languages}" 
+                  SelectedItem="{Binding CurrentLanguage}" 
+                  IsSynchronizedWithCurrentItem="True" 
+                  Text="Select Language" />
+        <CheckBox Grid.Row="13" Grid.Column="1" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"
+                  x:Name="checkBoxSeparate" Content="Separate in files"  />
 
-        <Label Grid.Row="12" Grid.Column="0" x:Name="labelInfo" Content="" HorizontalAlignment="Left" 
+        <CheckBox  Grid.Row="13" Grid.Column="2" HorizontalAlignment="Left" Margin="5,5,0,0"  VerticalAlignment="Top"
+                    x:Name="checkBoxDownloadTranscription" Content="Download Transcription" />
+        
+        <CheckBox  Grid.Row="14" Grid.Column="2" HorizontalAlignment="Left" Margin="5,5,0,0"  VerticalAlignment="Top"
+                    x:Name="checkBoxDownloadTranslation" Content="Download Translation" />
+
+        <Label Grid.Row="15" Grid.Column="0" x:Name="labelInfo" Content="" HorizontalAlignment="Left" 
                Margin="5,5,0,0" Height="22" VerticalAlignment="Top" FontSize="10" Width="115"/>
-        <Label Grid.Row="12" Grid.Column="1" x:Name="labelError" Content="" HorizontalAlignment="Left" 
-               Margin="5,5,0,0" Height="22" VerticalAlignment="Top" FontSize="10" Width="370" Grid.ColumnSpan="2"/>
+        <Label Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2"  x:Name="labelError" HorizontalAlignment="Left" 
+               Margin="5,5,0,0" Height="22" VerticalAlignment="Top" FontSize="10" Width="372"/>
+
 
 
     </Grid>
