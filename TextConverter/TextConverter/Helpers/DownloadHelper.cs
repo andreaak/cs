@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using TextConverter.Models;
 using static TextConverter.Models.WordItem;
 
 namespace TextConverter
@@ -102,18 +103,18 @@ namespace TextConverter
         }
 
         public static async Task<string> DownloadTranscriptionAsync(WebClient web, string normalized,
-            Func<string, string, string, string> parseAction, Action<string> errorAction, string region)
+            Func<string, string, string, string> parseAction, WordData data)
         {
             string tr = null;
             try
             {
                 string res = string.Format("http://wooordhunt.ru/word/{0}", normalized);
                 var html = await web.DownloadStringTaskAsync(res);
-                tr = parseAction(html, normalized, region);
+                tr = parseAction(html, normalized, data.Region);
             }
             catch (Exception ex)
             {
-                errorAction?.Invoke(ex.Message);
+                data.ErrorAction?.Invoke(ex.Message);
             }
             return tr;
         }
@@ -132,7 +133,7 @@ namespace TextConverter
         {
             const string usPattern = "<span title=\"американская транскрипция слова {0}\" class=\"transcription\">";
             const string ukPattern = "<span title=\"британская транскрипция слова {0}\" class=\"transcription\">";
-            string startPattern = region == "us" ? usPattern : ukPattern;
+            string startPattern = region == WordItem.Us ? usPattern : ukPattern;
             string search = string.Format(startPattern, normalized);
             int startIndex = html.IndexOf(search, StringComparison.OrdinalIgnoreCase);
             if (startIndex < 0)
@@ -154,7 +155,7 @@ namespace TextConverter
             {
                 string res = string.Format("http://wooordhunt.ru/word/{0}", normalized);
                 var html = await web.DownloadStringTaskAsync(res);
-                rank = ParseRank(html, normalized);
+                rank = ParseRank(html);
             }
             catch (Exception ex)
             {
@@ -163,7 +164,7 @@ namespace TextConverter
             return rank;
         }
 
-        public static int ParseRank(string html, string normalized)
+        public static int ParseRank(string html)
         {
             const string pattern = "<span id=\"rank_box\">";
             int startIndex = html.IndexOf(pattern, StringComparison.OrdinalIgnoreCase);
@@ -192,7 +193,7 @@ namespace TextConverter
             return int.MaxValue;
         }
 
-        public static string ParseRu(string html, string normalized, string region)
+        public static string ParseRu(string html, string normalized)
         {
             const string pattern = "<span class=\"t_inline_en\">";
 
