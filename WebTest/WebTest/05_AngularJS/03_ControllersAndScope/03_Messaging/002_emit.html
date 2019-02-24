@@ -6,6 +6,15 @@
     <script>
         var app = angular.module("sampleApp", []);
 
+        app.controller("testCtrl2", function ($scope) {
+
+            // обработка события messageEvent на текущем scope
+            $scope.$on("messageEvent", function (event, args) {
+                //event.stopPropagation(); // останавливаем распространение события
+                $scope.info = args.message;
+            })
+        });
+
         app.controller("testCtrl", function ($scope) {
 
             // обработка события messageEvent на текущем scope
@@ -22,22 +31,45 @@
             }
         });
 
+        app.controller("testCtrl3", function ($scope) {
+
+            // обработка события messageEvent на текущем scope
+            $scope.$on("messageEvent", function (event, args) {
+                //event.stopPropagation(); // останавливаем распространение события
+                $scope.info3 = args.message;
+            })
+
+            $scope.send = function () {
+                // $emit - отправка события от текущего scope к родительским scope
+                $scope.$emit("messageEvent", {
+                    message: $scope.messageInput3
+                });
+            }
+        });
+
     </script>
 </head>
 <body>
-    <div ng-controller="testCtrl">
+    <div ng-controller="testCtrl2">
+        <p>Controller 21</p>
+        <p>Received message - {{info}}</p>
+    </div>
+    <div style="border:solid 1px" ng-controller="testCtrl">
         <p>Controller 1</p>
         <p>Received message - {{info}}</p>
 
-        <div ng-controller="testCtrl">
+        <div style="margin-left:20px; border:solid 1px" ng-controller="testCtrl">
             <p>Controller 2</p>
             <p>Received message - {{info}}</p>
 
-            <div ng-controller="testCtrl">
-                <p>Controller 3</p>
-                <p>Received message - {{info}}</p>
+            <input ng-model="messageInput" />
+            <button ng-click="send()">Send</button>
 
-                <input ng-model="messageInput" />
+            <div style="margin-left:40px; border:solid 1px" ng-controller="testCtrl3">
+                <p>Controller 3</p>
+                <p>Received message - {{info3}}</p>
+
+                <input ng-model="messageInput3" />
                 <button ng-click="send()">Send</button>
             </div>
 
