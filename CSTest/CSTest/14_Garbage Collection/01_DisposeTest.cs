@@ -55,6 +55,9 @@ namespace CSTest._14_Garbage_Collection
                     - When theInstance is dynamic
                     */
                     ((IDisposable)theInstance).Dispose();//
+                    //or
+                    //IDisposable disposable = theInstance;
+                    //disposable.Dispose();
                 }
             }
 
@@ -132,10 +135,16 @@ namespace CSTest._14_Garbage_Collection
             {
                 // выполнить работу 
                 theInstance.Test();
-                theInstance = null;//Possibly incorrect assignment to local 'theInstance' which is the argument to a using or lock statement. 
+                theInstance = null;//Warning: Possibly incorrect assignment to local 'theInstance' which is the argument to a using or lock statement. 
                 //The Dispose call or unlocking will happen on the original value of the local.
             }
             theInstance.Test(); // theInstance is still in scope but the method call throws an exception
+
+            /*
+            Test in DisposableObject
+            Dispose in DisposableObject
+            Exception thrown: 'System.NullReferenceException'  
+            */
         }
     }
 }
