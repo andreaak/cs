@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Ninject;
 using Ninject.Modules;
+using Ninject.Web.Common;
 using NLayerApp.BLL.BusinessModels;
 using NLayerApp.BLL.DTO;
 using NLayerApp.BLL.Infrastructure;
@@ -486,30 +487,5 @@ namespace NLayerApp.WEB.Util
         {
             kernel.Bind<IOrderService>().To<OrderService>();
         }
-
-        private static void RegisterServices(IKernel kernel)
-        {
-            System.Web.Mvc.DependencyResolver.SetResolver(new NLayerApp.WEB.Util.NinjectDependencyResolver(kernel));
-        }
-
-        private static IKernel CreateKernel()
-        {
-            // устанавливаем строку подключения
-            var modules = new INinjectModule[] { new ServiceModule("DefaultConnection") };
-            var kernel = new StandardKernel(modules);
-            try
-            {
-                kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
-                kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                RegisterServices(kernel);
-                return kernel;
-            }
-            catch
-            {
-                kernel.Dispose();
-                throw;
-            }
-        }
-
     }
 }
