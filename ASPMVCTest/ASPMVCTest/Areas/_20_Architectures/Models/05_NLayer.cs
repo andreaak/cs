@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Ninject;
 using Ninject.Modules;
-using Ninject.Web.Common;
 using NLayerApp.BLL.BusinessModels;
 using NLayerApp.BLL.DTO;
 using NLayerApp.BLL.Infrastructure;
@@ -16,15 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-
-namespace _01_ASPMVCTest.Areas._20_Architectures.Models.MultiLayers
-{
-    public class _05_MultiLayers
-    {
-    }
-}
 
 namespace NLayerApp.DAL.Entities
 {
@@ -198,10 +189,12 @@ namespace NLayerApp.DAL.Repositories
         private MobileContext db;
         private PhoneRepository phoneRepository;
         private OrderRepository orderRepository;
+
         public EFUnitOfWork(string connectionString)
         {
             db = new MobileContext(connectionString);
         }
+
         public IRepository<Phone> Phones
         {
             get
@@ -211,6 +204,7 @@ namespace NLayerApp.DAL.Repositories
                 return phoneRepository;
             }
         }
+
         public IRepository<Order> Orders
         {
             get
@@ -220,10 +214,12 @@ namespace NLayerApp.DAL.Repositories
                 return orderRepository;
             }
         }
+
         public void Save()
         {
             db.SaveChanges();
         }
+
         private bool disposed = false;
         public virtual void Dispose(bool disposing)
         {
@@ -406,10 +402,10 @@ namespace NLayerApp.WEB.Models
 
 namespace NLayerApp.WEB.Controllers
 {
-    public class HomeController : Controller
+    public class NLayerController : Controller
     {
         IOrderService orderService;
-        public HomeController(IOrderService serv)
+        public NLayerController(IOrderService serv)
         {
             orderService = serv;
         }

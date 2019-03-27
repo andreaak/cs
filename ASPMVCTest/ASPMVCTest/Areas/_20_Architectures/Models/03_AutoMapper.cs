@@ -111,10 +111,10 @@ namespace _01_ASPMVCTest.Areas._20_Architectures.Models
 
     namespace AutoMapperApp.Controllers
     {
-        public class HomeController : Controller
+        public class AutoMapperController : Controller
         {
             IRepository<User> repo;
-            public HomeController(IRepository<User> r)
+            public AutoMapperController(IRepository<User> r)
             {
                 repo = r;
             }

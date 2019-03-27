@@ -55,32 +55,39 @@ namespace OnionApp.Infrastructure.Data
         {
             this.db = new OrderContext();
         }
+
         public IEnumerable<Book> GetBookList()
         {
             return db.Books.ToList();
         }
+
         public Book GetBook(int id)
         {
             return db.Books.Find(id);
         }
+
         public void Create(Book book)
         {
             db.Books.Add(book);
         }
+
         public void Update(Book book)
         {
             db.Entry(book).State = EntityState.Modified;
         }
+
         public void Delete(int id)
         {
             Book book = db.Books.Find(id);
             if (book != null)
                 db.Books.Remove(book);
         }
+
         public void Save()
         {
             db.SaveChanges();
         }
+
         private bool disposed = false;
         public virtual void Dispose(bool disposing)
         {
@@ -125,26 +132,30 @@ namespace OnionApp.Infrastructure.Business
 
 namespace OnionApp.Controllers
 {
-    public class HomeController : Controller
+    public class OnionController : Controller
     {
         IBookRepository repo;
         IOrder order;
-        public HomeController(IBookRepository r, IOrder o)
+
+        public OnionController(IBookRepository r, IOrder o)
         {
             repo = r;
             order = o;
         }
+
         public ActionResult Index()
         {
             var books = repo.GetBookList();
             return View();
         }
+
         public ActionResult Buy(int id)
         {
             Book book = repo.GetBook(id);
             order.MakeOrder(book);
             return View();
         }
+
         protected override void Dispose(bool disposing)
         {
             repo.Dispose();

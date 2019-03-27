@@ -349,11 +349,12 @@
     <Compile Include="Areas\_10_Async\Models\ServicesModel.cs" />
     <Compile Include="Areas\_10_Async\Models\WeatherModel.cs" />
     <Compile Include="Areas\_10_Async\_10_AsyncAreaRegistration.cs" />
+    <Compile Include="Areas\_20_Architectures\Controllers\HomeController.cs" />
     <Compile Include="Areas\_20_Architectures\Models\01_Onion.cs" />
     <Compile Include="Areas\_20_Architectures\Models\03_AutoMapper.cs" />
     <Compile Include="Areas\_20_Architectures\Models\02_UnitOfWork.cs" />
-    <Compile Include="Areas\_20_Architectures\Models\04_Monolith.cs" />
-    <Compile Include="Areas\_20_Architectures\Models\05_MultiLayers.cs" />
+    <Compile Include="Areas\_20_Architectures\Models\04_Monolit.cs" />
+    <Compile Include="Areas\_20_Architectures\Models\05_NLayer.cs" />
     <Compile Include="Areas\_20_Architectures\_20_ArchitecturesAreaRegistration.cs" />
     <Compile Include="Providers\CookiesValueProvider.cs" />
     <Compile Include="Areas\_03_Model\Models\M_02_TestModel.cs" />
@@ -677,6 +678,7 @@
     <Content Include="Areas\_01_Controller\Views\_01_Home\C_03_TestActions.cshtml" />
     <Content Include="Areas\_04_Routing\Views\_02_Link\Index.cshtml" />
     <Content Include="Areas\_20_Architectures\Views\Web.config" />
+    <Content Include="Areas\_20_Architectures\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -732,7 +734,6 @@
     <Folder Include="Areas\_08_Optimization\Models\" />
     <Folder Include="Areas\_08_Optimization\Views\Shared\" />
     <Folder Include="Areas\_09_WebApi\Views\Shared\" />
-    <Folder Include="Areas\_20_Architectures\Controllers\" />
     <Folder Include="Areas\_20_Architectures\Views\Shared\" />
     <Folder Include="Filters\" />
     <Folder Include="Models\" />

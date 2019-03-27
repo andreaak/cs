@@ -20,7 +20,8 @@ namespace _01_ASPMVCTest
                     controller = "Home",
                     action = "Index",
                     id = UrlParameter.Optional
-                }
+                },
+                namespaces: new[] { "_01_ASPMVCTest.Controllers" }
             );
         }
     }

@@ -1,4 +1,4 @@
-﻿using _01_ASPMVCTest.Areas._20_Architectures.Models.Monolith;
+﻿using _01_ASPMVCTest.Areas._20_Architectures.Models.Monolit;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace _01_ASPMVCTest.Areas._20_Architectures.Models.Monolith
+namespace _01_ASPMVCTest.Areas._20_Architectures.Models.Monolit
 {
     public class Phone
     {
@@ -52,13 +52,11 @@ namespace _01_ASPMVCTest.Areas._20_Architectures.Models.Monolith
         public string Address { get; set; } // адрес
         public string PhoneNumber { get; set; } // номер телефона покупателя
     }
-
-
 }
 
 namespace MonolitMvcApp.Controllers
 {
-    public class HomeController : Controller
+    public class MonolitController : Controller
     {
         MobileContext db = new MobileContext();
 
