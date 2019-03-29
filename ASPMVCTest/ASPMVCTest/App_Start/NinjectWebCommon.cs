@@ -11,7 +11,7 @@ namespace _01_ASPMVCTest.App_Start
     using Ninject;
     using Ninject.Modules;
     using Ninject.Web.Common;
-    using NLayerApp.BLL.Infrastructure;
+    using Areas._20_Architectures._05_NLayer.NLayerApp.BLL.Infrastructure;
 
     public static class NinjectWebCommon 
     {
@@ -65,7 +65,7 @@ namespace _01_ASPMVCTest.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            System.Web.Mvc.DependencyResolver.SetResolver(new NLayerApp.WEB.Util.NinjectDependencyResolver(kernel));
+            System.Web.Mvc.DependencyResolver.SetResolver(new Areas._20_Architectures._05_NLayer.NLayerApp.WEB.Util.NinjectDependencyResolver(kernel));
         }
     }
 }

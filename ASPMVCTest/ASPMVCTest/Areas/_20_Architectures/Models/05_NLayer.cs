@@ -1,487 +1,428 @@
-﻿using AutoMapper;
+﻿using _01_ASPMVCTest.Areas._20_Architectures._05_NLayer.NLayerApp.BLL.BusinessModels;
+using _01_ASPMVCTest.Areas._20_Architectures._05_NLayer.NLayerApp.BLL.DTO;
+using _01_ASPMVCTest.Areas._20_Architectures._05_NLayer.NLayerApp.BLL.Infrastructure;
+using _01_ASPMVCTest.Areas._20_Architectures._05_NLayer.NLayerApp.BLL.Interfaces;
+using _01_ASPMVCTest.Areas._20_Architectures._05_NLayer.NLayerApp.BLL.Services;
+using _01_ASPMVCTest.Areas._20_Architectures._05_NLayer.NLayerApp.DAL.EF;
+using _01_ASPMVCTest.Areas._20_Architectures._05_NLayer.NLayerApp.DAL.Entities;
+using _01_ASPMVCTest.Areas._20_Architectures._05_NLayer.NLayerApp.DAL.Interfaces;
+using _01_ASPMVCTest.Areas._20_Architectures._05_NLayer.NLayerApp.DAL.Repositories;
+using AutoMapper;
 using Ninject;
 using Ninject.Modules;
-using NLayerApp.BLL.BusinessModels;
-using NLayerApp.BLL.DTO;
-using NLayerApp.BLL.Infrastructure;
-using NLayerApp.BLL.Interfaces;
-using NLayerApp.BLL.Services;
-using NLayerApp.DAL.EF;
-using NLayerApp.DAL.Entities;
-using NLayerApp.DAL.Interfaces;
-using NLayerApp.DAL.Repositories;
-using NLayerApp.WEB.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace NLayerApp.DAL.Entities
+namespace _01_ASPMVCTest.Areas._20_Architectures._05_NLayer
 {
-    public class Phone
+    namespace NLayerApp.DAL
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Company { get; set; }
-        public decimal Price { get; set; }
-        public ICollection<Order> Orders { get; set; }
-    }
-
-    public class Order
-    {
-        public int Id { get; set; }
-        public decimal Sum { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Address { get; set; }
-        public int PhoneId { get; set; }
-        public Phone Phone { get; set; }
-        public DateTime Date { get; set; }
-    }
-}
-
-namespace NLayerApp.DAL.EF
-{
-    public class MobileContext : DbContext
-    {
-        public DbSet<Phone> Phones { get; set; }
-        public DbSet<Order> Orders { get; set; }
-
-        static MobileContext()
+        namespace Entities
         {
-            Database.SetInitializer<MobileContext>(new StoreDbInitializer());
-        }
-
-        public MobileContext(string connectionString)
-        : base(connectionString)
-        {
-        }
-    }
-
-    public class StoreDbInitializer : DropCreateDatabaseIfModelChanges<MobileContext>
-    {
-        protected override void Seed(MobileContext db)
-        {
-            db.Phones.Add(new Phone { Name = "Nokia Lumia 630", Company = "Nokia", Price = 220 });
-            db.Phones.Add(new Phone { Name = "iPhone 6", Company = "Apple", Price = 320 });
-            db.Phones.Add(new Phone { Name = "LG G4", Company = "lG", Price = 260 });
-            db.Phones.Add(new Phone { Name = "Samsung Galaxy S 6", Company = "Samsung", Price = 300 });
-            db.SaveChanges();
-        }
-    }
-}
-
-namespace NLayerApp.DAL.Interfaces
-{
-    public interface IRepository<T> where T : class
-    {
-        IEnumerable<T> GetAll();
-        T Get(int id);
-        IEnumerable<T> Find(Func<T, Boolean> predicate);
-        void Create(T item);
-        void Update(T item);
-        void Delete(int id);
-    }
-}
-
-namespace NLayerApp.DAL.Interfaces
-{
-    public interface IUnitOfWork : IDisposable
-    {
-        IRepository<Phone> Phones { get; }
-        IRepository<Order> Orders { get; }
-        void Save();
-    }
-}
-
-namespace NLayerApp.DAL.Repositories
-{
-    public class PhoneRepository : IRepository<Phone>
-    {
-        private MobileContext db;
-        public PhoneRepository(MobileContext context)
-        {
-            this.db = context;
-        }
-
-        public IEnumerable<Phone> GetAll()
-        {
-            return db.Phones;
-        }
-
-        public Phone Get(int id)
-        {
-            return db.Phones.Find(id);
-        }
-
-        public void Create(Phone book)
-        {
-            db.Phones.Add(book);
-        }
-
-        public void Update(Phone book)
-        {
-            db.Entry(book).State = EntityState.Modified;
-        }
-
-        public IEnumerable<Phone> Find(Func<Phone, Boolean> predicate)
-        {
-            return db.Phones.Where(predicate).ToList();
-        }
-
-        public void Delete(int id)
-        {
-            Phone book = db.Phones.Find(id);
-            if (book != null)
-                db.Phones.Remove(book);
-        }
-    }
-}
-
-namespace NLayerApp.DAL.Repositories
-{
-    public class OrderRepository : IRepository<Order>
-    {
-        private MobileContext db;
-        public OrderRepository(MobileContext context)
-        {
-            this.db = context;
-        }
-
-        public IEnumerable<Order> GetAll()
-        {
-            return db.Orders.Include(o => o.Phone);
-        }
-
-        public Order Get(int id)
-        {
-            return db.Orders.Find(id);
-        }
-
-        public void Create(Order order)
-        {
-            db.Orders.Add(order);
-        }
-
-        public void Update(Order order)
-        {
-            db.Entry(order).State = EntityState.Modified;
-        }
-
-        public IEnumerable<Order> Find(Func<Order, Boolean> predicate)
-        {
-            return db.Orders.Include(o => o.Phone).Where(predicate).ToList();
-        }
-
-        public void Delete(int id)
-        {
-            Order order = db.Orders.Find(id);
-            if (order != null)
-                db.Orders.Remove(order);
-        }
-    }
-}
-
-namespace NLayerApp.DAL.Repositories
-{
-    public class EFUnitOfWork : IUnitOfWork
-    {
-        private MobileContext db;
-        private PhoneRepository phoneRepository;
-        private OrderRepository orderRepository;
-
-        public EFUnitOfWork(string connectionString)
-        {
-            db = new MobileContext(connectionString);
-        }
-
-        public IRepository<Phone> Phones
-        {
-            get
+            public class Phone
             {
-                if (phoneRepository == null)
-                    phoneRepository = new PhoneRepository(db);
-                return phoneRepository;
+                public int Id { get; set; }
+                public string Name { get; set; }
+                public string Company { get; set; }
+                public decimal Price { get; set; }
+                public ICollection<Order> Orders { get; set; }
+            }
+
+            public class Order
+            {
+                public int Id { get; set; }
+                public decimal Sum { get; set; }
+                public string PhoneNumber { get; set; }
+                public string Address { get; set; }
+                public int PhoneId { get; set; }
+                public Phone Phone { get; set; }
+                public DateTime Date { get; set; }
             }
         }
 
-        public IRepository<Order> Orders
+        namespace EF
         {
-            get
+            public class MobileContext : DbContext
             {
-                if (orderRepository == null)
-                    orderRepository = new OrderRepository(db);
-                return orderRepository;
-            }
-        }
+                public DbSet<Phone> Phones { get; set; }
+                public DbSet<Order> Orders { get; set; }
 
-        public void Save()
-        {
-            db.SaveChanges();
-        }
-
-        private bool disposed = false;
-        public virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
+                static MobileContext()
                 {
-                    db.Dispose();
+                    Database.SetInitializer<MobileContext>(new StoreDbInitializer());
                 }
-                this.disposed = true;
+
+                public MobileContext(string connectionString)
+                : base(connectionString)
+                {
+                }
             }
-        }
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-    }
-}
 
-namespace NLayerApp.BLL.DTO
-{
-    public class PhoneDTO
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Company { get; set; }
-        public decimal Price { get; set; }
-    }
-}
-
-namespace NLayerApp.BLL.DTO
-{
-    public class OrderDTO
-    {
-        public int Id { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Address { get; set; }
-        public int PhoneId { get; set; }
-        public DateTime? Date { get; set; }
-    }
-}
-
-namespace NLayerApp.BLL.BusinessModels
-{
-    public class Discount
-    {
-        public Discount(decimal val)
-        {
-            _value = val;
-        }
-
-        private decimal _value = 0;
-        public decimal Value { get { return _value; } }
-
-        public decimal GetDiscountedPrice(decimal sum)
-        {
-            if (DateTime.Now.Day == 1)
-                return sum - sum * _value;
-            return sum;
-        }
-    }
-}
-
-namespace NLayerApp.BLL.Infrastructure
-{
-    public class ValidationException : Exception
-    {
-        public string Property { get; protected set; }
-
-        public ValidationException(string message, string prop) : base(message)
-        {
-            Property = prop;
-        }
-    }
-}
-
-namespace NLayerApp.BLL.Interfaces
-{
-    public interface IOrderService
-    {
-        void MakeOrder(OrderDTO orderDto);
-        PhoneDTO GetPhone(int? id);
-        IEnumerable<PhoneDTO> GetPhones();
-        void Dispose();
-    }
-}
-
-namespace NLayerApp.BLL.Services
-{
-    public class OrderService : IOrderService
-    {
-        IUnitOfWork Database { get; set; }
-        public OrderService(IUnitOfWork uow)
-        {
-            Database = uow;
-        }
-
-        public void MakeOrder(OrderDTO orderDto)
-        {
-            Phone phone = Database.Phones.Get(orderDto.PhoneId);
-            // валидация
-            if (phone == null)
-                throw new ValidationException("Телефон не найден", "");
-            // применяем скидку
-            decimal sum = new Discount(0.1m).GetDiscountedPrice(phone.Price);
-            Order order = new Order
+            public class StoreDbInitializer : DropCreateDatabaseIfModelChanges<MobileContext>
             {
-                Date = DateTime.Now,
-                Address = orderDto.Address,
-                PhoneId = phone.Id,
-                Sum = sum,
-                PhoneNumber = orderDto.PhoneNumber
-            };
-            Database.Orders.Create(order);
-            Database.Save();
-        }
-
-        public IEnumerable<PhoneDTO> GetPhones()
-        {
-            // применяем автомаппер для проекции одной коллекции на другую
-            Mapper.CreateMap<Phone, PhoneDTO>();
-            return Mapper.Map<IEnumerable<Phone>, List<PhoneDTO>>(Database.Phones.GetAll());
-        }
-
-        public PhoneDTO GetPhone(int? id)
-        {
-            if (id == null)
-                throw new ValidationException("Не установлено id телефона", "");
-            var phone = Database.Phones.Get(id.Value);
-            if (phone == null)
-                throw new ValidationException("Телефон не найден", "");
-            // применяем автомаппер для проекции Phone на PhoneDTO
-            Mapper.CreateMap<Phone, PhoneDTO>();
-            return Mapper.Map<Phone, PhoneDTO>(phone);
-        }
-
-        public void Dispose()
-        {
-            Database.Dispose();
-        }
-    }
-}
-
-namespace NLayerApp.BLL.Infrastructure
-{
-    public class ServiceModule : NinjectModule
-    {
-        private string connectionString;
-        public ServiceModule(string connection)
-        {
-            connectionString = connection;
-        }
-
-        public override void Load()
-        {
-            Bind<IUnitOfWork>().To<EFUnitOfWork>().WithConstructorArgument(connectionString);
-        }
-    }
-}
-
-namespace NLayerApp.WEB.Models
-{
-    public class PhoneViewModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Company { get; set; }
-        public decimal Price { get; set; }
-
-    }
-
-    public class OrderViewModel
-    {
-        public int PhoneId { get; set; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
-    }
-}
-
-namespace NLayerApp.WEB.Controllers
-{
-    public class NLayerController : Controller
-    {
-        IOrderService orderService;
-        public NLayerController(IOrderService serv)
-        {
-            orderService = serv;
-        }
-
-        public ActionResult Index()
-        {
-            Mapper.CreateMap<PhoneDTO, PhoneViewModel>();
-            var phones = Mapper.Map<IEnumerable<PhoneDTO>,
-            List<PhoneViewModel>>(orderService.GetPhones());
-            return View(phones);
-        }
-
-        public ActionResult MakeOrder(int? id)
-        {
-            try
-            {
-                Mapper.CreateMap<PhoneDTO, OrderViewModel>()
-                .ForMember("PhoneId", opt => opt.MapFrom(src => src.Id));
-                var order = Mapper.Map<PhoneDTO, OrderViewModel>(orderService.GetPhone(id));
-                return View(order);
-            }
-            catch (ValidationException ex)
-            {
-                return Content(ex.Message);
+                protected override void Seed(MobileContext db)
+                {
+                    db.Phones.Add(new Phone { Name = "Nokia Lumia 630", Company = "Nokia", Price = 220 });
+                    db.Phones.Add(new Phone { Name = "iPhone 6", Company = "Apple", Price = 320 });
+                    db.Phones.Add(new Phone { Name = "LG G4", Company = "lG", Price = 260 });
+                    db.Phones.Add(new Phone { Name = "Samsung Galaxy S 6", Company = "Samsung", Price = 300 });
+                    db.SaveChanges();
+                }
             }
         }
 
-        [HttpPost]
-        public ActionResult MakeOrder(OrderViewModel order)
+        namespace Interfaces
         {
-            try
+            public interface IRepository<T> where T : class
             {
-                Mapper.CreateMap<OrderViewModel, OrderDTO>();
-                var orderDto = Mapper.Map<OrderViewModel, OrderDTO>(order);
-                orderService.MakeOrder(orderDto);
-                return Content("<h2>Ваш заказ успешно оформлен</h2>");
+                IEnumerable<T> GetAll();
+                T Get(int id);
+                IEnumerable<T> Find(Func<T, Boolean> predicate);
+                void Create(T item);
+                void Update(T item);
+                void Delete(int id);
             }
-            catch (ValidationException ex)
+
+            public interface IUnitOfWork : IDisposable
             {
-                ModelState.AddModelError(ex.Property, ex.Message);
+                IRepository<Phone> Phones { get; }
+                IRepository<Order> Orders { get; }
+                void Save();
             }
-            return View(order);
         }
 
-        protected override void Dispose(bool disposing)
+        namespace Repositories
         {
-            orderService.Dispose();
-            base.Dispose(disposing);
+            public class PhoneRepository : IRepository<Phone>
+            {
+                private MobileContext db;
+                public PhoneRepository(MobileContext context)
+                {
+                    this.db = context;
+                }
+
+                public IEnumerable<Phone> GetAll()
+                {
+                    return db.Phones;
+                }
+
+                public Phone Get(int id)
+                {
+                    return db.Phones.Find(id);
+                }
+
+                public void Create(Phone book)
+                {
+                    db.Phones.Add(book);
+                }
+
+                public void Update(Phone book)
+                {
+                    db.Entry(book).State = EntityState.Modified;
+                }
+
+                public IEnumerable<Phone> Find(Func<Phone, Boolean> predicate)
+                {
+                    return db.Phones.Where(predicate).ToList();
+                }
+
+                public void Delete(int id)
+                {
+                    Phone book = db.Phones.Find(id);
+                    if (book != null)
+                        db.Phones.Remove(book);
+                }
+            }
+
+            public class OrderRepository : IRepository<Order>
+            {
+                private MobileContext db;
+                public OrderRepository(MobileContext context)
+                {
+                    this.db = context;
+                }
+
+                public IEnumerable<Order> GetAll()
+                {
+                    return db.Orders.Include(o => o.Phone);
+                }
+
+                public Order Get(int id)
+                {
+                    return db.Orders.Find(id);
+                }
+
+                public void Create(Order order)
+                {
+                    db.Orders.Add(order);
+                }
+
+                public void Update(Order order)
+                {
+                    db.Entry(order).State = EntityState.Modified;
+                }
+
+                public IEnumerable<Order> Find(Func<Order, Boolean> predicate)
+                {
+                    return db.Orders.Include(o => o.Phone).Where(predicate).ToList();
+                }
+
+                public void Delete(int id)
+                {
+                    Order order = db.Orders.Find(id);
+                    if (order != null)
+                        db.Orders.Remove(order);
+                }
+            }
+
+            public class EFUnitOfWork : IUnitOfWork
+            {
+                private MobileContext db;
+                private PhoneRepository phoneRepository;
+                private OrderRepository orderRepository;
+
+                public EFUnitOfWork(string connectionString)
+                {
+                    db = new MobileContext(connectionString);
+                }
+
+                public IRepository<Phone> Phones
+                {
+                    get
+                    {
+                        if (phoneRepository == null)
+                            phoneRepository = new PhoneRepository(db);
+                        return phoneRepository;
+                    }
+                }
+
+                public IRepository<Order> Orders
+                {
+                    get
+                    {
+                        if (orderRepository == null)
+                            orderRepository = new OrderRepository(db);
+                        return orderRepository;
+                    }
+                }
+
+                public void Save()
+                {
+                    db.SaveChanges();
+                }
+
+                private bool disposed = false;
+                public virtual void Dispose(bool disposing)
+                {
+                    if (!this.disposed)
+                    {
+                        if (disposing)
+                        {
+                            db.Dispose();
+                        }
+                        this.disposed = true;
+                    }
+                }
+                public void Dispose()
+                {
+                    Dispose(true);
+                    GC.SuppressFinalize(this);
+                }
+            }
         }
     }
-}
 
-namespace NLayerApp.WEB.Util
-{
-    public class NinjectDependencyResolver : IDependencyResolver
+    namespace NLayerApp.BLL
     {
-        private IKernel kernel;
-        public NinjectDependencyResolver(IKernel kernelParam)
+        namespace DTO
         {
-            kernel = kernelParam;
-            AddBindings();
+            public class PhoneDTO
+            {
+                public int Id { get; set; }
+                public string Name { get; set; }
+                public string Company { get; set; }
+                public decimal Price { get; set; }
+            }
+
+            public class OrderDTO
+            {
+                public int Id { get; set; }
+                public string PhoneNumber { get; set; }
+                public string Address { get; set; }
+                public int PhoneId { get; set; }
+                public DateTime? Date { get; set; }
+            }
         }
 
-        public object GetService(Type serviceType)
+        namespace BusinessModels
         {
-            return kernel.TryGet(serviceType);
+            public class Discount
+            {
+                public Discount(decimal val)
+                {
+                    _value = val;
+                }
+
+                private decimal _value = 0;
+                public decimal Value { get { return _value; } }
+
+                public decimal GetDiscountedPrice(decimal sum)
+                {
+                    if (DateTime.Now.Day == 1)
+                        return sum - sum * _value;
+                    return sum;
+                }
+            }
         }
 
-        public IEnumerable<object> GetServices(Type serviceType)
+        namespace Infrastructure
         {
-            return kernel.GetAll(serviceType);
+            public class ValidationException : Exception
+            {
+                public string Property { get; protected set; }
+
+                public ValidationException(string message, string prop) : base(message)
+                {
+                    Property = prop;
+                }
+            }
         }
 
-        private void AddBindings()
+        namespace Interfaces
         {
-            kernel.Bind<IOrderService>().To<OrderService>();
+            public interface IOrderService
+            {
+                void MakeOrder(OrderDTO orderDto);
+                PhoneDTO GetPhone(int? id);
+                IEnumerable<PhoneDTO> GetPhones();
+                void Dispose();
+            }
+        }
+
+        namespace Services
+        {
+            public class OrderService : IOrderService
+            {
+                IUnitOfWork Database { get; set; }
+                public OrderService(IUnitOfWork uow)
+                {
+                    Database = uow;
+                }
+
+                public void MakeOrder(OrderDTO orderDto)
+                {
+                    Phone phone = Database.Phones.Get(orderDto.PhoneId);
+                    // валидация
+                    if (phone == null)
+                        throw new ValidationException("Телефон не найден", "");
+                    // применяем скидку
+                    decimal sum = new Discount(0.1m).GetDiscountedPrice(phone.Price);
+                    Order order = new Order
+                    {
+                        Date = DateTime.Now,
+                        Address = orderDto.Address,
+                        PhoneId = phone.Id,
+                        Sum = sum,
+                        PhoneNumber = orderDto.PhoneNumber
+                    };
+                    Database.Orders.Create(order);
+                    Database.Save();
+                }
+
+                public IEnumerable<PhoneDTO> GetPhones()
+                {
+                    // применяем автомаппер для проекции одной коллекции на другую
+                    Mapper.CreateMap<Phone, PhoneDTO>();
+                    return Mapper.Map<IEnumerable<Phone>, List<PhoneDTO>>(Database.Phones.GetAll());
+                }
+
+                public PhoneDTO GetPhone(int? id)
+                {
+                    if (id == null)
+                        throw new ValidationException("Не установлено id телефона", "");
+                    var phone = Database.Phones.Get(id.Value);
+                    if (phone == null)
+                        throw new ValidationException("Телефон не найден", "");
+                    // применяем автомаппер для проекции Phone на PhoneDTO
+                    Mapper.CreateMap<Phone, PhoneDTO>();
+                    return Mapper.Map<Phone, PhoneDTO>(phone);
+                }
+
+                public void Dispose()
+                {
+                    Database.Dispose();
+                }
+            }
+        }
+
+        namespace Infrastructure
+        {
+            public class ServiceModule : NinjectModule
+            {
+                private string connectionString;
+                public ServiceModule(string connection)
+                {
+                    connectionString = connection;
+                }
+
+                public override void Load()
+                {
+                    Bind<IUnitOfWork>().To<EFUnitOfWork>().WithConstructorArgument(connectionString);
+                }
+            }
+        }
+    }
+
+    namespace NLayerApp.WEB
+    {
+        namespace Models
+        {
+            public class PhoneViewModel
+            {
+                public int Id { get; set; }
+                public string Name { get; set; }
+                public string Company { get; set; }
+                public decimal Price { get; set; }
+
+            }
+
+            public class OrderViewModel
+            {
+                public int PhoneId { get; set; }
+                public string Address { get; set; }
+                public string PhoneNumber { get; set; }
+            }
+        }
+
+        namespace Util
+        {
+            public class NinjectDependencyResolver : IDependencyResolver
+            {
+                private IKernel kernel;
+                public NinjectDependencyResolver(IKernel kernelParam)
+                {
+                    kernel = kernelParam;
+                    AddBindings();
+                }
+
+                public object GetService(Type serviceType)
+                {
+                    return kernel.TryGet(serviceType);
+                }
+
+                public IEnumerable<object> GetServices(Type serviceType)
+                {
+                    return kernel.GetAll(serviceType);
+                }
+
+                private void AddBindings()
+                {
+                    kernel.Bind<IOrderService>().To<OrderService>();
+                }
+            }
         }
     }
 }

@@ -349,6 +349,11 @@
     <Compile Include="Areas\_10_Async\Models\ServicesModel.cs" />
     <Compile Include="Areas\_10_Async\Models\WeatherModel.cs" />
     <Compile Include="Areas\_10_Async\_10_AsyncAreaRegistration.cs" />
+    <Compile Include="Areas\_20_Architectures\Controllers\01_OnionController.cs" />
+    <Compile Include="Areas\_20_Architectures\Controllers\02_UnitOfWorkController.cs" />
+    <Compile Include="Areas\_20_Architectures\Controllers\03_AutoMapperController.cs" />
+    <Compile Include="Areas\_20_Architectures\Controllers\04_MonolitController.cs" />
+    <Compile Include="Areas\_20_Architectures\Controllers\05_NLayerController.cs" />
     <Compile Include="Areas\_20_Architectures\Controllers\HomeController.cs" />
     <Compile Include="Areas\_20_Architectures\Models\01_Onion.cs" />
     <Compile Include="Areas\_20_Architectures\Models\03_AutoMapper.cs" />
