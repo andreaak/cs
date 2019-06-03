@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet " />
+    <title>Sign up page</title> 
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn1');
+
+            btn.onclick = function () {
+                if (document.getElementById('username').value.length == 0 || 
+                    document.getElementById('password').value.length == 0) {
+                    alert('invalid data in form!');
+                    return false; 
+                }
+                var data = {
+                    username: document.getElementById('username').value, 
+                    password: document.getElementById('password').value
+                }
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/signup'); 
+				
+				xhr.setRequestHeader('Content-Type', 'application/json'); 
+                xhr.send(JSON.stringify(data));
+
+                xhr.onload = function () {
+                    alert('user successfully created!'); 
+					
+					window.location.href = '/login'; 
+                };
+
+                xhr.onerror = function () {
+                    alert('could not create user!'); 
+                }
+            }
+        }
+     </script>
+</head>
+<body>
+    <div class="panel well" style="width: 350px; padding: 25px; text-align: center">
+        <h2 style="margin-bottom: 35px">Sign up!</h2>
+        <form name="signup">
+            <div class="form-group">
+                <label>Username</label> <input class="form-control input-lg" type="text" id="username" />
+            </div>
+            <div class="form-group">
+                <label>Password</label> <input class="form-control input-lg" type="text" id="password" />
+            </div>
+            <div class="form-group">
+                <input type="button" value="Sign up" class="btn btn-lg btn-success" id="btn1" />
+            </div>
+        </form>
+    </div> 
+</body>
+</html>

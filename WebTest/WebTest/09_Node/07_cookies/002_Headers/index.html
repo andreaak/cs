@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td>Value</td>
+                <td><input type="text" id="val"></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td align="right"><input type="button" value="Add Cookie" id="addBtn" ></td>
+            </tr>
+        </table>
+        <script>
+            document.getElementById('addBtn').onclick =function(){
+                var nameCookie  = document.getElementById('name').value;
+                var valueCookie = document.getElementById('val').value;
+
+                var cookie = `${nameCookie}=${valueCookie}`;
+
+                document.cookie = cookie;
+            }
+        </script>
+    </body>
+</html>

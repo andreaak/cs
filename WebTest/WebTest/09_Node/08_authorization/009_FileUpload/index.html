@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet " />
+    <title>File upload demo</title> 
+	<script>
+		window.onload = function() {
+			var btn = document.querySelector('#btn'); 
+			
+			btn.onclick = function() {
+				var xhr = new XMLHttpRequest(); 
+				
+				xhr.open('GET', '/get_uploads'); 
+				xhr.send(); 
+				
+				xhr.onload = function (){ 
+					var imgs = JSON.parse(this.responseText); 
+					var container = document.getElementsByClassName('img-container')[0]; 
+					
+					for (var i = 0; i < imgs.length; i++) {
+						container.innerHTML +=  imgs[i]; 
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<div class="panel well">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="recfile" />
+
+        <input type="submit">
+    </form>
+</div> 
+<div class="panel">
+<button class="btn btn-lg btn-success" id="btn">View uploads!</button>
+<div class="img-container"></div>
+</div>
+</body>
+</html>

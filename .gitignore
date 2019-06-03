@@ -33,4 +33,5 @@ packages/
 .vs/
 Debug
 ipch
+node_modules
 *.VC.*
