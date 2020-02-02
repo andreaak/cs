@@ -27,7 +27,7 @@ namespace Note
 
         public static bool IsActiveRow(DataRow row)
         {
-            return row.RowState != DataRowState.Deleted;
+            return row.RowState != DataRowState.Deleted && row.RowState != DataRowState.Detached;
         }
     }
 }

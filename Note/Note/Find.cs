@@ -9,15 +9,17 @@ namespace Note
     public partial class Find : Form
     {
         private Domain.DatabaseManager databaseManager;
+        private Action<int> focus;
 
         public Find()
         {
             InitializeComponent();
         }
 
-        public Find(DatabaseManager databaseManager)
+        public Find(DatabaseManager databaseManager, Action<int> focus)
         {
             this.databaseManager = databaseManager;
+            this.focus = focus;
             InitializeComponent();
         }
 
@@ -49,6 +51,17 @@ namespace Note
                 });
             }
             return list;
+        }
+
+        private void treeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            var selectedNode = treeList.FocusedNode;
+            var id = (int)selectedNode.GetValue(colId.FieldName);
+            var type = (int)selectedNode.GetValue(treeList.ImageIndexFieldName);
+            if (type == 1)
+            {
+                focus(id);
+            }
         }
     }
 }

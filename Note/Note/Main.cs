@@ -205,7 +205,7 @@ namespace Note
 
         private void barButtonItemFind_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Find form = new Find(presenter.DataManager);
+            Find form = new Find(presenter.DataManager, treeWrapper.FocusNode);
             form.Show();
         }
 

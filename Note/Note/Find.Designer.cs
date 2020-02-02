@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Find));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.treeList = new DevExpress.XtraTreeList.TreeList();
+            this.colId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colDescription = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colText = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colOrderPosition = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -90,7 +91,7 @@
             this.treeList.Location = new System.Drawing.Point(12, 38);
             this.treeList.Name = "treeList";
             this.treeList.OptionsBehavior.KeepSelectedOnClick = false;
-            this.treeList.OptionsSelection.MultiSelect = true;
+            this.treeList.OptionsSelection.MultiSelect = false;
             this.treeList.OptionsSelection.UseIndicatorForSelection = true;
             this.treeList.OptionsView.ShowHorzLines = false;
             this.treeList.OptionsView.ShowIndicator = false;
@@ -98,12 +99,21 @@
             this.treeList.SelectImageList = this.imageList;
             this.treeList.Size = new System.Drawing.Size(650, 519);
             this.treeList.TabIndex = 6;
+            this.treeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList_FocusedNodeChanged);
+            // 
+            // colDescription
+            // 
+            this.colId.Caption = "ID";
+            this.colId.FieldName = "ID";
+            this.colId.Name = "colId";
+            this.colId.Visible = false;
+            this.colId.VisibleIndex = 0;
             // 
             // colDescription
             // 
             this.colDescription.Caption = "Description";
             this.colDescription.FieldName = "Description";
-            this.colDescription.MinWidth = 33;
+            this.colDescription.MinWidth = 34;
             this.colDescription.Name = "colDescription";
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 0;
@@ -236,6 +246,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemFindText;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemFindButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemTree;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colId;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colDescription;
         private System.Windows.Forms.ImageList imageList;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colText;

@@ -39,5 +39,7 @@ namespace Note.ControlWrapper
             Func<int, int, int, Direction, bool> PerformAction, Direction dir);
         
         void FocusParentNode();
+
+        void FocusNode(int id);
     }
 }

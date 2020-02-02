@@ -230,7 +230,10 @@ namespace Note.ControlWrapper.DevExpressWrappers
             foreach (var subItem in subItems)
             {
                 Delete(subItem.ID, table);
-                table.RemoveDescriptionRow(subItem);
+                if (Utils.IsActiveRow(subItem))
+                {
+                    table.RemoveDescriptionRow(subItem);
+                }
             }
             var item = table.FirstOrDefault(itm => Utils.IsActiveRow(itm) && itm.ID == id);
             if(item != null)
@@ -345,7 +348,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             }
         }
 
-        private void FocusNode(int id)
+        public void FocusNode(int id)
         {
             TreeListNode node = null;
             if (control.Nodes.Count != 0 && TryGetNodeById(id, control.Nodes, ref node))
