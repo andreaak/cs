@@ -22,6 +22,7 @@ namespace Note
         Html,
         Pdf,
         Txt,
+        Epub,
     }
     
     public class Options

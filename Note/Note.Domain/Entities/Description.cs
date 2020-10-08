@@ -58,6 +58,12 @@ namespace Note.Domain.Entities
             get;
             set;
         }
+
+        public string Rtf
+        {
+            get;
+            set;
+        }
     }
 
 }

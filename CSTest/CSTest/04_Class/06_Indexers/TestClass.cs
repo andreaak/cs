@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace CSTest._04_Class._06_Indexers
 {
-    class TestClass
+    class TestIndexerClass<T>
     {
         List<int> items = new List<int>();
 
@@ -25,6 +25,7 @@ namespace CSTest._04_Class._06_Indexers
         //    get { return items[index]; }
         //    set { items[index] = value; }
         //}  
+
         //параметры не дают возможности перегрузки со свойством
         //public int this[string index, int i]
         //{
@@ -39,13 +40,13 @@ namespace CSTest._04_Class._06_Indexers
             get { return items[index]; }
             set { items[index] = value; }
         }
+
         [IndexerName("Itm")]
         public int this[string index]
         {
             get { return items[int.Parse(index)]; }
             set { items[int.Parse(index)] = value; }
         }
-
 
         //нельзя перегружать индексаторы с одинаковыми параметрами по имени индексатора
         //[IndexerName("Itm2")]
@@ -61,14 +62,33 @@ namespace CSTest._04_Class._06_Indexers
             get { return items[index1]; }
             set { items[index1] = value; }
         }
+
+        //public int this[int index1, ref bool index2]//ref and out are not valid in this context
+        //{
+        //    get { return items[index1]; }
+        //    set { items[index1] = value; }
+        //}
+
+        //public static int this[int index1, bool index2]//The modifier 'static' is not valid for this item
+        //{
+        //    get { return items[index1]; }
+        //    set { items[index1] = value; }
+        //}
+
+        [IndexerName("Itm")]
+        public int this[int index1, T index2]
+        {
+            get { return items[index1]; }
+            set { items[index1] = value; }
+        }
     }
 
-    class DerivedClass : TestClass
+    class DerivedIndexerClass<T> : TestIndexerClass<T>
     {
         private string[] derivedArray = null;
 
         // Конструктор.
-        public DerivedClass()
+        public DerivedIndexerClass()
         {
             derivedArray = new string[3];
             derivedArray[0] = "Zero!";

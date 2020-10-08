@@ -62,16 +62,28 @@ namespace Utils.WorkWithDB.Helpers
         {
             get
             {
+                return Builder.ConnectionString;
+            }
+            set
+            {
+                Builder = string.IsNullOrEmpty(value) ? null : new SQLiteConnectionStringBuilder(value);
+            }
+        }
+
+        private SQLiteConnectionStringBuilder Builder
+        {
+            get
+            {
                 if (builder == null)
                 {
                     string connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
                     builder = new SQLiteConnectionStringBuilder(connectionString);
                 }
-                return builder.ConnectionString;
+                return builder;
             }
             set
             {
-                builder = string.IsNullOrEmpty(value) ? null : new SQLiteConnectionStringBuilder(value);
+                builder = value;
             }
         }
 
@@ -79,10 +91,10 @@ namespace Utils.WorkWithDB.Helpers
         {
             get
             {
-                FileInfo file = new FileInfo(builder.DataSource);
+                FileInfo file = new FileInfo(Builder.DataSource);
                 return file.Exists ?
                         file.FullName :
-                        Environment.CurrentDirectory + Path.DirectorySeparatorChar + builder.DataSource;
+                        Environment.CurrentDirectory + Path.DirectorySeparatorChar + Builder.DataSource;
             }
         }
 
@@ -104,6 +116,9 @@ namespace Utils.WorkWithDB.Helpers
                 return false;
             }
             builder = new SQLiteConnectionStringBuilder(ConnectionString.Replace("{filePath}", filePath));
+            OptionsUtils.Provider = Provider;
+            OptionsUtils.ConnectionString = ConnectionString;
+
             isInitialized = true;
             return true;
         }

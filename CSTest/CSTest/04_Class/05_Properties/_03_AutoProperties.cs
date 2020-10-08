@@ -9,10 +9,14 @@
     При создании автоматически реализуемых свойств, компилятор создаст закрытое, анонимное резервное поле, 
     которое будет доступно с помощью методов get и set свойства.
     */
-    class _03_AutoProperties
+    class _03_AutoProperties<T>
     {
         // Автоматически реализуемые свойства. 
         public string Name { get; set; }
         public string Book { get; set; }
+        public string BookProtected { get; protected set; }
+
+        public T BookT { get; set; }
+        public static string BookS { get; set; }
     }
 }

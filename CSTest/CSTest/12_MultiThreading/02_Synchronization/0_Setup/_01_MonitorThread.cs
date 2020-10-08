@@ -138,5 +138,24 @@ namespace CSTest._12_MultiThreading._02_Synchronization._0_Setup
                 }
             }
         }
+
+        public static void FunctionWithError2()
+        {
+            int blockStruct2 = 0;
+            for (int i = 0; i < 50; ++i)
+            {
+                // Устанавливается блокировка постоянно в новый object (boxing).
+                Monitor.Enter(blockStruct2);
+                try
+                {
+                    Debug.WriteLine(++counter);
+                }
+                finally
+                {
+                    // Попытка снять блокировку с незаблокированного объекта (boxing создает новый объект).
+                    Monitor.Exit(blockStruct2);
+                }
+            }
+        }
     }
 }

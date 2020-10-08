@@ -7,6 +7,8 @@ namespace CSTest._04_Class._07_Inheritance.Setup
 {
     class DerivedClass : BaseClass
     {
+        public new int field3;
+
         public int derivedField;
         public int field4;
         public int field5;
@@ -17,7 +19,9 @@ namespace CSTest._04_Class._07_Inheritance.Setup
             // Изменяем все доступные поля унаследованные от базового класса.
 
             publicField = "DerivedClass.publicField";
-            protectedField = "DerivedClass.protectedField";            
+            protectedField = "DerivedClass.protectedField";
+            base.field3 = 3;
+            field3 = 5;
         }
 
         // Пользовательский конструктор.
@@ -54,6 +58,7 @@ namespace CSTest._04_Class._07_Inheritance.Setup
         public override void MethodVirtual()
         {
             Debug.WriteLine("MethodVirtual from DerivedClass");
+            Debug.WriteLine("field3: " + field3);
         }
         
         // Переопределение метода базового класса.

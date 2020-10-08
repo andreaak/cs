@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using CSTest._05_Delegates_and_Events._01_Delegates._0_Setup;
+using CSTest._05_Delegates_and_Events._02_Events._01_Theory;
 using NUnit.Framework;
 
 namespace CSTest._05_Delegates_and_Events._01_Delegates
@@ -13,19 +15,21 @@ namespace CSTest._05_Delegates_and_Events._01_Delegates
         [Test]
         public void TestDelegateCoContrVariance1()
         {
-            TestDelegate first = FirstMethod;
+            var testClass = new TestCoContrVarianceClass();
+
+            TestDelegate first = testClass.FirstMethod;
             Debug.WriteLine("Out param: " + first(new DerivedClass()));
             Debug.WriteLine("");
 
-            first = SecondMethod;
+            first = testClass.Covariant;
             Debug.WriteLine("Out param: " + first(new DerivedClass()));
             Debug.WriteLine("");
 
-            first = ThirdMethod;
+            first = testClass.Contrvariant;
             Debug.WriteLine("Out param: " + first(new DerivedClass()));
             Debug.WriteLine("");
 
-            first = FourthMethod;
+            first = testClass.CoContrvariant;
             Debug.WriteLine("Out param: " + first(new DerivedClass()));
 
             /*
@@ -47,44 +51,16 @@ namespace CSTest._05_Delegates_and_Events._01_Delegates
             */
         }
 
-        //base
-        private BaseClass FirstMethod(DerivedClass arg)
-        {
-            Debug.WriteLine("FirstMethod - base");
-            Debug.WriteLine("In param: " + typeof(DerivedClass));
-            return new BaseClass();
-        }
 
-        //covariance
-        private DerivedClass SecondMethod(DerivedClass arg)
-        {
-            Debug.WriteLine("SecondMethod - covariance");
-            Debug.WriteLine("In param: " + typeof(DerivedClass));
-            return new DerivedClass();
-        }
-
-        //contrvariance
-        private BaseClass ThirdMethod(BaseClass arg)
-        {
-            Debug.WriteLine("ThirdMethod - contrvariance");
-            Debug.WriteLine("In param: " + typeof(BaseClass));
-            return new BaseClass();
-        }
-
-        //covariance and contrvariance
-        private DerivedClass FourthMethod(BaseClass arg)
-        {
-            Debug.WriteLine("FourthMethod - covariance and contrvariance");
-            Debug.WriteLine("In param: " + typeof(BaseClass));
-            return new DerivedClass();
-        }
 
         [Test]
         public void TestDelegateCoContrVariance2ReferenceTypes()
         {
-            Func<string, object> del = TestMethodBase;
+            var testClass = new TestCoContrVarianceClass();
+
+            Func<string, object> del = testClass.TestMethodRefBase;
             Debug.WriteLine(del("___"));
-            del = TestMethodDerived;
+            del = testClass.TestMethodRefCoContrvariant;
             Debug.WriteLine(del("___"));
             /*
             Parameter: System.String
@@ -97,46 +73,20 @@ namespace CSTest._05_Delegates_and_Events._01_Delegates
         [Test]
         public void TestDelegateCoContrVariance3ValueTypes()
         {
-            Func<int, object> del = TestMethodBase2;
+            var testClass = new TestCoContrVarianceClass();
+
+            Func<int, object> del = testClass.TestMethodValBase;
             Debug.WriteLine(del(1));
-            //int _05_CoContrVarianceTest.TestMethodDerived2(int)' has 
-            //the wrong return type 
-            //del = TestMethodDerived2;
-            //del = TestMethodDerived3;
+
+            //del = TestMethodValCovariant;//'int _05_CoContrVarianceTest.TestMethodValCovariant(int)' has the wrong return type
+            //del = TestMethodValContrvariant;//No overload for '_05_CoContrVarianceTest.TestMethodValContrvariant(object)' matches delegate 'Func<int, object>'
             //Debug.WriteLine(del(2));
 
             /*
             */
-        }
 
-        private object TestMethodBase(string p)
-        {
-            Debug.WriteLine("Parameter: " + p.GetType());
-            return new object();
-        }
 
-        private string TestMethodDerived(object p)
-        {
-            Debug.WriteLine("Parameter: " + p.GetType());
-            return "TEST";
-        }
 
-        private object TestMethodBase2(int p)
-        {
-            Debug.WriteLine("Parameter: " + p.GetType());
-            return new object();
-        }
-
-        private int TestMethodDerived2(int p)
-        {
-            Debug.WriteLine("Parameter: " + p.GetType());
-            return 22;
-        }
-
-        private object TestMethodDerived3(object p)
-        {
-            Debug.WriteLine("Parameter: " + p.GetType());
-            return 22;
         }
     }
 }

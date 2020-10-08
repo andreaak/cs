@@ -127,6 +127,7 @@ namespace Note.ExportData
                 case ExportDocTypes.Html:
                 case ExportDocTypes.Doc:
                 case ExportDocTypes.Rtf:
+                case ExportDocTypes.Epub:
                 default:
                     return new MultiFormatExporter(format);
             }

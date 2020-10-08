@@ -40,6 +40,14 @@ namespace CSTest._04_Class._10_InnerClasses
         {
 
         }
+
+        internal static class InnerStatic
+        {
+            public static int T()
+            {
+                return 1;
+            }
+        }
     }
 
     public class Derived : Outer
@@ -48,6 +56,7 @@ namespace CSTest._04_Class._10_InnerClasses
         {
             InnerInternal inter = new InnerInternal();
             InnerProtected prot = new InnerProtected();
+            var t = InnerStatic.T();
             //InnerPrivate privat = new InnerPrivate();//InnerPrivate is inaccessible due to its protection level
         }
     }

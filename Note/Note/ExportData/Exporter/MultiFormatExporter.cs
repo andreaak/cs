@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using DevExpress.XtraRichEdit;
 using Note.ControlWrapper;
 
@@ -16,8 +17,15 @@ namespace Note.ExportData.Exporter
 
         public override void Export(string fileName, string data)
         {
-            control.SetEditValue(data);
-            control.SaveDocument(fileName, format);
+            try
+            {
+                control.SetEditValue(data);
+                control.SaveDocument(fileName, format);
+            }
+            catch (Exception e)
+            {
+            }
+
             Thread.Sleep(SleepTime);
         }
 
@@ -33,6 +41,8 @@ namespace Note.ExportData.Exporter
                     return DocumentFormat.OpenXml;
                 case ExportDocTypes.Txt:
                     return DocumentFormat.PlainText;
+                case ExportDocTypes.Epub:
+                    return DocumentFormat.ePub;
                 default:
                     return DocumentFormat.Rtf;
             }

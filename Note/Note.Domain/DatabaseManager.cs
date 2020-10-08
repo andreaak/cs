@@ -32,12 +32,13 @@ namespace Note.Domain
 
         public string GetConnectionDescription()
         {
-            return dbWrapper.ConnectionString;
+            return dbWrapper.ConnectionString + " " + new FileInfo(dbWrapper.GetDBFileName()).Length / 1024 / 1024 + " MB";
         }
 
         public void VacuumDb()
         {
             dbWrapper.NonQueryCommand("vacuum;");
+            dbWrapper.NonQueryCommand("DELETE FROM DATA_LOG");
         }
 
         public bool CreateDb()
@@ -150,8 +151,13 @@ namespace Note.Domain
         public IEnumerable<DescriptionWithText> Find(string text)
         {
             return dataRepository.Find(text);
-        } 
-      
+        }
+
+        public IEnumerable<EntityData> FindEntities(string text)
+        {
+            return dataRepository.FindEntities(text);
+        }
+
         public IList<TextData> GetTextData()
         {
             return dataRepository.Texts;

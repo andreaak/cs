@@ -77,6 +77,12 @@ namespace Note
                     {
                         throw new OperationCanceledException();
                     }
+
+                    DataManager = ObjectsFactory.Instance.GetService<DatabaseManager>();
+                    if (DataManager.IsDBOnline())
+                    {
+                        dbConnectionOk = DataManager.IsProperDB || DataManager.CreateDb();
+                    }
                 }
                 else if (name == OptionsUtils.New)
                 {

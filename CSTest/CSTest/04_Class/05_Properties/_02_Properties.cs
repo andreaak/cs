@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace CSTest._04_Class._05_Properties
 {
@@ -8,10 +9,9 @@ namespace CSTest._04_Class._05_Properties
     и являются суррогатом для замены методов доступа к полю. 
     При обращении к свойству вызывается определённый метод, который выполняет определённые операции с объектом.
     */
-    class _02_Properties
+    class _02_Properties<T>
     {
         private string field = null;
-
         public string Field
         {
             set  // void SetField(string value)   -    Метод-мутатор - mutator   (setter)
@@ -22,6 +22,34 @@ namespace CSTest._04_Class._05_Properties
             get  // string GetField()             -    Метод-аксессор - accessor (getter)
             {
                 return field;
+            }
+        }
+
+        private static string fieldS = null;
+        public static string FieldS
+        {
+            set
+            {
+                fieldS = value;
+            }
+
+            get
+            {
+                return fieldS;
+            }
+        }
+
+        private T fieldT = default(T);
+        public T FieldT
+        {
+            set
+            {
+                fieldT = value;
+            }
+
+            get
+            {
+                return fieldT;
             }
         }
 

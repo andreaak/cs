@@ -14,6 +14,8 @@ namespace CSTest._20_Algorithms
             Debug.WriteLine("Factorial recursive " + temp + " = " + factorial);
             factorial = factorial2(temp);
             Debug.WriteLine("Factorial iterative " + temp + " = " + factorial);
+            factorial = factorial3(temp);
+            Debug.WriteLine("Factorial iterative " + temp + " = " + factorial);
             /*
             Factorial recursive 10 = 3628800
             Factorial iterative 10 = 3628800
@@ -33,6 +35,16 @@ namespace CSTest._20_Algorithms
         {
             int s = 1;
             for (int i = n; i > 0; i--)
+            {
+                s *= i;
+            }
+            return s;
+        }
+
+        public int factorial3(int n)
+        {
+            int s = 1;
+            for (int i = 1; i <= n; i++)
             {
                 s *= i;
             }

@@ -32,6 +32,15 @@ namespace CSTest._05_Delegates_and_Events._02_Events._01_Theory
             }
         }
 
+        // Версия 1
+        protected virtual void OnNewMail1(NewMailEventArgs e)
+        {
+            if (NewMail != null)
+            {
+                NewMail(this, e);
+            }
+        }
+
         // Версия 2
         protected void OnNewMail2(NewMailEventArgs e)
         {

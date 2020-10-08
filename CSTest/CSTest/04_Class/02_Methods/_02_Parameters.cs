@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -12,19 +13,19 @@ namespace CSTest._04_Class._02_Methods
             , TestStruct testStruct2 = default(TestStruct)
             , string testString = "GGGG"
             , object obj = default(object)//null
-            //, object obj = new object()//Default parameter value for 'obj' must be a compile-time constant
-            //, TestClass testClass = new TestClass()//Default parameter value for 'testClass' must be a compile-time constant
+                                          //, object obj = new object()//Default parameter value for 'obj' must be a compile-time constant
+                                          //, TestClass testClass = new TestClass()//Default parameter value for 'testClass' must be a compile-time constant
             , TestClass testClass = null
             , TestClass testClass2 = default(TestClass)//null
-            //, int k //Optional parameters must appear after all required parameters
+                                                       //, int k //Optional parameters must appear after all required parameters
             , params double[] prm// Ключевое слово params, позволяет определить параметр метода, 
-                                // принимающий переменное количество аргументов.
-                                // Параметр с ключевым словом params, должен быть только один и 
-                                // стоять последним в списке параметров метода.
+                                 // принимающий переменное количество аргументов.
+                                 // Параметр с ключевым словом params, должен быть только один и 
+                                 // стоять последним в списке параметров метода.
             )
         {
-            
-            
+
+
             Debug.WriteLine("i = " + i);
             Debug.WriteLine("j = " + j);
             Debug.WriteLine("testStruct = " + testStruct);
@@ -53,7 +54,7 @@ namespace CSTest._04_Class._02_Methods
 
             List<int> tts = new List<int>();
             tts.Add(10);
-            if(tts.Count != 0)
+            if (tts.Count != 0)
             {
                 Debug.WriteLine(tts[0].ToString());
             }
@@ -67,11 +68,11 @@ namespace CSTest._04_Class._02_Methods
 
     struct TestStruct
     {
-    
+
     }
 
     class TestClass
     {
-    
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using DevExpress.Data.Mask;
 using DevExpress.Office.Utils;
@@ -10,7 +11,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
     public class RtfWrapper : IRtfWrapper
     {
         private readonly RichEditControl control;
-        
+
         public bool IsModified
         {
             get
@@ -58,6 +59,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
         public RtfWrapper(RichEditControl control)
         {
             this.control = control;
+            this.control.Document.SetPageBackground(Color.Aqua);
         }
 
         #region PUBLIC
@@ -166,6 +168,15 @@ namespace Note.ControlWrapper.DevExpressWrappers
 
             Regex myRegEx = new Regex(pattern);
             control.Document.ReplaceAll(myRegEx, " ", selection);
+
+            pattern = @"\A\s";
+            myRegEx = new Regex(pattern);
+            control.Document.ReplaceAll(myRegEx, "", selection);
+
+            pattern = @"\Z\s";
+            myRegEx = new Regex(pattern);
+            control.Document.ReplaceAll(myRegEx, "", selection);
+
             RemoveDoubleWhiteSpace_();
 
             FormatParagraphs();
@@ -178,6 +189,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             DocumentRange selection = control.Document.Selection;
 
             control.Document.ReplaceAll("  ", " ", SearchOptions.None, selection);
+
         }
 
         private void FormatParagraphs()
@@ -206,8 +218,6 @@ namespace Note.ControlWrapper.DevExpressWrappers
             par.Alignment = ParagraphAlignment.Justify;
             doc.EndUpdateParagraphs(par);
         }
-
-        
 
         private void RemoveSpecialCombinations()
         {

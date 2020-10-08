@@ -126,12 +126,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ASPMVCTest\_02_ASPMVCTest.csproj">
-      <Project>{e64e951e-5a58-4edf-af11-aa7cbe37dd7e}</Project>
-      <Name>_02_ASPMVCTest</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

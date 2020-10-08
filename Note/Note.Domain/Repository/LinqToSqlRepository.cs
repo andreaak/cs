@@ -380,7 +380,8 @@ namespace Note.Domain.Repository
         public IEnumerable<DescriptionWithText> Find(string text)
         {
             List<DescriptionWithText> descriptions = new List<DescriptionWithText>();
-            var items = dataContext.EntityData.Where(item => item.TextData.Contains(text));
+
+            var items = FindEntities(text);
             if (items != null)
             {
                 foreach (EntityData data in items)
@@ -389,13 +390,20 @@ namespace Note.Domain.Repository
                     if (entity != null)
                     {
                         string trimedText = GetText(text, data.TextData);
-                        AddDescription(entity, trimedText, descriptions);
+                        AddDescription(entity, trimedText, data.Data ?? "", descriptions);
                         AddParentDescriptions(entity, descriptions);
                     }
                 }
 
             }
             return descriptions.Distinct(new EntityComparer<DescriptionWithText>());
+        }
+
+        public IEnumerable<EntityData> FindEntities(string text)
+        {
+            return string.IsNullOrEmpty(text) ? 
+                dataContext.EntityData.ToArray() : 
+                dataContext.EntityData.Where(item => item.TextData.Contains(text) || item.Data.Contains(text)).ToArray();
         }
 
         #endregion
@@ -454,6 +462,11 @@ namespace Note.Domain.Repository
 
         private string GetText(string text, string fullText)
         {
+            if (string.IsNullOrEmpty(fullText) || string.IsNullOrEmpty(text))
+            {
+                return "";
+            }
+
             int index = fullText.IndexOf(text, StringComparison.OrdinalIgnoreCase);
             int startIndex = index < Options.SymbolsForFind ? 0 : index - Options.SymbolsForFind;
             int length = index + text.Length + Options.SymbolsForFind > fullText.Length
@@ -463,9 +476,9 @@ namespace Note.Domain.Repository
                 .Replace("  ", " ");
         }
 
-        private void AddDescription(Entity entity, string text, List<DescriptionWithText> list)
+        private void AddDescription(Entity entity, string text, string rtf, List<DescriptionWithText> list)
         {
-            list.Add(LinqToSqlConverter.Convert(entity, text));
+            list.Add(LinqToSqlConverter.Convert(entity, text, rtf));
         }
 
         private void AddParentDescriptions(Entity entity, List<DescriptionWithText> list)

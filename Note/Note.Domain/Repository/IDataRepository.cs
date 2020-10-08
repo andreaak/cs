@@ -22,5 +22,6 @@ namespace Note.Domain.Repository
         bool Move(int position, int parentId, int id, Direction direction);
         IEnumerable<DescriptionWithStatus> GetModifiedDescriptions(IDataRepository dataRepository);
         IEnumerable<DescriptionWithText> Find(string text);
+        IEnumerable<EntityData> FindEntities(string text);
     }
 }

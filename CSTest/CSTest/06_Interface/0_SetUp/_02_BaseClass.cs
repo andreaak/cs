@@ -18,6 +18,13 @@ namespace CSTest._06_Interface._0_Setup
 
     class _02_BaseClass : _02_IVirtualNonVirtual, _021_IVirtualNonVirtual
     {
+        public int field1;
+
+        public _02_BaseClass()
+        {
+            field1 = 3;
+        }
+
         public void Method()
         {
             Debug.WriteLine("_02_BaseClass.Method");

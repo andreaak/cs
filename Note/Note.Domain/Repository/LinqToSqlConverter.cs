@@ -36,11 +36,12 @@ namespace Note.Domain.Repository
             };
         }
 
-        public static DescriptionWithText Convert(Entity entity, string text)
+        public static DescriptionWithText Convert(Entity entity, string text, string rtf)
         {
             DescriptionWithText item = new DescriptionWithText();
             Convert(item, entity);
             item.Text = text;
+            item.Rtf = rtf;
             return item;
         }
 

@@ -10,7 +10,7 @@ namespace CSTest._04_Class._06_Indexers
         [Test]
         public void TestIndexer1()
         {
-            TestClass my = new TestClass();
+            TestIndexerClass<int> my = new TestIndexerClass<int>();
 
             my[0] = 1;
             my[1] = 2;

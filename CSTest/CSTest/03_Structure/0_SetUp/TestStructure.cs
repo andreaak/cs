@@ -16,12 +16,13 @@ namespace CSTest._03_Structure._0_Setup
 
     //}
 
-    struct TestStructure : IEquatable<TestStructure> //В структуре можно реализовать один или несколько интерфейсов
+    struct TestStructure : IEquatable<TestStructure>, IDisposable //В структуре можно реализовать один или несколько интерфейсов
     // : BookBase Cтруктуры не могут наследовать другие структуры и классы 
     // или служить в качестве базовых для других структур и классов
     {
         public static string initStatic = "Test";// can have static field initializers in structs
         //public string Fault = "Test"; cannot have instance field initializers in structs
+        //public string Author = Init(); cannot have instance field initializers in structs
         public string Author;
         public string Title;
         public int ISBN;
@@ -100,6 +101,11 @@ namespace CSTest._03_Structure._0_Setup
         //{
         //}
 
+        private static string Init()
+        {
+            return "";
+        }
+
         public bool Equals(TestStructure other)
         {
             Debug.WriteLine("Equals TestStructure method");
@@ -135,7 +141,27 @@ namespace CSTest._03_Structure._0_Setup
 
         public int GetISBN()
         {
+            var a = new TestClass();
+            var b= new TestClass();
+            bool res = (a == b);
+
+            var aS = new Point();
+            var bS= new Point();
+            //res = (aS == bS); //Operator '==' cannot be applied to operands of type 'Point' and 'Point'
+
+
+            int? x = 5;
+            int? y = null;
+
+            double? balance = null;
+            double currentBalance;
+            currentBalance = balance ?? 0.0;
+
+
+
+
             return book.ISBN;
+
         }
     }
 
@@ -146,3 +172,15 @@ namespace CSTest._03_Structure._0_Setup
         public TestClass test;
     }
 }
+
+
+enum Apple
+{
+    Jonathan,
+    GoldenDel,
+    RedDel = 10,
+    Winesap,
+    Cortland,
+    Mcintosh
+};
+

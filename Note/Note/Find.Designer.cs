@@ -38,18 +38,25 @@
             this.colOrderPosition = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.simpleButtonFind = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.textEditFind = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButtonReplace = new DevExpress.XtraEditors.SimpleButton();
+            this.textEditReplace = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItemFindText = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItemFindButton = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItemReplaceText = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItemReplaceButton = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItemTree = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFind.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditReplace.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemFindText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemFindButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemReplaceText)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemReplaceButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemTree)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +64,9 @@
             // 
             this.layoutControl1.Controls.Add(this.treeList);
             this.layoutControl1.Controls.Add(this.simpleButtonFind);
-            this.layoutControl1.Controls.Add(this.textEdit1);
+            this.layoutControl1.Controls.Add(this.textEditFind);
+            this.layoutControl1.Controls.Add(this.simpleButtonReplace);
+            this.layoutControl1.Controls.Add(this.textEditReplace);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -154,11 +163,29 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.Location = new System.Drawing.Point(12, 12);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(577, 20);
-            this.textEdit1.StyleController = this.layoutControl1;
-            this.textEdit1.TabIndex = 4;
+            this.textEditFind.Location = new System.Drawing.Point(12, 12);
+            this.textEditFind.Name = "textEditFind";
+            this.textEditFind.Size = new System.Drawing.Size(577, 20);
+            this.textEditFind.StyleController = this.layoutControl1;
+            this.textEditFind.TabIndex = 4;
+            // 
+            // simpleButtonReplace
+            // 
+            this.simpleButtonReplace.Location = new System.Drawing.Point(593, 12);
+            this.simpleButtonReplace.Name = "simpleButtonReplace";
+            this.simpleButtonReplace.Size = new System.Drawing.Size(69, 22);
+            this.simpleButtonReplace.StyleController = this.layoutControl1;
+            this.simpleButtonReplace.TabIndex = 5;
+            this.simpleButtonReplace.Text = "Replace";
+            this.simpleButtonReplace.Click += new System.EventHandler(this.simpleButtonReplace_Click);
+            // 
+            // textEditReplace
+            // 
+            this.textEditReplace.Location = new System.Drawing.Point(12, 12);
+            this.textEditReplace.Name = "textEditReplace";
+            this.textEditReplace.Size = new System.Drawing.Size(577, 20);
+            this.textEditReplace.StyleController = this.layoutControl1;
+            this.textEditReplace.TabIndex = 4;
             // 
             // layoutControlGroup1
             // 
@@ -168,6 +195,8 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItemFindText,
             this.layoutControlItemFindButton,
+            this.layoutControlItemReplaceText,
+            this.layoutControlItemReplaceButton,
             this.layoutControlItemTree});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
@@ -177,7 +206,7 @@
             // 
             // layoutControlItemFindText
             // 
-            this.layoutControlItemFindText.Control = this.textEdit1;
+            this.layoutControlItemFindText.Control = this.textEditFind;
             this.layoutControlItemFindText.CustomizationFormText = "layoutControlItemFindText";
             this.layoutControlItemFindText.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItemFindText.Name = "layoutControlItemFindText";
@@ -201,6 +230,33 @@
             this.layoutControlItemFindButton.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItemFindButton.TextToControlDistance = 0;
             this.layoutControlItemFindButton.TextVisible = false;
+            // 
+            // layoutControlItemReplaceText
+            // 
+            this.layoutControlItemReplaceText.Control = this.textEditReplace;
+            this.layoutControlItemReplaceText.CustomizationFormText = "layoutControlItemFindText";
+            this.layoutControlItemReplaceText.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItemReplaceText.Name = "layoutControlItemFindText";
+            this.layoutControlItemReplaceText.Size = new System.Drawing.Size(581, 26);
+            this.layoutControlItemReplaceText.Text = "layoutControlItemReplaceText";
+            this.layoutControlItemReplaceText.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItemReplaceText.TextToControlDistance = 0;
+            this.layoutControlItemReplaceText.TextVisible = false;
+            // 
+            // layoutControlItemReplaceButton
+            // 
+            this.layoutControlItemReplaceButton.Control = this.simpleButtonReplace;
+            this.layoutControlItemReplaceButton.CustomizationFormText = "layoutControlItemReplaceButton";
+            this.layoutControlItemReplaceButton.Location = new System.Drawing.Point(581, 0);
+            this.layoutControlItemReplaceButton.MaxSize = new System.Drawing.Size(73, 26);
+            this.layoutControlItemReplaceButton.MinSize = new System.Drawing.Size(73, 26);
+            this.layoutControlItemReplaceButton.Name = "layoutControlItemReplaceButton";
+            this.layoutControlItemReplaceButton.Size = new System.Drawing.Size(73, 26);
+            this.layoutControlItemReplaceButton.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItemReplaceButton.Text = "layoutControlItemReplaceButton";
+            this.layoutControlItemReplaceButton.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItemReplaceButton.TextToControlDistance = 0;
+            this.layoutControlItemReplaceButton.TextVisible = false;
             // 
             // layoutControlItemTree
             // 
@@ -227,10 +283,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFind.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditReplace.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemFindText)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemFindButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemReplaceText)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemReplaceButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemTree)).EndInit();
             this.ResumeLayout(false);
 
@@ -242,9 +301,13 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraTreeList.TreeList treeList;
         private DevExpress.XtraEditors.SimpleButton simpleButtonFind;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit textEditFind;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonReplace;
+        private DevExpress.XtraEditors.TextEdit textEditReplace;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemFindText;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemFindButton;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItemReplaceText;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItemReplaceButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemTree;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colId;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colDescription;

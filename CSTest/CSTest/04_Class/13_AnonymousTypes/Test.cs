@@ -54,6 +54,11 @@ namespace CSTest._04_Class._13_AnonymousTypes
 
             instance.My.field = 1;
             instance.My.Method();
+            TestGeneric(instance);
+        }
+
+        private void TestGeneric<Context>(Context c)
+        {
         }
 
         // Анонимные типы. (Слабая ссылка)

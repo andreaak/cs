@@ -5,7 +5,7 @@ namespace Note.ExportData.Exporter
     public abstract class Exporter
     {
         protected readonly RichEditControl control;
-        protected const int SleepTime = 200;
+        protected const int SleepTime = 300;
 
         public ExportDocTypes Format
         {
@@ -35,6 +35,8 @@ namespace Note.ExportData.Exporter
                     return "pdf";
                 case ExportDocTypes.Txt:
                     return "txt";
+                case ExportDocTypes.Epub:
+                    return "epub";
                 case ExportDocTypes.Rtf:
                 default:
                     return "rtf";

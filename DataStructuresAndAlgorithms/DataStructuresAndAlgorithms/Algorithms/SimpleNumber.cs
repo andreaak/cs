@@ -36,5 +36,21 @@ namespace CSTest._20_Algorithms
             }
             return true;
         }
+
+        public bool IsPrime(int x, out int factor)
+        {
+            factor = 0;
+            if (x <= 1)
+                return false;
+            for (int i = 2; i <= x / i; i++)
+            {
+                if ((x % i) == 0)
+                {
+                    factor = i;
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
