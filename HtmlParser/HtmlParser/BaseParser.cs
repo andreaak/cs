@@ -5,7 +5,7 @@ namespace HtmlParser
 {
     public abstract class BaseParser
     {
-        protected HtmlDocument Parse(string dir, string url)
+        protected virtual HtmlDocument Parse(string dir, string url)
         {
             var document = GetHtml(url);
 
