@@ -91,6 +91,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -101,8 +102,18 @@
   <ItemGroup>
     <Compile Include="BaseParser.cs" />
     <Compile Include="FileParser.cs" />
+    <Compile Include="HtmlParser.cs" />
+    <Compile Include="Language\IrregularDeVerb.cs" />
+    <Compile Include="Language\LanguageParser.cs" />
+    <Compile Include="Language\ReplaceItem.cs" />
+    <Compile Include="Language\Substantiv.cs" />
+    <Compile Include="Language\TranslateDeRuVerbParser.cs" />
+    <Compile Include="Language\Verb.cs" />
+    <Compile Include="Language\WordClass.cs" />
     <Compile Include="LinkParser.cs" />
-    <Compile Include="TranslateRuParser.cs" />
+    <Compile Include="RemoveDuplicateParser.cs" />
+    <Compile Include="Language\TranslateDeRuParser.cs" />
+    <Compile Include="Language\TranslateRuDeParser.cs" />
     <Compile Include="PidruchnikiParser.cs" />
     <Compile Include="MonolitParser.cs" />
     <Compile Include="Program.cs" />
@@ -112,5 +123,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
