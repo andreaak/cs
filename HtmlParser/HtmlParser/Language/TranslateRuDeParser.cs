@@ -1,5 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
@@ -8,17 +11,23 @@ namespace HtmlParser.Language
         public string Text { get; set; }
     }
 
-    public class TranslateRuDeParser : LanguageParser
+    public class TranslateRuDeParser : LanguageParser, ILanguageParser
     {
-        public void Parse()
+        public TranslateRuDeParser(bool order, string type)
+        : base(order, type)
+        { }
+        
+        public void Parse(IList<string> lines)
         {
-            string file = "list.txt";
-
-            var lines = File.ReadLines(file);
-
-            var list = lines.Where(l => !string.IsNullOrEmpty(l))
-                .Select(l => Parse(l.Trim()))
-                .ToArray();
+            var list = _order ?
+                lines.Where(l => !string.IsNullOrEmpty(l))
+                    .Select(l => Parse(l.Trim()))
+                    .OrderBy(l => l.De)
+                    .ToArray()
+                :
+                lines.Where(l => !string.IsNullOrEmpty(l))
+                    .Select(l => Parse(l.Trim()))
+                    .ToArray();
 
             using (var sw = File.CreateText("out.txt"))
             {
@@ -31,47 +40,42 @@ namespace HtmlParser.Language
 
         protected WordClass Parse(string ru)
         {
+            Console.WriteLine(ru);
+
             var hostUrl = "https://de.pons.com/%C3%BCbersetzung/russisch-deutsch/";
 
             var document = GetHtml(hostUrl + ru);
 
-            var trNode = document.DocumentNode.SelectSingleNode(".//div[@class='translations first']//div[@class='target']//a");
-            var de = trNode.InnerText.Trim();
+            var deNode = document.DocumentNode.SelectSingleNode(".//div[@class='translations first']//div[@class='target']//a");
+            if (deNode == null)
+            {
+                Console.WriteLine($"Not found {ru}");
+                return new WordClass
+                {
+                    Ru = ru
+                };
+            }
+
+            var de = deNode.InnerText.Trim();
 
             hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
             document = GetHtml(hostUrl + de);
-            trNode = document.DocumentNode.SelectSingleNode(".//div[@class='romhead']");
-
-            var wordClass = trNode.SelectSingleNode(".//span[@class='wordclass']").InnerText.ToLower();
-
-            WordClass word;
-
-            switch (wordClass)
+            
+            var translationNode = GetTranslationNode(document, de);
+            if (translationNode == null)
             {
-                case "verb":
-                    word = GetVerb(trNode, de);
-                    break;
-                case "subst":
-                    word = GetSubstantiv(trNode, de);
-                    break;
-                default:
-                    word = GetWordClass(trNode, de);
-                    break;
+                Console.WriteLine($"Not found {de}");
+                return new WordClass
+                {
+                    De = de,
+                    Ru = ru
+                };
             }
 
-            trNode = document.DocumentNode.SelectSingleNode(".//div[@class='translations first']//div[@class='target']//a");
-            word.Ru = trNode.InnerText.Trim();
-
-            //hostUrl = $"https://api.lingvolive.com/sounds?uri=Universal%20(De-Ru)%2F{word}.wav";
-            //UploadSound(word.De, hostUrl);
-
-            trNode = document.DocumentNode.SelectSingleNode(".//div[@class='translations first']//dl[@data-translation='0']");
-            hostUrl = $"https://sounds.pons.com/audio_tts/de/{trNode.Id}?target=mp3";
-            UploadSound(hostUrl, word.De, "mp3", "D:\\Temp\\Sounds\\");
+            var word = GetWord(translationNode, de);
+            UploadSound(translationNode.Node, word.De);
 
             return word;
         }
-
-
     }
 }

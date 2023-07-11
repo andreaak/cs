@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace HtmlParser.Language
+namespace HtmlParser.Language.Model
 {
     public class WordClass
     {
@@ -12,6 +12,7 @@ namespace HtmlParser.Language
         {
             sw.WriteLine(Ru);
             sw.WriteLine(De);
+            sw.WriteLine("");
             sw.WriteLine(DeTranscription);
             sw.WriteLine("");
         }

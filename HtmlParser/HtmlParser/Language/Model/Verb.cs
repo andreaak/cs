@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace HtmlParser.Language
+namespace HtmlParser.Language.Model
 {
     public class Verb : WordClass
     {
@@ -11,24 +11,15 @@ namespace HtmlParser.Language
         public override void Write(StreamWriter sw)
         {
             sw.WriteLine(Ru);
+            sw.WriteLine(De);
+            sw.WriteLine(!string.IsNullOrEmpty(Info) ? $"{{{Info}}}" : "");
+            sw.WriteLine(DeTranscription);
+            sw.WriteLine("");
 
-            var sb = new StringBuilder();
-            if (!string.IsNullOrEmpty(De))
-            {
-                sb.Append(De);
-            }
-            if (!string.IsNullOrEmpty(Info))
-            {
-                sb.Append($" {{{Info}}}");
-            }
             //if (!string.IsNullOrEmpty(VerbClass))
             //{
             //    sb.Append(sb.Length != 0 ? $" {VerbClass}" : VerbClass);
             //}
-            sw.WriteLine(sb.ToString());
-
-            sw.WriteLine(DeTranscription);
-            sw.WriteLine("");
         }
     }
 

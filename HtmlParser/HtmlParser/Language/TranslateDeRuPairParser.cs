@@ -6,24 +6,23 @@ using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
-    public class TranslateDeRuParser : LanguageParser, ILanguageParser
+    public class TranslateDeRuPairParser : LanguageParser, ILanguageParser
     {
-        public TranslateDeRuParser(bool order, string type)
+        public TranslateDeRuPairParser(bool order, string type)
             : base(order, type)
         { }
 
         public void Parse(IList<string> lines)
         {
-           var list = _order ?
+            var list = _order ?
                 lines.Where(l => !string.IsNullOrEmpty(l))
                     .Select(l => Parse(l.Trim()))
                     .OrderBy(l => l.De)
                     .ToArray()
-: 
+                :
                 lines.Where(l => !string.IsNullOrEmpty(l))
                     .Select(l => Parse(l.Trim()))
                     .ToArray();
-
 
             using (var sw = File.CreateText("out.txt"))
             {
@@ -34,10 +33,20 @@ namespace HtmlParser.Language
             }
         }
 
-        private WordClass Parse(string de)
+        protected WordClass Parse(string line)
         {
-            Console.WriteLine(de);
-            
+            Console.WriteLine(line);
+
+            var items = line.Split(new [] {"\t"}, StringSplitOptions.RemoveEmptyEntries);
+
+            string ru = items[0];
+            string de = items[1];
+
+            return GetWord(ru, de);
+        }
+
+        private WordClass GetWord(string ru, string de)
+        {
             var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
 
             var document = GetHtml(hostUrl + de);
@@ -48,16 +57,16 @@ namespace HtmlParser.Language
                 Console.WriteLine($"Not found {de}");
                 return new WordClass
                 {
-                    De = de
+                    De = de,
+                    Ru = ru
                 };
             }
 
             var word = GetWord(trNode, de);
+            word.Ru = ru;
             UploadSound(trNode.Node, word.De);
 
             return word;
         }
-
-
     }
 }

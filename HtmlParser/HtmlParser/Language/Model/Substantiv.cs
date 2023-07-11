@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace HtmlParser.Language
+namespace HtmlParser.Language.Model
 {
     public class Substantiv : WordClass
     {
@@ -22,6 +22,9 @@ namespace HtmlParser.Language
             {
                 sb.Append(sb.Length != 0 ? $" {De}" : De);
             }
+            sw.WriteLine(sb.ToString());
+            sb.Clear();
+
             if (!string.IsNullOrEmpty(Genus))
             {
                 sb.Append(sb.Length != 0 ? $" {Genus}" : Genus);

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace HtmlParser.Language
+namespace HtmlParser.Language.Model
 {
     public class IrregularDeVerb 
     {
@@ -30,14 +30,15 @@ namespace HtmlParser.Language
             if (!string.IsNullOrEmpty(word.De))
             {
                 sb.Append(word.De);
+                sb.Append("\r\n");
                 if (!string.IsNullOrEmpty(word.DeTranscription))
                 {
-                    sb.Append($" {word.DeTranscription}");
+                    sb.Append(word.DeTranscription);
                 }
             }
             else
             {
-                sb.Append("\r\n");
+                sb.Append("\r\n\r\n");
             }
             sb.Append("\r\n");
         }
@@ -47,14 +48,15 @@ namespace HtmlParser.Language
             if (!string.IsNullOrEmpty(word.De))
             {
                 sb.Append($"{word.Part2Verb} {word.De}");
+                sb.Append("\r\n");
                 if (!string.IsNullOrEmpty(word.DeTranscription))
                 {
-                    sb.Append($" {word.DeTranscription}");
+                    sb.Append(word.DeTranscription);
                 }
             }
             else
             {
-                sb.Append("\r\n");
+                sb.Append("\r\n\r\n");
             }
             sb.Append("\r\n");
         }

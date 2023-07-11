@@ -16,7 +16,6 @@ namespace HtmlParser
             int timeout = 15000;
             while (repeat-- > 0)
             {
-                Thread.Sleep(timeout);
                 try
                 {
                     var htmlText = ReadHtml(url);
@@ -24,6 +23,7 @@ namespace HtmlParser
                 }
                 catch (Exception e)
                 {
+                    Thread.Sleep(timeout);
                 }
             }
 

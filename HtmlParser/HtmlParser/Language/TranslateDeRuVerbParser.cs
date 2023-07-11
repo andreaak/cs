@@ -1,21 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using HtmlAgilityPack;
+using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
-    public class TranslateDeRuVerbParser : LanguageParser
+    public class TranslateDeRuVerbParser : LanguageParser, ILanguageParser
     {
-        public void Parse()
+        public TranslateDeRuVerbParser(bool order, string type)
+            : base(order, type)
+        { }
+
+        public void Parse(IList<string> lines)
         {
-            string file = "list.txt";
-
-            var lines = File.ReadLines(file);
-
-            var list = lines.Where(l => !string.IsNullOrEmpty(l))
-                    .Select(l => l.Trim())
-                    .Select(Parse)
+            var list = _order ?
+                lines.Where(l => !string.IsNullOrEmpty(l))
+                    .Select(l => Parse(l.Trim()))
                     .OrderBy(l => l.Infinitive.De)
+                    .ToArray()
+                :
+                lines.Where(l => !string.IsNullOrEmpty(l))
+                    .Select(l => Parse(l.Trim()))
                     .ToArray();
 
             using (var sw = File.CreateText("out.txt"))
@@ -41,67 +48,66 @@ namespace HtmlParser.Language
 
             return new IrregularDeVerb
             {
-                Infinitive = GetWordClass(infinitive),
-                Present = GetWordClass(present),
-                Prateritum = GetWordClass(prateritum),
+                Infinitive = GetVerbFormClass(infinitive),
+                Present = GetVerbFormClass(present),
+                Prateritum = GetVerbFormClass(prateritum),
                 Part2 = GetPartClass(part2),
                 Ru = ru
             };
         }
 
-        private WordClass GetWordClass(string wordDe)
+        private WordClass GetVerbFormClass(string de)
         {
-            var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
-
-
-            var document = GetHtml(hostUrl + wordDe);
-
-            var trNode = document.DocumentNode.SelectSingleNode(".//div[@class='romhead']");
+            var trNode = GetTranslationNode(de);
             if (trNode == null)
             {
-                Console.WriteLine($"Not found {wordDe}");
+                Console.WriteLine($"Not found {de}");
                 return new WordClass
                 {
-                    De = wordDe
+                    De = de
                 };
             }
 
-            WordClass word = GetVerb(trNode, wordDe);
-
-
-            trNode = document.DocumentNode.SelectSingleNode(".//div[@class='translations first']//dl[@data-translation='0']");
-            hostUrl = $"https://sounds.pons.com/audio_tts/de/{trNode.Id}?target=mp3";
-            UploadSound(hostUrl, word.De, "mp3", "D:\\Temp\\Sounds\\");
+            var tr = trNode.Node ?? trNode.AllNodes.First();
+            var deNode = tr.SelectSingleNode(".//div[@class='romhead']");
+            var word = GetVerb(deNode, de, trNode.AllNodes);
+            
+            UploadSound(tr, word.De);
 
             return word;
         }
 
-        private IrrVerb GetPartClass(string wordDe)
+        private IrrVerb GetPartClass(string line)
         {
-            var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
+            var items = line.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
+            var de = items[1];
 
-            var items = wordDe.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
-
-            var document = GetHtml(hostUrl + items[1]);
-
-            var trNode = document.DocumentNode.SelectSingleNode(".//div[@class='romhead']");
+            var trNode = GetTranslationNode(de);
             if (trNode == null)
             {
-                Console.WriteLine($"Not found {wordDe}");
+                Console.WriteLine($"Not found {de}");
                 return new IrrVerb
                 {
-                    De = wordDe
+                    De = de,
+                    Part2Verb = items[0]
                 };
             }
 
-            var word = GetVerb(trNode, items[1], items[0]);
-
-
-            trNode = document.DocumentNode.SelectSingleNode(".//div[@class='translations first']//dl[@data-translation='0']");
-            hostUrl = $"https://sounds.pons.com/audio_tts/de/{trNode.Id}?target=mp3";
-            UploadSound(hostUrl, word.De, "mp3", "D:\\Temp\\Sounds\\");
+            var tr = trNode.Node ?? trNode.AllNodes.First();
+            var deNode = tr.SelectSingleNode(".//div[@class='romhead']");
+            var word = GetIrregularVerb(deNode, items[1], items[0]);
+            
+            UploadSound(tr, word.De);
 
             return word;
+        }
+
+        private TranslationNode GetTranslationNode(string de)
+        {
+            var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
+            var document = GetHtml(hostUrl + de);
+            var trNode = GetTranslationNode(document, de);
+            return trNode;
         }
     }
 }
