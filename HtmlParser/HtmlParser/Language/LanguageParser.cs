@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Text.Json;
 using System.Web;
 using HtmlAgilityPack;
 using HtmlParser.Language.Model;
@@ -71,18 +69,23 @@ namespace HtmlParser.Language
             }
         }
 
-        protected TranslationNode GetTranslationNode(HtmlDocument document, string word)
+        protected TranslationContainer GetTranslationContainer(HtmlDocument document, string word)
         {
-            var trNodes = document.DocumentNode.SelectNodes($".//div[translate(@rel,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz') = '{word.ToLower()}']");
+            return GetTranslationContainer(document, word, _type);
+        }
+
+        protected TranslationContainer GetTranslationContainer(HtmlDocument document, string word, string type)
+        {
+            var trNodes = GetTranslationItems(document, word);
 
             if (trNodes == null)
             {
                 return null;
             }
 
-            if (string.IsNullOrEmpty(_type))
+            if (string.IsNullOrEmpty(type))
             {
-                return new TranslationNode
+                return new TranslationContainer
                 {
                     Node = trNodes.FirstOrDefault(),
                     AllNodes = trNodes
@@ -91,10 +94,10 @@ namespace HtmlParser.Language
 
             foreach (var node in trNodes)
             {
-                var wordClass = node.SelectSingleNode(".//span[@class='wordclass']")?.InnerText.Trim().ToLower();
-                if (wordClass == _type.ToLower())
+                var wordClass = node.GetWordClass();
+                if (wordClass == type.ToLower())
                 {
-                    return new TranslationNode
+                    return new TranslationContainer
                     {
                         Node = node,
                         AllNodes = trNodes
@@ -102,26 +105,40 @@ namespace HtmlParser.Language
                 }
             }
 
-            return new TranslationNode
+            return new TranslationContainer
             {
                 AllNodes = trNodes
             };
         }
 
-        protected WordClass GetWord(TranslationNode trNode, string de)
+        protected IEnumerable<TranslationItem> GetTranslationItems(HtmlDocument document, string word)
         {
-            var deNode = trNode.Node.SelectSingleNode(".//div[@class='romhead']");
+            var trNodes = document.DocumentNode.SelectNodes(".//div[@rel]");
+            if (trNodes != null)
+            {
+                foreach (var node in trNodes)
+                {
+                    var rel = node.Attributes.FirstOrDefault(a => a.Name == "rel");
+                    if (rel?.Value.Trim().Replace("\u0301", "") == word.ToLower())
+                    {
+                        return trNodes.SelectMany(TranslationItem.Parse).ToArray();
+                    }
+                }
+            }
 
-            var word = GetWord(deNode, de, trNode.AllNodes);
+            return null;
+        }
 
-            var ruNode = trNode.Node.SelectSingleNode(".//div[@class='translations first']//div[@class='target']//a");
-            word.Ru = ruNode.InnerText.Trim().Replace("\u0341", "");
+        protected WordClass GetWord(TranslationContainer trContainer, string de)
+        {
+            var word = GetWord(trContainer.Node, de, trContainer.AllNodes);
+            word.Ru = trContainer.Node.GetTranslation();
             return word;
         }
 
-        private WordClass GetWord(HtmlNode deNode, string de, IEnumerable<HtmlNode> allNodes)
+        private WordClass GetWord(TranslationItem deNode, string de, IEnumerable<TranslationItem> allNodes)
         {
-            var wordClass = deNode.SelectSingleNode(".//span[@class='wordclass']").InnerText.Trim().ToLower();
+            var wordClass = deNode.GetWordClass();
 
             WordClass word;
 
@@ -141,10 +158,10 @@ namespace HtmlParser.Language
             return word;
         }
 
-        protected void UploadSound(HtmlNode trNode, string de)
+        protected void UploadSound(TranslationItem trNode, string de)
         {
             //var soundNode = trNode.SelectSingleNode(".//div[@class='translations first']//dl");
-            var soundNode = trNode.SelectSingleNode(".//div[@class='romhead']");
+            var soundNode = trNode.RomHeadNode;
             if (soundNode == null)
             {
                 return;
@@ -153,7 +170,7 @@ namespace HtmlParser.Language
             UploadSound(hostUrl, de, "mp3", "D:\\Temp\\Sounds\\");
         }
         
-        protected IrrVerb GetIrregularVerb(HtmlNode trNode, string de, string part2Verb)
+        protected IrrVerb GetIrregularVerb(TranslationItem trItem, string de, string part2Verb)
         {
             var word = new IrrVerb
             {
@@ -161,158 +178,181 @@ namespace HtmlParser.Language
                 Part2Verb = part2Verb
             };
 
-            foreach (var span in trNode.SelectNodes(".//span"))
+            var attributes = GetAttributes(trItem);
+            if (attributes == null)
             {
-                if (span.HasAttributes && span.Attributes.Any(a => a.Value == "info"))
-                {
-                    word.Info = HttpUtility.HtmlDecode(span.InnerText.Trim());
-                }
-                else if (span.HasAttributes && span.Attributes.Any(a => a.Value == "phonetics"))
-                {
-                    word.DeTranscription = span.InnerText.Trim();
-                }
-                else if (span.HasAttributes && span.Attributes.Any(a => a.Value == "verbclass"))
-                {
-                    word.VerbClass = span.InnerText.Trim();
-                }
+                return word;
             }
+
+            word.WrdClass = trItem.GetWordClass();
+            word.Info = attributes.Info;
+            word.DeTranscription = attributes.Phonetics;
+            word.VerbClass = attributes.VerbClass;
 
             return word;
         }
 
-        private string GetTranscription(string language, string word)// lang = "deu"
-        {
-            var hostUrl = "https://www.artlebedev.ru/tools/transcriptor/ajax.html";
-            var values = new Dictionary<string, string>
-            {
-                { "lang", language },
-                { "text", word }
-            };
+        //private string GetTranscription(string language, string word)// lang = "deu"
+        //{
+        //    var hostUrl = "https://www.artlebedev.ru/tools/transcriptor/ajax.html";
+        //    var values = new Dictionary<string, string>
+        //    {
+        //        { "lang", language },
+        //        { "text", word }
+        //    };
 
-            var content = new FormUrlEncodedContent(values);
-            HttpClient client = new HttpClient();
-            var response = client.PostAsync(hostUrl, content).Result;
+        //    var content = new FormUrlEncodedContent(values);
+        //    HttpClient client = new HttpClient();
+        //    var response = client.PostAsync(hostUrl, content).Result;
 
-            var responseString = response.Content.ReadAsStringAsync().Result;
+        //    var responseString = response.Content.ReadAsStringAsync().Result;
 
-            TranscriptionResponse deptObj = JsonSerializer.Deserialize<TranscriptionResponse>(responseString, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
+        //    TranscriptionResponse deptObj = JsonSerializer.Deserialize<TranscriptionResponse>(responseString, new JsonSerializerOptions
+        //    {
+        //        PropertyNameCaseInsensitive = true
+        //    });
 
-            return deptObj.Text;
-        }
+        //    return deptObj.Text;
+        //}
 
-        protected Verb GetVerb(HtmlNode trNode, string de, IEnumerable<HtmlNode> allNodes)
+        protected Verb GetVerb(TranslationItem trItem, string de, IEnumerable<TranslationItem> allItems)
         {
             var word = new Verb
             {
                 De = de
             };
 
-            var nodes = trNode.SelectNodes(".//span");
-
-            if (nodes == null)
+            var attributes = GetAttributes(trItem);
+            if (attributes == null)
             {
                 return word;
             }
 
-            foreach (var span in nodes)
-            {
-                if (span.HasAttributes && span.Attributes.Any(a => a.Value == "info"))
-                {
-                    word.Info = HttpUtility.HtmlDecode(span.InnerText.Trim());
-                }
-                else if (span.HasAttributes && span.Attributes.Any(a => a.Value == "phonetics"))
-                {
-                    word.DeTranscription = span.InnerText.Trim();
-                }
-                else if (span.HasAttributes && span.Attributes.Any(a => a.Value == "verbclass"))
-                {
-                    word.VerbClass = span.InnerText.Trim();
-                }
-            }
+            word.WrdClass = trItem.GetWordClass();
+            word.DeTranscription = attributes.Phonetics;
+            word.Info = attributes.Info;
+            word.VerbClass = attributes.VerbClass;
+
             if (string.IsNullOrEmpty(word.DeTranscription))
             {
-                word.DeTranscription = GetTranscription(trNode, allNodes);
+                word.DeTranscription = GetTranscription(trItem, allItems);
             }
             return word;
         }
 
-        private WordClass GetWordClass(HtmlNode trNode, string de, IEnumerable<HtmlNode> allNodes)
+        private WordClass GetWordClass(TranslationItem trItem, string de, IEnumerable<TranslationItem> allItems)
         {
             var word = new WordClass
             {
                 De = de
             };
 
-            foreach (var span in trNode.SelectNodes(".//span"))
+            var attributes = GetAttributes(trItem);
+            if (attributes == null)
             {
-                if (span.HasAttributes && span.Attributes.Any(a => a.Value == "phonetics"))
-                {
-                    word.DeTranscription = span.InnerText.Trim();
-                }
+                return word;
             }
+
+            word.WrdClass = trItem.GetWordClass();
+            word.DeTranscription = attributes.Phonetics;
 
             if (string.IsNullOrEmpty(word.DeTranscription))
             {
-                word.DeTranscription = GetTranscription(trNode, allNodes);
+                word.DeTranscription = GetTranscription(trItem, allItems);
             }
             return word;
         }
 
-        private Substantiv GetSubstantiv(HtmlNode trNode, string de, IEnumerable<HtmlNode> allNodes)
+        private Substantiv GetSubstantiv(TranslationItem trItem, string de, IEnumerable<TranslationItem> allItems)
         {
             var word = new Substantiv
             {
                 De = de
             };
 
-            foreach (var span in trNode.SelectNodes(".//span"))
+            var attributes = GetAttributes(trItem);
+            if (attributes == null)
             {
-                if (span.HasAttributes && span.Attributes.Any(a => a.Value == "flexion"))
-                {
-                    word.Flexion = HttpUtility.HtmlDecode(span.InnerText.Trim());
-                }
-                else if (span.HasAttributes && span.Attributes.Any(a => a.Value == "phonetics"))
-                {
-                    word.DeTranscription = span.InnerText.Trim();
-                }
-                else if (span.HasAttributes && span.Attributes.Any(a => a.Value == "genus"))
-                {
-                    word.Genus = span.InnerText.Trim();
-
-                    switch (word.Genus.ToLower())
-                    {
-                        case "m":
-                            word.Artikle = "der";
-                            break;
-                        case "f":
-                            word.Artikle = "die";
-                            break;
-                        case "nt":
-                            word.Artikle = "das";
-                            break;
-                    }
-                }
+                return word;
             }
+
+            word.WrdClass = trItem.GetWordClass();
+            word.DeTranscription = attributes.Phonetics;
+            word.Flexion = attributes.Flexion;
+            word.Genus = attributes.Genus;
+            word.Artikle = attributes.Artikle;
+
             if (string.IsNullOrEmpty(word.DeTranscription))
             {
-                word.DeTranscription = GetTranscription(trNode, allNodes);
+                word.DeTranscription = GetTranscription(trItem, allItems);
             }
             return word;
         }
 
-        private string GetTranscription(HtmlNode trNode, IEnumerable<HtmlNode> allNodes)
+        private TranslationAttributes GetAttributes(TranslationItem trItem)
+        {
+            var nodes = trItem.RomHeadNode.SelectNodes(".//span")?.ToArray() ?? Array.Empty<HtmlNode>();
+
+            if (!nodes.Any())
+            {
+                return null;
+            }
+
+            var attributes = new TranslationAttributes();
+
+            foreach (var span in nodes.Where(n => n.HasAttributes))
+            {
+                if (span.Attributes.Any(a => a.Value == "phonetics"))
+                {
+                    attributes.Phonetics = span.InnerText.Trim();
+                }
+                else if (span.Attributes.Any(a => a.Value == "flexion"))
+                {
+                    attributes.Flexion = HttpUtility.HtmlDecode(span.InnerText.Trim());
+                }
+                else if (span.Attributes.Any(a => a.Value == "genus"))
+                {
+                    attributes.Genus = span.InnerText.Trim();
+                    attributes.Artikle = GetArtikle(attributes.Genus);
+                }
+                else if (span.Attributes.Any(a => a.Value == "info"))
+                {
+                    attributes.Info = HttpUtility.HtmlDecode(span.InnerText.Trim());
+                }
+                else if (span.Attributes.Any(a => a.Value == "verbclass"))
+                {
+                    attributes.VerbClass = span.InnerText.Trim();
+                }
+            }
+
+            return attributes;
+        }
+
+        protected static string GetArtikle(string genus)
+        {
+            switch (genus?.ToLower())
+            {
+                case "m":
+                    return "der";
+                case "f":
+                    return "die";
+                case "nt":
+                    return "das";
+            }
+
+            return null;
+        }
+
+        protected string GetTranscription(TranslationItem trNode, IEnumerable<TranslationItem> allNodes)
         {
             if (allNodes == null)
             {
                 return null;
             }
 
-            foreach (var node in allNodes.Where(node => node.Id != trNode.Id))
+            foreach (var node in allNodes.Where(node => node.RomHeadNode.Id != trNode?.RomHeadNode?.Id))
             {
-                foreach (var span in node.SelectNodes(".//span"))
+                foreach (var span in node.RomHeadNode.SelectNodes(".//span"))
                 {
                     if (span.HasAttributes && span.Attributes.Any(a => a.Value == "phonetics"))
                     {
@@ -336,11 +376,5 @@ namespace HtmlParser.Language
             }
             return word;
         }
-    }
-
-    public class TranslationNode
-    {
-        public HtmlNode Node { get; set; }
-        public IEnumerable<HtmlNode>  AllNodes { get; set; }
     }
 }

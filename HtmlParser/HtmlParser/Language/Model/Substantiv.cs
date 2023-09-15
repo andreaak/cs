@@ -11,6 +11,7 @@ namespace HtmlParser.Language.Model
         
         public override void Write(StreamWriter sw)
         {
+            sw.WriteLine(WrdClass);
             sw.WriteLine(Ru);
 
             var sb = new StringBuilder();

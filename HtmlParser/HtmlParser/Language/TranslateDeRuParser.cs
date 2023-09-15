@@ -42,7 +42,7 @@ namespace HtmlParser.Language
 
             var document = GetHtml(hostUrl + de);
 
-            var trNode = GetTranslationNode(document, de);
+            var trNode = GetTranslationContainer(document, de);
             if (trNode == null)
             {
                 Console.WriteLine($"Not found {de}");
@@ -57,7 +57,5 @@ namespace HtmlParser.Language
 
             return word;
         }
-
-
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using HtmlAgilityPack;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
@@ -58,8 +57,8 @@ namespace HtmlParser.Language
 
         private WordClass GetVerbFormClass(string de)
         {
-            var trNode = GetTranslationNode(de);
-            if (trNode == null)
+            var trContainer = GetTranslationNode(de);
+            if (trContainer == null)
             {
                 Console.WriteLine($"Not found {de}");
                 return new WordClass
@@ -68,11 +67,10 @@ namespace HtmlParser.Language
                 };
             }
 
-            var tr = trNode.Node ?? trNode.AllNodes.First();
-            var deNode = tr.SelectSingleNode(".//div[@class='romhead']");
-            var word = GetVerb(deNode, de, trNode.AllNodes);
+            var trItem = trContainer.Node ?? trContainer.AllNodes.First();
+            var word = GetVerb(trItem, de, trContainer.AllNodes);
             
-            UploadSound(tr, word.De);
+            UploadSound(trItem, word.De);
 
             return word;
         }
@@ -82,8 +80,8 @@ namespace HtmlParser.Language
             var items = line.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
             var de = items[1];
 
-            var trNode = GetTranslationNode(de);
-            if (trNode == null)
+            var trContainer = GetTranslationNode(de);
+            if (trContainer == null)
             {
                 Console.WriteLine($"Not found {de}");
                 return new IrrVerb
@@ -93,20 +91,19 @@ namespace HtmlParser.Language
                 };
             }
 
-            var tr = trNode.Node ?? trNode.AllNodes.First();
-            var deNode = tr.SelectSingleNode(".//div[@class='romhead']");
-            var word = GetIrregularVerb(deNode, items[1], items[0]);
+            var trItem = trContainer.Node ?? trContainer.AllNodes.First();
+            var word = GetIrregularVerb(trItem, items[1], items[0]);
             
-            UploadSound(tr, word.De);
+            UploadSound(trItem, word.De);
 
             return word;
         }
 
-        private TranslationNode GetTranslationNode(string de)
+        private TranslationContainer GetTranslationNode(string de)
         {
             var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
             var document = GetHtml(hostUrl + de);
-            var trNode = GetTranslationNode(document, de);
+            var trNode = GetTranslationContainer(document, de);
             return trNode;
         }
     }

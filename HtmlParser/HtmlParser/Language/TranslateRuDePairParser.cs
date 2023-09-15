@@ -6,9 +6,9 @@ using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
-    public class TranslateDeRuPairParser : LanguageParser, ILanguageParser
+    public class TranslateRuDePairParser : LanguageParser, ILanguageParser
     {
-        public TranslateDeRuPairParser(bool order, string type)
+        public TranslateRuDePairParser(bool order, string type)
             : base(order, type)
         { }
 
@@ -42,16 +42,58 @@ namespace HtmlParser.Language
             string ru = items[0];
             string de = items[1];
 
-            return GetWord(ru, de);
+            return GetWords(ru, de);
         }
 
+        private WordClass GetWords(string ru, string de)
+        {
+            var words = de.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (words.Length == 1)
+            {
+                return GetWord(ru, de);
+            }
+
+            var wordOut = new Verb()
+            {
+                Ru = ru,
+                De = de
+            };
+
+            var allWords = new List<WordClass>();
+
+            foreach (var word in words)
+            {
+                var normWord = word.Trim().Trim(new[] { '(', ')' });
+
+                var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
+
+                var document = GetHtml(hostUrl + normWord);
+
+                var trNode = GetTranslationContainer(document, normWord);
+                if (trNode == null)
+                {
+                    Console.WriteLine($"Not found {normWord}");
+                }
+                else
+                {
+                    var word2 = GetWord(trNode, normWord);
+                    allWords.Add(word2);
+                    UploadSound(trNode.Node, normWord);
+                }
+            }
+
+            wordOut.DeTranscription = string.Join(" ", allWords.Select(w => w.DeTranscription ?? "-"));
+            wordOut.Info = string.Join("; ",
+                allWords.Where(w => w.GetType() == typeof(Verb)).OfType<Verb>().Select(w => w.Info));
+            return wordOut;
+        }
         private WordClass GetWord(string ru, string de)
         {
             var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
 
             var document = GetHtml(hostUrl + de);
 
-            var trNode = GetTranslationNode(document, de);
+            var trNode = GetTranslationContainer(document, de);
             if (trNode == null)
             {
                 Console.WriteLine($"Not found {de}");

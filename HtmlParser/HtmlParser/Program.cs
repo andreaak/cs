@@ -39,8 +39,8 @@ namespace HtmlParser
                     return new TranslateDeRuParser(order, type);
                 case "deruverb": 
                     return new TranslateDeRuVerbParser(order, type);
-                case "derupair": 
-                    return new TranslateDeRuPairParser(order, type);
+                case "rudepair": 
+                    return new TranslateRuDePairParser(order, type);
                 default:
                     throw new Exception("wrong parameter");
             }
