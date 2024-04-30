@@ -8,22 +8,18 @@ namespace HtmlParser.Language
 {
     public class TranslateDeRuParser : LanguageParser, ILanguageParser
     {
-        public TranslateDeRuParser(bool order, string type)
+        public TranslateDeRuParser(bool order, WordType type)
             : base(order, type)
         { }
 
         public void Parse(IList<string> lines)
         {
-           var list = _order ?
-                lines.Where(l => !string.IsNullOrEmpty(l))
-                    .Select(l => Parse(l.Trim()))
-                    .OrderBy(l => l.De)
-                    .ToArray()
-: 
-                lines.Where(l => !string.IsNullOrEmpty(l))
-                    .Select(l => Parse(l.Trim()))
-                    .ToArray();
+            var temp = lines.Where(l => !string.IsNullOrEmpty(l))
+                .SelectMany(l => Parse(l.Trim()));
 
+            var list = _order ?
+                temp.OrderBy(l => l.De).ToArray() :
+                temp.ToArray();
 
             using (var sw = File.CreateText("out.txt"))
             {
@@ -34,26 +30,34 @@ namespace HtmlParser.Language
             }
         }
 
-        private WordClass Parse(string de)
+        private IList<WordClass> Parse(string de)
         {
             Console.WriteLine(de);
-            
+
+            if (_type == WordType.Verb)
+            {
+                de = de.Replace("|", "");
+            }
+
             var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
 
             var document = GetHtml(hostUrl + de);
 
             var trNode = GetTranslationContainer(document, de);
-            if (trNode == null)
+            if (trNode == null || trNode.Count == 0)
             {
                 Console.WriteLine($"Not found {de}");
-                return new WordClass
+                return new List<WordClass>()
                 {
-                    De = de
+                    new WordClass
+                    {
+                        De = de
+                    }
                 };
             }
 
-            var word = GetWord(trNode, de);
-            UploadSound(trNode.Node, word.De);
+            var word = GetWords(trNode, de);
+            UploadSound(trNode.First().Node, word.First().De.Replace("|", ""));
 
             return word;
         }

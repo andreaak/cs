@@ -10,20 +10,33 @@ namespace HtmlParser.Language
         public HtmlNode RomHeadNode { get; set; }
         public IEnumerable<HtmlNode> TranslationNodes { get; set; }
 
-        public static IEnumerable<TranslationItem> Parse(HtmlNode node)
+        public static IEnumerable<TranslationItem> Parse(HtmlNode node, string word)
         {
             var romHeads = node.SelectNodes(".//div[@class='romhead']");
 
             return romHeads
                 .Select(romHead => romHead.ParentNode)
-                .Select(ParseSingleNode)
+                .Select(n => ParseSingleNode(n, word))
                 .ToList();
         }
 
-        public static TranslationItem ParseSingleNode(HtmlNode node)
+        public static TranslationItem ParseSingleNode(HtmlNode node, string word)
         {
-            var translation = node.SelectNodes(".//div[@class='translations first']//div[@class='target']")?.ToArray() ?? Array.Empty<HtmlNode>();
-            var translations = node.SelectNodes(".//div[@class='translations']//div[@class='target']")?.ToArray() ?? Array.Empty<HtmlNode>();
+
+            IList<HtmlNode> translation;
+            try
+            {
+                translation = node.SelectNodes(".//div[@class='translations first']")?.SelectMany(n => n.SelectNodes(".//dl[@data-translation]"))?.ToArray() ?? Array.Empty<HtmlNode>();
+            }
+            catch (Exception e)
+            {
+                translation = Array.Empty<HtmlNode>();
+            }
+            
+            //var translation = node.SelectNodes(".//div[@class='translations first']")?.SelectMany(n => n.SelectNodes(".//dl[@data-translation]"))?.ToArray() ?? Array.Empty<HtmlNode>();
+
+            var translations = node.SelectNodes(".//div[@class='translations']")?.SelectMany(n => n.SelectNodes(".//dl[@data-translation]"))?.ToArray() ?? Array.Empty<HtmlNode>();
+            //var translations = node.SelectNodes(".//div[@class='translations']")?.Select(n => n.SelectSingleNode(".//div[@class='target']"))?.ToArray() ?? Array.Empty<HtmlNode>();
             return new TranslationItem
             {
                 RomHeadNode = node.SelectSingleNode(".//div[@class='romhead']"),

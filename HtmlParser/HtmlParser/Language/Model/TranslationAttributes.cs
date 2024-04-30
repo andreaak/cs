@@ -10,5 +10,6 @@
 
         public string Info { get; set; }
         public string VerbClass { get; set; }
+        public string HeadWord { get; set; }
     }
 }

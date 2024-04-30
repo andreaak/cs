@@ -30,20 +30,38 @@ namespace HtmlParser
             var prms = line.Trim().Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
             var id = prms[0];
             bool order = prms.Length > 1 && prms[1] == "ord";
-            string type = prms.Length > 2 ? prms[2] : null;
+
+            var type = prms.Length > 2 ? 
+                GetType(prms) :
+                WordType.Other;
+
             switch (id)
             {
                 case "rude": 
                     return new TranslateRuDeParser(order, type);
                 case "deru": 
                     return new TranslateDeRuParser(order, type);
+                case "derulist": 
+                    return new TranslateDeRuListParser(order);
                 case "deruverb": 
                     return new TranslateDeRuVerbParser(order, type);
                 case "rudepair": 
                     return new TranslateRuDePairParser(order, type);
+                case "deverbform":
+                    return new DeVerbFormParser();
+                case "deverbprap":
+                    return new DeVerbPrapParser(order, type);
+
                 default:
                     throw new Exception("wrong parameter");
             }
+        }
+
+        private static WordType GetType(string[] prms)
+        {
+            return Enum.TryParse<WordType>(prms[2], true, out var type) ? 
+                type : 
+                WordType.Other;
         }
     }
 }

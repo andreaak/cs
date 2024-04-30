@@ -17,15 +17,17 @@ namespace HtmlParser.Language
 
     public class LanguageParser : HtmlParser
     {
+        private const string SoundsFolder = "D:\\Temp\\Deutch\\DeutschAndroid\\Sounds\\de";
+
         private static readonly ReplaceItem[] NORMALIZATION = { new ReplaceItem("ä", "!a") ,
             new ReplaceItem("ö", "!o"),
             new ReplaceItem("ü", "!u"),
             new ReplaceItem("ß", "!s")};
         
         protected bool _order;
-        protected string _type;
+        protected WordType _type;
 
-        public LanguageParser(bool order, string type)
+        public LanguageParser(bool order, WordType type)
         {
             _order = order;
             _type = type;
@@ -35,7 +37,8 @@ namespace HtmlParser.Language
         {
             try
             {
-                string folder = parentPath + Normalize(word)[0];
+                var normalized = Normalize(word);
+                string folder = parentPath + "\\" + (normalized.StartsWith("!") ? normalized.Substring(0, 2) : normalized.Substring(0, 1));
                 if (!Directory.Exists(folder))
                 {
                     Directory.CreateDirectory(folder);
@@ -45,7 +48,7 @@ namespace HtmlParser.Language
 
                 //if (!File.Exists(path))
                 {
-                    Console.WriteLine($"Upload sound {hostUrl}");
+                    //Console.WriteLine($"Upload sound {hostUrl}");
 
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(hostUrl);
                     HttpWebResponse resp = (HttpWebResponse)request.GetResponse();
@@ -69,12 +72,17 @@ namespace HtmlParser.Language
             }
         }
 
-        protected TranslationContainer GetTranslationContainer(HtmlDocument document, string word)
+        protected IList<HtmlNode> GetVerbFormsContainer(HtmlDocument document)
+        {
+            return document?.DocumentNode.SelectNodes(".//div[@class='ft-single-table']");
+        }
+
+        protected IList<TranslationContainer> GetTranslationContainer(HtmlDocument document, string word)
         {
             return GetTranslationContainer(document, word, _type);
         }
 
-        protected TranslationContainer GetTranslationContainer(HtmlDocument document, string word, string type)
+        protected IList<TranslationContainer> GetTranslationContainer(HtmlDocument document, string word, WordType type)
         {
             var trNodes = GetTranslationItems(document, word);
 
@@ -83,75 +91,105 @@ namespace HtmlParser.Language
                 return null;
             }
 
-            if (string.IsNullOrEmpty(type))
+            if (type == WordType.Other)
             {
-                return new TranslationContainer
+                return new[] { new TranslationContainer
                 {
                     Node = trNodes.FirstOrDefault(),
                     AllNodes = trNodes
-                };
+                }};
             }
+
+            var list = new List<TranslationContainer>();
 
             foreach (var node in trNodes)
             {
                 var wordClass = node.GetWordClass();
-                if (wordClass == type.ToLower())
+                if (wordClass == type.ToString().ToLower() || type == WordType.All)
                 {
-                    return new TranslationContainer
+                    list.Add(new TranslationContainer
                     {
                         Node = node,
                         AllNodes = trNodes
-                    };
+                    });
                 }
             }
 
-            return new TranslationContainer
+            if (list.Count != 0)
+            {
+                return list;
+            }
+
+            return new[] { new TranslationContainer
             {
                 AllNodes = trNodes
-            };
+            }};
         }
 
-        protected IEnumerable<TranslationItem> GetTranslationItems(HtmlDocument document, string word)
-        {
+        protected IEnumerable<TranslationItem> GetTranslationItems(HtmlDocument document, string word) {
             var trNodes = document.DocumentNode.SelectNodes(".//div[@rel]");
+
+            var resNodes = new List<HtmlNode>();
+            
             if (trNodes != null)
             {
                 foreach (var node in trNodes)
                 {
                     var rel = node.Attributes.FirstOrDefault(a => a.Name == "rel");
-                    if (rel?.Value.Trim().Replace("\u0301", "") == word.ToLower())
+                    var value = rel?.Value.Trim().Replace("\u0301", "").ToLower();
+                    var sourceWord = word.ToLower();
+
+                    if (value != null && (value == sourceWord || value.IndexOf(sourceWord) == 0  && value.Length > sourceWord.Length && value[sourceWord.Length] == '('))
                     {
-                        return trNodes.SelectMany(TranslationItem.Parse).ToArray();
+                        resNodes.Add(node);
                     }
                 }
             }
 
-            return null;
+            return resNodes.Count != 0 ? resNodes.SelectMany(n => TranslationItem.Parse(n, word)).ToArray() : null;
         }
 
-        protected WordClass GetWord(TranslationContainer trContainer, string de)
+        protected IList<WordClass> GetWords(IList<TranslationContainer> trContainers, string de)
         {
-            var word = GetWord(trContainer.Node, de, trContainer.AllNodes);
-            word.Ru = trContainer.Node.GetTranslation();
-            return word;
+            return trContainers.Select(trContainer =>
+            {
+                var node = trContainer.Node;
+                if (node == null)
+                {
+                    return new WordClass
+                    {
+                        De = de
+                    };
+                }
+
+                var word = GetWord(trContainer, de);
+                if (trContainer.Node != null)
+                {
+                    word.Ru = string.Join("/", trContainer.Node.GetTranslations(de).Distinct());
+                }
+                return word;
+            }).ToArray();
         }
 
-        private WordClass GetWord(TranslationItem deNode, string de, IEnumerable<TranslationItem> allNodes)
+        private WordClass GetWord(TranslationContainer trContainer, string de)
         {
-            var wordClass = deNode.GetWordClass();
+            var node = trContainer.Node;
+            var allNodes = trContainer.AllNodes;
+            
+            var wordClass = node.GetWordClass();
 
             WordClass word;
 
             switch (wordClass)
             {
                 case "verb":
-                    word = GetVerb(deNode, de, allNodes);
+                    word = GetVerb(node, de, allNodes);
                     break;
                 case "subst":
-                    word = GetSubstantiv(deNode, de, allNodes);
+                    word = GetSubstantiv(node, de, allNodes);
                     break;
                 default:
-                    word = GetWordClass(deNode, de, allNodes);
+                    word = GetWordClass(node, de, allNodes);
                     break;
             }
 
@@ -161,13 +199,13 @@ namespace HtmlParser.Language
         protected void UploadSound(TranslationItem trNode, string de)
         {
             //var soundNode = trNode.SelectSingleNode(".//div[@class='translations first']//dl");
-            var soundNode = trNode.RomHeadNode;
+            var soundNode = trNode?.RomHeadNode;
             if (soundNode == null)
             {
                 return;
             }
             string hostUrl = $"https://sounds.pons.com/audio_tts/de/{soundNode.Id}?target=mp3";
-            UploadSound(hostUrl, de, "mp3", "D:\\Temp\\Sounds\\");
+            UploadSound(hostUrl, de, "mp3", SoundsFolder);
         }
         
         protected IrrVerb GetIrregularVerb(TranslationItem trItem, string de, string part2Verb)
@@ -232,7 +270,10 @@ namespace HtmlParser.Language
             word.DeTranscription = attributes.Phonetics;
             word.Info = attributes.Info;
             word.VerbClass = attributes.VerbClass;
-
+            if (!string.IsNullOrEmpty(attributes.HeadWord) && attributes.HeadWord.Contains("|") )
+            {
+                word.De = attributes.HeadWord;
+            }
             if (string.IsNullOrEmpty(word.DeTranscription))
             {
                 word.DeTranscription = GetTranscription(trItem, allItems);
@@ -254,7 +295,7 @@ namespace HtmlParser.Language
             }
 
             word.WrdClass = trItem.GetWordClass();
-            word.DeTranscription = attributes.Phonetics;
+            word.DeTranscription = attributes.Phonetics.RemoveNewLine();
 
             if (string.IsNullOrEmpty(word.DeTranscription))
             {
@@ -308,7 +349,7 @@ namespace HtmlParser.Language
                 }
                 else if (span.Attributes.Any(a => a.Value == "flexion"))
                 {
-                    attributes.Flexion = HttpUtility.HtmlDecode(span.InnerText.Trim());
+                    attributes.Flexion = HttpUtility.HtmlDecode(span.InnerText.Trim().RemoveNewLine());
                 }
                 else if (span.Attributes.Any(a => a.Value == "genus"))
                 {
@@ -317,11 +358,15 @@ namespace HtmlParser.Language
                 }
                 else if (span.Attributes.Any(a => a.Value == "info"))
                 {
-                    attributes.Info = HttpUtility.HtmlDecode(span.InnerText.Trim());
+                    attributes.Info = HttpUtility.HtmlDecode(span.InnerText.Trim().RemoveNewLine());
                 }
                 else if (span.Attributes.Any(a => a.Value == "verbclass"))
                 {
                     attributes.VerbClass = span.InnerText.Trim();
+                }
+                else if (span.Attributes.Any(a => a.Value == "headword_attributes"))
+                {
+                    attributes.HeadWord = span.InnerText.Trim();
                 }
             }
 
@@ -338,6 +383,10 @@ namespace HtmlParser.Language
                     return "die";
                 case "nt":
                     return "das";
+                case "m(f)":
+                    return "der(die)";
+                case "f(m)":
+                    return "die(der)";
             }
 
             return null;
@@ -364,7 +413,7 @@ namespace HtmlParser.Language
             return null;
         }
 
-        private string Normalize(string word)
+        protected string Normalize(string word)
         {
             word = word.ToLower();
             foreach (var symbol in NORMALIZATION)
@@ -376,5 +425,16 @@ namespace HtmlParser.Language
             }
             return word;
         }
+    }
+
+    public enum WordType
+    {
+        Other = 0,
+        Verb,
+        Subst,
+        Adv, 
+        Adj,
+        Konj,
+        All
     }
 }

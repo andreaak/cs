@@ -6,28 +6,20 @@ using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
-    class TranscriptionResponse
-    {
-        public string Text { get; set; }
-    }
-
     public class TranslateRuDeParser : LanguageParser, ILanguageParser
     {
-        public TranslateRuDeParser(bool order, string type)
+        public TranslateRuDeParser(bool order, WordType type)
         : base(order, type)
         { }
         
         public void Parse(IList<string> lines)
         {
+            var temp = lines.Where(l => !string.IsNullOrEmpty(l))
+                .SelectMany(l => Parse(l.Trim()));
+
             var list = _order ?
-                lines.Where(l => !string.IsNullOrEmpty(l))
-                    .Select(l => Parse(l.Trim()))
-                    .OrderBy(l => l.De)
-                    .ToArray()
-                :
-                lines.Where(l => !string.IsNullOrEmpty(l))
-                    .Select(l => Parse(l.Trim()))
-                    .ToArray();
+                temp.OrderBy(l => l.De).ToArray() :
+                temp.ToArray();
 
             using (var sw = File.CreateText("out.txt"))
             {
@@ -38,7 +30,7 @@ namespace HtmlParser.Language
             }
         }
 
-        protected WordClass Parse(string ru)
+        protected IList<WordClass> Parse(string ru)
         {
             Console.WriteLine(ru);
 
@@ -51,67 +43,76 @@ namespace HtmlParser.Language
             string link = null;
 
             var translationContainerRu = GetTranslationContainer(document, ru);
-            if (translationContainerRu?.Node != null)
+            if (translationContainerRu?.FirstOrDefault()?.Node != null)
             {
-                if (string.IsNullOrEmpty(_type))
+                if (_type == WordType.Other)
                 {
-                    wordClass = translationContainerRu.Node.GetWordClass();
+                    wordClass = translationContainerRu.First().Node.GetWordClass();
                 }
-                de = translationContainerRu.Node.GetTranslation();
-                link = translationContainerRu.Node.GetLink();
+                de = translationContainerRu.First().Node.GetTranslation(ru);
+                link = translationContainerRu.First().Node.GetLink();
             }
 
             if (string.IsNullOrEmpty(de))
             {
                 Console.WriteLine($"Not found {ru}");
-                return new WordClass
+                return new List<WordClass>
                 {
-                    Ru = ru
+                    new WordClass
+                    {
+                        Ru = ru
+                    }
                 };
             }
 
             hostUrl = link == null ? $"https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/{de}" : $"https://de.pons.com{link}";
             document = GetHtml(hostUrl);
-            
-            var translationContainerDe = GetTranslationContainer(document, de, _type ?? wordClass);
+
+            if (_type == WordType.Other
+                && !string.IsNullOrEmpty(wordClass))
+            {
+                _type = (WordType)Enum.Parse(typeof(WordType), wordClass, true);
+            }
+            var translationContainerDe = GetTranslationContainer(document, de, _type);
             if (translationContainerDe == null)
             {
                 Console.WriteLine($"Not found {de}");
-                if ((_type ?? wordClass)?.ToLower() == "subst")
+                if (_type == WordType.Subst)
                 {
                     var nd = document.DocumentNode.SelectSingleNode(".//div[@class='results']//div[@class='target']");
                     var genus = nd?.SelectSingleNode(".//span[@class='genus']")?.InnerText.Trim().ToLower();
-                    return new Substantiv
+                    return new List<WordClass>
+                    { new Substantiv
                     {
                         De = de,
                         Ru = ru,
                         Genus = genus,
                         Artikle = GetArtikle(genus)
-                    };
+                    }};
                 }
-                return new WordClass
+                return new List<WordClass> {new WordClass
                 {
                     De = de,
                     Ru = ru,
                     
-                };
+                }};
             }
 
-            if (translationContainerDe.Node == null)
+            if (translationContainerDe.Count == 0)
             {
-                return new WordClass
+                return new List<WordClass> {new WordClass
                 {
                     De = de,
                     Ru = ru,
-                    DeTranscription = GetTranscription(translationContainerDe.Node, translationContainerDe.AllNodes)
-                };
+                    //DeTranscription = GetTranscription(translationContainerDe.Node, translationContainerDe.AllNodes)
+                }};
             }
 
-            var word = GetWord(translationContainerDe, de);
+            var word = GetWords(translationContainerDe, de).First();
             word.Ru = ru;
-            UploadSound(translationContainerDe.Node, word.De);
+            UploadSound(translationContainerDe.First().Node, word.De);
 
-            return word;
+            return new List<WordClass> { word };
         }
     }
 }

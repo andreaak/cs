@@ -8,7 +8,7 @@ namespace HtmlParser.Language
 {
     public class TranslateRuDePairParser : LanguageParser, ILanguageParser
     {
-        public TranslateRuDePairParser(bool order, string type)
+        public TranslateRuDePairParser(bool order, WordType type)
             : base(order, type)
         { }
 
@@ -76,9 +76,9 @@ namespace HtmlParser.Language
                 }
                 else
                 {
-                    var word2 = GetWord(trNode, normWord);
+                    var word2 = GetWords(trNode, normWord).First();
                     allWords.Add(word2);
-                    UploadSound(trNode.Node, normWord);
+                    UploadSound(trNode.First().Node, normWord);
                 }
             }
 
@@ -87,6 +87,7 @@ namespace HtmlParser.Language
                 allWords.Where(w => w.GetType() == typeof(Verb)).OfType<Verb>().Select(w => w.Info));
             return wordOut;
         }
+
         private WordClass GetWord(string ru, string de)
         {
             var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
@@ -104,9 +105,9 @@ namespace HtmlParser.Language
                 };
             }
 
-            var word = GetWord(trNode, de);
+            var word = GetWords(trNode, de).First();
             word.Ru = ru;
-            UploadSound(trNode.Node, word.De);
+            UploadSound(trNode.First().Node, word.De);
 
             return word;
         }

@@ -26,10 +26,10 @@ namespace HtmlParser.Language.Model
             sw.WriteLine(sb.ToString());
             sb.Clear();
 
-            if (!string.IsNullOrEmpty(Genus))
-            {
-                sb.Append(sb.Length != 0 ? $" {Genus}" : Genus);
-            }
+            //if (!string.IsNullOrEmpty(Genus))
+            //{
+            //    sb.Append(sb.Length != 0 ? $" {Genus}" : Genus);
+            //}
             if (!string.IsNullOrEmpty(Flexion))
             {
                 sb.Append(sb.Length != 0 ? $" {Flexion}" : Flexion);

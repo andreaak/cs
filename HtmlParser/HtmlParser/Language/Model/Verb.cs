@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace HtmlParser.Language.Model
@@ -10,17 +11,14 @@ namespace HtmlParser.Language.Model
 
         public override void Write(StreamWriter sw)
         {
+            var info = string.Join("; ", new[] { VerbClass/*, Info*/ }.Where(t => !string.IsNullOrEmpty(t)));
+
             sw.WriteLine(WrdClass);
             sw.WriteLine(Ru);
             sw.WriteLine(De);
-            sw.WriteLine(!string.IsNullOrEmpty(Info) ? $"{{{Info}}}" : "");
+            sw.WriteLine(!string.IsNullOrEmpty(info) ? $"{{{info}}}" : "");
             sw.WriteLine(DeTranscription);
             sw.WriteLine("");
-
-            //if (!string.IsNullOrEmpty(VerbClass))
-            //{
-            //    sb.Append(sb.Length != 0 ? $" {VerbClass}" : VerbClass);
-            //}
         }
     }
 
