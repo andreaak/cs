@@ -1,7 +1,11 @@
 using System;
+using System.CodeDom.Compiler;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using HtmlParser.Language;
+using Newtonsoft.Json;
 
 namespace HtmlParser
 {
@@ -15,6 +19,16 @@ namespace HtmlParser
             //parser.Parse();
             //parser.Normalize();
             //ParseLocalFile();
+
+            var request = Temp();
+
+            var conv = JsonConvert.SerializeObject(request);
+
+            if (request.Content is StringContent ct)
+            {
+                var t = ct.ReadAsStringAsync().GetAwaiter().GetResult();
+                var t2 = ct.ReadAsStringAsync().GetAwaiter().GetResult();
+            }
 
             string file = "list.txt";
             var lines = File.ReadLines(file);
@@ -31,9 +45,7 @@ namespace HtmlParser
             var id = prms[0];
             bool order = prms.Length > 1 && prms[1] == "ord";
 
-            var type = prms.Length > 2 ? 
-                GetType(prms) :
-                WordType.Other;
+            var type = GetType(prms);
 
             switch (id)
             {
@@ -42,15 +54,17 @@ namespace HtmlParser
                 case "deru": 
                     return new TranslateDeRuParser(order, type);
                 case "derulist": 
-                    return new TranslateDeRuListParser(order);
+                    return new TranslateDeRuVocabularyCornelseParser(order);
                 case "deruverb": 
-                    return new TranslateDeRuVerbParser(order, type);
+                    return new TranslateDeRuVerbFormsParser();
                 case "rudepair": 
                     return new TranslateRuDePairParser(order, type);
                 case "deverbform":
                     return new DeVerbFormParser();
                 case "deverbprap":
-                    return new DeVerbPrapParser(order, type);
+                    return new DeVerbDicLeoPrapParser(order);
+                case "deruverbpref":
+                    return new TranslateDeRuVerbPrefixParser();
 
                 default:
                     throw new Exception("wrong parameter");
@@ -59,9 +73,30 @@ namespace HtmlParser
 
         private static WordType GetType(string[] prms)
         {
-            return Enum.TryParse<WordType>(prms[2], true, out var type) ? 
+            return Enum.TryParse<WordType>(prms.ElementAtOrDefault(2) ?? "", true, out var type) ? 
                 type : 
-                WordType.Other;
+                WordType.First;
+        }
+
+        private static HttpRequestMessage Temp()
+        {
+            var request = new HttpRequestMessage
+            {
+                RequestUri = new Uri("https://apigee.rwlv.dev/rwlv-dev-oc-syn")
+            };
+
+            var contentType = "application/xml";
+
+            var commandString = "Test Command";
+
+            request.Content =
+                new StringContent(commandString, Encoding.UTF8, contentType);
+
+            request.Method = HttpMethod.Post;
+
+            request.Headers.Add("Authorization", $"Bearer Test");
+
+            return request;
         }
     }
 }

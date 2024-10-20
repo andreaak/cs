@@ -69,7 +69,7 @@ namespace HtmlParser.Language
 
                 var document = GetHtml(hostUrl + normWord);
 
-                var trNode = GetTranslationContainer(document, normWord);
+                var trNode = new PonsTranslationContainerFactory().GetTranslationContainer(document, normWord, _type);
                 if (trNode == null)
                 {
                     Console.WriteLine($"Not found {normWord}");
@@ -94,7 +94,7 @@ namespace HtmlParser.Language
 
             var document = GetHtml(hostUrl + de);
 
-            var trNode = GetTranslationContainer(document, de);
+            var trNode = new PonsTranslationContainerFactory().GetTranslationContainer(document, de, _type);
             if (trNode == null)
             {
                 Console.WriteLine($"Not found {de}");

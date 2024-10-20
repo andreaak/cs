@@ -6,10 +6,10 @@ using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
-    public class TranslateDeRuVerbParser : LanguageParser, ILanguageParser
+    public class TranslateDeRuVerbFormsParser : LanguageParser, ILanguageParser
     {
-        public TranslateDeRuVerbParser(bool order, WordType type)
-            : base(order, type)
+        public TranslateDeRuVerbFormsParser()
+            : base(false, WordType.Verb)
         { }
 
         public void Parse(IList<string> lines)
@@ -103,7 +103,7 @@ namespace HtmlParser.Language
         {
             var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
             var document = GetHtml(hostUrl + de);
-            var trNode = GetTranslationContainer(document, de);
+            var trNode = new PonsTranslationContainerFactory().GetTranslationContainer(document, de, _type);
             return trNode?.FirstOrDefault();
         }
     }

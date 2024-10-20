@@ -4,7 +4,7 @@ namespace HtmlParser.Language
 {
     public class TranslationContainer
     {
-        public TranslationItem Node { get; set; }
-        public IEnumerable<TranslationItem>  AllNodes { get; set; }
+        public ITranslationItem Node { get; set; }
+        public IEnumerable<ITranslationItem>  AllNodes { get; set; }
     }
 }

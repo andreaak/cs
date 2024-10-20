@@ -42,10 +42,10 @@ namespace HtmlParser.Language
             string wordClass = null;
             string link = null;
 
-            var translationContainerRu = GetTranslationContainer(document, ru);
+            var translationContainerRu = new PonsTranslationContainerFactory().GetTranslationContainer(document, ru, _type);
             if (translationContainerRu?.FirstOrDefault()?.Node != null)
             {
-                if (_type == WordType.Other)
+                if (_type == WordType.First)
                 {
                     wordClass = translationContainerRu.First().Node.GetWordClass();
                 }
@@ -68,12 +68,12 @@ namespace HtmlParser.Language
             hostUrl = link == null ? $"https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/{de}" : $"https://de.pons.com{link}";
             document = GetHtml(hostUrl);
 
-            if (_type == WordType.Other
+            if (_type == WordType.First
                 && !string.IsNullOrEmpty(wordClass))
             {
                 _type = (WordType)Enum.Parse(typeof(WordType), wordClass, true);
             }
-            var translationContainerDe = GetTranslationContainer(document, de, _type);
+            var translationContainerDe = new PonsTranslationContainerFactory().GetTranslationContainer(document, ru, _type);
             if (translationContainerDe == null)
             {
                 Console.WriteLine($"Not found {de}");
@@ -87,14 +87,14 @@ namespace HtmlParser.Language
                         De = de,
                         Ru = ru,
                         Genus = genus,
-                        Artikle = GetArtikle(genus)
+                        Artikle = PonsTranslationItem.GetArtikle(genus)
                     }};
                 }
                 return new List<WordClass> {new WordClass
                 {
                     De = de,
                     Ru = ru,
-                    
+
                 }};
             }
 

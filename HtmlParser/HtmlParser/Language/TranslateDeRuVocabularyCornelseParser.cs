@@ -6,10 +6,11 @@ using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
-    public class TranslateDeRuListParser : LanguageParser, ILanguageParser
+    
+    public class TranslateDeRuVocabularyCornelseParser : LanguageParser, ILanguageParser
     {
-        public TranslateDeRuListParser(bool order)
-            : base(order, WordType.Other)
+        public TranslateDeRuVocabularyCornelseParser(bool order)
+            : base(order, WordType.All)
         { }
 
         public void Parse(IList<string> lines)
@@ -17,7 +18,7 @@ namespace HtmlParser.Language
             
             using (var sw = File.CreateText("notFound.txt"))
             {
-                var temp = lines.Where(l => !string.IsNullOrEmpty(l))
+                var temp = lines.Where(l => !string.IsNullOrWhiteSpace(l))
                     .SelectMany(l => Parse(l.Trim(), sw));
 
 
@@ -51,7 +52,7 @@ namespace HtmlParser.Language
 
             var document = GetHtml(hostUrl + item.De);
 
-            var trNode = GetTranslationContainer(document, item.De, item.Type);
+            var trNode = new PonsTranslationContainerFactory().GetTranslationContainer(document, item.De, item.Type);
             if (trNode == null || trNode.Count == 0)
             {
                 Console.WriteLine($"Not found {item.De}");
@@ -83,21 +84,37 @@ namespace HtmlParser.Language
 
         private ListItem GetItem(string de)
         {
-            var items = de.Split(new [] {' '}, StringSplitOptions.RemoveEmptyEntries);
-            var value = items[0];
-            var listItem = new ListItem
+            IList<string> items;
+            ListItem listItem;
+            if (char.IsUpper(de[0]))
             {
-                De = value,
-                Type = WordType.All
-            };
-
-
-            if (char.IsUpper(value[0]))
-            {
-                listItem.De = value.TrimEnd(',').Replace("/in", "(in)");
-                listItem.Type = WordType.Subst;
+                items = de.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var value = items[0];
+                if (value.EndsWith("/in"))
+                {
+                    value = value.Replace("/in", "(in)");
+                } else if (value.EndsWith("r/-e"))
+                {
+                    value = value.Replace("r/-e", "(r)");
+                }
+                listItem = new ListItem
+                {
+                    De = value,
+                    Type = WordType.Subst
+                };
             }
-            else if (items.Any(i => i.ToLower() == "verb"))
+            else
+            {
+                items = de.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var value = items[0];
+                listItem = new ListItem
+                {
+                    De = value,
+                    Type = WordType.All
+                };
+            }
+
+            if (items.Any(i => i.Contains("|")) || items.Any(i => i.ToLower() == "verb"))
             {
                 listItem.Type = WordType.Verb;
             }

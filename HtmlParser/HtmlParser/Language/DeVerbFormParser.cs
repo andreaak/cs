@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml;
 using HtmlParser.Language.Model;
@@ -18,7 +19,10 @@ namespace HtmlParser.Language
         public void Parse(IList<string> lines)
         {
             var list = lines.Where(l => !string.IsNullOrEmpty(l))
+                    .Select(l => l.Replace("|", ""))
+                    .Distinct()
                     .Select(l => Parse(l.Trim()))
+                    .Where(l => l != null)
                     .ToArray();
 
             foreach (var verbForm in list)
@@ -34,7 +38,14 @@ namespace HtmlParser.Language
 
         private void WriteFile(DeVerbForms verbForm)
         {
-            XmlTextWriter textWriter = new XmlTextWriter($"{Folder}\\{Normalize(verbForm.Value)}.xml", null);
+            string fileName = $"{Folder}\\{Normalize(verbForm.Value)}.xml";
+
+            if (File.Exists(fileName))
+            {
+                return;
+            }
+
+            XmlTextWriter textWriter = new XmlTextWriter(fileName, null);
             textWriter.WriteStartDocument();
 
             textWriter.WriteStartElement("VerbForms");
@@ -73,7 +84,12 @@ namespace HtmlParser.Language
         {
             Console.WriteLine(de);
 
-            de = de.Replace("|", "");
+            string fileName = $"{Folder}\\{Normalize(de)}.xml";
+
+            if (File.Exists(fileName))
+            {
+                return null;
+            }
 
             var hostUrl = "https://de.pons.com/verbtabellen/deutsch/";
 
@@ -128,7 +144,7 @@ namespace HtmlParser.Language
 
             document = GetHtml(hostUrl + de);
 
-            var trContainer = GetTranslationContainer(document, de);
+            var trContainer = new PonsTranslationContainerFactory().GetTranslationContainer(document, de, _type);
             if (trContainer == null || trContainer.Count == 0)
             {
                 return item;

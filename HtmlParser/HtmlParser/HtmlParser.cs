@@ -13,7 +13,7 @@ namespace HtmlParser
         protected HtmlDocument GetHtml(string url)
         {
             int repeat = 3;
-            int timeout = 15000;
+            int timeout = 2000;
             while (repeat-- > 0)
             {
                 try

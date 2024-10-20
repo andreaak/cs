@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Xml;
 using HtmlAgilityPack;
 using HtmlParser.Language.Model;
-using HtmlParser.Language.VerbFormParsers;
 
 namespace HtmlParser.Language
 {
-    public class DeVerbPrapParser : LanguageParser, ILanguageParser
+    public class DeVerbDicLeoPrapParser : LanguageParser, ILanguageParser
     {
-        public DeVerbPrapParser(bool order, WordType type)
-            : base(order, type)
+        public DeVerbDicLeoPrapParser(bool order)
+            : base(order, WordType.Verb)
         { }
 
         public void Parse(IList<string> lines)
@@ -38,10 +36,7 @@ namespace HtmlParser.Language
         {
             Console.WriteLine(de);
 
-            if (_type == WordType.Verb)
-            {
-                de = de.Replace("|", "");
-            }
+            de = de.Replace("|", "");
 
             var hostUrl = "https://dict.leo.org/russisch-deutsch/";
 

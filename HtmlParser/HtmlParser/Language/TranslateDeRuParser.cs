@@ -43,9 +43,14 @@ namespace HtmlParser.Language
 
             var document = GetHtml(hostUrl + de);
 
-            var trNode = GetTranslationContainer(document, de);
+            var factory = new PonsTranslationContainerFactory();
+
+            var trNode = factory.GetTranslationContainer(document, de, _type);
+            
             if (trNode == null || trNode.Count == 0)
             {
+                //var hostUrl2 = "https://www.translate.ru/перевод/немецкий-русский/";
+
                 Console.WriteLine($"Not found {de}");
                 return new List<WordClass>()
                 {
