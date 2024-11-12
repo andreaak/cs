@@ -44,10 +44,5 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var t = Cipher.DecryptFromAzure(textBoxItem1.Text, EncryptFor.DeliveryValue);
-        }
     }
 }
