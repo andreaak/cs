@@ -98,9 +98,14 @@ namespace Note.Domain
             dataRepository.Init();
         }
 
-        public int Insert(int parentId, string description,  DataTypes type)
+        public int Add(int parentId, string description,  DataTypes type)
         {
-            return dataRepository.Insert(parentId, description,  type);
+            return dataRepository.Add(parentId, description,  type);
+        }
+
+        public int Insert(int parentId, int prevId, string description, DataTypes type)
+        {
+            return dataRepository.Insert(parentId, prevId, description, type);
         }
 
         public void Delete(int id)

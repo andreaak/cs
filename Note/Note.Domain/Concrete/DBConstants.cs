@@ -54,7 +54,7 @@ namespace Note.Domain.Concrete
 					            EntityDescription,
 					            ModDate)  
                      VALUES(NEW.ID,
-		             'Insert ' ||  (CASE NEW.Type WHEN 0 THEN 'Folder' ELSE 'Note' END) ,
+		             'Add ' ||  (CASE NEW.Type WHEN 0 THEN 'Folder' ELSE 'Note' END) ,
 		             NEW.Description,
 		             current_timestamp);  
             END;  

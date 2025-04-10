@@ -110,9 +110,9 @@ namespace Note.ControlWrapper.DevExpressWrappers
             Document doc = control.Document;
             DocumentRange range = control.Document.Selection;
             CharacterProperties cp = doc.BeginUpdateCharacters(range);
-            cp.FontName = "Courier New";
-            cp.FontSize = 14;
-            cp.Bold = true;
+            cp.FontName = "Calibri";
+            cp.FontSize = 11;
+            cp.Bold = false;
             cp.Italic = false;
             doc.EndUpdateCharacters(cp);
         }

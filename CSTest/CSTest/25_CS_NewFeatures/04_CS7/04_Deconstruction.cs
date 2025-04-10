@@ -13,6 +13,7 @@ namespace CSTest._25_CS_NewFeatures._04_CS7
         {
             TupleSamples ts = new TupleSamples();
             var person = ts.GetNewCS7_Tuple();
+            Debug.Write($"\n C# 7 Tuple - Author " + $"{person.name} {person.title} {person.year}");
 
             (var name2, var title2, var year2) = ts.GetNewCS7_Tuple();
             Debug.Write($"\n C# 7 Tuple - Author " + $"{name2} {title2} {year2}");

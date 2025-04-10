@@ -203,7 +203,7 @@
             this.checkEditInsertChild.EditValue = true;
             this.checkEditInsertChild.Location = new System.Drawing.Point(12, 36);
             this.checkEditInsertChild.Name = "checkEditInsertChild";
-            this.checkEditInsertChild.Properties.Caption = "Insert Child";
+            this.checkEditInsertChild.Properties.Caption = "Add Child";
             this.checkEditInsertChild.Size = new System.Drawing.Size(161, 19);
             this.checkEditInsertChild.StyleController = this.layoutControl1;
             this.checkEditInsertChild.TabIndex = 4;

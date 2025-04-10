@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ShopDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ShopDBModelStoreContainer">
+          <EntitySet Name="Assets" EntityType="ShopDBModel.Store.Assets" store:Type="Tables" store:Schema="dbo" store:Name="Assets">
+            <DefiningQuery>SELECT 
+      [Assets].[GUI] AS [GUI], 
+      [Assets].[RV] AS [RV]
+      FROM [dbo].[Assets] AS [Assets]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CUSTOMERS" EntityType="ShopDBModel.Store.CUSTOMERS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customers2" EntityType="ShopDBModel.Store.Customers2" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employees" EntityType="ShopDBModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OFFICES" EntityType="ShopDBModel.Store.OFFICES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ORDERS" EntityType="ShopDBModel.Store.ORDERS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders2" EntityType="ShopDBModel.Store.Orders2" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PRODUCTS" EntityType="ShopDBModel.Store.PRODUCTS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Salespeople" EntityType="ShopDBModel.Store.Salespeople" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SALESREPS" EntityType="ShopDBModel.Store.SALESREPS" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Employees__manag__4D94879B" Association="ShopDBModel.Store.FK__Employees__manag__4D94879B">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees1" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALESREPS__MANAG__6C190EBB" Association="ShopDBModel.Store.FK__SALESREPS__MANAG__6C190EBB">
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+            <End Role="SALESREPS1" EntitySet="SALESREPS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Salespeople" Association="ShopDBModel.Store.FK_Customers_Salespeople">
+            <End Role="Salespeople" EntitySet="Salespeople" />
+            <End Role="Customers2" EntitySet="Customers2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="ShopDBModel.Store.FK_Orders_Customers">
+            <End Role="Customers2" EntitySet="Customers2" />
+            <End Role="Orders2" EntitySet="Orders2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Salespeople" Association="ShopDBModel.Store.FK_Orders_Salespeople">
+            <End Role="Salespeople" EntitySet="Salespeople" />
+            <End Role="Orders2" EntitySet="Orders2" />
+          </AssociationSet>
+          <AssociationSet Name="HASMGR" Association="ShopDBModel.Store.HASMGR">
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+            <End Role="OFFICES" EntitySet="OFFICES" />
+          </AssociationSet>
+          <AssociationSet Name="HASREP" Association="ShopDBModel.Store.HASREP">
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+          </AssociationSet>
+          <AssociationSet Name="ISFOR" Association="ShopDBModel.Store.ISFOR">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="PLACEDBY" Association="ShopDBModel.Store.PLACEDBY">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="TAKENBY" Association="ShopDBModel.Store.TAKENBY">
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="WORKSIN" Association="ShopDBModel.Store.WORKSIN">
+            <End Role="OFFICES" EntitySet="OFFICES" />
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+          </AssociationSet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'D:\PROJECTS\CS\CSTEST\CSTEST\SHOPDB.MDF.dbo.Assets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Assets">
+          <Key>
+            <PropertyRef Name="RV" />
+          </Key>
+          <Property Name="GUI" Type="uniqueidentifier" />
+          <Property Name="RV" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="CUST_NUM" />
+          </Key>
+          <Property Name="CUST_NUM" Type="int" Nullable="false" />
+          <Property Name="COMPANY" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CUST_REP" Type="int" />
+          <Property Name="CREDIT_LIMIT" Type="money" />
+        </EntityType>
+        <EntityType Name="Customers2">
+          <Key>
+            <PropertyRef Name="cnum" />
+          </Key>
+          <Property Name="cnum" Type="int" Nullable="false" />
+          <Property Name="cname" Type="char" MaxLength="10" />
+          <Property Name="city" Type="char" MaxLength="10" />
+          <Property Name="rating" Type="int" />
+          <Property Name="snum" Type="int" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="empno" />
+          </Key>
+          <Property Name="empno" Type="int" Nullable="false" />
+          <Property Name="name" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="manager" Type="int" />
+        </EntityType>
+        <EntityType Name="OFFICES">
+          <Key>
+            <PropertyRef Name="OFFICE" />
+          </Key>
+          <Property Name="OFFICE" Type="int" Nullable="false" />
+          <Property Name="CITY" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="REGION" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="MGR" Type="int" />
+          <Property Name="TARGET" Type="money" />
+          <Property Name="SALES" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="ORDER_NUM" />
+          </Key>
+          <Property Name="ORDER_NUM" Type="int" Nullable="false" />
+          <Property Name="ORDER_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CUST" Type="int" Nullable="false" />
+          <Property Name="REP" Type="int" />
+          <Property Name="MFR" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="PRODUCT" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="QTY" Type="int" Nullable="false" />
+          <Property Name="AMOUNT" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders2">
+          <Key>
+            <PropertyRef Name="onum" />
+          </Key>
+          <Property Name="onum" Type="int" Nullable="false" />
+          <Property Name="amt" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="odate" Type="date" Nullable="false" />
+          <Property Name="cnum" Type="int" Nullable="false" />
+          <Property Name="snum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTS">
+          <Key>
+            <PropertyRef Name="MFR_ID" />
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="MFR_ID" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="PRODUCT_ID" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="DESCRIPTION" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="PRICE" Type="money" Nullable="false" />
+          <Property Name="QTY_ON_HAND" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Salespeople">
+          <Key>
+            <PropertyRef Name="snum" />
+          </Key>
+          <Property Name="snum" Type="int" Nullable="false" />
+          <Property Name="sname" Type="char" MaxLength="15" />
+          <Property Name="city" Type="char" MaxLength="15" />
+          <Property Name="comm" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+        </EntityType>
+        <EntityType Name="SALESREPS">
+          <Key>
+            <PropertyRef Name="EMPL_NUM" />
+          </Key>
+          <Property Name="EMPL_NUM" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="AGE" Type="int" />
+          <Property Name="REP_OFFICE" Type="int" />
+          <Property Name="TITLE" Type="varchar" MaxLength="10" />
+          <Property Name="HIRE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="MANAGER" Type="int" />
+          <Property Name="QUOTA" Type="money" />
+          <Property Name="SALES" Type="money" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Employees__manag__4D94879B">
+          <End Role="Employees" Type="ShopDBModel.Store.Employees" Multiplicity="0..1" />
+          <End Role="Employees1" Type="ShopDBModel.Store.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="empno" />
+            </Principal>
+            <Dependent Role="Employees1">
+              <PropertyRef Name="manager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALESREPS__MANAG__6C190EBB">
+          <End Role="SALESREPS" Type="ShopDBModel.Store.SALESREPS" Multiplicity="0..1" />
+          <End Role="SALESREPS1" Type="ShopDBModel.Store.SALESREPS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALESREPS">
+              <PropertyRef Name="EMPL_NUM" />
+            </Principal>
+            <Dependent Role="SALESREPS1">
+              <PropertyRef Name="MANAGER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Salespeople">
+          <End Role="Salespeople" Type="ShopDBModel.Store.Salespeople" Multiplicity="0..1" />
+          <End Role="Customers2" Type="ShopDBModel.Store.Customers2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salespeople">
+              <PropertyRef Name="snum" />
+            </Principal>
+            <Dependent Role="Customers2">
+              <PropertyRef Name="snum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Customers2" Type="ShopDBModel.Store.Customers2" Multiplicity="1" />
+          <End Role="Orders2" Type="ShopDBModel.Store.Orders2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers2">
+              <PropertyRef Name="cnum" />
+            </Principal>
+            <Dependent Role="Orders2">
+              <PropertyRef Name="cnum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Salespeople">
+          <End Role="Salespeople" Type="ShopDBModel.Store.Salespeople" Multiplicity="1" />
+          <End Role="Orders2" Type="ShopDBModel.Store.Orders2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salespeople">
+              <PropertyRef Name="snum" />
+            </Principal>
+            <Dependent Role="Orders2">
+              <PropertyRef Name="snum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HASMGR">
+          <End Role="SALESREPS" Type="ShopDBModel.Store.SALESREPS" Multiplicity="0..1" />
+          <End Role="OFFICES" Type="ShopDBModel.Store.OFFICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALESREPS">
+              <PropertyRef Name="EMPL_NUM" />
+            </Principal>
+            <Dependent Role="OFFICES">
+              <PropertyRef Name="MGR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HASREP">
+          <End Role="SALESREPS" Type="ShopDBModel.Store.SALESREPS" Multiplicity="0..1" />
+          <End Role="CUSTOMERS" Type="ShopDBModel.Store.CUSTOMERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALESREPS">
+              <PropertyRef Name="EMPL_NUM" />
+            </Principal>
+            <Dependent Role="CUSTOMERS">
+              <PropertyRef Name="CUST_REP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ISFOR">
+          <End Role="PRODUCTS" Type="ShopDBModel.Store.PRODUCTS" Multiplicity="1" />
+          <End Role="ORDERS" Type="ShopDBModel.Store.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="MFR_ID" />
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="MFR" />
+              <PropertyRef Name="PRODUCT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PLACEDBY">
+          <End Role="CUSTOMERS" Type="ShopDBModel.Store.CUSTOMERS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ORDERS" Type="ShopDBModel.Store.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="CUST_NUM" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="CUST" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TAKENBY">
+          <End Role="SALESREPS" Type="ShopDBModel.Store.SALESREPS" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="ShopDBModel.Store.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALESREPS">
+              <PropertyRef Name="EMPL_NUM" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="REP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WORKSIN">
+          <End Role="OFFICES" Type="ShopDBModel.Store.OFFICES" Multiplicity="0..1" />
+          <End Role="SALESREPS" Type="ShopDBModel.Store.SALESREPS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICES">
+              <PropertyRef Name="OFFICE" />
+            </Principal>
+            <Dependent Role="SALESREPS">
+              <PropertyRef Name="REP_OFFICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sfCustomerCompanyById" ReturnType="varchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sfCustomerInfoById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="CUST_NUM" Type="int" Nullable="false" />
+                <Property Name="COMPANY" Type="varchar" Nullable="false" MaxLength="20" />
+                <Property Name="CUST_REP" Type="int" />
+                <Property Name="CREDIT_LIMIT" Type="money" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="spCustomerById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Company" Type="varchar" Mode="InOut" />
+          <Parameter Name="Limit" Type="decimal" Mode="InOut" />
+        </Function>
+        <Function Name="spCustomerByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Company" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spCustomerByName2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Company" Type="nvarchar" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShopDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ShopDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Assets" EntityType="ShopDBModel.Assets" />
+          <EntitySet Name="CUSTOMERS" EntityType="ShopDBModel.CUSTOMERS" />
+          <EntitySet Name="Customers2" EntityType="ShopDBModel.Customers2" />
+          <EntitySet Name="Employees" EntityType="ShopDBModel.Employees" />
+          <EntitySet Name="OFFICES" EntityType="ShopDBModel.OFFICES" />
+          <EntitySet Name="ORDERS" EntityType="ShopDBModel.ORDERS" />
+          <EntitySet Name="Orders2" EntityType="ShopDBModel.Orders2" />
+          <EntitySet Name="PRODUCTS" EntityType="ShopDBModel.PRODUCTS" />
+          <EntitySet Name="Salespeople" EntityType="ShopDBModel.Salespeople" />
+          <EntitySet Name="SALESREPS" EntityType="ShopDBModel.SALESREPS" />
+          <AssociationSet Name="HASREP" Association="ShopDBModel.HASREP">
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+          </AssociationSet>
+          <AssociationSet Name="PLACEDBY" Association="ShopDBModel.PLACEDBY">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Salespeople" Association="ShopDBModel.FK_Customers_Salespeople">
+            <End Role="Salespeople" EntitySet="Salespeople" />
+            <End Role="Customers2" EntitySet="Customers2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="ShopDBModel.FK_Orders_Customers">
+            <End Role="Customers2" EntitySet="Customers2" />
+            <End Role="Orders2" EntitySet="Orders2" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__manag__4D94879B" Association="ShopDBModel.FK__Employees__manag__4D94879B">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees1" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="HASMGR" Association="ShopDBModel.HASMGR">
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+            <End Role="OFFICES" EntitySet="OFFICES" />
+          </AssociationSet>
+          <AssociationSet Name="WORKSIN" Association="ShopDBModel.WORKSIN">
+            <End Role="OFFICES" EntitySet="OFFICES" />
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+          </AssociationSet>
+          <AssociationSet Name="ISFOR" Association="ShopDBModel.ISFOR">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="TAKENBY" Association="ShopDBModel.TAKENBY">
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Salespeople" Association="ShopDBModel.FK_Orders_Salespeople">
+            <End Role="Salespeople" EntitySet="Salespeople" />
+            <End Role="Orders2" EntitySet="Orders2" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALESREPS__MANAG__6C190EBB" Association="ShopDBModel.FK__SALESREPS__MANAG__6C190EBB">
+            <End Role="SALESREPS" EntitySet="SALESREPS" />
+            <End Role="SALESREPS1" EntitySet="SALESREPS" />
+          </AssociationSet>
+          <FunctionImport Name="sfCustomerInfoById" ReturnType="Collection(ShopDBModel.sfCustomerInfoById_Result)" IsComposable="true">
+            <Parameter Name="Id" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spCustomerById">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Company" Mode="InOut" Type="String" />
+            <Parameter Name="Limit" Mode="InOut" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spCustomerByName" ReturnType="Collection(ShopDBModel.spCustomerByName_Result)">
+            <Parameter Name="Company" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spCustomerByName2" ReturnType="Collection(ShopDBModel.spCustomerByName2_Result)">
+            <Parameter Name="Company" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sfCustomerInfoById_Result">
+          <Property Name="CUST_NUM" Type="Int32" Nullable="false" />
+          <Property Name="COMPANY" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CUST_REP" Type="Int32" />
+          <Property Name="CREDIT_LIMIT" Type="Decimal" Precision="19" Scale="4" />
+        </ComplexType>
+        <EntityType Name="Assets">
+          <Key>
+            <PropertyRef Name="RV" />
+          </Key>
+          <Property Name="GUI" Type="Guid" />
+          <Property Name="RV" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="CUST_NUM" />
+          </Key>
+          <Property Name="CUST_NUM" Type="Int32" Nullable="false" />
+          <Property Name="COMPANY" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CUST_REP" Type="Int32" />
+          <Property Name="CREDIT_LIMIT" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="SALESREPS" Relationship="ShopDBModel.HASREP" FromRole="CUSTOMERS" ToRole="SALESREPS" />
+          <NavigationProperty Name="ORDERS" Relationship="ShopDBModel.PLACEDBY" FromRole="CUSTOMERS" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="Customers2">
+          <Key>
+            <PropertyRef Name="cnum" />
+          </Key>
+          <Property Name="cnum" Type="Int32" Nullable="false" />
+          <Property Name="cname" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="city" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="snum" Type="Int32" />
+          <NavigationProperty Name="Salespeople" Relationship="ShopDBModel.FK_Customers_Salespeople" FromRole="Customers2" ToRole="Salespeople" />
+          <NavigationProperty Name="Orders2" Relationship="ShopDBModel.FK_Orders_Customers" FromRole="Customers2" ToRole="Orders2" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="empno" />
+          </Key>
+          <Property Name="empno" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="manager" Type="Int32" />
+          <NavigationProperty Name="Employees1" Relationship="ShopDBModel.FK__Employees__manag__4D94879B" FromRole="Employees" ToRole="Employees1" />
+          <NavigationProperty Name="Employees2" Relationship="ShopDBModel.FK__Employees__manag__4D94879B" FromRole="Employees1" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="OFFICES">
+          <Key>
+            <PropertyRef Name="OFFICE" />
+          </Key>
+          <Property Name="OFFICE" Type="Int32" Nullable="false" />
+          <Property Name="CITY" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="REGION" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="MGR" Type="Int32" />
+          <Property Name="TARGET" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SALES" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="SALESREPS" Relationship="ShopDBModel.HASMGR" FromRole="OFFICES" ToRole="SALESREPS" />
+          <NavigationProperty Name="SALESREPS1" Relationship="ShopDBModel.WORKSIN" FromRole="OFFICES" ToRole="SALESREPS" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="ORDER_NUM" />
+          </Key>
+          <Property Name="ORDER_NUM" Type="Int32" Nullable="false" />
+          <Property Name="ORDER_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CUST" Type="Int32" Nullable="false" />
+          <Property Name="REP" Type="Int32" />
+          <Property Name="MFR" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="PRODUCT" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="QTY" Type="Int32" Nullable="false" />
+          <Property Name="AMOUNT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="CUSTOMERS" Relationship="ShopDBModel.PLACEDBY" FromRole="ORDERS" ToRole="CUSTOMERS" />
+          <NavigationProperty Name="PRODUCTS" Relationship="ShopDBModel.ISFOR" FromRole="ORDERS" ToRole="PRODUCTS" />
+          <NavigationProperty Name="SALESREPS" Relationship="ShopDBModel.TAKENBY" FromRole="ORDERS" ToRole="SALESREPS" />
+        </EntityType>
+        <EntityType Name="Orders2">
+          <Key>
+            <PropertyRef Name="onum" />
+          </Key>
+          <Property Name="onum" Type="Int32" Nullable="false" />
+          <Property Name="amt" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="odate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cnum" Type="Int32" Nullable="false" />
+          <Property Name="snum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers2" Relationship="ShopDBModel.FK_Orders_Customers" FromRole="Orders2" ToRole="Customers2" />
+          <NavigationProperty Name="Salespeople" Relationship="ShopDBModel.FK_Orders_Salespeople" FromRole="Orders2" ToRole="Salespeople" />
+        </EntityType>
+        <EntityType Name="PRODUCTS">
+          <Key>
+            <PropertyRef Name="MFR_ID" />
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="MFR_ID" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="PRODUCT_ID" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="QTY_ON_HAND" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ORDERS" Relationship="ShopDBModel.ISFOR" FromRole="PRODUCTS" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="Salespeople">
+          <Key>
+            <PropertyRef Name="snum" />
+          </Key>
+          <Property Name="snum" Type="Int32" Nullable="false" />
+          <Property Name="sname" Type="String" MaxLength="15" Unicode="false" FixedLength="true" />
+          <Property Name="city" Type="String" MaxLength="15" Unicode="false" FixedLength="true" />
+          <Property Name="comm" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <NavigationProperty Name="Customers2" Relationship="ShopDBModel.FK_Customers_Salespeople" FromRole="Salespeople" ToRole="Customers2" />
+          <NavigationProperty Name="Orders2" Relationship="ShopDBModel.FK_Orders_Salespeople" FromRole="Salespeople" ToRole="Orders2" />
+        </EntityType>
+        <EntityType Name="SALESREPS">
+          <Key>
+            <PropertyRef Name="EMPL_NUM" />
+          </Key>
+          <Property Name="EMPL_NUM" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="AGE" Type="Int32" />
+          <Property Name="REP_OFFICE" Type="Int32" />
+          <Property Name="TITLE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="HIRE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MANAGER" Type="Int32" />
+          <Property Name="QUOTA" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SALES" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="CUSTOMERS" Relationship="ShopDBModel.HASREP" FromRole="SALESREPS" ToRole="CUSTOMERS" />
+          <NavigationProperty Name="OFFICES" Relationship="ShopDBModel.HASMGR" FromRole="SALESREPS" ToRole="OFFICES" />
+          <NavigationProperty Name="OFFICES1" Relationship="ShopDBModel.WORKSIN" FromRole="SALESREPS" ToRole="OFFICES" />
+          <NavigationProperty Name="ORDERS" Relationship="ShopDBModel.TAKENBY" FromRole="SALESREPS" ToRole="ORDERS" />
+          <NavigationProperty Name="SALESREPS1" Relationship="ShopDBModel.FK__SALESREPS__MANAG__6C190EBB" FromRole="SALESREPS" ToRole="SALESREPS1" />
+          <NavigationProperty Name="SALESREPS2" Relationship="ShopDBModel.FK__SALESREPS__MANAG__6C190EBB" FromRole="SALESREPS1" ToRole="SALESREPS" />
+        </EntityType>
+        <Association Name="HASREP">
+          <End Role="SALESREPS" Type="ShopDBModel.SALESREPS" Multiplicity="0..1" />
+          <End Role="CUSTOMERS" Type="ShopDBModel.CUSTOMERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALESREPS">
+              <PropertyRef Name="EMPL_NUM" />
+            </Principal>
+            <Dependent Role="CUSTOMERS">
+              <PropertyRef Name="CUST_REP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PLACEDBY">
+          <End Role="CUSTOMERS" Type="ShopDBModel.CUSTOMERS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ORDERS" Type="ShopDBModel.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="CUST_NUM" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="CUST" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Salespeople">
+          <End Role="Salespeople" Type="ShopDBModel.Salespeople" Multiplicity="0..1" />
+          <End Role="Customers2" Type="ShopDBModel.Customers2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salespeople">
+              <PropertyRef Name="snum" />
+            </Principal>
+            <Dependent Role="Customers2">
+              <PropertyRef Name="snum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Customers2" Type="ShopDBModel.Customers2" Multiplicity="1" />
+          <End Role="Orders2" Type="ShopDBModel.Orders2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers2">
+              <PropertyRef Name="cnum" />
+            </Principal>
+            <Dependent Role="Orders2">
+              <PropertyRef Name="cnum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__manag__4D94879B">
+          <End Role="Employees" Type="ShopDBModel.Employees" Multiplicity="0..1" />
+          <End Role="Employees1" Type="ShopDBModel.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="empno" />
+            </Principal>
+            <Dependent Role="Employees1">
+              <PropertyRef Name="manager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HASMGR">
+          <End Role="SALESREPS" Type="ShopDBModel.SALESREPS" Multiplicity="0..1" />
+          <End Role="OFFICES" Type="ShopDBModel.OFFICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALESREPS">
+              <PropertyRef Name="EMPL_NUM" />
+            </Principal>
+            <Dependent Role="OFFICES">
+              <PropertyRef Name="MGR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WORKSIN">
+          <End Role="OFFICES" Type="ShopDBModel.OFFICES" Multiplicity="0..1" />
+          <End Role="SALESREPS" Type="ShopDBModel.SALESREPS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OFFICES">
+              <PropertyRef Name="OFFICE" />
+            </Principal>
+            <Dependent Role="SALESREPS">
+              <PropertyRef Name="REP_OFFICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ISFOR">
+          <End Role="PRODUCTS" Type="ShopDBModel.PRODUCTS" Multiplicity="1" />
+          <End Role="ORDERS" Type="ShopDBModel.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="MFR_ID" />
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="MFR" />
+              <PropertyRef Name="PRODUCT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TAKENBY">
+          <End Role="SALESREPS" Type="ShopDBModel.SALESREPS" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="ShopDBModel.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALESREPS">
+              <PropertyRef Name="EMPL_NUM" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="REP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Salespeople">
+          <End Role="Salespeople" Type="ShopDBModel.Salespeople" Multiplicity="1" />
+          <End Role="Orders2" Type="ShopDBModel.Orders2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salespeople">
+              <PropertyRef Name="snum" />
+            </Principal>
+            <Dependent Role="Orders2">
+              <PropertyRef Name="snum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALESREPS__MANAG__6C190EBB">
+          <End Role="SALESREPS" Type="ShopDBModel.SALESREPS" Multiplicity="0..1" />
+          <End Role="SALESREPS1" Type="ShopDBModel.SALESREPS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALESREPS">
+              <PropertyRef Name="EMPL_NUM" />
+            </Principal>
+            <Dependent Role="SALESREPS1">
+              <PropertyRef Name="MANAGER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spCustomerByName_Result">
+          <Property Type="Int32" Name="CUST_NUM" Nullable="false" />
+          <Property Type="String" Name="COMPANY" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="CUST_REP" Nullable="true" />
+          <Property Type="Decimal" Name="CREDIT_LIMIT" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="spCustomerByName2_Result">
+          <Property Type="Int32" Name="CUST_NUM" Nullable="false" />
+          <Property Type="String" Name="COMPANY" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="CUST_REP" Nullable="true" />
+          <Property Type="Decimal" Name="CREDIT_LIMIT" Nullable="true" Precision="19" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ShopDBModelStoreContainer" CdmEntityContainer="ShopDBEntities">
+          <EntitySetMapping Name="Assets">
+            <EntityTypeMapping TypeName="ShopDBModel.Assets">
+              <MappingFragment StoreEntitySet="Assets">
+                <ScalarProperty Name="GUI" ColumnName="GUI" />
+                <ScalarProperty Name="RV" ColumnName="RV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERS">
+            <EntityTypeMapping TypeName="ShopDBModel.CUSTOMERS">
+              <MappingFragment StoreEntitySet="CUSTOMERS">
+                <ScalarProperty Name="CUST_NUM" ColumnName="CUST_NUM" />
+                <ScalarProperty Name="COMPANY" ColumnName="COMPANY" />
+                <ScalarProperty Name="CUST_REP" ColumnName="CUST_REP" />
+                <ScalarProperty Name="CREDIT_LIMIT" ColumnName="CREDIT_LIMIT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers2">
+            <EntityTypeMapping TypeName="ShopDBModel.Customers2">
+              <MappingFragment StoreEntitySet="Customers2">
+                <ScalarProperty Name="cnum" ColumnName="cnum" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="snum" ColumnName="snum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="ShopDBModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="empno" ColumnName="empno" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="manager" ColumnName="manager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OFFICES">
+            <EntityTypeMapping TypeName="ShopDBModel.OFFICES">
+              <MappingFragment StoreEntitySet="OFFICES">
+                <ScalarProperty Name="OFFICE" ColumnName="OFFICE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="MGR" ColumnName="MGR" />
+                <ScalarProperty Name="TARGET" ColumnName="TARGET" />
+                <ScalarProperty Name="SALES" ColumnName="SALES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERS">
+            <EntityTypeMapping TypeName="ShopDBModel.ORDERS">
+              <MappingFragment StoreEntitySet="ORDERS">
+                <ScalarProperty Name="ORDER_NUM" ColumnName="ORDER_NUM" />
+                <ScalarProperty Name="ORDER_DATE" ColumnName="ORDER_DATE" />
+                <ScalarProperty Name="CUST" ColumnName="CUST" />
+                <ScalarProperty Name="REP" ColumnName="REP" />
+                <ScalarProperty Name="MFR" ColumnName="MFR" />
+                <ScalarProperty Name="PRODUCT" ColumnName="PRODUCT" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders2">
+            <EntityTypeMapping TypeName="ShopDBModel.Orders2">
+              <MappingFragment StoreEntitySet="Orders2">
+                <ScalarProperty Name="onum" ColumnName="onum" />
+                <ScalarProperty Name="amt" ColumnName="amt" />
+                <ScalarProperty Name="odate" ColumnName="odate" />
+                <ScalarProperty Name="cnum" ColumnName="cnum" />
+                <ScalarProperty Name="snum" ColumnName="snum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTS">
+            <EntityTypeMapping TypeName="ShopDBModel.PRODUCTS">
+              <MappingFragment StoreEntitySet="PRODUCTS">
+                <ScalarProperty Name="MFR_ID" ColumnName="MFR_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QTY_ON_HAND" ColumnName="QTY_ON_HAND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salespeople">
+            <EntityTypeMapping TypeName="ShopDBModel.Salespeople">
+              <MappingFragment StoreEntitySet="Salespeople">
+                <ScalarProperty Name="snum" ColumnName="snum" />
+                <ScalarProperty Name="sname" ColumnName="sname" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="comm" ColumnName="comm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALESREPS">
+            <EntityTypeMapping TypeName="ShopDBModel.SALESREPS">
+              <MappingFragment StoreEntitySet="SALESREPS">
+                <ScalarProperty Name="EMPL_NUM" ColumnName="EMPL_NUM" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="REP_OFFICE" ColumnName="REP_OFFICE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="HIRE_DATE" ColumnName="HIRE_DATE" />
+                <ScalarProperty Name="MANAGER" ColumnName="MANAGER" />
+                <ScalarProperty Name="QUOTA" ColumnName="QUOTA" />
+                <ScalarProperty Name="SALES" ColumnName="SALES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="ShopDBModel.Store.sfCustomerInfoById" FunctionImportName="sfCustomerInfoById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShopDBModel.sfCustomerInfoById_Result">
+                <ScalarProperty Name="CUST_NUM" ColumnName="CUST_NUM" />
+                <ScalarProperty Name="COMPANY" ColumnName="COMPANY" />
+                <ScalarProperty Name="CUST_REP" ColumnName="CUST_REP" />
+                <ScalarProperty Name="CREDIT_LIMIT" ColumnName="CREDIT_LIMIT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCustomerById" FunctionName="ShopDBModel.Store.spCustomerById" />
+          <FunctionImportMapping FunctionImportName="spCustomerByName" FunctionName="ShopDBModel.Store.spCustomerByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShopDBModel.spCustomerByName_Result">
+                <ScalarProperty Name="CUST_NUM" ColumnName="CUST_NUM" />
+                <ScalarProperty Name="COMPANY" ColumnName="COMPANY" />
+                <ScalarProperty Name="CUST_REP" ColumnName="CUST_REP" />
+                <ScalarProperty Name="CREDIT_LIMIT" ColumnName="CREDIT_LIMIT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCustomerByName2" FunctionName="ShopDBModel.Store.spCustomerByName2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShopDBModel.spCustomerByName2_Result">
+                <ScalarProperty Name="CUST_NUM" ColumnName="CUST_NUM" />
+                <ScalarProperty Name="COMPANY" ColumnName="COMPANY" />
+                <ScalarProperty Name="CUST_REP" ColumnName="CUST_REP" />
+                <ScalarProperty Name="CREDIT_LIMIT" ColumnName="CREDIT_LIMIT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

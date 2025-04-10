@@ -220,5 +220,64 @@ namespace CSTest._13_Exceptions
             MyExceptionA
             */
         }
+
+        [Test]
+        public void TestExceptions12()
+        {
+
+            bool a = false;
+
+            try
+            {
+                try
+                {
+                    throw new Exception("MyExceptionA");
+                }
+                catch (Exception e)
+                {
+                    a = true;
+                    //Debug.WriteLine(e);
+                    throw;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            Debug.WriteLine(a);
+            /*
+            CSTest._13_Exceptions._0_Setup.MyExceptionA: MyExceptionA
+               at CSTest._13_Exceptions._01_Test.TestExceptions12() in D:\Projects\My\cs\CSTest\CSTest\13_Exceptions\01_Test.cs:line 232
+
+            CSTest._13_Exceptions._0_Setup.MyExceptionA: MyExceptionA
+               at CSTest._13_Exceptions._01_Test.TestExceptions12() in D:\Projects\My\cs\CSTest\CSTest\13_Exceptions\01_Test.cs:line 240
+            */
+        }
+
+        [Test]
+        public void TestExceptions13()
+        {
+            try
+            {
+                try
+                {
+                    throw new Exception("MyExceptionA");
+                }
+                catch (Exception e)
+                {
+                    //Debug.WriteLine(e);
+                    throw e;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            /*
+            CSTest._13_Exceptions._0_Setup.MyExceptionA: MyExceptionA
+               at CSTest._13_Exceptions._01_Test.TestExceptions13() in D:\Projects\My\cs\CSTest\CSTest\13_Exceptions\01_Test.cs:line 266
+            */
+        }
     }
 }

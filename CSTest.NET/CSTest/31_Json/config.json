@@ -1,0 +1,703 @@
+{
+  "MiniGame": {
+    "name": "WizardOz",
+    "Rounds": {
+      "Round": [
+        {
+          "name": "IntroPopup",
+          "scene": "bonus/intro/scene.object",
+          "test" :  56,
+          "type": "Popup",
+          "Components": {
+            "Component": {
+              "type": "ButtonSet",
+              "behaviour": "Static",
+              "sendValue": "None",
+              "Template": {
+                "value": "start_btn",
+                "count": "1"
+              }
+            }
+          },
+          "Execute": {
+            "linkedState": {
+              "Name": "FinishAnimation",
+              "paralleldata": {
+                
+              }
+            }
+          }
+        },
+        {
+          "name": "MainScene",
+          "scene": "bonus/round/scene.object",
+          "type": "Scene",
+          "Components": {
+            "Component": {
+              "type": "ButtonSet",
+              "behaviour": "Static",
+              "sendValue": "Index",
+              "Template": {
+                "value": "item_{0}",
+                "count": "18"
+              }
+            }
+          },
+          "Parameters": {
+            "Parameter": [
+              {
+                "name": "SoundObject",
+                "value": "button_sound"
+              },
+              {
+                "name": "PicksObject",
+                "value": "picks_text"
+              },
+              {
+                "name": "PicksStateMachine",
+                "value": "picksLeft"
+              },
+              {
+                "name": "WinTextObject",
+                "value": "totalwin_text"
+              },
+              {
+                "name": "WinTextStateMachine",
+                "value": "totalWin"
+              },
+              {
+                "name": "FlyParticle",
+                "value": "particles"
+              },
+              {
+                "name": "FlyAnimal",
+                "value": "animals_fly"
+              },
+              {
+                "name": "FlyPicks",
+                "value": "plus_three_picks"
+              },
+              {
+                "name": "BtnWinAnimalState",
+                "value": "animal"
+              },
+              {
+                "name": "BtnShowTextState",
+                "value": "show"
+              },
+              {
+                "name": "FirstButtonsGroup",
+                "value": "0,1,2,3"
+              },
+              {
+                "name": "SecondButtonsGroup",
+                "value": "4,5,6,7,8"
+              },
+              {
+                "name": "ThirdButtonsGroup",
+                "value": "9,10,11,12"
+              },
+              {
+                "name": "FourthButtonsGroup",
+                "value": "13,14,15,16,17"
+              },
+              {
+                "name": "AllAnimals",
+                "value": "heart, crown, basket, shoes"
+              }
+            ]
+          },
+          "Execute": {
+            "linkedState": [
+              {
+                "Name": "InitRound",
+                "paralleldata": {
+                  "data": [
+                    {
+                      "type": "ComponentAction",
+                      "elementId": "{PicksObject}",
+                      "properties": {
+                        "property": {
+                          "name": "Text",
+                          "value": "4"
+                        }
+                      }
+                    },
+                    {
+                      "type": "ComponentAction",
+                      "elementId": "{WinTextObject}",
+                      "properties": {
+                        "property": {
+                          "name": "Text",
+                          "value": "{TotalWin}",
+                          "dataFormat": "#,##0"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "Name": "StartAnimation",
+                "paralleldata": [
+                  {
+                    "data": {
+                      "type": "EmptyAction",
+                      "duration": "1000"
+                    }
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{allId}",
+                        "eventId": "init"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "bg_sounds",
+                        "eventId": "sound"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "general_text",
+                        "eventId": "choose"
+                      }
+                    ]
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "EmptyAction",
+                        "duration": "100"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{allId}",
+                        "eventId": "up"
+                      }
+                    ]
+                  },
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "{allId}",
+                      "properties": {
+                        "property": {
+                          "name": "Touchable",
+                          "value": "False"
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "Name": "Start",
+                "paralleldata": {
+                  "data": {
+                    "type": "ComponentAction",
+                    "elementId": "bg_sounds",
+                    "eventId": "sound"
+                  }
+                }
+              },
+              {
+                "Name": "Any",
+                "paralleldata": [
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "general_text",
+                      "eventId": "hide"
+                    }
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "EmptyAction",
+                        "duration": "100"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "general_text",
+                        "eventId": "choose_cycle"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{SoundObject}",
+                        "eventId": "default"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{PicksObject}",
+                        "properties": {
+                          "property": {
+                            "name": "Text",
+                            "value": "{Picks}"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{WinTextStateMachine}",
+                        "eventId": "default"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Name": "Lose",
+                "paralleldata": [
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "{currentSelectedId}.text_win",
+                      "properties": {
+                        "property": {
+                          "name": "Text",
+                          "value": "{SelectedValue}",
+                          "dataFormat": "#,##0"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{currentSelectedId}",
+                        "eventId": "{BtnShowTextState}"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{SoundObject}",
+                        "eventId": "show_sound"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{PicksObject}",
+                        "properties": {
+                          "property": {
+                            "name": "Text",
+                            "value": "{Picks}",
+                            "dataFormat": "#,##0"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "data": {
+                      "type": "MoveElementAction",
+                      "elementId": "{FlyParticle}",
+                      "endValue": "{currentSelectedId}"
+                    }
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "MoveElementAction",
+                        "elementId": "{FlyParticle}",
+                        "endValue": "{WinTextStateMachine}",
+                        "duration": "500"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{FlyParticle}",
+                        "eventId": "show"
+                      }
+                    ]
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "IncrementAction",
+                        "elementId": "{WinTextObject}",
+                        "endValue": "{TotalWin}",
+                        "duration": "500"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{WinTextStateMachine}",
+                        "eventId": "show"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{FlyParticle}",
+                        "eventId": "hide"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Name": "Win",
+                "paralleldata": [
+                  {
+                    "data": [
+                      {
+                        "type": "EmptyAction",
+                        "duration": "10"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{currentSelectedId}.animals",
+                        "eventId": "{CurrentAnimal}"
+                      }
+                    ]
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{currentSelectedId}",
+                        "eventId": "{BtnWinAnimalState}"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{SoundObject}",
+                        "eventId": "animal_sound"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "text_sound",
+                        "eventId": "find_all",
+                        "fromState": "default"
+                      }
+                    ]
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "MoveElementAction",
+                        "elementId": "{FlyAnimal}",
+                        "startValue": "{currentSelectedId}",
+                        "endValue": "{CurrentAnimal}",
+                        "duration": "500"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{FlyAnimal}",
+                        "eventId": "{CurrentAnimal}"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{AllAnimals}",
+                        "eventId": "show_1",
+                        "fromState": "show"
+                      }
+                    ]
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "EmptyAction",
+                        "duration": "500"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{CurrentAnimal}",
+                        "eventId": "show"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Name": "BigWin",
+                "paralleldata": [
+                  {
+                    "data": {
+                      "type": "MoveElementAction",
+                      "elementId": "{FlyPicks}",
+                      "endValue": "{CurrentAnimal}"
+                    }
+                  },
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "{FlyPicks}",
+                      "eventId": "show"
+                    }
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "EmptyAction",
+                        "duration": "10"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{FlyPicks}",
+                        "eventId": "hide"
+                      }
+                    ]
+                  },
+                  {
+                    "data": {
+                      "type": "MoveElementAction",
+                      "elementId": "{FlyPicks}",
+                      "endValue": "{PicksStateMachine}",
+                      "duration": "900"
+                    }
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{PicksStateMachine}",
+                        "eventId": "win",
+                        "loop": "True"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{PicksObject}",
+                        "properties": {
+                          "property": {
+                            "name": "Text",
+                            "value": "{Picks}",
+                            "dataFormat": "#,##0"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Name": "Finish",
+                "paralleldata": [
+                  {
+                    "data": [
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{allId}.text_win",
+                        "properties": {
+                          "property": {
+                            "name": "Text",
+                            "value": "{AllValues}",
+                            "dataFormat": "#,##0"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "general_text",
+                        "eventId": "hide"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "item_{WinButtons}.animals",
+                        "eventId": "{AnimalStates}"
+                      }
+                    ]
+                  },
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "{allId}",
+                      "eventId": "{States}",
+                      "fromState": "up"
+                    }
+                  },
+                  {
+                    "data": {
+                      "type": "EmptyAction",
+                      "duration": "1000"
+                    }
+                  }
+                ]
+              },
+              {
+                "Name": "Custom",
+                "paralleldata": [
+                  {
+                    "data": [
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{allId}.text_win",
+                        "properties": {
+                          "property": {
+                            "name": "Text",
+                            "value": "{AllValues}",
+                            "dataFormat": "#,##0"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "general_text",
+                        "eventId": "hide"
+                      }
+                    ]
+                  },
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "item_{FirstButtonsGroup}",
+                      "eventId": "{BtnShowTextState}",
+                      "fromState": "up"
+                    }
+                  },
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "item_{FirstButtonsGroup}",
+                      "eventId": "{BtnShowTextState}",
+                      "fromState": "up"
+                    }
+                  },
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "item_{SecondButtonsGroup}",
+                      "eventId": "{BtnShowTextState}",
+                      "fromState": "up"
+                    }
+                  },
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "item_{ThirdButtonsGroup}",
+                      "eventId": "{BtnShowTextState}",
+                      "fromState": "up"
+                    }
+                  },
+                  {
+                    "data": {
+                      "type": "ComponentAction",
+                      "elementId": "item_{FourthButtonsGroup}",
+                      "eventId": "{BtnShowTextState}",
+                      "fromState": "up"
+                    }
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "blizzard",
+                        "eventId": "show"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "general_text",
+                        "eventId": "win"
+                      }
+                    ]
+                  },
+                  {
+                    "data": [
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{WinTextStateMachine}",
+                        "eventId": "show"
+                      },
+                      {
+                        "type": "ComponentAction",
+                        "elementId": "{WinTextObject}",
+                        "properties": {
+                          "property": {
+                            "name": "Text",
+                            "value": "{TotalWin}",
+                            "dataFormat": "#,##0"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "data": {
+                      "type": "EmptyAction",
+                      "duration": "1000"
+                    }
+                  }
+                ]
+              },
+              {
+                "Name": "None",
+                "paralleldata": {
+                  "data": {
+                    "type": "EmptyAction",
+                    "duration": "1000"
+                  }
+                }
+              },
+              {
+                "Name": "FinishAnimation",
+                "paralleldata": {
+                  "data": {
+                    "type": "ComponentAction",
+                    "elementId": "bg_sounds",
+                    "eventId": "default"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "FinishPopup",
+          "scene": "bonus/win/scene.object",
+          "type": "Popup",
+          "Components": {
+            "Component": [
+              {
+                "type": "ButtonSet",
+                "behaviour": "Static",
+                "Template": {
+                  "value": "back_button",
+                  "count": "1"
+                }
+              },
+              {
+                "type": "Share",
+                "behaviour": "Static",
+                "Template": {
+                  "value": "share_checkbox",
+                  "count": "1"
+                }
+              }
+            ]
+          },
+          "Execute": {
+            "linkedState": {
+              "Name": "InitRound",
+              "paralleldata": {
+                "data": [
+                  {
+                    "type": "ComponentAction",
+                    "elementId": "totalwin",
+                    "properties": {
+                      "property": {
+                        "name": "Text",
+                        "value": "{TotalWinResult}",
+                        "dataFormat": "#,##0"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ComponentAction",
+                    "elementId": "formula",
+                    "properties": {
+                      "property": {
+                        "name": "Text",
+                        "value": "{FinishFormula}"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ComponentAction",
+                    "elementId": "page",
+                    "eventId": "{WinType}"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

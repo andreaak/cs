@@ -28,10 +28,11 @@ namespace Note.ControlWrapper
         bool IsNoteSelect();
         int GetParentId(bool isChildNode);
 
-        //void DataSource(BindingDataset.DescriptionDataTable table);
         void SetDataSource();
 
-        void Insert(int id, int parentId, string description, DataTypes type);
+        void Add(int id, int parentId, string description, DataTypes type);
+
+        void Insert(int id, int prevId, int parentId, string description, DataTypes type);
 
         void Delete(int id);
 

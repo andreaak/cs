@@ -184,11 +184,26 @@ namespace Note
             }
         }
 
-        public int Insert(int parentId, string description, DataTypes type)
+        public int Add(int parentId, string description, DataTypes type)
         {
             try
             {
-                var res = DataManager.Insert(parentId, description, type);
+                var res = DataManager.Add(parentId, description, type);
+                view.OnChanged();
+                return res;
+            }
+            catch (Exception ex)
+            {
+                DisplayMessage.ShowError(ex.Message);
+                return DBConstants.BASE_LEVEL;
+            }
+        }
+
+        public int Insert(int parentId, int prevId, string description, DataTypes type)
+        {
+            try
+            {
+                var res = DataManager.Insert(parentId, prevId, description, type);
                 view.OnChanged();
                 return res;
             }

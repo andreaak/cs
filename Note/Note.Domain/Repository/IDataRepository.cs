@@ -11,7 +11,8 @@ namespace Note.Domain.Repository
         IList<TextData> Texts{get;}
         IList<LogData> Logs { get;}
         void Init();
-        int Insert(int parentId, string description, DataTypes type);
+        int Add(int parentId, string description, DataTypes type);
+        int Insert(int parentId, int prevId, string description, DataTypes type);
         string GetTextData(int id);
         bool UpdateDescription(int id, string description);
         bool UpdateTextData(int id, string editValue, string textData, string htmlText);

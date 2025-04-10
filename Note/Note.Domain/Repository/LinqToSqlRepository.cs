@@ -69,7 +69,7 @@ namespace Note.Domain.Repository
         {
         }
 
-        public int Insert(int parentId, string description, DataTypes type)
+        public int Add(int parentId, string description, DataTypes type)
         {
             var positions = dataContext.Entity
                 .Where(itm => itm.ParentID == parentId)
@@ -103,7 +103,47 @@ namespace Note.Domain.Repository
                 dataContext.SubmitChanges();
             }
             return item.ID;
-            ;
+        }
+
+        public int Insert(int parentId, int prevId, string description, DataTypes type)
+        {
+
+            var items = dataContext.Entity
+                .Where(itm => itm.ParentID == parentId).ToArray();
+
+            var prevPosition = items.First(i => i.ID == prevId).OrderPosition;
+
+            var changedItems = items.Where(i => i.OrderPosition > prevPosition).ToArray();
+            foreach (var changedItem in changedItems)
+            {
+                changedItem.OrderPosition += 1;
+            }
+
+            dataContext.SubmitChanges();
+
+            int position = prevPosition + 1;
+            Entity item = new Entity
+            {
+                ParentID = parentId,
+                Description = description,
+                OrderPosition = position,
+                Type = (byte)type,
+                ModDate = DateConverter.GetCurrentDate()
+            };
+            dataContext.Entity.InsertOnSubmit(item);
+            dataContext.SubmitChanges();
+
+            if (type == DataTypes.NOTE)
+            {
+                EntityData itemData = new EntityData
+                {
+                    ID = item.ID,
+                    ModDate = DateConverter.GetCurrentDate()
+                };
+                dataContext.EntityData.InsertOnSubmit(itemData);
+                dataContext.SubmitChanges();
+            }
+            return item.ID;
         }
 
         public string GetTextData(int id)

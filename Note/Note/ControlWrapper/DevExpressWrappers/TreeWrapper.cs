@@ -140,7 +140,7 @@ namespace Note.ControlWrapper.DevExpressWrappers
             return parentId;
         }
 
-        public void Insert(int id, int parentId, string description, DataTypes type)
+        public void Add(int id, int parentId, string description, DataTypes type)
         {
             BindingDataset.DescriptionDataTable table = control.DataSource as BindingDataset.DescriptionDataTable;
             if (table == null)
@@ -166,6 +166,37 @@ namespace Note.ControlWrapper.DevExpressWrappers
                     (byte)type,
                     position
                     );
+            table.AcceptChanges();
+            FocusSelectedNode();
+        }
+
+        public void Insert(int id, int prevId, int parentId, string description, DataTypes type)
+        {
+            BindingDataset.DescriptionDataTable table = control.DataSource as BindingDataset.DescriptionDataTable;
+            if (table == null)
+            {
+                return;
+            }
+
+            var items = table.Where(itm => Utils.IsActiveRow(itm) && itm.ParentID == parentId).ToArray();
+
+            var prevItem = items.First(i => i.ID == prevId);
+
+            var changedItems = items.Where(i => i.OrderPosition > prevItem.OrderPosition).ToArray();
+            foreach (var changedItem in changedItems)
+            {
+                changedItem.OrderPosition += 1;
+            }
+
+            int position = prevItem.OrderPosition + 1;
+
+            table.AddDescriptionRow(
+                id,
+                parentId,
+                description,
+                (byte)type,
+                position
+            );
             table.AcceptChanges();
             FocusSelectedNode();
         }

@@ -56,14 +56,14 @@ namespace Note
 
         private void barButtonItemAddDir_ItemClick(object sender, EventArgs e)
         {
-            Insert(DataTypes.DIR);
+            Add(DataTypes.DIR);
         }
 
         private void barButtonItemAddNote_ItemClick(object sender, EventArgs e)
         {
             if (treeWrapper.IsNodeSelect())
             {
-                Insert(DataTypes.NOTE);
+                Add(DataTypes.NOTE);
             }
         }
 
@@ -178,10 +178,10 @@ namespace Note
                     string rtf = File.ReadAllText(file);
                     int parentId = treeWrapper.GetParentId(true);
                     string description = Path.GetFileNameWithoutExtension(file);
-                    int id = presenter.Insert(parentId, description, DataTypes.NOTE);
+                    int id = presenter.Add(parentId, description, DataTypes.NOTE);
                     if (id != DBConstants.BASE_LEVEL)
                     {
-                        treeWrapper.Insert(id, parentId, description, DataTypes.NOTE);
+                        treeWrapper.Add(id, parentId, description, DataTypes.NOTE);
                         rtfWrapper.EditValue = rtf;
                         presenter.UpdateTextData(id, rtfWrapper.EditValue, rtfWrapper.PlainText, rtfWrapper.HtmlText);
                     }
@@ -309,10 +309,11 @@ namespace Note
             };
         }
 
-        private void Insert(DataTypes type)
+        private void Add(DataTypes type)
         {
             if (treeWrapper.IsNoteSelect())
             {
+                Insert(type);
                 return;
             }
             AddDescription form = new AddDescription();
@@ -322,10 +323,28 @@ namespace Note
             }
 
             int parentId = treeWrapper.GetParentId(form.IsChildNode);
-            int id = presenter.Insert(parentId, form.Description, type);
+            int id = presenter.Add(parentId, form.Description, type);
             if (id != DBConstants.BASE_LEVEL)
             {
-                treeWrapper.Insert(id, parentId, form.Description, type);
+                treeWrapper.Add(id, parentId, form.Description, type);
+            }
+        }
+
+        private void Insert(DataTypes type)
+        {
+            AddDescription form = new AddDescription();
+            if (form.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            int parentId = treeWrapper.GetParentId(false);
+            int prevId = treeWrapper.SelectedNodeId;
+
+            int id = presenter.Insert(parentId, prevId, form.Description, type);
+            if (id != DBConstants.BASE_LEVEL)
+            {
+                treeWrapper.Insert(id, prevId, parentId, form.Description, type);
             }
         }
 
