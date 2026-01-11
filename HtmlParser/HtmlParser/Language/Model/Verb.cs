@@ -6,7 +6,7 @@ namespace HtmlParser.Language.Model
 {
     public class Verb : WordClass
     {
-        public string Info { get; set; }
+        
         public string VerbClass { get; set; }
 
         public override void Write(StreamWriter sw)
@@ -16,9 +16,22 @@ namespace HtmlParser.Language.Model
             sw.WriteLine(WrdClass);
             sw.WriteLine(Ru);
             sw.WriteLine(De);
-            sw.WriteLine(!string.IsNullOrEmpty(info) ? $"{{{info}}}" : "");
+            sw.WriteLine(GetInfo());
             sw.WriteLine(DeTranscription);
+            sw.WriteLine(Level);
+            sw.WriteLine(Example);
+            sw.WriteLine(Description);
             sw.WriteLine("");
+            sw.WriteLine("");
+        }
+
+        public string GetInfo()
+        {
+            if (string.IsNullOrEmpty(VerbClass))
+            {
+                return "";
+            }
+            return VerbClass.Contains("{") ? VerbClass.Trim().TrimStart('{').TrimEnd('}') : VerbClass;
         }
     }
 

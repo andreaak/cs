@@ -67,13 +67,25 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="OpenAI, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b4187f3e65366280, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenAI.2.1.0\lib\netstandard2.0\OpenAI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ClientModel, Version=1.2.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ClientModel.1.2.1\lib\netstandard2.0\System.ClientModel.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.1\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.6.0.0\lib\net461\System.Memory.Data.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -101,13 +113,42 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseParser.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="FileParser.cs" />
     <Compile Include="HtmlParser.cs" />
+    <Compile Include="Language\Containers\DicLeoContainerFactory.cs" />
+    <Compile Include="Language\Containers\DictionaryCambridgeOrgTranslationContainerFactory.cs" />
+    <Compile Include="Language\Containers\DWDSTranslationContainerFactory.cs" />
+    <Compile Include="Language\Containers\PonsDeTranslationContainerFactory.cs" />
     <Compile Include="Language\DeVerbDicLeoPrapParser.cs" />
+    <Compile Include="Language\EnPonsTranslationItem.cs" />
+    <Compile Include="Language\Model\DicLeoContainerItem.cs" />
+    <Compile Include="Language\Model\DWDSItem.cs" />
+    <Compile Include="Language\Extensions\FileExtensions.cs" />
+    <Compile Include="Language\Extensions\SiteExtensions.cs" />
+    <Compile Include="Language\Extensions\GPT.cs" />
+    <Compile Include="Language\GetDeLevel.cs" />
+    <Compile Include="Language\GetEnLevel.cs" />
     <Compile Include="Language\ITranslationItem.cs" />
-    <Compile Include="Language\PonsTranslationContainerFactory.cs" />
-    <Compile Include="Language\TranslateDeRuVerbPrafixParser.cs" />
+    <Compile Include="Language\Model\Conjugation.cs" />
+    <Compile Include="Language\Model\IrregularEnVerb.cs" />
+    <Compile Include="Language\Containers\PonsEnTranslationContainerFactory.cs" />
+    <Compile Include="Language\Containers\BasePonsTranslationContainerFactory.cs" />
+    <Compile Include="Language\GetDeRuExample.cs" />
+    <Compile Include="Language\TranslateDicLeoParser.cs" />
+    <Compile Include="Language\TranslateDWDSVocabularyParser.cs" />
+    <Compile Include="Language\TranslateEnRuPhrasalVerbParser.cs" />
+    <Compile Include="Language\TranslateEnRuVocabularySimpleParser.cs" />
+    <Compile Include="Language\TranslateEnRuVocabularyParser.cs" />
     <Compile Include="Language\TranslateDeRuVocabularyCornelseParser.cs" />
+    <Compile Include="Language\TranslateEnRuParser.cs" />
+    <Compile Include="Language\TranslateDeRuVerbFilesSetLevel.cs" />
+    <Compile Include="Language\TranslateDeRuVerbFilesParser.cs" />
+    <Compile Include="Language\TranslateDeRuVerbFilesReparser.cs" />
+    <Compile Include="Language\TranslateEnRuIrregVerbFormsParser.cs" />
+    <Compile Include="Language\TranslateDeRuVerbPrafixParser.cs" />
+    <Compile Include="Language\TranslateDeVerbPraposParser.cs" />
+    <Compile Include="Language\Containers\VerbformenRuSprjazhenieTranslationContainerFactory.cs" />
     <Compile Include="Language\VerbFormParsers\FuturIIVerbFormParser.cs" />
     <Compile Include="Language\VerbFormParsers\IVerbFormParser.cs" />
     <Compile Include="Language\VerbFormParsers\EmptyVerbFormParser.cs" />
@@ -126,7 +167,7 @@
     <Compile Include="Language\VerbFormParsers\PrateritumVerbFormParser.cs" />
     <Compile Include="Language\VerbFormParsers\PrasensVerbFormParser.cs" />
     <Compile Include="Language\VerbFormParsers\BaseVerbFormParser.cs" />
-    <Compile Include="Language\StringExtensions.cs" />
+    <Compile Include="Language\Extensions\StringExtensions.cs" />
     <Compile Include="Language\Model\DeVerbForm.cs" />
     <Compile Include="Language\Model\IrregularDeVerb.cs" />
     <Compile Include="Language\LanguageParser.cs" />
@@ -138,9 +179,12 @@
     <Compile Include="Language\Model\Verb.cs" />
     <Compile Include="Language\Model\WordClass.cs" />
     <Compile Include="Language\Model\TranslationAttributes.cs" />
-    <Compile Include="Language\TranslationContainer.cs" />
+    <Compile Include="Language\Containers\TranslationContainer.cs" />
     <Compile Include="Language\PonsTranslationItem.cs" />
+    <Compile Include="Language\Model\VerbPrapItem.cs" />
     <Compile Include="LinkParser.cs" />
+    <Compile Include="Parameters.cs" />
+    <Compile Include="ParametersProvider.cs" />
     <Compile Include="RemoveDuplicateParser.cs" />
     <Compile Include="Language\TranslateDeRuParser.cs" />
     <Compile Include="Language\TranslateRuDeParser.cs" />

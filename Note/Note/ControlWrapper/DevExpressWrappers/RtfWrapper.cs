@@ -66,79 +66,92 @@ namespace Note.ControlWrapper.DevExpressWrappers
 
         public void SetDefinitionFormat()
         {
-            Document doc = control.Document;
-            DocumentRange range = control.Document.Selection;
-            CharacterProperties cp = doc.BeginUpdateCharacters(range);
-            cp.FontName = "Times New Roman";
-            cp.FontSize = 12;
-            cp.Bold = false;
-            cp.Italic = true;
-            doc.EndUpdateCharacters(cp);
-        }
-
-        public void SetMethodFormat()
-        {
-            Document doc = control.Document;
-            DocumentRange range = control.Document.Selection;
-            SetMethodFormat(doc, range);
+            SetFormat(cp =>
+            {
+                cp.FontName = "Times New Roman";
+                cp.FontSize = 12;
+                cp.Bold = false;
+                cp.Italic = true;
+            });
         }
 
         public void SetMethodFormat(Document doc, DocumentRange range)
         {
             CharacterProperties cp = doc.BeginUpdateCharacters(range);
+            SetMethodFormat(cp);
+            doc.EndUpdateCharacters(cp);
+        }
+
+        public void SetMethodFormat()
+        {
+            SetFormat(SetMethodFormat);
+        }
+
+        private void SetMethodFormat(CharacterProperties cp)
+        {
             cp.FontName = "Times New Roman";
             cp.FontSize = 12;
             cp.Bold = true;
             cp.Italic = true;
-            doc.EndUpdateCharacters(cp);
         }
 
         public void SetClassFormat()
         {
-            Document doc = control.Document;
-            DocumentRange range = control.Document.Selection;
-            CharacterProperties cp = doc.BeginUpdateCharacters(range);
-            cp.FontName = "Times New Roman";
-            cp.FontSize = 12;
-            cp.Bold = true;
-            cp.Italic = false;
-            doc.EndUpdateCharacters(cp);
+            SetFormat(cp =>
+            {
+                cp.FontName = "Times New Roman";
+                cp.FontSize = 12;
+                cp.Bold = true;
+                cp.Italic = false;
+            });
         }
 
         public void SetHeaderFormat()
         {
-            Document doc = control.Document;
-            DocumentRange range = control.Document.Selection;
-            CharacterProperties cp = doc.BeginUpdateCharacters(range);
-            cp.FontName = "Calibri";
-            cp.FontSize = 11;
-            cp.Bold = false;
-            cp.Italic = false;
-            doc.EndUpdateCharacters(cp);
+            SetFormat(cp =>
+            {
+                cp.FontName = "Calibri";
+                cp.FontSize = 11;
+                cp.Bold = false;
+                cp.Italic = false;
+            });
         }
 
         public void SetInfoFormat()
         {
-            Document doc = control.Document;
-            DocumentRange range = control.Document.Selection;
-            CharacterProperties cp = doc.BeginUpdateCharacters(range);
-            cp.FontName = "Times New Roman";
-            cp.FontSize = 12;
-            cp.Bold = false;
-            cp.Italic = false;
-            doc.EndUpdateCharacters(cp);
+            SetFormat(cp =>
+            {
+                cp.FontName = "Times New Roman";
+                cp.FontSize = 12;
+                cp.Bold = false;
+                cp.Italic = false;
+
+            });
         }
 
         public void SetCodeFormat()
         {
+            SetFormat(cp =>
+            {
+                cp.FontName = "Consolas";
+                cp.FontSize = 9.5f;
+                cp.Bold = false;
+                cp.Italic = false;
+            });
+        }
+
+        public void SetFormat(Action<CharacterProperties> action)
+        {
             Document doc = control.Document;
-            DocumentRange range = control.Document.Selection;
-            CharacterProperties cp = doc.BeginUpdateCharacters(range);
-            cp.FontName = "Consolas";
-            cp.FontSize = 9.5f;
-            cp.Bold = false;
-            cp.Italic = false;
-            doc.EndUpdateCharacters(cp);
+
+            var ranges = control.Document.Selections;
+
+            foreach (var range in ranges)
+            {
+                CharacterProperties cp = doc.BeginUpdateCharacters(range);
+                action(cp);
+                doc.EndUpdateCharacters(cp);
+            }
         }
 
         public void RemoveWhiteSpace()
@@ -177,7 +190,11 @@ namespace Note.ControlWrapper.DevExpressWrappers
             myRegEx = new Regex(pattern);
             control.Document.ReplaceAll(myRegEx, "", selection);
 
+
             RemoveDoubleWhiteSpace_();
+
+            control.Document.ReplaceAll(", например:", ":", SearchOptions.None, selection);
+            control.Document.ReplaceAll(", например,", ":", SearchOptions.None, selection);
 
             FormatParagraphs();
             FormatParagraph();

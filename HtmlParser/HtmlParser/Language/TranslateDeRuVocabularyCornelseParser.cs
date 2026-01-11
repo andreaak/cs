@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web.UI;
+using HtmlParser.Language.Containers;
+using HtmlParser.Language.Extensions;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
-    
     public class TranslateDeRuVocabularyCornelseParser : LanguageParser, ILanguageParser
     {
+        
+        
         public TranslateDeRuVocabularyCornelseParser(bool order)
             : base(order, WordType.All)
         { }
@@ -48,48 +52,76 @@ namespace HtmlParser.Language
                 item.De = item.De.Replace("|", "");
             }
 
-            var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
 
-            var document = GetHtml(hostUrl + item.De);
+            var factory = new PonsDeTranslationContainerFactory(item.De, item.Type);
+            var words = factory.GetWords();
 
-            var trNode = new PonsTranslationContainerFactory().GetTranslationContainer(document, item.De, item.Type);
-            if (trNode == null || trNode.Count == 0)
+            string sound = null;
+            if (!words.Any(w => w.Found))
             {
-                Console.WriteLine($"Not found {item.De}");
-                sw.WriteLine(item.De);
-                return new List<WordClass>()
+                var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(item.De, words[0].WrdClass);
+
+                if (item.Type == WordType.Subst)
                 {
-                    new WordClass
+                    var value = new Substantiv
                     {
                         De = item.De,
+                        Artikle = factory3.GetArtikel(),
+                        WrdClass = "subst"
+                    };
+                    if (string.IsNullOrEmpty(value.Artikle))
+                    {
+                        value.Artikle = item.Artikel;
                     }
-                };
+
+                    words[0] = value;
+                }
+                else if (item.Type == WordType.Verb)
+                {
+                    words[0].De = string.IsNullOrEmpty(item.Sich) ? words[0].De : item.Sich + " " + words[0].De;
+                }
+                words[0].Ru = factory3.GetTranslation();
+                words[0].Level = factory3.GetLevel();
+                sound = factory3.GetSound();
             }
-
-            var words = GetWords(trNode, item.De);
-
-            if (words.Any(w => string.IsNullOrEmpty(w.Ru)))
+            else
             {
-                sw.WriteLine(item.De);
+                var sounds = new List<string>();
+                
+                foreach (var word in words)
+                {
+                    var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(item.De, word.WrdClass);
+                    var ru = factory3.GetTranslation();
+                    word.Level = factory3.GetLevel();
+
+                    if (word.Ru.IsOther(ru))
+                    {
+                        word.Ru += $"(---): {word.Ru.AnotherTranslation(ru)}-!-";
+                    }
+                    sounds.Add(factory3.GetSound());
+                }
+
+                sound = sounds.FirstOrDefault(string.IsNullOrEmpty);
             }
 
-            if (trNode.First().Node != null)
-            {
-                UploadSound(trNode.First().Node, words.First().De.Replace("|", ""));
-            }
-            
+            factory.UploadSound(sound);
 
             return words;
         }
 
         private ListItem GetItem(string de)
         {
+            de = de.Trim();
+
+
             IList<string> items;
             ListItem listItem;
-            if (char.IsUpper(de[0]))
+            if (char.IsUpper(de[0]) || SiteExtensions.Artikles.Any(a => de.StartsWith(a)))
             {
-                items = de.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                var value = items[0];
+                var artikel = de.GetArtikel();
+
+                de = de.RemoveArtikles();
+                var value = de;
                 if (value.EndsWith("/in"))
                 {
                     value = value.Replace("/in", "(in)");
@@ -100,24 +132,36 @@ namespace HtmlParser.Language
                 listItem = new ListItem
                 {
                     De = value,
-                    Type = WordType.Subst
+                    Type = WordType.Subst,
+                    Artikel = artikel
+                };
+            }
+            else if(de.StartsWith("sich"))
+            {
+                listItem = new ListItem
+                {
+                    De = de.Replace("sich", "").Trim(),
+                    Type = WordType.Verb,
+                    Sich = "sich"
+                };
+            }
+            else if (de.Contains("|") || de.Contains("verb"))
+            {
+                listItem = new ListItem
+                {
+                    De = de,
+                    Type = WordType.Verb
                 };
             }
             else
             {
-                items = de.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                var value = items[0];
                 listItem = new ListItem
                 {
-                    De = value,
+                    De = de,
                     Type = WordType.All
                 };
             }
 
-            if (items.Any(i => i.Contains("|")) || items.Any(i => i.ToLower() == "verb"))
-            {
-                listItem.Type = WordType.Verb;
-            }
             return listItem;
         }
     }
@@ -126,5 +170,7 @@ namespace HtmlParser.Language
     {
         public string De { get; set; }
         public WordType Type { get; set; }
+        public string Artikel { get; set; }
+        public string Sich { get; set; }
     }
 }

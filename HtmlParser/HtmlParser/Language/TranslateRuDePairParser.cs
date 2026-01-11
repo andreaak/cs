@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using HtmlParser.Language.Containers;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
@@ -65,20 +66,14 @@ namespace HtmlParser.Language
             {
                 var normWord = word.Trim().Trim(new[] { '(', ')' });
 
-                var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
 
-                var document = GetHtml(hostUrl + normWord);
-
-                var trNode = new PonsTranslationContainerFactory().GetTranslationContainer(document, normWord, _type);
-                if (trNode == null)
+                var factory = new PonsDeTranslationContainerFactory(normWord, _type);
+                var words2 = factory.GetWords();
+                factory.UploadSound();
+                if (words2.Count != 0)
                 {
-                    Console.WriteLine($"Not found {normWord}");
-                }
-                else
-                {
-                    var word2 = GetWords(trNode, normWord).First();
+                    var word2 = words2.First();
                     allWords.Add(word2);
-                    UploadSound(trNode.First().Node, normWord);
                 }
             }
 
@@ -90,24 +85,10 @@ namespace HtmlParser.Language
 
         private WordClass GetWord(string ru, string de)
         {
-            var hostUrl = "https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/";
-
-            var document = GetHtml(hostUrl + de);
-
-            var trNode = new PonsTranslationContainerFactory().GetTranslationContainer(document, de, _type);
-            if (trNode == null)
-            {
-                Console.WriteLine($"Not found {de}");
-                return new WordClass
-                {
-                    De = de,
-                    Ru = ru
-                };
-            }
-
-            var word = GetWords(trNode, de).First();
-            word.Ru = ru;
-            UploadSound(trNode.First().Node, word.De);
+            var factory = new PonsDeTranslationContainerFactory(de, _type);
+            var words = factory.GetWords();
+            factory.UploadSound();
+            var word = words.First();
 
             return word;
         }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HtmlParser.Language
+namespace HtmlParser.Language.Containers 
 {
     public class TranslationContainer
     {

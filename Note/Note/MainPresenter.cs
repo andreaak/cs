@@ -12,6 +12,7 @@ using Utils.ActionWindow;
 using Utils.WorkWithDB;
 using Utils.Google;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Note
 {
@@ -249,6 +250,7 @@ namespace Note
         {
             try
             {
+                editValue = Regex.Replace(editValue, @"\\lang\d{1,4}\\langfe\d{1,4}", "");
                 var res = DataManager.UpdateTextData(id, editValue, plainText, htmlText);
                 view.OnChanged();
                 return res;

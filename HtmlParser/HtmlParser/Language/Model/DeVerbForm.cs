@@ -28,6 +28,16 @@ namespace HtmlParser.Language.Model
         public string Value { get; set; }
         public IList<DeVerbForm> List { get; set; }
         public string Translation { get; set; }
+        public string FileSuffix { get; set; }
+        public VerbType VerbType { get; set; }
+    }
+
+    public enum VerbType
+    {
+        Trans,
+        Intr,
+        Refl,
+        All,
     }
 
     public class DeVerbForm

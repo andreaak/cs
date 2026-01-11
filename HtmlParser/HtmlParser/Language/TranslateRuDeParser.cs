@@ -34,85 +34,85 @@ namespace HtmlParser.Language
         {
             Console.WriteLine(ru);
 
-            var hostUrl = "https://de.pons.com/%C3%BCbersetzung/russisch-deutsch/";
+            //var hostUrl = "https://de.pons.com/%C3%BCbersetzung/russisch-deutsch/";
 
-            var document = GetHtml(hostUrl + ru);
+            //var document = GetHtml(hostUrl + ru);
 
-            string de = null;
-            string wordClass = null;
-            string link = null;
+            //string de = null;
+            //string wordClass = null;
+            //string link = null;
 
-            var translationContainerRu = new PonsTranslationContainerFactory().GetTranslationContainer(document, ru, _type);
-            if (translationContainerRu?.FirstOrDefault()?.Node != null)
-            {
-                if (_type == WordType.First)
-                {
-                    wordClass = translationContainerRu.First().Node.GetWordClass();
-                }
-                de = translationContainerRu.First().Node.GetTranslation(ru);
-                link = translationContainerRu.First().Node.GetLink();
-            }
+            //var translationContainerRu = new PonsTranslationContainerFactory().GetTranslationContainer(document, ru, _type);
+            //if (translationContainerRu?.FirstOrDefault()?.Node != null)
+            //{
+            //    if (_type == WordType.None)
+            //    {
+            //        wordClass = translationContainerRu.First().Node.GetWordClass();
+            //    }
+            //    de = translationContainerRu.First().Node.GetTranslation(ru);
+            //    link = translationContainerRu.First().Node.GetLink();
+            //}
 
-            if (string.IsNullOrEmpty(de))
-            {
-                Console.WriteLine($"Not found {ru}");
-                return new List<WordClass>
-                {
-                    new WordClass
-                    {
-                        Ru = ru
-                    }
-                };
-            }
+            //if (string.IsNullOrEmpty(de))
+            //{
+            //    Console.WriteLine($"Not found {ru}");
+            //    return new List<WordClass>
+            //    {
+            //        new WordClass
+            //        {
+            //            Ru = ru
+            //        }
+            //    };
+            //}
 
-            hostUrl = link == null ? $"https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/{de}" : $"https://de.pons.com{link}";
-            document = GetHtml(hostUrl);
+            //hostUrl = link == null ? $"https://de.pons.com/%C3%BCbersetzung/deutsch-russisch/{de}" : $"https://de.pons.com{link}";
+            //document = GetHtml(hostUrl);
 
-            if (_type == WordType.First
-                && !string.IsNullOrEmpty(wordClass))
-            {
-                _type = (WordType)Enum.Parse(typeof(WordType), wordClass, true);
-            }
-            var translationContainerDe = new PonsTranslationContainerFactory().GetTranslationContainer(document, ru, _type);
-            if (translationContainerDe == null)
-            {
-                Console.WriteLine($"Not found {de}");
-                if (_type == WordType.Subst)
-                {
-                    var nd = document.DocumentNode.SelectSingleNode(".//div[@class='results']//div[@class='target']");
-                    var genus = nd?.SelectSingleNode(".//span[@class='genus']")?.InnerText.Trim().ToLower();
-                    return new List<WordClass>
-                    { new Substantiv
-                    {
-                        De = de,
-                        Ru = ru,
-                        Genus = genus,
-                        Artikle = PonsTranslationItem.GetArtikle(genus)
-                    }};
-                }
-                return new List<WordClass> {new WordClass
-                {
-                    De = de,
-                    Ru = ru,
+            //if (_type == WordType.None
+            //    && !string.IsNullOrEmpty(wordClass))
+            //{
+            //    _type = (WordType)Enum.Parse(typeof(WordType), wordClass, true);
+            //}
+            //var translationContainerDe = new PonsTranslationContainerFactory().GetTranslationContainer(document, ru, _type);
+            //if (translationContainerDe == null)
+            //{
+            //    Console.WriteLine($"Not found {de}");
+            //    if (_type == WordType.Subst)
+            //    {
+            //        var nd = document.DocumentNode.SelectSingleNode(".//div[@class='results']//div[@class='target']");
+            //        var genus = nd?.SelectSingleNode(".//span[@class='genus']")?.InnerText.Trim().ToLower();
+            //        return new List<WordClass>
+            //        { new Substantiv
+            //        {
+            //            De = de,
+            //            Ru = ru,
+            //            Genus = genus,
+            //            Artikle = PonsTranslationItem.GetArtikle(genus)
+            //        }};
+            //    }
+            //    return new List<WordClass> {new WordClass
+            //    {
+            //        De = de,
+            //        Ru = ru,
 
-                }};
-            }
+            //    }};
+            //}
 
-            if (translationContainerDe.Count == 0)
-            {
-                return new List<WordClass> {new WordClass
-                {
-                    De = de,
-                    Ru = ru,
-                    //DeTranscription = GetTranscription(translationContainerDe.Node, translationContainerDe.AllNodes)
-                }};
-            }
+            //if (translationContainerDe.Count == 0)
+            //{
+            //    return new List<WordClass> {new WordClass
+            //    {
+            //        De = de,
+            //        Ru = ru,
+            //        //DeTranscription = GetTranscription(translationContainerDe.Node, translationContainerDe.AllNodes)
+            //    }};
+            //}
 
-            var word = GetWords(translationContainerDe, de).First();
-            word.Ru = ru;
-            UploadSound(translationContainerDe.First().Node, word.De);
+            //var word = GetWords(translationContainerDe, de).First();
+            //word.Ru = ru;
+            //UploadSound(translationContainerDe.First().Node, word.De);
 
-            return new List<WordClass> { word };
+            return new List<WordClass>()/* { word }*/;
         }
     }
 }

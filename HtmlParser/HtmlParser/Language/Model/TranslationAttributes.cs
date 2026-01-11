@@ -9,6 +9,7 @@
         public string Flexion { get; set; }
 
         public string Info { get; set; }
+        public string WordClass { get; set; }
         public string VerbClass { get; set; }
         public string HeadWord { get; set; }
     }

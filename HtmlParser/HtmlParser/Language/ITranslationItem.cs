@@ -6,13 +6,11 @@ namespace HtmlParser.Language
 {
     public interface ITranslationItem
     {
-        HtmlNode RomHeadNode { get; set; }
-        IEnumerable<HtmlNode> TranslationNodes { get; set; }
-        TranslationAttributes GetAttributes();
+        //HtmlNode RomHeadNode { get; set; }
+        TranslationAttributes Attributes { get; set; }
+        string SoundId { get; }
         string GetTranscription(IEnumerable<ITranslationItem> allNodes);
-        string GetWordClass();
         IList<string> GetTranslations(string word);
-        string GetTranslation(string word);
-        string GetLink();
+        
     }
 }

@@ -11,11 +11,10 @@ namespace HtmlParser.Language.VerbFormParsers
 
         protected override void FillValue(string type, DeVerbForm form, HtmlNode row)
         {
-            var text = row.ParentNode.ParentNode.PreviousSibling.InnerText.RemoveNewLine().Trim()
-                       + " "
-                       + row.InnerText.RemoveNewLine().Trim()
-                       + " "
-                       + row.ParentNode.ParentNode.NextSibling.InnerText.RemoveNewLine().Trim();
+            var next = GetNextValues(row);
+            
+            var text = GetPrevValue(row)
+                        + (string.IsNullOrEmpty(next) ? "" : " " + next);
 
             switch (type)
             {

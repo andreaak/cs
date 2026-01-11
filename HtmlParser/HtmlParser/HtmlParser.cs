@@ -2,15 +2,17 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using HtmlAgilityPack;
 
 namespace HtmlParser
 {
-    public abstract class HtmlParser
+    public class HtmlParser
     {
-        protected HtmlDocument GetHtml(string url)
+        public HtmlDocument GetHtml(string url)
         {
             int repeat = 3;
             int timeout = 2000;
@@ -23,7 +25,16 @@ namespace HtmlParser
                 }
                 catch (Exception e)
                 {
-                    Thread.Sleep(timeout);
+                    Console.WriteLine(url);
+                    Console.WriteLine(e);
+                    if (e.Message.Contains("The remote server returned an error: (429)"))
+                    {
+                        //Thread.Sleep(600000);
+                    }
+                    else
+                    {
+                        Thread.Sleep(timeout);
+                    }
                 }
             }
 
@@ -33,6 +44,9 @@ namespace HtmlParser
         private string ReadHtml(string urlAddress)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+
+            //request.ContentType = "text/html; charset=utf-8";
+
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
             if (response.StatusCode == HttpStatusCode.OK)
@@ -45,7 +59,7 @@ namespace HtmlParser
                     responseStream = new DeflateStream(responseStream, CompressionMode.Decompress);
 
                 StreamReader reader = null;
-                if (string.IsNullOrWhiteSpace(response.CharacterSet))
+                if (string.IsNullOrWhiteSpace(response.CharacterSet) || response.CharacterSet == "ISO-8859-1")
                 {
                     reader = new StreamReader(responseStream);
                 }

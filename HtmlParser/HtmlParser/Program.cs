@@ -1,11 +1,8 @@
-using System;
-using System.CodeDom.Compiler;
+﻿using System;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using HtmlParser.Language;
-using Newtonsoft.Json;
+using HtmlParser.Language.Containers;
 
 namespace HtmlParser
 {
@@ -20,16 +17,6 @@ namespace HtmlParser
             //parser.Normalize();
             //ParseLocalFile();
 
-            var request = Temp();
-
-            var conv = JsonConvert.SerializeObject(request);
-
-            if (request.Content is StringContent ct)
-            {
-                var t = ct.ReadAsStringAsync().GetAwaiter().GetResult();
-                var t2 = ct.ReadAsStringAsync().GetAwaiter().GetResult();
-            }
-
             string file = "list.txt";
             var lines = File.ReadLines(file);
             var parser = GetParser(lines.First());
@@ -41,62 +28,61 @@ namespace HtmlParser
 
         private static ILanguageParser GetParser(string line)
         {
-            var prms = line.Trim().Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
-            var id = prms[0];
-            bool order = prms.Length > 1 && prms[1] == "ord";
 
-            var type = GetType(prms);
+            var parameters = ParametersProvider.Parse(line);
 
-            switch (id)
+            switch (parameters.Action)
             {
-                case "rude": 
-                    return new TranslateRuDeParser(order, type);
+                //case "rude": 
+                //    return new TranslateRuDeParser(parameters.Order, parameters.WordType);
                 case "deru": 
-                    return new TranslateDeRuParser(order, type);
+                    return new TranslateDeRuParser(parameters);
                 case "derulist": 
-                    return new TranslateDeRuVocabularyCornelseParser(order);
+                    return new TranslateDeRuVocabularyCornelseParser(parameters.Order);
                 case "deruverb": 
                     return new TranslateDeRuVerbFormsParser();
+                case "deverbprapparser":
+                    return new TranslateDeVerbPraposParser(parameters);
                 case "rudepair": 
-                    return new TranslateRuDePairParser(order, type);
+                    return new TranslateRuDePairParser(parameters.Order, parameters.WordType);
                 case "deverbform":
                     return new DeVerbFormParser();
                 case "deverbprap":
-                    return new DeVerbDicLeoPrapParser(order);
+                    return new DeVerbDicLeoPrapParser(parameters.Order);
                 case "deruverbpref":
-                    return new TranslateDeRuVerbPrefixParser();
+                    return new TranslateDeRuVerbPrefixParser(parameters);
+                case "deruverbfile":
+                    return new TranslateDeRuVerbFilesParser();
+                case "deruverbfilesetlevel":
+                    return new TranslateDeRuVerbFilesSetLevel();
+                case "deruverbfilereparse":
+                    return new TranslateDeRuVerbFilesReparser();
+                case "example":
+                    return new GetDeRuExample(parameters.Order, parameters.WordType, parameters.Lang);
+                case "delevel":
+                    return new GetDeLevel(parameters.Order, parameters.WordType);
+                case "dwds":
+                    return new TranslateDWDSVocabularyParser(parameters);
+                case "dicleo":
+                    return new TranslateDicLeoParser(parameters);
+                
+                
+                case "enru": 
+                    return new TranslateEnRuParser(parameters);
+                case "enlevel":
+                    return new GetEnLevel(parameters.Order, parameters.WordType);
+                case "enruverb":
+                    return new TranslateEnRuIrregVerbFormsParser();
+                case "enrulist":
+                    return new TranslateEnRuVocabularyParser(parameters);
+                case "enruphrasal":
+                    return new TranslateEnRuPhrasalVerbParser(parameters);
+                case "enrulistsimple":
+                    return new TranslateEnRuVocabularySimpleParser(parameters);
 
                 default:
                     throw new Exception("wrong parameter");
             }
-        }
-
-        private static WordType GetType(string[] prms)
-        {
-            return Enum.TryParse<WordType>(prms.ElementAtOrDefault(2) ?? "", true, out var type) ? 
-                type : 
-                WordType.First;
-        }
-
-        private static HttpRequestMessage Temp()
-        {
-            var request = new HttpRequestMessage
-            {
-                RequestUri = new Uri("https://apigee.rwlv.dev/rwlv-dev-oc-syn")
-            };
-
-            var contentType = "application/xml";
-
-            var commandString = "Test Command";
-
-            request.Content =
-                new StringContent(commandString, Encoding.UTF8, contentType);
-
-            request.Method = HttpMethod.Post;
-
-            request.Headers.Add("Authorization", $"Bearer Test");
-
-            return request;
         }
     }
 }

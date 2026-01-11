@@ -11,9 +11,7 @@ namespace HtmlParser.Language.VerbFormParsers
 
         protected override void FillValue(string type, DeVerbForm form, HtmlNode row)
         {
-            var text = row.ParentNode.ParentNode.PreviousSibling.InnerText.RemoveNewLine().Trim()
-                       + " "
-                       + row.InnerText.RemoveNewLine().Trim();
+            var text = GetPrevValue(row);
 
             switch (type)
             {

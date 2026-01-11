@@ -26,18 +26,15 @@ namespace HtmlParser.Language.Model
             sw.WriteLine(sb.ToString());
             sb.Clear();
 
-            //if (!string.IsNullOrEmpty(Genus))
-            //{
-            //    sb.Append(sb.Length != 0 ? $" {Genus}" : Genus);
-            //}
-            if (!string.IsNullOrEmpty(Flexion))
-            {
-                sb.Append(sb.Length != 0 ? $" {Flexion}" : Flexion);
-            }
-            sw.WriteLine(sb.ToString());
+            sw.WriteLine(!string.IsNullOrEmpty(Flexion) ? Flexion : Info);
 
             sw.WriteLine(DeTranscription);
+            sw.WriteLine(Level);
+            sw.WriteLine(Example);
+            sw.WriteLine(Description);
             sw.WriteLine("");
+            sw.WriteLine("");
+
         }
     }
 }
