@@ -1,6 +1,8 @@
 *~
 bin
 obj
+publish
+dist
 *.user
 *.suo
 *.bak
