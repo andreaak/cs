@@ -18,7 +18,7 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             Debug.WriteLine("");
             foreach (char ch2 in mc.IterateEnumerable())
             {
-                Debug.Write(ch2 + " ");
+                Debug.WriteLine(ch2 + " ");
             }
             Debug.WriteLine("");
 
@@ -41,24 +41,31 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
                 Debug.Write(ch + " ");
             }
             Debug.WriteLine("\n");
+
+            /*
+            Возвратить по очереди первые 7 букв:
+            A B C D E F G 
+            */
+
             Debug.WriteLine("Возвратить по очереди буквы от F до L:");
             foreach (char ch in mc.IterateEnumerable(5, 12))
             {
                 Debug.Write(ch + " ");
             }
             Debug.WriteLine("");
+            /*
+            Возвратить по очереди буквы от F до L:
+            F G H I J K L 
+            */
+
+
+
 
             foreach (string ch in mc.StaticText())
             {
                 Debug.Write(ch);
             }
-
             /*
-            Возвратить по очереди первые 7 букв:
-            A B C D E F G 
-
-            Возвратить по очереди буквы от F до L:
-            F G H I J K L 
             Hello world! 
             */
         }
@@ -143,16 +150,21 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             _03_YieldMulti mc = new _03_YieldMulti();
             foreach (char ch in mc)
             {
-                Debug.Write(ch + " ");
+                Debug.WriteLine(ch + " ");
             }
             Debug.WriteLine("");
             /*
             GetEnumerator
-            A yield return
-            В yield return
-            C yield return
-            D yield return
-            Е yield return last 
+            A 
+            yield return 1
+            В 
+            yield return 2
+            C 
+            yield return 3
+            D 
+            yield return 4
+            Е 
+            yield return last
             */
         }
 

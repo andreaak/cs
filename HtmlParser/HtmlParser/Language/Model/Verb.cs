@@ -21,7 +21,7 @@ namespace HtmlParser.Language.Model
             sw.WriteLine(Level);
             sw.WriteLine(Example);
             sw.WriteLine(Description);
-            sw.WriteLine("");
+            sw.WriteLine(Prep);
             sw.WriteLine("");
         }
 

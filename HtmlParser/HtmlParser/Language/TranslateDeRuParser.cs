@@ -21,14 +21,19 @@ namespace HtmlParser.Language
 
         public void Parse(IList<string> lines)
         {
-            var temp = lines.Where(l => !string.IsNullOrEmpty(l))
-                .Select(l => l.Trim())
+            var temp = lines
+                .Select(l => l.Trim().Trim('-' ))
+                .SelectMany(l => l.Split(new[] {"-"}, StringSplitOptions.RemoveEmptyEntries))
+                .Where(l => !string.IsNullOrEmpty(l))
                 .Distinct()
-                .SelectMany(l => Parse(l.Trim()));
+                .ToArray();
 
-            var list = _order ?
-                temp.OrderBy(l => l.De).ToArray() :
-                temp.ToArray();
+
+            var list = temp.SelectMany(l => Parse(l.Trim()));
+
+            list = _order ?
+                list.OrderBy(l => l.De) :
+                list;
 
             using (var sw = File.CreateText("out.txt"))
             {
@@ -58,7 +63,8 @@ namespace HtmlParser.Language
             {
                 var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(words[0].De, _type.ToString().ToLower());
                 var tr = factory3.GetTranslation();
-                if (!string.IsNullOrEmpty(tr))
+                var de_ = factory3.GetDe();
+                if (de.Equals(de_, StringComparison.InvariantCultureIgnoreCase) && !string.IsNullOrEmpty(tr))
                 {
                     if (_type == WordType.Subst)
                     {
@@ -81,8 +87,13 @@ namespace HtmlParser.Language
                     words[0].WrdClass = _type.ToString().ToLower();
                     words[0].Found = true;
                     words[0].Level = factory3.GetLevel();
+                    sound = factory3.GetSound();
                 }
-                sound = factory3.GetSound();
+                else
+                {
+                    Console.WriteLine($"Not found {de}");
+                    return words;
+                }
             }
             else
             {
@@ -94,7 +105,7 @@ namespace HtmlParser.Language
                     var ru = factory3.GetTranslation();
                     word.Level = factory3.GetLevel();
 
-                    if (word.Ru.IsOther(ru))
+                    if (parameters.AddOtherTranslation && word.Ru.IsOther(ru) )
                     {
                         word.Ru += $"(---): {word.Ru.AnotherTranslation(ru)}-!-";
                     }
@@ -131,7 +142,7 @@ namespace HtmlParser.Language
             //    sound = sounds.FirstOrDefault(string.IsNullOrEmpty);
             //}
 
-            if (words[0].Found)
+            if (words[0].Found && parameters.AddDescription)
             {
                 factory.UploadSound(sound);
 
@@ -140,7 +151,10 @@ namespace HtmlParser.Language
 
                 foreach (var word in words)
                 {
-                    var res = dwds.FirstOrDefault(i => i.Type == word.WrdClass.GetDeType());
+                    var cl = word.WrdClass.GetDeType() == WordType.Complex ? _type : word.WrdClass.GetDeType();
+
+
+                    var res = dwds.FirstOrDefault(i => i.Type == cl);
                     if (res != null)
                     {
                         word.Description = res.GetDescription();
@@ -149,8 +163,13 @@ namespace HtmlParser.Language
 
             }
 
+            if (words[0].Found && parameters.GetPreposition)
+            {
+                var parser = new TranslateDicLeoParser(parameters);
+                parser.Parse(de, words.Where(w => w.WrdClass == "verb").Cast<Verb>().ToArray());
+            }
 
-            if (parameters.GetExample)
+            if (words[0].Found && parameters.GetExample)
             {
                 de.SetExample(words);
             }

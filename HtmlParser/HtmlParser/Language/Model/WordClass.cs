@@ -13,6 +13,7 @@ namespace HtmlParser.Language.Model
         public string Description { get; set; }
         public bool Found { get; set; }
         public string Info { get; set; }
+        public string Prep { get; set; }
 
         public virtual void Write(StreamWriter sw)
         {
@@ -24,7 +25,7 @@ namespace HtmlParser.Language.Model
             sw.WriteLine(Level);
             sw.WriteLine(Example);
             sw.WriteLine(Description);
-            sw.WriteLine("");
+            sw.WriteLine(Prep);
             sw.WriteLine("");
         }
     }

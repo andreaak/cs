@@ -122,6 +122,7 @@
     <Compile Include="Language\Containers\PonsDeTranslationContainerFactory.cs" />
     <Compile Include="Language\DeVerbDicLeoPrapParser.cs" />
     <Compile Include="Language\EnPonsTranslationItem.cs" />
+    <Compile Include="Language\GetDeRuDesc.cs" />
     <Compile Include="Language\Model\DicLeoContainerItem.cs" />
     <Compile Include="Language\Model\DWDSItem.cs" />
     <Compile Include="Language\Extensions\FileExtensions.cs" />

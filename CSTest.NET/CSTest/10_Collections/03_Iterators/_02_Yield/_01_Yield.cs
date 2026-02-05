@@ -22,7 +22,7 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
         {
             foreach (char ch in chrs)
             {
-                Debug.WriteLine("yield return");
+                Debug.WriteLine("yield return " + ch);
                 yield return ch;
             }
         }
@@ -31,7 +31,7 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
         {
             foreach (char ch in chrs)
             {
-                Debug.WriteLine("yield return");
+                Debug.WriteLine("yield return " + ch);
                 yield return ch;
             }
         }

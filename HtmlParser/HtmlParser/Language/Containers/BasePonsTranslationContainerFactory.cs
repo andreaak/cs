@@ -85,11 +85,7 @@ namespace HtmlParser.Language.Containers
 
         protected string GetRequestUrl(string soundNode, string link, string reserveLink)
         {
-            if (soundNode != null)
-            {
-                return link;
-            }
-            return string.IsNullOrEmpty(reserveLink) ? null : reserveLink;
+            return soundNode != null ? link : reserveLink;
         }
 
         private WordClass GetWord(TranslationContainer trContainer, string de)
@@ -242,7 +238,7 @@ namespace HtmlParser.Language.Containers
             {
                 var wordClass = node.Attributes.WordClass;
                 var wordType = GetWordType(wordClass);
-                if (wordType == _type || _type == WordType.All || wordType == WordType.Complex)
+                if (_type.IsSet(wordType)  || _type == WordType.All)
                 {
                     list.Add(new TranslationContainer
                     {
@@ -257,10 +253,12 @@ namespace HtmlParser.Language.Containers
                 return list;
             }
 
-            return new[] { new TranslationContainer
-            {
-                AllNodes = trNodes
-            }};
+            return null;
+            
+            //return new[] { new TranslationContainer
+            //{
+            //    AllNodes = trNodes
+            //}};
         }
 
         private string GetTranslation(HtmlDocument document)
@@ -364,7 +362,7 @@ namespace HtmlParser.Language.Containers
 
         protected virtual IEnumerable<PonsItem> Parse(IList<HtmlNode> nodes)
         {
-            return nodes.Select(i => PonsItem.ParseNode(i, _word)).ToArray();
+            return nodes.Select(i => PonsItem.ParseNode(i, _word)).Where(i => i != null && i.TranslationItems.Any(t => t.Values.Count != 0 || !string.IsNullOrEmpty(t.Sense))).ToArray();
         }
     }
 }

@@ -24,28 +24,28 @@ namespace HtmlParser
                         parameters.Order = true;
                         break;
                     case "verb":
-                        parameters.WordType = WordType.Verb;
+                        parameters.WordType |= WordType.Verb;
                         break;
                     case "subst":
-                        parameters.WordType = WordType.Subst;
+                        parameters.WordType |= WordType.Subst;
                         break;
                     case "adv":
-                        parameters.WordType = WordType.Adv;
+                        parameters.WordType |= WordType.Adv;
                         break;
                     case "adj":
-                        parameters.WordType = WordType.Adj;
+                        parameters.WordType |= WordType.Adj;
                         break;
                     case "all":
-                        parameters.WordType = WordType.All;
+                        parameters.WordType |= WordType.All;
                         break;
                     case "pron":
-                        parameters.WordType = WordType.Pron;
+                        parameters.WordType |= WordType.Pron;
                         break;
                     case "präp":
-                        parameters.WordType = WordType.Prep;
+                        parameters.WordType |= WordType.Prep;
                         break;
                     case "konj":
-                        parameters.WordType = WordType.Konj;
+                        parameters.WordType |= WordType.Konj;
                         break;
                     case "de":
                         parameters.Lang = "de";
@@ -61,6 +61,15 @@ namespace HtmlParser
                         break;
                     case "remdupl":
                         parameters.RemoveDuplicates = true;
+                        break;
+                    case "other_tr":
+                        parameters.AddOtherTranslation = true;
+                        break;
+                    case "desc":
+                        parameters.AddDescription = true;
+                        break;
+                    case "prep":
+                        parameters.GetPreposition = true;
                         break;
                 }
             }

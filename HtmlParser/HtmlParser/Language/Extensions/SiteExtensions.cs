@@ -105,7 +105,7 @@ namespace HtmlParser.Language.Extensions
                 if (w is Verb verb)
                 {
                     var request = verb.GetExampleRequest(lang);
-                    var t = request.GetExample();
+                    var t = request.GetGPTResponse();
                     var items = t.Split(new []{"|"}, StringSplitOptions.None);
                     //int i = 0;
                     //if (items[0].Trim() == verb.De)
@@ -280,6 +280,11 @@ namespace HtmlParser.Language.Extensions
                     //Console.WriteLine($"Upload sound {hostUrl}");
 
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(hostUrl);
+                    if (hostUrl.Contains("www.verbformen"))
+                    {
+                        request.Headers["cookie"] = VerbformenRuSprjazhenieTranslationContainerFactory.Cookie;
+                    }
+
                     HttpWebResponse resp = (HttpWebResponse)request.GetResponse();
 
                     if (resp.StatusCode == HttpStatusCode.OK)

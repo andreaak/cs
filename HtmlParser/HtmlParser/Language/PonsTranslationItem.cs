@@ -38,7 +38,23 @@ namespace HtmlParser.Language
 
         public static PonsItem ParseNode(HtmlNode node, string word)
         {
+            //var trNodes = node.SelectNodes(".//div[@class='flex flex-col']/div[@class='flex flex-col']");
+
             var trNodes = node.SelectNodes(".//div[@class='flex flex-col']/div[@class='flex flex-col']");
+
+            var nodes = node.SelectNodes(".//h3/span")?.ToArray() ?? Array.Empty<HtmlNode>();
+
+            foreach (var wordNode in nodes)
+            {
+                if (wordNode.ChildNodes.Any(i => i.Name == "span"))
+                {
+                    var text = wordNode.ChildNodes[0].InnerText.PonsNormalize().Replace("|", "");
+                    if (!text.Equals(word, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return null;
+                    }
+                }
+            }
 
             var item = new PonsItem(word);
             item.Attributes = item.GetAttributes(node);
@@ -124,6 +140,10 @@ namespace HtmlParser.Language
         protected virtual TranslationComplexItem ParseTranslationItem(HtmlNode node)
         {
             var sense = node.SelectSingleNode("./span[@class='sense']|./span[@class='topic']")?.InnerText.PonsNormalize();
+            if (string.IsNullOrEmpty(sense))
+            {
+                sense = node.SelectSingleNode(".//span[@class='sense']|.//span[@class='topic']")?.InnerText.PonsNormalize();
+            }
             var trItems = node.SelectNodes(".//dl[@data-e2e='translation']")?.ToArray() ?? Array.Empty<HtmlNode>();
 
             var res = new TranslationComplexItem

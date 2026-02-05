@@ -15,7 +15,7 @@ namespace HtmlParser.Language
         
         private static string[] prefixes =
         {
-            "ab", "an", "auf", "aus", "bei", "ein", "fest", "her", "hin", "los", "mit", "nach", "teil", "vor", "weg", 
+            "auf", "ab", "an", "auf", "aus", "bei", "ein", "fest", "her", "hin", "los", "mit", "nach", "teil", "vor", "weg", 
             "zu","zurück","zusammen","wider",
             "über","unter","durch","um","wieder","weiter",
             "be","emp","ent","er","ge","miss","ver","zer",
@@ -29,7 +29,7 @@ namespace HtmlParser.Language
 
         private static string[] selectPrefixes =
         {
-            "ab", "an", "auf", "aus", "bei", "ein", "fest", "her", "hin", "los", "mit", "nach", "teil", "vor", "weg", 
+            "auf", "ab", "an", "aus", "bei", "ein", "fest", "her", "hin", "los", "mit", "nach", "teil", "vor", "weg", 
             "zu","zurück","zusammen","wider",
             "über","unter","durch","um","wieder","weiter",
             "be","emp","ent","er","ge","miss","ver","zer",
@@ -179,7 +179,7 @@ namespace HtmlParser.Language
             {
                 var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(words[0].De, _type.ToString().ToLower());
                 var deNew = factory3.GetDe();
-                if (deNew.Replace("·", "|").ToLower() == de)
+                if (deNew.Replace("·", "").ToLower() == de)
                 {
                     var tr = factory3.GetTranslation();
                     if (!string.IsNullOrEmpty(tr))
@@ -209,6 +209,10 @@ namespace HtmlParser.Language
                         words[0].Level = factory3.GetLevel();
                     }
                     sound = factory3.GetSound();
+                }
+                else
+                {
+                    Console.WriteLine($"Not found {de}");
                 }
             }
             else

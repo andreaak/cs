@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using HtmlParser.Language;
 using HtmlParser.Language.Containers;
 
@@ -17,13 +19,57 @@ namespace HtmlParser
             //parser.Normalize();
             //ParseLocalFile();
 
+            //var t = Fibonacci2(4);
+
+
             string file = "list.txt";
+            //string file = @"D:\Downloads\new 19.txt";
             var lines = File.ReadLines(file);
             var parser = GetParser(lines.First());
             parser.Parse(lines.Skip(1).ToArray());
 
             Console.WriteLine("Done");
             Console.ReadLine();
+
+            //var res = new Dictionary<string, int>();
+
+            //foreach (var line in lines)
+            //{
+            //    var items = line.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+            //    foreach (var item in items)
+            //    {
+            //        if (item.Length <= 2)
+            //        {
+            //            continue;
+            //        }
+
+            //        var isDigit = Regex.IsMatch(item, @"\d");
+            //        if (isDigit)
+            //        {
+            //            continue;
+            //        }
+
+            //        if (res.TryGetValue(item, out var count))
+            //        {
+            //            res[item] = ++count;
+            //        }
+            //        else
+            //        {
+            //            res[item] = 1;
+            //        }
+
+            //    }
+            //}
+
+
+            //var u = res.OrderByDescending(i => i.Value).Select(i => i.Key).ToArray();
+
+            //var nomen = u.Where(i => Char.IsUpper(i[0])).OrderBy(i => i).ToArray();
+            //var str = string.Join("\r\n", nomen);
+
+            //var other = u.Except(nomen).OrderBy(i => i).ToArray();
+            //str = string.Join("\r\n", other);
+
         }
 
         private static ILanguageParser GetParser(string line)
@@ -59,6 +105,8 @@ namespace HtmlParser
                     return new TranslateDeRuVerbFilesReparser();
                 case "example":
                     return new GetDeRuExample(parameters.Order, parameters.WordType, parameters.Lang);
+                case "gpt_desc":
+                    return new GetDeRuDesc(parameters.Order, parameters.WordType, parameters.Lang);
                 case "delevel":
                     return new GetDeLevel(parameters.Order, parameters.WordType);
                 case "dwds":
@@ -84,5 +132,48 @@ namespace HtmlParser
                     throw new Exception("wrong parameter");
             }
         }
+
+        public static long Fibonacci(int n)
+        {
+            if (n < 0)
+                throw new ArgumentException("n должно быть неотрицательным");
+
+            return Enumerable
+                .Range(0, n)
+                .Aggregate(
+                    (a: 0L, b: 1L),
+                    (acc, i) =>
+                    {
+                        Console.WriteLine(acc);
+                        Console.WriteLine(i);
+                        return (acc.b, acc.a + acc.b);
+                    }
+                        
+                       
+                ).a;
+        }
+
+        public static long Fibonacci2(int n)
+        {
+            if (n < 0)
+                throw new ArgumentException("n должно быть неотрицательным");
+
+            if (n <= 1)
+                return n;
+
+            long a = 0;
+            long b = 1;
+
+            for (int i = 2; i <= n; i++)
+            {
+                long c = a + b;
+                a = b;
+                b = c;
+            }
+
+            return b;
+        }
     }
+
+
 }

@@ -32,6 +32,31 @@ namespace HtmlParser.Language
             }
         }
 
+        public void ParseIn(string de, Verb wc)
+        {
+            Console.WriteLine(de);
+
+            de = de.Replace("|", "");
+
+            var hostUrl = "https://dict.leo.org/russisch-deutsch/";
+
+            var document = GetHtml(hostUrl + de);
+
+            var trNodes = document.DocumentNode.SelectNodes(".//div[@data-dz-name='verb']//table//tr[@class='is-clickable']");
+
+            var sb = new StringBuilder();
+
+            foreach (var node in trNodes)
+            {
+                var ru = GetRu(node);
+                var des = GetDe(node);
+
+                sb.Append(ru).Append("\t").Append(des).Append("\r\n");
+            }
+
+            wc.Prep = sb.ToString();
+        }
+
         private IList<WordClass> Parse(string de)
         {
             Console.WriteLine(de);

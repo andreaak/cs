@@ -8,6 +8,7 @@ namespace HtmlParser.Language.Containers
     public class VerbformenRuSprjazhenieTranslationContainerFactory
     {
         string hostUrl = "https://www.verbformen.ru/sprjazhenie/?w=";
+        public const string Cookie = "uniqueUser=6d90f3efb9c8900bfd1479adb978010868492683fc575f62312ef881542b4947; cto_bidid=ZTKtf19VRXNvbE1TeFVPam84RmJseFFjQWs3bmV5b2FWNUtOc3hpekFXa3I4cGprWUdyd1lJcXNZOFZBaUJFQ0d4QlBxVmlYOXZyZTFMVTE0RGJqdHE2V1NheFBSbzRhaXd2RjFBODhqMGdjNUolMkZJJTNE; __gads=ID=92a61025abb948de:T=1751483432:RT=1751483432:S=ALNI_MZ1NcG5hE1l1S8CwVzIcYVVzjhx1A; euconsent-v2=CQYqYUAQYqYUAAGABCENB-FsAP_gAAAAAAYgLJAB5C7cTWFhcDhXAaMAaIwc1xABJkAAAgKAASABSBIAcIQEkiACMAyAAAACAAAAIABAAAAgAABAAQAAAIgAAAAEAAAEAAAIICAEAAMRQgAACAAICAAAAQAIAAABAgEAiACAQQKEQFAAgIAgBAAAAIAgAIABAAMAAAAgAAAAAAAAAgAAgQAAAAAAAAACABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAeEgNgALAAqABcADgAHgAQQAyADUAHgATAA3gB-AEJAIYAiQBHACaAGGAO6AfgB-gG0ATSAo8BeYDJAGXANYAbmBBMIAJABIAEcAP4A5wCUgE7AR6AuoBkIgACACQUABAR6MAAgI9HQHgAFgAVAA4ACCAGQAagA8ACYAF0AMQAbwA_QCGAIkATQAw4B-AH6ARYAjoBtAEXgJkATSAo8BeYDJIGWAZcA00BrADiwIAgR2HAEQALgAkAB-AEcAKAAfwBHQDkAOcAdwBCACUgE7AR6AmIBdQDIQG5kIBIACwAagBiADeAH4AdwBKQDaAJpIABQA_wDkAOcBHoCYgIskoBwACwAOAA8ACYAGKAQwBEgCOAH4Ai8BR4C8wGSANYAgCSAEgAXABIACoAI4A7gDtgI9ATEAywpAXAAWABUADgAIIAZABoADwAJgAYgA_QCGAImAfgB-gEWAI6AbQBF4CaQF5gMkgZYBlwDWAHigQTAjsUAKAAKAAuACQAI4AUAAtgBtAEdAOQA5wB3AEpALqAa8A7YCPQExAKyAZCA3MCLJaAEADUAdxYAGAj0BMQDIQ.YAAAAAAAAAAA; consentUUID=26fc6c4a-0f13-42b5-b334-e4412c35f16b_44_46_48; cto_bundle=puilBl8zcFhHSUVPZ1JLbTclMkJGRjVyc2lIOVowejFxQzNrbEl5eVdBZ0RtVXJzJTJCaHNJQWwyOHhMZDdzYnQ1MGZ2RU9Oak0xYm9iOFg4QkV0V2o2RCUyQnJnJTJGdiUyRiUyQjllQmxQdXpDeU1hRSUyRldpY0clMkI3cEZTeFV4M2x2aFU1Y2JvMnFSdmRXYjVnRlp2NSUyRmJCNk5WTkZHWjNGOVpGd1EwdSUyQmFWTVFPV291VTlleEdmSERmVSUzRA; jsok=1; zgrf_id=0cc6af43-0867-4f4e-8a67-1ca0c666d31d; _gid=GA1.2.1195438955.1768160164; com.netzverb.setting.translationLanguage=ru; JSESSIONID=F0C5FB5349E327B7527447FD033E9699; g_state={\"i_l\":0,\"i_ll\":1768390339065,\"i_b\":\"0UmUFg / uDyh4THiq4HSFLWBJHpUGYAos2VqQ19lnqUg\",\"i_e\":{\"enable_itp_optimization\":0}}; _ga_8XG72KX9YD=GS2.1.s1768390154$o330$g1$t1768390743$j58$l0$h0; _ga=GA1.1.378734771.1749207043";
 
 
         private string _word;
@@ -115,7 +116,8 @@ namespace HtmlParser.Language.Containers
 
         private HtmlDocument GetDocument()
         {
-            return _document = _document ?? new HtmlParser().GetHtml(hostUrl + _word + GetAdd(_word));
+
+            return _document = _document ?? new HtmlParser().GetHtml(hostUrl + _word + GetAdd(_word), Cookie);
         }
 
         private string GetAdd(string de)
@@ -147,8 +149,6 @@ namespace HtmlParser.Language.Containers
                 default:
                     return "";
             }
-            
-
         }
     }
 }

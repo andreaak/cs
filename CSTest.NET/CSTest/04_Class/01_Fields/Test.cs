@@ -1,6 +1,7 @@
-﻿using System.Diagnostics;
+﻿using CSTest._04_Class._00_Base._0_Setup;
 using NUnit.Framework;
-using CSTest._04_Class._00_Base._0_Setup;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace CSTest._04_Class._01_Fields
 {
@@ -31,7 +32,10 @@ namespace CSTest._04_Class._01_Fields
         [Test]
         public void TestReadOnly2()
         {
-            _03_ReadOnly cut = new _03_ReadOnly();
+            _03_ReadOnly cut = new _03_ReadOnly 
+            {
+                //readonlyField = 1
+            };
             Debug.WriteLine(cut.fieldInt);
             FunctMethod(ref cut.fieldInt);
             FunctMethod2(out cut.fieldInt);

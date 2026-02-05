@@ -1,7 +1,0 @@
-.phrases li {
-    cursor: pointer;
-    margin:2px;
-}
-.phrases li:hover {
-    background-color: lightcoral;
-}

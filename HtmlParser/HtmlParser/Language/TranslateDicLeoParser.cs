@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using HtmlParser.Language.Containers;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
@@ -49,6 +50,46 @@ namespace HtmlParser.Language
                     }
                 }
             }
+        }
+
+        public void Parse(string de, IEnumerable<Verb> vb)
+        {
+            var factory = new DicLeoContainerFactory(de, WordType.Verb);
+
+            var words = factory.GetWords();
+            var items = words.Where(w => !w.IsSich).ToArray();
+            var sichItems = words.Where(w => w.IsSich).ToArray();
+
+            if (items.Any())
+            {
+                var description = new DicLeoContainerItem
+                {
+                    De = de,
+                    Items = items
+                }.GetDescription();
+
+                foreach (var word in vb.Where(v => !v.VerbClass.Contains("refl")))
+                {
+                    word.Prep = description;
+                }
+            }
+
+            if (sichItems.Any())
+            {
+                var description = new DicLeoContainerItem
+                {
+                    De = de,
+                    Items = sichItems,
+                    IsSich = true
+                }.GetDescription();
+
+                foreach (var word in vb.Where(v => v.VerbClass != null && v.VerbClass.Contains("refl")))
+                {
+                    word.Prep = description;
+                }
+            }
+
+            Thread.Sleep(1000);
         }
 
         private IList<DicLeoContainerItem> Parse(string de, StreamWriter sw)

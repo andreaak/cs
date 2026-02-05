@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace HtmlParser.Language
 {
@@ -21,17 +22,46 @@ namespace HtmlParser.Language
         }
     }
 
+    [Flags]
     public enum WordType
     {
         None = 0,
-        Verb,
-        Subst,
-        Pron,
-        Adv, 
-        Adj,
-        Konj,
-        Prep,
-        All,
-        Complex
+        Verb = 1,
+        Subst = 2,
+        Pron = 4,
+        Adv = 8,
+        Adj = 16,
+        Konj = 32,
+        Prep = 64,
+        All = 128,
+        Complex = 256
+    }
+
+    public static class TestFlagsEnumHelper
+    {
+        public static bool IsSet(this WordType options, WordType option)
+        {
+            if (option == 0)
+            {
+                return false;
+                //throw new ArgumentOutOfRangeException("option", "Value must not be 0");
+            }
+            return (options & option) == option;
+        }
+
+        public static bool AnyFlagsSet(this WordType options, WordType option)
+        {
+            return ((options & option) != 0);
+        }
+
+        public static WordType Set(this WordType options, WordType option)
+        {
+            return options | option;
+        }
+
+        public static WordType Clear(this WordType options, WordType option)
+        {
+            return options & ~option;
+        }
     }
 }

@@ -166,7 +166,7 @@ namespace HtmlParser.Language.Extensions
             return gpt.GetResponse(request);
         }
 
-        public static string GetExample(this string request)
+        public static string GetGPTResponse(this string request)
         {
             var gpt = new GPT();
             return gpt.GetResponse(request);

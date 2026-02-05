@@ -120,6 +120,25 @@ namespace CSTest._10_Collections._03_Iterators._01_IEnumerable
         [Test]
         public void TestEnumerator4()
         {
+            _04_NonIEnumerable mc = new _04_NonIEnumerable();
+            foreach (var item in mc)
+            {
+                Debug.WriteLine(item);
+            }
+
+            /*
+            GetEnumerator
+            MoveNext
+            А
+            MoveNext
+            В
+            MoveNext
+            C
+            MoveNext
+            D
+            MoveNext 
+            */
+
             List<int> lst = new List<int> { 1, 2 };
             System.Collections.IEnumerator en = lst.GetEnumerator();
             while (en.MoveNext())

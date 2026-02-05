@@ -63,19 +63,32 @@ namespace CSTest._03_Structure._03_Nullable
                            // переменная оказывается count пустой, 
             result = count + incr;
             DisplayValue(result);
+            /*
+            У переменной result отсутствует значение
+            */
 
             // Теперь переменная count получает свое"значение, и поэтому 
             // переменная result будет содержать конкретное значение, 
             count = 100;
             result = count + incr;
             DisplayValue(result);
-            bool? op1 = true;
-            bool op2 = true;
-            var res = op1 & op2;
             /*
-            У переменной result отсутствует значение
             Переменная result имеет следующее значение: 110
             */
+            
+            
+            bool? op1 = null;
+            bool op2 = true;
+            var res = op1 & op2;
+            Console.WriteLine(res); 
+
+
+
+            int? a = 2;
+            int b = a ?? 0;
+
+            DisplayValue(b);
+            /*2*/
         }
 
         /*

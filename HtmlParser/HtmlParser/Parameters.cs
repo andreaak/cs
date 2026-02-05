@@ -9,7 +9,10 @@ namespace HtmlParser
         public string Lang { get; set; }
         public WordType WordType { get; set; }
         public bool GetExample { get; set; }
+        public bool GetPreposition { get; set; }
         public bool SetLevel { get; set; }
         public bool RemoveDuplicates { get; set; }
+        public bool AddOtherTranslation { get; set; }
+        public bool AddDescription { get; set; }
     }
 }

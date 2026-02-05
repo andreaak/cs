@@ -27,7 +27,6 @@ namespace HtmlParser.Language.Model
             sb.Clear();
 
             sw.WriteLine(!string.IsNullOrEmpty(Flexion) ? Flexion : Info);
-
             sw.WriteLine(DeTranscription);
             sw.WriteLine(Level);
             sw.WriteLine(Example);

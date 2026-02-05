@@ -1,5 +1,6 @@
 ﻿using CSTest._04_Class._07_Inheritance.Setup;
 using NUnit.Framework;
+using System.Diagnostics;
 
 namespace CSTest._01_Elements_CS._05_RTTI
 {
@@ -14,7 +15,6 @@ namespace CSTest._01_Elements_CS._05_RTTI
         public void TestCasting1Is()
         {
             ClassB b = new ClassB();
-            ClassA a = null;
 
             //--------------------------------------------- is --------------------------------------------- 
             // Оператор is - проверяет совместимость объекта с заданным типом. 
@@ -23,45 +23,28 @@ namespace CSTest._01_Elements_CS._05_RTTI
 
             // Например, в следующем коде определяется, является ли объект экземпляром типа A или типа, производного от A:
 
-            if (b is ClassA)
-            {
-                a = (ClassA)b;
-            }
-            else
-            {
-                a = null;
-            }
+            Debug.WriteLine(b is ClassA);//true
+            Debug.WriteLine(b is ClassB);//true
 
-            TestValueType(12);//true
-            TestValueType(12L);//false
-
-
-            //--------------------------------------------- as---------------------------------------------  
-            // Оператор as используется для выполнения преобразований между совместимыми ссылочными типами.
-            // Оператор as подобен оператору приведения. Однако, если преобразование невозможно,
-            // as возвращает значение null, а не вызывает исключение.
-
-            // В общем виде логика работы оператора as представляет собой механизм использования оператора is
-            // (пример на 25 строке), только в сокращенном виде.
-
-            a = b as ClassA;
+            object i = 12;
+            Debug.WriteLine(i is int);//true
+            
+            i = 12L;
+            Debug.WriteLine(i is int);//false
         }
 
-        private void TestValueType(object i)
-        {
-            if (i is int)
-            {
-
-            }
-            else
-            {
-
-            }
-        }
 
         [Test]
         public void TestCasting2As()
         {
+            /*
+            Оператор as используется для выполнения преобразований между совместимыми ссылочными типами.
+            Оператор as подобен оператору приведения. Однако, если преобразование невозможно,
+            as возвращает значение null, а не вызывает исключение.
+
+            В общем виде логика работы оператора as представляет собой механизм использования оператора is
+            (пример на 25 строке), только в сокращенном виде.
+            */
             DerivedClass instance = new DerivedClass();
             instance.Method();
 

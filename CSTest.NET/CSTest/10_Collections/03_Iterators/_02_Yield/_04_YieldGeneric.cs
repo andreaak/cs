@@ -28,14 +28,14 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             }
         }
 
-        //public IEnumerator<T> IterateEnumerator()
-        //{
-        //    foreach (T obj in array)
-        //    {
-        //        Debug.WriteLine("yield return" + obj);
-        //        yield return obj;
-        //    }
-        //}
+        public IEnumerator<T> IterateEnumerator()
+        {
+            foreach (T obj in array)
+            {
+                Debug.WriteLine("yield return" + obj);
+                yield return obj;
+            }
+        }
 
         public IEnumerable<T> IterateEnumerable(int end)
         {

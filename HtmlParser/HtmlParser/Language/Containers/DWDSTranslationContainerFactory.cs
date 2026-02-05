@@ -93,7 +93,7 @@ namespace HtmlParser.Language.Containers
                 });
             }
 
-            var result = list.Where(l => l.Type == _type).ToArray();
+            var result = list.Where(l => _type.IsSet(l.Type)).ToArray();
 
             return result.Any() ? (IList<DWDSItem>)result : list;
         }
