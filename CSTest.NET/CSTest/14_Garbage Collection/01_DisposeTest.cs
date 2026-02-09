@@ -31,7 +31,7 @@ namespace CSTest._14_Garbage_Collection
 
             /*
             Test in DisposableObject
-            Dispose in DisposableObject
+            Dispose in IDisposable
             */
         }
 

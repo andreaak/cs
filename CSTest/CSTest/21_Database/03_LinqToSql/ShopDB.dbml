@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ShopDB" Class="ShopDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS2012;AttachDbFilename=|DataDirectory|\ShopDB.mdf;Integrated Security=True" SettingsObjectName="CSTest.Properties.Settings" SettingsPropertyName="ShopDBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost,1436;Initial Catalog=ShopDB;User ID=sa;Password=Password1;Encrypt=False" SettingsObjectName="CSTest.Properties.Settings" SettingsPropertyName="ShopDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CUSTOMERS" Member="CUSTOMERs">
     <Type Name="CUSTOMER">
       <Column Name="CUST_NUM" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

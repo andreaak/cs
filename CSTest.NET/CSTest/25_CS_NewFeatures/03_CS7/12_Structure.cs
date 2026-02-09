@@ -38,41 +38,25 @@ namespace CSTest._25_CS_NewFeatures._03_CS7
 
     }
 
-    struct Point5
+    ref struct Point5 //: TestPoint4 Error
     {
-        public int X, Y;
+        public readonly int X; //Х и У должны быть readonly 
+        public readonly int Y; //Х и У должны быть readonly 
+
         public Point5(int x, int y)
         {
             X = x;
             Y = y;
         }
 
-        //public readonly void ResetX() => X = 0; //Ошибка ! 
-        public readonly int ResetX() => X; 
+
+       
     }
 
-    ref struct DisposableRefStruct
+    interface TestPoint4
     {
-        public int X;
-        public readonly int Y;
-        public readonly void Display()
-        {
-            Console.WriteLine($"X = {X}, Y = {Y}");
-        }
-        // Специальный конструктор.
-        public DisposableRefStruct(int xPos, int yPos)
-        {
-            X = xPos;
-            Y = yPos;
-            Console.WriteLine("Created!"); // Экземпляр создан!
-        }
-        public void Dispose()
-        {
-            // Выполнить здесь очистку любых ресурсов.
-            Console.WriteLine("Disposed!"); // Экземпляр освобожден!
-        }
-    }
 
+    }
 
 #endif
 }

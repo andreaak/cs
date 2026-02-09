@@ -22,10 +22,16 @@ namespace HtmlParser.Language
 
         public void Parse(IList<string> lines)
         {
-            var temp = lines.Where(l => !string.IsNullOrEmpty(l));
+            var temp = lines.Where(l => !string.IsNullOrEmpty(l)).Distinct();
             var list = _order ?
                 temp.OrderBy(l => l).ToArray() :
                 temp.ToArray();
+
+            list = list.Select(i => i.Split(new[] {" ", "\t"}, StringSplitOptions.RemoveEmptyEntries))
+                .Select(ar => new {A = ar[0], B = ar.Length > 1 ? ar[1] : ""})
+                .GroupBy(ob => ob.A)
+                .Select(gr => gr.Key + "\t" + string.Join(",", gr.Select(g => g.B)))
+                .ToArray();
 
             using (var sw = File.CreateText("out.txt"))
             {
@@ -106,8 +112,18 @@ namespace HtmlParser.Language
 
             try
             {
-                var request =
-                    $"значение и типы глагола {de} {verb.VerbClass} с переводом на русский, примерами, синонимами, антонимами, предложное управление и также уровень слова";
+                string request;
+                if (lang == "de")
+                {
+                    request =
+                        $"значение и типы немецкого глагола {de} {verb.VerbClass} с переводом на русский, примерами, синонимами, антонимами, предложное управление и также уровень слова";
+
+                }
+                else
+                {
+                    request =
+                        $"значение и типы английского глагола {de} {verb.VerbClass} с переводом на русский, примерами, синонимами, антонимами, предложное управление и также уровень слова";
+                }
 
 
                 var res = request.GetGPTResponse();

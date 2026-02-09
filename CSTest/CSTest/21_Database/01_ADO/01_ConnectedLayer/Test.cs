@@ -26,9 +26,15 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
                 DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 while (reader.Read())
                 {
-                    Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), reader["COMPANY"], reader.GetValue(2));
+                    Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")),
+                        reader["COMPANY"], reader.GetValue(2));
                 }
+
                 reader.Close();
+            }
+            catch (Exception ex)
+            {
+
             }
             finally
             {
@@ -422,7 +428,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [Test]
-        public void TestFunction()
+        public void TestFunctionReturnScalar()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();
@@ -446,7 +452,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             try
             {
                 connection.Open();
-                cmd.ExecuteNonQuery();
+                var obj = cmd.ExecuteScalar();
 
                 Debug.WriteLine("@RetVal: " + param1.Value);
             }
@@ -460,7 +466,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [Test]
-        public void TestFunction2()
+        public void TestFunction2ReturnTable()
         {
             DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
             DbConnection connection = df.CreateConnection();

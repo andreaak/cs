@@ -11,6 +11,12 @@ namespace CSTest._14_Garbage_Collection._0_Setup
 
         }
 
+        void IDisposable.Dispose()
+        {
+            Debug.WriteLine("Dispose in IDisposable");
+
+        }
+
         public void Test()
         {
             Debug.WriteLine("Test in DisposableObject");

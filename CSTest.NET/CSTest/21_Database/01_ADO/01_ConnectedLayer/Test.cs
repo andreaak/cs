@@ -1,39 +1,44 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using NUnit.Framework;
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
-using NUnit.Framework;
+
 
 namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
 {
     [TestFixture]
     public class Test
     {
-        string providerName = null;//System.Configuration.ConfigurationManager.ConnectionStrings["CSTest.Properties.Settings.ShopDBConnectionString"].ProviderName;
-        string connectionString = null; //System.Configuration.ConfigurationManager.ConnectionStrings["CSTest.Properties.Settings.ShopDBConnectionString"].ConnectionString;
+        static IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+        static string connectionString = config.GetSection("ConnectionStrings").GetSection("ShopDB").GetSection("Connection").Value;
+        static string providerName = config.GetSection("ConnectionStrings").GetSection("ShopDB").GetSection("Provider").Value;
 
         [Test]
         public void TestDataReader()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS";
-            try
+
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (reader.Read())
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS";
+                try
                 {
-                    Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), reader["COMPANY"], reader.GetValue(2));
+                    connection.Open();
+                    DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (reader.Read())
+                    {
+                        Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), reader["COMPANY"], reader.GetValue(2));
+                    }
+                    reader.Close();
                 }
-                reader.Close();
+                finally
+                {
+                   // connection.Close();
+                }
             }
-            finally
-            {
-                connection.Close();
-            }
+
             /*
             Id: 2101 Company: Jones Mfg. Limit:65000.0000
             Id: 2102 Company: First Corp. Limit:65000.0000
@@ -62,29 +67,30 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestDataReaderBatch()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS;" +
-                "SELECT EMPL_NUM, NAME, TITLE FROM SALESREPS;";
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                do
-                {
-                    while (reader.Read())
-                    {
-                        Debug.WriteLine("Id: {0} Description: {1} Other: {2}", reader.GetValue(0), reader.GetValue(1), reader.GetValue(2));
-                    }
-                } while (reader.NextResult());
 
-                reader.Close();
-            }
-            finally
-            {
-                connection.Close();
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT FROM CUSTOMERS;" +
+                    "SELECT EMPL_NUM, NAME, TITLE FROM SALESREPS;";
+                try
+                {
+                    connection.Open();
+                    DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    do
+                    {
+                        while (reader.Read())
+                        {
+                            Debug.WriteLine("Id: {0} Description: {1} Other: {2}", reader.GetValue(0), reader.GetValue(1), reader.GetValue(2));
+                        }
+                    } while (reader.NextResult());
+
+                    reader.Close();
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             /*
             Id: 2101 Description: Jones Mfg. Other: 65000.0000
@@ -124,31 +130,31 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestDataReaderWithParam()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT  FROM CUSTOMERS WHERE CUST_NUM=@Id";
-
-            DbParameter param = cmd.CreateParameter();
-            param.ParameterName = "@Id";
-            param.Direction = ParameterDirection.Input;
-            param.Value = 2101;
-            cmd.Parameters.Add(param);
-
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (reader.Read())
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT CUST_NUM, COMPANY, CREDIT_LIMIT  FROM CUSTOMERS WHERE CUST_NUM=@Id";
+
+                DbParameter param = cmd.CreateParameter();
+                param.ParameterName = "@Id";
+                param.Direction = ParameterDirection.Input;
+                param.Value = 2101;
+                cmd.Parameters.Add(param);
+
+                try
                 {
-                    Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), reader.GetValue(1), reader.GetValue(2));
+                    connection.Open();
+                    DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (reader.Read())
+                    {
+                        Debug.WriteLine("Id: {0} Company: {1} Limit:{2}", reader.GetValue(reader.GetOrdinal("CUST_NUM")), reader.GetValue(1), reader.GetValue(2));
+                    }
+                    reader.Close();
                 }
-                reader.Close();
-            }
-            finally
-            {
-                connection.Close();
+                finally
+                {
+                    connection.Close();
+                }
             }
             /*
             Id: 2101 Company: Jones Mfg. Limit:65000.0000
@@ -175,37 +181,37 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestExecuteNonQuery()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = @"CREATE TABLE  Table1(
+            using (var connection = new SqlConnection(connectionString))
+            {
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = @"CREATE TABLE  Table1(
                             Field1  int  NOT  NULL CONSTRAINT  PK_Table1  PRIMARY KEY,
                             Field2  varchar(32))";
-            try
-            {
-                connection.Open();
-                int result = cmd.ExecuteNonQuery();
-                Debug.WriteLine("Table created");
-
-                cmd.CommandText = "INSERT INTO Table1 VALUES(0, 'Test')";
-                result = cmd.ExecuteNonQuery();
-                if (result == 1)
+                try
                 {
-                    Debug.WriteLine("Row inserted");
-                }
-                else
-                {
-                    Debug.WriteLine("Row not inserted");
-                }
+                    connection.Open();
+                    int result = cmd.ExecuteNonQuery();
+                    Debug.WriteLine("Table created");
 
-                cmd.CommandText = "DROP TABLE  Table1";
-                result = cmd.ExecuteNonQuery();
-                Debug.WriteLine("Table droped");
-            }
-            finally
-            {
-                connection.Close();
+                    cmd.CommandText = "INSERT INTO Table1 VALUES(0, 'Test')";
+                    result = cmd.ExecuteNonQuery();
+                    if (result == 1)
+                    {
+                        Debug.WriteLine("Row inserted");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Row not inserted");
+                    }
+
+                    cmd.CommandText = "DROP TABLE  Table1";
+                    result = cmd.ExecuteNonQuery();
+                    Debug.WriteLine("Table droped");
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -214,22 +220,21 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestExecuteScalar()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = @"SELECT COUNT(*) FROM CUSTOMERS";
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                int result = Convert.ToInt32(cmd.ExecuteScalar());
-                Debug.WriteLine("Result: " + result);
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = @"SELECT COUNT(*) FROM CUSTOMERS";
+                try
+                {
+                    connection.Open();
+                    int result = Convert.ToInt32(cmd.ExecuteScalar());
+                    Debug.WriteLine("Result: " + result);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-            finally
-            {
-                connection.Close();
-            }
-
             /*
             21
             */
@@ -238,33 +243,33 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestProcedureWithParam()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "spCustomerByName";
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            DbParameter param = cmd.CreateParameter();
-            param.ParameterName = "@Company";
-            param.Direction = ParameterDirection.Input;
-            param.Value = "Jones Mfg.";
-            cmd.Parameters.Add(param);
-
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (reader.Read())
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "spCustomerByName";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                DbParameter param = cmd.CreateParameter();
+                param.ParameterName = "@Company";
+                param.Direction = ParameterDirection.Input;
+                param.Value = "Jones Mfg.";
+                cmd.Parameters.Add(param);
+
+                try
                 {
-                    Debug.WriteLine("Id: {0} Company: {1} Rep: {2} Limit:{3}", reader.GetValue(reader.GetOrdinal("CUST_NUM")),
-                                    reader.GetValue(1), reader.GetValue(2), reader.GetValue(3));
+                    connection.Open();
+                    DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (reader.Read())
+                    {
+                        Debug.WriteLine("Id: {0} Company: {1} Rep: {2} Limit:{3}", reader.GetValue(reader.GetOrdinal("CUST_NUM")),
+                                        reader.GetValue(1), reader.GetValue(2), reader.GetValue(3));
+                    }
+                    reader.Close();
                 }
-                reader.Close();
-            }
-            finally
-            {
-                connection.Close();
+                finally
+                {
+                    connection.Close();
+                }
             }
             /*
             Id: 2101 Company: Jones Mfg. Rep: 106 Limit:65000.0000
@@ -274,40 +279,40 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestProcedureWithParam2()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "spCustomerByName2";
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            DbParameter param1 = cmd.CreateParameter();
-            param1.ParameterName = "@RetVal";
-            param1.Direction = ParameterDirection.ReturnValue;
-            param1.DbType = DbType.Int32;
-            cmd.Parameters.Add(param1);
-
-            DbParameter param = cmd.CreateParameter();
-            param.ParameterName = "@Company";
-            param.Direction = ParameterDirection.Input;
-            param.Value = "Jones Mfg.";
-            cmd.Parameters.Add(param);
-
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (reader.Read())
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "spCustomerByName2";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                DbParameter param1 = cmd.CreateParameter();
+                param1.ParameterName = "@RetVal";
+                param1.Direction = ParameterDirection.ReturnValue;
+                param1.DbType = DbType.Int32;
+                cmd.Parameters.Add(param1);
+
+                DbParameter param = cmd.CreateParameter();
+                param.ParameterName = "@Company";
+                param.Direction = ParameterDirection.Input;
+                param.Value = "Jones Mfg.";
+                cmd.Parameters.Add(param);
+
+                try
                 {
-                    Debug.WriteLine("Id: {0} Company: {1} Rep: {2} Limit:{3}", reader.GetValue(reader.GetOrdinal("CUST_NUM")),
-                                    reader.GetValue(1), reader.GetValue(2), reader.GetValue(3));
+                    connection.Open();
+                    DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (reader.Read())
+                    {
+                        Debug.WriteLine("Id: {0} Company: {1} Rep: {2} Limit:{3}", reader.GetValue(reader.GetOrdinal("CUST_NUM")),
+                                        reader.GetValue(1), reader.GetValue(2), reader.GetValue(3));
+                    }
+                    Debug.WriteLine("@RetVal: " + param1.Value);
+                    reader.Close();
                 }
-                Debug.WriteLine("@RetVal: " + param1.Value);
-                reader.Close();
-            }
-            finally
-            {
-                connection.Close();
+                finally
+                {
+                    connection.Close();
+                }
             }
             /*
             Id: 2101 Company: Jones Mfg. Rep: 106 Limit:65000.0000
@@ -318,51 +323,51 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestProcedureWithOutParam()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "spCustomerById";
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            DbParameter param1 = cmd.CreateParameter();
-            param1.ParameterName = "@RetVal";
-            param1.Direction = ParameterDirection.ReturnValue;
-            param1.DbType = DbType.Int32;
-            cmd.Parameters.Add(param1);
-
-            DbParameter param2 = cmd.CreateParameter();
-            param2.ParameterName = "@Id";
-            param2.Direction = ParameterDirection.Input;
-            param2.Value = 2102;
-            cmd.Parameters.Add(param2);
-
-            DbParameter param3 = cmd.CreateParameter();
-            param3.ParameterName = "@Company";
-            param3.DbType = DbType.String;
-            param3.Size = 20;
-            param3.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(param3);
-
-            DbParameter param4 = cmd.CreateParameter();
-            param4.ParameterName = "@Limit";
-            param4.DbType = DbType.Decimal;
-            param4.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(param4);
-
-
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                cmd.ExecuteNonQuery();
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "spCustomerById";
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                Debug.WriteLine("@RetVal: " + param1.Value);
-                Debug.WriteLine("@Company: " + param3.Value);
-                Debug.WriteLine("@Limit: " + param4.Value);
-            }
-            finally
-            {
-                connection.Close();
+                DbParameter param1 = cmd.CreateParameter();
+                param1.ParameterName = "@RetVal";
+                param1.Direction = ParameterDirection.ReturnValue;
+                param1.DbType = DbType.Int32;
+                cmd.Parameters.Add(param1);
+
+                DbParameter param2 = cmd.CreateParameter();
+                param2.ParameterName = "@Id";
+                param2.Direction = ParameterDirection.Input;
+                param2.Value = 2102;
+                cmd.Parameters.Add(param2);
+
+                DbParameter param3 = cmd.CreateParameter();
+                param3.ParameterName = "@Company";
+                param3.DbType = DbType.String;
+                param3.Size = 20;
+                param3.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(param3);
+
+                DbParameter param4 = cmd.CreateParameter();
+                param4.ParameterName = "@Limit";
+                param4.DbType = DbType.Decimal;
+                param4.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(param4);
+
+
+                try
+                {
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+
+                    Debug.WriteLine("@RetVal: " + param1.Value);
+                    Debug.WriteLine("@Company: " + param3.Value);
+                    Debug.WriteLine("@Limit: " + param4.Value);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             /*
             @RetVal: 777
@@ -374,45 +379,45 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestProcedureWithOutParam2()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "spCustomerById";
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            DbParameter param2 = cmd.CreateParameter();
-            param2.ParameterName = "@Id";
-            param2.Direction = ParameterDirection.Input;
-            param2.Value = 2102;
-            cmd.Parameters.Add(param2);
-
-            DbParameter param3 = cmd.CreateParameter();
-            param3.ParameterName = "@Company";
-            param3.DbType = DbType.String;
-            param3.Size = 20;
-            param3.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(param3);
-
-            DbParameter param4 = cmd.CreateParameter();
-            param4.ParameterName = "@Limit";
-            param4.DbType = DbType.Decimal;
-            param4.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(param4);
-
-
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                object result = cmd.ExecuteScalar();
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "spCustomerById";
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                Debug.WriteLine("@RetVal: " + result);
-                Debug.WriteLine("@Company: " + param3.Value);
-                Debug.WriteLine("@Limit: " + param4.Value);
-            }
-            finally
-            {
-                connection.Close();
+                DbParameter param2 = cmd.CreateParameter();
+                param2.ParameterName = "@Id";
+                param2.Direction = ParameterDirection.Input;
+                param2.Value = 2102;
+                cmd.Parameters.Add(param2);
+
+                DbParameter param3 = cmd.CreateParameter();
+                param3.ParameterName = "@Company";
+                param3.DbType = DbType.String;
+                param3.Size = 20;
+                param3.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(param3);
+
+                DbParameter param4 = cmd.CreateParameter();
+                param4.ParameterName = "@Limit";
+                param4.DbType = DbType.Decimal;
+                param4.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(param4);
+
+
+                try
+                {
+                    connection.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    Debug.WriteLine("@RetVal: " + result);
+                    Debug.WriteLine("@Company: " + param3.Value);
+                    Debug.WriteLine("@Limit: " + param4.Value);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             /*
             @RetVal:
@@ -424,35 +429,35 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestFunction()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "sfCustomerCompanyById";
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            DbParameter param2 = cmd.CreateParameter();
-            param2.ParameterName = "@Id";
-            param2.Direction = ParameterDirection.Input;
-            param2.Value = 2102;
-            cmd.Parameters.Add(param2);
-
-            DbParameter param1 = cmd.CreateParameter();
-            param1.ParameterName = "@RetVal";
-            param1.Direction = ParameterDirection.ReturnValue;
-            param1.DbType = DbType.Int32;
-            cmd.Parameters.Add(param1);
-
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                cmd.ExecuteNonQuery();
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "sfCustomerCompanyById";
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                Debug.WriteLine("@RetVal: " + param1.Value);
-            }
-            finally
-            {
-                connection.Close();
+                DbParameter param2 = cmd.CreateParameter();
+                param2.ParameterName = "@Id";
+                param2.Direction = ParameterDirection.Input;
+                param2.Value = 2102;
+                cmd.Parameters.Add(param2);
+
+                DbParameter param1 = cmd.CreateParameter();
+                param1.ParameterName = "@RetVal";
+                param1.Direction = ParameterDirection.ReturnValue;
+                param1.DbType = DbType.Int32;
+                cmd.Parameters.Add(param1);
+
+                try
+                {
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+
+                    Debug.WriteLine("@RetVal: " + param1.Value);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             /*
             @RetVal: First Corp.
@@ -462,32 +467,32 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestFunction2()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-            DbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT * FROM sfCustomerInfoById(@Id);";
-
-            DbParameter param2 = cmd.CreateParameter();
-            param2.ParameterName = "@Id";
-            param2.Direction = ParameterDirection.Input;
-            param2.Value = 2102;
-            cmd.Parameters.Add(param2);
-
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (reader.Read())
+                DbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT * FROM sfCustomerInfoById(@Id);";
+
+                DbParameter param2 = cmd.CreateParameter();
+                param2.ParameterName = "@Id";
+                param2.Direction = ParameterDirection.Input;
+                param2.Value = 2102;
+                cmd.Parameters.Add(param2);
+
+                try
                 {
-                    Debug.WriteLine("Id: {0} Company: {1} Rep: {2} Limit:{3}", reader.GetValue(reader.GetOrdinal("CUST_NUM")),
-                                    reader.GetValue(1), reader.GetValue(2), reader.GetValue(3));
+                    connection.Open();
+                    DbDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (reader.Read())
+                    {
+                        Debug.WriteLine("Id: {0} Company: {1} Rep: {2} Limit:{3}", reader.GetValue(reader.GetOrdinal("CUST_NUM")),
+                                        reader.GetValue(1), reader.GetValue(2), reader.GetValue(3));
+                    }
+                    reader.Close();
                 }
-                reader.Close();
-            }
-            finally
-            {
-                connection.Close();
+                finally
+                {
+                    connection.Close();
+                }
             }
             /*
             Id: 2102 Company: First Corp. Rep: 101 Limit:65000.0000
@@ -504,11 +509,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
             После этого нужно включать ее в каждую выполняемую команду.
             */
 
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-
-            using (connection)
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 using (DbCommand cmd = connection.CreateCommand())
@@ -583,11 +584,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         [Test]
         public void TestTransaction2()
         {
-            DbProviderFactory df = DbProviderFactories.GetFactory(providerName);
-            DbConnection connection = df.CreateConnection();
-            connection.ConnectionString = connectionString;
-
-            using (connection)
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 using (DbCommand cmd = connection.CreateCommand())
