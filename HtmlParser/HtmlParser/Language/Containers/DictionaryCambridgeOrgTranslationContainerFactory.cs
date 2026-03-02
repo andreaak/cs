@@ -78,7 +78,7 @@ namespace HtmlParser.Language.Containers
                         var ru = description.SelectSingleNode(".//div[@class='def-body ddef_b']/span[@lang='ru']")?.InnerText.PonsNormalize();
                         var en = description.SelectSingleNode(".//div[@class='def-body ddef_b']/div[@class='examp dexamp']")?.InnerText.PonsNormalize();
 
-                        list.Add((!string.IsNullOrEmpty(sense) ? sense + ": " : "") + $"{dsc} -- {en} - {ru}");
+                        list.Add((!string.IsNullOrEmpty(sense) ? sense + ": " : "") + $"{dsc} --- {ru} -- {en}");
                     }
                     
                 }

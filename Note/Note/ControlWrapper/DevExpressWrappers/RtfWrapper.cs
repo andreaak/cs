@@ -156,8 +156,12 @@ namespace Note.ControlWrapper.DevExpressWrappers
 
         public void RemoveWhiteSpace()
         {
-            DocumentRange range = control.Document.Selection;
-            control.Document.ReplaceAll(" ", "", SearchOptions.None, range);
+            var ranges = control.Document.Selections;
+
+            foreach (var range in ranges)
+            {
+                control.Document.ReplaceAll(" ", "", SearchOptions.None, range);
+            }
         }
 
         public void RemoveDoubleWhiteSpace()

@@ -33,16 +33,20 @@ namespace CSTest._06_Interface
             // Это вполне допустимо как при наличии контравариантности, так и без нее. 
             IContravariance<BaseCoContrClass> baseClass = new CovarianceClass<BaseCoContrClass>(null);
             baseClass.Show(new BaseCoContrClass("Base"));
+            baseClass.Show(new DerivedCoContrClass("Derived"));
+
             // Создать ссылку из интерфейса IContravariance<DerivedCoContrClass> на объект типа CovarianceClass<DerivedCoContrClass>. 
             // И это вполне допустимо как при наличии контравариантности, так и без нее. 
             IContravariance<DerivedCoContrClass> derived = new CovarianceClass<DerivedCoContrClass>(null);
             // Этот вызов допустим как при наличии контравариантности, так и без нее. 
             derived.Show(new DerivedCoContrClass("Derived"));
+            
             // Создать ссылку из интерфейса IContravariance<DerivedCoContrClass> на объект типа CovarianceClass<BaseCoContrClass>. 
             // Это вполне допустимо благодаря контравариантности.
             IContravariance<DerivedCoContrClass> derived2 = new CovarianceClass<BaseCoContrClass>(null);
             // Этот вызов допустим как при наличии контравариантности, так и без нее. 
             derived2.Show(new DerivedCoContrClass("Derived"));
+            
             // Присвоить переменную derived переменной baseClass. 
             // Это вполне допустимо благодаря контравариантности.
             derived = baseClass;

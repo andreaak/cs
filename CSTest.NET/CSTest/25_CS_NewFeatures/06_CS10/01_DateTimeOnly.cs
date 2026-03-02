@@ -7,7 +7,7 @@ namespace CSTest._25_CS_NewFeatures._06_CS10;
     [TestFixture]
     public class _01_DateTimeOnly
     {
-#if CS7
+#if CS10
         [Test]
         public void TestDateOnly()
         {

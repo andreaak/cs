@@ -34,7 +34,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public async void TestAsyncAwait7_ActionWithResultAfterAwait()
+        public async Task TestAsyncAwait7_ActionWithResultAfterAwait()
         {
             Debug.WriteLine("Staring async download\n");
             _00_ClassUnderTest mc = new _00_ClassUnderTest();
@@ -65,24 +65,24 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
         }
 
         [Test]
-        public async void TestAsyncAwait7_WithActionAfterAwait()
+        public async Task TestAsyncAwait7_WithActionAfterAwait()
         {
             Debug.WriteLine("Main ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
             _00_ClassUnderTest mc = new _00_ClassUnderTest();
             await mc.OperationAsync7_ReturnTask_WithActionAfterAwait();
             Debug.WriteLine("Main thread ended. ThreadID {0}", Thread.CurrentThread.ManagedThreadId);
-
             /*
-            Main ThreadID 8
-            Operation ThreadID 9
+            Main ThreadID 16
+            OperationAsync7 ThreadID 16 Task: 
+            Operation ThreadID 9 Task: 1
             Begin
             End
-            AfterFirst 2027
-            Operation ThreadID 9
+            AfterFirst 2022
+            Operation2 ThreadID 11 Task: 4
             Begin
             End
-            AfterSecond 4038
-            Main thread ended. ThreadID 8
+            AfterSecond 4050
+            Main thread ended. ThreadID 11
             */
         }
 

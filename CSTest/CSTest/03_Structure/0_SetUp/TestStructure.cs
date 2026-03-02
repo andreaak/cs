@@ -21,11 +21,12 @@ namespace CSTest._03_Structure._0_Setup
     // или служить в качестве базовых для других структур и классов
     {
         public static string initStatic = "Test";// can have static field initializers in structs
-        //public string Fault = "Test"; cannot have instance field initializers in structs
-        //public string Author = Init(); cannot have instance field initializers in structs
+        //public string Fault = "Test"; //cannot have instance field initializers in structs
+        //public string Author = Init(); //cannot have instance field initializers in structs
         public string Author;
         public string Title;
         public int ISBN;
+        public readonly int testReadonly;
 
         public static int staticField;
 
@@ -60,6 +61,7 @@ namespace CSTest._03_Structure._0_Setup
             Author = a;
             Title = t;
             ISBN = c;
+            testReadonly = 0;
         }
 
         public TestStructure(TestStructure book)

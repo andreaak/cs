@@ -1,12 +1,13 @@
+using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
+using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading;
-using NUnit.Framework;
-using System.Threading.Tasks;
-using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
-using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait
 {
@@ -16,7 +17,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
     public class _05_TestWhen
     {
         [Test]
-        public async void TestAsyncAwait01_Sequential()
+        public async Task TestAsyncAwait01_Sequential()
         {
             var mc = new _05_ClassUnderTest();
             Debug.WriteLine("Before tasks await");
@@ -42,15 +43,31 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 After tasks await
              */
         }
+        /*
+        Task.WhenAll – статический метод, который ожидает завершение всех переданных задач. Метод
+        возвращает задачу или задачу с массивом результатов выполнившихся задач типа TResult.
+        Если переданный массив или коллекция не содержит задач, результирующая задача получит
+        состояние «успешно завершена» (RanToCompletion) еще до того, как она вернется пользователю.
 
+        Состояние результирующей задачи:
+        • Если хоть одна из переданных задач будет завершена в состоянии Failed, то результирующая задача
+        тоже будет провалена. Свойство Exception результирующей задачи будет содержать набор всех
+        исключений из каждой задачи, где оно произошло.
+        • Если все задачи не были провалены (Failed), но хоть одна из них была отменена, то результирующая
+        задача получит состояние Canceled.
+        • Если все задачи не были провалены (Failed) и не были отменены (Canceled), то результирующая
+        задача получит состояние RanToCompletion (успешно завершена).
+         
+         */
         [Test]
-        public async void TestAsyncAwait02_WhenAll()
+        public async Task TestAsyncAwait02_WhenAll()
         {
             var mc = new _05_ClassUnderTest();
             var tasks = new[] { 0, 1, 2, 3, 4, }.Select(item => mc.OperationAsync(item));
             Debug.WriteLine("Before tasks await");
-            await Task.WhenAll(tasks);
-            Debug.WriteLine("After tasks await");
+            var res = Task.WhenAll(tasks);
+            await res;
+            Debug.WriteLine($"After tasks await {res.Status}");
 
             /*
                 Before tasks await
@@ -67,6 +84,17 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
                 After tasks await
              */
         }
+        /*
+        Task.WhenAny – статический метод, который ожидает завершение одной, только первой задачи из
+        переданных в параметрах. По завершении возвращает задачу или задачу с результатом типа TResult
+        первой выполнившейся задачи.
+        Состояние результирующей задачи:
+        • Результирующая задача будет возвращена после первого завершения любой из переданных задач.
+        • Результирующая задача всегда будет завершена в состоянии RanToCompletion с установленным
+        результатом, который был получен от первой завершившейся задачи.
+        • Такое поведение будет даже если первая завершенная задача завершилась с ошибкой (Failed) или
+        отменой (Cancelled). 
+         */
 
         [Test]
         public async void TestAsyncAwait03_WhenAny()
@@ -74,7 +102,8 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             var mc = new _05_ClassUnderTest();
             var tasks = new[] { 1, 2, 3, 4, 5 }.Select(item => mc.OperationAsync(item));
             Debug.WriteLine("Before tasks await");
-            await Task.WhenAny(tasks);
+            var res =  Task.WhenAny(tasks);
+            await res;
             Debug.WriteLine("After tasks await");
 
             /*
@@ -203,6 +232,8 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             CancellationTokenSource cts = new CancellationTokenSource();
             mc.DoDownloadAsync_WaitAll(cts);
             Debug.WriteLine("Async download started\n");
+
+
 
             //Thread.Sleep(2000);
             //Debug.WriteLine("Cancel Task\n");

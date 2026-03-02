@@ -15,6 +15,14 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             array = a;
         }
 
+        //public IEnumerator<T> GetEnumerator()
+        //{
+        //    foreach (T obj in array)
+        //    {
+        //        yield return obj;
+        //    }
+        //}
+
         //GetEnumerator компилится в:
         public IEnumerator<T> GetEnumerator()
         {
@@ -109,6 +117,15 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
                 this.state = -1;
             }
         }
+
+        //public IEnumerable<T> IterateEnumerable()
+        //{
+        //    foreach (T obj in array)
+        //    {
+        //        Debug.WriteLine("yield return" + obj);
+        //        yield return obj;
+        //    }
+        //}
 
         public IEnumerable<T> IterateEnumerable()
         {
@@ -209,6 +226,15 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
             }
         }
 
+        //public IEnumerable<T> IterateEnumerable(int end)
+        //{
+        //    for (int i = 0; i < end; i++)
+        //    {
+        //        Debug.WriteLine("yield return " + array[i]);
+        //        yield return array[i];
+        //    }
+        //}
+
         public IEnumerable<T> IterateEnumerable(int end)
         {
             IterateEnumerable2Class iterateEnumerableD4 = new IterateEnumerable2Class(-2);
@@ -305,6 +331,14 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
                 return (IEnumerator)this;
             }
         }
+        
+        //public IEnumerable<T> IterateEnumerable(int begin, int end)
+        //{
+        //    for (int i = begin; i < end; i++)
+        //    {
+        //        yield return array[i];
+        //    }
+        //}
 
         public IEnumerable<T> IterateEnumerable(int begin, int end)
         {
@@ -409,6 +443,12 @@ namespace CSTest._10_Collections._03_Iterators._02_Yield
                 return (IEnumerator)this;
             }
         }
+
+
+        //public IEnumerable StaticText()
+        //{
+        //    yield return "Hello world!";
+        //}
 
         public IEnumerable StaticText()
         {

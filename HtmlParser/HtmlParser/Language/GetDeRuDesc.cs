@@ -27,11 +27,11 @@ namespace HtmlParser.Language
                 temp.OrderBy(l => l).ToArray() :
                 temp.ToArray();
 
-            list = list.Select(i => i.Split(new[] {" ", "\t"}, StringSplitOptions.RemoveEmptyEntries))
-                .Select(ar => new {A = ar[0], B = ar.Length > 1 ? ar[1] : ""})
-                .GroupBy(ob => ob.A)
-                .Select(gr => gr.Key + "\t" + string.Join(",", gr.Select(g => g.B)))
-                .ToArray();
+            //list = list.Select(i => i.Split(new[] { "\t" }, StringSplitOptions.RemoveEmptyEntries))
+            //    .Select(ar => new { A = ar[0], B = ar.Length > 1 ? ar[1] : "" })
+            //    .GroupBy(ob => ob.A)
+            //    .Select(gr => gr.Key + "\t" + string.Join(",", gr.Select(g => g.B)))
+            //    .ToArray();
 
             using (var sw = File.CreateText("out.txt"))
             {
@@ -59,6 +59,22 @@ namespace HtmlParser.Language
             if (_type == WordType.Verb)
             {
                 word = SetVerbDescription(de);
+            }
+            else if (_type == WordType.Adv)
+            {
+                word = SetAdverbDescription(de);
+            }
+            else if (_type == WordType.Adj)
+            {
+                word = SetAdjDescription(de);
+            }
+            else if (_type == WordType.Subst)
+            {
+                word = SetSubstDescription(de);
+            }
+            else if (_type == WordType.Konj)
+            {
+                word = SetKonjDescription(de);
             }
             else
             {
@@ -96,7 +112,7 @@ namespace HtmlParser.Language
         private Verb SetVerbDescription(string de)
         {
             de = de.Replace("|", "");
-            var i = de.Split(new[] { " ", "\t" }, StringSplitOptions.RemoveEmptyEntries);
+            var i = de.Split(new[] { /*" ",*/ "\t" }, StringSplitOptions.RemoveEmptyEntries);
             de = i[0];
 
             var verb = new Verb
@@ -112,19 +128,19 @@ namespace HtmlParser.Language
 
             try
             {
-                string request;
-                if (lang == "de")
+                string langItem;
+                switch (lang)
                 {
-                    request =
-                        $"значение и типы немецкого глагола {de} {verb.VerbClass} с переводом на русский, примерами, синонимами, антонимами, предложное управление и также уровень слова";
-
+                    case "de":
+                        langItem = "немецкого";
+                        break;
+                    case "en":
+                        langItem = "английского";
+                        break;
+                    default:
+                        return null;
                 }
-                else
-                {
-                    request =
-                        $"значение и типы английского глагола {de} {verb.VerbClass} с переводом на русский, примерами, синонимами, антонимами, предложное управление и также уровень слова";
-                }
-
+                string request = $"значение и типы {langItem} глагола {de} {verb.VerbClass} с переводом на русский, примерами, синонимами, антонимами, предложное управление, транскрипция и также уровень слова";
 
                 var res = request.GetGPTResponse();
 
@@ -138,6 +154,67 @@ namespace HtmlParser.Language
             }
 
             return verb;
+        }
+        
+        private WordClass SetAdverbDescription(string de)
+        {
+            string part = "наречия";
+            return SetDescription(de, part, "adv");
+        }
+
+        private WordClass SetAdjDescription(string de)
+        {
+            string part = "прилагательного";
+            return SetDescription(de, part, "adj");
+        }
+
+        private WordClass SetSubstDescription(string de)
+        {
+            string part = "существительного";
+            return SetDescription(de, part, "subst");
+        }
+
+        private WordClass SetKonjDescription(string de)
+        {
+            string part = "союза";
+            return SetDescription(de, part, "konj");
+        }
+
+        private WordClass SetDescription(string de, string part, string wordClass)
+        {
+            var word = new WordClass
+            {
+                De = de,
+                WrdClass = wordClass 
+            };
+
+            try
+            {
+                string langItem;
+                switch (lang)
+                {
+                    case "de":
+                        langItem = "немецкого";
+                        break;
+                    case "en":
+                        langItem = "английского";
+                        break;
+                    default:
+                        return null;
+                }
+                string request = $"значение {langItem} {part} {de} с переводом на русский, примерами, синонимами, антонимами, предложное управление, транскрипция и также уровень слова"; 
+                var res = request.GetGPTResponse();
+
+                word.Description = res;
+                return word;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                break_ = true;
+                return null;
+            }
+
         }
     }
 }

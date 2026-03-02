@@ -427,7 +427,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [Test]
-        public void TestFunction()
+        public void TestFunctionScalar()
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -465,7 +465,7 @@ namespace CSTest._21_Database._01_ADO._01_ConnectedLayer
         }
 
         [Test]
-        public void TestFunction2()
+        public void TestFunctionTable()
         {
             using (var connection = new SqlConnection(connectionString))
             {

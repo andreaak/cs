@@ -68,12 +68,25 @@ namespace CSTest._25_CS_NewFeatures._03_CS7
             var tl = ("one", 1);
             var t2 = ("one", 1);
             Debug.WriteLine(tl.Equals(t2));  // True
+        //Thread thread = new Thread(new ParameterizedThreadStart(WriteChar));
+            //thread.Start('-');
         }
 
         static (string, int) GetPerson() => ("Bob", 23);
         static (string Name, int Age) GetPerson2() => ("Bob", 23);
 
+        private static void WriteChar(object arg)
+        {
+            char item = (char)arg;
+            for (int i = 0; i < 80; i++)
+            {
+                Console.Write(item);
+                Thread.Sleep(70);
+            }
+        }
+
     }
+
 
 
     class TupleSamples

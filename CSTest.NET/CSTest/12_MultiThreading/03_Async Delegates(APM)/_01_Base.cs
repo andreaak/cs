@@ -17,7 +17,7 @@ namespace CSTest._12_MultiThreading
             for (int i = 0; i < 80; i++)
             {
                 Thread.Sleep(50);
-                Debug.Write(".");
+                Debug.Write("|");
             }
 
             Debug.WriteLine("\nАсинхронная операция завершена.");

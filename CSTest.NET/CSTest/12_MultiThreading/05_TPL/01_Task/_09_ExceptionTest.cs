@@ -11,7 +11,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
     {
         [Test]
         //Задача с необработанным исключением может приводить к генерированию исключения в GC
-        public void TestTaskException1()
+        public void TestTaskException1NotHandle()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:
@@ -20,23 +20,33 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
                 Debug.WriteLine("Генерация исключения.");
                 throw null;
             });
-            Thread.Sleep(2000);
+            Thread.Sleep(10000);
             Debug.WriteLine("Основной поток завершен.");
+
+            /*
+            Основной поток запущен.
+            Генерация исключения.
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Основной поток завершен.
+            */
         }
 
         [Test]
         //Обработка исключения через Wait
-        public void TestTaskException2()
+        public void TestTaskException2Wait()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:
             Task task = Task.Factory.StartNew(() =>
             {
                 Debug.WriteLine("Генерация исключения.");
-                throw null;
+                Thread.Sleep(1000);
+                throw new NullReferenceException();
             });
             try
             {
+                Debug.WriteLine("Ожидание!");
+
                 task.Wait();
             }
             catch (AggregateException aex)
@@ -52,11 +62,20 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             }
             Thread.Sleep(2000);
             Debug.WriteLine("Основной поток завершен.");
+
+            /*
+            Основной поток запущен.
+            Ожидание!
+            Генерация исключения.
+            Null!
+            Основной поток завершен. 
+             
+             */
         }
 
         [Test]
         //Обработка исключения через свойство Exception
-        public void TestTaskException3()
+        public void TestTaskException3ExceptionProperty()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:
@@ -75,7 +94,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
 
         [Test]
         //Обработка исключения через свойство Exception
-        public void TestTaskException4()
+        public void TestTaskException4ContinueOnFaulted()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:
@@ -97,7 +116,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
         }
 
         [Test]
-        public void TestTaskException5AggregateException()
+        public void TestTaskException5WaitAll()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:
@@ -133,18 +152,10 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             ExceptionType: System.Exception, Message: Exception 2
             Основной поток завершен. 
             */
-
-
-        }
-
-        public static bool Contains(string str, string substring,
-                                    StringComparison comp)
-        {
-            return str?.IndexOf(substring, comp) >= 0;
         }
 
         [Test]
-        public void TestTaskException6AggregateException()
+        public void TestTaskException6WaitAny()
         {
             Debug.WriteLine("Основной поток запущен.");
             // Запустить задачу, которая генерирует исключение NullReferenceException:
@@ -303,6 +314,197 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             Основной поток завершен.
             */
         }
+        
+
+        [Test]
+        public void TestTaskException8ParentTask()
+        {
+            Debug.WriteLine("Основной поток запущен.");
+            // Дочерние задачи
+
+            Task parent = new Task(() =>
+            {
+                new Task(() =>
+                {
+                    Thread.Sleep(506);
+                    Debug.WriteLine("Дочерняя задача #1 завершила свою работу");
+                }, TaskCreationOptions.AttachedToParent).Start();
+                new Task(() =>
+                {
+                    Thread.Sleep(600);
+                    Debug.WriteLine("Дочерняя задача #2 завершила свою работу");
+                }, TaskCreationOptions.AttachedToParent).Start();
+                new Task(() =>
+                {
+                    Thread.Sleep(700);
+                    throw new Exception("Ошибка в дочерней задаче #3");
+                }, TaskCreationOptions.AttachedToParent).Start();
+                new Task(() =>
+                {
+                    Thread.Sleep(800);
+                    Debug.WriteLine("Дочерняя задача #4 завершила свою работу");
+                }, TaskCreationOptions.AttachedToParent).Start();
+                new Task(() =>
+                {
+                    new Task(() => { 
+                        throw new Exception("Ошибка в дочерней задаче #5.1 второго уровня вложенности"); 
+                    }, TaskCreationOptions.AttachedToParent).Start();
+                    
+                    Thread.Sleep(900);
+                    //throw new Exception("Ошибка в дочерней задаче #5");
+                }, TaskCreationOptions.AttachedToParent).Start();
+
+            });
+            parent.Start();
+
+            try
+            {
+                parent.Wait(); // Родитель ждет завершения всех дочерних задач, даже если завершение обусловлено исключением.
+
+            }
+            catch (AggregateException ex)
+            {
+
+                // Вложенные исключения родительской задачи
+                foreach (var item in ex.InnerExceptions)
+                {
+                    //// Вложенные исключения дочерних задач
+                    //if (item is AggregateException aggregateException)
+                    //{
+                    //    foreach (var innerException in aggregateException.InnerExceptions)
+                    //    {
+                    //        Debug.WriteLine($"Сообщение из исключения дочерней задачи - {innerException.Message}");
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    Debug.WriteLine($"Сообщение из исключения родительской задачи - {item.Message}");
+                    //}
+                    HandleTaskExceptions(ex);
+                }
+            }
+            Debug.WriteLine("");
+            Debug.WriteLine($"Cтaтyc родительской задачи - {parent.Status}");
+            Debug.WriteLine("Метод Main завершил свою работу");
+            Thread.Sleep(5000);
+
+            /*
+            Основной поток запущен.
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Ошибка в дочерней задаче #5
+
+            Дочерняя задача #1 завершила свою работу
+            
+            Дочерняя задача #2 завершила свою работу
+            
+            Exception thrown: 'System.Exception' in CSTest.dll
+            Ошибка в дочерней задаче #3
+
+            Дочерняя задача #4 завершила свою работу
+
+            Exception thrown: 'System.AggregateException' in System.Private.CoreLib.dll
+            One or more errors occurred.
+
+            Сообщение из исключения дочерней задачи - Ошибка в дочерней задаче #5
+            Сообщение из исключения дочерней задачи - Ошибка в дочерней задаче #3
+
+            Cтaтyc родительской задачи - Faulted
+            Метод Main завершил свою работу
+            */
+        }
+
+        [Test]
+        public void TestTaskException9InnerTask()
+        {
+            Debug.WriteLine("Основной поток запущен.");
+            // Дочерние задачи
+
+            Task parent = new Task(() =>
+            {
+                new Task(() =>
+                {
+                    Thread.Sleep(500);
+                    Debug.WriteLine("Дочерняя задача #1 завершила свою работу");
+                }).Start();
+                new Task(() =>
+                {
+                    Thread.Sleep(600);
+                    Debug.WriteLine("Дочерняя задача #2 завершила свою работу");
+                }).Start();
+                new Task(() =>
+                {
+                    Thread.Sleep(700);
+                    throw new Exception("Ошибка в дочерней задаче #3");
+                }).Start();
+                new Task(() =>
+                {
+                    Thread.Sleep(800);
+                    Debug.WriteLine("Дочерняя задача #4 завершила свою работу");
+                }).Start();
+                new Task(() =>
+                {
+                    new Task(() => {
+                        throw new Exception("Ошибка в дочерней задаче #5.1 второго уровня вложенности");
+                    }).Start();
+
+                    Thread.Sleep(900);
+                    //throw new Exception("Ошибка в дочерней задаче #5");
+                }).Start();
+
+            });
+            parent.Start();
+
+            try
+            {
+                parent.Wait(); // Родитель ждет завершения всех дочерних задач, даже если завершение обусловлено исключением.
+
+            }
+            catch (AggregateException ex)
+            {
+                // Вложенные исключения родительской задачи
+                foreach (var item in ex.InnerExceptions)
+                {
+                    HandleTaskExceptions(ex);
+                }
+            }
+
+            Debug.WriteLine("");
+            Debug.WriteLine($"Cтaтyc родительской задачи - {parent.Status}");
+            Debug.WriteLine("Метод Main завершил свою работу");
+            Thread.Sleep(5000); 
+
+            /*
+            Основной поток запущен.
+            
+            Exception thrown: 'System.Exception' in CSTest.dll
+            An exception of type 'System.Exception' occurred in CSTest.dll but was not handled in user code
+            Ошибка в дочерней задаче #5.1 второго уровня вложенности
+
+            Дочерняя задача #1 завершила свою работу
+            
+            Exception thrown: 'System.Exception' in CSTest.dll
+            An exception of type 'System.Exception' occurred in CSTest.dll but was not handled in user code
+            Ошибка в дочерней задаче #3
+
+            Дочерняя задача #2 завершила свою работу
+            Дочерняя задача #4 завершила свою работу
+            */
+        }
+
+        private static void HandleTaskExceptions(AggregateException parentException)
+        {
+            foreach (var innerException in parentException.InnerExceptions)
+            {
+                if (innerException is AggregateException aggregateException)
+                {
+                    HandleTaskExceptions(aggregateException);
+                }
+                else
+                {
+                    Console.WriteLine($"Сообщение из исключения - {innerException.Message}");
+                }
+            }
+        }
 
         private static void PrintExceptions(AggregateException ex, int level = 0)
         {
@@ -313,11 +515,6 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
                 if (exception != null)
                     PrintExceptions(exception, ++level);
             }
-        }
-
-        private static void PrintException(Exception ex)
-        {
-            Debug.WriteLine("ExceptionType: {0}, Message: {1}", ex.GetType(), ex.Message);
         }
     }
 

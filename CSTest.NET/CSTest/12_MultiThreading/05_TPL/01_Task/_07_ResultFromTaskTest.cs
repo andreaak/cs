@@ -38,6 +38,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             // Сконструировать объект второй задачи. 
             Task<int> task2 = Task<int>.Factory.StartNew(Sum, 3);
             Debug.WriteLine("Результат после выполнения задачи Sum: " + task2.Result);
+            Debug.WriteLine("Результат после выполнения задачи Sum: " + task2.GetAwaiter().GetResult());
 
             task1.Dispose();
             task2.Dispose();
@@ -45,6 +46,7 @@ namespace CSTest._12_MultiThreading._05_TPL._01_Task
             /*
             Основной поток запущен.
             Результат после выполнения задачи TestTask: True
+            Результат после выполнения задачи Sum: 6
             Результат после выполнения задачи Sum: 6
             Основной поток завершен.
             */

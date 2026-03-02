@@ -1,18 +1,12 @@
 ﻿#if CS5
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait._0_Setup
 {
     class _07_ClassUnderTest
     {
-        public async Task SumPageSizesAsync(CancellationToken ct)
+        public async Task CancelHttpClient(CancellationToken ct)
         {
             HttpClient client = new HttpClient();
 
@@ -34,6 +28,41 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait._0_Setup
         }
 
 
+        public async Task CancelDelayAsync(CancellationToken ct)
+        {
+            foreach (var item in Enumerable.Range(1, 10))
+            {
+                Debug.WriteLine("Task {0} started", item);
+                await Task.Delay(item * 100, ct);
+                Debug.WriteLine("Task {0} ended", item);
+            }
+        }
+
+        public async Task ThrowIfCancellationRequested(CancellationToken ct)
+        {
+            foreach (var item in Enumerable.Range(1, 10))
+            {
+                Debug.WriteLine("Task {0} started", item);
+                await Task.Delay(item * 100);
+                Debug.WriteLine("Task {0} ended", item);
+                ct.ThrowIfCancellationRequested();
+            }
+        }
+
+        public async Task IsCancellationRequested(CancellationToken ct)
+        {
+            foreach (var item in Enumerable.Range(1, 10))
+            {
+                Debug.WriteLine("Task {0} started", item);
+                await Task.Delay(item * 100);
+                Debug.WriteLine("Task {0} ended", item);
+                if (ct.IsCancellationRequested)
+                {
+                    break;
+                }
+            }
+        }
+
         public async void DoAsync_Generic(CancellationTokenSource cts, Func<CancellationToken, Task> func)
         {
             try
@@ -47,7 +76,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait._0_Setup
             }
             catch (OperationCanceledException)
             {
-                Debug.WriteLine("Operation canceled.");
+                Debug.WriteLine("OperationCanceledException: Operation canceled.");
             }
             catch (Exception)
             {
@@ -55,41 +84,6 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait._0_Setup
             }
 
             Debug.WriteLine("DoAsync_Generic ended");
-        }
-
-        public async Task DoAsync_CancelToken(CancellationToken ct)
-        {
-            foreach (var item in Enumerable.Range(1, 10))
-            {
-                Debug.WriteLine("Task {0} started", item);
-                await Task.Delay(item * 100, ct);
-                Debug.WriteLine("Task {0} ended", item);
-            }
-        }
-
-        public async Task DoAsync_ThrowIfCancellationRequested(CancellationToken ct)
-        {
-            foreach (var item in Enumerable.Range(1, 10))
-            {
-                Debug.WriteLine("Task {0} started", item);
-                await Task.Delay(item * 100);
-                Debug.WriteLine("Task {0} ended", item);
-                ct.ThrowIfCancellationRequested();
-            }
-        }
-
-        public async Task DoAsync_IsCancellationRequested(CancellationToken ct)
-        {
-            foreach (var item in Enumerable.Range(1, 10))
-            {
-                Debug.WriteLine("Task {0} started", item);
-                await Task.Delay(item * 100);
-                Debug.WriteLine("Task {0} ended", item);
-                if (ct.IsCancellationRequested)
-                {
-                    break;
-                }
-            }
         }
     }
 }

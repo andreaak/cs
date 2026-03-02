@@ -1,12 +1,6 @@
 ﻿#if CS5
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace CSTest._12_MultiThreading._07_AsyncAwait._0_Setup
 {

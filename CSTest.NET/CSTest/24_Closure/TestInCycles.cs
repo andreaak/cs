@@ -76,7 +76,7 @@ namespace CSTest._24_Closure
             }
             foreach (var action in actions)
             {
-                action.Invoke();
+                action();//.Invoke();
             }
             /*
             1

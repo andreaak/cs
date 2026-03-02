@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Threading;
 using CSTest._12_MultiThreading._07_AsyncAwait._0_Setup;
 using NUnit.Framework;
 
@@ -16,7 +15,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("Staring async download");
             var mc = new _07_ClassUnderTest();
             CancellationTokenSource cts = new CancellationTokenSource();
-            mc.DoAsync_Generic(cts, mc.SumPageSizesAsync);
+            mc.DoAsync_Generic(cts, mc.CancelHttpClient);
             Debug.WriteLine("Async download started");
 
             Thread.Sleep(2000);
@@ -29,11 +28,10 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Cancel Task
             Exception thrown: 'System.Threading.Tasks.TaskCanceledException' in mscorlib.dll
             Exception thrown: 'System.Threading.Tasks.TaskCanceledException' in mscorlib.dll
-            Operation canceled.
+            OperationCanceledException: Operation canceled.
             DoAsync_Generic ended
             */
         }
-
 
         [Test]
         public void TestAsyncAwait_CancelToken2()
@@ -41,7 +39,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("Staring async download");
             var mc = new _07_ClassUnderTest();
             CancellationTokenSource cts = new CancellationTokenSource();
-            mc.DoAsync_Generic(cts, mc.DoAsync_CancelToken);
+            mc.DoAsync_Generic(cts, mc.CancelDelayAsync);
             Debug.WriteLine("Async download started");
 
             Thread.Sleep(2000);
@@ -65,7 +63,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Cancel Task
             Exception thrown: 'System.Threading.Tasks.TaskCanceledException' in mscorlib.dll
             Exception thrown: 'System.Threading.Tasks.TaskCanceledException' in mscorlib.dll
-            Operation canceled.
+            OperationCanceledException: Operation canceled.
             DoAsync_Generic ended
             */
         }
@@ -76,7 +74,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("Staring async download");
             var mc = new _07_ClassUnderTest();
             CancellationTokenSource cts = new CancellationTokenSource();
-            mc.DoAsync_Generic(cts, mc.DoAsync_ThrowIfCancellationRequested);
+            mc.DoAsync_Generic(cts, mc.ThrowIfCancellationRequested);
             Debug.WriteLine("Async download started");
 
             Thread.Sleep(2000);
@@ -101,7 +99,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Task 6 ended
             Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
             Exception thrown: 'System.OperationCanceledException' in mscorlib.dll
-            Operation canceled.
+            OperationCanceledException: Operation canceled.
             DoAsync_Generic ended
             */
         }
@@ -112,7 +110,7 @@ namespace CSTest._12_MultiThreading._07_AsyncAwait
             Debug.WriteLine("Staring async download");
             var mc = new _07_ClassUnderTest();
             CancellationTokenSource cts = new CancellationTokenSource();
-            mc.DoAsync_Generic(cts, mc.DoAsync_IsCancellationRequested);
+            mc.DoAsync_Generic(cts, mc.IsCancellationRequested);
             Debug.WriteLine("Async download started");
 
             Thread.Sleep(2000);

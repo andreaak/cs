@@ -60,13 +60,13 @@ namespace CSTest._03_Structure
         public void TestStructure3CopyCtors()
         {
             Debug.WriteLine("");
-            TestStructure book;
+            TestStructure book = new TestStructure();
             book.Author = "Author1";
             book.Title = "Title1";
             book.ISBN = 1;
 
             Debug.WriteLine("");
-            TestStructure book2;
+            TestStructure book2 = new TestStructure();
             book2.Author = "Author2";
             book2.Title = "Title2";
             book2.ISBN = 2;

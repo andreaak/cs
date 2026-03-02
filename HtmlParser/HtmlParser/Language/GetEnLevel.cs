@@ -17,6 +17,7 @@ namespace HtmlParser.Language
         public void Parse(IList<string> lines)
         {
             var temp = lines.Where(l => !string.IsNullOrEmpty(l))
+                .Distinct()
                 .Select(l => Parse(l.Trim()))
                 .Where(l => l != null);
 
@@ -45,7 +46,7 @@ namespace HtmlParser.Language
 
             var model = de.GetEnLevelAndSounds(_type);
 
-            if (string.IsNullOrEmpty(model.Level))
+            if (string.IsNullOrEmpty(model.Level) && string.IsNullOrEmpty(model.Description))
             {
                 return null;
             }
@@ -56,7 +57,8 @@ namespace HtmlParser.Language
             {
                 De = de,
                 Level = model.Level,
-                WrdClass = wc
+                WrdClass = wc,
+                Description = model.Description
             };
         }
     }
