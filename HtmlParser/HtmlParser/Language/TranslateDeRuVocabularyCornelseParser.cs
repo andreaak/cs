@@ -111,7 +111,7 @@ namespace HtmlParser.Language
 
         private ListItem GetItem(string de)
         {
-            de = de.Trim();
+            de = de.Trim().Split(new []{'\t'}, StringSplitOptions.RemoveEmptyEntries)[0];
 
 
             IList<string> items;

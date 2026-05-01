@@ -108,25 +108,16 @@ namespace HtmlParser.Language.Extensions
             return request;
         }
 
-        public static string GetExampleRequest(this Verb word, string lang)
+        public static string GetVerbExampleRequest(this Verb word, string lang)
         {
             var value = word.De.Replace("|", "");
-            string request;
+          
+            string sr = !string.IsNullOrEmpty(word.VerbClass) ? 
+                $" {GetLanguageRequest(lang)} {word.VerbClass} глагола {value}" : 
+                $" {GetLanguageRequest(lang)} глагола {value}";
 
-            request = $"пример использования слова в предложении на немецком, \r\n" +
-                      $"перевод предложения на русский";
-
-
-            if (string.IsNullOrEmpty(word.VerbClass))
-            {
-                request += $" {GetLanguageRequest(lang)} глагола {value}.";
-            }
-            else
-            {
-                request += $" {GetLanguageRequest(lang)} {word.VerbClass} глагола {value}.";
-            }
-
-            request += "Значения выдать в одну строку в указанном порядке с разделителем |.";
+            string request = $"выдай пример использования {sr} в предложении и перевод предложения на русский язык." ;
+            request += " Значения выдать в одну строку в указанном порядке с разделителем |.";
             return request;
         }
 

@@ -56,12 +56,16 @@ namespace HtmlParser.Language
             }
             else
             {
+                word = new WordClass
+                {
+                    De = de,
+                    WrdClass = _type.ToString().ToLower()
+                };
+
+
                 de.SetExample(new List<WordClass>
                 {
-                    new WordClass
-                    {
-                        De = de,
-                    }
+                    word
                 }, lang);
             }
 
@@ -89,7 +93,7 @@ namespace HtmlParser.Language
         private Verb SetVerbExample(string de)
         {
             de = de.Replace("|", "");
-            var i = de.Split(new[] { " ", "\t" }, StringSplitOptions.RemoveEmptyEntries);
+            var i = de.Split(new[] {"\t" }, StringSplitOptions.RemoveEmptyEntries);
             de = i[0];
 
             var verb = new Verb

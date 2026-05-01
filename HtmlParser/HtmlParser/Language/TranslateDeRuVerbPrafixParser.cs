@@ -24,7 +24,7 @@ namespace HtmlParser.Language
             "rein", "ruber", "schwer", "streng", "übel", "voraus", "vorlieb", "vorweg", "wahr", "wiederauf", "wunder",
             "bevor", "statt", "verab", "voraus", "abbe", "herunter", "hoch", "vorbei", "abbe", "bean", "aufbe", "entgegen", "dar", 
             "veran","zuvor", "in", "not", "un", "nachver", "voll", "fehl", "nieder", "frei", "beur", "beauf", "nahe", "berück", "beab", "hervor", "de", "beibe", "bezu",
-            "offen","verein","verei","zufrieden","fertig","beein","voran","vernach","hoch","wohl","anzu","verun", "vorüber", "befür"
+            "offen","verein","verei","zufrieden","fertig","beein","voran","vernach","hoch","wohl","anzu","verun", "vorüber", "befür", "benach", "dazu"
         };
 
         private static string[] selectPrefixes =
@@ -38,7 +38,7 @@ namespace HtmlParser.Language
             "rein", "ruber", "schwer", "streng", "übel", "voraus", "vorlieb", "vorweg", "wahr", "wiederauf", "wunder",
             "bevor", "statt", "verab", "voraus", "abbe", "herunter", "hoch", "vorbei", "abbe", "bean", "aufbe", "entgegen", "dar", 
             "veran","zuvor", "in", "not", "un", "nachver", "voll", "fehl", "nieder", "frei", "beur", "beauf", "nahe", "berück", "beab", "hervor", "de", "beibe", "bezu",
-            "offen","verein","verei","zufrieden","fertig","beein","voran","vernach","hoch","wohl","anzu","verun", "vorüber", "befür"
+            "offen","verein","verei","zufrieden","fertig","beein","voran","vernach","hoch","wohl","anzu","verun", "vorüber", "befür", "benach", "dazu"
         };
 
         private Parameters parameters;
@@ -175,7 +175,7 @@ namespace HtmlParser.Language
             var words = factory.GetWords();
 
             string sound = null;
-            if (!words[0].Found)
+            if (!words[0].Found && parameters.AddOtherTranslation)
             {
                 var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(words[0].De, _type.ToString().ToLower());
                 var deNew = factory3.GetDe();
@@ -222,13 +222,18 @@ namespace HtmlParser.Language
                 foreach (var word in words)
                 {
                     var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(word.De, word.WrdClass);
-                    var ru = factory3.GetTranslation();
-                    word.Level = factory3.GetLevel();
-
-                    if (word.Ru.IsOther(ru))
+                    if (parameters.AddOtherTranslation)
                     {
-                        word.Ru += $"(---): {word.Ru.AnotherTranslation(ru)}-!-";
+                        var ru = factory3.GetTranslation();
+                        word.Level = factory3.GetLevel();
+
+                        if (word.Ru.IsOther(ru))
+                        {
+                            word.Ru += $"(---): {word.Ru.AnotherTranslation(ru)}-!-";
+                        }
                     }
+                    
+
                     sounds.Add(factory3.GetSound());
                 }
 

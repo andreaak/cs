@@ -91,6 +91,12 @@ namespace HtmlParser.Language
                 }
                 else
                 {
+                    var tr2 = factory.GetTranslation();
+                    if (!string.IsNullOrEmpty(tr2))
+                    {
+                        words[0].Ru = tr2;
+                    }
+
                     Console.WriteLine($"Not found {de}");
                     return words;
                 }

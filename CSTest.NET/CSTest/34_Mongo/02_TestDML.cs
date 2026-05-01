@@ -1,7 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using NUnit.Framework;
-using System.Diagnostics;
 
 namespace CSTest._34_Mongo
 {
@@ -18,12 +17,21 @@ namespace CSTest._34_Mongo
         [Test]
         public async Task TestInsert()
         {
-            var item = new TestDoc
+            try
             {
-                Key1 = 5,
-                Key = 8
-            };
-            await Context.TestDocs.InsertOneAsync(item);
+                var item = new TestDoc
+                {
+                    InternalId = new ObjectId("699f54fe3b7ec56a605d4ca5"),
+                    Key1 = 5,
+                    Key = 8
+                };
+                await Context.TestDocs.InsertOneAsync(item);
+
+            }
+            catch (Exception ex)
+            {
+            }
+            
         }
 
         [Test]
@@ -33,6 +41,7 @@ namespace CSTest._34_Mongo
             {
                 new TestDoc
                 {
+                    
                     Key1 = 5,
                     Key = 8
                 },

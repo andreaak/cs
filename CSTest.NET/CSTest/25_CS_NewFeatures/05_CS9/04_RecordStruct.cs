@@ -18,9 +18,6 @@ namespace CSTest._25_CS_NewFeatures._05_CS9
     [TestFixture]
     public class _04_RecordStruct
     {
-
-
-
         [Test]
         public void TestRecordStruct1()
         {

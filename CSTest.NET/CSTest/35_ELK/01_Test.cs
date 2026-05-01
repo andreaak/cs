@@ -1,9 +1,5 @@
-﻿using CSTest._21_Database._02_EntityFramework._01_DatabaseFirst.Models;
-using CSTest._34_Mongo;
+﻿using CSTest._34_Mongo;
 using Elastic.Clients.Elasticsearch;
-using Elastic.Transport;
-using MongoDB.Bson;
-using MongoDB.Driver;
 using NUnit.Framework;
 using System.Diagnostics;
 

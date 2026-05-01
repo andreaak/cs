@@ -101,10 +101,10 @@ namespace HtmlParser.Language.Extensions
 
             foreach (var w in words)
             {
-                string example;
+                string example = "";
                 if (w is Verb verb)
                 {
-                    var request = verb.GetExampleRequest(lang);
+                    var request = verb.GetVerbExampleRequest(lang);
                     var t = request.GetGPTResponse();
                     var items = t.Split(new []{"|"}, StringSplitOptions.None);
                     //int i = 0;
@@ -112,7 +112,10 @@ namespace HtmlParser.Language.Extensions
                     //{
                     //    i++;
                     //}
-                    example = $"{NormalizeGpt(items[0])} - {NormalizeGpt(items[1])}"  ;
+                    if (items.Length >= 2)
+                    {
+                        example = $"{NormalizeGpt(items[0])} - {NormalizeGpt(items[1])}"  ;
+                    }
                     //example = w.De.GetExample(lang, WordType.Verb.GetExampleType(), verb.VerbClass);
                 }
                 else

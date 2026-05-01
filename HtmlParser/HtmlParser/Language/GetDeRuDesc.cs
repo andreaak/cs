@@ -76,6 +76,10 @@ namespace HtmlParser.Language
             {
                 word = SetKonjDescription(de);
             }
+            else if (_type == WordType.Prep)
+            {
+                word = SetPrepDescription(de);
+            }
             else
             {
                 de.SetExample(new List<WordClass>
@@ -178,6 +182,12 @@ namespace HtmlParser.Language
         {
             string part = "союза";
             return SetDescription(de, part, "konj");
+        }
+
+        private WordClass SetPrepDescription(string de)
+        {
+            string part = "предлога";
+            return SetDescription(de, part, "präp");
         }
 
         private WordClass SetDescription(string de, string part, string wordClass)
