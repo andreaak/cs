@@ -84,84 +84,31 @@ namespace HtmlParser.Language.Extensions
             return new WordClass[] { verb };
         }
 
-        public static string GetVerbRequest(this Verb word, string lang)
-        {
-            var value = word.De.Replace("|", "");
-            string request;
+        //public static string GetVerbRequest(this Verb word, Language lang)
+        //{
+        //    var value = word.De.Replace("|", "");
+        //    string request;
 
-            request = $"переводы на русский \r\n" +
-                      $"пример использования слова в предложении на немецком, \r\n" +
-                      $"перевод предложения на русский,\r\n" +
-                      $"уровень слова, транскрипция";
+        //    request = $"переводы на русский \r\n" +
+        //              $"пример использования слова в предложении на немецком, \r\n" +
+        //              $"перевод предложения на русский,\r\n" +
+        //              $"уровень слова, транскрипция";
             
             
-            if (string.IsNullOrEmpty(word.VerbClass))
-            {
-                request += $", \r\nтип {GetLanguageRequest(lang)} глагола {value}.";
-            }
-            else
-            {
-                request += $" {GetLanguageRequest(lang)} {word.VerbClass} глагола {value}.";
-            }
+        //    if (string.IsNullOrEmpty(word.VerbClass))
+        //    {
+        //        request += $", \r\nтип {GetLanguageRequest(lang)} глагола {value}.";
+        //    }
+        //    else
+        //    {
+        //        request += $" {GetLanguageRequest(lang)} {word.VerbClass} глагола {value}.";
+        //    }
 
-            request += "Значения выдать в одну строку в указанном порядке с разделителем |.";
-            return request;
-        }
+        //    request += "Значения выдать в одну строку в указанном порядке с разделителем |.";
+        //    return request;
+        //}
 
-        public static string GetVerbExampleRequest(this Verb word, string lang)
-        {
-            var value = word.De.Replace("|", "");
-          
-            string sr = !string.IsNullOrEmpty(word.VerbClass) ? 
-                $" {GetLanguageRequest(lang)} {word.VerbClass} глагола {value}" : 
-                $" {GetLanguageRequest(lang)} глагола {value}";
 
-            string request = $"выдай пример использования {sr} в предложении и перевод предложения на русский язык." ;
-            request += " Значения выдать в одну строку в указанном порядке с разделителем |.";
-            return request;
-        }
-
-        private static string GetLanguageRequest(string lang)
-        {
-            switch (lang)
-            {
-                case "de":
-                    return "немецкого";
-                case "en":
-                    return "английского";
-                default:
-                    throw new ArgumentException("");
-            }
-            
-        }
-
-        public static string GetExample(this string word, string lang, string type, string subType = null)
-        {
-            var gpt = new GPT();
-            word = word.Replace("|", "");
-
-            string request;
-            if (lang == "en")
-            {
-                request = string.IsNullOrEmpty(type) ?
-                    $"1 простой пример без описания со словом '{word}' на английском с переводом на русский" :
-                    $"1 простой пример без описания с {type} '{word}' на английском с переводом на русский";
-            }
-            else
-            {
-                request = string.IsNullOrEmpty(type) ? 
-                    $"1 простой пример без описания со словом '{word}' на немецком с переводом на русский" : 
-                    $"1 простой пример без описания с {type} '{word}' {subType.GetSubType()} на немецком с переводом на русский";
-            }
-
-            return gpt.GetResponse(request);
-        }
-
-        public static string GetGPTResponse(this string request)
-        {
-            var gpt = new GPT();
-            return gpt.GetResponse(request);
-        }
 
         public static void SaveToFile(this string verb, IList<Verb> verbs)
         {

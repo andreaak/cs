@@ -14,6 +14,9 @@ namespace HtmlParser.Language.Model
         public bool Found { get; set; }
         public string Info { get; set; }
         public string Prep { get; set; }
+        public string GptDescription { get; set; }
+        public string WBDescription { get; set; }
+        public int Quantity { get; set; }
 
         public virtual void Write(StreamWriter sw)
         {
@@ -26,6 +29,9 @@ namespace HtmlParser.Language.Model
             sw.WriteLine(Example);
             sw.WriteLine(Description);
             sw.WriteLine(Prep);
+            sw.WriteLine(GptDescription);
+            sw.WriteLine(WBDescription);
+            sw.WriteLine(Quantity);
             sw.WriteLine("");
         }
     }

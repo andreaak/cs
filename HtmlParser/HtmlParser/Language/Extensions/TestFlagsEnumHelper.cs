@@ -1,42 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HtmlParser.Language
+﻿namespace HtmlParser.Language.HTMLClients
 {
-
-    internal interface ILanguageParser
-    {
-        void Parse(IList<string> lines);
-    }
-
-    public class LanguageParser : HtmlParser
-    {
-       
-        protected bool _order;
-        protected WordType _type;
-
-        public LanguageParser(bool order, WordType type)
-        {
-            _order = order;
-            _type = type;
-        }
-    }
-
-    [Flags]
-    public enum WordType
-    {
-        None = 0,
-        Verb = 1,
-        Subst = 2,
-        Pron = 4,
-        Adv = 8,
-        Adj = 16,
-        Konj = 32,
-        Prep = 64,
-        All = 128,
-        Complex = 256
-    }
-
     public static class TestFlagsEnumHelper
     {
         public static bool IsSet(this WordType options, WordType option)

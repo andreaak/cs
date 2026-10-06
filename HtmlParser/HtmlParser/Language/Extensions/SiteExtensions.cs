@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using HtmlAgilityPack;
 using HtmlParser.Language.Containers;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language.Extensions
@@ -92,61 +93,13 @@ namespace HtmlParser.Language.Extensions
             return res;
         }
 
-        public static void SetExample(this string de, IEnumerable<WordClass> words, string lang = "de")
-        {
-            if (!words.Any())
-            {
-                return;
-            }
-
-            foreach (var w in words)
-            {
-                string example = "";
-                if (w is Verb verb)
-                {
-                    var request = verb.GetVerbExampleRequest(lang);
-                    var t = request.GetGPTResponse();
-                    var items = t.Split(new []{"|"}, StringSplitOptions.None);
-                    //int i = 0;
-                    //if (items[0].Trim() == verb.De)
-                    //{
-                    //    i++;
-                    //}
-                    if (items.Length >= 2)
-                    {
-                        example = $"{NormalizeGpt(items[0])} - {NormalizeGpt(items[1])}"  ;
-                    }
-                    //example = w.De.GetExample(lang, WordType.Verb.GetExampleType(), verb.VerbClass);
-                }
-                else
-                {
-                    example = w.De.GetExample(lang, w.WrdClass.GetType(lang).GetExampleType());
-                }
-
-                w.Example = example;
-                //Thread.Sleep(60000);
-            }
-        }
-
-        private static string NormalizeGpt(string value)
-        {
-            int index = value.IndexOf(":");
-            if (index >= 0)
-            {
-                return value.Substring(index + 1).Trim();
-            }
-
-            return value.Trim();
-        }
-
-
-        public static WordType GetType(this string wordClass, string lang)
+        public static WordType GetType(this string wordClass, Language lang)
         {
             switch (lang)
             {
-                case "en":
+                case Language.English:
                     return wordClass.GetEnType();
-                case "de":
+                case Language.Deutsch:
                     return wordClass.GetDeType();
                 default:
                     throw new Exception("Type is not defined");
@@ -174,6 +127,19 @@ namespace HtmlParser.Language.Extensions
                     return WordType.Complex;
                 default:
                     return WordType.None;
+            }
+        }
+
+        public static Language GetLanguage(this string lang)
+        {
+            switch (lang)
+            {
+                case "en":
+                    return Language.English;
+                case "de":
+                    return Language.Deutsch;
+                default:
+                    throw new ArgumentException("Language is not supported");
             }
         }
 
@@ -243,6 +209,8 @@ namespace HtmlParser.Language.Extensions
                     return "предлог";
                 case WordType.None:
                     return "";
+                case WordType.Complex:
+                    return "с фразой";
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -332,8 +300,18 @@ namespace HtmlParser.Language.Extensions
             }
 
             return de;
-        } 
-        
+        }
+
+        public static string RemoveArtikles2(this string de)
+        {
+            foreach (var art in Artikles)
+            {
+                de = de.Replace(art.Trim(), "").Trim();
+            }
+
+            return de;
+        }
+
         public static string GetArtikel(this string de)
         {
             foreach (var art in Artikles)

@@ -2,35 +2,33 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using HtmlParser.Language.Containers;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
-    public class GetEnLevel : LanguageParser, ILanguageParser
+    public class GetDeLevelParser : LanguageParser, ILanguageParser
     {
-        public GetEnLevel(bool order, WordType type)
+
+        public GetDeLevelParser(bool order, WordType type)
             : base(order, type)
         { }
 
         public void Parse(IList<string> lines)
         {
             var temp = lines.Where(l => !string.IsNullOrEmpty(l))
-                .Distinct()
-                .Select(l => Parse(l.Trim()))
-                .Where(l => l != null);
+                .Select(l => Parse(l.Trim()));
 
             var list = _order ?
-                temp.OrderBy(l => l.De) :
-                temp;
+                temp.OrderBy(l => l.De).ToArray() :
+                temp.ToArray();
 
             using (var sw = File.CreateText("out.txt"))
             {
                 foreach (var item in list)
                 {
                     item.Write(sw);
-                    sw.Flush();
                 }
             }
         }
@@ -44,22 +42,13 @@ namespace HtmlParser.Language
                 de = de.Replace("|", "");
             }
 
-            var model = de.GetEnLevelAndSounds(_type);
-
-            if (string.IsNullOrEmpty(model.Level) && string.IsNullOrEmpty(model.Description))
-            {
-                return null;
-            }
-
-            var wc = _type.GetDEStringType();
+            var (level, sound) = de.GetLevelAndSound(_type.ToString().ToLower());
 
             return new WordClass
-            {
-                De = de,
-                Level = model.Level,
-                WrdClass = wc,
-                Description = model.Description
-            };
+                {
+                    De = de,
+                    Level = level
+                };
         }
     }
 }

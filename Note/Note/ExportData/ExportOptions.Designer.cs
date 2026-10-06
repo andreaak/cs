@@ -35,6 +35,8 @@
             this.checkBoxIndexNumeration = new System.Windows.Forms.CheckBox();
             this.checkBoxThroughNumeration = new System.Windows.Forms.CheckBox();
             this.checkBoxCreateFolders = new System.Windows.Forms.CheckBox();
+            this.checkBoxOneFile = new System.Windows.Forms.CheckBox();
+            this.checkBoxOnlySelected = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -57,7 +59,7 @@
             // buttonOK
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(73, 139);
+            this.buttonOK.Location = new System.Drawing.Point(73, 195);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 2;
@@ -67,7 +69,7 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(154, 139);
+            this.buttonCancel.Location = new System.Drawing.Point(154, 195);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 2;
@@ -108,11 +110,33 @@
             this.checkBoxCreateFolders.Text = "Create Folders";
             this.checkBoxCreateFolders.UseVisualStyleBackColor = true;
             // 
+            // checkBoxOneFile
+            // 
+            this.checkBoxOneFile.AutoSize = true;
+            this.checkBoxOneFile.Location = new System.Drawing.Point(16, 130);
+            this.checkBoxOneFile.Name = "checkBoxOneFile";
+            this.checkBoxOneFile.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxOneFile.TabIndex = 4;
+            this.checkBoxOneFile.Text = "One File";
+            this.checkBoxOneFile.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxOneFile
+            // 
+            this.checkBoxOnlySelected.AutoSize = true;
+            this.checkBoxOnlySelected.Location = new System.Drawing.Point(16, 153);
+            this.checkBoxOnlySelected.Name = "checkBoxOnlySelected";
+            this.checkBoxOnlySelected.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxOnlySelected.TabIndex = 4;
+            this.checkBoxOnlySelected.Text = "Only Selected";
+            this.checkBoxOnlySelected.UseVisualStyleBackColor = true;
+            // 
             // Export
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 174);
+            this.ClientSize = new System.Drawing.Size(302, 250);
+            this.Controls.Add(this.checkBoxOnlySelected);
+            this.Controls.Add(this.checkBoxOneFile);
             this.Controls.Add(this.checkBoxCreateFolders);
             this.Controls.Add(this.checkBoxThroughNumeration);
             this.Controls.Add(this.checkBoxIndexNumeration);
@@ -141,5 +165,7 @@
         private System.Windows.Forms.CheckBox checkBoxIndexNumeration;
         private System.Windows.Forms.CheckBox checkBoxThroughNumeration;
         private System.Windows.Forms.CheckBox checkBoxCreateFolders;
+        private System.Windows.Forms.CheckBox checkBoxOneFile;
+        private System.Windows.Forms.CheckBox checkBoxOnlySelected;
     }
 }

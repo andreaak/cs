@@ -32,6 +32,9 @@ namespace HtmlParser.Language.Model
             sw.WriteLine(Example);
             sw.WriteLine(Description);
             sw.WriteLine("");
+            sw.WriteLine(GptDescription);
+            sw.WriteLine(WBDescription);
+            sw.WriteLine(Quantity);
             sw.WriteLine("");
 
         }

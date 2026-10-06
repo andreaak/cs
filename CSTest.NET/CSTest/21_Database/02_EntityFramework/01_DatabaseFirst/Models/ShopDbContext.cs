@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace CSTest._21_Database._02_EntityFramework._01_DatabaseFirst.Models;
 
@@ -25,10 +27,21 @@ public partial class ShopDbContext : DbContext
     public virtual DbSet<Salesrep> Salesreps { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=localhost,1436;Initial Catalog=ShopDB;User ID=sa;Password=Password1;Encrypt=False")
-        .LogTo(Console.WriteLine,
-                    new[] { DbLoggerCategory.Database.Command.Name },
-                    LogLevel.Information);
+    {
+
+        IConfiguration configuration = new ConfigurationBuilder()
+           .SetBasePath(AppContext.BaseDirectory)
+           .AddJsonFile("appsettings.json", optional: false)
+           .Build();
+
+
+        optionsBuilder.UseSqlServer(configuration.GetConnectionString("ShopDB:Connection"))
+        .EnableSensitiveDataLogging()
+        .LogTo( (v) => Debug.WriteLine(v),
+                new[] { DbLoggerCategory.Database.Command.Name },
+                LogLevel.Information);
+    }
+
 
     public IQueryable<Customer> GetCustomerInfoById(int id)
                         => FromExpression(() => GetCustomerInfoById(id));
@@ -211,11 +224,11 @@ public partial class ShopDbContext : DbContext
                 .HasConstraintName("WORKSIN");
         });
 
-         modelBuilder
-            .HasDbFunction(typeof(ShopDbContext)
-            .GetMethod(nameof(GetCustomerInfoById), new[] { typeof(int) }))
-            .HasName("sfCustomerInfoById")
-            .HasSchema("dbo");
+        modelBuilder
+           .HasDbFunction(typeof(ShopDbContext)
+           .GetMethod(nameof(GetCustomerInfoById), new[] { typeof(int) }))
+           .HasName("sfCustomerInfoById")
+           .HasSchema("dbo");
 
         modelBuilder
           .HasDbFunction(typeof(ShopDbContext)

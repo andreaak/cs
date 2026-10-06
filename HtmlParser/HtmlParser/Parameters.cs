@@ -1,4 +1,4 @@
-using HtmlParser.Language;
+using HtmlParser.Language.HTMLClients;
 
 namespace HtmlParser
 {
@@ -14,5 +14,7 @@ namespace HtmlParser
         public bool RemoveDuplicates { get; set; }
         public bool AddOtherTranslation { get; set; }
         public bool AddDescription { get; set; }
+        public bool AddAIDescription { get; set; }
+        public bool AddWBDescription { get; set; }
     }
 }

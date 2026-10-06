@@ -5,6 +5,7 @@ using System.Xml;
 using HtmlAgilityPack;
 using HtmlParser.Language.Containers;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 using HtmlParser.Language.VerbFormParsers;
 

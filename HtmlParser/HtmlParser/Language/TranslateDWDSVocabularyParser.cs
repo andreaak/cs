@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using HtmlParser.Language.Containers;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 
 namespace HtmlParser.Language
 {
@@ -45,8 +46,17 @@ namespace HtmlParser.Language
                 de = de.RemoveArtikles();
             }
             
-            var factory = new DWDSTranslationContainerFactory(de, _type);
-            return factory.GetWords();
+            var factoryDwds = new DWDSTranslationContainerFactory(de, _type, false);
+            var words = factoryDwds.GetWords();
+
+            int quantity = factoryDwds.GetQuantity();
+
+            foreach (var word in words)
+            {
+                word.Quantity = quantity;
+            }
+
+            return words;
         }
     }
 }

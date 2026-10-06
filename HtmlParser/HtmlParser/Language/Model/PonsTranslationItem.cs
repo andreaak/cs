@@ -4,9 +4,8 @@ using System.Linq;
 using System.Web;
 using HtmlAgilityPack;
 using HtmlParser.Language.Extensions;
-using HtmlParser.Language.Model;
 
-namespace HtmlParser.Language
+namespace HtmlParser.Language.Model
 {
     public class TranslationComplexItem
     {
@@ -27,7 +26,7 @@ namespace HtmlParser.Language
         public string Word { get; set; }
 
         public string SoundId => TranslationItems?.SelectMany(tr => tr?.Values)
-            .FirstOrDefault(si => string.IsNullOrEmpty(si?.TranslationId))
+            .FirstOrDefault(si => !string.IsNullOrEmpty(si?.TranslationId))
             ?.TranslationId;
         public IList<TranslationComplexItem> TranslationItems { get; set; }
 
@@ -107,6 +106,10 @@ namespace HtmlParser.Language
                 {
                     attributes.HeadWord = span.InnerText.Trim();
                 }
+                else if (span.Attributes.Any(a => a.Value == "sense"))
+                {
+                    attributes.Sense = span.InnerText.Trim();
+                }
             }
 
             return attributes;
@@ -142,7 +145,7 @@ namespace HtmlParser.Language
             var sense = node.SelectSingleNode("./span[@class='sense']|./span[@class='topic']")?.InnerText.PonsNormalize();
             if (string.IsNullOrEmpty(sense))
             {
-                sense = node.SelectSingleNode(".//span[@class='sense']|.//span[@class='topic']")?.InnerText.PonsNormalize();
+                sense = node.SelectSingleNode("./div[1]//h4//span[@class='sense']|./div[1]//h4//span[@class='topic']")?.InnerText.PonsNormalize();
             }
             var trItems = node.SelectNodes(".//dl[@data-e2e='translation']")?.ToArray() ?? Array.Empty<HtmlNode>();
 

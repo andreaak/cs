@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
@@ -13,11 +14,13 @@ namespace HtmlParser.Language
     {
         private bool isCanceled;
         private Parameters parameters;
+        private AIProvider ai;
 
         public TranslateDeVerbPraposParser(Parameters parameters)
             : base(parameters.Order, parameters.WordType)
         {
             this.parameters = parameters;
+            ai = new AIProvider();
         }
 
         public void Parse(IList<string> lines)
@@ -73,11 +76,12 @@ namespace HtmlParser.Language
                 Task<string> task = null;
                 if (parameters.WordType == WordType.Verb)
                 {
-                    task = Task.Run(() => item.Verb.GetExample("de", WordType.Verb.GetExampleType(), (item.Sich ? "refl " : "") + $"c предлогом {item.Prap}"));
+                    task = Task.Run(() => ai.GetExample(item.Verb, WordType.Verb,
+                        (item.Sich ? "refl " : "") + $"c предлогом {item.Prap}"));
                 }
                 else
                 {
-                    task = Task.Run(() => item.Verb.GetExample("de", parameters.WordType.GetExampleType(), $"c предлогом {item.Prap}"));
+                    task = Task.Run(() => ai.GetExample(item.Verb, parameters.WordType, $"c предлогом {item.Prap}"));
                 }
 
 

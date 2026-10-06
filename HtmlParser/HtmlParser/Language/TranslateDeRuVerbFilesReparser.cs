@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml.Linq;
 using HtmlParser.Language.Containers;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
@@ -36,9 +37,15 @@ namespace HtmlParser.Language
             "bevor", "statt"
         };
 
+        private AIProvider ai;
+
+
         public TranslateDeRuVerbFilesReparser()
             : base(false, WordType.Verb)
-        { }
+        {
+            ai = new AIProvider();
+
+        }
 
         public void Parse(IList<string> lines)
         {
@@ -90,7 +97,11 @@ namespace HtmlParser.Language
             var baseWords = GetWords(notFoundSw, deBase).Select(w => (Verb)w).ToArray();
 
             deBase.SetLevel(baseWords);
-            deBase.SetExample(baseWords);
+
+            foreach (var word in baseWords)
+            {
+                word.Example = ai.GetExample(deBase, _type, _type == WordType.Verb ? word.VerbClass : "", Language.Deutsch);
+            }
 
 
             foreach (var prefix in selectPrefixes)
@@ -100,7 +111,11 @@ namespace HtmlParser.Language
                 var words = GetWords(notFoundSw, de).Select(w => (Verb)w).ToArray();
 
                 de.SetLevel(words);
-                de.SetExample(words);
+
+                foreach (var word in words)
+                {
+                    word.Example = ai.GetExample(deBase, _type, _type == WordType.Verb ? word.VerbClass : "", Language.Deutsch);
+                }
 
                 list.AddRange(words);
             }

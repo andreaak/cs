@@ -4,25 +4,29 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
 {
-    public class GetDeRuExample : LanguageParser, ILanguageParser
+    public class GetDeRuExampleParser : LanguageParser, ILanguageParser
     {
         private bool break_;
-        private string lang;
+        private Language lang;
+        private AIProvider ai;
 
 
-        public GetDeRuExample(bool order, WordType type, string lang)
+
+        public GetDeRuExampleParser(bool order, WordType type, string lang)
             : base(order, type)
         {
-            this.lang = lang;
+            this.lang = lang.GetLanguage();
+            ai = new AIProvider();
         }
 
         public void Parse(IList<string> lines)
         {
-            var temp = lines.Where(l => !string.IsNullOrEmpty(l));
+            var temp = lines.Where(l => !string.IsNullOrEmpty(l)).Distinct();
             var list = _order ?
                 temp.OrderBy(l => l).ToArray() :
                 temp.ToArray();
@@ -62,11 +66,8 @@ namespace HtmlParser.Language
                     WrdClass = _type.ToString().ToLower()
                 };
 
-
-                de.SetExample(new List<WordClass>
-                {
-                    word
-                }, lang);
+                string ex = ai.GetExample(de, _type, lang: lang);
+                word.Example = ex;
             }
 
             sw.Stop();
@@ -109,7 +110,8 @@ namespace HtmlParser.Language
 
             try
             {
-                de.SetExample(new List<Verb> { verb }, lang);
+                string ex = ai.GetExample(de, WordType.Verb, verb.VerbClass, lang: lang);
+                verb.Example = ex;
             }
             catch (Exception e)
             {

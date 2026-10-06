@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using HtmlParser.Language;
 using HtmlParser.Language.Containers;
+using HtmlParser.Language.HTMLClients;
 
 namespace HtmlParser
 {
@@ -12,18 +16,8 @@ namespace HtmlParser
     {
         static void Main(string[] args)
         {
-            //var parser = new MonolitParser();
-            //var parser = new PidruchnikiParser();
-            //var parser = new RemoveDuplicateParser();
-            //parser.Parse();
-            //parser.Normalize();
-            //ParseLocalFile();
-
-            //var t = Fibonacci2(4);
-
 
             string file = "list.txt";
-            //string file = @"D:\Downloads\new 19.txt";
             var lines = File.ReadLines(file);
             var parser = GetParser(lines.First());
             parser.Parse(lines.Skip(1).ToArray());
@@ -31,46 +25,7 @@ namespace HtmlParser
             Console.WriteLine("Done");
             Console.ReadLine();
 
-            //var res = new Dictionary<string, int>();
-
-            //foreach (var line in lines)
-            //{
-            //    var items = line.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
-            //    foreach (var item in items)
-            //    {
-            //        if (item.Length <= 2)
-            //        {
-            //            continue;
-            //        }
-
-            //        var isDigit = Regex.IsMatch(item, @"\d");
-            //        if (isDigit)
-            //        {
-            //            continue;
-            //        }
-
-            //        if (res.TryGetValue(item, out var count))
-            //        {
-            //            res[item] = ++count;
-            //        }
-            //        else
-            //        {
-            //            res[item] = 1;
-            //        }
-
-            //    }
-            //}
-
-
-            //var u = res.OrderByDescending(i => i.Value).Select(i => i.Key).ToArray();
-
-            //var nomen = u.Where(i => Char.IsUpper(i[0])).OrderBy(i => i).ToArray();
-            //var str = string.Join("\r\n", nomen);
-
-            //var other = u.Except(nomen).OrderBy(i => i).ToArray();
-            //str = string.Join("\r\n", other);
-
-        }
+       }
 
         private static ILanguageParser GetParser(string line)
         {
@@ -104,21 +59,25 @@ namespace HtmlParser
                 case "deruverbfilereparse":
                     return new TranslateDeRuVerbFilesReparser();
                 case "example":
-                    return new GetDeRuExample(parameters.Order, parameters.WordType, parameters.Lang);
+                    return new GetDeRuExampleParser(parameters.Order, parameters.WordType, parameters.Lang);
                 case "gpt_desc":
-                    return new GetDeRuDesc(parameters.Order, parameters.WordType, parameters.Lang);
+                    return new GetDeRuAIDescParser(parameters.Order, parameters.WordType, parameters.Lang);
+                case "gpt_audio":
+                    return new GenerateAIDescriptionParser(parameters.Order, parameters.WordType, parameters.Lang);
                 case "delevel":
-                    return new GetDeLevel(parameters.Order, parameters.WordType);
+                    return new GetDeLevelParser(parameters.Order, parameters.WordType);
                 case "dwds":
                     return new TranslateDWDSVocabularyParser(parameters);
                 case "dicleo":
                     return new TranslateDicLeoParser(parameters);
-                
-                
+                case "dewb":
+                    return new GetDeWortBedeutungParser(parameters);
+
+
                 case "enru": 
                     return new TranslateEnRuParser(parameters);
                 case "enlevel":
-                    return new GetEnLevel(parameters.Order, parameters.WordType);
+                    return new GetEnLevelParser(parameters.Order, parameters.WordType);
                 case "enruverb":
                     return new TranslateEnRuIrregVerbFormsParser();
                 case "enrulist":
@@ -174,6 +133,8 @@ namespace HtmlParser
             return b;
         }
     }
+
+
 
 
 }

@@ -1,10 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using HtmlAgilityPack;
+using HtmlParser;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace HtmlParser.Language
 {
@@ -64,7 +74,6 @@ namespace HtmlParser.Language
             de = de.Replace("|", "");
 
             var hostUrl = "https://dict.leo.org/russisch-deutsch/";
-
             var document = GetHtml(hostUrl + de);
 
             var trNodes = document.DocumentNode.SelectNodes(".//div[@data-dz-name='verb']//table//tr[@class='is-clickable']");
@@ -90,6 +99,8 @@ namespace HtmlParser.Language
             return list;
         }
 
+
+
         private static string GetRu(HtmlNode node)
         {
             StringBuilder sb = new StringBuilder();
@@ -99,7 +110,7 @@ namespace HtmlParser.Language
                 if (n.Name == "a" || n.Name == "#text")
                 {
                     sb.Append(n.InnerText.Trim() + " ");
-                } 
+                }
                 else if (n.Name == "br")
                 {
                     sb.Remove(sb.Length - 1, 1);
@@ -129,4 +140,8 @@ namespace HtmlParser.Language
             return sb.ToString().Trim().Replace("\u0341", "").Replace("  ", " ");
         }
     }
+
+
+    
+
 }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using HtmlParser.Language.Containers;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
@@ -12,11 +13,13 @@ namespace HtmlParser.Language
     {
 
         private Parameters parameters;
+        private AIProvider ai;
 
         public TranslateDeRuParser(Parameters parameters)
             : base(parameters.Order, parameters.WordType)
         {
             this.parameters = parameters;
+            ai = new AIProvider();
         }
 
         public void Parse(IList<string> lines)
@@ -63,7 +66,7 @@ namespace HtmlParser.Language
             {
                 var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(words[0].De, _type.ToString().ToLower());
                 var tr = factory3.GetTranslation();
-                var de_ = factory3.GetDe();
+                var de_ = factory3.GetDe().Replace("·", "");
                 if (de.Equals(de_, StringComparison.InvariantCultureIgnoreCase) && !string.IsNullOrEmpty(tr))
                 {
                     if (_type == WordType.Subst)
@@ -91,14 +94,14 @@ namespace HtmlParser.Language
                 }
                 else
                 {
-                    var tr2 = factory.GetTranslation();
+                    var tr2 = ai.GetTranslation(de);
                     if (!string.IsNullOrEmpty(tr2))
                     {
                         words[0].Ru = tr2;
+                        words[0].WrdClass = _type.ToString().ToLower();
                     }
 
                     Console.WriteLine($"Not found {de}");
-                    return words;
                 }
             }
             else
@@ -118,67 +121,75 @@ namespace HtmlParser.Language
                     sounds.Add(factory3.GetSound());
                 }
 
-                sound = sounds.FirstOrDefault(string.IsNullOrEmpty);
+                sound = sounds.FirstOrDefault();
 
 
-                factory.UploadSound();
+
             }
 
-            //if (parameters.SetLevel)
-            //{
-            //    var sounds = new List<string>();
-
-            //    foreach (var word in words)
-            //    {
-            //        var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(word.De, word.WrdClass);
-            //        var ru = factory3.GetTranslation();
-            //        word.Level = factory3.GetLevel();
-
-            //        if (string.IsNullOrEmpty(word.Ru))
-            //        {
-            //            word.Ru = ru;
-            //        }
-            //        else if (word.Ru.IsOther(ru))
-            //        {
-            //            word.Ru += $"(---): {word.Ru.AnotherTranslation(ru)}-!-";
-            //        }
-            //        sounds.Add(factory3.GetSound());
-            //    }
-
-            //    sound = sounds.FirstOrDefault(string.IsNullOrEmpty);
-            //}
-
-            if (words[0].Found && parameters.AddDescription)
+            if (words[0].Found)
             {
                 factory.UploadSound(sound);
 
-                var factoryDwds = new DWDSTranslationContainerFactory(de, _type);
-                var dwds = factoryDwds.GetWords();
 
-                foreach (var word in words)
+                if (parameters.AddDescription)
                 {
-                    var cl = word.WrdClass.GetDeType() == WordType.Complex ? _type : word.WrdClass.GetDeType();
-
-
-                    var res = dwds.FirstOrDefault(i => i.Type == cl);
-                    if (res != null)
+                    var factoryDwds = new DWDSTranslationContainerFactory(de, _type, true);
+                    var dwds = factoryDwds.GetWords();
+                    int quantity = factoryDwds.GetQuantity();
+                    foreach (var word in words)
                     {
-                        word.Description = res.GetDescription();
+                        var cl = word.WrdClass.GetDeType() == WordType.Complex ? _type : word.WrdClass.GetDeType();
+
+
+                        var res = dwds.FirstOrDefault(i => i.Type == cl);
+                        if (res != null)
+                        {
+                            word.Description = res.GetDescription();
+                        }
+
+                        word.Quantity = quantity;
                     }
                 }
 
+
+                if (parameters.GetPreposition)
+                {
+                    var parser = new TranslateDicLeoParser(parameters);
+                    parser.Parse(de, words);
+                }
+
+                if (parameters.GetExample)
+                {
+                    foreach (var word in words)
+                    {
+                        word.Example = ai.GetExample(word.De, _type, _type == WordType.Verb ? (word as Verb)?.VerbClass : "", Language.Deutsch);
+                    }
+                }
+
+                if (parameters.AddAIDescription)
+                {
+                    foreach (var word in words)
+                    {
+                        word.GptDescription = ai.GetGptDescription(word.De, _type, Language.Deutsch);
+                    }
+                }
+
+                if (parameters.AddWBDescription)
+                {
+                    foreach (var word in words)
+                    {
+                        var factory2 = new WikiTranslationContainerFactory(de, _type);
+                        var item = factory2.GetDe();
+                        if (item != null)
+                        {
+                            word.WBDescription = item.GetDescription();
+                        }
+                    }
+                }
             }
 
-            if (words[0].Found && parameters.GetPreposition)
-            {
-                var parser = new TranslateDicLeoParser(parameters);
-                parser.Parse(de, words.Where(w => w.WrdClass == "verb").Cast<Verb>().ToArray());
-            }
 
-            if (words[0].Found && parameters.GetExample)
-            {
-                de.SetExample(words);
-            }
 
             return words;
         }

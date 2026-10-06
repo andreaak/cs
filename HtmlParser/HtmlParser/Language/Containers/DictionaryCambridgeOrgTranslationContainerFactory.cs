@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 
 namespace HtmlParser.Language.Containers
 {
@@ -136,7 +137,7 @@ namespace HtmlParser.Language.Containers
 
         private HtmlDocument GetDocument()
         {
-            return _document = _document ?? new HtmlParser().GetHtml(hostUrl + _word);
+            return _document = _document ?? new HtmlReader().GetHtml(hostUrl + _word);
         }
     }
 }

@@ -11,6 +11,11 @@ namespace Note.ControlWrapper
             get;
         }
 
+        IList<Node> SelectedNodes
+        {
+            get;
+        }
+
         IList<Node> Nodes
         {
             get;

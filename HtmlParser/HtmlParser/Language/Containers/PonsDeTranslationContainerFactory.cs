@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language.Containers
@@ -45,7 +46,7 @@ namespace HtmlParser.Language.Containers
         {
             var rr = HttpUtility.UrlEncode(_word);
 
-            var document = new HtmlParser().GetHtml(HostUrlText + rr);
+            var document = new HtmlReader().GetHtml(HostUrlText + rr);
             if (document == null)
             {
                 return null;
@@ -59,7 +60,9 @@ namespace HtmlParser.Language.Containers
             var trNode = (_containers ?? GetTranslationContainer())?.FirstOrDefault()?.Node;
             var soundId = trNode?.SoundId;
 
-            string hostUrl = GetRequestUrl(soundId, $"https://sounds.pons.com/audio_tts/de/{soundId}?target=mp3", reserveLink);
+            string url = $"https://api-ng.pons.com/pons-site-website/api/tts/de/{soundId}";
+
+            string hostUrl = GetRequestUrl(soundId, url, reserveLink);
             if (string.IsNullOrEmpty(hostUrl))
             {
                 return;

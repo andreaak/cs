@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace HtmlParser.Language
+namespace HtmlParser.Language.Model.Words
 {
     public class DicLeoContainerItem
     {
@@ -21,6 +21,9 @@ namespace HtmlParser.Language
             sw.WriteLine("");
             sw.WriteLine("");
             sw.WriteLine(GetDescription());
+            sw.WriteLine("");
+            sw.WriteLine("");
+            sw.WriteLine("");
             sw.WriteLine("");
         }
 

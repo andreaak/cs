@@ -25,6 +25,15 @@ namespace Note.ExportData
             get { return checkBoxCreateFolders.Checked; }
         }
 
+        public bool IsOneFile
+        {
+            get { return checkBoxOneFile.Checked; }
+        }
+
+        public bool IsSelected
+        {
+            get { return checkBoxOnlySelected.Checked; }
+        }
 
         public ExportOptions()
         {

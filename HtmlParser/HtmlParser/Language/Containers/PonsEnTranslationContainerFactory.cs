@@ -2,6 +2,7 @@
 using System.Linq;
 using HtmlAgilityPack;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language.Containers

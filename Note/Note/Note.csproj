@@ -77,11 +77,18 @@
     <Reference Include="DevExpress.XtraSpellChecker.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Google.Apis.Drive.v2, Version=1.20.0.711, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\portable-net40+sl4+win8+wp8\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -106,6 +113,9 @@
     <Compile Include="ControlWrapper\IRtfWrapper.cs" />
     <Compile Include="ControlWrapper\ITreeWrapper.cs" />
     <Compile Include="ControlWrapper\Node.cs" />
+    <Compile Include="ExportData\IExporter2.cs" />
+    <Compile Include="ExportData\PdfExporter2.cs" />
+    <Compile Include="ExportData\DocxExporter.cs" />
     <Compile Include="ExportData\Exporter\Exporter.cs" />
     <Compile Include="ExportData\Exporter\MultiFormatExporter.cs" />
     <Compile Include="ExportData\ExportOptions.cs">
@@ -204,6 +214,7 @@
       <DependentUpon>BindingDataset.xsd</DependentUpon>
     </None>
     <None Include="Note_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\Note.Domain.Repository.LogData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

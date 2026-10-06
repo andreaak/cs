@@ -2582,7 +2582,7 @@
             this.barButtonItemLogs.Id = 252;
             this.barButtonItemLogs.Name = "barButtonItemLogs";
             this.barButtonItemLogs.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.barButtonItemLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLogs_ItemClick);
+            this.barButtonItemLogs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLogs_ItemClick);            // 
             // 
             // headerFooterToolsRibbonPageCategory1
             // 

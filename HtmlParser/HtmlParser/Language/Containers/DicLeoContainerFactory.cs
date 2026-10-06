@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
+using HtmlParser.Language.Model.Words;
 
 namespace HtmlParser.Language.Containers
 {
@@ -15,10 +17,13 @@ namespace HtmlParser.Language.Containers
         protected readonly WordType _type;
         protected IList<DicLeoItem> _containers;
 
-        public DicLeoContainerFactory(string de, WordType type)
+        private LeoHtmlClient _leo;
+
+        public DicLeoContainerFactory(string de, WordType type, LeoHtmlClient leo)
         {
             _word = de;
             _type = type;
+            _leo = leo;
         }
 
         public IList<DicLeoItem> GetWords(string separator = "/")
@@ -43,19 +48,14 @@ namespace HtmlParser.Language.Containers
 
         protected IList<DicLeoItem> GetTranslationContainer()
         {
-            var document = new HtmlParser().GetHtml(HostUrl + _word);
-            if (document == null)
-            {
-                return null;
-            }
+            string url = _leo.GetUrl(_word);
+            var document = new HtmlReader().GetHtml(url, htmlClient: _leo);
 
-
-            var artikelNode = document.DocumentNode.SelectSingleNode(".//div[@data-dz-name='verb']//tbody");
+            var artikelNode = document?.DocumentNode.SelectSingleNode(".//div[@data-dz-name='verb']//tbody");
             if (artikelNode == null)
             {
                 return null;
             }
-
 
             var list = new List<DicLeoItem>();
             var rows = artikelNode.SelectNodes(".//tr");

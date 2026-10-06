@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.UI;
 using HtmlParser.Language.Containers;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
@@ -59,7 +60,7 @@ namespace HtmlParser.Language
             string sound = null;
             if (!words.Any(w => w.Found))
             {
-                var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(item.De, words[0].WrdClass);
+                var factory3 = new VerbformenRuSprjazhenieTranslationContainerFactory(item.De, item.Type.ToString().ToLower());
 
                 if (item.Type == WordType.Subst)
                 {

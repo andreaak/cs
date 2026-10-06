@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
+using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language.Containers
@@ -73,14 +76,24 @@ namespace HtmlParser.Language.Containers
 
         protected virtual string GetWordRu(string de, string separator, TranslationContainer trContainer)
         {
-            return string.Join(separator, trContainer.Node.GetTranslations(de).Distinct())
-                .Replace(" m ", "")
-                .Replace(" f", "")
-                .Replace(" nt ", "")
-                .Replace(" m/", "/")
-                .Replace(" f/", "/")
-                .Replace(" nt/", "/");
+            //string pattern = "(nt|f|m)$";
+            string pattern = @"\b(nt|f|m)\b|\b(nt|f|m)$";//\b(nt|f|m)\b|
 
+            var temp =
+                (!string.IsNullOrEmpty(trContainer.Node?.Attributes?.Sense)
+                    ? $"{trContainer.Node.Attributes.Sense} : "
+                    : "") + string.Join(separator, trContainer.Node.GetTranslations(de).Distinct());
+                    //.Replace(" m ", " ")
+                    //.Replace(" f ", " ")
+                    //.Replace(" nt ", " ")
+                    //.Replace(" m/", "/")
+                    //.Replace(" f/", "/")
+                    //.Replace(" nt/", "/")
+                    //.Replace("  ", " "); 
+            
+            var t = Regex.Replace(temp, pattern, "").Replace("  ", " ");
+
+            return t;
         }
 
         protected string GetRequestUrl(string soundNode, string link, string reserveLink)
@@ -209,7 +222,7 @@ namespace HtmlParser.Language.Containers
 
         protected IList<TranslationContainer> GetTranslationContainer()
         {
-            var document = new HtmlParser().GetHtml(HostUrl + "/" + _word);
+            var document = new HtmlReader().GetHtml(HostUrl + "/" + _word);
             if (document == null)
             {
                 return null;
@@ -325,10 +338,10 @@ namespace HtmlParser.Language.Containers
             else
             {
                 
-                var document2 = new HtmlParser().GetHtml(HostUrl2 + word);
+                var document2 = new HtmlReader().GetHtml(HostUrl2 + word);
                 if (document2 != null)
                 {
-                    var text = document2.DocumentNode.SelectSingleNode(".//div[@name='targetText']").InnerText.PonsNormalize();
+                    var text = document2.DocumentNode.SelectSingleNode(".//div[@name='targetText']")?.InnerText.PonsNormalize();
                     if (!string.IsNullOrEmpty(text))
                     {
                         var item = new PonsItem(word);

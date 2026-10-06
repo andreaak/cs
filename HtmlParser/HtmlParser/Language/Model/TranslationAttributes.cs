@@ -12,5 +12,6 @@
         public string WordClass { get; set; }
         public string VerbClass { get; set; }
         public string HeadWord { get; set; }
+        public string Sense { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HtmlParser.Language.Containers;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
 
 namespace HtmlParser.Language
@@ -22,9 +23,10 @@ namespace HtmlParser.Language
             "auseinander", "dran", "entgegen", "fort", "gefangen", "heim", "heran", "heraus", "herein", "herunter", "hierher",
             "hinauf", "hinaus", "hinein", "hinüber", "hinunter", "hinzu", "hoch", "krumm", "leicht", "mal", "ran", "raus",
             "rein", "ruber", "schwer", "streng", "übel", "voraus", "vorlieb", "vorweg", "wahr", "wiederauf", "wunder",
-            "bevor", "statt", "verab", "voraus", "abbe", "herunter", "hoch", "vorbei", "abbe", "bean", "aufbe", "entgegen", "dar", 
+            "bevor", "statt", "verab", "abbe", "vorbei", "abbe", "bean", "aufbe", "entgegen", "dar", 
             "veran","zuvor", "in", "not", "un", "nachver", "voll", "fehl", "nieder", "frei", "beur", "beauf", "nahe", "berück", "beab", "hervor", "de", "beibe", "bezu",
-            "offen","verein","verei","zufrieden","fertig","beein","voran","vernach","hoch","wohl","anzu","verun", "vorüber", "befür", "benach", "dazu"
+            "offen","verein","verei","zufrieden","fertig","beein","voran","vernach","wohl","anzu","verun", "vorüber", "befür", "benach", "dazu", 
+            "vervoll", "mitver", "zurecht", "hinter", "gegenüber", "rück", "überein"
         };
 
         private static string[] selectPrefixes =
@@ -36,17 +38,20 @@ namespace HtmlParser.Language
             "auseinander", "dran", "entgegen", "fort", "gefangen", "heim", "heran", "heraus", "herein", "herunter", "hierher",
             "hinauf", "hinaus", "hinein", "hinüber", "hinunter", "hinzu", "hoch", "krumm", "leicht", "mal", "ran", "raus",
             "rein", "ruber", "schwer", "streng", "übel", "voraus", "vorlieb", "vorweg", "wahr", "wiederauf", "wunder",
-            "bevor", "statt", "verab", "voraus", "abbe", "herunter", "hoch", "vorbei", "abbe", "bean", "aufbe", "entgegen", "dar", 
+            "bevor", "statt", "verab", "abbe", "vorbei", "abbe", "bean", "aufbe", "entgegen", "dar", 
             "veran","zuvor", "in", "not", "un", "nachver", "voll", "fehl", "nieder", "frei", "beur", "beauf", "nahe", "berück", "beab", "hervor", "de", "beibe", "bezu",
-            "offen","verein","verei","zufrieden","fertig","beein","voran","vernach","hoch","wohl","anzu","verun", "vorüber", "befür", "benach", "dazu"
+            "offen","verein","verei","zufrieden","fertig","beein","voran","vernach","wohl","anzu","verun", "vorüber", "befür", "benach", "dazu", 
+            "vervoll", "mitver", "zurecht", "hinter", "gegenüber", "rück", "überein"
         };
 
         private Parameters parameters;
+        private AIProvider ai;
 
         public TranslateDeRuVerbPrefixParser(Parameters parameters)
             : base(parameters.Order, parameters.WordType)
         {
             this.parameters = parameters;
+            ai = new AIProvider();
         }
 
         public void Parse(IList<string> lines)
@@ -124,44 +129,19 @@ namespace HtmlParser.Language
             {
                 baseWords.First().WrdClass += " $$1";
                 deBase.SetLevel(baseWords); 
-                if(parameters.GetExample)
-                {
-                    var task = Task.Run(() => deBase.SetExample(baseWords));
-
-                    var res = Task.WaitAll(new [] { task }, TimeSpan.FromMinutes(3));
-                    if (!res)
-                    {
-                        isCanceled = true;
-                        return list;
-                    }
-                }
             }
 
             foreach (var prefix in selectPrefixes)
             {
                 var de = prefix + deBase;
-
                 Console.WriteLine(de);
 
                 var words = GetWords(de);
-
                 if (words.Any(w => w.Found))
                 {
                     de.SetLevel(words);
-                    if (parameters.GetExample)
-                    {
-                        var task = Task.Run(() => de.SetExample(words));
-
-                        var res = Task.WaitAll(new[] { task }, TimeSpan.FromMinutes(3));
-                        if (!res)
-                        {
-                            isCanceled = true;
-                            return list;
-                        }
-                    }
                     list.AddRange(words);
                 }
-
             }
 
             var ordered = list.OrderBy(w => w.De).ToList();
@@ -184,8 +164,6 @@ namespace HtmlParser.Language
                     var tr = factory3.GetTranslation();
                     if (!string.IsNullOrEmpty(tr))
                     {
-
-
                         if (_type == WordType.Subst)
                         {
                             var value = new Substantiv
@@ -245,18 +223,60 @@ namespace HtmlParser.Language
             {
                 factory.UploadSound(sound);
 
-                var factoryDwds = new DWDSTranslationContainerFactory(de, _type);
-                var dwds = factoryDwds.GetWords();
-
-                foreach (var word in words)
+                if (parameters.AddDescription)
                 {
-                    var res = dwds.FirstOrDefault(i => i.Type == word.WrdClass.GetDeType());
-                    if (res != null)
+                    var factoryDwds = new DWDSTranslationContainerFactory(de, _type, true);
+                    var dwds = factoryDwds.GetWords();
+                    
+                    int quantity = factoryDwds.GetQuantity();
+                    
+                    foreach (var word in words)
                     {
-                        word.Description = res.GetDescription();
+                        var res = dwds.FirstOrDefault(i => i.Type == word.WrdClass.GetDeType());
+                        if (res != null)
+                        {
+                            word.Description = res.GetDescription();
+                        }
+
+                        word.Quantity = quantity;
                     }
                 }
 
+
+                if (parameters.AddAIDescription)
+                {
+                    foreach (var word in words)
+                    {
+                        word.GptDescription = ai.GetGptDescription(word.De, _type, Language.Deutsch, (word as Verb)?.VerbClass);
+                    }
+                }
+                
+                if (parameters.AddWBDescription)
+                {
+                    foreach (var word in words)
+                    {
+                        var factory2 = new WikiTranslationContainerFactory(de, _type);
+                        var item = factory2.GetDe();
+                        if (item != null)
+                        {
+                            word.WBDescription = item.GetDescription();
+                        }
+                    }
+                }
+
+                if (parameters.GetExample)
+                {
+                    foreach (var word in words)
+                    {
+                        word.Example = ai.GetExample(word.De, _type, _type == WordType.Verb ? (word as Verb)?.VerbClass : "", Language.Deutsch);
+                    }
+                }
+
+                if (parameters.GetPreposition)
+                {
+                    var parser = new TranslateDicLeoParser(parameters);
+                    parser.Parse(de, words);
+                }
             }
 
 
@@ -268,5 +288,11 @@ namespace HtmlParser.Language
         {
             return de.Contains("|") /*|| prefixes.Any(de.StartsWith)*/;
         }
+    }
+
+    public enum Language
+    {
+        Deutsch,
+        English
     }
 }

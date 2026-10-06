@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.Office.Utils;
+using DevExpress.XtraPrinting.Native;
 using Note.Domain.Concrete;
 using Note.ControlWrapper;
 using Note.ExportData.Exporter;
@@ -34,6 +36,17 @@ namespace Note.ExportData
 
         public void Export()
         {
+            ExportOptions form = new ExportOptions();
+            if (form.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            if (form.IsOneFile)
+            {
+                ExportOneFile(form.Type, form.IsSelected);
+                return;
+            }
 
             string path = null;
             if (!SelectFolder.Select(Resources.SelectFolder, ref path))
@@ -41,11 +54,7 @@ namespace Note.ExportData
                 return;
             }
             
-            ExportOptions form = new ExportOptions();
-            if (form.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
+
 
             string headerText = Resources.ExportCaption;
             Action action = () => 
@@ -54,6 +63,30 @@ namespace Note.ExportData
                 SetPrefixAlgoritmth(form, treeWrapper.Nodes);
                 Exporter.Exporter exp = GetExporter(form.Type);
                 SaveNodesData(path, treeWrapper.Nodes, exp);
+            };
+
+            CancelFormEx.ShowProgressWindow(action, headerText);
+        }
+
+        public void ExportOneFile(ExportDocTypes type,  bool isSelected)
+        {
+            var exp = GetExporter2(type);
+            var extensions = exp.GetExtensions();
+
+            string filePath = null;
+            string title = "Select file";
+            if (!SelectFile.SaveFile(title, string.Empty, ref filePath, extensions))
+            {
+                return;
+            }
+
+            IList<Node> nodes = isSelected ? treeWrapper.SelectedNodes : treeWrapper.Nodes;
+            
+            string headerText = Resources.ExportCaption;
+            Action action = () =>
+            {
+                
+                SaveNodesData2(filePath, nodes, exp);
             };
 
             CancelFormEx.ShowProgressWindow(action, headerText);
@@ -88,6 +121,49 @@ namespace Note.ExportData
             foreach (Node node in nodes)
             {
                 SaveNodeData(path, node, exp);
+            }
+        }
+
+        private void SaveNodesData2(string path, IEnumerable<Node> nodes, IExporter2 exp)
+        {
+            if (nodes == null)
+            {
+                return;
+            }
+
+            List<(string, string)> rtfs = new List<(string, string)>();
+
+            foreach (Node node in nodes)
+            {
+                GetRtfs(node, rtfs);
+            }
+
+            exp.Convert(path, rtfs);
+        }
+
+        private void GetRtfs(IEnumerable<Node> nodes, IList<(string, string)> rtfs)
+        {
+            if (nodes == null || nodes.Count() == 0)
+            {
+                return;
+            }
+            
+            foreach (Node node in nodes)
+            {
+                GetRtfs(node, rtfs);
+            }
+        }
+
+        private void GetRtfs(Node node, IList<(string, string)> rtfs)
+        {
+            if (node.IsNote)
+            {
+                string data = presenter.GetTextData(node.ID);
+                rtfs.Add((node.EditValue, data));
+            }
+            else
+            {
+                GetRtfs(node.Nodes, rtfs);
             }
         }
 
@@ -130,6 +206,20 @@ namespace Note.ExportData
                 case ExportDocTypes.Epub:
                 default:
                     return new MultiFormatExporter(format);
+            }
+        }
+
+        private IExporter2 GetExporter2(ExportDocTypes format)
+        {
+            switch (format)
+            {
+                case ExportDocTypes.Doc:
+                case ExportDocTypes.Docx:
+                    return new DocxExporter();
+                case ExportDocTypes.Pdf:
+                    return new PdfExporter2();
+                default:
+                    throw new NotSupportedException();
             }
         }
 

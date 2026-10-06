@@ -25,6 +25,8 @@ namespace Note.ControlWrapper.DevExpressWrappers
             }
         }
 
+        public IList<Node> SelectedNodes => Convert(control.Selection);
+
         private int ParentId
         {
             get
@@ -346,6 +348,28 @@ namespace Note.ControlWrapper.DevExpressWrappers
                 rtfWrapper.EditValue = presenter.GetTextData(id); //selRow.Data;
             }
             rtfWrapper.ChangeState(isNoteNode);
+        }
+
+        private IList<Node> Convert(TreeListMultiSelection selectedNodes)
+        {
+            List<Node> nodes = new List<Node>();
+            foreach (TreeListNode node in selectedNodes)
+            {
+                int nodeIndex = selectedNodes.IndexOf(node);
+                Node res = new Node();
+                res.ID = (int)node.GetValue(DBConstants.ENTITY_TABLE_ID);
+                res.EditValue = node.GetDisplayText(0);
+                res.IsNote = TreeWrapper.IsNoteNode(node);
+                res.Index = nodeIndex;
+                res.SiblingsCount = selectedNodes.Count;
+                if (node.HasChildren)
+                {
+                    res.Nodes = new List<Node>();
+                    res.Nodes.AddRange(Convert(node.Nodes));
+                }
+                nodes.Add(res);
+            }
+            return nodes;
         }
 
         private IList<Node> Convert(TreeListNodes treeListNodes)

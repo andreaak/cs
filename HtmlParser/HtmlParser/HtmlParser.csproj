@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Selenium.WebDriver.4.50.0\build\Selenium.WebDriver.props" Condition="Exists('..\packages\Selenium.WebDriver.4.50.0\build\Selenium.WebDriver.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>HtmlParser</RootNamespace>
     <AssemblyName>HtmlParser</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -29,6 +30,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -66,7 +69,7 @@
       <HintPath>..\packages\HtmlAgilityPack.1.11.24\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0-preview.4.23259.5\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Configuration, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Configuration.8.0.0-preview.4.23259.5\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
@@ -92,11 +95,20 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0-preview.4.23259.5\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.10.0\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OpenAI, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b4187f3e65366280, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenAI.2.1.0\lib\netstandard2.0\OpenAI.dll</HintPath>
+    </Reference>
+    <Reference Include="Selenium.Support, Version=4.0.0.0, Culture=neutral, PublicKeyToken=1c2bd1631853048f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.4.50.0\lib\netstandard2.0\Selenium.Support.dll</HintPath>
+    </Reference>
+    <Reference Include="Selenium.WebDriver, Version=4.0.0.0, Culture=neutral, PublicKeyToken=1c2bd1631853048f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.4.50.0\lib\netstandard2.0\Selenium.WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -105,10 +117,15 @@
     <Reference Include="System.ClientModel, Version=1.2.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ClientModel.1.2.1\lib\netstandard2.0\System.ClientModel.dll</HintPath>
     </Reference>
+    <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.8.0.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.1\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -123,15 +140,19 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0-preview.4.23259.5\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.8.0.0-preview.4.23259.5\lib\netstandard2.0\System.Text.Json.dll</HintPath>
+      <HintPath>..\packages\System.Text.Json.8.0.6\lib\netstandard2.0\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.8.0.0\lib\netstandard2.0\System.Threading.Channels.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -140,30 +161,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseParser.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="FileParser.cs" />
-    <Compile Include="HtmlParser.cs" />
+    <Compile Include="Language\HTMLClients\DefaultHtmlClient.cs" />
+    <Compile Include="Language\HTMLClients\IHtmlClient.cs" />
+    <Compile Include="Language\Containers\WikiTranslationContainerFactory.cs" />
+    <Compile Include="Language\Containers\WortBedeutungTranslationContainerFactory.cs" />
+    <Compile Include="Language\Extensions\AIProvider.cs" />
     <Compile Include="Language\Containers\DicLeoContainerFactory.cs" />
     <Compile Include="Language\Containers\DictionaryCambridgeOrgTranslationContainerFactory.cs" />
     <Compile Include="Language\Containers\DWDSTranslationContainerFactory.cs" />
     <Compile Include="Language\Containers\PonsDeTranslationContainerFactory.cs" />
     <Compile Include="Language\DeVerbDicLeoPrapParser.cs" />
-    <Compile Include="Language\EnPonsTranslationItem.cs" />
-    <Compile Include="Language\GetDeRuDesc.cs" />
-    <Compile Include="Language\Model\DicLeoContainerItem.cs" />
-    <Compile Include="Language\Model\DWDSItem.cs" />
+    <Compile Include="Language\HTMLClients\HtmlReader.cs" />
+    <Compile Include="Language\HTMLClients\LeoHtmlClient.cs" />
+    <Compile Include="Language\Extensions\TestFlagsEnumHelper.cs" />
+    <Compile Include="Language\Model\Words\WordType.cs" />
+    <Compile Include="Language\Model\EnPonsTranslationItem.cs" />
+    <Compile Include="Language\GenerateAIDescriptionParser.cs" />
+    <Compile Include="Language\GetDeRuAIDescParser.cs" />
+    <Compile Include="Language\Model\Words\DicLeoContainerItem.cs" />
+    <Compile Include="Language\Model\Words\DWDSItem.cs" />
     <Compile Include="Language\Extensions\FileExtensions.cs" />
     <Compile Include="Language\Extensions\SiteExtensions.cs" />
     <Compile Include="Language\Extensions\GPT.cs" />
-    <Compile Include="Language\GetDeLevel.cs" />
-    <Compile Include="Language\GetEnLevel.cs" />
-    <Compile Include="Language\ITranslationItem.cs" />
+    <Compile Include="Language\GetDeLevelParser.cs" />
+    <Compile Include="Language\GetEnLevelParser.cs" />
+    <Compile Include="Language\Model\ITranslationItem.cs" />
     <Compile Include="Language\Model\Conjugation.cs" />
-    <Compile Include="Language\Model\IrregularEnVerb.cs" />
+    <Compile Include="Language\Model\Words\IrregularEnVerb.cs" />
     <Compile Include="Language\Containers\PonsEnTranslationContainerFactory.cs" />
     <Compile Include="Language\Containers\BasePonsTranslationContainerFactory.cs" />
-    <Compile Include="Language\GetDeRuExample.cs" />
+    <Compile Include="Language\GetDeRuExampleParser.cs" />
+    <Compile Include="Language\GetDeWortBedeutungParser.cs" />
     <Compile Include="Language\TranslateDicLeoParser.cs" />
     <Compile Include="Language\TranslateDWDSVocabularyParser.cs" />
     <Compile Include="Language\TranslateEnRuPhrasalVerbParser.cs" />
@@ -198,27 +227,23 @@
     <Compile Include="Language\VerbFormParsers\BaseVerbFormParser.cs" />
     <Compile Include="Language\Extensions\StringExtensions.cs" />
     <Compile Include="Language\Model\DeVerbForm.cs" />
-    <Compile Include="Language\Model\IrregularDeVerb.cs" />
-    <Compile Include="Language\LanguageParser.cs" />
-    <Compile Include="Language\ReplaceItem.cs" />
-    <Compile Include="Language\Model\Substantiv.cs" />
+    <Compile Include="Language\Model\Words\IrregularDeVerb.cs" />
+    <Compile Include="Language\HTMLClients\LanguageParser.cs" />
+    <Compile Include="Language\Model\ReplaceItem.cs" />
+    <Compile Include="Language\Model\Words\Substantiv.cs" />
     <Compile Include="Language\DeVerbFormParser.cs" />
     <Compile Include="Language\TranslateRuDePairParser.cs" />
     <Compile Include="Language\TranslateDeRuVerbFormsParser.cs" />
-    <Compile Include="Language\Model\Verb.cs" />
-    <Compile Include="Language\Model\WordClass.cs" />
+    <Compile Include="Language\Model\Words\Verb.cs" />
+    <Compile Include="Language\Model\Words\WordClass.cs" />
     <Compile Include="Language\Model\TranslationAttributes.cs" />
     <Compile Include="Language\Containers\TranslationContainer.cs" />
-    <Compile Include="Language\PonsTranslationItem.cs" />
-    <Compile Include="Language\Model\VerbPrapItem.cs" />
-    <Compile Include="LinkParser.cs" />
+    <Compile Include="Language\Model\PonsTranslationItem.cs" />
+    <Compile Include="Language\Model\Words\VerbPrapItem.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="ParametersProvider.cs" />
-    <Compile Include="RemoveDuplicateParser.cs" />
     <Compile Include="Language\TranslateDeRuParser.cs" />
     <Compile Include="Language\TranslateRuDeParser.cs" />
-    <Compile Include="PidruchnikiParser.cs" />
-    <Compile Include="MonolitParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -234,5 +259,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.4.50.0\build\Selenium.WebDriver.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.4.50.0\build\Selenium.WebDriver.props'))" />
+  </Target>
 </Project>

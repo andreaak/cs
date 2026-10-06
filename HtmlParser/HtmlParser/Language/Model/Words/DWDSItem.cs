@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using HtmlParser.Language.HTMLClients;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -14,6 +15,8 @@ namespace HtmlParser.Language
         public WordType Type { get; set; }
         public IList<DWDSItem> InnenItems { get; set; }
 
+        public int Quantity { get; set; }
+
         public virtual void Write(StreamWriter sw)
         {
             sw.WriteLine(InnenItems.Any() ? InnenItems[0].Type.ToString().ToLowerInvariant() : "");
@@ -21,12 +24,15 @@ namespace HtmlParser.Language
             sw.WriteLine(De);
             sw.WriteLine("");
             sw.WriteLine("");
-            sw.WriteLine("");
-            sw.WriteLine("");
+            sw.WriteLine("");//Level
+            sw.WriteLine("");//Example
 
-            var example = GetDescription();
-            sw.WriteLine(example);
-            sw.WriteLine("");
+            var description = GetDescription();
+            sw.WriteLine(description);
+            sw.WriteLine("");//Prep
+            sw.WriteLine("");//GptDescription
+            sw.WriteLine("");//WBDescription
+            sw.WriteLine(Quantity);
             sw.WriteLine("");
         }
 
@@ -58,7 +64,7 @@ namespace HtmlParser.Language
 
         private string GetExample(string example)
         {
-            return string.IsNullOrEmpty(example) ? string.Empty : "[Ex]: " + example;
+            return string.IsNullOrEmpty(example) ? string.Empty : "$$[Ex]: " + example;
         }
     }
 

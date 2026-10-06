@@ -6,19 +6,25 @@ using System.Threading;
 using System.Threading.Tasks;
 using HtmlParser.Language.Containers;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 using HtmlParser.Language.Model;
+using HtmlParser.Language.Model.Words;
 
 namespace HtmlParser.Language
 {
     public class TranslateDicLeoParser : LanguageParser, ILanguageParser
     {
+        private LeoHtmlClient leo;
+
         public TranslateDicLeoParser(Parameters parameters)
             : base(parameters.Order, parameters.WordType)
-        { }
+        {
+
+            leo = new LeoHtmlClient();
+        }
 
         public void Parse(IList<string> lines)
         {
-            
             using (var sw = File.CreateText("notFound.txt"))
             {
                 var temp = lines.Where(l => !string.IsNullOrWhiteSpace(l))
@@ -27,69 +33,99 @@ namespace HtmlParser.Language
                     .SelectMany(l => Parse(l.Trim(), sw));
 
 
-                //using (var sw2 = File.CreateText("out.txt"))
-                //{
-                //    foreach (var line in list)
-                //    {
-                //        var item = Parse(line);
-                //        item.Write(sw2);
-                //        sw.Flush();
-                //        if (break_)
-                //        {
-                //            break;
-                //        }
-                //    }
-                //}
-
-
                 using (var sw2 = File.CreateText("out.txt"))
                 {
                     foreach (var item in temp)
                     {
                         item.Write(sw2);
+                        sw2.Flush();
                     }
                 }
             }
         }
 
-        public void Parse(string de, IEnumerable<Verb> vb)
+        public void Parse(string de, IEnumerable<WordClass> vb)
         {
-            var factory = new DicLeoContainerFactory(de, WordType.Verb);
+            var factory = new DicLeoContainerFactory(de, WordType.Verb, leo);
 
             var words = factory.GetWords();
-            var items = words.Where(w => !w.IsSich).ToArray();
-            var sichItems = words.Where(w => w.IsSich).ToArray();
 
-            if (items.Any())
+            if (words == null || words.Count == 0)
             {
-                var description = new DicLeoContainerItem
-                {
-                    De = de,
-                    Items = items
-                }.GetDescription();
-
-                foreach (var word in vb.Where(v => !v.VerbClass.Contains("refl")))
-                {
-                    word.Prep = description;
-                }
+                return;
             }
 
-            if (sichItems.Any())
-            {
-                var description = new DicLeoContainerItem
+            string description;
+            foreach (var word in vb)
+            { 
+                if (IsUndefined(word))
                 {
-                    De = de,
-                    Items = sichItems,
-                    IsSich = true
-                }.GetDescription();
-
-                foreach (var word in vb.Where(v => v.VerbClass != null && v.VerbClass.Contains("refl")))
-                {
-                    word.Prep = description;
+                    description = new DicLeoContainerItem
+                    {
+                        De = de,
+                        Items = words,
+                    }.GetDescription();
                 }
+                else if (IsReflexive(word))
+                {
+                    description = new DicLeoContainerItem
+                    {
+                        De = de,
+                        Items = words.Where(w => w.IsSich).ToArray(),
+                        IsSich = true
+                    }.GetDescription();
+                }
+                else
+                {
+                    description = new DicLeoContainerItem
+                    {
+                        De = de,
+                        Items = words.Where(w => !w.IsSich).ToArray()
+                    }.GetDescription();
+                }
+                word.Prep = description;
             }
+
+            //if (items.Any())
+            //{
+            //    var description = new DicLeoContainerItem
+            //    {
+            //        De = de,
+            //        Items = items
+            //    }.GetDescription();
+
+            //    foreach (var word in vb.Where(v => !IsReflexive(v)))
+            //    {
+            //        word.Prep = description;
+            //    }
+            //}
+
+            //if (sichItems.Any())
+            //{
+            //    var description = new DicLeoContainerItem
+            //    {
+            //        De = de,
+            //        Items = sichItems,
+            //        IsSich = true
+            //    }.GetDescription();
+
+            //    foreach (var word in vb.Where(v => !IsReflexive(v)))
+            //    {
+            //        word.Prep = description;
+            //    }
+            //}
 
             Thread.Sleep(1000);
+        }
+
+        private bool IsReflexive(WordClass v)
+        {
+            return v.WrdClass.GetDeType() == WordType.Verb && ((v as Verb)?.VerbClass.Contains("refl") ?? false);
+        }
+
+        private bool IsUndefined(WordClass v)
+        {
+            return v.WrdClass.GetDeType() == WordType.Verb && string.IsNullOrEmpty(((v as Verb)?.VerbClass));
         }
 
         private IList<DicLeoContainerItem> Parse(string de, StreamWriter sw)
@@ -101,7 +137,7 @@ namespace HtmlParser.Language
                 de = de.RemoveArtikles();
             }
             
-            var factory = new DicLeoContainerFactory(de, _type);
+            var factory = new DicLeoContainerFactory(de, _type, leo);
 
             var words = factory.GetWords();
             var items = words.Where(w => !w.IsSich).ToArray();
@@ -127,7 +163,7 @@ namespace HtmlParser.Language
                 });
             }
 
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
 
             return res;
         }

@@ -5,6 +5,7 @@ using System.Text.Encodings.Web;
 using System.Web;
 using HtmlAgilityPack;
 using HtmlParser.Language.Extensions;
+using HtmlParser.Language.HTMLClients;
 
 namespace HtmlParser.Language.Containers
 {
@@ -15,14 +16,19 @@ namespace HtmlParser.Language.Containers
         protected readonly string _word;
         protected readonly WordType _type;
         protected IList<DWDSItem> _containers;
+        protected HtmlDocument _document;
+        protected AIProvider _ai;
+        private bool _translate;
 
-        public DWDSTranslationContainerFactory(string de, WordType type)
+        public DWDSTranslationContainerFactory(string de, WordType type, bool translate)
         {
-            _word = de;
+            _word = type == WordType.Subst ? char.ToUpper(de[0]) + de.Substring(1) : de;
             _type = type;
+            _translate = translate;
+            _ai = new AIProvider();
         }
 
-        public IList<DWDSItem> GetWords(string separator = "/")
+        public IList<DWDSItem> GetWords()
         {
             var trContainers = GetTranslationContainer();
 
@@ -36,9 +42,17 @@ namespace HtmlParser.Language.Containers
             return trContainers;
         }
 
-        protected IList<DWDSItem> GetTranslationContainer()
+        public int GetQuantity()
         {
-            var document = new HtmlParser().GetHtml(HostUrl + _word);
+            var document = GetHtmlDocument();
+            var artikelNodes = document?.DocumentNode.SelectNodes(".//div[@class='word-frequency-active']");
+
+            return artikelNodes?.Count ?? 0;
+        }
+
+        private IList<DWDSItem> GetTranslationContainer()
+        {
+            var document = GetHtmlDocument();
             if (document == null)
             {
                 return null;
@@ -61,7 +75,7 @@ namespace HtmlParser.Language.Containers
                 foreach (var o in other)
                 {
                     var spans = o.SelectNodes("./span");
-                    if (spans != null && spans[0].InnerText.PonsNormalize().ToLowerInvariant() == "grammatik")
+                    if (spans != null && spans[0].InnerText.PonsNormalize().ToLowerInvariant().Contains("grammatik"))
                     {
                         var t = spans[1].SelectSingleNode("./span").InnerText.PonsNormalize();
                         wt = GetWordType(t);
@@ -82,7 +96,7 @@ namespace HtmlParser.Language.Containers
                 //    continue;
                 //}
 
-                var items = GetTranslationItems(artikelNode, _word, wt, otherData);
+                var items = GetTranslationItems(artikelNode, _word, wt, _translate);
 
                 list.Add(new DWDSItem
                 {
@@ -96,6 +110,11 @@ namespace HtmlParser.Language.Containers
             var result = list.Where(l => _type.IsSet(l.Type)).ToArray();
 
             return result.Any() ? (IList<DWDSItem>)result : list;
+        }
+
+        private HtmlDocument GetHtmlDocument()
+        {
+            return _document ?? (_document = new HtmlReader().GetHtml(HostUrl + _word));
         }
 
         private WordType GetWordType(string value)
@@ -124,11 +143,8 @@ namespace HtmlParser.Language.Containers
             }
         }
 
-        private List<DWDSItem> GetTranslationItems(HtmlNode mainNode, string word, WordType wt, string otherData)
+        private List<DWDSItem> GetTranslationItems(HtmlNode mainNode, string word, WordType wt, bool translate)
         {
-            
-            
-            
             var descriptionNodes = mainNode.SelectNodes(".//div[@data-content-piece='Bedeutungsteil']/div[@class='dwdswb-lesart']");
             var res = new List<DWDSItem>();
 
@@ -136,7 +152,7 @@ namespace HtmlParser.Language.Containers
             {
                 foreach (var node in descriptionNodes)
                 {
-                    var item = GetDWDSItem(node, wt, otherData);
+                    var item = GetDWDSItem(node, wt, translate);
                     res.Add(item);
                 }
             }
@@ -144,7 +160,7 @@ namespace HtmlParser.Language.Containers
             return res;
         }
 
-        private DWDSItem GetDWDSItem(HtmlNode node, WordType wt, string otherData)
+        private DWDSItem GetDWDSItem(HtmlNode node, WordType wt, bool translate)
         {
             var index = node.SelectSingleNode("./div[@class='dwdswb-lesart-n']").InnerText.PonsNormalize();
 
@@ -167,7 +183,7 @@ namespace HtmlParser.Language.Containers
             {
                 De = _word,
                 Index = index,
-                Definition = GetDefinition(defPreff, definition, definitionGrammatik, otherData),
+                Definition = GetDefinition(defPreff, definition, definitionGrammatik, translate),
                 Example = string.Join("; ", examples),
                 InnenItems = new List<DWDSItem>(),
                 Type = wt
@@ -178,7 +194,7 @@ namespace HtmlParser.Language.Containers
             {
                 foreach (var node2 in innen)
                 {
-                    var item = GetDWDSItem(node2, wt, otherData);
+                    var item = GetDWDSItem(node2, wt, translate);
                     res.InnenItems.Add(item);
                 }
             }
@@ -186,16 +202,18 @@ namespace HtmlParser.Language.Containers
             return res;
         }
 
-        private string GetDefinition(string defPreff, string definition, string definitionGrammatik, string otherData)
+        private string GetDefinition(string defPreff, string definition, string definitionGrammatik, bool translate)
         {
-            if (string.IsNullOrEmpty(defPreff) && string.IsNullOrEmpty(definition) && string.IsNullOrEmpty(definitionGrammatik))
+            if (string.IsNullOrEmpty(defPreff) 
+                && string.IsNullOrEmpty(definition) 
+                && string.IsNullOrEmpty(definitionGrammatik))
             {
                 return "";
             }
 
             if (!string.IsNullOrEmpty(definition))
             {
-                var tr = new PonsDeTranslationContainerFactory(definition, _type).GetTranslation();
+                var tr = translate ? _ai.GetTranslation(definition) : "";
 
                 if (!string.IsNullOrEmpty(tr))
                 {
@@ -207,7 +225,7 @@ namespace HtmlParser.Language.Containers
             {
                 defPreff = defPreff.Replace("⟨", "").Replace("⟩", "");
 
-                var tr = new PonsDeTranslationContainerFactory(defPreff, _type).GetTranslation();
+                var tr = translate ? _ai.GetTranslation(defPreff) : "";
 
                 if (!string.IsNullOrEmpty(tr))
                 {

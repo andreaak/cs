@@ -1,5 +1,5 @@
 ﻿using System;
-using HtmlParser.Language;
+using HtmlParser.Language.HTMLClients;
 
 namespace HtmlParser
 {
@@ -47,6 +47,9 @@ namespace HtmlParser
                     case "konj":
                         parameters.WordType |= WordType.Konj;
                         break;
+                    case "complex":
+                        parameters.WordType |= WordType.Complex;
+                        break;
                     case "de":
                         parameters.Lang = "de";
                         break;
@@ -70,6 +73,12 @@ namespace HtmlParser
                         break;
                     case "prep":
                         parameters.GetPreposition = true;
+                        break;
+                    case "aidesc":
+                        parameters.AddAIDescription = true;
+                        break;
+                    case "wbdesc":
+                        parameters.AddWBDescription = true;
                         break;
                 }
             }

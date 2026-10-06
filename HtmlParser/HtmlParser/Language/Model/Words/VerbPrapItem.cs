@@ -23,6 +23,10 @@ namespace HtmlParser.Language.Model
             sw.WriteLine(Example);
             sw.WriteLine(Level);
             sw.WriteLine("");
+            sw.WriteLine("");
+            sw.WriteLine("");
+            sw.WriteLine("");
+            sw.WriteLine("");
         }
     }
 }
